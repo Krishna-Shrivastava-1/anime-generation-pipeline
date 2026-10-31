@@ -337,27 +337,30 @@ jobs:
           assets = story.get("assets", {})
           global_style = story.get("global_style", {})
 
+          # Global module variables
+          browser = None
+          context = None
+          page = None
+
+          def start_fresh_browser(playwright_runner):
+              global browser, context, page
+              if browser:
+                  try: browser.close()
+                  except Exception: pass
+              browser = playwright_runner.chromium.launch(
+                  headless=not HEADED,
+                  proxy={"server": BROWSER_PROXY},
+                  args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"]
+              )
+              context = browser.new_context(
+                  viewport={"width": 1440, "height": 1000},
+                  user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
+              )
+              context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
+              page = context.new_page()
+
           with sync_playwright() as p:
-              browser, context, page = None, None, None
-
-              def start_fresh_browser():
-                  nonlocal browser, context, page
-                  if browser:
-                      try: browser.close()
-                      except Exception: pass
-                  browser = p.chromium.launch(
-                      headless=not HEADED,
-                      proxy={"server": BROWSER_PROXY},
-                      args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"]
-                  )
-                  context = browser.new_context(
-                      viewport={"width": 1440, "height": 1000},
-                      user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
-                  )
-                  context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
-                  page = context.new_page()
-
-              start_fresh_browser()
+              start_fresh_browser(p)
 
               for scene, beat in all_beats:
                   beat_id = beat["beat_id"]
@@ -474,7 +477,7 @@ jobs:
                           log(f"Attempt {attempt} failed on {beat_id}: {err}")
                           snap(page, f"err_{beat_id}_a{attempt}")
                           new_tor_circuit()
-                          start_fresh_browser()
+                          start_fresh_browser(p)
 
                   if not beat_done:
                       log(f"Could not complete beat {beat_id}. Stopping execution.")

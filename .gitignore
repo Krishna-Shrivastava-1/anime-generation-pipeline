@@ -1,5 +1,4 @@
 models/
-build/
 *.onnx
 *.bin
 *.wav

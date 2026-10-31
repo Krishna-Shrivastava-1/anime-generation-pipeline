@@ -23,7 +23,7 @@ permissions:
 jobs:
   generate-story-frames:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 50
 
     steps:
       - name: Checkout repository
@@ -488,9 +488,9 @@ jobs:
           PY
 
           if [ "$HEADED" = "true" ]; then
-            timeout -k 10 1400 xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py
+            timeout -k 15 2700 xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py
           else
-            timeout -k 10 1400 python generate_story.py
+            timeout -k 15 2700 python generate_story.py
           fi
 
       - name: Kill leftover browser processes

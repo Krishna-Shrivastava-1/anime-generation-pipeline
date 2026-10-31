@@ -1,0 +1,296 @@
+name: Generate and Download Duck.ai Story Frames
+
+on:
+  workflow_dispatch:
+    inputs:
+      aspect_ratio:
+        description: "Image Aspect Ratio"
+        required: true
+        type: choice
+        options:
+          - "9:16"
+          - "16:9"
+        default: "9:16"
+      headed:
+        description: "Run non-headless Chrome under Xvfb (less detectable)"
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  generate-story-frames:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Tor
+        timeout-minutes: 4
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tor netcat-openbsd xvfb
+          sudo service tor start
+          for i in {1..30}; do
+            if nc -z 127.0.0.1 9050; then echo "Tor ready"; break; fi
+            sleep 2
+          done
+          nc -z 127.0.0.1 9050
+
+      - name: Install Python dependencies
+        timeout-minutes: 6
+        run: |
+          python -m pip install --upgrade pip
+          pip install curl_cffi playwright pillow requests
+          playwright install --with-deps chromium
+
+      - name: Verify connection (curl_cffi via Tor)
+        timeout-minutes: 3
+        run: |
+          python - <<'PY'
+          from curl_cffi import requests
+          p = "socks5h://127.0.0.1:9050"
+          r = requests.get("https://check.torproject.org/api/ip", proxies={"http": p, "https": p}, impersonate="chrome", timeout=60)
+          data = r.json()
+          print("Connection info:", data)
+          if not data.get("IsTor"):
+              raise RuntimeError("Traffic is not using Tor.")
+          PY
+
+      - name: Run Sequential Beat Generator
+        env:
+          ASPECT_RATIO: ${{ inputs.aspect_ratio }}
+          HEADED: ${{ inputs.headed }}
+        run: |
+          mkdir -p build/frames build/debug
+
+          cat > run_pipeline.py <<'PY'
+          import os, re, sys, json, base64, subprocess, time
+          from io import BytesIO
+          from pathlib import Path
+          from PIL import Image, ImageFilter, ImageStat
+          from playwright.sync_api import sync_playwright
+          from prompt_compiler import compile_beat_prompt
+
+          ASPECT_RATIO = os.environ.get("ASPECT_RATIO", "9:16")
+          HEADED = os.environ.get("HEADED") == "true"
+          
+          FRAMES_DIR = Path("build/frames"); FRAMES_DIR.mkdir(parents=True, exist_ok=True)
+          DEBUG_DIR = Path("build/debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+          STATE_FILE = Path("build/pipeline_state.json")
+          RUN_LOG = DEBUG_DIR / "run.log"
+          
+          TOR_PROXY = "socks5://127.0.0.1:9050"
+          CONTINUE_LABELS = re.compile(r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I)
+
+          def log(msg):
+              line = f"[{time.strftime('%H:%M:%S')}] {msg}"
+              print(line, flush=True)
+              with open(RUN_LOG, "a", encoding="utf-8") as f:
+                  f.write(line + "\n")
+
+          def click_continue(page):
+              try:
+                  btns = page.get_by_role("button", name=CONTINUE_LABELS)
+                  for i in range(btns.count()):
+                      btn = btns.nth(i)
+                      if btn.is_visible():
+                          btn.click(timeout=3000)
+                          page.wait_for_timeout(1000)
+                          return True
+              except Exception: pass
+              return False
+
+          def get_prompt_box(page):
+              return page.locator("textarea[name='user-prompt'], textarea[placeholder*='ask' i], textarea").first
+
+          def all_images(page):
+              return page.evaluate("() => [...document.querySelectorAll('img')].map(i => i.currentSrc || i.src || '')")
+
+          def find_new_image(page, baseline):
+              return page.evaluate("""(baseline) => {
+                  const base = new Set(baseline);
+                  let best = null, maxArea = 0;
+                  for (const img of document.querySelectorAll('img')) {
+                      const s = img.currentSrc || img.src || '';
+                      if (!s || base.has(s) || /favicon|logo/i.test(s)) continue;
+                      if (img.complete && img.naturalWidth >= 200 && img.naturalHeight >= 200) {
+                          const area = img.naturalWidth * img.naturalHeight;
+                          if (area > maxArea) { maxArea = area; best = s; }
+                      }
+                  }
+                  return best;
+              }""", list(baseline))
+
+          def fetch_bytes(page, src):
+              res = page.evaluate("""async (src) => {
+                  const r = await fetch(src, { credentials: 'include' });
+                  const b = await r.blob();
+                  return await new Promise((ok) => {
+                      const fr = new FileReader();
+                      fr.onload = () => ok(fr.result);
+                      fr.readAsDataURL(b);
+                  });
+              }""", src)
+              return base64.b64decode(res.split(",", 1)[1])
+
+          def restart_tor():
+              log("[Tor] Rotating IP Circuit...")
+              subprocess.run(["sudo", "service", "tor", "restart"], check=False)
+              for _ in range(30):
+                  if subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0:
+                      break
+                  time.sleep(1)
+              time.sleep(3)
+
+          # Load Pipeline & State
+          with open("story_pipeline.json", "r", encoding="utf-8") as f:
+              story = json.load(f)
+
+          state = {"completed_beats": []}
+          if STATE_FILE.exists():
+              try:
+                  with open(STATE_FILE, "r") as f: state = json.load(f)
+              except Exception: pass
+
+          all_beats = [(sc, b) for sc in story.get("scenes", []) for b in sc.get("beats", [])]
+          assets = story.get("assets", {})
+          global_style = story.get("global_style", {})
+
+          with sync_playwright() as p:
+              browser = None
+              page = None
+
+              def launch_browser():
+                  nonlocal browser, page
+                  if browser:
+                      try: browser.close()
+                      except Exception: pass
+                  browser = p.chromium.launch(
+                      headless=not HEADED,
+                      proxy={"server": TOR_PROXY},
+                      args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"]
+                  )
+                  ctx = browser.new_context(
+                      viewport={"width": 1440, "height": 1000},
+                      user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
+                  )
+                  ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
+                  page = ctx.new_page()
+
+              launch_browser()
+
+              for scene, beat in all_beats:
+                  beat_id = beat["beat_id"]
+                  frame_out = FRAMES_DIR / f"{beat_id}.png"
+
+                  if beat_id in state["completed_beats"] and frame_out.exists():
+                      log(f"Beat {beat_id} already exists. Skipping.")
+                      continue
+
+                  log(f"\n==================== PROCESSING BEAT: {beat_id} ====================")
+                  beat_success = False
+
+                  for attempt in range(1, 3):
+                      try:
+                          is_in_chat = bool(page and "chatID=" in page.url)
+                          prompt = compile_beat_prompt(
+                              beat, assets, global_style,
+                              aspect_ratio=ASPECT_RATIO,
+                              is_in_session=is_in_chat
+                          )
+
+                          if not is_in_chat:
+                              log("Starting fresh Duck.ai session...")
+                              page.goto("https://duck.ai/chat", timeout=90000)
+                              page.wait_for_timeout(4000)
+                              click_continue(page)
+
+                          box = get_prompt_box(page)
+                          box.wait_for(state="visible", timeout=30000)
+                          baseline = set(all_images(page))
+
+                          log(f"Submitting prompt: {prompt[:90]}...")
+                          box.click()
+                          page.keyboard.type(prompt, delay=20)
+                          page.keyboard.press("Enter")
+
+                          # Wait for chatID if not already present
+                          if not is_in_chat:
+                              start_c = time.time()
+                              while time.time() - start_c < 45:
+                                  click_continue(page)
+                                  if "chatID=" in page.url:
+                                      break
+                                  page.wait_for_timeout(1500)
+
+                          # Await image generation
+                          log("Waiting for synthesized image...")
+                          found_src = None
+                          start_img = time.time()
+                          while time.time() - start_img < 150:
+                              click_continue(page)
+                              found_src = find_new_image(page, baseline)
+                              if found_src:
+                                  page.wait_for_timeout(5000) # Ensure full clarity render
+                                  break
+                              page.wait_for_timeout(2000)
+
+                          if not found_src:
+                              raise RuntimeError(f"Timeout waiting for image in {beat_id}")
+
+                          data = fetch_bytes(page, found_src)
+                          Image.open(BytesIO(data)).convert("RGB").save(frame_out, "PNG")
+                          log(f"SUCCESS: Saved {frame_out}")
+
+                          state["completed_beats"].append(beat_id)
+                          with open(STATE_FILE, "w") as f:
+                              json.dump(state, f, indent=2)
+
+                          beat_success = True
+                          page.wait_for_timeout(3000)
+                          break
+
+                      except Exception as e:
+                          log(f"Attempt {attempt} failed on {beat_id}: {e}")
+                          restart_tor()
+                          launch_browser()
+
+                  if not beat_success:
+                      log(f"Could not generate {beat_id}. Halting to preserve state.")
+                      break
+
+              if browser:
+                  browser.close()
+          PY
+
+          if [ "$HEADED" = "true" ]; then
+            xvfb-run -a --server-args="-screen 0 1440x1000x24" python run_pipeline.py
+          else
+            python run_pipeline.py
+          fi
+
+      - name: Commit and Push Generated Frames
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add build/frames/ build/pipeline_state.json
+          if git diff --cached --quiet; then
+            echo "No new frames to commit."
+            exit 0
+          fi
+          git commit -m "Auto-commit generated story frames [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main

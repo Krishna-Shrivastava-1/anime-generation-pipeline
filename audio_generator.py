@@ -3,12 +3,10 @@ import re
 import json
 import numpy as np
 import soundfile as sf
-from scipy.signal import resample_poly, butter, sosfilt
+from scipy.signal import butter, sosfilt
 from kokoro_onnx import Kokoro
-from fractions import Fraction
 from pathlib import Path
 
-# Paths to your local model files
 MODEL_PATH = "models/kokoro-v1.0.onnx"
 VOICES_PATH = "models/voices-v1.0.bin"
 
@@ -16,30 +14,44 @@ AUDIO_DIR = Path("build/audio")
 AUDIO_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def change_pitch(samples: np.ndarray, sample_rate: int, pitch_factor: float) -> np.ndarray:
-    if pitch_factor == 1.0 or len(samples) == 0:
-        return samples
-    target_len = len(samples)
-    frac = Fraction(pitch_factor).limit_denominator(1000)
-    stretched = resample_poly(samples, frac.numerator, frac.denominator)
-    if len(stretched) != target_len:
-        from scipy.signal import resample
-        pitched = resample(stretched, target_len)
-    else:
-        pitched = stretched
-    return pitched.astype(np.float32)
-
-
-def polish_voice(samples: np.ndarray, sample_rate: int) -> np.ndarray:
+def broadcast_voice_master(samples: np.ndarray, sample_rate: int) -> np.ndarray:
+    """
+    Studio Vocal Chain:
+      1. High-Pass Filter (Rumble cut below 80Hz)
+      2. Presence / Clarity Boost (3.5kHz band) so it cuts through crisply
+      3. Soft Compression / Normalization for radio punch
+    """
     samples = samples.astype(np.float32)
-    sos_low = butter(2, 9000, btype="low", fs=sample_rate, output="sos")
-    samples = 0.7 * samples + 0.3 * sosfilt(sos_low, samples)
-    sos_band = butter(2, [150, 400], btype="band", fs=sample_rate, output="sos")
-    samples = samples + 0.15 * sosfilt(sos_band, samples)
+
+    # 1. High-pass filter at 80Hz to remove muddy mic rumble
+    sos_hp = butter(2, 80, btype="highpass", fs=sample_rate, output="sos")
+    samples = sosfilt(sos_hp, samples)
+
+    # 2. Presence EQ: boost 3.2kHz - 5.5kHz for crisp, engaging vocal definition
+    sos_presence = butter(2, [3200, 5500], btype="bandpass", fs=sample_rate, output="sos")
+    presence = sosfilt(sos_presence, samples)
+    samples = samples + 0.28 * presence
+
+    # 3. Fast soft-knee limiter / compressor (levels out quiet & loud syllables)
+    # Apply soft clipping tanh curve
+    samples = np.tanh(samples * 1.35)
+
+    # 4. Normalize to -1 dB peak (0.89)
     peak = np.max(np.abs(samples)) + 1e-9
-    if peak > 0.97:
-        samples = samples / peak * 0.97
+    samples = (samples / peak) * 0.92
+
     return samples.astype(np.float32)
+
+
+def add_narrative_pauses(text: str) -> str:
+    """
+    Inserts micro-pauses at Hindi punctuation so the TTS breathes naturally.
+    """
+    # Normalize danda and ellipsis to give dramatic suspense
+    text = text.replace("...", " ... ")
+    text = re.sub(r"([।!?])", r"\1 ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
 
 
 def split_sentences(text: str):
@@ -47,65 +59,65 @@ def split_sentences(text: str):
     return [p for p in parts if p.strip()]
 
 
-def crossfade_concat(chunks, sample_rate, fade_ms=25):
+def crossfade_concat(chunks, sample_rate, pause_ms=120):
+    """
+    Concatenate chunks with an intentional natural spoken pause.
+    """
     if not chunks:
         return np.array([], dtype=np.float32)
-    fade_len = int(sample_rate * fade_ms / 1000)
+
+    pause_samples = np.zeros(int(sample_rate * (pause_ms / 1000.0)), dtype=np.float32)
     result = chunks[0].astype(np.float32)
+
     for nxt in chunks[1:]:
-        nxt = nxt.astype(np.float32)
-        if fade_len > 0 and len(result) >= fade_len and len(nxt) >= fade_len:
-            fade_out = np.linspace(1.0, 0.0, fade_len)
-            fade_in = np.linspace(0.0, 1.0, fade_len)
-            overlap = result[-fade_len:] * fade_out + nxt[:fade_len] * fade_in
-            result = np.concatenate([result[:-fade_len], overlap, nxt[fade_len:]])
-        else:
-            result = np.concatenate([result, nxt])
+        result = np.concatenate([result, pause_samples, nxt.astype(np.float32)])
     return result
 
 
 def main():
     if not os.path.exists(MODEL_PATH) or not os.path.exists(VOICES_PATH):
-        print(f"[Error] Missing models! Place them in {MODEL_PATH} and {VOICES_PATH}")
+        print(f"[Error] Missing models! Check {MODEL_PATH} and {VOICES_PATH}")
         return
 
     with open("story_pipeline.json", "r", encoding="utf-8") as f:
         story = json.load(f)
 
-    print("Initializing Kokoro TTS...")
+    print("🎙️ Initializing High-Definition Kokoro Engine...")
     kokoro = Kokoro(MODEL_PATH, VOICES_PATH)
     manifest = []
     total_dur = 0.0
 
+    # 1.08x speed feels far more energetic and human in Hindi
+    STORY_SPEED = 1.08
+    VOICE_ID = "hf_beta"
+
     for scene in story.get("scenes", []):
         for beat in scene.get("beats", []):
             beat_id = beat["beat_id"]
-            text = beat["narration_text"].strip()
+            raw_text = beat["narration_text"].strip()
             out_file = AUDIO_DIR / f"{beat_id}.wav"
 
-            if out_file.exists():
-                data, sr = sf.read(str(out_file))
-                dur = len(data) / sr
-                print(f"[Skipping] {beat_id} already exists ({dur:.2f}s)")
-            else:
-                sentences = split_sentences(text)
-                chunks = []
-                sr = 24000
-                for s in sentences:
-                    smpls, sr = kokoro.create(text=s, voice="hf_beta", speed=1.0, lang="hi")
-                    chunks.append(smpls)
-                audio = crossfade_concat(chunks, sr)
-                audio = change_pitch(audio, sr, 0.92)
-                audio = polish_voice(audio, sr)
-                sf.write(str(out_file), audio, sr)
-                dur = len(audio) / sr
-                print(f"[Generated] {beat_id} -> {dur:.2f}s")
+            formatted_text = add_narrative_pauses(raw_text)
+            sentences = split_sentences(formatted_text)
+            
+            chunks = []
+            sr = 24000
+            for s in sentences:
+                smpls, sr = kokoro.create(text=s, voice=VOICE_ID, speed=STORY_SPEED, lang="hi")
+                chunks.append(smpls)
+
+            combined = crossfade_concat(chunks, sr, pause_ms=100)
+            mastered = broadcast_voice_master(combined, sr)
+
+            sf.write(str(out_file), mastered, sr)
+            dur = len(mastered) / sr
+            print(f"[Synthesized] {beat_id} -> {dur:.2f}s | '{raw_text[:30]}...'")
 
             manifest.append({
                 "beat_id": beat_id,
                 "audio_file": str(out_file).replace("\\", "/"),
                 "duration_seconds": round(dur, 3),
-                "subtitle": beat.get("subtitle_text", text)
+                "subtitle": beat.get("subtitle_text", raw_text)
             })
             total_dur += dur
 
@@ -113,8 +125,7 @@ def main():
     with open(manifest_path, "w", encoding="utf-8") as f:
         json.dump({"total_duration": round(total_dur, 3), "beats": manifest}, f, indent=2, ensure_ascii=False)
 
-    print(f"\n✅ All audio generated locally! Total duration: {total_dur:.2f}s")
-    print(f"Manifest written to: {manifest_path}")
+    print(f"\n✅ Mastering Complete! New Audio Duration: {total_dur:.2f}s")
 
 
 if __name__ == "__main__":

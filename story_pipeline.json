@@ -1,59 +1,395 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "The Mysterious Phone",
-    "project_id": "test_story_001",
-    "language": "hi-IN",
+    "title": "The Boy Who Built an Empire",
+    "project_id": "the_boy_who_built_an_empire",
+    "language": "en-US",
     "aspect_ratio": "9:16",
-    "target_fps": 30
+    "target_fps": 30,
+    "tts_voice": "en-US-ChristopherNeural"
   },
-
   "global_style": {
-    "art_style": "High-quality realistic cinematic Japanese anime aesthetic, clean sharp line art, soft ambient lighting, Makoto Shinkai style, 8k render",
-    "negative_prompt": "ugly, deformed, extra limbs, bad anatomy, blurry, low resolution, 3d render, watermark"
+    "art_style": "Premium cinematic Japanese anime aesthetic blended with realistic historical drama, expressive character animation, detailed hand-painted backgrounds, dramatic cinematic composition, rich atmospheric lighting, realistic fabric and environmental textures, emotional facial expressions, subtle film grain, high-quality 4K illustration, vertical storytelling composition, consistent character design across all scenes.",
+    "negative_prompt": "ugly, deformed, extra limbs, bad anatomy, blurry, low resolution, inconsistent character appearance, inconsistent clothing, duplicate characters, distorted hands, 3d render, western cartoon style, text, watermark, signature, logos, modern objects in historical settings"
   },
-
   "assets": {
-    "meera": {
+    "young_dreamer": {
       "type": "character",
-      "label": "Meera",
-      "visual_dna": "Meera, a 26-year-old Indian woman, shoulder-length straight black hair tied in a loose ponytail, soft face, wearing an oversized dark-grey t-shirt and black shorts"
+      "label": "Young Indian Dreamer",
+      "visual_dna": "Indian male, approximately 17 years old, medium-brown skin, slim build, oval face, deep dark-brown eyes, thick slightly wavy black hair combed to the side, clean-shaven face, wearing a simple cream-colored cotton shirt with rolled sleeves and faded brown trousers, worn leather sandals, humble appearance, determined and observant expression."
     },
-    "apartment_couch": {
+    "ambitious_trader": {
+      "type": "character",
+      "label": "The Ambitious Trader",
+      "visual_dna": "Indian male, approximately 28 to 35 years old, medium-brown skin, average build, broad forehead, expressive dark-brown eyes, thick black hair neatly side-parted, clean-shaven face, wearing a crisp white cotton shirt, charcoal trousers, occasionally a dark formal jacket, simple wristwatch, confident posture, persuasive smile, energetic and calculating expression. Maintain identical facial structure, hairstyle, and overall appearance throughout adulthood."
+    },
+    "elderly_businessman": {
+      "type": "character",
+      "label": "The Established Businessman",
+      "visual_dna": "Indian male, approximately 55 years old, medium-brown skin, fuller face, prominent forehead, dark-brown eyes, slightly receding black hair with subtle grey at the temples, clean-shaven, wearing an elegant cream-colored traditional Indian shirt and dark formal trousers, composed expression, confident body language."
+    },
+    "factory_workers": {
+      "type": "character",
+      "label": "Factory Workers",
+      "visual_dna": "Group of Indian male and female industrial workers aged 20 to 50, medium-brown skin, practical hairstyles, wearing simple cotton work shirts, trousers and sarees in muted earthy colors, historically appropriate clothing, hardworking expressions."
+    },
+    "early_bombay_office": {
       "type": "environment",
-      "label": "Living Room Sofa",
-      "visual_dna": "a small dim studio apartment living room at night, a charcoal-grey 2-seater couch, warm glowing floor lamp on the right, dark window with sheer curtains"
+      "label": "Small Trading Office",
+      "visual_dna": "A modest trading office in 1950s Bombay, narrow room, aged cream plaster walls, wooden desk with ledgers, ink pens, paper documents, metal filing cabinets, ceiling fan, large wooden windows overlooking a busy Indian street, warm afternoon sunlight, dusty atmosphere, historically accurate period details."
+    },
+    "aden_market": {
+      "type": "environment",
+      "label": "Aden Trading District",
+      "visual_dna": "1950s Aden port commercial district, bustling Arabian coastal trading streets, colonial-era stone buildings, merchant warehouses, cargo crates, ships visible in the harbor, merchants in historically appropriate attire, warm desert sunlight, dusty golden atmosphere, cinematic wide composition."
+    },
+    "bombay_street": {
+      "type": "environment",
+      "label": "1950s Bombay Street",
+      "visual_dna": "Historically accurate 1950s Bombay street, vintage Indian buses, hand-pulled carts, crowded marketplaces, colonial architecture, small trading shops, pedestrians in period-appropriate Indian clothing, warm sunlight, bustling urban atmosphere."
+    },
+    "first_textile_factory": {
+      "type": "environment",
+      "label": "Early Textile Factory",
+      "visual_dna": "Early Indian textile manufacturing facility during the 1960s, industrial weaving machines, rows of cotton yarn spools, large metal equipment, concrete flooring, workers operating machinery, high factory windows allowing shafts of natural light, warm industrial lighting, historically accurate machinery and textures."
+    },
+    "textile_showroom": {
+      "type": "environment",
+      "label": "Vimal Textile Showroom",
+      "visual_dna": "Elegant Indian textile showroom from the late 1960s and 1970s, neatly arranged colorful fabric rolls, polished wooden counters, vintage glass display cabinets, cream walls, decorative textile samples, warm commercial lighting, Indian customers examining fabrics, premium yet accessible atmosphere. No visible readable signage or logos."
+    },
+    "public_investor_hall": {
+      "type": "environment",
+      "label": "Indian Public Shareholder Meeting",
+      "visual_dna": "Large Indian public meeting hall during the late 1970s and 1980s, hundreds of ordinary Indian investors seated closely together, vintage wooden chairs, simple stage, warm overhead lights, period-appropriate clothing, atmosphere of excitement and anticipation, historically grounded composition."
+    },
+    "industrial_complex": {
+      "type": "environment",
+      "label": "Expanding Industrial Complex",
+      "visual_dna": "Large Indian industrial manufacturing complex during the 1980s, massive factory buildings, steel structures, chimneys, industrial pipelines, organized production facilities, workers moving through the site, early Indian industrial infrastructure, hazy morning sunlight, ambitious cinematic scale."
+    },
+    "modern_industrial_empire": {
+      "type": "environment",
+      "label": "Modernized Industrial Empire",
+      "visual_dna": "Vast Indian industrial and petrochemical manufacturing complex during the 1990s, enormous processing towers, steel pipelines, storage tanks, refineries, organized industrial infrastructure, distant workers, dramatic sunrise, realistic engineering details, monumental cinematic perspective."
+    },
+    "business_ledger": {
+      "type": "prop",
+      "label": "Trader's Ledger",
+      "visual_dna": "A thick, slightly worn brown leather-bound accounting ledger with cream-colored pages, handwritten historical financial entries in dark ink, visible creases, aged paper texture, frequently placed on a wooden desk."
+    },
+    "fabric_rolls": {
+      "type": "prop",
+      "label": "Textile Fabric Rolls",
+      "visual_dna": "Neatly wound premium Indian polyester and synthetic textile rolls, rich blue, red, cream and gold fabric colors, tightly woven textures, smooth polished surfaces, historically appropriate textile merchandise."
+    },
+    "factory_machine": {
+      "type": "prop",
+      "label": "Industrial Textile Machinery",
+      "visual_dna": "Historically appropriate 1960s textile weaving machinery, heavy cast-iron construction, rotating spindles, visible mechanical gears, cotton and synthetic yarn, slightly aged metal surfaces, realistic industrial details."
+    },
+    "share_certificates": {
+      "type": "prop",
+      "label": "Public Share Certificates",
+      "visual_dna": "A collection of historically styled Indian paper share certificates from the late 1970s and 1980s, cream-colored paper, intricate decorative borders, printed financial layouts, handwritten investor details, no readable real company names or identifiable logos."
     }
   },
-
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "apartment_couch",
+      "environment_ref": "bombay_street",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "उस रात मैं सोने से पहले अपने सोफे पर बैठी फोन देख रही थी...",
-          "camera_type": "Wide shot",
+          "narration_text": "Imagine a boy with almost nothing, who dreamed of building something enormous.",
+          "subtitle_text": "A boy. A dream. An empire.",
+          "camera_type": "Wide cinematic establishing shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "{assets.meera} sitting cross-legged on {assets.apartment_couch}, holding a glowing smartphone looking down at the screen, quiet mood.",
-          "session_delta_prompt": "Create an image: {assets.meera} sitting cross-legged on {assets.apartment_couch}, holding a glowing smartphone looking down."
+          "prompt_action": "Establish {assets.young_dreamer} standing alone on {assets.bombay_street}, looking toward the distant busy city, surrounded by ordinary working people, cinematic historical atmosphere.",
+          "session_delta_prompt": "Create a new cinematic establishing image: show {assets.young_dreamer} standing on {assets.bombay_street}, gazing toward the crowded city. Establish his humble background and ambitious spirit.",
+          "notes": "Open with curiosity and an emotionally powerful sense of scale."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "फिर मैंने फोन साइड टेबल पर रख दिया और उठने लगी।",
-          "camera_type": "Medium close-up shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Same scene. Meera places the phone down on the small coffee table, yawning tiredly.",
-          "session_delta_prompt": "In the same room: keep Meera and the sofa identical. Change her action: show Meera putting the smartphone down on the wooden coffee table next to the couch."
+          "narration_text": "He came from a modest family in Gujarat, where money was always limited.",
+          "subtitle_text": "Humble beginnings in Gujarat.",
+          "camera_type": "Medium shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.young_dreamer} inside a simple, modest Gujarati family home, with sparse furniture and humble surroundings.",
+          "session_delta_prompt": "Create a new interior camera angle inside a modest Gujarati home. Show {assets.young_dreamer} standing in the humble room, with simple furniture and warm natural light.",
+          "notes": "Communicate financial limitations without portraying the family as helpless."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "पर तभी कमरे की बत्ती अचानक अपने आप बुझ गई!",
-          "camera_type": "Close-up on face",
+          "narration_text": "But instead of accepting a small future, he wanted to understand how business worked.",
+          "subtitle_text": "He wanted to understand business.",
+          "camera_type": "Close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.young_dreamer} studying a merchant's transactions and examining {assets.business_ledger} on a wooden table.",
+          "session_delta_prompt": "Create a close-up camera composition showing {assets.young_dreamer} studying {assets.business_ledger}, with his eyes focused on the handwritten financial entries.",
+          "notes": "Introduce curiosity as the first ingredient of entrepreneurship."
+        }
+      ]
+    },
+    {
+      "scene_id": 2,
+      "environment_ref": "aden_market",
+      "beats": [
+        {
+          "beat_id": "s02_b01",
+          "narration_text": "As a teenager, he travelled to Aden, in search of opportunity.",
+          "subtitle_text": "He left home for opportunity.",
+          "camera_type": "Wide harbor shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.young_dreamer} arriving at {assets.aden_market}, standing near a busy harbor with cargo ships and international merchants.",
+          "session_delta_prompt": "Create a new cinematic location: establish {assets.young_dreamer} arriving in {assets.aden_market}, surrounded by ships, merchants and international trading activity.",
+          "notes": "Use an expansive composition to emphasize leaving home and entering a larger world."
+        },
+        {
+          "beat_id": "s02_b02",
+          "narration_text": "He worked in the trading world, learning how goods moved across countries.",
+          "subtitle_text": "He learned international trade.",
+          "camera_type": "Medium shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.young_dreamer} working among merchant cargo crates in {assets.aden_market}, carefully examining merchandise and commercial paperwork.",
+          "session_delta_prompt": "Create a medium cinematic shot in {assets.aden_market}, showing {assets.young_dreamer} learning the trading business among merchants and cargo shipments.",
+          "notes": "Show practical experience rather than a glamorous overseas lifestyle."
+        },
+        {
+          "beat_id": "s02_b03",
+          "narration_text": "He discovered something important: understanding demand, supply and timing could create opportunity.",
+          "subtitle_text": "Understand the market.",
+          "camera_type": "Close-up",
           "action_mode": "in_place_action",
-          "prompt_action": "Same room. The lamp turned off, dark room with only moonlight. Meera turns her head in shock and surprise, eyes wide.",
-          "session_delta_prompt": "In the same scene: the floor lamp is now turned completely off, only faint blue moonlight. Meera's face in close up, looking shocked with eyes wide open."
+          "prompt_action": "Same trading environment. {assets.young_dreamer} studies a commercial ledger and compares the prices of goods.",
+          "session_delta_prompt": "In the same scene, keep {assets.young_dreamer}, his clothing and the market surroundings identical. Change the action to show him carefully comparing handwritten trading prices in a ledger.",
+          "notes": "This is the first explicit business lesson."
+        }
+      ]
+    },
+    {
+      "scene_id": 3,
+      "environment_ref": "bombay_street",
+      "beats": [
+        {
+          "beat_id": "s03_b01",
+          "narration_text": "After returning to India, he started small, trading yarn and other commodities.",
+          "subtitle_text": "Back home. Starting small.",
+          "camera_type": "Wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.ambitious_trader} standing in a modest Bombay commercial street, surrounded by textile merchants and small trading businesses.",
+          "session_delta_prompt": "Transition to 1950s Bombay. Introduce {assets.ambitious_trader} as a young adult returning to India and entering the trading world.",
+          "notes": "Show the transition from a teenage learner to a young entrepreneur."
+        },
+        {
+          "beat_id": "s03_b02",
+          "narration_text": "He did not begin with giant factories or enormous investments.",
+          "subtitle_text": "No giant factory. No big empire.",
+          "camera_type": "Interior medium shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.ambitious_trader} inside {assets.early_bombay_office}, surrounded by simple furniture and basic trading documents.",
+          "session_delta_prompt": "Establish {assets.ambitious_trader} working in {assets.early_bombay_office}, emphasizing the small scale of his initial business.",
+          "notes": "Contrast humble beginnings with the industrial scale shown later."
+        },
+        {
+          "beat_id": "s03_b03",
+          "narration_text": "He focused on building relationships and finding customers.",
+          "subtitle_text": "Relationships create opportunities.",
+          "camera_type": "Medium two-person shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same office. {assets.ambitious_trader} extends his hand toward an Indian merchant across the wooden desk.",
+          "session_delta_prompt": "In the same scene, keep the office and {assets.ambitious_trader} identical. Change the action to show him extending his hand to complete a business agreement with a merchant.",
+          "notes": "A simple gesture communicates relationship-building."
+        },
+        {
+          "beat_id": "s03_b04",
+          "narration_text": "His first big lesson was simple: start with what you have, but think bigger.",
+          "subtitle_text": "Start small. Think big.",
+          "camera_type": "Close-up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same office. {assets.ambitious_trader} looks at {assets.business_ledger} with a focused, ambitious expression.",
+          "session_delta_prompt": "In the same scene, keep the character, clothes and desk identical. Change only his facial expression to a determined look as he studies the business ledger.",
+          "notes": "Pause slightly after the lesson for emphasis."
+        }
+      ]
+    },
+    {
+      "scene_id": 4,
+      "environment_ref": "first_textile_factory",
+      "beats": [
+        {
+          "beat_id": "s04_b01",
+          "narration_text": "But he understood that trading alone would not be enough.",
+          "subtitle_text": "Trading was only the beginning.",
+          "camera_type": "Wide industrial shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.ambitious_trader} standing inside {assets.first_textile_factory}, observing rows of industrial textile machinery.",
+          "session_delta_prompt": "Establish {assets.first_textile_factory} with {assets.ambitious_trader} inspecting its production floor for the first time.",
+          "notes": "Build anticipation for the move into manufacturing."
+        },
+        {
+          "beat_id": "s04_b02",
+          "narration_text": "So he moved towards manufacturing and entered the textile industry.",
+          "subtitle_text": "From trading to manufacturing.",
+          "camera_type": "Medium shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same factory. {assets.ambitious_trader} examines {assets.factory_machine} with a serious and focused expression.",
+          "session_delta_prompt": "In the same factory, keep the machinery, lighting and character identical. Change the action to show {assets.ambitious_trader} closely inspecting {assets.factory_machine}.",
+          "notes": "Show the strategic shift from buying and selling to producing."
+        },
+        {
+          "beat_id": "s04_b03",
+          "narration_text": "He believed that controlling production could create greater opportunities for growth.",
+          "subtitle_text": "Build what the market needs.",
+          "camera_type": "Close-up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same factory. {assets.ambitious_trader} watches a textile machine producing continuous fabric.",
+          "session_delta_prompt": "In the same factory, preserve the exact environment and character appearance. Change the action to show him watching fabric emerge from the operating textile machinery.",
+          "notes": "The machinery symbolizes the next stage of business expansion."
+        }
+      ]
+    },
+    {
+      "scene_id": 5,
+      "environment_ref": "textile_showroom",
+      "beats": [
+        {
+          "beat_id": "s05_b01",
+          "narration_text": "He introduced a textile brand that would become famous across India.",
+          "subtitle_text": "A brand was born.",
+          "camera_type": "Wide showroom shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Establish {assets.textile_showroom}, with {assets.ambitious_trader} standing among colorful premium fabric displays.",
+          "session_delta_prompt": "Transition to an elegant Indian textile showroom during the 1970s. Show {assets.ambitious_trader} presenting a growing textile business, without readable logos or signs.",
+          "notes": "Give the scene a warmer, more successful atmosphere."
+        },
+        {
+          "beat_id": "s05_b02",
+          "narration_text": "His fabrics reached ordinary Indian families who wanted quality at accessible prices.",
+          "subtitle_text": "Quality for ordinary families.",
+          "camera_type": "Medium shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same showroom. An Indian customer examines {assets.fabric_rolls} while {assets.ambitious_trader} watches.",
+          "session_delta_prompt": "In the same showroom, preserve the character, customer, clothing and fabric displays. Change the action to show a customer examining the colorful textile rolls.",
+          "notes": "Make the customer the emotional center of the frame."
+        },
+        {
+          "beat_id": "s05_b03",
+          "narration_text": "The lesson? A strong business solves a real customer's problem.",
+          "subtitle_text": "Solve a real problem.",
+          "camera_type": "Close-up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same showroom. {assets.ambitious_trader} smiles confidently while observing a satisfied customer.",
+          "session_delta_prompt": "In the same showroom, keep the entire environment identical. Change only {assets.ambitious_trader}'s expression to a subtle, confident smile as he watches the satisfied customer.",
+          "notes": "Deliver the business lesson clearly and conversationally."
+        }
+      ]
+    },
+    {
+      "scene_id": 6,
+      "environment_ref": "public_investor_hall",
+      "beats": [
+        {
+          "beat_id": "s06_b01",
+          "narration_text": "Then came another bold move: inviting ordinary Indians to become investors.",
+          "subtitle_text": "He invited ordinary people in.",
+          "camera_type": "Wide establishing shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.public_investor_hall} filled with ordinary Indian families, small investors and professionals attending a major business meeting.",
+          "session_delta_prompt": "Create a new cinematic scene inside {assets.public_investor_hall}, showing hundreds of ordinary Indian people gathered for an important shareholder meeting.",
+          "notes": "Create a sense of scale and historical significance."
+        },
+        {
+          "beat_id": "s06_b02",
+          "narration_text": "He raised money through public shareholding and gave small investors a chance to participate in business growth.",
+          "subtitle_text": "Ordinary people became shareholders.",
+          "camera_type": "Close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.share_certificates} held carefully in the hands of an ordinary Indian investor seated inside {assets.public_investor_hall}.",
+          "session_delta_prompt": "Create a close-up cinematic shot of {assets.share_certificates} held by an ordinary Indian investor inside the shareholder meeting hall, with the crowd softly blurred in the background.",
+          "notes": "Highlight the emotional meaning of ownership."
+        },
+        {
+          "beat_id": "s06_b03",
+          "narration_text": "He made people feel that they could own a piece of a growing company.",
+          "subtitle_text": "Ownership creates participation.",
+          "camera_type": "Medium close-up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same investor meeting. An ordinary investor looks proudly at {assets.share_certificates}.",
+          "session_delta_prompt": "In the same meeting hall, preserve the investor, clothing, lighting and background. Change the action to show the investor looking proudly at the share certificates in his hands.",
+          "notes": "An emotional moment showing the power of public participation."
+        }
+      ]
+    },
+    {
+      "scene_id": 7,
+      "environment_ref": "industrial_complex",
+      "beats": [
+        {
+          "beat_id": "s07_b01",
+          "narration_text": "The business kept expanding, moving beyond textiles into larger industrial operations.",
+          "subtitle_text": "The business grew beyond textiles.",
+          "camera_type": "Extreme wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Establish {assets.industrial_complex} as a vast industrial manufacturing landscape, with {assets.elderly_businessman} standing in the foreground.",
+          "session_delta_prompt": "Transition to the expanding industrial landscape of 1980s India. Show {assets.elderly_businessman} observing the massive factory complex.",
+          "notes": "Use a dramatic scale transition to communicate expansion."
+        },
+        {
+          "beat_id": "s07_b02",
+          "narration_text": "It invested in capacity, technology and industries connected to one another.",
+          "subtitle_text": "Invest in capacity and technology.",
+          "camera_type": "Medium shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same industrial complex. {assets.elderly_businessman} points toward the manufacturing facilities.",
+          "session_delta_prompt": "In the same industrial complex, preserve the character and environment. Change the action to show {assets.elderly_businessman} pointing toward the expanding manufacturing infrastructure.",
+          "notes": "Focus on strategic investment rather than personal luxury."
+        },
+        {
+          "beat_id": "s07_b03",
+          "narration_text": "The strategy was to build a larger industrial ecosystem instead of remaining a small trader.",
+          "subtitle_text": "Think in systems, not single products.",
+          "camera_type": "High-angle aerial shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show a high-angle aerial view of {assets.industrial_complex}, emphasizing interconnected factory buildings, pipelines and industrial operations.",
+          "session_delta_prompt": "Create a dramatic high-angle aerial perspective of {assets.industrial_complex}, showing the scale and interconnected nature of the industrial operations.",
+          "notes": "Visually communicate vertical integration and industrial scale."
+        }
+      ]
+    },
+    {
+      "scene_id": 8,
+      "environment_ref": "modern_industrial_empire",
+      "beats": [
+        {
+          "beat_id": "s08_b01",
+          "narration_text": "From a small trading beginning, he helped build one of India's most influential business groups.",
+          "subtitle_text": "From a small office to an empire.",
+          "camera_type": "Epic wide cinematic shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.elderly_businessman} standing before {assets.modern_industrial_empire}, with enormous refinery structures rising behind him.",
+          "session_delta_prompt": "Establish {assets.modern_industrial_empire} at sunrise, with {assets.elderly_businessman} in the foreground, symbolizing decades of entrepreneurial growth.",
+          "notes": "Deliver the emotional payoff with a monumental visual."
+        },
+        {
+          "beat_id": "s08_b02",
+          "narration_text": "His journey was not just about making money. It was about spotting opportunities and scaling them.",
+          "subtitle_text": "Spot opportunities. Scale them.",
+          "camera_type": "Medium close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.elderly_businessman} looking toward the industrial complex, his face illuminated by the warm sunrise.",
+          "session_delta_prompt": "Create a cinematic medium close-up of {assets.elderly_businessman} looking toward the industrial landscape, with warm sunrise lighting and a reflective expression.",
+          "notes": "Shift from spectacle to reflection."
+        },
+        {
+          "beat_id": "s08_b03",
+          "narration_text": "The biggest lesson? Start small, understand people, take calculated risks and keep building.",
+          "subtitle_text": "Start small. Keep building.",
+          "camera_type": "Wide silhouette shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.elderly_businessman} as a dignified silhouette overlooking {assets.modern_industrial_empire}, with a golden sunrise filling the sky.",
+          "session_delta_prompt": "Create a final cinematic wide silhouette shot of {assets.elderly_businessman} overlooking the industrial empire at sunrise. Leave clear negative space in the upper portion for a closing subtitle.",
+          "notes": "End with an inspirational but practical entrepreneurial takeaway. Hold the final frame briefly."
         }
       ]
     }

@@ -1,23 +1,137 @@
 {
-  "total_duration": 10.56,
+  "total_duration": 108.459,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 4.267,
-      "subtitle": "उस रात मैं सोने से पहले अपने सोफे पर बैठी फोन देख रही थी..."
+      "duration_seconds": 6.08,
+      "subtitle": "एक छोटे से गांव में जन्मा एक लड़का, जिसके पास न बड़ा बैंक बैलेंस था, न कोई बिजनेस बैकग्राउंड।"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 3.328,
-      "subtitle": "फिर मैंने फोन साइड टेबल पर रख दिया और उठने लगी।"
+      "duration_seconds": 3.264,
+      "subtitle": "लेकिन उसके सपने उसकी परिस्थितियों से कहीं बड़े थे।"
     },
     {
-      "beat_id": "s01_b03",
-      "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 2.965,
-      "subtitle": "पर तभी कमरे की बत्ती अचानक अपने आप बुझ गई!"
+      "beat_id": "s02_b01",
+      "audio_file": "build/audio/s02_b01.wav",
+      "duration_seconds": 5.248,
+      "subtitle": "महज सत्रह साल की उम्र में, वह बेहतर अवसरों की तलाश में यमन के अदन पहुंच गया।"
+    },
+    {
+      "beat_id": "s02_b02",
+      "audio_file": "build/audio/s02_b02.wav",
+      "duration_seconds": 4.48,
+      "subtitle": "वहां उसने नौकरी की और सीखा कि दुनिया में व्यापार आखिर चलता कैसे है।"
+    },
+    {
+      "beat_id": "s02_b03",
+      "audio_file": "build/audio/s02_b03.wav",
+      "duration_seconds": 5.461,
+      "subtitle": "उसने समझा कि बाजार को समझना और सही समय पर सही फैसला लेना कितना जरूरी है।"
+    },
+    {
+      "beat_id": "s03_b01",
+      "audio_file": "build/audio/s03_b01.wav",
+      "duration_seconds": 4.736,
+      "subtitle": "कुछ साल बाद वह भारत लौटा और मुंबई में अपना छोटा सा व्यापार शुरू किया।"
+    },
+    {
+      "beat_id": "s03_b02",
+      "audio_file": "build/audio/s03_b02.wav",
+      "duration_seconds": 3.755,
+      "subtitle": "शुरुआत में वह यार्न और दूसरी चीजों की खरीद-बिक्री करता था।"
+    },
+    {
+      "beat_id": "s03_b03",
+      "audio_file": "build/audio/s03_b03.wav",
+      "duration_seconds": 5.269,
+      "subtitle": "न कोई विशाल फैक्ट्री थी, न करोड़ों का निवेश, बस मेहनत और बाजार की समझ थी।"
+    },
+    {
+      "beat_id": "s04_b01",
+      "audio_file": "build/audio/s04_b01.wav",
+      "duration_seconds": 2.987,
+      "subtitle": "लेकिन उसकी सोच सिर्फ व्यापार तक सीमित नहीं थी।"
+    },
+    {
+      "beat_id": "s04_b02",
+      "audio_file": "build/audio/s04_b02.wav",
+      "duration_seconds": 4.437,
+      "subtitle": "उसने फैसला किया कि अब सामान बेचने के साथ-साथ खुद बनाना भी है।"
+    },
+    {
+      "beat_id": "s04_b03",
+      "audio_file": "build/audio/s04_b03.wav",
+      "duration_seconds": 3.669,
+      "subtitle": "यहीं से कपड़ा उद्योग में उसकी असली तरक्की की शुरुआत हुई।"
+    },
+    {
+      "beat_id": "s05_b01",
+      "audio_file": "build/audio/s05_b01.wav",
+      "duration_seconds": 5.312,
+      "subtitle": "उसने विमल नाम का टेक्सटाइल ब्रांड खड़ा किया, जो धीरे-धीरे घर-घर तक पहुंचने लगा।"
+    },
+    {
+      "beat_id": "s05_b02",
+      "audio_file": "build/audio/s05_b02.wav",
+      "duration_seconds": 4.181,
+      "subtitle": "उसका मकसद था अच्छी क्वालिटी का कपड़ा आम लोगों तक पहुंचाना।"
+    },
+    {
+      "beat_id": "s05_b03",
+      "audio_file": "build/audio/s05_b03.wav",
+      "duration_seconds": 4.053,
+      "subtitle": "उसने साबित किया कि सफल ब्रांड वही है जो ग्राहक की जरूरत समझे।"
+    },
+    {
+      "beat_id": "s06_b01",
+      "audio_file": "build/audio/s06_b01.wav",
+      "duration_seconds": 4.885,
+      "subtitle": "फिर उसने एक ऐसा कदम उठाया, जिसने भारतीय शेयर बाजार की तस्वीर बदल दी।"
+    },
+    {
+      "beat_id": "s06_b02",
+      "audio_file": "build/audio/s06_b02.wav",
+      "duration_seconds": 5.76,
+      "subtitle": "उसने आम लोगों को अपनी कंपनी के शेयर खरीदकर उसका हिस्सेदार बनने का मौका दिया।"
+    },
+    {
+      "beat_id": "s06_b03",
+      "audio_file": "build/audio/s06_b03.wav",
+      "duration_seconds": 4.949,
+      "subtitle": "अब छोटे निवेशक भी बड़े कारोबार की सफलता में भागीदार बन सकते थे।"
+    },
+    {
+      "beat_id": "s07_b01",
+      "audio_file": "build/audio/s07_b01.wav",
+      "duration_seconds": 5.995,
+      "subtitle": "कपड़ों से शुरू हुआ यह कारोबार धीरे-धीरे पेट्रोकेमिकल्स और दूसरे बड़े उद्योगों तक पहुंच गया।"
+    },
+    {
+      "beat_id": "s07_b02",
+      "audio_file": "build/audio/s07_b02.wav",
+      "duration_seconds": 5.205,
+      "subtitle": "उसने सिर्फ एक कंपनी नहीं बनाई, बल्कि एक पूरा औद्योगिक नेटवर्क खड़ा कर दिया।"
+    },
+    {
+      "beat_id": "s07_b03",
+      "audio_file": "build/audio/s07_b03.wav",
+      "duration_seconds": 5.035,
+      "subtitle": "और यही छोटे व्यापार से बड़े साम्राज्य तक पहुंचने का उसका सबसे बड़ा कदम था।"
+    },
+    {
+      "beat_id": "s08_b01",
+      "audio_file": "build/audio/s08_b01.wav",
+      "duration_seconds": 7.595,
+      "subtitle": "एक साधारण शुरुआत से धीरूभाई अंबानी ने रिलायंस को भारत के सबसे बड़े कारोबारी समूहों में शामिल कर दिया।"
+    },
+    {
+      "beat_id": "s08_b02",
+      "audio_file": "build/audio/s08_b02.wav",
+      "duration_seconds": 6.101,
+      "subtitle": "उसकी कहानी हमें सिखाती है कि शुरुआत छोटी हो सकती है, लेकिन सोच और मेहनत बड़ी होनी चाहिए।"
     }
   ]
 }

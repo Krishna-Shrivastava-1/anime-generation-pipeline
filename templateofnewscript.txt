@@ -97,3 +97,79 @@ JSON STRUCTURE TEMPLATE:
     }
   ]
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "$schema_version": "2.0.0",
+  "project_meta": {
+    "title": "The Mysterious Phone",
+    "project_id": "test_story_001",
+    "language": "hi-IN",
+    "aspect_ratio": "9:16",
+    "target_fps": 30
+  },
+
+  "global_style": {
+    "art_style": "High-quality realistic cinematic Japanese anime aesthetic, clean sharp line art, soft ambient lighting, Makoto Shinkai style, 8k render",
+    "negative_prompt": "ugly, deformed, extra limbs, bad anatomy, blurry, low resolution, 3d render, watermark"
+  },
+
+  "assets": {
+    "meera": {
+      "type": "character",
+      "label": "Meera",
+      "visual_dna": "Meera, a 26-year-old Indian woman, shoulder-length straight black hair tied in a loose ponytail, soft face, wearing an oversized dark-grey t-shirt and black shorts"
+    },
+    "apartment_couch": {
+      "type": "environment",
+      "label": "Living Room Sofa",
+      "visual_dna": "a small dim studio apartment living room at night, a charcoal-grey 2-seater couch, warm glowing floor lamp on the right, dark window with sheer curtains"
+    }
+  },
+
+  "scenes": [
+    {
+      "scene_id": 1,
+      "environment_ref": "apartment_couch",
+      "beats": [
+        {
+          "beat_id": "s01_b01",
+          "narration_text": "उस रात मैं सोने से पहले अपने सोफे पर बैठी फोन देख रही थी...",
+          "camera_type": "Wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "{assets.meera} sitting cross-legged on {assets.apartment_couch}, holding a glowing smartphone looking down at the screen, quiet mood.",
+          "session_delta_prompt": "Create an image: {assets.meera} sitting cross-legged on {assets.apartment_couch}, holding a glowing smartphone looking down."
+        },
+        {
+          "beat_id": "s01_b02",
+          "narration_text": "फिर मैंने फोन साइड टेबल पर रख दिया और उठने लगी।",
+          "camera_type": "Medium close-up shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same scene. Meera places the phone down on the small coffee table, yawning tiredly.",
+          "session_delta_prompt": "In the same room: keep Meera and the sofa identical. Change her action: show Meera putting the smartphone down on the wooden coffee table next to the couch."
+        },
+        {
+          "beat_id": "s01_b03",
+          "narration_text": "पर तभी कमरे की बत्ती अचानक अपने आप बुझ गई!",
+          "camera_type": "Close-up on face",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same room. The lamp turned off, dark room with only moonlight. Meera turns her head in shock and surprise, eyes wide.",
+          "session_delta_prompt": "In the same scene: the floor lamp is now turned completely off, only faint blue moonlight. Meera's face in close up, looking shocked with eyes wide open."
+        }
+      ]
+    }
+  ]
+}

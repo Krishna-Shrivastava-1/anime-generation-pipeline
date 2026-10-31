@@ -80,20 +80,24 @@ jobs:
           import os, re, sys, json, base64, subprocess, time
           from io import BytesIO
           from pathlib import Path
-          from PIL import Image, ImageFilter, ImageStat
+          from PIL import Image
           from playwright.sync_api import sync_playwright
           from prompt_compiler import compile_beat_prompt
 
           ASPECT_RATIO = os.environ.get("ASPECT_RATIO", "9:16")
           HEADED = os.environ.get("HEADED") == "true"
           
-          FRAMES_DIR = Path("build/frames"); FRAMES_DIR.mkdir(parents=True, exist_ok=True)
-          DEBUG_DIR = Path("build/debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+          FRAMES_DIR = Path("build/frames")
+          FRAMES_DIR.mkdir(parents=True, exist_ok=True)
+          DEBUG_DIR = Path("build/debug")
+          DEBUG_DIR.mkdir(parents=True, exist_ok=True)
           STATE_FILE = Path("build/pipeline_state.json")
           RUN_LOG = DEBUG_DIR / "run.log"
           
           TOR_PROXY = "socks5://127.0.0.1:9050"
-          CONTINUE_LABELS = re.compile(r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I)
+          CONTINUE_LABELS = re.compile(
+              r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I
+          )
 
           def log(msg):
               line = f"[{time.strftime('%H:%M:%S')}] {msg}"
@@ -110,7 +114,8 @@ jobs:
                           btn.click(timeout=3000)
                           page.wait_for_timeout(1000)
                           return True
-              except Exception: pass
+              except Exception:
+                  pass
               return False
 
           def get_prompt_box(page):
@@ -155,6 +160,28 @@ jobs:
                   time.sleep(1)
               time.sleep(3)
 
+          browser = None
+          page = None
+
+          def launch_browser(playwright_instance):
+              global browser, page
+              if browser:
+                  try:
+                      browser.close()
+                  except Exception:
+                      pass
+              browser = playwright_instance.chromium.launch(
+                  headless=not HEADED,
+                  proxy={"server": TOR_PROXY},
+                  args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"]
+              )
+              ctx = browser.new_context(
+                  viewport={"width": 1440, "height": 1000},
+                  user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
+              )
+              ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
+              page = ctx.new_page()
+
           # Load Pipeline & State
           with open("story_pipeline.json", "r", encoding="utf-8") as f:
               story = json.load(f)
@@ -162,35 +189,17 @@ jobs:
           state = {"completed_beats": []}
           if STATE_FILE.exists():
               try:
-                  with open(STATE_FILE, "r") as f: state = json.load(f)
-              except Exception: pass
+                  with open(STATE_FILE, "r") as f:
+                      state = json.load(f)
+              except Exception:
+                  pass
 
           all_beats = [(sc, b) for sc in story.get("scenes", []) for b in sc.get("beats", [])]
           assets = story.get("assets", {})
           global_style = story.get("global_style", {})
 
           with sync_playwright() as p:
-              browser = None
-              page = None
-
-              def launch_browser():
-                  nonlocal browser, page
-                  if browser:
-                      try: browser.close()
-                      except Exception: pass
-                  browser = p.chromium.launch(
-                      headless=not HEADED,
-                      proxy={"server": TOR_PROXY},
-                      args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"]
-                  )
-                  ctx = browser.new_context(
-                      viewport={"width": 1440, "height": 1000},
-                      user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
-                  )
-                  ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
-                  page = ctx.new_page()
-
-              launch_browser()
+              launch_browser(p)
 
               for scene, beat in all_beats:
                   beat_id = beat["beat_id"]
@@ -244,7 +253,7 @@ jobs:
                               click_continue(page)
                               found_src = find_new_image(page, baseline)
                               if found_src:
-                                  page.wait_for_timeout(5000) # Ensure full clarity render
+                                  page.wait_for_timeout(5000)
                                   break
                               page.wait_for_timeout(2000)
 
@@ -266,7 +275,7 @@ jobs:
                       except Exception as e:
                           log(f"Attempt {attempt} failed on {beat_id}: {e}")
                           restart_tor()
-                          launch_browser()
+                          launch_browser(p)
 
                   if not beat_success:
                       log(f"Could not generate {beat_id}. Halting to preserve state.")
@@ -294,3 +303,11 @@ jobs:
           git commit -m "Auto-commit generated story frames [skip ci]"
           git pull --rebase origin main
           git push origin HEAD:main
+
+      - name: Upload Debug Logs & Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: story-pipeline-debug
+          path: build/debug/
+          if-no-files-found: ignore

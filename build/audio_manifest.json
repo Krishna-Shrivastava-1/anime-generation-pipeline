@@ -1,125 +1,131 @@
 {
-  "total_duration": 64.32,
+  "total_duration": 120.992,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 5.312,
-      "subtitle": "अगर कोई अजनबी आपको कल की खुशी आज ही दे दे… तो क्या आप उस पर भरोसा करेंगे?"
+      "duration_seconds": 6.905,
+      "subtitle": "Antonio Navarrete सिर्फ 21 साल का था। Tampa के एक power plant में उसकी नई नौकरी लगी थी।"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 4.16,
-      "subtitle": "एक छोटे से गाँव में, एक किसान हर दिन अपनी किस्मत को कोसता था।"
+      "duration_seconds": 7.887,
+      "subtitle": "उसकी wife pregnant थी। वह हर महीने की salary से अपने परिवार के लिए एक घर खरीदने का सपना देख रहा था।"
     },
     {
       "beat_id": "s01_b03",
       "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 2.304,
-      "subtitle": "एक दिन वहाँ एक बूढ़ा मुसाफ़िर आया।"
-    },
-    {
-      "beat_id": "s01_b04",
-      "audio_file": "build/audio/s01_b04.wav",
-      "duration_seconds": 3.349,
-      "subtitle": "उसने किसान की हथेली पर एक अजीब-सा बीज रख दिया।"
-    },
-    {
-      "beat_id": "s01_b05",
-      "audio_file": "build/audio/s01_b05.wav",
-      "duration_seconds": 3.435,
-      "subtitle": "मुसाफ़िर बोला, 'इसे बोना… कल तुम्हें इसका फल मिलेगा।'"
+      "duration_seconds": 5.312,
+      "subtitle": "वह सिर्फ 12 dollars per hour कमाता था… और यह उसकी job का चौथा दिन था।"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 2.88,
-      "subtitle": "किसान हँसा, लेकिन फिर भी उसने बीज बो दिया।"
+      "duration_seconds": 6.991,
+      "subtitle": "उस दिन boiler के अंदर molten slag जमा हो रहा था। यह lava जैसा बेहद गर्म material था।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 3.285,
-      "subtitle": "उसने थोड़ा पानी डाला… और रात होने का इंतज़ार किया।"
+      "duration_seconds": 6.656,
+      "subtitle": "इसे cool करने के लिए नीचे एक water tank था… लेकिन रास्ता blockage की वजह से बंद था।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 1.813,
-      "subtitle": "सुबह वह दौड़कर बाहर आया…"
+      "duration_seconds": 6.827,
+      "subtitle": "Plant को बंद करने के बजाय, management ने पाँच workers को blockage हटाने भेज दिया।"
     },
     {
       "beat_id": "s02_b04",
       "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 2.176,
-      "subtitle": "लेकिन वहाँ तो कुछ भी नहीं उगा था!"
+      "duration_seconds": 6.357,
+      "subtitle": "Machine चलती रही… और workers को अंदाज़ा भी नहीं था कि उनके ठीक ऊपर क्या जमा हो रहा है।"
     },
     {
       "beat_id": "s02_b05",
       "audio_file": "build/audio/s02_b05.wav",
-      "duration_seconds": 2.496,
-      "subtitle": "वह गुस्से में बीज को बेकार समझने लगा।"
+      "duration_seconds": 2.325,
+      "subtitle": "फिर आखिरकार… blockage हट गया।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 3.541,
-      "subtitle": "तभी उसे याद आया… मुसाफ़िर ने कहा था, कल फल मिलेगा।"
+      "duration_seconds": 4.075,
+      "subtitle": "और अगले ही पल, हजारों pounds molten slag नीचे गिरने लगा।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 4.544,
-      "subtitle": "वह बूढ़े आदमी को ढूँढ़ने दौड़ा… पर गाँव में कोई उसे जानता ही नहीं था।"
+      "duration_seconds": 5.035,
+      "subtitle": "वह 40 feet तक फैल गया… और लगभग आधा foot मोटी परत बन गई।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 2.773,
-      "subtitle": "शाम तक थककर वह उसी कुएँ के पास लौट आया।"
+      "duration_seconds": 3.883,
+      "subtitle": "वहाँ मौजूद पाँचों workers इस हादसे की चपेट में आ गए।"
     },
     {
       "beat_id": "s03_b04",
       "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 3.84,
-      "subtitle": "तभी उसकी नज़र मिट्टी पर पड़ी… वहाँ एक नन्हा अंकुर निकला था!"
+      "duration_seconds": 5.141,
+      "subtitle": "Antonio ने किसी तरह अपना phone निकाला… और अपनी माँ को call किया।"
     },
     {
       "beat_id": "s03_b05",
       "audio_file": "build/audio/s03_b05.wav",
-      "duration_seconds": 3.648,
-      "subtitle": "वह मुस्कुराया… क्योंकि उसे पहली बार कल पर भरोसा हुआ था।"
+      "duration_seconds": 3.392,
+      "subtitle": "Call माँ ने नहीं उठाया… voicemail शुरू हो गया।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 2.752,
-      "subtitle": "कहते हैं, उस बीज ने अगले दिन फल नहीं दिया…"
+      "duration_seconds": 9.147,
+      "subtitle": "उस voicemail में उसकी आखिरी recorded आवाज़ थी… 'Mom! Help me! I'm burning! Call the cops! Mom!'"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 1.749,
-      "subtitle": "न ही उसके बाद वाले दिन…"
+      "duration_seconds": 5.035,
+      "subtitle": "उसकी माँ तक सिर्फ उसकी चीखें नहीं… पीछे आती steam की आवाज़ भी पहुँची।"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 2.709,
-      "subtitle": "लेकिन किसान ने पानी देना बंद नहीं किया।"
+      "duration_seconds": 4.992,
+      "subtitle": "Antonio की आवाज़ voicemail में दर्ज हो गई… लेकिन वह तुरंत नहीं मरा।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 3.861,
-      "subtitle": "कुछ हफ्तों बाद, उस छोटे पौधे पर पहला सुनहरा फल लगा।"
+      "duration_seconds": 4.992,
+      "subtitle": "वह पाँच दिनों तक coma में रहा… उसके शरीर पर 80 percent burns थे।"
     },
     {
       "beat_id": "s04_b05",
       "audio_file": "build/audio/s04_b05.wav",
-      "duration_seconds": 3.691,
-      "subtitle": "किसान समझ गया… चमत्कार बीज में नहीं, उसके धैर्य में था।"
+      "duration_seconds": 6.393,
+      "subtitle": "पाँच दिन बाद Antonio की मौत हो गई। उसके साथ चार और workers भी इस हादसे में मारे गए।"
+    },
+    {
+      "beat_id": "s05_b01",
+      "audio_file": "build/audio/s05_b01.wav",
+      "duration_seconds": 5.931,
+      "subtitle": "इस हादसे को रोका जा सकता था… अगर maintenance के दौरान machine बंद कर दी जाती।"
+    },
+    {
+      "beat_id": "s05_b02",
+      "audio_file": "build/audio/s05_b02.wav",
+      "duration_seconds": 6.677,
+      "subtitle": "क्योंकि उस दिन काम तो पाँच लोगों ने किया था… लेकिन machine बंद करने का फैसला उनके हाथ में नहीं था।"
+    },
+    {
+      "beat_id": "s05_b03",
+      "audio_file": "build/audio/s05_b03.wav",
+      "duration_seconds": 7.04,
+      "subtitle": "अब आप बताइए… क्या पैसे बचाने के लिए चलती machine के नीचे workers को भेजना सही फैसला था?"
     }
   ]
 }

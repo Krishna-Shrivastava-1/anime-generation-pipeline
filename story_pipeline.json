@@ -1,230 +1,254 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "The Stranger Who Borrowed Tomorrow",
-    "project_id": "the_borrowed_tomorrow",
+    "title": "The Last Voicemail: Antonio's Story",
+    "project_id": "antonio_last_voicemail",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Clean 2D cartoon illustration, indie webcomic art style, thin black line art, soft neutral-toned flat watercolor wash fills, minimalist background, storybook animation frame. Simple, modern digital drawing, flat design. Charming old Hindi storybook atmosphere, expressive characters, warm muted earthy colors, clear silhouettes, detailed environmental storytelling. Every frame should use a distinct and intentional composition, varied camera angles, dynamic poses, visual depth through foreground, midground and background, and subtle environmental movement. Keep character designs consistent across all scenes.",
-    "negative_prompt": "photorealistic, 3d render, glossy digital painting, thick outlines, neon colors, oversaturated palette, excessive background clutter, static portrait, repetitive composition, inconsistent character design, distorted anatomy, extra fingers, extra limbs, blurry image, readable text, watermark, logo"
+    "art_style": "Clean 2D cartoon illustration, indie webcomic art style, thin black line art, soft neutral-toned flat watercolor wash fills, minimalist background, storybook animation frame. Simple, modern digital drawing, flat design. Serious documentary storytelling atmosphere, expressive characters, muted industrial colors, carefully composed cinematic frames. Every frame should have a distinct composition, varied camera angles, dynamic character poses, layered foreground, midground and background, and environmental details that make the power plant feel like a real working industrial facility. Use restrained visual storytelling for the accident, focusing on the environment, danger and human emotion rather than graphic injury.",
+    "negative_prompt": "photorealism, 3d render, glossy digital painting, neon colors, exaggerated horror, graphic gore, exposed flesh, graphic burns, dismemberment, excessive flames covering the entire frame, distorted anatomy, extra limbs, extra fingers, inconsistent character appearance, blurry image, low resolution, watermark, logo, readable text"
   },
   "assets": {
-    "young_farmer": {
+    "antonio": {
       "type": "character",
-      "label": "Young Farmer",
-      "visual_dna": "A 24-year-old Indian village farmer, lean build, medium brown skin, expressive dark eyes, short slightly messy black hair, thin moustache. Wearing a faded indigo-blue kurta with sleeves rolled up, cream dhoti trousers and worn brown sandals. A faded red cotton scarf rests around his neck. His expressions shift from worry to curiosity and finally quiet wisdom. Maintain identical facial features, clothing, hairstyle and body proportions in every appearance."
+      "label": "Antonio Navarrete",
+      "visual_dna": "A 21-year-old Hispanic-American male industrial maintenance worker, average height and lean build, youthful face, short dark brown hair, clean-shaven, expressive brown eyes. Wearing a dark navy-blue industrial work uniform, matching work trousers, sturdy dark safety boots, protective gloves and a white hard hat. His clothes look like ordinary workwear, not futuristic protective armor. Keep his face, hairstyle, uniform and proportions consistent in every appearance."
     },
-    "old_traveller": {
+    "maintenance_workers": {
       "type": "character",
-      "label": "Old Traveller",
-      "visual_dna": "A mysterious elderly Indian traveller around 70 years old, slender body, slightly hunched posture, deeply lined face, kind sharp eyes, long white beard and shoulder-length white hair. Wearing a dusty ochre shawl over a simple brown robe, loose cream trousers and old leather sandals. Carries a small wooden walking stick and a weathered cloth shoulder bag. Maintain consistent appearance and clothing."
+      "label": "Maintenance Crew",
+      "visual_dna": "A group of four adult male industrial maintenance workers, each with distinct facial features and body types. They wear practical navy-blue work uniforms, safety boots, protective gloves and white hard hats. Their expressions and body language should feel natural and focused on a difficult maintenance task. Keep the group visually consistent throughout the story."
     },
-    "village_well": {
+    "plant_supervisor": {
+      "type": "character",
+      "label": "Plant Supervisor",
+      "visual_dna": "An adult male power plant supervisor in his late forties, medium build, short greying hair, clean-shaven face, wearing a light blue collared work shirt, dark trousers, safety glasses and a white hard hat. Carries a clipboard and has a serious, businesslike expression. Maintain the same appearance throughout."
+    },
+    "antonio_mother": {
+      "type": "character",
+      "label": "Antonio's Mother",
+      "visual_dna": "A middle-aged Hispanic-American woman with warm brown eyes, medium-length dark brown hair with a few grey strands, wearing a simple muted burgundy cardigan over a light blouse. Her expressions should feel natural and emotionally restrained. Keep her appearance consistent in the brief phone-call sequence."
+    },
+    "power_plant": {
       "type": "environment",
-      "label": "Ancient Village Well",
-      "visual_dna": "An old circular stone well at the edge of a small Indian village, uneven grey-brown stones, a wooden pulley with a thick rope, a small clay water pot nearby, wild grass growing between stones and a large banyan tree leaning over one side. Behind it are distant mud houses, a narrow dusty path and low green fields. The location feels quiet and slightly mysterious. Preserve its recognizable layout."
+      "label": "Tampa Power Plant",
+      "visual_dna": "A large industrial power plant in Tampa, Florida, with enormous steel boiler structures, thick pipes, metal walkways, railings, maintenance platforms, industrial staircases, overhead beams and tall smokestacks. The interior is dominated by dark steel, dusty concrete, muted yellow safety markings and heavy machinery. Include realistic industrial details such as warning lights, pressure gauges, pipes and control panels, but no readable company logos or signage."
     },
-    "farmer_hut": {
+    "boiler_chamber": {
       "type": "environment",
-      "label": "Farmer's Hut",
-      "visual_dna": "A modest Indian village mud hut with faded ochre walls, a sloping thatched roof, a small wooden doorway, a woven charpai, a clay water pot and farming tools leaning against the exterior. Inside, a simple low wooden table, a brass oil lamp, a rolled sleeping mat and a small window. Warm earthy tones and a humble lived-in atmosphere."
+      "label": "Boiler and Slag Chamber",
+      "visual_dna": "A massive industrial boiler chamber with thick steel walls, heavy pipes, a lower discharge channel and a water-cooling collection area designed to receive hot industrial slag. The chamber has metal access platforms, maintenance ladders, railings and a narrow service area. A dangerous accumulation of glowing orange molten slag can build up above the lower maintenance area. Preserve the industrial layout and recognizable machinery across shots."
     },
-    "golden_seed": {
-      "type": "prop",
-      "label": "Golden Seed",
-      "visual_dna": "A single unusual seed, small and oval, with a warm golden-brown shell and a tiny natural spiral pattern. It has a subtle warm glow, never magical neon light. Keep its size, shape and appearance identical whenever shown."
+    "control_room": {
+      "type": "environment",
+      "label": "Power Plant Control Room",
+      "visual_dna": "A practical industrial control room with rows of analogue gauges, indicator lights, control switches, monitoring screens, a large process diagram and a long console desk. Cool fluorescent lighting, muted grey walls and a large observation window looking toward industrial equipment. Screens may show abstract diagrams and indicators but must contain no readable text."
     },
-    "clay_pot": {
+    "smartphone": {
       "type": "prop",
-      "label": "Clay Water Pot",
-      "visual_dna": "A traditional round reddish-brown earthen water pot with a narrow neck, slightly chipped rim and hand-made uneven surface. Keep the same shape and texture throughout."
+      "label": "Smartphone",
+      "visual_dna": "A simple black smartphone with a slightly worn protective case, dark glass screen and rounded corners. It should look like an ordinary personal phone, not a futuristic device. Keep its appearance consistent."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "village_well",
+      "environment_ref": "power_plant",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "अगर कोई अजनबी आपको कल की खुशी आज ही दे दे… तो क्या आप उस पर भरोसा करेंगे?",
+          "narration_text": "Antonio Navarrete सिर्फ 21 साल का था। Tampa के एक power plant में उसकी नई नौकरी लगी थी।",
           "camera_type": "Wide establishing shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.old_traveller} standing beside {assets.village_well}, holding {assets.golden_seed} carefully in his open palm. {assets.young_farmer} stands a few steps away, staring at the seed in disbelief. A banyan tree spreads its branches overhead, distant village houses sit beyond the dusty path, and a few dry leaves drift across the foreground. Use a dramatic wide composition with the glowing seed as a tiny focal point between the two characters.",
-          "session_delta_prompt": "Create the opening scene at the same ancient village well. Establish the well, banyan tree, village houses and fields. Introduce both characters with their exact visual designs and the golden seed."
+          "prompt_action": "Show {assets.antonio} standing at the entrance of {assets.power_plant}, wearing his navy-blue maintenance uniform and white hard hat. He looks toward the enormous industrial structure with a mixture of nervousness and excitement. Towering steel pipes, smokestacks, metal walkways and overhead structures fill the background. A security gate and industrial safety railings frame the foreground. Use a low wide-angle composition to make the facility feel enormous compared with the young worker.",
+          "session_delta_prompt": "Establish the exterior of a large Tampa power plant in daylight. Introduce Antonio with his exact visual design and establish the industrial scale, steel structures, pipes and walkways."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "एक छोटे से गाँव में, एक किसान हर दिन अपनी किस्मत को कोसता था।",
-          "camera_type": "High angle wide shot",
+          "narration_text": "उसकी wife pregnant थी। वह हर महीने की salary से अपने परिवार के लिए एक घर खरीदने का सपना देख रहा था।",
+          "camera_type": "Medium close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_farmer} sitting alone on the stone edge of {assets.village_well}, elbows resting on his knees and head lowered. His farming tools lie abandoned beside the dusty path. In the background, green fields stretch toward the village huts, while a dry patch of earth near the well suggests a difficult season. Use a high-angle composition that makes the farmer appear small against the quiet landscape.",
-          "session_delta_prompt": "Show the same farmer and village well in daylight from a new elevated camera angle. Preserve the well, banyan tree, village surroundings and the farmer's exact appearance."
+          "prompt_action": "Show {assets.antonio} taking a short break near an industrial window, looking at a small personal photograph tucked inside his work locker. The photograph shows him standing beside his pregnant wife, without requiring detailed facial identity. His expression is gentle and hopeful. His safety helmet rests on the locker shelf, while pipes and steel equipment are visible through the window behind him. Use a warm close composition that contrasts his personal dream with the cold industrial workplace.",
+          "session_delta_prompt": "Remain within the same power plant facility. Preserve Antonio's exact appearance and work uniform; introduce a personal locker and a small family photograph to communicate his hopes."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "एक दिन वहाँ एक बूढ़ा मुसाफ़िर आया।",
-          "camera_type": "Long shot",
+          "narration_text": "वह सिर्फ 12 dollars per hour कमाता था… और यह उसकी job का चौथा दिन था।",
+          "camera_type": "Close-up detail shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.old_traveller} walking along the dusty path toward {assets.village_well}, leaning slightly on his wooden walking stick. His ochre shawl moves in the breeze. {assets.young_farmer} notices him from beside the well and slowly lifts his head. Frame the traveller through tall foreground grass, with the banyan tree and village huts layered behind him.",
-          "session_delta_prompt": "Remain at the same village well during daylight. Introduce the traveller approaching along the path while preserving the farmer and environment designs."
-        },
-        {
-          "beat_id": "s01_b04",
-          "narration_text": "उसने किसान की हथेली पर एक अजीब-सा बीज रख दिया।",
-          "camera_type": "Extreme close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show a close-up of {assets.old_traveller}'s wrinkled hand placing {assets.golden_seed} into the open palm of {assets.young_farmer}. The seed's subtle golden-brown spiral catches a small ray of sunlight. The farmer's blue sleeve and the traveller's ochre shawl frame the hands. The old stone well is softly visible in the background.",
-          "session_delta_prompt": "Keep both characters at the same well. Focus tightly on the exchange of the golden seed, preserving its exact design and the characters' clothing."
-        },
-        {
-          "beat_id": "s01_b05",
-          "narration_text": "मुसाफ़िर बोला, 'इसे बोना… कल तुम्हें इसका फल मिलेगा।'",
-          "camera_type": "Medium close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.old_traveller} bending slightly toward {assets.young_farmer}, raising one finger as if giving an important instruction. His expression is calm and mysterious. The farmer looks down at {assets.golden_seed} in his palm. The old traveller's walking stick rests against the stone well, and the banyan leaves form a soft frame above them.",
-          "session_delta_prompt": "Stay beside the same well. Preserve the seed and both character designs; shift the focus to the traveller delivering his mysterious instruction."
+          "prompt_action": "Show {assets.antonio} tightening his protective gloves and adjusting his white hard hat before starting work. His work boots stand on a dusty metal floor, with a maintenance tool bag beside him. Behind him, the industrial corridor stretches toward a huge boiler chamber. Use a close, low-angle composition focused on his hands and work gear, with his determined face visible in the upper part of the frame.",
+          "session_delta_prompt": "Keep Antonio inside the same power plant. Preserve his workwear and facial features; show him preparing for a maintenance shift in a new close-up composition."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "farmer_hut",
+      "environment_ref": "boiler_chamber",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "किसान हँसा, लेकिन फिर भी उसने बीज बो दिया।",
-          "camera_type": "Medium wide shot",
+          "narration_text": "उस दिन boiler के अंदर molten slag जमा हो रहा था। यह lava जैसा बेहद गर्म material था।",
+          "camera_type": "Extreme wide industrial shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_farmer} crouching in the small patch of soil beside {assets.farmer_hut}, carefully placing {assets.golden_seed} into the earth. He has a doubtful half-smile. {assets.clay_pot} sits beside the hut doorway, and farming tools lean against the mud wall. The thatched roof and a few green plants create a cozy village setting. Show his hands pressing soil over the seed.",
-          "session_delta_prompt": "Establish the farmer's hut exterior in soft late-afternoon light. Preserve the farmer's appearance, hut architecture and golden seed."
+          "prompt_action": "Show the enormous interior of {assets.boiler_chamber}. High above the lower service area, a growing mass of glowing orange molten slag is accumulating behind an industrial blockage. Thick steel pipes, structural beams and maintenance platforms surround the chamber. A faint orange glow reflects off the metal surfaces, while a small amount of steam drifts through the air. Use a dramatic vertical composition that shows the dangerous height and scale of the machinery.",
+          "session_delta_prompt": "Establish the boiler chamber with its heavy steel structure, lower discharge channel, cooling collection area and elevated slag accumulation. Use restrained orange light to communicate extreme heat without graphic imagery."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "उसने थोड़ा पानी डाला… और रात होने का इंतज़ार किया।",
-          "camera_type": "Low angle close-up",
-          "action_mode": "in_place_action",
-          "prompt_action": "Same hut exterior and same patch of soil. Show {assets.young_farmer} tilting {assets.clay_pot} and pouring a small stream of water onto the newly planted spot. Tiny droplets splash against the earth. His red scarf hangs forward as he bends down. The warm evening sky and hut wall remain in the background.",
-          "session_delta_prompt": "In the same scene: keep the farmer, hut, soil patch and surroundings identical. Change only his action to pouring water from the clay pot onto the planted seed."
+          "narration_text": "इसे cool करने के लिए नीचे एक water tank था… लेकिन रास्ता blockage की वजह से बंद था।",
+          "camera_type": "High angle shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the lower section of {assets.boiler_chamber}, focusing on the blocked discharge channel leading toward the water-cooling tank. A dense industrial obstruction is visible inside the channel. The tank sits below, separated from the accumulated molten material by the blocked passage. Metal railings, pipes, warning lights and a maintenance ladder create layers around the frame. Use a high-angle view that clearly communicates the blocked route.",
+          "session_delta_prompt": "Remain inside the same boiler chamber. Preserve the machinery layout and show the blocked discharge route and water-cooling tank from a different camera position."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "सुबह वह दौड़कर बाहर आया…",
-          "camera_type": "Dynamic tracking shot",
+          "narration_text": "Plant को बंद करने के बजाय, management ने पाँच workers को blockage हटाने भेज दिया।",
+          "camera_type": "Medium wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_farmer} rushing out through the wooden doorway of {assets.farmer_hut}, one sandal slightly lifted mid-stride, his red scarf flying behind him. His eyes are fixed on the patch of soil. The charpai and clay pot are visible in the foreground, while morning sunlight falls across the hut wall and ground. Use a lively diagonal composition to create a sense of sudden movement.",
-          "session_delta_prompt": "Show the same hut exterior in fresh morning light. Preserve the farmer and hut details; change the camera angle to capture his hurried movement outside."
+          "prompt_action": "Show {assets.plant_supervisor} standing on a metal maintenance platform, pointing toward the blocked section of {assets.boiler_chamber}. {assets.antonio} and {assets.maintenance_workers} listen to the instructions while holding maintenance tools. The supervisor holds a clipboard. Huge pipes and the boiler structure loom behind them. Compose the shot from slightly below eye level, with the supervisor in the foreground and all five workers clearly visible in the middle ground.",
+          "session_delta_prompt": "Keep the same boiler chamber and industrial platform. Introduce the supervisor and the five-person maintenance crew, preserving Antonio's distinct appearance and the crew's consistent work uniforms."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "लेकिन वहाँ तो कुछ भी नहीं उगा था!",
-          "camera_type": "Top-down shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Same patch of soil beside {assets.farmer_hut}. Show {assets.young_farmer} kneeling and staring at the completely empty earth. He gently scrapes the soil with one finger, looking confused. The empty patch is clearly visible, with the clay pot lying on its side nearby and a few scattered dry leaves.",
-          "session_delta_prompt": "In the same hut exterior: preserve the soil patch, farmer and morning lighting. Show no plant growing; change only the farmer's action and expression to disappointment."
+          "narration_text": "Machine चलती रही… और workers को अंदाज़ा भी नहीं था कि उनके ठीक ऊपर क्या जमा हो रहा है।",
+          "camera_type": "Low angle upward shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.antonio} and {assets.maintenance_workers} working near the lower blocked channel. They use industrial tools to inspect the obstruction, focused entirely on their task. Above them, the enormous steel chamber disappears into darkness, with an ominous orange glow visible behind upper metal supports. Use a dramatic low-angle perspective from near the workers' boots, emphasizing the unseen danger directly overhead.",
+          "session_delta_prompt": "Remain in the same boiler chamber. Preserve the five workers and machinery positions; change the camera angle to reveal the growing danger above them while they continue working."
         },
         {
           "beat_id": "s02_b05",
-          "narration_text": "वह गुस्से में बीज को बेकार समझने लगा।",
-          "camera_type": "Close-up on face and hand",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_farmer} sitting back on his heels, holding a tiny empty handful of soil and looking frustrated. His eyebrows are knitted and his lips pressed together. The bare patch of earth fills the lower foreground, while the hut wall and doorway sit behind him. Use an intimate close-up that emphasizes his disappointment.",
-          "session_delta_prompt": "Remain at the same hut and empty soil patch. Preserve the farmer's appearance and the morning setting; focus on his frustrated reaction."
+          "narration_text": "फिर आखिरकार… blockage हट गया।",
+          "camera_type": "Close-up action shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same maintenance area. Show {assets.antonio} and one of {assets.maintenance_workers} completing the final movement with their tools as the obstruction shifts out of the discharge channel. A sudden vibration runs through the nearby metal structure. Fine dust and tiny particles fall from above. The workers begin to look upward in confusion.",
+          "session_delta_prompt": "In the same scene: keep the five workers, boiler chamber, tools and industrial layout identical. Change only the action to show the blockage being cleared and the workers beginning to react to the vibration."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "village_well",
+      "environment_ref": "boiler_chamber",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "तभी उसे याद आया… मुसाफ़िर ने कहा था, कल फल मिलेगा।",
-          "camera_type": "Medium shot",
+          "narration_text": "और अगले ही पल, हजारों pounds molten slag नीचे गिरने लगा।",
+          "camera_type": "Extreme wide action shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_farmer} standing beside {assets.village_well}, looking toward the distant dusty road with a thoughtful expression. One hand rests on his chin, while the other holds the red scarf near his chest. The banyan tree casts long shadows across the stone well, and the fields stretch behind him under a pale afternoon sky.",
-          "session_delta_prompt": "Return to the established village well in afternoon light. Preserve its architecture and the farmer's appearance; show him remembering the traveller's promise."
+          "prompt_action": "Show a massive stream of glowing orange molten slag suddenly pouring from the elevated discharge area inside {assets.boiler_chamber}. The intense flow spreads across the lower industrial floor, illuminating the metal platforms, pipes and railings with a fierce orange glow. The five maintenance workers appear as small silhouettes at a safe visual distance from the main flow, reacting in alarm. Use a wide diagonal composition to communicate the scale and suddenness of the industrial disaster. Do not depict graphic injuries.",
+          "session_delta_prompt": "Continue in the same boiler chamber but show the sudden molten slag release. Preserve the machinery layout and the five workers; focus on the scale of the dangerous flow and the dramatic change in lighting."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "वह बूढ़े आदमी को ढूँढ़ने दौड़ा… पर गाँव में कोई उसे जानता ही नहीं था।",
-          "camera_type": "Wide dynamic shot",
+          "narration_text": "वह 40 feet तक फैल गया… और लगभग आधा foot मोटी परत बन गई।",
+          "camera_type": "High angle wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_farmer} hurrying along the village path, asking two distant villagers for directions with an urgent gesture. The villagers exchange confused looks and point in different directions. Mud houses, a small wooden cart, a grazing goat and dusty fields create a lively village background. Use a diagonal composition with the farmer in motion in the foreground.",
-          "session_delta_prompt": "Show the same village surroundings in daylight. Preserve the farmer's clothing and facial features; add villagers and everyday village details while he searches for the old traveller."
+          "prompt_action": "Show the lower floor of {assets.boiler_chamber} from a high industrial platform. A broad glowing orange layer of molten slag spreads across a large section of the floor, reaching toward metal supports and maintenance equipment. Steam rises in thick white clouds, and the intense light reflects off nearby steel surfaces. The long industrial walkway provides a visual sense of distance. Use a wide overhead composition to communicate how much of the floor has been covered.",
+          "session_delta_prompt": "Remain in the same boiler chamber after the release. Preserve the industrial structure and show the molten material spread across the lower floor with rising steam and intense reflected light."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "शाम तक थककर वह उसी कुएँ के पास लौट आया।",
-          "camera_type": "Wide establishing shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_farmer} walking slowly back toward {assets.village_well} at sunset, shoulders drooping and head lowered. Long shadows stretch across the dusty path. The banyan tree appears as a dark silhouette against a muted orange sky, and the village houses glow softly in the distance. Use a wide composition with plenty of open space around him to emphasize loneliness.",
-          "session_delta_prompt": "Return to the same well at sunset. Preserve the well, banyan tree and village layout; change the lighting to warm dusk and show the tired farmer returning."
+          "narration_text": "वहाँ मौजूद पाँचों workers इस हादसे की चपेट में आ गए।",
+          "camera_type": "Wide silhouette shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same boiler chamber during the accident. Show the five maintenance workers struggling to move away from the spreading molten flow, partially obscured by dense steam and strong orange backlighting. {assets.antonio} is visible among them, his white hard hat and navy uniform recognizable through the haze. Keep the framing distant and non-graphic, using silhouettes, steam and the industrial environment to convey danger.",
+          "session_delta_prompt": "In the same scene: preserve the boiler chamber, molten flow and five workers. Change only their body positions to show an urgent attempt to escape. Keep the depiction non-graphic and avoid visible injuries."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "तभी उसकी नज़र मिट्टी पर पड़ी… वहाँ एक नन्हा अंकुर निकला था!",
-          "camera_type": "Ground-level macro shot",
+          "narration_text": "Antonio ने किसी तरह अपना phone निकाला… और अपनी माँ को call किया।",
+          "camera_type": "Close-up shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show a tiny fresh green sprout emerging from the soil near the stone edge of {assets.village_well}. {assets.young_farmer}'s sandal and hand enter the frame as he bends down in surprise. A few droplets cling to the small leaves, and the last warm rays of sunset illuminate the sprout. Use a very low ground-level composition, making the tiny plant feel like a remarkable discovery.",
-          "session_delta_prompt": "Keep the same village well at sunset. Introduce a tiny green sprout in the earth near the well, while preserving the farmer's clothing and the environment."
+          "prompt_action": "Show {assets.antonio} in a smoke-filled industrial area, holding {assets.smartphone} close to his face with a trembling gloved hand. His expression is frightened and desperate. Orange light flickers across the background, while thick steam partially obscures the steel machinery. Frame the phone and his face in a tight emotional composition, with no graphic depiction of injury.",
+          "session_delta_prompt": "Stay within the same accident environment. Preserve Antonio's appearance and uniform; shift to a close-up showing him desperately trying to make a phone call through the steam and confusion."
         },
         {
           "beat_id": "s03_b05",
-          "narration_text": "वह मुस्कुराया… क्योंकि उसे पहली बार कल पर भरोसा हुआ था।",
-          "camera_type": "Emotional close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_farmer} kneeling beside the tiny sprout, his face softened by a genuine smile. He gently cups one hand around the plant to protect it from the breeze. The stone well and banyan tree sit softly behind him, bathed in the last golden light of evening. Use a close three-quarter angle, with the sprout and his hopeful expression sharing the frame.",
-          "session_delta_prompt": "Remain beside the same sprout and well at sunset. Preserve the farmer's exact design; show his expression changing from doubt to quiet hope."
+          "narration_text": "Call माँ ने नहीं उठाया… voicemail शुरू हो गया।",
+          "camera_type": "Extreme close-up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same accident setting. Show {assets.smartphone} in Antonio's trembling hand, its screen displaying a generic incoming voicemail recording interface with abstract icons and no readable text. His other gloved hand is visible near the edge of the frame. The background is softly blurred with pale steam and faint orange industrial light.",
+          "session_delta_prompt": "In the same scene: keep the smartphone, Antonio's hand and smoky industrial background identical. Change only the phone screen to indicate that the call has reached voicemail, without adding readable text."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "farmer_hut",
+      "environment_ref": "power_plant",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "कहते हैं, उस बीज ने अगले दिन फल नहीं दिया…",
-          "camera_type": "Wide shot",
+          "narration_text": "उस voicemail में उसकी आखिरी recorded आवाज़ थी… 'Mom! Help me! I'm burning! Call the cops! Mom!'",
+          "camera_type": "Emotional close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_farmer} standing beside the hut's small garden patch several days later, examining the slightly taller but still modest green plant. He holds {assets.clay_pot} and looks patiently at the leaves. The hut, charpai, farming tools and nearby fields are visible in a calm morning setting. The plant is clearly growing but has no fruit.",
-          "session_delta_prompt": "Show the established hut exterior a few days later. Preserve the farmer, hut and clay pot; show the small plant grown slightly taller but still without fruit."
+          "prompt_action": "Show {assets.antonio} holding {assets.smartphone} close to his mouth, desperately calling for help. His eyes are wide with fear, and his expression is strained. Dense steam fills the background, with distant orange light reflecting from industrial steel. Keep the image focused on his face and the phone, using a restrained non-graphic depiction. No subtitles or visible words.",
+          "session_delta_prompt": "Continue the same accident moment. Preserve Antonio's face, work uniform and smartphone; focus on the emotional urgency of his final recorded message without showing graphic injuries."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "न ही उसके बाद वाले दिन…",
-          "camera_type": "Time passage composition",
+          "narration_text": "उसकी माँ तक सिर्फ उसकी चीखें नहीं… पीछे आती steam की आवाज़ भी पहुँची।",
+          "camera_type": "Medium close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show the same garden patch in a storybook-like passage-of-time composition: the sun moves across the sky, a few leaves drift past, and {assets.young_farmer} waters the plant on another morning. The plant has grown a little taller, but still carries no fruit. Keep the hut and charpai recognizable in the background, using a gentle visual sense of passing days rather than multiple panels.",
-          "session_delta_prompt": "Keep the same hut and garden location. Depict the passage of several days through changed sunlight and slightly increased plant growth, preserving the farmer's design."
+          "prompt_action": "Show {assets.antonio_mother} at home in a modest living room, holding a phone near her ear. Her expression changes from ordinary attention to sudden fear and confusion. A simple sofa, a small table and a warm household lamp create a quiet domestic setting. The contrast between the peaceful home and the distressing call should be clear. Keep the phone screen without readable text.",
+          "session_delta_prompt": "Introduce Antonio's mother in a separate quiet home environment. Preserve her established appearance and clothing; show her listening to the voicemail with growing alarm."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "लेकिन किसान ने पानी देना बंद नहीं किया।",
-          "camera_type": "Medium side shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Same garden patch beside {assets.farmer_hut}. Show {assets.young_farmer} carefully pouring water from {assets.clay_pot} around the growing plant. His expression is calm and determined. A small bird sits on the hut roof, and soft morning light falls across the soil.",
-          "session_delta_prompt": "In the same scene: preserve the hut, garden patch, plant and farmer's appearance. Change only his action to carefully watering the plant with patience."
+          "narration_text": "Antonio की आवाज़ voicemail में दर्ज हो गई… लेकिन वह तुरंत नहीं मरा।",
+          "camera_type": "Wide hospital corridor shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show a quiet hospital corridor with a closed intensive care unit door, muted hospital lighting, empty chairs and a wall clock. A medical staff member walks past in the background. The scene should feel serious and respectful, without showing a patient or medical procedure. Use a long perspective down the corridor to create a sense of waiting and uncertainty.",
+          "session_delta_prompt": "Transition from the power plant to a hospital corridor. Establish a quiet, serious atmosphere with an intensive care unit entrance and restrained documentary-style visual storytelling."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "कुछ हफ्तों बाद, उस छोटे पौधे पर पहला सुनहरा फल लगा।",
-          "camera_type": "Close-up reveal",
+          "narration_text": "वह पाँच दिनों तक coma में रहा… उसके शरीर पर 80 percent burns थे।",
+          "camera_type": "Hospital room wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show the once-small plant now bearing one beautiful round golden-brown fruit, subtly resembling the spiral texture of {assets.golden_seed}. {assets.young_farmer}'s hands hover carefully beside it, afraid to touch it. His delighted face appears softly in the background. The hut wall and garden remain recognizable, with warm morning sunlight illuminating the fruit.",
-          "session_delta_prompt": "Keep the same hut garden location. Show the plant after several weeks of growth with its first golden-brown fruit, preserving the farmer's visual design and the storybook art style."
+          "prompt_action": "Show a respectful, non-graphic view of an intensive care room through a partially open doorway. A hospital bed is visible with a patient mostly covered by clean white sheets, surrounded by medical monitoring equipment. A family member sits quietly nearby with their hands clasped. Keep the patient unidentifiable and do not show injuries, exposed skin or graphic medical details. Use soft neutral hospital lighting and a still, solemn composition.",
+          "session_delta_prompt": "Show the hospital intensive care setting several days after the accident. Keep the scene non-graphic and respectful; communicate the seriousness through the hospital equipment and the waiting family member."
         },
         {
           "beat_id": "s04_b05",
-          "narration_text": "किसान समझ गया… चमत्कार बीज में नहीं, उसके धैर्य में था।",
-          "camera_type": "Final wide cinematic shot",
+          "narration_text": "पाँच दिन बाद Antonio की मौत हो गई। उसके साथ चार और workers भी इस हादसे में मारे गए।",
+          "camera_type": "Wide memorial shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_farmer} sitting peacefully beside the thriving little plant outside {assets.farmer_hut}, holding its first golden fruit gently in both hands. His expression is grateful and thoughtful. The morning sun rises behind the distant fields, birds cross the sky, and the clay pot rests beside the plant. Use a balanced wide composition with the farmer and plant in the foreground and the village landscape opening behind them. End with a warm, hopeful storybook frame.",
-          "session_delta_prompt": "Create the final hopeful scene outside the same hut. Preserve the farmer, hut and plant; show the first fruit and the farmer's peaceful realization in warm morning light."
+          "prompt_action": "Show five simple white flowers placed beside five small work helmets on a quiet table outside the hospital. One helmet is slightly smaller in visual presence, suggesting the youngest worker without using labels. In the background, a softly blurred family member stands in silence near a window. Use a restrained, respectful composition with muted colors and gentle daylight. No readable names or signage.",
+          "session_delta_prompt": "Create a quiet memorial scene after the accident. Use five work helmets and five white flowers to represent the five workers who died. Keep the visual treatment respectful and understated."
+        }
+      ]
+    },
+    {
+      "scene_id": 5,
+      "environment_ref": "control_room",
+      "beats": [
+        {
+          "beat_id": "s05_b01",
+          "narration_text": "इस हादसे को रोका जा सकता था… अगर maintenance के दौरान machine बंद कर दी जाती।",
+          "camera_type": "Wide control room shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.control_room} with its long console, process diagrams, analogue gauges and industrial monitoring screens. An empty operator chair faces the control panel. A large observation window reveals the power plant structures outside. The control switches and indicator lights create a quiet but unsettling atmosphere. Use a symmetrical wide composition that emphasizes the machinery and the absence of a person at the controls.",
+          "session_delta_prompt": "Establish the power plant control room with its industrial consoles, gauges, screens and observation window. Use a restrained, documentary-like composition."
+        },
+        {
+          "beat_id": "s05_b02",
+          "narration_text": "क्योंकि उस दिन काम तो पाँच लोगों ने किया था… लेकिन machine बंद करने का फैसला उनके हाथ में नहीं था।",
+          "camera_type": "Close-up control panel shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show a close-up of the industrial control console in {assets.control_room}, with several illuminated indicator lights, heavy switches and a large emergency shutdown control clearly visible. In the blurred background, the supervisor stands near the console looking toward the plant observation window. Use a slightly tilted composition to create tension. Do not show readable labels or company branding.",
+          "session_delta_prompt": "Remain inside the same control room. Preserve its console, screens and observation window; shift to a close-up of the control switches and the supervisor in the background."
+        },
+        {
+          "beat_id": "s05_b03",
+          "narration_text": "अब आप बताइए… क्या पैसे बचाने के लिए चलती machine के नीचे workers को भेजना सही फैसला था?",
+          "camera_type": "Final cinematic wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the enormous exterior of {assets.power_plant} at dusk, with its towering smokestacks, steel structures, pipes and industrial walkways silhouetted against a muted evening sky. In the foreground, five empty white hard hats rest on a low concrete ledge. A quiet service road leads toward the plant entrance. Use a wide, still composition with the helmets sharply visible and the power plant dominating the distant background. End on a serious, thought-provoking frame.",
+          "session_delta_prompt": "Create the final exterior view of the same power plant at dusk. Preserve its industrial identity and use five empty work helmets in the foreground as a restrained visual reminder of the workers."
         }
       ]
     }

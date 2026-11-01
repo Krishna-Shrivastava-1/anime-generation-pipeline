@@ -7,13 +7,13 @@ import PIL.Image
 if not hasattr(PIL.Image, 'ANTIALIAS'):
     PIL.Image.ANTIALIAS = PIL.Image.Resampling.LANCZOS
 
-from moviepy.editor import (
-    ImageClip,
-    AudioFileClip,
-    CompositeAudioClip,
-    concatenate_videoclips,
-    afx
+from moviepy import (
+    ImageClip, 
+    AudioFileClip, 
+    CompositeAudioClip, 
+    concatenate_videoclips
 )
+import moviepy.audio.fx as afx
 
 BUILD_DIR = Path("build")
 FRAMES_DIR = BUILD_DIR / "frames"
@@ -54,7 +54,7 @@ def assemble_story_video(aspect_ratio="9:16"):
         duration = audio_clip.duration
 
         frame_arr = crop_and_fit_image(frame_path, target_size[0], target_size[1])
-        clip = ImageClip(frame_arr).set_duration(duration).set_audio(audio_clip)
+        clip = ImageClip(frame_arr).with_duration(duration).with_audio(audio_clip)
         clips.append(clip)
         print(f" -> Attached {beat_id} ({duration:.2f}s)")
 
@@ -68,7 +68,7 @@ def assemble_story_video(aspect_ratio="9:16"):
         bgm = afx.audio_loop(bgm, duration=final_video.duration).volumex(0.12)
         # Combine voice track and music track
         mixed_audio = CompositeAudioClip([final_video.audio, bgm])
-        final_video = final_video.set_audio(mixed_audio)
+        final_video = final_video.with_audio(mixed_audio)
 
     print("\nRendering final MP4...")
     final_video.write_videofile(

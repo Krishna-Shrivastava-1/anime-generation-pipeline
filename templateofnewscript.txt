@@ -177,3 +177,10 @@ JSON STRUCTURE TEMPLATE:
 
 
 Image art style prompt - Clean 2D cartoon illustration, indie webcomic art style, thin black line art, soft neutral-toned flat watercolor wash fills, minimalist background, storybook animation frame. (Insert your subject here). Simple, modern digital drawing, flat design.
+
+
+
+
+audio sound effects
+https://drive.google.com/file/d/1tdJC6tfDoQqUw1Zs1wYml5P9J7GkUeDP/view
+https://thibaultjanbeyer.github.io/YouTube-Free-Audio-Library-API/api.json

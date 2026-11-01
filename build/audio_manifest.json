@@ -1,131 +1,101 @@
 {
-  "total_duration": 120.992,
+  "total_duration": 99.796,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 6.905,
-      "subtitle": "Antonio Navarrete सिर्फ 21 साल का था। Tampa के एक power plant में उसकी नई नौकरी लगी थी।"
+      "duration_seconds": 6.753,
+      "subtitle": "वह एक शाम अपने घर लौट रही थी। रास्ता लगभग खाली था और उसे बस जल्दी से घर पहुँचकर आराम करना था।"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 7.887,
-      "subtitle": "उसकी wife pregnant थी। वह हर महीने की salary से अपने परिवार के लिए एक घर खरीदने का सपना देख रहा था।"
+      "duration_seconds": 4.48,
+      "subtitle": "लेकिन कुछ देर बाद उसे महसूस हुआ कि कोई आदमी उसके पीछे चल रहा है।"
     },
     {
       "beat_id": "s01_b03",
       "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 5.312,
-      "subtitle": "वह सिर्फ 12 dollars per hour कमाता था… और यह उसकी job का चौथा दिन था।"
+      "duration_seconds": 7.116,
+      "subtitle": "उसने अपनी चाल तेज़ कर दी, लेकिन वह आदमी भी उसके पीछे आता रहा। अब उसे साफ़ लगने लगा था कि कुछ गड़बड़ है।"
+    },
+    {
+      "beat_id": "s01_b04",
+      "audio_file": "build/audio/s01_b04.wav",
+      "duration_seconds": 5.141,
+      "subtitle": "जब वह अपने घर के पास पहुँची, तो उस आदमी ने खुद को पास की झाड़ियों में छिपा लिया।"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 6.991,
-      "subtitle": "उस दिन boiler के अंदर molten slag जमा हो रहा था। यह lava जैसा बेहद गर्म material था।"
+      "duration_seconds": 7.116,
+      "subtitle": "वह किसी तरह जल्दी से घर के अंदर पहुँची और दरवाज़ा बंद कर लिया। लेकिन उसके मन में डर अभी भी बना हुआ था।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 6.656,
-      "subtitle": "इसे cool करने के लिए नीचे एक water tank था… लेकिन रास्ता blockage की वजह से बंद था।"
+      "duration_seconds": 4.321,
+      "subtitle": "उसने देर नहीं की। अपना फोन उठाया और तुरंत पुलिस को कॉल कर दिया।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 6.827,
-      "subtitle": "Plant को बंद करने के बजाय, management ने पाँच workers को blockage हटाने भेज दिया।"
+      "duration_seconds": 6.101,
+      "subtitle": "उसने पुलिस को बताया कि एक आदमी उसका पीछा कर रहा था और अब उसके घर के बाहर कहीं छिपा हुआ है।"
     },
     {
       "beat_id": "s02_b04",
       "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 6.357,
-      "subtitle": "Machine चलती रही… और workers को अंदाज़ा भी नहीं था कि उनके ठीक ऊपर क्या जमा हो रहा है।"
-    },
-    {
-      "beat_id": "s02_b05",
-      "audio_file": "build/audio/s02_b05.wav",
-      "duration_seconds": 2.325,
-      "subtitle": "फिर आखिरकार… blockage हट गया।"
+      "duration_seconds": 7.244,
+      "subtitle": "कुछ ही देर में पुलिस वहाँ पहुँच गई। अधिकारियों ने बिना शोर किए घर के आसपास की जगह को ध्यान से देखना शुरू किया।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 4.075,
-      "subtitle": "और अगले ही पल, हजारों pounds molten slag नीचे गिरने लगा।"
+      "duration_seconds": 4.544,
+      "subtitle": "पुलिस ने झाड़ियों के पास जाँच की, और वहाँ छिपा हुआ वही आदमी पकड़ लिया गया।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 5.035,
-      "subtitle": "वह 40 feet तक फैल गया… और लगभग आधा foot मोटी परत बन गई।"
+      "duration_seconds": 7.851,
+      "subtitle": "लेकिन असली डरावनी बात तो तब सामने आई, जब पुलिस को उसके पास कुछ ऐसी चीज़ें मिलीं जिनका वहाँ होना बिल्कुल सामान्य नहीं था।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 3.883,
-      "subtitle": "वहाँ मौजूद पाँचों workers इस हादसे की चपेट में आ गए।"
+      "duration_seconds": 6.668,
+      "subtitle": "उसके पास हथकड़ियाँ, एक चाकू और कंडोम मिले। अब यह मामला सिर्फ पीछा किए जाने तक सीमित नहीं लग रहा था।"
     },
     {
       "beat_id": "s03_b04",
       "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 5.141,
-      "subtitle": "Antonio ने किसी तरह अपना phone निकाला… और अपनी माँ को call किया।"
-    },
-    {
-      "beat_id": "s03_b05",
-      "audio_file": "build/audio/s03_b05.wav",
-      "duration_seconds": 3.392,
-      "subtitle": "Call माँ ने नहीं उठाया… voicemail शुरू हो गया।"
+      "duration_seconds": 5.44,
+      "subtitle": "बाद में बताया गया कि उस आदमी का डीएनए इलाके में हुई छह रेप की घटनाओं से मैच हुआ था।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 9.147,
-      "subtitle": "उस voicemail में उसकी आखिरी recorded आवाज़ थी… 'Mom! Help me! I'm burning! Call the cops! Mom!'"
+      "duration_seconds": 5.291,
+      "subtitle": "बाद में उस महिला ने बताया कि वह अपनी सुरक्षा के लिए पहले से स्प्रिंट ट्रेनिंग करती थी।"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 5.035,
-      "subtitle": "उसकी माँ तक सिर्फ उसकी चीखें नहीं… पीछे आती steam की आवाज़ भी पहुँची।"
+      "duration_seconds": 5.013,
+      "subtitle": "उसी ट्रेनिंग की वजह से वह उस आदमी से तेज़ भाग पाई और अपने घर तक पहुँच सकी।"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 4.992,
-      "subtitle": "Antonio की आवाज़ voicemail में दर्ज हो गई… लेकिन वह तुरंत नहीं मरा।"
+      "duration_seconds": 6.528,
+      "subtitle": "उसका मानना था कि अगर वह इतनी तेज़ नहीं भाग पाती, तो शायद उस रात उसके साथ कुछ बहुत बुरा हो सकता था।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 4.992,
-      "subtitle": "वह पाँच दिनों तक coma में रहा… उसके शरीर पर 80 percent burns थे।"
-    },
-    {
-      "beat_id": "s04_b05",
-      "audio_file": "build/audio/s04_b05.wav",
-      "duration_seconds": 6.393,
-      "subtitle": "पाँच दिन बाद Antonio की मौत हो गई। उसके साथ चार और workers भी इस हादसे में मारे गए।"
-    },
-    {
-      "beat_id": "s05_b01",
-      "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 5.931,
-      "subtitle": "इस हादसे को रोका जा सकता था… अगर maintenance के दौरान machine बंद कर दी जाती।"
-    },
-    {
-      "beat_id": "s05_b02",
-      "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 6.677,
-      "subtitle": "क्योंकि उस दिन काम तो पाँच लोगों ने किया था… लेकिन machine बंद करने का फैसला उनके हाथ में नहीं था।"
-    },
-    {
-      "beat_id": "s05_b03",
-      "audio_file": "build/audio/s05_b03.wav",
-      "duration_seconds": 7.04,
-      "subtitle": "अब आप बताइए… क्या पैसे बचाने के लिए चलती machine के नीचे workers को भेजना सही फैसला था?"
+      "duration_seconds": 10.188,
+      "subtitle": "सोचिए, वह आदमी उसके घर के बाहर छिपा बैठा था और उसके पास ऐसी चीज़ें भी थीं। अगर उसने उस दिन अपनी ट्रेनिंग और अपनी समझ पर भरोसा नहीं किया होता, तो क्या होता?"
     }
   ]
 }

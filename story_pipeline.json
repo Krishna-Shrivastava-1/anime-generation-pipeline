@@ -1,254 +1,203 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "The Last Voicemail: Antonio's Story",
-    "project_id": "antonio_last_voicemail",
+    "title": "The Man Hiding Outside Her House",
+    "project_id": "hidden_man_outside_house",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Clean 2D cartoon illustration, indie webcomic art style, thin black line art, soft neutral-toned flat watercolor wash fills, minimalist background, storybook animation frame. Simple, modern digital drawing, flat design. Serious documentary storytelling atmosphere, expressive characters, muted industrial colors, carefully composed cinematic frames. Every frame should have a distinct composition, varied camera angles, dynamic character poses, layered foreground, midground and background, and environmental details that make the power plant feel like a real working industrial facility. Use restrained visual storytelling for the accident, focusing on the environment, danger and human emotion rather than graphic injury.",
-    "negative_prompt": "photorealism, 3d render, glossy digital painting, neon colors, exaggerated horror, graphic gore, exposed flesh, graphic burns, dismemberment, excessive flames covering the entire frame, distorted anatomy, extra limbs, extra fingers, inconsistent character appearance, blurry image, low resolution, watermark, logo, readable text"
+    "art_style": "Clean 2D cartoon illustration, indie webcomic art style, thin black line art, soft neutral-toned flat watercolor wash fills, minimalist background, storybook animation frame. Simple, modern digital drawing, flat design. Cinematic vertical compositions, expressive character faces, subtle shadows, varied camera angles, suspenseful atmosphere without graphic violence.",
+    "negative_prompt": "Photorealism, 3D rendering, gore, graphic violence, sexual assault depiction, explicit content, exaggerated horror, overly bright colors, messy backgrounds, text, subtitles, watermarks, inconsistent character designs."
   },
   "assets": {
-    "antonio": {
+    "woman": {
       "type": "character",
-      "label": "Antonio Navarrete",
-      "visual_dna": "A 21-year-old Hispanic-American male industrial maintenance worker, average height and lean build, youthful face, short dark brown hair, clean-shaven, expressive brown eyes. Wearing a dark navy-blue industrial work uniform, matching work trousers, sturdy dark safety boots, protective gloves and a white hard hat. His clothes look like ordinary workwear, not futuristic protective armor. Keep his face, hairstyle, uniform and proportions consistent in every appearance."
+      "label": "Woman walking home",
+      "visual_dna": "A young adult woman with shoulder-length dark brown hair, wearing a muted blue jacket, dark jeans, and comfortable sneakers. Alert expression, expressive eyes, consistent facial features and clothing throughout."
     },
-    "maintenance_workers": {
+    "stalker": {
       "type": "character",
-      "label": "Maintenance Crew",
-      "visual_dna": "A group of four adult male industrial maintenance workers, each with distinct facial features and body types. They wear practical navy-blue work uniforms, safety boots, protective gloves and white hard hats. Their expressions and body language should feel natural and focused on a difficult maintenance task. Keep the group visually consistent throughout the story."
+      "label": "Man following her",
+      "visual_dna": "An adult man with short dark hair, wearing a dark hooded jacket, dark trousers, and ordinary sneakers. His face is partially shadowed, with a suspicious and unsettling expression. Keep his appearance consistent."
     },
-    "plant_supervisor": {
-      "type": "character",
-      "label": "Plant Supervisor",
-      "visual_dna": "An adult male power plant supervisor in his late forties, medium build, short greying hair, clean-shaven face, wearing a light blue collared work shirt, dark trousers, safety glasses and a white hard hat. Carries a clipboard and has a serious, businesslike expression. Maintain the same appearance throughout."
-    },
-    "antonio_mother": {
-      "type": "character",
-      "label": "Antonio's Mother",
-      "visual_dna": "A middle-aged Hispanic-American woman with warm brown eyes, medium-length dark brown hair with a few grey strands, wearing a simple muted burgundy cardigan over a light blouse. Her expressions should feel natural and emotionally restrained. Keep her appearance consistent in the brief phone-call sequence."
-    },
-    "power_plant": {
+    "home": {
       "type": "environment",
-      "label": "Tampa Power Plant",
-      "visual_dna": "A large industrial power plant in Tampa, Florida, with enormous steel boiler structures, thick pipes, metal walkways, railings, maintenance platforms, industrial staircases, overhead beams and tall smokestacks. The interior is dominated by dark steel, dusty concrete, muted yellow safety markings and heavy machinery. Include realistic industrial details such as warning lights, pressure gauges, pipes and control panels, but no readable company logos or signage."
+      "label": "Woman's house",
+      "visual_dna": "A modest suburban house with a front door, small porch, windows, and a narrow pathway leading to the street. A few plants and bushes near the entrance. Evening lighting."
     },
-    "boiler_chamber": {
+    "bushes": {
       "type": "environment",
-      "label": "Boiler and Slag Chamber",
-      "visual_dna": "A massive industrial boiler chamber with thick steel walls, heavy pipes, a lower discharge channel and a water-cooling collection area designed to receive hot industrial slag. The chamber has metal access platforms, maintenance ladders, railings and a narrow service area. A dangerous accumulation of glowing orange molten slag can build up above the lower maintenance area. Preserve the industrial layout and recognizable machinery across shots."
+      "label": "Bushes outside the house",
+      "visual_dna": "Dense green bushes beside the woman's house, close to the front pathway. Thick enough to conceal a person standing behind them."
     },
-    "control_room": {
-      "type": "environment",
-      "label": "Power Plant Control Room",
-      "visual_dna": "A practical industrial control room with rows of analogue gauges, indicator lights, control switches, monitoring screens, a large process diagram and a long console desk. Cool fluorescent lighting, muted grey walls and a large observation window looking toward industrial equipment. Screens may show abstract diagrams and indicators but must contain no readable text."
+    "police_officers": {
+      "type": "character",
+      "label": "Police officers",
+      "visual_dna": "Two adult police officers wearing dark standard police uniforms, utility belts, and serious expressions. Professional and alert body language."
     },
-    "smartphone": {
+    "evidence": {
       "type": "prop",
-      "label": "Smartphone",
-      "visual_dna": "A simple black smartphone with a slightly worn protective case, dark glass screen and rounded corners. It should look like an ordinary personal phone, not a futuristic device. Keep its appearance consistent."
+      "label": "Items found on the man",
+      "visual_dna": "A small collection of evidence items represented non-graphically: a set of handcuffs, a knife with its blade safely covered, and a packet of condoms. Arranged on an evidence table."
+    },
+    "phone": {
+      "type": "prop",
+      "label": "Woman's phone",
+      "visual_dna": "A modern smartphone with a dark screen, used by the woman to call emergency services. No visible brand or readable text."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "power_plant",
+      "environment_ref": "home",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "Antonio Navarrete सिर्फ 21 साल का था। Tampa के एक power plant में उसकी नई नौकरी लगी थी।",
+          "narration_text": "वह एक शाम अपने घर लौट रही थी। रास्ता लगभग खाली था और उसे बस जल्दी से घर पहुँचकर आराम करना था।",
           "camera_type": "Wide establishing shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.antonio} standing at the entrance of {assets.power_plant}, wearing his navy-blue maintenance uniform and white hard hat. He looks toward the enormous industrial structure with a mixture of nervousness and excitement. Towering steel pipes, smokestacks, metal walkways and overhead structures fill the background. A security gate and industrial safety railings frame the foreground. Use a low wide-angle composition to make the facility feel enormous compared with the young worker.",
-          "session_delta_prompt": "Establish the exterior of a large Tampa power plant in daylight. Introduce Antonio with his exact visual design and establish the industrial scale, steel structures, pipes and walkways."
+          "prompt_action": "Show {assets.woman} walking alone along a quiet residential street in the evening. Her house is visible in the distance, with soft street lighting and an otherwise empty road.",
+          "session_delta_prompt": "Establish the quiet evening atmosphere and her ordinary walk home."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "उसकी wife pregnant थी। वह हर महीने की salary से अपने परिवार के लिए एक घर खरीदने का सपना देख रहा था।",
-          "camera_type": "Medium close-up",
+          "narration_text": "लेकिन कुछ देर बाद उसे महसूस हुआ कि कोई आदमी उसके पीछे चल रहा है।",
+          "camera_type": "Over-the-shoulder shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.antonio} taking a short break near an industrial window, looking at a small personal photograph tucked inside his work locker. The photograph shows him standing beside his pregnant wife, without requiring detailed facial identity. His expression is gentle and hopeful. His safety helmet rests on the locker shelf, while pipes and steel equipment are visible through the window behind him. Use a warm close composition that contrasts his personal dream with the cold industrial workplace.",
-          "session_delta_prompt": "Remain within the same power plant facility. Preserve Antonio's exact appearance and work uniform; introduce a personal locker and a small family photograph to communicate his hopes."
+          "prompt_action": "Show {assets.woman} glancing over her shoulder. In the distant background, {assets.stalker} is walking in the same direction, maintaining some distance.",
+          "session_delta_prompt": "Introduce the man following her without revealing his intentions."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "वह सिर्फ 12 dollars per hour कमाता था… और यह उसकी job का चौथा दिन था।",
-          "camera_type": "Close-up detail shot",
+          "narration_text": "उसने अपनी चाल तेज़ कर दी, लेकिन वह आदमी भी उसके पीछे आता रहा। अब उसे साफ़ लगने लगा था कि कुछ गड़बड़ है।",
+          "camera_type": "Side tracking shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show {assets.woman} walking faster with a worried expression while {assets.stalker} remains behind her in the same direction. Keep both characters visible at different distances.",
+          "session_delta_prompt": "Increase tension through her faster steps and anxious expression."
+        },
+        {
+          "beat_id": "s01_b04",
+          "narration_text": "जब वह अपने घर के पास पहुँची, तो उस आदमी ने खुद को पास की झाड़ियों में छिपा लिया।",
+          "camera_type": "Low-angle shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.antonio} tightening his protective gloves and adjusting his white hard hat before starting work. His work boots stand on a dusty metal floor, with a maintenance tool bag beside him. Behind him, the industrial corridor stretches toward a huge boiler chamber. Use a close, low-angle composition focused on his hands and work gear, with his determined face visible in the upper part of the frame.",
-          "session_delta_prompt": "Keep Antonio inside the same power plant. Preserve his workwear and facial features; show him preparing for a maintenance shift in a new close-up composition."
+          "prompt_action": "Show {assets.stalker} crouching behind {assets.bushes} beside {assets.home}. The woman is approaching the front entrance, unaware of exactly where he is hiding.",
+          "session_delta_prompt": "Reveal the man's hiding place and create a suspenseful visual contrast."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "boiler_chamber",
+      "environment_ref": "home",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "उस दिन boiler के अंदर molten slag जमा हो रहा था। यह lava जैसा बेहद गर्म material था।",
-          "camera_type": "Extreme wide industrial shot",
+          "narration_text": "वह किसी तरह जल्दी से घर के अंदर पहुँची और दरवाज़ा बंद कर लिया। लेकिन उसके मन में डर अभी भी बना हुआ था।",
+          "camera_type": "Interior medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show the enormous interior of {assets.boiler_chamber}. High above the lower service area, a growing mass of glowing orange molten slag is accumulating behind an industrial blockage. Thick steel pipes, structural beams and maintenance platforms surround the chamber. A faint orange glow reflects off the metal surfaces, while a small amount of steam drifts through the air. Use a dramatic vertical composition that shows the dangerous height and scale of the machinery.",
-          "session_delta_prompt": "Establish the boiler chamber with its heavy steel structure, lower discharge channel, cooling collection area and elevated slag accumulation. Use restrained orange light to communicate extreme heat without graphic imagery."
+          "prompt_action": "Show {assets.woman} inside {assets.home}, closing the front door and leaning against it with a frightened expression.",
+          "session_delta_prompt": "Move the action indoors and show her immediate relief mixed with fear."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "इसे cool करने के लिए नीचे एक water tank था… लेकिन रास्ता blockage की वजह से बंद था।",
-          "camera_type": "High angle shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show the lower section of {assets.boiler_chamber}, focusing on the blocked discharge channel leading toward the water-cooling tank. A dense industrial obstruction is visible inside the channel. The tank sits below, separated from the accumulated molten material by the blocked passage. Metal railings, pipes, warning lights and a maintenance ladder create layers around the frame. Use a high-angle view that clearly communicates the blocked route.",
-          "session_delta_prompt": "Remain inside the same boiler chamber. Preserve the machinery layout and show the blocked discharge route and water-cooling tank from a different camera position."
+          "narration_text": "उसने देर नहीं की। अपना फोन उठाया और तुरंत पुलिस को कॉल कर दिया।",
+          "camera_type": "Close-up shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show {assets.woman} holding {assets.phone} near her ear, speaking urgently while standing near the closed front door.",
+          "session_delta_prompt": "Focus on her decision to seek help immediately."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "Plant को बंद करने के बजाय, management ने पाँच workers को blockage हटाने भेज दिया।",
-          "camera_type": "Medium wide shot",
+          "narration_text": "उसने पुलिस को बताया कि एक आदमी उसका पीछा कर रहा था और अब उसके घर के बाहर कहीं छिपा हुआ है।",
+          "camera_type": "Close-up on face",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.plant_supervisor} standing on a metal maintenance platform, pointing toward the blocked section of {assets.boiler_chamber}. {assets.antonio} and {assets.maintenance_workers} listen to the instructions while holding maintenance tools. The supervisor holds a clipboard. Huge pipes and the boiler structure loom behind them. Compose the shot from slightly below eye level, with the supervisor in the foreground and all five workers clearly visible in the middle ground.",
-          "session_delta_prompt": "Keep the same boiler chamber and industrial platform. Introduce the supervisor and the five-person maintenance crew, preserving Antonio's distinct appearance and the crew's consistent work uniforms."
+          "prompt_action": "Show {assets.woman} explaining the situation over {assets.phone}. Her expression is tense, and her eyes occasionally glance toward the front window.",
+          "session_delta_prompt": "Emphasize her fear and urgency while she explains what happened."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "Machine चलती रही… और workers को अंदाज़ा भी नहीं था कि उनके ठीक ऊपर क्या जमा हो रहा है।",
-          "camera_type": "Low angle upward shot",
+          "narration_text": "कुछ ही देर में पुलिस वहाँ पहुँच गई। अधिकारियों ने बिना शोर किए घर के आसपास की जगह को ध्यान से देखना शुरू किया।",
+          "camera_type": "Wide exterior shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.antonio} and {assets.maintenance_workers} working near the lower blocked channel. They use industrial tools to inspect the obstruction, focused entirely on their task. Above them, the enormous steel chamber disappears into darkness, with an ominous orange glow visible behind upper metal supports. Use a dramatic low-angle perspective from near the workers' boots, emphasizing the unseen danger directly overhead.",
-          "session_delta_prompt": "Remain in the same boiler chamber. Preserve the five workers and machinery positions; change the camera angle to reveal the growing danger above them while they continue working."
-        },
-        {
-          "beat_id": "s02_b05",
-          "narration_text": "फिर आखिरकार… blockage हट गया।",
-          "camera_type": "Close-up action shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Same maintenance area. Show {assets.antonio} and one of {assets.maintenance_workers} completing the final movement with their tools as the obstruction shifts out of the discharge channel. A sudden vibration runs through the nearby metal structure. Fine dust and tiny particles fall from above. The workers begin to look upward in confusion.",
-          "session_delta_prompt": "In the same scene: keep the five workers, boiler chamber, tools and industrial layout identical. Change only the action to show the blockage being cleared and the workers beginning to react to the vibration."
+          "prompt_action": "Show {assets.police_officers} carefully approaching {assets.home} and inspecting the area around {assets.bushes}. The scene should feel quiet and tense.",
+          "session_delta_prompt": "Introduce the police response and shift the focus outside the house."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "boiler_chamber",
+      "environment_ref": "bushes",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "और अगले ही पल, हजारों pounds molten slag नीचे गिरने लगा।",
-          "camera_type": "Extreme wide action shot",
+          "narration_text": "पुलिस ने झाड़ियों के पास जाँच की, और वहाँ छिपा हुआ वही आदमी पकड़ लिया गया।",
+          "camera_type": "Dynamic wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show a massive stream of glowing orange molten slag suddenly pouring from the elevated discharge area inside {assets.boiler_chamber}. The intense flow spreads across the lower industrial floor, illuminating the metal platforms, pipes and railings with a fierce orange glow. The five maintenance workers appear as small silhouettes at a safe visual distance from the main flow, reacting in alarm. Use a wide diagonal composition to communicate the scale and suddenness of the industrial disaster. Do not depict graphic injuries.",
-          "session_delta_prompt": "Continue in the same boiler chamber but show the sudden molten slag release. Preserve the machinery layout and the five workers; focus on the scale of the dangerous flow and the dramatic change in lighting."
+          "prompt_action": "Show {assets.police_officers} discovering {assets.stalker} behind {assets.bushes}. One officer approaches him while the other remains alert. No physical violence.",
+          "session_delta_prompt": "Reveal the man's capture without showing unnecessary force."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "वह 40 feet तक फैल गया… और लगभग आधा foot मोटी परत बन गई।",
-          "camera_type": "High angle wide shot",
+          "narration_text": "लेकिन असली डरावनी बात तो तब सामने आई, जब पुलिस को उसके पास कुछ ऐसी चीज़ें मिलीं जिनका वहाँ होना बिल्कुल सामान्य नहीं था।",
+          "camera_type": "Evidence close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show the lower floor of {assets.boiler_chamber} from a high industrial platform. A broad glowing orange layer of molten slag spreads across a large section of the floor, reaching toward metal supports and maintenance equipment. Steam rises in thick white clouds, and the intense light reflects off nearby steel surfaces. The long industrial walkway provides a visual sense of distance. Use a wide overhead composition to communicate how much of the floor has been covered.",
-          "session_delta_prompt": "Remain in the same boiler chamber after the release. Preserve the industrial structure and show the molten material spread across the lower floor with rising steam and intense reflected light."
+          "prompt_action": "Show {assets.evidence} arranged on a clean evidence table. Use a serious investigative atmosphere without graphic or explicit details.",
+          "session_delta_prompt": "Build suspense around the items discovered by the police."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "वहाँ मौजूद पाँचों workers इस हादसे की चपेट में आ गए।",
-          "camera_type": "Wide silhouette shot",
+          "narration_text": "उसके पास हथकड़ियाँ, एक चाकू और कंडोम मिले। अब यह मामला सिर्फ पीछा किए जाने तक सीमित नहीं लग रहा था।",
+          "camera_type": "Top-down close-up",
           "action_mode": "in_place_action",
-          "prompt_action": "Same boiler chamber during the accident. Show the five maintenance workers struggling to move away from the spreading molten flow, partially obscured by dense steam and strong orange backlighting. {assets.antonio} is visible among them, his white hard hat and navy uniform recognizable through the haze. Keep the framing distant and non-graphic, using silhouettes, steam and the industrial environment to convey danger.",
-          "session_delta_prompt": "In the same scene: preserve the boiler chamber, molten flow and five workers. Change only their body positions to show an urgent attempt to escape. Keep the depiction non-graphic and avoid visible injuries."
+          "prompt_action": "Show a closer view of {assets.evidence}, with the handcuffs, covered knife, and packet clearly distinguishable but presented non-graphically.",
+          "session_delta_prompt": "Reveal the discovered items one by one through the composition."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "Antonio ने किसी तरह अपना phone निकाला… और अपनी माँ को call किया।",
-          "camera_type": "Close-up shot",
+          "narration_text": "बाद में बताया गया कि उस आदमी का डीएनए इलाके में हुई छह रेप की घटनाओं से मैच हुआ था।",
+          "camera_type": "Investigative medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.antonio} in a smoke-filled industrial area, holding {assets.smartphone} close to his face with a trembling gloved hand. His expression is frightened and desperate. Orange light flickers across the background, while thick steam partially obscures the steel machinery. Frame the phone and his face in a tight emotional composition, with no graphic depiction of injury.",
-          "session_delta_prompt": "Stay within the same accident environment. Preserve Antonio's appearance and uniform; shift to a close-up showing him desperately trying to make a phone call through the steam and confusion."
-        },
-        {
-          "beat_id": "s03_b05",
-          "narration_text": "Call माँ ने नहीं उठाया… voicemail शुरू हो गया।",
-          "camera_type": "Extreme close-up",
-          "action_mode": "in_place_action",
-          "prompt_action": "Same accident setting. Show {assets.smartphone} in Antonio's trembling hand, its screen displaying a generic incoming voicemail recording interface with abstract icons and no readable text. His other gloved hand is visible near the edge of the frame. The background is softly blurred with pale steam and faint orange industrial light.",
-          "session_delta_prompt": "In the same scene: keep the smartphone, Antonio's hand and smoky industrial background identical. Change only the phone screen to indicate that the call has reached voicemail, without adding readable text."
+          "prompt_action": "Show a police investigation setting with {assets.police_officers} reviewing case files and a DNA evidence report represented with abstract, unreadable markings. No real victims or assault scenes.",
+          "session_delta_prompt": "Connect the suspect to the reported investigation through symbolic forensic visuals."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "power_plant",
+      "environment_ref": "home",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "उस voicemail में उसकी आखिरी recorded आवाज़ थी… 'Mom! Help me! I'm burning! Call the cops! Mom!'",
-          "camera_type": "Emotional close-up",
+          "narration_text": "बाद में उस महिला ने बताया कि वह अपनी सुरक्षा के लिए पहले से स्प्रिंट ट्रेनिंग करती थी।",
+          "camera_type": "Flashback medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.antonio} holding {assets.smartphone} close to his mouth, desperately calling for help. His eyes are wide with fear, and his expression is strained. Dense steam fills the background, with distant orange light reflecting from industrial steel. Keep the image focused on his face and the phone, using a restrained non-graphic depiction. No subtitles or visible words.",
-          "session_delta_prompt": "Continue the same accident moment. Preserve Antonio's face, work uniform and smartphone; focus on the emotional urgency of his final recorded message without showing graphic injuries."
+          "prompt_action": "Show {assets.woman} running during an athletic sprint training session on an outdoor track. Her posture is strong and focused, with natural daylight.",
+          "session_delta_prompt": "Transition into a visual flashback showing her running practice."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "उसकी माँ तक सिर्फ उसकी चीखें नहीं… पीछे आती steam की आवाज़ भी पहुँची।",
-          "camera_type": "Medium close-up",
+          "narration_text": "उसी ट्रेनिंग की वजह से वह उस आदमी से तेज़ भाग पाई और अपने घर तक पहुँच सकी।",
+          "camera_type": "Dynamic side tracking shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.antonio_mother} at home in a modest living room, holding a phone near her ear. Her expression changes from ordinary attention to sudden fear and confusion. A simple sofa, a small table and a warm household lamp create a quiet domestic setting. The contrast between the peaceful home and the distressing call should be clear. Keep the phone screen without readable text.",
-          "session_delta_prompt": "Introduce Antonio's mother in a separate quiet home environment. Preserve her established appearance and clothing; show her listening to the voicemail with growing alarm."
+          "prompt_action": "Show {assets.woman} sprinting along the residential street toward {assets.home}. Use dynamic motion lines and a clear sense of speed, with no physical contact or attack.",
+          "session_delta_prompt": "Visually connect her running ability with her escape."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "Antonio की आवाज़ voicemail में दर्ज हो गई… लेकिन वह तुरंत नहीं मरा।",
-          "camera_type": "Wide hospital corridor shot",
+          "narration_text": "उसका मानना था कि अगर वह इतनी तेज़ नहीं भाग पाती, तो शायद उस रात उसके साथ कुछ बहुत बुरा हो सकता था।",
+          "camera_type": "Emotional close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show a quiet hospital corridor with a closed intensive care unit door, muted hospital lighting, empty chairs and a wall clock. A medical staff member walks past in the background. The scene should feel serious and respectful, without showing a patient or medical procedure. Use a long perspective down the corridor to create a sense of waiting and uncertainty.",
-          "session_delta_prompt": "Transition from the power plant to a hospital corridor. Establish a quiet, serious atmosphere with an intensive care unit entrance and restrained documentary-style visual storytelling."
+          "prompt_action": "Show {assets.woman} sitting safely inside {assets.home}, looking thoughtful and shaken as she remembers the incident. Keep the atmosphere quiet and respectful.",
+          "session_delta_prompt": "End on her emotional reaction and the seriousness of what could have happened."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "वह पाँच दिनों तक coma में रहा… उसके शरीर पर 80 percent burns थे।",
-          "camera_type": "Hospital room wide shot",
+          "narration_text": "सोचिए, वह आदमी उसके घर के बाहर छिपा बैठा था और उसके पास ऐसी चीज़ें भी थीं। अगर उसने उस दिन अपनी ट्रेनिंग और अपनी समझ पर भरोसा नहीं किया होता, तो क्या होता?",
+          "camera_type": "Wide cinematic closing shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show a respectful, non-graphic view of an intensive care room through a partially open doorway. A hospital bed is visible with a patient mostly covered by clean white sheets, surrounded by medical monitoring equipment. A family member sits quietly nearby with their hands clasped. Keep the patient unidentifiable and do not show injuries, exposed skin or graphic medical details. Use soft neutral hospital lighting and a still, solemn composition.",
-          "session_delta_prompt": "Show the hospital intensive care setting several days after the accident. Keep the scene non-graphic and respectful; communicate the seriousness through the hospital equipment and the waiting family member."
-        },
-        {
-          "beat_id": "s04_b05",
-          "narration_text": "पाँच दिन बाद Antonio की मौत हो गई। उसके साथ चार और workers भी इस हादसे में मारे गए।",
-          "camera_type": "Wide memorial shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show five simple white flowers placed beside five small work helmets on a quiet table outside the hospital. One helmet is slightly smaller in visual presence, suggesting the youngest worker without using labels. In the background, a softly blurred family member stands in silence near a window. Use a restrained, respectful composition with muted colors and gentle daylight. No readable names or signage.",
-          "session_delta_prompt": "Create a quiet memorial scene after the accident. Use five work helmets and five white flowers to represent the five workers who died. Keep the visual treatment respectful and understated."
-        }
-      ]
-    },
-    {
-      "scene_id": 5,
-      "environment_ref": "control_room",
-      "beats": [
-        {
-          "beat_id": "s05_b01",
-          "narration_text": "इस हादसे को रोका जा सकता था… अगर maintenance के दौरान machine बंद कर दी जाती।",
-          "camera_type": "Wide control room shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.control_room} with its long console, process diagrams, analogue gauges and industrial monitoring screens. An empty operator chair faces the control panel. A large observation window reveals the power plant structures outside. The control switches and indicator lights create a quiet but unsettling atmosphere. Use a symmetrical wide composition that emphasizes the machinery and the absence of a person at the controls.",
-          "session_delta_prompt": "Establish the power plant control room with its industrial consoles, gauges, screens and observation window. Use a restrained, documentary-like composition."
-        },
-        {
-          "beat_id": "s05_b02",
-          "narration_text": "क्योंकि उस दिन काम तो पाँच लोगों ने किया था… लेकिन machine बंद करने का फैसला उनके हाथ में नहीं था।",
-          "camera_type": "Close-up control panel shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show a close-up of the industrial control console in {assets.control_room}, with several illuminated indicator lights, heavy switches and a large emergency shutdown control clearly visible. In the blurred background, the supervisor stands near the console looking toward the plant observation window. Use a slightly tilted composition to create tension. Do not show readable labels or company branding.",
-          "session_delta_prompt": "Remain inside the same control room. Preserve its console, screens and observation window; shift to a close-up of the control switches and the supervisor in the background."
-        },
-        {
-          "beat_id": "s05_b03",
-          "narration_text": "अब आप बताइए… क्या पैसे बचाने के लिए चलती machine के नीचे workers को भेजना सही फैसला था?",
-          "camera_type": "Final cinematic wide shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show the enormous exterior of {assets.power_plant} at dusk, with its towering smokestacks, steel structures, pipes and industrial walkways silhouetted against a muted evening sky. In the foreground, five empty white hard hats rest on a low concrete ledge. A quiet service road leads toward the plant entrance. Use a wide, still composition with the helmets sharply visible and the power plant dominating the distant background. End on a serious, thought-provoking frame.",
-          "session_delta_prompt": "Create the final exterior view of the same power plant at dusk. Preserve its industrial identity and use five empty work helmets in the foreground as a restrained visual reminder of the workers."
+          "prompt_action": "Show {assets.home} from across the quiet street at night. {assets.bushes} are visible beside the house, while a warm light glows through the window. Create a reflective, suspenseful ending.",
+          "session_delta_prompt": "Close the story with a quiet visual reminder of the danger she escaped."
         }
       ]
     }

@@ -173,3 +173,7 @@ JSON STRUCTURE TEMPLATE:
     }
   ]
 }
+
+
+
+Image art style prompt - Clean 2D cartoon illustration, indie webcomic art style, thin black line art, soft neutral-toned flat watercolor wash fills, minimalist background, storybook animation frame. (Insert your subject here). Simple, modern digital drawing, flat design.

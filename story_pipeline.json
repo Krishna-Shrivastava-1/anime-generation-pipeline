@@ -1,414 +1,230 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "From a Petrol Pump to a Business Empire",
-    "project_id": "from_petrol_pump_to_empire",
+    "title": "The Stranger Who Borrowed Tomorrow",
+    "project_id": "the_borrowed_tomorrow",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Premium cinematic historical anime documentary, realistic Japanese anime aesthetic, highly detailed hand-painted environments, expressive realistic human faces, cinematic depth of field, dramatic lighting, atmospheric perspective, rich environmental storytelling, carefully composed foreground midground and background, volumetric sunlight, realistic period-specific Indian and Arabian architecture, subtle film grain, professional movie cinematography, 8K quality, vertical 9:16 composition. Every image must look like a carefully directed frame from the same historical film, never like an isolated character portrait.",
-    "negative_prompt": "ugly, deformed, extra limbs, bad anatomy, blurry, low resolution, inconsistent character face, inconsistent clothing, inconsistent age, random background, empty background, plain studio background, floating characters, modern buildings in historical scenes, modern vehicles in historical scenes, 3d render, watermark, signature, text, subtitles, logos, distorted hands, oversaturated colors"
+    "art_style": "Clean 2D cartoon illustration, indie webcomic art style, thin black line art, soft neutral-toned flat watercolor wash fills, minimalist background, storybook animation frame. Simple, modern digital drawing, flat design. Charming old Hindi storybook atmosphere, expressive characters, warm muted earthy colors, clear silhouettes, detailed environmental storytelling. Every frame should use a distinct and intentional composition, varied camera angles, dynamic poses, visual depth through foreground, midground and background, and subtle environmental movement. Keep character designs consistent across all scenes.",
+    "negative_prompt": "photorealistic, 3d render, glossy digital painting, thick outlines, neon colors, oversaturated palette, excessive background clutter, static portrait, repetitive composition, inconsistent character design, distorted anatomy, extra fingers, extra limbs, blurry image, readable text, watermark, logo"
   },
   "assets": {
-    "young_dreamer": {
+    "young_farmer": {
       "type": "character",
-      "label": "Young Indian Dreamer",
-      "visual_dna": "A 17-year-old Indian male from Gujarat, medium-brown skin, slim build, oval face, prominent forehead, deep dark-brown eyes, thick slightly wavy black hair combed naturally to the side, clean-shaven, wearing a simple off-white cotton shirt with rolled sleeves, faded brown trousers and worn leather sandals. Humble appearance, observant eyes, naturally expressive face. Maintain identical facial structure, hairstyle and clothing throughout the teenage years."
+      "label": "Young Farmer",
+      "visual_dna": "A 24-year-old Indian village farmer, lean build, medium brown skin, expressive dark eyes, short slightly messy black hair, thin moustache. Wearing a faded indigo-blue kurta with sleeves rolled up, cream dhoti trousers and worn brown sandals. A faded red cotton scarf rests around his neck. His expressions shift from worry to curiosity and finally quiet wisdom. Maintain identical facial features, clothing, hairstyle and body proportions in every appearance."
     },
-    "young_entrepreneur": {
+    "old_traveller": {
       "type": "character",
-      "label": "Young Indian Entrepreneur",
-      "visual_dna": "An Indian male aged 28-35, medium-brown skin, average build, broad forehead, oval face, expressive deep brown eyes, thick black hair neatly side-parted, clean-shaven, wearing a crisp white cotton shirt with a slightly open collar, dark brown formal trousers and a simple metal wristwatch. Confident but approachable expression, energetic body language, persuasive personality. Maintain exactly the same face, hairstyle and clothing throughout the early business years."
+      "label": "Old Traveller",
+      "visual_dna": "A mysterious elderly Indian traveller around 70 years old, slender body, slightly hunched posture, deeply lined face, kind sharp eyes, long white beard and shoulder-length white hair. Wearing a dusty ochre shawl over a simple brown robe, loose cream trousers and old leather sandals. Carries a small wooden walking stick and a weathered cloth shoulder bag. Maintain consistent appearance and clothing."
     },
-    "mature_entrepreneur": {
-      "type": "character",
-      "label": "Mature Indian Industrialist",
-      "visual_dna": "An Indian male aged 45-55, medium-brown skin, slightly fuller face, broad forehead, expressive dark-brown eyes, thick black hair with a slightly receding hairline and subtle grey at the temples, clean-shaven, wearing an elegant cream-colored formal shirt and dark trousers. Confident, charismatic expression, strong eye contact, composed posture. Must look like an older version of the young entrepreneur, preserving the same facial identity."
-    },
-    "aden_merchants": {
-      "type": "character",
-      "label": "International Merchants",
-      "visual_dna": "A diverse group of Indian, Arab and international male merchants aged 30-60, realistic facial features, historically accurate 1950s clothing, cotton shirts, traditional Arab garments and business attire, negotiating prices, inspecting cargo and exchanging commercial documents."
-    },
-    "bombay_merchants": {
-      "type": "character",
-      "label": "Bombay Textile Merchants",
-      "visual_dna": "Indian male traders aged 30-55, medium-brown skin, different realistic faces, period-appropriate 1950s and 1960s cotton shirts, traditional trousers and simple business clothing, expressive faces and natural commercial interactions."
-    },
-    "textile_customers": {
-      "type": "character",
-      "label": "Indian Textile Customers",
-      "visual_dna": "Indian middle-class families and shop customers from the 1970s, men wearing period-appropriate shirts and trousers, women wearing colorful traditional sarees, natural expressions, realistic Indian facial features, examining fabric samples and discussing purchases."
-    },
-    "investors": {
-      "type": "character",
-      "label": "Ordinary Indian Investors",
-      "visual_dna": "Indian men and women aged 25-65, middle-class appearance, historically accurate late-1970s and 1980s Indian clothing, simple sarees, shirts, trousers and traditional attire, carrying paper documents, displaying curiosity, excitement and pride."
-    },
-    "factory_workers": {
-      "type": "character",
-      "label": "Industrial Factory Workers",
-      "visual_dna": "Indian male and female industrial workers aged 20-50, realistic medium-brown skin, practical hairstyles, wearing period-appropriate cotton work clothes, shirts, trousers and sarees, operating machinery and moving through the production floor."
-    },
-    "gujarat_village": {
+    "village_well": {
       "type": "environment",
-      "label": "Chorwad Village, Gujarat, 1930s",
-      "visual_dna": "A historically accurate small coastal village in Gujarat during the 1930s, traditional low-rise Indian houses with faded lime-plastered walls, narrow dusty lanes, wooden doors, modest courtyards, old tiled rooftops, distant coconut trees and open dusty land. A few villagers walking through the background, warm late-afternoon sunlight, earthy ochre and muted brown color palette. Strong visual depth with foreground village objects, active middle-ground pedestrians and distant village rooftops."
+      "label": "Ancient Village Well",
+      "visual_dna": "An old circular stone well at the edge of a small Indian village, uneven grey-brown stones, a wooden pulley with a thick rope, a small clay water pot nearby, wild grass growing between stones and a large banyan tree leaning over one side. Behind it are distant mud houses, a narrow dusty path and low green fields. The location feels quiet and slightly mysterious. Preserve its recognizable layout."
     },
-    "gujarat_home": {
+    "farmer_hut": {
       "type": "environment",
-      "label": "Modest Gujarati Family Home",
-      "visual_dna": "A modest Indian family home in 1940s Gujarat, rough cream plaster walls, low wooden furniture, traditional floor seating, simple utensils, a small open window, an old wooden storage cupboard, faded cotton curtains and sunlight entering through the doorway. Historically accurate middle-class modest living conditions, warm natural light, realistic environmental textures."
+      "label": "Farmer's Hut",
+      "visual_dna": "A modest Indian village mud hut with faded ochre walls, a sloping thatched roof, a small wooden doorway, a woven charpai, a clay water pot and farming tools leaning against the exterior. Inside, a simple low wooden table, a brass oil lamp, a rolled sleeping mat and a small window. Warm earthy tones and a humble lived-in atmosphere."
     },
-    "aden_harbor": {
-      "type": "environment",
-      "label": "Aden International Harbor, Late 1940s",
-      "visual_dna": "A historically accurate late-1940s Aden harbor, enormous cargo ships anchored in a deep blue sea, weathered stone port buildings, industrial cranes, ropes, wooden cargo crates, dockworkers unloading merchandise, merchant boats, distant hills and hazy desert mountains. Warm golden sunlight, sea reflections, busy harbor activity, cinematic atmospheric depth, period-accurate architecture and machinery."
-    },
-    "aden_petrol_station": {
-      "type": "environment",
-      "label": "Aden Petrol Station, Late 1940s",
-      "visual_dna": "A historically accurate 1940s petrol station in Aden, old metal fuel pumps, vintage automobiles, dusty roadside, small stone service building, oil barrels, hanging tools, distant desert hills and a busy port road. Warm harsh desert sunlight, dusty atmosphere, realistic period-specific vehicles and equipment. No modern fuel dispensers, no contemporary signage."
-    },
-    "aden_trading_market": {
-      "type": "environment",
-      "label": "Aden Trading Market",
-      "visual_dna": "A bustling late-1940s international trading district in Aden, historic stone commercial buildings, narrow market streets, large merchant warehouses, wooden cargo crates, fabric bundles, spice sacks, international traders negotiating business, distant port visible between buildings. Strong golden desert light, long architectural shadows, busy street activity, rich environmental details and layered cinematic composition."
-    },
-    "aden_office": {
-      "type": "environment",
-      "label": "International Trading Office",
-      "visual_dna": "A historically accurate late-1940s commercial office in Aden, dark wooden desks, large accounting registers, ink pens, commercial invoices, vintage telephones, wooden shelves filled with files, open windows overlooking a busy harbor road, ceiling fan, warm afternoon sunlight and dusty atmospheric depth."
-    },
-    "bombay_market": {
-      "type": "environment",
-      "label": "1950s Bombay Commercial District",
-      "visual_dna": "A historically accurate 1950s Bombay trading district near Masjid Bunder, crowded narrow commercial streets, colonial-era buildings, old shopfronts, vintage Indian taxis, hand-pulled carts, merchants transporting fabric and merchandise, pedestrians in period-specific clothing, overhead electrical wires, aged architectural facades and distant street activity. Warm sunlight, rich urban atmosphere, layered foreground and background details."
-    },
-    "small_bombay_office": {
-      "type": "environment",
-      "label": "Small Trading Office in Bombay",
-      "visual_dna": "A tiny 1950s Bombay commercial office, narrow rectangular room, aged cream plaster walls, wooden desk, simple wooden chairs, open ledgers, ink pens, old accounting registers, metal filing cabinets, vintage wall clock, ceiling fan and large wooden windows overlooking a crowded commercial street. Warm afternoon sunlight entering from one side, realistic shadows, lived-in environment, visible activity outside."
-    },
-    "textile_factory": {
-      "type": "environment",
-      "label": "First Textile Manufacturing Facility",
-      "visual_dna": "A historically accurate 1960s Indian textile manufacturing facility, rows of heavy industrial weaving machines, rotating mechanical spindles, cotton and synthetic yarn, overhead metal beams, high factory windows, concrete floor, workers operating machinery, fabric hanging from production lines, floating cotton dust visible in sunlight. Warm industrial lighting, deep perspective with machinery extending far into the background."
-    },
-    "textile_showroom": {
-      "type": "environment",
-      "label": "Indian Textile Showroom, 1970s",
-      "visual_dna": "An elegant but accessible 1970s Indian textile showroom, polished wooden counters, glass display cabinets, neatly stacked colorful synthetic fabric rolls, cream-colored walls, large windows facing a busy Indian commercial street, vintage ceiling fans, customers browsing merchandise and shop assistants arranging fabric samples. Rich textile colors, warm natural light, active commercial environment. No readable logos or signage."
-    },
-    "shareholder_hall": {
-      "type": "environment",
-      "label": "Indian Public Shareholder Meeting, 1970s",
-      "visual_dna": "A large Indian public meeting hall in the late 1970s, hundreds of ordinary middle-class Indian investors seated closely together, wooden chairs, simple raised stage, vintage microphones, large industrial ceiling fans, warm overhead lighting, historically accurate clothing, banners without readable text, packed audience extending into the background. Excited and energetic atmosphere, cinematic wide perspective."
-    },
-    "industrial_complex": {
-      "type": "environment",
-      "label": "Indian Industrial Expansion, 1980s and 1990s",
-      "visual_dna": "A gigantic Indian industrial manufacturing complex during the 1980s and 1990s, massive factory structures, interconnected steel pipelines, industrial chimneys, storage tanks, processing towers, metal walkways, factory workers, service roads, distant industrial infrastructure extending to the horizon. Dramatic morning sunlight, atmospheric industrial haze, realistic engineering details, monumental scale, cinematic aerial perspective."
-    },
-    "business_ledger": {
+    "golden_seed": {
       "type": "prop",
-      "label": "Old Commercial Ledger",
-      "visual_dna": "A thick brown leather-bound accounting ledger with aged cream-colored pages, handwritten financial calculations, ink marks, slightly damaged corners, visible paper fibers and historically accurate commercial accounting entries."
+      "label": "Golden Seed",
+      "visual_dna": "A single unusual seed, small and oval, with a warm golden-brown shell and a tiny natural spiral pattern. It has a subtle warm glow, never magical neon light. Keep its size, shape and appearance identical whenever shown."
     },
-    "cargo_crates": {
+    "clay_pot": {
       "type": "prop",
-      "label": "International Cargo Crates",
-      "visual_dna": "Large weathered wooden shipping crates, rope bindings, faded shipping markings without readable company names, dusty surfaces, historically accurate cargo packaging from the 1940s."
-    },
-    "fabric_rolls": {
-      "type": "prop",
-      "label": "Premium Synthetic Fabric Rolls",
-      "visual_dna": "Beautifully arranged synthetic textile rolls in rich red, royal blue, cream, yellow and gold colors, smooth woven polyester texture, realistic fabric folds, polished surfaces and tightly wound cylindrical shapes."
-    },
-    "share_certificates": {
-      "type": "prop",
-      "label": "Indian Public Share Certificates",
-      "visual_dna": "Historically styled Indian share certificates from the late 1970s, cream-colored paper, intricate printed borders, vintage financial document layout, handwritten investor details, official-looking stamps and signatures, no readable real company names or identifiable logos."
+      "label": "Clay Water Pot",
+      "visual_dna": "A traditional round reddish-brown earthen water pot with a narrow neck, slightly chipped rim and hand-made uneven surface. Keep the same shape and texture throughout."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "aden_petrol_station",
+      "environment_ref": "village_well",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "क्या आप सोच सकते हैं? एक पेट्रोल पंप पर काम करने वाला लड़का, एक दिन इतना बड़ा कारोबारी साम्राज्य खड़ा कर देगा!",
-          "camera_type": "Extreme wide cinematic establishing shot",
+          "narration_text": "अगर कोई अजनबी आपको कल की खुशी आज ही दे दे… तो क्या आप उस पर भरोसा करेंगे?",
+          "camera_type": "Wide establishing shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Establish {assets.aden_petrol_station} during the late 1940s. Show {assets.young_dreamer} standing beside an old fuel pump, with a vintage car, dusty road, oil barrels and distant desert hills. Dramatic golden sunlight, strong foreground-midground-background separation, cinematic composition.",
-          "session_delta_prompt": "Create an image: Establish {assets.aden_petrol_station} in the late 1940s, showing {assets.young_dreamer} working beside a vintage petrol pump. Include period-accurate vehicles, oil barrels, a dusty roadside, distant desert hills and dramatic golden sunlight."
+          "prompt_action": "Show {assets.old_traveller} standing beside {assets.village_well}, holding {assets.golden_seed} carefully in his open palm. {assets.young_farmer} stands a few steps away, staring at the seed in disbelief. A banyan tree spreads its branches overhead, distant village houses sit beyond the dusty path, and a few dry leaves drift across the foreground. Use a dramatic wide composition with the glowing seed as a tiny focal point between the two characters.",
+          "session_delta_prompt": "Create the opening scene at the same ancient village well. Establish the well, banyan tree, village houses and fields. Introduce both characters with their exact visual designs and the golden seed."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "लेकिन उसकी कहानी शुरू होती है गुजरात के एक छोटे से गांव से।",
-          "camera_type": "Dramatic aerial establishing shot",
+          "narration_text": "एक छोटे से गाँव में, एक किसान हर दिन अपनी किस्मत को कोसता था।",
+          "camera_type": "High angle wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show an expansive aerial view of {assets.gujarat_village}, with small traditional houses, winding dusty lanes, villagers walking, distant rooftops and warm sunlight. No modern buildings or vehicles.",
-          "session_delta_prompt": "Create a completely new geographical location: an aerial cinematic view of {assets.gujarat_village}, showing the small village, traditional houses, dusty roads and distant landscape."
+          "prompt_action": "Show {assets.young_farmer} sitting alone on the stone edge of {assets.village_well}, elbows resting on his knees and head lowered. His farming tools lie abandoned beside the dusty path. In the background, green fields stretch toward the village huts, while a dry patch of earth near the well suggests a difficult season. Use a high-angle composition that makes the farmer appear small against the quiet landscape.",
+          "session_delta_prompt": "Show the same farmer and village well in daylight from a new elevated camera angle. Preserve the well, banyan tree, village surroundings and the farmer's exact appearance."
+        },
+        {
+          "beat_id": "s01_b03",
+          "narration_text": "एक दिन वहाँ एक बूढ़ा मुसाफ़िर आया।",
+          "camera_type": "Long shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.old_traveller} walking along the dusty path toward {assets.village_well}, leaning slightly on his wooden walking stick. His ochre shawl moves in the breeze. {assets.young_farmer} notices him from beside the well and slowly lifts his head. Frame the traveller through tall foreground grass, with the banyan tree and village huts layered behind him.",
+          "session_delta_prompt": "Remain at the same village well during daylight. Introduce the traveller approaching along the path while preserving the farmer and environment designs."
+        },
+        {
+          "beat_id": "s01_b04",
+          "narration_text": "उसने किसान की हथेली पर एक अजीब-सा बीज रख दिया।",
+          "camera_type": "Extreme close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show a close-up of {assets.old_traveller}'s wrinkled hand placing {assets.golden_seed} into the open palm of {assets.young_farmer}. The seed's subtle golden-brown spiral catches a small ray of sunlight. The farmer's blue sleeve and the traveller's ochre shawl frame the hands. The old stone well is softly visible in the background.",
+          "session_delta_prompt": "Keep both characters at the same well. Focus tightly on the exchange of the golden seed, preserving its exact design and the characters' clothing."
+        },
+        {
+          "beat_id": "s01_b05",
+          "narration_text": "मुसाफ़िर बोला, 'इसे बोना… कल तुम्हें इसका फल मिलेगा।'",
+          "camera_type": "Medium close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.old_traveller} bending slightly toward {assets.young_farmer}, raising one finger as if giving an important instruction. His expression is calm and mysterious. The farmer looks down at {assets.golden_seed} in his palm. The old traveller's walking stick rests against the stone well, and the banyan leaves form a soft frame above them.",
+          "session_delta_prompt": "Stay beside the same well. Preserve the seed and both character designs; shift the focus to the traveller delivering his mysterious instruction."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "gujarat_home",
+      "environment_ref": "farmer_hut",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "साल 1932 में एक साधारण परिवार में जन्मा यह लड़का, बचपन से ही बड़े सपने देखता था।",
-          "camera_type": "Wide interior establishing shot",
+          "narration_text": "किसान हँसा, लेकिन फिर भी उसने बीज बो दिया।",
+          "camera_type": "Medium wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_dreamer} sitting inside {assets.gujarat_home}, near a small wooden window. Through the window, show a lively village lane, distant rooftops and villagers passing by. Warm morning sunlight creates detailed shadows across the room.",
-          "session_delta_prompt": "Create an image: Show {assets.young_dreamer} inside {assets.gujarat_home}, sitting near a wooden window overlooking the village. Establish the humble historical setting with detailed furniture, sunlight and visible outdoor activity."
+          "prompt_action": "Show {assets.young_farmer} crouching in the small patch of soil beside {assets.farmer_hut}, carefully placing {assets.golden_seed} into the earth. He has a doubtful half-smile. {assets.clay_pot} sits beside the hut doorway, and farming tools lean against the mud wall. The thatched roof and a few green plants create a cozy village setting. Show his hands pressing soil over the seed.",
+          "session_delta_prompt": "Establish the farmer's hut exterior in soft late-afternoon light. Preserve the farmer's appearance, hut architecture and golden seed."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "लेकिन उसे पता था कि जिंदगी बदलने के लिए उसे अपने गांव से बाहर निकलना होगा।",
-          "camera_type": "Medium close-up shot",
+          "narration_text": "उसने थोड़ा पानी डाला… और रात होने का इंतज़ार किया।",
+          "camera_type": "Low angle close-up",
           "action_mode": "in_place_action",
-          "prompt_action": "Same scene. {assets.young_dreamer} turns his gaze from the room toward the distant village road outside the window, his expression becoming determined.",
-          "session_delta_prompt": "In the same scene: keep {assets.young_dreamer}, clothing, window, room and background identical. Change his action: show him turning toward the distant road outside, with a thoughtful and determined expression."
+          "prompt_action": "Same hut exterior and same patch of soil. Show {assets.young_farmer} tilting {assets.clay_pot} and pouring a small stream of water onto the newly planted spot. Tiny droplets splash against the earth. His red scarf hangs forward as he bends down. The warm evening sky and hut wall remain in the background.",
+          "session_delta_prompt": "In the same scene: keep the farmer, hut, soil patch and surroundings identical. Change only his action to pouring water from the clay pot onto the planted seed."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "और फिर, सिर्फ सत्रह साल की उम्र में, उसने घर छोड़ने का फैसला किया।",
-          "camera_type": "Rear tracking-style wide shot",
+          "narration_text": "सुबह वह दौड़कर बाहर आया…",
+          "camera_type": "Dynamic tracking shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_dreamer} walking away from {assets.gujarat_village} along a long dusty village road, carrying a small worn travel bag. Traditional houses and villagers remain visible behind him, distant open countryside ahead, dramatic early morning sunlight.",
-          "session_delta_prompt": "Create a new exterior camera angle: show {assets.young_dreamer} walking away from {assets.gujarat_village} with a small travel bag. Keep the village architecture historically accurate and create a cinematic sense of departure."
+          "prompt_action": "Show {assets.young_farmer} rushing out through the wooden doorway of {assets.farmer_hut}, one sandal slightly lifted mid-stride, his red scarf flying behind him. His eyes are fixed on the patch of soil. The charpai and clay pot are visible in the foreground, while morning sunlight falls across the hut wall and ground. Use a lively diagonal composition to create a sense of sudden movement.",
+          "session_delta_prompt": "Show the same hut exterior in fresh morning light. Preserve the farmer and hut details; change the camera angle to capture his hurried movement outside."
+        },
+        {
+          "beat_id": "s02_b04",
+          "narration_text": "लेकिन वहाँ तो कुछ भी नहीं उगा था!",
+          "camera_type": "Top-down shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same patch of soil beside {assets.farmer_hut}. Show {assets.young_farmer} kneeling and staring at the completely empty earth. He gently scrapes the soil with one finger, looking confused. The empty patch is clearly visible, with the clay pot lying on its side nearby and a few scattered dry leaves.",
+          "session_delta_prompt": "In the same hut exterior: preserve the soil patch, farmer and morning lighting. Show no plant growing; change only the farmer's action and expression to disappointment."
+        },
+        {
+          "beat_id": "s02_b05",
+          "narration_text": "वह गुस्से में बीज को बेकार समझने लगा।",
+          "camera_type": "Close-up on face and hand",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.young_farmer} sitting back on his heels, holding a tiny empty handful of soil and looking frustrated. His eyebrows are knitted and his lips pressed together. The bare patch of earth fills the lower foreground, while the hut wall and doorway sit behind him. Use an intimate close-up that emphasizes his disappointment.",
+          "session_delta_prompt": "Remain at the same hut and empty soil patch. Preserve the farmer's appearance and the morning setting; focus on his frustrated reaction."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "aden_harbor",
+      "environment_ref": "village_well",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "उसकी मंजिल थी अदन, जहां वह नौकरी और नए अवसरों की तलाश में पहुंचा।",
-          "camera_type": "Extreme wide harbor shot",
+          "narration_text": "तभी उसे याद आया… मुसाफ़िर ने कहा था, कल फल मिलेगा।",
+          "camera_type": "Medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_dreamer} arriving at {assets.aden_harbor}, standing on a busy dock with a small travel bag. Enormous cargo ships, ropes, cranes, dockworkers and stone port buildings fill the background. Strong sunlight reflects from the sea.",
-          "session_delta_prompt": "Create an entirely new location: show {assets.young_dreamer} arriving at {assets.aden_harbor}. Include massive period cargo ships, active dockworkers, merchant cargo, cranes, stone architecture and a deep blue sea."
+          "prompt_action": "Show {assets.young_farmer} standing beside {assets.village_well}, looking toward the distant dusty road with a thoughtful expression. One hand rests on his chin, while the other holds the red scarf near his chest. The banyan tree casts long shadows across the stone well, and the fields stretch behind him under a pale afternoon sky.",
+          "session_delta_prompt": "Return to the established village well in afternoon light. Preserve its architecture and the farmer's appearance; show him remembering the traveller's promise."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "वहां उसने एक पेट्रोल पंप पर काम किया और व्यापार की दुनिया को करीब से देखा।",
-          "camera_type": "Medium wide shot",
+          "narration_text": "वह बूढ़े आदमी को ढूँढ़ने दौड़ा… पर गाँव में कोई उसे जानता ही नहीं था।",
+          "camera_type": "Wide dynamic shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_dreamer} working at {assets.aden_petrol_station}, operating an old mechanical fuel pump beside a vintage automobile. Other period vehicles move along the distant port road.",
-          "session_delta_prompt": "Create a new camera angle at {assets.aden_petrol_station}. Show {assets.young_dreamer} working beside an old mechanical petrol pump, with a vintage automobile, oil barrels and a busy historical road in the background."
+          "prompt_action": "Show {assets.young_farmer} hurrying along the village path, asking two distant villagers for directions with an urgent gesture. The villagers exchange confused looks and point in different directions. Mud houses, a small wooden cart, a grazing goat and dusty fields create a lively village background. Use a diagonal composition with the farmer in motion in the foreground.",
+          "session_delta_prompt": "Show the same village surroundings in daylight. Preserve the farmer's clothing and facial features; add villagers and everyday village details while he searches for the old traveller."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "वह सिर्फ नौकरी नहीं कर रहा था, हर दिन कुछ नया सीख रहा था।",
-          "camera_type": "Close-up over-the-shoulder shot",
+          "narration_text": "शाम तक थककर वह उसी कुएँ के पास लौट आया।",
+          "camera_type": "Wide establishing shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_dreamer} standing inside {assets.aden_office}, looking over a commercial ledger on a wooden desk. Include vintage telephones, accounting files, open windows and the harbor visible in the background.",
-          "session_delta_prompt": "Create a new cinematic interior angle inside {assets.aden_office}, showing {assets.young_dreamer} studying business documents at a wooden desk. Include detailed period office objects and a visible harbor outside."
+          "prompt_action": "Show {assets.young_farmer} walking slowly back toward {assets.village_well} at sunset, shoulders drooping and head lowered. Long shadows stretch across the dusty path. The banyan tree appears as a dark silhouette against a muted orange sky, and the village houses glow softly in the distance. Use a wide composition with plenty of open space around him to emphasize loneliness.",
+          "session_delta_prompt": "Return to the same well at sunset. Preserve the well, banyan tree and village layout; change the lighting to warm dusk and show the tired farmer returning."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "उसने समझा कि बाजार, ग्राहक और सही समय की पहचान ही व्यापार की असली ताकत है।",
-          "camera_type": "Extreme close-up shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Same office. Show {assets.young_dreamer}'s hand pointing at handwritten prices in {assets.business_ledger}, his focused face partially visible in the background.",
-          "session_delta_prompt": "In the same office: keep the desk, lighting, character and background identical. Change the action to show {assets.young_dreamer} carefully pointing at and studying the financial entries in {assets.business_ledger}."
+          "narration_text": "तभी उसकी नज़र मिट्टी पर पड़ी… वहाँ एक नन्हा अंकुर निकला था!",
+          "camera_type": "Ground-level macro shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show a tiny fresh green sprout emerging from the soil near the stone edge of {assets.village_well}. {assets.young_farmer}'s sandal and hand enter the frame as he bends down in surprise. A few droplets cling to the small leaves, and the last warm rays of sunset illuminate the sprout. Use a very low ground-level composition, making the tiny plant feel like a remarkable discovery.",
+          "session_delta_prompt": "Keep the same village well at sunset. Introduce a tiny green sprout in the earth near the well, while preserving the farmer's clothing and the environment."
+        },
+        {
+          "beat_id": "s03_b05",
+          "narration_text": "वह मुस्कुराया… क्योंकि उसे पहली बार कल पर भरोसा हुआ था।",
+          "camera_type": "Emotional close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.young_farmer} kneeling beside the tiny sprout, his face softened by a genuine smile. He gently cups one hand around the plant to protect it from the breeze. The stone well and banyan tree sit softly behind him, bathed in the last golden light of evening. Use a close three-quarter angle, with the sprout and his hopeful expression sharing the frame.",
+          "session_delta_prompt": "Remain beside the same sprout and well at sunset. Preserve the farmer's exact design; show his expression changing from doubt to quiet hope."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "bombay_market",
+      "environment_ref": "farmer_hut",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "कुछ साल बाद, वह भारत लौटा और मुंबई में अपना छोटा व्यापार शुरू किया।",
-          "camera_type": "Wide cinematic street shot",
+          "narration_text": "कहते हैं, उस बीज ने अगले दिन फल नहीं दिया…",
+          "camera_type": "Wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_entrepreneur} walking through {assets.bombay_market}, carrying a leather business bag. Crowded historic streets, colonial buildings, handcarts, merchants transporting fabric and vintage vehicles surround him.",
-          "session_delta_prompt": "Create a new location and time period: establish 1950s {assets.bombay_market} with {assets.young_entrepreneur} walking through the commercial district. Include period-accurate architecture, busy merchants, handcarts and vintage vehicles."
+          "prompt_action": "Show {assets.young_farmer} standing beside the hut's small garden patch several days later, examining the slightly taller but still modest green plant. He holds {assets.clay_pot} and looks patiently at the leaves. The hut, charpai, farming tools and nearby fields are visible in a calm morning setting. The plant is clearly growing but has no fruit.",
+          "session_delta_prompt": "Show the established hut exterior a few days later. Preserve the farmer, hut and clay pot; show the small plant grown slightly taller but still without fruit."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "शुरुआत हुई यार्न और मसालों की खरीद-बिक्री से।",
-          "camera_type": "Wide commercial market shot",
+          "narration_text": "न ही उसके बाद वाले दिन…",
+          "camera_type": "Time passage composition",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_entrepreneur} inside a busy merchant warehouse in {assets.bombay_market}, surrounded by sacks of spices, textile yarn bundles and wooden merchandise crates. {assets.bombay_merchants} are negotiating business deals in the background.",
-          "session_delta_prompt": "Create a new camera angle inside the commercial market. Show {assets.young_entrepreneur} inspecting yarn bundles and spice merchandise while {assets.bombay_merchants} negotiate nearby. Include detailed stacked cargo and busy warehouse activity."
+          "prompt_action": "Show the same garden patch in a storybook-like passage-of-time composition: the sun moves across the sky, a few leaves drift past, and {assets.young_farmer} waters the plant on another morning. The plant has grown a little taller, but still carries no fruit. Keep the hut and charpai recognizable in the background, using a gentle visual sense of passing days rather than multiple panels.",
+          "session_delta_prompt": "Keep the same hut and garden location. Depict the passage of several days through changed sunlight and slightly increased plant growth, preserving the farmer's design."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "उसका ऑफिस छोटा था, लेकिन उसकी नजर हमेशा बड़े मौके पर रहती थी।",
-          "camera_type": "Wide interior shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_entrepreneur} seated inside {assets.small_bombay_office}, with a wooden desk, {assets.business_ledger}, files, an old fan and a crowded Bombay commercial street visible through the window.",
-          "session_delta_prompt": "Create a detailed interior shot of {assets.small_bombay_office}. Show {assets.young_entrepreneur} seated at the desk. Include the busy commercial street outside, period office objects, natural sunlight and realistic environmental depth."
+          "narration_text": "लेकिन किसान ने पानी देना बंद नहीं किया।",
+          "camera_type": "Medium side shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Same garden patch beside {assets.farmer_hut}. Show {assets.young_farmer} carefully pouring water from {assets.clay_pot} around the growing plant. His expression is calm and determined. A small bird sits on the hut roof, and soft morning light falls across the soil.",
+          "session_delta_prompt": "In the same scene: preserve the hut, garden patch, plant and farmer's appearance. Change only his action to carefully watering the plant with patience."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "वह जानता था कि सिर्फ खरीदने-बेचने से आगे बढ़ना होगा।",
-          "camera_type": "Medium close-up shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Same office. {assets.young_entrepreneur} looks away from the ledger toward the crowded street outside, with a thoughtful and ambitious expression.",
-          "session_delta_prompt": "In the same office: preserve the desk, window, character and environment. Change his action to show {assets.young_entrepreneur} lifting his gaze from the ledger and looking toward the busy commercial street with a new idea."
-        }
-      ]
-    },
-    {
-      "scene_id": 5,
-      "environment_ref": "textile_factory",
-      "beats": [
-        {
-          "beat_id": "s05_b01",
-          "narration_text": "फिर उसने एक बड़ा जोखिम लिया और कपड़ा बनाने के कारोबार में उतर गया।",
-          "camera_type": "Extreme wide industrial shot",
+          "narration_text": "कुछ हफ्तों बाद, उस छोटे पौधे पर पहला सुनहरा फल लगा।",
+          "camera_type": "Close-up reveal",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_entrepreneur} entering {assets.textile_factory}, surrounded by rows of large weaving machines, industrial metal beams, workers, yarn spools and moving production equipment.",
-          "session_delta_prompt": "Create a completely new industrial location: show {assets.young_entrepreneur} entering {assets.textile_factory}. Establish a large 1960s Indian manufacturing facility with detailed machinery, workers and realistic factory architecture."
+          "prompt_action": "Show the once-small plant now bearing one beautiful round golden-brown fruit, subtly resembling the spiral texture of {assets.golden_seed}. {assets.young_farmer}'s hands hover carefully beside it, afraid to touch it. His delighted face appears softly in the background. The hut wall and garden remain recognizable, with warm morning sunlight illuminating the fruit.",
+          "session_delta_prompt": "Keep the same hut garden location. Show the plant after several weeks of growth with its first golden-brown fruit, preserving the farmer's visual design and the storybook art style."
         },
         {
-          "beat_id": "s05_b02",
-          "narration_text": "अब वह सिर्फ माल का व्यापारी नहीं, बल्कि खुद निर्माता बन रहा था।",
-          "camera_type": "Medium tracking shot",
+          "beat_id": "s04_b05",
+          "narration_text": "किसान समझ गया… चमत्कार बीज में नहीं, उसके धैर्य में था।",
+          "camera_type": "Final wide cinematic shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.young_entrepreneur} walking between operating textile machines in {assets.textile_factory}, with {assets.factory_workers} working on both sides and fabric being produced.",
-          "session_delta_prompt": "Create a new tracking-style camera composition inside {assets.textile_factory}. Show {assets.young_entrepreneur} walking through the production floor, with active workers, running machines and textile production extending deep into the background."
-        },
-        {
-          "beat_id": "s05_b03",
-          "narration_text": "उसने समझ लिया था कि असली ताकत उत्पादन पर नियंत्रण रखने में है।",
-          "camera_type": "Close-up shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Same factory. {assets.young_entrepreneur} examines freshly produced synthetic fabric coming from the weaving machine.",
-          "session_delta_prompt": "In the same factory: keep the machinery, workers, character and lighting identical. Change the action to show {assets.young_entrepreneur} closely examining the newly manufactured fabric."
-        }
-      ]
-    },
-    {
-      "scene_id": 6,
-      "environment_ref": "textile_showroom",
-      "beats": [
-        {
-          "beat_id": "s06_b01",
-          "narration_text": "इसके बाद उसने विमल नाम का टेक्सटाइल ब्रांड लॉन्च किया।",
-          "camera_type": "Wide cinematic showroom shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Establish {assets.textile_showroom}, showing {assets.young_entrepreneur} standing behind a polished wooden counter filled with {assets.fabric_rolls}. Customers and shop assistants fill the background. No readable signage or logos.",
-          "session_delta_prompt": "Create a new scene inside {assets.textile_showroom}. Show {assets.young_entrepreneur} presenting colorful premium textile products, with customers, display cabinets and a busy Indian commercial street visible through the windows. No readable brand signage."
-        },
-        {
-          "beat_id": "s06_b02",
-          "narration_text": "उसके कपड़े धीरे-धीरे भारतीय बाजार में अपनी पहचान बनाने लगे।",
-          "camera_type": "Medium shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.textile_customers} examining and comparing {assets.fabric_rolls} inside {assets.textile_showroom}, while shop assistants arrange additional fabrics behind the counter.",
-          "session_delta_prompt": "Create a new camera angle within {assets.textile_showroom}, showing Indian customers examining colorful textile rolls and discussing their purchases. Keep the period-specific showroom design and busy commercial atmosphere."
-        },
-        {
-          "beat_id": "s06_b03",
-          "narration_text": "उसने सिर्फ कपड़ा नहीं बेचा, उसने एक भरोसेमंद ब्रांड बनाया।",
-          "camera_type": "Close-up shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Same showroom. {assets.young_entrepreneur} shakes hands with a satisfied Indian customer across the wooden counter, with colorful fabric displays in the background.",
-          "session_delta_prompt": "In the same showroom: preserve the characters, clothes, furniture and background. Change the action to show {assets.young_entrepreneur} shaking hands with a satisfied customer across the counter."
-        }
-      ]
-    },
-    {
-      "scene_id": 7,
-      "environment_ref": "shareholder_hall",
-      "beats": [
-        {
-          "beat_id": "s07_b01",
-          "narration_text": "लेकिन उसका अगला कदम और भी चौंकाने वाला था।",
-          "camera_type": "Dramatic wide establishing shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Establish {assets.shareholder_hall} filled with hundreds of ordinary Indian investors. Show a raised stage, vintage microphones, wooden chairs and an energetic crowd extending far into the background.",
-          "session_delta_prompt": "Create a completely new scene: establish {assets.shareholder_hall} during the late 1970s, packed with ordinary Indian investors. Include a large audience, period architecture, stage and vintage meeting equipment."
-        },
-        {
-          "beat_id": "s07_b02",
-          "narration_text": "साल 1977 में उसने आम लोगों को अपनी कंपनी के शेयर खरीदने का मौका दिया।",
-          "camera_type": "Medium shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.mature_entrepreneur} standing on the stage inside {assets.shareholder_hall}, addressing the audience with confidence. Investors listen attentively, with vintage microphones and the crowded hall visible.",
-          "session_delta_prompt": "Create a new stage-level camera angle inside {assets.shareholder_hall}. Show {assets.mature_entrepreneur} addressing a packed audience of ordinary Indian investors, with period-accurate meeting equipment and clothing."
-        },
-        {
-          "beat_id": "s07_b03",
-          "narration_text": "अब छोटे निवेशक भी कंपनी के मालिकाना हक में हिस्सेदारी ले सकते थे।",
-          "camera_type": "Extreme close-up shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show an ordinary Indian investor holding {assets.share_certificates} in both hands, with the crowded shareholder hall softly blurred behind.",
-          "session_delta_prompt": "Create a new close-up image of an ordinary Indian investor examining {assets.share_certificates}. Use detailed historical paper textures and a softly blurred crowd in the background."
-        },
-        {
-          "beat_id": "s07_b04",
-          "narration_text": "इस तरह उसने छोटे निवेशकों को भी बड़े कारोबार की कहानी का हिस्सा बना दिया।",
-          "camera_type": "Wide audience shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show hundreds of {assets.investors} inside {assets.shareholder_hall}, some holding share certificates, others applauding enthusiastically, with the stage visible in the distance.",
-          "session_delta_prompt": "Create a new cinematic audience perspective inside {assets.shareholder_hall}, showing ordinary Indian investors applauding and holding their share certificates. Capture the energy of a historic public shareholder gathering."
-        }
-      ]
-    },
-    {
-      "scene_id": 8,
-      "environment_ref": "industrial_complex",
-      "beats": [
-        {
-          "beat_id": "s08_b01",
-          "narration_text": "इसके बाद कारोबार कपड़ों से आगे बढ़कर पेट्रोकेमिकल्स और बड़े उद्योगों तक पहुंचा।",
-          "camera_type": "Extreme wide aerial shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Establish {assets.industrial_complex} as an enormous Indian industrial landscape, with giant processing towers, steel pipelines, storage tanks, chimneys, factories and service roads stretching into the horizon.",
-          "session_delta_prompt": "Create a new massive industrial location: establish {assets.industrial_complex} from an elevated aerial perspective. Show huge manufacturing facilities, processing towers, interconnected pipelines and industrial infrastructure under dramatic morning sunlight."
-        },
-        {
-          "beat_id": "s08_b02",
-          "narration_text": "उसने एक ऐसी व्यवस्था बनाने पर ध्यान दिया, जहां अलग-अलग उद्योग एक-दूसरे को मजबूत करें।",
-          "camera_type": "High-angle aerial shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show a high-angle aerial view of {assets.industrial_complex}, focusing on interconnected pipelines, production buildings, processing facilities and industrial transport roads.",
-          "session_delta_prompt": "Create a dramatic new aerial camera angle of {assets.industrial_complex}. Emphasize the connected factories, pipelines, processing units and industrial transportation network, with realistic depth and atmospheric haze."
-        },
-        {
-          "beat_id": "s08_b03",
-          "narration_text": "एक छोटे से व्यापार से शुरू हुई कहानी अब भारत के बड़े कारोबारी साम्राज्यों में शामिल हो चुकी थी।",
-          "camera_type": "Epic wide cinematic shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.mature_entrepreneur} standing in the foreground overlooking {assets.industrial_complex}, enormous industrial structures rising behind him during golden sunrise. Cinematic monumental composition, detailed industrial background.",
-          "session_delta_prompt": "Create a new epic cinematic composition: show {assets.mature_entrepreneur} overlooking {assets.industrial_complex} at sunrise. Make the industrial complex enormous and visually detailed, with atmospheric depth and golden light."
-        }
-      ]
-    },
-    {
-      "scene_id": 9,
-      "environment_ref": "industrial_complex",
-      "beats": [
-        {
-          "beat_id": "s09_b01",
-          "narration_text": "इस कहानी का सबसे बड़ा सबक है, शुरुआत छोटी हो सकती है, लेकिन सोच छोटी नहीं होनी चाहिए।",
-          "camera_type": "Medium close-up shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.mature_entrepreneur} in a cinematic portrait against the distant industrial landscape of {assets.industrial_complex}, warm sunlight illuminating one side of his face, thoughtful confident expression.",
-          "session_delta_prompt": "Create a cinematic medium close-up of {assets.mature_entrepreneur}, with {assets.industrial_complex} visible behind him in atmospheric focus. Use warm dramatic sunrise lighting and a reflective expression."
-        },
-        {
-          "beat_id": "s09_b02",
-          "narration_text": "मौके पहचानिए, जोखिम लीजिए और लगातार आगे बढ़ते रहिए।",
-          "camera_type": "Extreme wide silhouette shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.mature_entrepreneur} as a small dignified silhouette overlooking the enormous {assets.industrial_complex}, with golden sunlight breaking through atmospheric clouds and industrial structures filling the frame.",
-          "session_delta_prompt": "Create the final cinematic image: {assets.mature_entrepreneur} overlooking {assets.industrial_complex} at sunrise. Use a monumental wide composition, beautiful atmospheric lighting, detailed industrial background and emotional visual closure."
+          "prompt_action": "Show {assets.young_farmer} sitting peacefully beside the thriving little plant outside {assets.farmer_hut}, holding its first golden fruit gently in both hands. His expression is grateful and thoughtful. The morning sun rises behind the distant fields, birds cross the sky, and the clay pot rests beside the plant. Use a balanced wide composition with the farmer and plant in the foreground and the village landscape opening behind them. End with a warm, hopeful storybook frame.",
+          "session_delta_prompt": "Create the final hopeful scene outside the same hut. Preserve the farmer, hut and plant; show the first fruit and the farmer's peaceful realization in warm morning light."
         }
       ]
     }

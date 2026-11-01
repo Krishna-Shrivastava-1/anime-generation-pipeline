@@ -1,173 +1,125 @@
 {
-  "total_duration": 133.455,
+  "total_duration": 64.32,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 7.673,
-      "subtitle": "क्या आप सोच सकते हैं? एक पेट्रोल पंप पर काम करने वाला लड़का, एक दिन इतना बड़ा कारोबारी साम्राज्य खड़ा कर देगा!"
+      "duration_seconds": 5.312,
+      "subtitle": "अगर कोई अजनबी आपको कल की खुशी आज ही दे दे… तो क्या आप उस पर भरोसा करेंगे?"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 4.203,
-      "subtitle": "लेकिन उसकी कहानी शुरू होती है गुजरात के एक छोटे से गांव से।"
+      "duration_seconds": 4.16,
+      "subtitle": "एक छोटे से गाँव में, एक किसान हर दिन अपनी किस्मत को कोसता था।"
+    },
+    {
+      "beat_id": "s01_b03",
+      "audio_file": "build/audio/s01_b03.wav",
+      "duration_seconds": 2.304,
+      "subtitle": "एक दिन वहाँ एक बूढ़ा मुसाफ़िर आया।"
+    },
+    {
+      "beat_id": "s01_b04",
+      "audio_file": "build/audio/s01_b04.wav",
+      "duration_seconds": 3.349,
+      "subtitle": "उसने किसान की हथेली पर एक अजीब-सा बीज रख दिया।"
+    },
+    {
+      "beat_id": "s01_b05",
+      "audio_file": "build/audio/s01_b05.wav",
+      "duration_seconds": 3.435,
+      "subtitle": "मुसाफ़िर बोला, 'इसे बोना… कल तुम्हें इसका फल मिलेगा।'"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 6.784,
-      "subtitle": "साल 1932 में एक साधारण परिवार में जन्मा यह लड़का, बचपन से ही बड़े सपने देखता था।"
+      "duration_seconds": 2.88,
+      "subtitle": "किसान हँसा, लेकिन फिर भी उसने बीज बो दिया।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 5.248,
-      "subtitle": "लेकिन उसे पता था कि जिंदगी बदलने के लिए उसे अपने गांव से बाहर निकलना होगा।"
+      "duration_seconds": 3.285,
+      "subtitle": "उसने थोड़ा पानी डाला… और रात होने का इंतज़ार किया।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 4.245,
-      "subtitle": "और फिर, सिर्फ सत्रह साल की उम्र में, उसने घर छोड़ने का फैसला किया।"
+      "duration_seconds": 1.813,
+      "subtitle": "सुबह वह दौड़कर बाहर आया…"
+    },
+    {
+      "beat_id": "s02_b04",
+      "audio_file": "build/audio/s02_b04.wav",
+      "duration_seconds": 2.176,
+      "subtitle": "लेकिन वहाँ तो कुछ भी नहीं उगा था!"
+    },
+    {
+      "beat_id": "s02_b05",
+      "audio_file": "build/audio/s02_b05.wav",
+      "duration_seconds": 2.496,
+      "subtitle": "वह गुस्से में बीज को बेकार समझने लगा।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 4.373,
-      "subtitle": "उसकी मंजिल थी अदन, जहां वह नौकरी और नए अवसरों की तलाश में पहुंचा।"
+      "duration_seconds": 3.541,
+      "subtitle": "तभी उसे याद आया… मुसाफ़िर ने कहा था, कल फल मिलेगा।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 4.8,
-      "subtitle": "वहां उसने एक पेट्रोल पंप पर काम किया और व्यापार की दुनिया को करीब से देखा।"
+      "duration_seconds": 4.544,
+      "subtitle": "वह बूढ़े आदमी को ढूँढ़ने दौड़ा… पर गाँव में कोई उसे जानता ही नहीं था।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 3.797,
-      "subtitle": "वह सिर्फ नौकरी नहीं कर रहा था, हर दिन कुछ नया सीख रहा था।"
+      "duration_seconds": 2.773,
+      "subtitle": "शाम तक थककर वह उसी कुएँ के पास लौट आया।"
     },
     {
       "beat_id": "s03_b04",
       "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 5.312,
-      "subtitle": "उसने समझा कि बाजार, ग्राहक और सही समय की पहचान ही व्यापार की असली ताकत है।"
+      "duration_seconds": 3.84,
+      "subtitle": "तभी उसकी नज़र मिट्टी पर पड़ी… वहाँ एक नन्हा अंकुर निकला था!"
+    },
+    {
+      "beat_id": "s03_b05",
+      "audio_file": "build/audio/s03_b05.wav",
+      "duration_seconds": 3.648,
+      "subtitle": "वह मुस्कुराया… क्योंकि उसे पहली बार कल पर भरोसा हुआ था।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 4.437,
-      "subtitle": "कुछ साल बाद, वह भारत लौटा और मुंबई में अपना छोटा व्यापार शुरू किया।"
+      "duration_seconds": 2.752,
+      "subtitle": "कहते हैं, उस बीज ने अगले दिन फल नहीं दिया…"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 2.795,
-      "subtitle": "शुरुआत हुई यार्न और मसालों की खरीद-बिक्री से।"
+      "duration_seconds": 1.749,
+      "subtitle": "न ही उसके बाद वाले दिन…"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 4.373,
-      "subtitle": "उसका ऑफिस छोटा था, लेकिन उसकी नजर हमेशा बड़े मौके पर रहती थी।"
+      "duration_seconds": 2.709,
+      "subtitle": "लेकिन किसान ने पानी देना बंद नहीं किया।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 3.819,
-      "subtitle": "वह जानता था कि सिर्फ खरीदने-बेचने से आगे बढ़ना होगा।"
+      "duration_seconds": 3.861,
+      "subtitle": "कुछ हफ्तों बाद, उस छोटे पौधे पर पहला सुनहरा फल लगा।"
     },
     {
-      "beat_id": "s05_b01",
-      "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 4.608,
-      "subtitle": "फिर उसने एक बड़ा जोखिम लिया और कपड़ा बनाने के कारोबार में उतर गया।"
-    },
-    {
-      "beat_id": "s05_b02",
-      "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 4.224,
-      "subtitle": "अब वह सिर्फ माल का व्यापारी नहीं, बल्कि खुद निर्माता बन रहा था।"
-    },
-    {
-      "beat_id": "s05_b03",
-      "audio_file": "build/audio/s05_b03.wav",
-      "duration_seconds": 4.331,
-      "subtitle": "उसने समझ लिया था कि असली ताकत उत्पादन पर नियंत्रण रखने में है।"
-    },
-    {
-      "beat_id": "s06_b01",
-      "audio_file": "build/audio/s06_b01.wav",
-      "duration_seconds": 3.477,
-      "subtitle": "इसके बाद उसने विमल नाम का टेक्सटाइल ब्रांड लॉन्च किया।"
-    },
-    {
-      "beat_id": "s06_b02",
-      "audio_file": "build/audio/s06_b02.wav",
-      "duration_seconds": 4.373,
-      "subtitle": "उसके कपड़े धीरे-धीरे भारतीय बाजार में अपनी पहचान बनाने लगे।"
-    },
-    {
-      "beat_id": "s06_b03",
-      "audio_file": "build/audio/s06_b03.wav",
-      "duration_seconds": 3.925,
-      "subtitle": "उसने सिर्फ कपड़ा नहीं बेचा, उसने एक भरोसेमंद ब्रांड बनाया।"
-    },
-    {
-      "beat_id": "s07_b01",
-      "audio_file": "build/audio/s07_b01.wav",
-      "duration_seconds": 3.072,
-      "subtitle": "लेकिन उसका अगला कदम और भी चौंकाने वाला था।"
-    },
-    {
-      "beat_id": "s07_b02",
-      "audio_file": "build/audio/s07_b02.wav",
-      "duration_seconds": 6.144,
-      "subtitle": "साल 1977 में उसने आम लोगों को अपनी कंपनी के शेयर खरीदने का मौका दिया।"
-    },
-    {
-      "beat_id": "s07_b03",
-      "audio_file": "build/audio/s07_b03.wav",
-      "duration_seconds": 4.693,
-      "subtitle": "अब छोटे निवेशक भी कंपनी के मालिकाना हक में हिस्सेदारी ले सकते थे।"
-    },
-    {
-      "beat_id": "s07_b04",
-      "audio_file": "build/audio/s07_b04.wav",
-      "duration_seconds": 5.205,
-      "subtitle": "इस तरह उसने छोटे निवेशकों को भी बड़े कारोबार की कहानी का हिस्सा बना दिया।"
-    },
-    {
-      "beat_id": "s08_b01",
-      "audio_file": "build/audio/s08_b01.wav",
-      "duration_seconds": 5.44,
-      "subtitle": "इसके बाद कारोबार कपड़ों से आगे बढ़कर पेट्रोकेमिकल्स और बड़े उद्योगों तक पहुंचा।"
-    },
-    {
-      "beat_id": "s08_b02",
-      "audio_file": "build/audio/s08_b02.wav",
-      "duration_seconds": 5.845,
-      "subtitle": "उसने एक ऐसी व्यवस्था बनाने पर ध्यान दिया, जहां अलग-अलग उद्योग एक-दूसरे को मजबूत करें।"
-    },
-    {
-      "beat_id": "s08_b03",
-      "audio_file": "build/audio/s08_b03.wav",
-      "duration_seconds": 6.421,
-      "subtitle": "एक छोटे से व्यापार से शुरू हुई कहानी अब भारत के बड़े कारोबारी साम्राज्यों में शामिल हो चुकी थी।"
-    },
-    {
-      "beat_id": "s09_b01",
-      "audio_file": "build/audio/s09_b01.wav",
-      "duration_seconds": 5.995,
-      "subtitle": "इस कहानी का सबसे बड़ा सबक है, शुरुआत छोटी हो सकती है, लेकिन सोच छोटी नहीं होनी चाहिए।"
-    },
-    {
-      "beat_id": "s09_b02",
-      "audio_file": "build/audio/s09_b02.wav",
-      "duration_seconds": 3.84,
-      "subtitle": "मौके पहचानिए, जोखिम लीजिए और लगातार आगे बढ़ते रहिए।"
+      "beat_id": "s04_b05",
+      "audio_file": "build/audio/s04_b05.wav",
+      "duration_seconds": 3.691,
+      "subtitle": "किसान समझ गया… चमत्कार बीज में नहीं, उसके धैर्य में था।"
     }
   ]
 }

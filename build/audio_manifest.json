@@ -1,293 +1,245 @@
 {
-  "total_duration": 119.083,
+  "total_duration": 144.0,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 2.603,
-      "subtitle": "राजा वीर के राज्य में सब कुछ खुशहाल था।"
+      "duration_seconds": 5.76,
+      "subtitle": "जिस दिन राजा वीर ने अपने बेटे को देशद्रोही कहा, उसी दिन पूरे दरबार में सन्नाटा छा गया।"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 2.304,
-      "subtitle": "लेकिन महल में एक अजीब बात होने लगी।"
+      "duration_seconds": 3.371,
+      "subtitle": "आरोप था कि राजकुमार ने राजा की हत्या की कोशिश की थी।"
     },
     {
       "beat_id": "s01_b03",
       "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 2.304,
-      "subtitle": "हर रात रसोई से अनाज गायब हो जाता।"
+      "duration_seconds": 3.52,
+      "subtitle": "और सबसे बड़ा सबूत था, राजा के कमरे में मिला यही खंजर।"
     },
     {
       "beat_id": "s01_b04",
       "audio_file": "build/audio/s01_b04.wav",
-      "duration_seconds": 2.261,
-      "subtitle": "पहले सबने इसे छोटी चोरी समझा।"
+      "duration_seconds": 2.645,
+      "subtitle": "राजकुमार ने कहा, मैंने ऐसा कुछ नहीं किया।"
     },
     {
       "beat_id": "s01_b05",
       "audio_file": "build/audio/s01_b05.wav",
-      "duration_seconds": 2.475,
-      "subtitle": "फिर एक रात रानी तारा को एक पर्ची मिली।"
-    },
-    {
-      "beat_id": "s01_b06",
-      "audio_file": "build/audio/s01_b06.wav",
-      "duration_seconds": 2.197,
-      "subtitle": "उस पर लिखा था, महल के नीचे देखिए।"
-    },
-    {
-      "beat_id": "s01_b07",
-      "audio_file": "build/audio/s01_b07.wav",
-      "duration_seconds": 1.941,
-      "subtitle": "तारा ने तुरंत राजा को बुलाया।"
-    },
-    {
-      "beat_id": "s01_b08",
-      "audio_file": "build/audio/s01_b08.wav",
-      "duration_seconds": 2.048,
-      "subtitle": "राजा ने पर्ची पढ़ी और चौंक गया।"
+      "duration_seconds": 3.605,
+      "subtitle": "लेकिन राजा ने उसे उसी शाम जेल भेजने का आदेश दे दिया।"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
       "duration_seconds": 3.328,
-      "subtitle": "दोनों ने रात में रसोई की निगरानी करने का फैसला किया।"
+      "subtitle": "लेकिन रानी मीरा को अपने बेटे की बात पर भरोसा था।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 2.325,
-      "subtitle": "आधी रात को वे रसोई के पास छिप गए।"
+      "duration_seconds": 2.091,
+      "subtitle": "उसने राजा से बस एक रात माँगी।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 2.197,
-      "subtitle": "तभी एक साया धीरे-धीरे अंदर आया।"
+      "duration_seconds": 3.2,
+      "subtitle": "रानी ने कहा, अगर वह दोषी है, तो मैं खुद सज़ा दूँगी।"
     },
     {
       "beat_id": "s02_b04",
       "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 1.941,
-      "subtitle": "उसके हाथ में महल की चाबी थी।"
+      "duration_seconds": 2.944,
+      "subtitle": "राजा ने आखिरकार उसे सुबह तक का समय दे दिया।"
     },
     {
       "beat_id": "s02_b05",
       "audio_file": "build/audio/s02_b05.wav",
-      "duration_seconds": 1.685,
-      "subtitle": "उसने अनाज की बोरी उठाई।"
+      "duration_seconds": 2.581,
+      "subtitle": "रानी सबसे पहले राजा के कमरे में पहुँची।"
     },
     {
       "beat_id": "s02_b06",
       "audio_file": "build/audio/s02_b06.wav",
-      "duration_seconds": 1.856,
-      "subtitle": "और दीवार की तरफ बढ़ने लगा।"
+      "duration_seconds": 2.816,
+      "subtitle": "वहाँ उसे खंजर के पास एक टूटा हुआ मुकुट मिला।"
     },
     {
       "beat_id": "s02_b07",
       "audio_file": "build/audio/s02_b07.wav",
-      "duration_seconds": 1.835,
-      "subtitle": "उसने कमल के निशान को दबाया।"
+      "duration_seconds": 2.389,
+      "subtitle": "वह मुकुट राजकुमार का नहीं, राजा का था।"
     },
     {
       "beat_id": "s02_b08",
       "audio_file": "build/audio/s02_b08.wav",
-      "duration_seconds": 1.877,
-      "subtitle": "और दीवार का एक हिस्सा खुल गया।"
-    },
-    {
-      "beat_id": "s02_b09",
-      "audio_file": "build/audio/s02_b09.wav",
-      "duration_seconds": 2.197,
-      "subtitle": "राजा और रानी ने एक-दूसरे को देखा।"
+      "duration_seconds": 3.733,
+      "subtitle": "रानी को याद आया कि राजा ने पिछली रात मुकुट पहना ही नहीं था।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 2.24,
-      "subtitle": "वे चुपचाप उस गुप्त रास्ते में घुस गए।"
+      "duration_seconds": 3.499,
+      "subtitle": "अब रानी को शक हुआ कि किसी ने सबूत जानबूझकर रखा था।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 2.603,
-      "subtitle": "रास्ता महल के नीचे बहुत दूर तक जाता था।"
+      "duration_seconds": 2.859,
+      "subtitle": "उसने पुराने पहरेदारों का रजिस्टर मँगवाया।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 2.261,
-      "subtitle": "आगे उन्हें पैरों के ताज़ा निशान दिखे।"
+      "duration_seconds": 4.331,
+      "subtitle": "रजिस्टर में लिखा था कि रात को राजा के कमरे में सिर्फ एक आदमी गया था।"
     },
     {
       "beat_id": "s03_b04",
       "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 2.325,
-      "subtitle": "रानी ने राजा को रुकने का इशारा किया।"
+      "duration_seconds": 3.584,
+      "subtitle": "वह आदमी था, राजमहल का सबसे भरोसेमंद सेनापति।"
     },
     {
       "beat_id": "s03_b05",
       "audio_file": "build/audio/s03_b05.wav",
-      "duration_seconds": 2.56,
-      "subtitle": "उन्हें आगे किसी के बात करने की आवाज़ आई।"
+      "duration_seconds": 2.859,
+      "subtitle": "लेकिन सेनापति तो पाँच साल पहले मर चुका था।"
     },
     {
       "beat_id": "s03_b06",
       "audio_file": "build/audio/s03_b06.wav",
-      "duration_seconds": 2.539,
-      "subtitle": "राजा ने धीरे से दरवाज़े के पास झाँका।"
+      "duration_seconds": 2.411,
+      "subtitle": "रानी ने उसी रात का एक और रिकॉर्ड खोजा।"
     },
     {
       "beat_id": "s03_b07",
       "audio_file": "build/audio/s03_b07.wav",
-      "duration_seconds": 2.176,
-      "subtitle": "अंदर अनाज के सैकड़ों बोरे रखे थे।"
+      "duration_seconds": 3.541,
+      "subtitle": "उसमें लिखा था कि सेनापति की मौत नदी वाले पुल पर हुई थी।"
     },
     {
       "beat_id": "s03_b08",
       "audio_file": "build/audio/s03_b08.wav",
-      "duration_seconds": 2.688,
-      "subtitle": "लेकिन वहाँ चोर नहीं, मंत्री रुद्र खड़ा था।"
-    },
-    {
-      "beat_id": "s03_b09",
-      "audio_file": "build/audio/s03_b09.wav",
-      "duration_seconds": 3.008,
-      "subtitle": "रुद्र किसी अजनबी से कह रहा था, योजना तैयार है।"
-    },
-    {
-      "beat_id": "s03_b10",
-      "audio_file": "build/audio/s03_b10.wav",
-      "duration_seconds": 2.731,
-      "subtitle": "कल सुबह पूरा राज्य भूख से परेशान होगा।"
+      "duration_seconds": 3.435,
+      "subtitle": "और उसी तारीख के नीचे किसी ने राजा के हस्ताक्षर किए थे।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 3.179,
-      "subtitle": "रानी समझ गई कि अनाज जानबूझकर छिपाया गया था।"
+      "duration_seconds": 3.221,
+      "subtitle": "रानी समझ गई कि उस मौत की कहानी में कुछ गड़बड़ थी।"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 2.347,
-      "subtitle": "लेकिन रुद्र की असली चाल अभी बाकी थी।"
+      "duration_seconds": 3.861,
+      "subtitle": "वह पुराने पुल पर पहुँची, जहाँ सेनापति की मौत बताई गई थी।"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 2.773,
-      "subtitle": "वह राजा के नाम से नकली आदेश लिख रहा था।"
+      "duration_seconds": 3.285,
+      "subtitle": "पुल के किनारे उसे पत्थर में फँसा एक छोटा तीर मिला।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 3.051,
-      "subtitle": "उसमें लिखा था कि पड़ोसी राज्य ने अनाज चुराया है।"
+      "duration_seconds": 3.989,
+      "subtitle": "उस तीर पर वही नीला धागा था, जो राजकुमार के कपड़ों पर लगा था।"
     },
     {
       "beat_id": "s04_b05",
       "audio_file": "build/audio/s04_b05.wav",
-      "duration_seconds": 2.816,
-      "subtitle": "वह दोनों राज्यों के बीच युद्ध करवाना चाहता था।"
+      "duration_seconds": 4.864,
+      "subtitle": "लेकिन यह धागा राजकुमार के कपड़ों से नहीं, उसके पुराने तीर-कमान से आता था।"
     },
     {
       "beat_id": "s04_b06",
       "audio_file": "build/audio/s04_b06.wav",
-      "duration_seconds": 2.645,
-      "subtitle": "तभी रानी के पैर से एक पत्थर खिसक गया।"
+      "duration_seconds": 3.776,
+      "subtitle": "किसी ने राजकुमार का सामान इस्तेमाल करके उसे फँसाया था।"
     },
     {
       "beat_id": "s04_b07",
       "audio_file": "build/audio/s04_b07.wav",
-      "duration_seconds": 1.941,
-      "subtitle": "आवाज़ सुनकर रुद्र पीछे मुड़ा।"
-    },
-    {
-      "beat_id": "s04_b08",
-      "audio_file": "build/audio/s04_b08.wav",
-      "duration_seconds": 2.304,
-      "subtitle": "राजा और रानी की पहचान सामने आ गई।"
-    },
-    {
-      "beat_id": "s04_b09",
-      "audio_file": "build/audio/s04_b09.wav",
-      "duration_seconds": 2.176,
-      "subtitle": "रुद्र ने तुरंत पास की रस्सी खींच दी।"
-    },
-    {
-      "beat_id": "s04_b10",
-      "audio_file": "build/audio/s04_b10.wav",
-      "duration_seconds": 2.325,
-      "subtitle": "ऊपर महल में खतरे की घंटी बज उठी।"
+      "duration_seconds": 2.816,
+      "subtitle": "अब रानी के पास झूठ पकड़ने का एक तरीका था।"
     },
     {
       "beat_id": "s05_b01",
       "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 2.539,
-      "subtitle": "कुछ ही पल में सैनिक तहखाने में पहुँच गए।"
+      "duration_seconds": 2.965,
+      "subtitle": "सुबह होते ही रानी ने पूरे दरबार को फिर बुलाया।"
     },
     {
       "beat_id": "s05_b02",
       "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 1.92,
-      "subtitle": "रुद्र ने भागने की कोशिश की।"
+      "duration_seconds": 4.459,
+      "subtitle": "उसने राजा से पूछा, क्या आपको याद है कि सेनापति की मौत किस दिन हुई थी?"
     },
     {
       "beat_id": "s05_b03",
       "audio_file": "build/audio/s05_b03.wav",
-      "duration_seconds": 2.752,
-      "subtitle": "लेकिन कप्तान आर्या ने उसका रास्ता रोक लिया।"
+      "duration_seconds": 2.859,
+      "subtitle": "राजा ने कहा, उस दिन मैं राजधानी में था ही नहीं।"
     },
     {
       "beat_id": "s05_b04",
       "audio_file": "build/audio/s05_b04.wav",
-      "duration_seconds": 2.453,
-      "subtitle": "उसके हाथ से नकली आदेश नीचे गिर गया।"
+      "duration_seconds": 2.88,
+      "subtitle": "रानी ने तुरंत वह रिकॉर्ड सबके सामने रख दिया।"
     },
     {
       "beat_id": "s05_b05",
       "audio_file": "build/audio/s05_b05.wav",
-      "duration_seconds": 3.477,
-      "subtitle": "राजा ने उसे राजद्रोह के आरोप में गिरफ्तार करवा दिया।"
+      "duration_seconds": 3.819,
+      "subtitle": "कागज़ पर राजा के हस्ताक्षर थे, जबकि राजा वहाँ था ही नहीं।"
     },
     {
       "beat_id": "s05_b06",
       "audio_file": "build/audio/s05_b06.wav",
-      "duration_seconds": 3.136,
-      "subtitle": "अगली सुबह छिपा हुआ अनाज जनता में बाँट दिया गया।"
+      "duration_seconds": 3.968,
+      "subtitle": "तभी राजा ने एक और बात बताई, उस रात उसका मुकुट भी गायब था।"
     },
     {
       "beat_id": "s05_b07",
       "audio_file": "build/audio/s05_b07.wav",
-      "duration_seconds": 2.091,
-      "subtitle": "राज्य में फिर से खुशहाली लौट आई।"
+      "duration_seconds": 5.504,
+      "subtitle": "रानी ने सेनापति का नाम लिया, और दरबार में बैठे एक बूढ़े मंत्री का चेहरा सफेद पड़ गया।"
     },
     {
       "beat_id": "s05_b08",
       "audio_file": "build/audio/s05_b08.wav",
-      "duration_seconds": 2.965,
-      "subtitle": "लेकिन राजा को तहखाने में एक और चीज़ मिली थी।"
+      "duration_seconds": 5.205,
+      "subtitle": "रानी ने कहा, सेनापति मरा नहीं था, उसे नई पहचान देकर महल में छिपाया गया था।"
     },
     {
       "beat_id": "s05_b09",
       "audio_file": "build/audio/s05_b09.wav",
-      "duration_seconds": 2.88,
-      "subtitle": "उस चाबी पर रानी के परिवार का निशान बना था।"
+      "duration_seconds": 4.331,
+      "subtitle": "उस बूढ़े मंत्री ने भागने की कोशिश की, लेकिन सैनिकों ने उसे पकड़ लिया।"
     },
     {
       "beat_id": "s05_b10",
       "audio_file": "build/audio/s05_b10.wav",
-      "duration_seconds": 3.243,
-      "subtitle": "तो क्या रानी इस रहस्य के बारे में पहले से जानती थी?"
+      "duration_seconds": 4.757,
+      "subtitle": "राजा ने अपने बेटे को गले लगाया, लेकिन रानी की नज़र अब भी उस मंत्री पर थी।"
     },
     {
       "beat_id": "s05_b11",
       "audio_file": "build/audio/s05_b11.wav",
-      "duration_seconds": 3.563,
-      "subtitle": "आपको क्या लगता है, रानी का उस गुप्त दरवाज़े से क्या रिश्ता था?"
+      "duration_seconds": 4.181,
+      "subtitle": "क्योंकि मंत्री के हाथ में वही नीला धागा बँधा था, जो पुल पर मिला था।"
+    },
+    {
+      "beat_id": "s05_b12",
+      "audio_file": "build/audio/s05_b12.wav",
+      "duration_seconds": 4.757,
+      "subtitle": "लेकिन अगर मंत्री ही सेनापति था, तो पाँच साल तक राजा के इतने करीब कौन रहा?"
     }
   ]
 }

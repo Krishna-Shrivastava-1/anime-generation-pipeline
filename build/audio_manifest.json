@@ -1,125 +1,293 @@
 {
-  "total_duration": 140.736,
+  "total_duration": 119.083,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 9.484,
-      "subtitle": "कबीर को एक ऐसी लड़की की कहानी मिली थी, जो छह महीने पहले अचानक गायब हो गई थी। उसका आखिरी पता था... एक पुरानी इमारत का कमरा नंबर छह सौ चार।"
+      "duration_seconds": 2.603,
+      "subtitle": "राजा वीर के राज्य में सब कुछ खुशहाल था।"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 6.945,
-      "subtitle": "कबीर वहाँ पहुँचा तो इमारत लगभग खाली थी। उसने अपनी जेब से मीरा की तस्वीर निकाली और दरबान को दिखा दी।"
+      "duration_seconds": 2.304,
+      "subtitle": "लेकिन महल में एक अजीब बात होने लगी।"
     },
     {
       "beat_id": "s01_b03",
       "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 6.881,
-      "subtitle": "तस्वीर देखते ही दरबान के चेहरे का रंग बदल गया। उसने धीरे से कहा... साहब, आप छठी मंज़िल पर मत जाइए।"
+      "duration_seconds": 2.304,
+      "subtitle": "हर रात रसोई से अनाज गायब हो जाता।"
+    },
+    {
+      "beat_id": "s01_b04",
+      "audio_file": "build/audio/s01_b04.wav",
+      "duration_seconds": 2.261,
+      "subtitle": "पहले सबने इसे छोटी चोरी समझा।"
+    },
+    {
+      "beat_id": "s01_b05",
+      "audio_file": "build/audio/s01_b05.wav",
+      "duration_seconds": 2.475,
+      "subtitle": "फिर एक रात रानी तारा को एक पर्ची मिली।"
+    },
+    {
+      "beat_id": "s01_b06",
+      "audio_file": "build/audio/s01_b06.wav",
+      "duration_seconds": 2.197,
+      "subtitle": "उस पर लिखा था, महल के नीचे देखिए।"
+    },
+    {
+      "beat_id": "s01_b07",
+      "audio_file": "build/audio/s01_b07.wav",
+      "duration_seconds": 1.941,
+      "subtitle": "तारा ने तुरंत राजा को बुलाया।"
+    },
+    {
+      "beat_id": "s01_b08",
+      "audio_file": "build/audio/s01_b08.wav",
+      "duration_seconds": 2.048,
+      "subtitle": "राजा ने पर्ची पढ़ी और चौंक गया।"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 6.796,
-      "subtitle": "कबीर ने उसकी बात अनसुनी की और सीढ़ियाँ चढ़ने लगा। हर मंज़िल पर उसे लगता रहा कि कोई उसके पीछे चल रहा है।"
+      "duration_seconds": 3.328,
+      "subtitle": "दोनों ने रात में रसोई की निगरानी करने का फैसला किया।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 6.86,
-      "subtitle": "छठी मंज़िल पर पहुँचकर वह रुक गया। सामने कमरे का दरवाज़ा था... और उसके नीचे से हल्की रोशनी बाहर आ रही थी।"
+      "duration_seconds": 2.325,
+      "subtitle": "आधी रात को वे रसोई के पास छिप गए।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 6.424,
-      "subtitle": "उसने दरवाज़े पर कान लगाया। अंदर से किसी के चलने की आवाज़ आ रही थी। फिर अचानक सब शांत हो गया।"
+      "duration_seconds": 2.197,
+      "subtitle": "तभी एक साया धीरे-धीरे अंदर आया।"
     },
     {
       "beat_id": "s02_b04",
       "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 6.263,
-      "subtitle": "तभी अंदर से तीन बार दस्तक हुई। कबीर पीछे हट गया... क्योंकि उसने तो दरवाज़ा खटखटाया ही नहीं था।"
+      "duration_seconds": 1.941,
+      "subtitle": "उसके हाथ में महल की चाबी थी।"
+    },
+    {
+      "beat_id": "s02_b05",
+      "audio_file": "build/audio/s02_b05.wav",
+      "duration_seconds": 1.685,
+      "subtitle": "उसने अनाज की बोरी उठाई।"
+    },
+    {
+      "beat_id": "s02_b06",
+      "audio_file": "build/audio/s02_b06.wav",
+      "duration_seconds": 1.856,
+      "subtitle": "और दीवार की तरफ बढ़ने लगा।"
+    },
+    {
+      "beat_id": "s02_b07",
+      "audio_file": "build/audio/s02_b07.wav",
+      "duration_seconds": 1.835,
+      "subtitle": "उसने कमल के निशान को दबाया।"
+    },
+    {
+      "beat_id": "s02_b08",
+      "audio_file": "build/audio/s02_b08.wav",
+      "duration_seconds": 1.877,
+      "subtitle": "और दीवार का एक हिस्सा खुल गया।"
+    },
+    {
+      "beat_id": "s02_b09",
+      "audio_file": "build/audio/s02_b09.wav",
+      "duration_seconds": 2.197,
+      "subtitle": "राजा और रानी ने एक-दूसरे को देखा।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 7.756,
-      "subtitle": "कबीर ने तुरंत दरबान को फोन किया। लेकिन फोन उठाने के बजाय, दरबान ने नीचे से इमारत का मुख्य दरवाज़ा बंद कर दिया।"
+      "duration_seconds": 2.24,
+      "subtitle": "वे चुपचाप उस गुप्त रास्ते में घुस गए।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 7.969,
-      "subtitle": "अब कबीर को यकीन हो गया कि दरबान कुछ छिपा रहा है। उसने दरवाज़े के पास लगी छोटी खिड़की से अंदर झाँकने की कोशिश की।"
+      "duration_seconds": 2.603,
+      "subtitle": "रास्ता महल के नीचे बहुत दूर तक जाता था।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 6.476,
-      "subtitle": "अंदर एक कुर्सी रखी थी। उस पर मीरा की तस्वीरें थीं... और दीवार पर लगी घड़ी उल्टी दिशा में चल रही थी।"
+      "duration_seconds": 2.261,
+      "subtitle": "आगे उन्हें पैरों के ताज़ा निशान दिखे।"
     },
     {
       "beat_id": "s03_b04",
       "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 4.16,
-      "subtitle": "तभी कमरे के अंदर से एक आवाज़ आई... कबीर, तुम बहुत देर से आए हो।"
+      "duration_seconds": 2.325,
+      "subtitle": "रानी ने राजा को रुकने का इशारा किया।"
+    },
+    {
+      "beat_id": "s03_b05",
+      "audio_file": "build/audio/s03_b05.wav",
+      "duration_seconds": 2.56,
+      "subtitle": "उन्हें आगे किसी के बात करने की आवाज़ आई।"
+    },
+    {
+      "beat_id": "s03_b06",
+      "audio_file": "build/audio/s03_b06.wav",
+      "duration_seconds": 2.539,
+      "subtitle": "राजा ने धीरे से दरवाज़े के पास झाँका।"
+    },
+    {
+      "beat_id": "s03_b07",
+      "audio_file": "build/audio/s03_b07.wav",
+      "duration_seconds": 2.176,
+      "subtitle": "अंदर अनाज के सैकड़ों बोरे रखे थे।"
+    },
+    {
+      "beat_id": "s03_b08",
+      "audio_file": "build/audio/s03_b08.wav",
+      "duration_seconds": 2.688,
+      "subtitle": "लेकिन वहाँ चोर नहीं, मंत्री रुद्र खड़ा था।"
+    },
+    {
+      "beat_id": "s03_b09",
+      "audio_file": "build/audio/s03_b09.wav",
+      "duration_seconds": 3.008,
+      "subtitle": "रुद्र किसी अजनबी से कह रहा था, योजना तैयार है।"
+    },
+    {
+      "beat_id": "s03_b10",
+      "audio_file": "build/audio/s03_b10.wav",
+      "duration_seconds": 2.731,
+      "subtitle": "कल सुबह पूरा राज्य भूख से परेशान होगा।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 4.745,
-      "subtitle": "कबीर ने तुरंत पूछा, अंदर कौन है? जवाब आया... वही, जिसे तुम ढूँढ रहे हो।"
+      "duration_seconds": 3.179,
+      "subtitle": "रानी समझ गई कि अनाज जानबूझकर छिपाया गया था।"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 6.327,
-      "subtitle": "अचानक दरवाज़े के नीचे से एक पुरानी चाबी बाहर सरककर आई। कबीर ने उसे उठाया और ताला खोल दिया।"
+      "duration_seconds": 2.347,
+      "subtitle": "लेकिन रुद्र की असली चाल अभी बाकी थी।"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 7.308,
-      "subtitle": "दरवाज़ा खुला तो अंदर कोई नहीं था। बस मेज़ पर एक खुली डायरी रखी थी, जिसके पहले पन्ने पर कबीर का नाम लिखा था।"
+      "duration_seconds": 2.773,
+      "subtitle": "वह राजा के नाम से नकली आदेश लिख रहा था।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 7.82,
-      "subtitle": "उसने डायरी खोली। अंदर की सारी तारीखें आने वाले दिनों की थीं... और आखिरी पन्ने पर लिखा था, आज रात कबीर यहाँ मरेगा।"
+      "duration_seconds": 3.051,
+      "subtitle": "उसमें लिखा था कि पड़ोसी राज्य ने अनाज चुराया है।"
+    },
+    {
+      "beat_id": "s04_b05",
+      "audio_file": "build/audio/s04_b05.wav",
+      "duration_seconds": 2.816,
+      "subtitle": "वह दोनों राज्यों के बीच युद्ध करवाना चाहता था।"
+    },
+    {
+      "beat_id": "s04_b06",
+      "audio_file": "build/audio/s04_b06.wav",
+      "duration_seconds": 2.645,
+      "subtitle": "तभी रानी के पैर से एक पत्थर खिसक गया।"
+    },
+    {
+      "beat_id": "s04_b07",
+      "audio_file": "build/audio/s04_b07.wav",
+      "duration_seconds": 1.941,
+      "subtitle": "आवाज़ सुनकर रुद्र पीछे मुड़ा।"
+    },
+    {
+      "beat_id": "s04_b08",
+      "audio_file": "build/audio/s04_b08.wav",
+      "duration_seconds": 2.304,
+      "subtitle": "राजा और रानी की पहचान सामने आ गई।"
+    },
+    {
+      "beat_id": "s04_b09",
+      "audio_file": "build/audio/s04_b09.wav",
+      "duration_seconds": 2.176,
+      "subtitle": "रुद्र ने तुरंत पास की रस्सी खींच दी।"
+    },
+    {
+      "beat_id": "s04_b10",
+      "audio_file": "build/audio/s04_b10.wav",
+      "duration_seconds": 2.325,
+      "subtitle": "ऊपर महल में खतरे की घंटी बज उठी।"
     },
     {
       "beat_id": "s05_b01",
       "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 5.473,
-      "subtitle": "उसी पल बाहर से पुलिस की आवाज़ आई। कबीर ने दरवाज़े की तरफ देखा... और राहत की साँस ली।"
+      "duration_seconds": 2.539,
+      "subtitle": "कुछ ही पल में सैनिक तहखाने में पहुँच गए।"
     },
     {
       "beat_id": "s05_b02",
       "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 9.439,
-      "subtitle": "लेकिन अंदर आने वाला पुलिस इंस्पेक्टर उसे देखकर चौंक गया। उसने कहा... कबीर? तुम यहाँ क्या कर रहे हो? तुम्हें तो तीन दिन पहले गायब बताया गया था।"
+      "duration_seconds": 1.92,
+      "subtitle": "रुद्र ने भागने की कोशिश की।"
     },
     {
       "beat_id": "s05_b03",
       "audio_file": "build/audio/s05_b03.wav",
-      "duration_seconds": 7.991,
-      "subtitle": "कबीर ने तुरंत अपना फोन निकाला। लेकिन उसमें तारीख तीन दिन आगे की थी... और स्क्रीन पर मीरा का एक नया संदेश चमक रहा था।"
+      "duration_seconds": 2.752,
+      "subtitle": "लेकिन कप्तान आर्या ने उसका रास्ता रोक लिया।"
     },
     {
       "beat_id": "s05_b04",
       "audio_file": "build/audio/s05_b04.wav",
-      "duration_seconds": 7.564,
-      "subtitle": "संदेश में सिर्फ एक लाइन थी... अब तुम्हारी बारी है, कमरा छह सौ पाँच। कबीर ने धीरे से सामने वाले दरवाज़े की तरफ देखा।"
+      "duration_seconds": 2.453,
+      "subtitle": "उसके हाथ से नकली आदेश नीचे गिर गया।"
     },
     {
       "beat_id": "s05_b05",
       "audio_file": "build/audio/s05_b05.wav",
-      "duration_seconds": 8.055,
-      "subtitle": "दरवाज़े के पीछे से मीरा की आवाज़ आई... कबीर, इस बार अंदर मत आना। अब बताइए, क्या कबीर को कमरा छह सौ पाँच खोलना चाहिए था?"
+      "duration_seconds": 3.477,
+      "subtitle": "राजा ने उसे राजद्रोह के आरोप में गिरफ्तार करवा दिया।"
+    },
+    {
+      "beat_id": "s05_b06",
+      "audio_file": "build/audio/s05_b06.wav",
+      "duration_seconds": 3.136,
+      "subtitle": "अगली सुबह छिपा हुआ अनाज जनता में बाँट दिया गया।"
+    },
+    {
+      "beat_id": "s05_b07",
+      "audio_file": "build/audio/s05_b07.wav",
+      "duration_seconds": 2.091,
+      "subtitle": "राज्य में फिर से खुशहाली लौट आई।"
+    },
+    {
+      "beat_id": "s05_b08",
+      "audio_file": "build/audio/s05_b08.wav",
+      "duration_seconds": 2.965,
+      "subtitle": "लेकिन राजा को तहखाने में एक और चीज़ मिली थी।"
+    },
+    {
+      "beat_id": "s05_b09",
+      "audio_file": "build/audio/s05_b09.wav",
+      "duration_seconds": 2.88,
+      "subtitle": "उस चाबी पर रानी के परिवार का निशान बना था।"
+    },
+    {
+      "beat_id": "s05_b10",
+      "audio_file": "build/audio/s05_b10.wav",
+      "duration_seconds": 3.243,
+      "subtitle": "तो क्या रानी इस रहस्य के बारे में पहले से जानती थी?"
+    },
+    {
+      "beat_id": "s05_b11",
+      "audio_file": "build/audio/s05_b11.wav",
+      "duration_seconds": 3.563,
+      "subtitle": "आपको क्या लगता है, रानी का उस गुप्त दरवाज़े से क्या रिश्ता था?"
     }
   ]
 }

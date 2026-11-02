@@ -184,3 +184,35 @@ Image art style prompt - Clean 2D cartoon illustration, indie webcomic art style
 audio sound effects
 https://drive.google.com/file/d/1tdJC6tfDoQqUw1Zs1wYml5P9J7GkUeDP/view
 https://thibaultjanbeyer.github.io/YouTube-Free-Audio-Library-API/api.json
+
+
+Groq api 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
+
+Free sound apiFREESOUND_API_KEY    = "Bs9vTK3Anfb9CPgXomEI3RTWCTRmlS34cOb1NIox"
+MIN_QUALITY_SCORE    = 9.5
+MIN_RATING_FLOOR     = 3.0
+FREESOUND_CANDIDATES = 5
+SFX_MIN_DUR          = 0.4
+SFX_MAX_DUR          = 7.0
+
+
+
+
+
+
+
+
+
+
+actually i think like first of all ur groq only gives 2 sound efect per scene
+issue is not that but issue is is it a fixed nummber i mena is it fixed like it
+have to give only 2 effects and it is is mandatory second thing is about our
+trimming on the sound effect is like if the downloaded sound effect is already
+of 1 second then what millisecondprotion is actually matters for a second audio
+it is not very much a problem right and second is it is also not synchronous
+sound effects are can be parallel async one sound effect is playing but suden
+car honks thenthis si another sound effect that can also should play right so
+ensure that thing as well also i have a issue about the downloaded sound are
+really getting the crux timings as per the groq is saying for that sound effect
+is really carries those timing or not is a issue for us may be we have to see
+for some advance ways to capture it

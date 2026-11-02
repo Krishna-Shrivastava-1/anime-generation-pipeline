@@ -1,261 +1,490 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "The Locked Room Mystery",
-    "project_id": "the_locked_room_mystery",
+    "title": "महल के नीचे छिपा सातवाँ दरवाज़ा",
+    "project_id": "the_seventh_door_kingdom",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Cinematic 2D thriller graphic novel illustration, premium animated crime-thriller storyboard aesthetic, semi-realistic hand-painted digital art, dramatic directional lighting, rich midnight blue and amber color palette, subtle film grain, detailed urban environments, expressive character acting, strong silhouettes, dynamic camera compositions, Dutch angles, dramatic close-ups, over-the-shoulder perspectives, cinematic depth of field. Every image should capture one precise moment of action, not a generic summary of an entire scene. Maintain visual continuity while changing camera angle, framing, and character pose frequently.",
-    "negative_prompt": "Photorealism, 3D rendering, anime, cute cartoon style, flat vector art, static repeated compositions, empty backgrounds, excessive gore, graphic injuries, distorted anatomy, inconsistent character appearance, extra fingers, blurry faces, readable text, subtitles, watermarks, logos."
+    "art_style": "Light comic-style 2D illustrated medieval kingdom adventure, premium storybook comic aesthetic, expressive character faces, clean confident outlines, rich but soft colors, beautifully detailed royal costumes and palace architecture, cinematic lighting, atmospheric backgrounds, dynamic comic-book framing, varied camera angles, subtle texture, visually engaging compositions, consistent character designs across all scenes.",
+    "negative_prompt": "Photorealism, 3D render, horror, gore, dark muddy colors, blurry details, flat lifeless compositions, stiff character poses, inconsistent faces, modern objects, modern clothing, text, captions, speech bubbles, watermarks, multiple unrelated moments in one image, montage, future events appearing early."
   },
   "assets": {
-    "kabir": {
+    "king_veer": {
       "type": "character",
-      "label": "Kabir - the journalist",
-      "visual_dna": "A 28-year-old Indian male investigative journalist with short black hair, light stubble, sharp brown eyes, wearing a dark charcoal shirt with rolled sleeves, black trousers, and a dark wristwatch. Carries a black messenger bag. Lean build, observant expression. Keep his face, hairstyle, clothing, and accessories consistent."
+      "label": "King Veer",
+      "visual_dna": "A 42-year-old Indian king with a strong face, neatly trimmed black beard, shoulder-length dark hair, deep brown eyes, golden crown with a central red gemstone, royal maroon and gold embroidered robes, broad shoulders, commanding but thoughtful expression."
     },
-    "meera": {
+    "queen_tara": {
       "type": "character",
-      "label": "Meera - the missing woman",
-      "visual_dna": "An Indian woman around 30 years old with shoulder-length wavy black hair, wearing a mustard-yellow kurta and dark trousers. Intelligent expressive eyes, medium build. Her appearance in photographs and flashbacks must remain consistent."
+      "label": "Queen Tara",
+      "visual_dna": "A 35-year-old Indian queen with expressive almond-shaped eyes, long black hair in a traditional braid, elegant emerald-green and gold royal saree, delicate golden jewelry, small emerald forehead ornament, intelligent and observant expression."
     },
-    "security_guard": {
+    "minister_rudra": {
       "type": "character",
-      "label": "The night security guard",
-      "visual_dna": "A middle-aged Indian man with a thick moustache, slightly balding head, dark blue security uniform, and a small flashlight clipped to his belt. Nervous eyes and a hesitant expression."
+      "label": "Minister Rudra",
+      "visual_dna": "A 55-year-old royal minister, narrow calculating eyes, thin grey moustache, slicked-back grey hair, dark navy royal robes with silver embroidery, a large signet ring, polite smile that hides a suspicious personality."
     },
-    "inspector": {
+    "captain_arya": {
       "type": "character",
-      "label": "The police inspector",
-      "visual_dna": "An Indian male police inspector in his early forties, neatly combed black hair, trimmed moustache, khaki police uniform, and a stern investigative expression. Maintain consistent uniform and facial features."
+      "label": "Captain Arya",
+      "visual_dna": "A 30-year-old female palace guard captain, athletic build, focused eyes, dark hair tied in a tight bun, bronze and navy armor, red shoulder sash, sword at her waist."
     },
-    "apartment": {
+    "royal_palace": {
       "type": "environment",
-      "label": "The old apartment building",
-      "visual_dna": "An aging six-storey apartment building in an Indian city, with stained concrete walls, narrow corridors, old metal railings, a dim staircase, and a flickering tube light. The building feels ordinary but unsettling at night."
+      "label": "Royal Palace",
+      "visual_dna": "A magnificent medieval Indian palace with sandstone walls, carved pillars, arched corridors, colorful glass windows, grand courtyards, royal banners, golden lamps and intricate stone flooring."
     },
-    "room_604": {
+    "royal_throne_room": {
       "type": "environment",
-      "label": "Apartment 604",
-      "visual_dna": "A locked apartment on the sixth floor, with a dark wooden door, brass number plate, dusty peephole, and a narrow ventilation window above the door. Inside is a modest living room with an old sofa, table, curtains, and a wall clock."
+      "label": "Throne Room",
+      "visual_dna": "A grand throne room with a raised golden throne, maroon carpet, tall carved pillars, huge arched windows, royal banners and warm sunlight falling across polished stone floors."
     },
-    "corridor": {
+    "hidden_cellar": {
       "type": "environment",
-      "label": "Sixth-floor corridor",
-      "visual_dna": "A narrow apartment corridor with pale peeling walls, old electrical wiring, a flickering tube light, dusty floor, and several closed doors. The corridor has a long perspective and deep shadows."
+      "label": "Hidden Cellar",
+      "visual_dna": "A secret underground stone chamber beneath the palace, narrow arched passages, dusty walls, wooden grain crates, oil lamps, old iron shelves and a concealed stone entrance."
     },
-    "notebook": {
-      "type": "prop",
-      "label": "Kabir's investigation notebook",
-      "visual_dna": "A small black notebook with worn corners, filled with handwritten notes, rough building sketches, and dates. No readable text."
+    "royal_kitchen": {
+      "type": "environment",
+      "label": "Royal Kitchen",
+      "visual_dna": "A large medieval palace kitchen with copper pots, clay ovens, wooden tables, sacks of grain, hanging herbs and servants moving through warm firelight."
     },
-    "photograph": {
+    "secret_door": {
       "type": "prop",
-      "label": "Meera's photograph",
-      "visual_dna": "A slightly faded printed photograph of {assets.meera}, showing her standing in front of the old apartment building. The photograph has a folded corner and faint scratches."
+      "label": "Secret Stone Door",
+      "visual_dna": "A cleverly hidden stone door built into an old palace wall, with a small carved lotus symbol and a concealed iron lever."
     },
-    "key": {
+    "royal_seal": {
       "type": "prop",
-      "label": "Old apartment key",
-      "visual_dna": "A single old brass key with a small blue plastic tag, slightly scratched and tarnished."
+      "label": "Royal Seal",
+      "visual_dna": "A heavy gold royal signet seal bearing the symbol of a roaring lion, with a polished wooden handle."
     },
-    "phone": {
+    "grain_crates": {
       "type": "prop",
-      "label": "Kabir's smartphone",
-      "visual_dna": "A modern black smartphone with a dark case and slightly scratched screen. Its screen can illuminate faces in dark environments. No visible brand or readable text."
+      "label": "Hidden Grain Crates",
+      "visual_dna": "Rows of large wooden crates and tied burlap sacks filled with wheat and rice, stacked inside a secret underground chamber."
+    },
+    "folded_note": {
+      "type": "prop",
+      "label": "Mysterious Note",
+      "visual_dna": "A small folded piece of yellowed parchment with a rough handwritten warning in dark ink, tied with a thin red thread."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "apartment",
+      "environment_ref": "royal_palace",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "कबीर को एक ऐसी लड़की की कहानी मिली थी, जो छह महीने पहले अचानक गायब हो गई थी। उसका आखिरी पता था... एक पुरानी इमारत का कमरा नंबर छह सौ चार।",
-          "camera_type": "Fast cinematic establishing shot",
+          "narration_text": "राजा वीर के राज्य में सब कुछ खुशहाल था।",
+          "camera_type": "wide establishing shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.apartment} at night from a dramatic low street-level angle. One window on the sixth floor is faintly illuminated while the rest of the building is dark. Light rain reflects on the road.",
-          "session_delta_prompt": "Establish the mysterious apartment building and the missing woman's last known location."
+          "prompt_action": "Show the magnificent kingdom at sunrise, busy market streets, colorful rooftops and distant palace towers. {assets.royal_palace} Establish a peaceful prosperous kingdom.",
+          "session_delta_prompt": "Warm morning light spreads across the kingdom."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "कबीर वहाँ पहुँचा तो इमारत लगभग खाली थी। उसने अपनी जेब से मीरा की तस्वीर निकाली और दरबान को दिखा दी।",
-          "camera_type": "Tight two-shot",
+          "narration_text": "लेकिन महल में एक अजीब बात होने लगी।",
+          "camera_type": "slow push-in toward palace window",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.kabir} standing at the entrance of {assets.apartment}, holding {assets.photograph} toward {assets.security_guard}. The guard studies the photograph nervously.",
-          "session_delta_prompt": "Introduce Kabir, the missing woman, and the nervous security guard."
+          "prompt_action": "Show one tall palace window glowing strangely in the early morning while the surrounding palace corridor remains quiet. Focus on the unusual window.",
+          "session_delta_prompt": "A faint shadow is visible behind the window."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "तस्वीर देखते ही दरबान के चेहरे का रंग बदल गया। उसने धीरे से कहा... साहब, आप छठी मंज़िल पर मत जाइए।",
-          "camera_type": "Extreme close-up",
+          "narration_text": "हर रात रसोई से अनाज गायब हो जाता।",
+          "camera_type": "top-down close shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show a close-up of {assets.security_guard}'s worried face, his eyes shifting toward the staircase. Kabir's photograph is partly visible in the foreground.",
-          "session_delta_prompt": "Create an immediate hook through the guard's fearful reaction."
+          "prompt_action": "Show a nearly empty wooden grain bin inside {assets.royal_kitchen}, with only a little wheat remaining at the bottom.",
+          "session_delta_prompt": "A few scattered grains lie on the wooden floor."
+        },
+        {
+          "beat_id": "s01_b04",
+          "narration_text": "पहले सबने इसे छोटी चोरी समझा।",
+          "camera_type": "medium shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show two worried palace kitchen servants inspecting an open grain sack, exchanging confused looks.",
+          "session_delta_prompt": "One servant points toward the missing grain."
+        },
+        {
+          "beat_id": "s01_b05",
+          "narration_text": "फिर एक रात रानी तारा को एक पर्ची मिली।",
+          "camera_type": "extreme close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.folded_note} resting on Queen Tara's bedside table beside a small golden lamp. Only the mysterious note and table are in focus.",
+          "session_delta_prompt": "The red thread around the note is clearly visible."
+        },
+        {
+          "beat_id": "s01_b06",
+          "narration_text": "उस पर लिखा था, महल के नीचे देखिए।",
+          "camera_type": "over-the-shoulder close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show Queen Tara holding the unfolded parchment and reading its short warning, her eyes narrowing with curiosity. {assets.queen_tara}",
+          "session_delta_prompt": "Her fingers grip the edge of the parchment."
+        },
+        {
+          "beat_id": "s01_b07",
+          "narration_text": "तारा ने तुरंत राजा को बुलाया।",
+          "camera_type": "tracking medium shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show Queen Tara walking quickly through a carved palace corridor toward the king's chamber, holding the folded note.",
+          "session_delta_prompt": "Her emerald saree moves as she walks with urgency."
+        },
+        {
+          "beat_id": "s01_b08",
+          "narration_text": "राजा ने पर्ची पढ़ी और चौंक गया।",
+          "camera_type": "tight reaction close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.king_veer} holding the note, eyebrows raised and face suddenly serious, with Queen Tara standing beside him.",
+          "session_delta_prompt": "The king looks from the note toward the queen."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "corridor",
+      "environment_ref": "royal_palace",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "कबीर ने उसकी बात अनसुनी की और सीढ़ियाँ चढ़ने लगा। हर मंज़िल पर उसे लगता रहा कि कोई उसके पीछे चल रहा है।",
-          "camera_type": "Dynamic staircase tracking shot",
+          "narration_text": "दोनों ने रात में रसोई की निगरानी करने का फैसला किया।",
+          "camera_type": "medium two-shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.kabir} climbing the narrow staircase of {assets.apartment}, one hand on the railing and the other holding his phone. A vague human-shaped shadow appears on the lower flight behind him.",
-          "session_delta_prompt": "Build tension through upward movement and a suspicious shadow."
+          "prompt_action": "Show King Veer and Queen Tara quietly planning beside a palace window, with the mysterious note on a small table between them.",
+          "session_delta_prompt": "Both look determined and speak in hushed voices."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "छठी मंज़िल पर पहुँचकर वह रुक गया। सामने कमरे का दरवाज़ा था... और उसके नीचे से हल्की रोशनी बाहर आ रही थी।",
-          "camera_type": "Low floor-level shot",
+          "narration_text": "आधी रात को वे रसोई के पास छिप गए।",
+          "camera_type": "low-angle wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.room_604} from floor level. A thin line of warm light escapes from beneath the closed door into the dark corridor. {assets.kabir}'s shoes enter the frame.",
-          "session_delta_prompt": "Reveal the first physical clue that the supposedly empty apartment may be occupied."
+          "prompt_action": "Show the king and queen hiding behind a stone pillar near the closed royal kitchen entrance, with a dim oil lamp nearby.",
+          "session_delta_prompt": "The palace corridor is quiet and almost empty."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "उसने दरवाज़े पर कान लगाया। अंदर से किसी के चलने की आवाज़ आ रही थी। फिर अचानक सब शांत हो गया।",
-          "camera_type": "Side close-up",
-          "action_mode": "in_place_action",
-          "prompt_action": "Show {assets.kabir} leaning close to the wooden door of {assets.room_604}, listening carefully. His expression changes from curiosity to alertness.",
-          "session_delta_prompt": "Focus on the exact moment he hears movement stop inside."
+          "narration_text": "तभी एक साया धीरे-धीरे अंदर आया।",
+          "camera_type": "POV shot from behind the pillar",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show a mysterious cloaked figure entering the royal kitchen through its half-open wooden door, seen from the hiding place of the king and queen.",
+          "session_delta_prompt": "The figure moves carefully without looking back."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "तभी अंदर से तीन बार दस्तक हुई। कबीर पीछे हट गया... क्योंकि उसने तो दरवाज़ा खटखटाया ही नहीं था।",
-          "camera_type": "Dutch-angle medium shot",
+          "narration_text": "उसके हाथ में महल की चाबी थी।",
+          "camera_type": "macro close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.kabir} recoiling from {assets.room_604} as the wooden door vibrates slightly from three knocks coming from inside. The corridor light flickers above him.",
-          "session_delta_prompt": "Deliver a sharp suspense beat with the unexplained knocks."
+          "prompt_action": "Show the mysterious figure's gloved hand holding an old iron palace key, illuminated by a small oil lamp.",
+          "session_delta_prompt": "The key catches a brief glint of light."
+        },
+        {
+          "beat_id": "s02_b05",
+          "narration_text": "उसने अनाज की बोरी उठाई।",
+          "camera_type": "side medium shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the cloaked figure lifting a heavy burlap sack of grain from the kitchen floor.",
+          "session_delta_prompt": "The figure struggles slightly under the weight."
+        },
+        {
+          "beat_id": "s02_b06",
+          "narration_text": "और दीवार की तरफ बढ़ने लगा।",
+          "camera_type": "tracking shot from behind",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the cloaked figure carrying the grain sack toward an old stone wall at the far end of the kitchen.",
+          "session_delta_prompt": "The figure approaches a wall with a carved lotus pattern."
+        },
+        {
+          "beat_id": "s02_b07",
+          "narration_text": "उसने कमल के निशान को दबाया।",
+          "camera_type": "extreme close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show a gloved finger pressing the small carved lotus symbol on the stone wall. {assets.secret_door}",
+          "session_delta_prompt": "Fine dust falls from the carved stone."
+        },
+        {
+          "beat_id": "s02_b08",
+          "narration_text": "और दीवार का एक हिस्सा खुल गया।",
+          "camera_type": "dramatic wide shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show the concealed stone door sliding open inside the royal kitchen, revealing a narrow dark passage behind it. {assets.secret_door}",
+          "session_delta_prompt": "A thin line of warm light appears inside the passage."
+        },
+        {
+          "beat_id": "s02_b09",
+          "narration_text": "राजा और रानी ने एक-दूसरे को देखा।",
+          "camera_type": "tight two-shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show King Veer and Queen Tara peeking from behind the pillar, exchanging a shocked and suspicious glance.",
+          "session_delta_prompt": "The queen raises one finger to signal silence."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "room_604",
+      "environment_ref": "hidden_cellar",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "कबीर ने तुरंत दरबान को फोन किया। लेकिन फोन उठाने के बजाय, दरबान ने नीचे से इमारत का मुख्य दरवाज़ा बंद कर दिया।",
-          "camera_type": "Phone close-up",
+          "narration_text": "वे चुपचाप उस गुप्त रास्ते में घुस गए।",
+          "camera_type": "rear tracking shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.kabir} holding {assets.phone} near the locked apartment door, looking confused. In a small visual cutaway, show {assets.security_guard} downstairs pulling the building's metal gate shut.",
-          "session_delta_prompt": "Introduce the guard's suspicious action and raise the stakes."
+          "prompt_action": "Show King Veer and Queen Tara carefully entering the narrow stone passage one behind the other, leaving the kitchen behind.",
+          "session_delta_prompt": "Their silhouettes are lit by a faint distant glow."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "अब कबीर को यकीन हो गया कि दरबान कुछ छिपा रहा है। उसने दरवाज़े के पास लगी छोटी खिड़की से अंदर झाँकने की कोशिश की।",
-          "camera_type": "Over-the-shoulder close-up",
+          "narration_text": "रास्ता महल के नीचे बहुत दूर तक जाता था।",
+          "camera_type": "extreme wide perspective",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.kabir} standing on his toes and peering through the narrow ventilation window above {assets.room_604}. One eye is visible through the gap, with the dark room beyond.",
-          "session_delta_prompt": "Move the investigation toward a direct look inside the apartment."
+          "prompt_action": "Show a long underground stone corridor with repeating arches, old wall lamps and a distant bend disappearing into darkness.",
+          "session_delta_prompt": "The passage feels much larger than expected."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "अंदर एक कुर्सी रखी थी। उस पर मीरा की तस्वीरें थीं... और दीवार पर लगी घड़ी उल्टी दिशा में चल रही थी।",
-          "camera_type": "Interior point-of-view shot",
+          "narration_text": "आगे उन्हें पैरों के ताज़ा निशान दिखे।",
+          "camera_type": "ground-level close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show the interior of {assets.room_604} through the narrow window: a chair covered with photographs of {assets.meera}, a table, and an old wall clock with hands positioned strangely. The room is dimly lit.",
-          "session_delta_prompt": "Reveal the strange arrangement inside the apartment as separate visual clues."
+          "prompt_action": "Show fresh muddy footprints across the dusty stone floor of the underground passage.",
+          "session_delta_prompt": "The footprints lead deeper into the corridor."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "तभी कमरे के अंदर से एक आवाज़ आई... कबीर, तुम बहुत देर से आए हो।",
-          "camera_type": "Extreme close-up on Kabir",
+          "narration_text": "रानी ने राजा को रुकने का इशारा किया।",
+          "camera_type": "over-the-shoulder shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.kabir} pulling his face away from the ventilation window, eyes widened in shock. His hand grips the wall for support.",
-          "session_delta_prompt": "Make the unknown voice feel personal and directly connected to Kabir."
+          "prompt_action": "Show Queen Tara gently stopping King Veer with her raised hand, both listening carefully in the underground passage.",
+          "session_delta_prompt": "The king freezes and looks toward the passage ahead."
+        },
+        {
+          "beat_id": "s03_b05",
+          "narration_text": "उन्हें आगे किसी के बात करने की आवाज़ आई।",
+          "camera_type": "POV shot down the corridor",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the distant end of the underground corridor with a faint glow spilling from a partially open stone doorway.",
+          "session_delta_prompt": "A vague human silhouette appears near the doorway."
+        },
+        {
+          "beat_id": "s03_b06",
+          "narration_text": "राजा ने धीरे से दरवाज़े के पास झाँका।",
+          "camera_type": "over-the-shoulder close shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show King Veer cautiously peeking around the edge of the stone doorway, one eye visible as he looks inside.",
+          "session_delta_prompt": "His expression changes from caution to disbelief."
+        },
+        {
+          "beat_id": "s03_b07",
+          "narration_text": "अंदर अनाज के सैकड़ों बोरे रखे थे।",
+          "camera_type": "wide reveal shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Reveal a huge underground chamber packed with towering stacks of grain sacks and wooden crates. {assets.grain_crates} The chamber is lit by oil lamps.",
+          "session_delta_prompt": "The scale of the hidden storage becomes clear."
+        },
+        {
+          "beat_id": "s03_b08",
+          "narration_text": "लेकिन वहाँ चोर नहीं, मंत्री रुद्र खड़ा था।",
+          "camera_type": "dramatic medium reveal",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.minister_rudra} standing beside the stacked grain sacks, holding a small ledger and inspecting the supplies.",
+          "session_delta_prompt": "The minister turns slightly toward someone outside the frame."
+        },
+        {
+          "beat_id": "s03_b09",
+          "narration_text": "रुद्र किसी अजनबी से कह रहा था, योजना तैयार है।",
+          "camera_type": "medium side shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show Minister Rudra speaking quietly to a shadowed stranger inside the cellar, one hand resting on a wooden crate.",
+          "session_delta_prompt": "Rudra gestures toward a rolled map on the table."
+        },
+        {
+          "beat_id": "s03_b10",
+          "narration_text": "कल सुबह पूरा राज्य भूख से परेशान होगा।",
+          "camera_type": "close-up on minister",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show Minister Rudra with a cold calculating smile as he speaks, the underground grain stacks blurred behind him.",
+          "session_delta_prompt": "His expression becomes more confident."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "corridor",
+      "environment_ref": "hidden_cellar",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "कबीर ने तुरंत पूछा, अंदर कौन है? जवाब आया... वही, जिसे तुम ढूँढ रहे हो।",
-          "camera_type": "Doorway close-up",
-          "action_mode": "in_place_action",
-          "prompt_action": "Show {assets.kabir} facing the closed door of {assets.room_604}, speaking toward it. The peephole appears dark, with a faint reflection of his face.",
-          "session_delta_prompt": "Keep the mystery focused on the unseen person inside."
+          "narration_text": "रानी समझ गई कि अनाज जानबूझकर छिपाया गया था।",
+          "camera_type": "close-up reaction shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show Queen Tara watching from behind the doorway, her eyes focused and expression suddenly firm.",
+          "session_delta_prompt": "She glances toward the hidden grain stacks."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "अचानक दरवाज़े के नीचे से एक पुरानी चाबी बाहर सरककर आई। कबीर ने उसे उठाया और ताला खोल दिया।",
-          "camera_type": "Macro floor shot",
+          "narration_text": "लेकिन रुद्र की असली चाल अभी बाकी थी।",
+          "camera_type": "insert close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.key} sliding across the dusty floor from beneath {assets.room_604}. {assets.kabir}'s hand reaches down to pick it up.",
-          "session_delta_prompt": "Reveal the key and show Kabir crossing the point of no return."
+          "prompt_action": "Show a rolled royal decree lying on a wooden table beside the minister's ledger and a bottle of black ink.",
+          "session_delta_prompt": "The royal seal on the decree is visible."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "दरवाज़ा खुला तो अंदर कोई नहीं था। बस मेज़ पर एक खुली डायरी रखी थी, जिसके पहले पन्ने पर कबीर का नाम लिखा था।",
-          "camera_type": "Wide interior reveal",
+          "narration_text": "वह राजा के नाम से नकली आदेश लिख रहा था।",
+          "camera_type": "top-down close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.kabir} standing in the doorway of {assets.room_604}. The room is empty, with an open notebook on the central table. A narrow beam of light falls on the page.",
-          "session_delta_prompt": "Create an unsettling empty-room reveal and introduce the notebook."
+          "prompt_action": "Show Minister Rudra's hand writing a royal order on parchment with a feather quill, beside the golden lion seal.",
+          "session_delta_prompt": "The fresh ink glistens on the parchment."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "उसने डायरी खोली। अंदर की सारी तारीखें आने वाले दिनों की थीं... और आखिरी पन्ने पर लिखा था, आज रात कबीर यहाँ मरेगा।",
-          "camera_type": "Top-down notebook close-up",
+          "narration_text": "उसमें लिखा था कि पड़ोसी राज्य ने अनाज चुराया है।",
+          "camera_type": "over-the-shoulder document shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.kabir} holding open {assets.notebook} on the table. The pages contain several future dates and a final ominous handwritten line, but the writing should remain visually indistinct and unreadable.",
-          "session_delta_prompt": "Reveal the chilling prediction and make Kabir's own safety the central mystery."
+          "prompt_action": "Show the minister examining a forged royal decree with a map of two neighboring kingdoms spread beside it.",
+          "session_delta_prompt": "His finger rests on the border between the kingdoms."
+        },
+        {
+          "beat_id": "s04_b05",
+          "narration_text": "वह दोनों राज्यों के बीच युद्ध करवाना चाहता था।",
+          "camera_type": "dramatic close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show Minister Rudra pointing at the border on the map, wearing a satisfied and ambitious expression.",
+          "session_delta_prompt": "The candlelight casts a sharp shadow across the map."
+        },
+        {
+          "beat_id": "s04_b06",
+          "narration_text": "तभी रानी के पैर से एक पत्थर खिसक गया।",
+          "camera_type": "extreme ground-level close-up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show Queen Tara's sandal accidentally pushing a loose stone across the underground floor.",
+          "session_delta_prompt": "The small stone rolls away from her foot."
+        },
+        {
+          "beat_id": "s04_b07",
+          "narration_text": "आवाज़ सुनकर रुद्र पीछे मुड़ा।",
+          "camera_type": "sharp reaction close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show Minister Rudra suddenly turning his head toward the doorway, eyes widened with suspicion.",
+          "session_delta_prompt": "His hand pauses above the forged decree."
+        },
+        {
+          "beat_id": "s04_b08",
+          "narration_text": "राजा और रानी की पहचान सामने आ गई।",
+          "camera_type": "wide confrontation shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show King Veer and Queen Tara stepping out from behind the stone doorway into the cellar, facing Minister Rudra.",
+          "session_delta_prompt": "The minister stands frozen beside the table."
+        },
+        {
+          "beat_id": "s04_b09",
+          "narration_text": "रुद्र ने तुरंत पास की रस्सी खींच दी।",
+          "camera_type": "dynamic low-angle close-up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show Minister Rudra urgently pulling a thick rope hanging beside the cellar wall.",
+          "session_delta_prompt": "The rope becomes taut in his hand."
+        },
+        {
+          "beat_id": "s04_b10",
+          "narration_text": "ऊपर महल में खतरे की घंटी बज उठी।",
+          "camera_type": "dramatic upward angle",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show a large bronze alarm bell swinging violently in a palace tower, its rope pulled tight.",
+          "session_delta_prompt": "The bell is caught mid-swing."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "room_604",
+      "environment_ref": "royal_throne_room",
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "उसी पल बाहर से पुलिस की आवाज़ आई। कबीर ने दरवाज़े की तरफ देखा... और राहत की साँस ली।",
-          "camera_type": "Over-the-shoulder toward doorway",
+          "narration_text": "कुछ ही पल में सैनिक तहखाने में पहुँच गए।",
+          "camera_type": "low-angle tracking shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.kabir} turning toward the apartment entrance as a bright flashlight beam cuts through the corridor. The open doorway frames the dark hallway.",
-          "session_delta_prompt": "Create a brief moment of relief before the final twist."
+          "prompt_action": "Show Captain Arya leading palace guards down the underground stone stairs with torches and drawn swords.",
+          "session_delta_prompt": "The guards hurry toward the cellar entrance."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "लेकिन अंदर आने वाला पुलिस इंस्पेक्टर उसे देखकर चौंक गया। उसने कहा... कबीर? तुम यहाँ क्या कर रहे हो? तुम्हें तो तीन दिन पहले गायब बताया गया था।",
-          "camera_type": "Dramatic two-shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.inspector} entering {assets.room_604} with a flashlight, staring at {assets.kabir} in disbelief. Kabir looks equally confused. The notebook remains open on the table between them.",
-          "session_delta_prompt": "Reveal that Kabir's own disappearance is part of the mystery."
+          "narration_text": "रुद्र ने भागने की कोशिश की।",
+          "camera_type": "dynamic side shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show Minister Rudra rushing toward a narrow side passage, his navy robe swinging behind him.",
+          "session_delta_prompt": "His expression shows panic."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "कबीर ने तुरंत अपना फोन निकाला। लेकिन उसमें तारीख तीन दिन आगे की थी... और स्क्रीन पर मीरा का एक नया संदेश चमक रहा था।",
-          "camera_type": "Extreme phone close-up",
+          "narration_text": "लेकिन कप्तान आर्या ने उसका रास्ता रोक लिया।",
+          "camera_type": "heroic low-angle shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.kabir} holding {assets.phone} with trembling fingers. The screen glows with an incoming message notification from an unknown contact. No readable text or numbers.",
-          "session_delta_prompt": "Reveal the impossible time discrepancy and the new message."
+          "prompt_action": "Show Captain Arya standing firmly in the minister's path, holding her sword across the passage.",
+          "session_delta_prompt": "Rudra stops abruptly in front of her."
         },
         {
           "beat_id": "s05_b04",
-          "narration_text": "संदेश में सिर्फ एक लाइन थी... अब तुम्हारी बारी है, कमरा छह सौ पाँच। कबीर ने धीरे से सामने वाले दरवाज़े की तरफ देखा।",
-          "camera_type": "Slow push-in toward opposite door",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.kabir} frozen inside {assets.room_604}, looking through the open doorway toward the opposite apartment door in the corridor. The opposite door is slightly open, with a narrow strip of warm light inside.",
-          "session_delta_prompt": "Redirect the mystery toward the neighboring apartment and create a final unanswered question."
+          "narration_text": "उसके हाथ से नकली आदेश नीचे गिर गया।",
+          "camera_type": "floor-level close-up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show the forged royal decree falling from the minister's hand onto the stone floor.",
+          "session_delta_prompt": "The parchment lands open with the royal seal visible."
         },
         {
           "beat_id": "s05_b05",
-          "narration_text": "दरवाज़े के पीछे से मीरा की आवाज़ आई... कबीर, इस बार अंदर मत आना। अब बताइए, क्या कबीर को कमरा छह सौ पाँच खोलना चाहिए था?",
-          "camera_type": "Extreme wide suspense ending",
+          "narration_text": "राजा ने उसे राजद्रोह के आरोप में गिरफ्तार करवा दिया।",
+          "camera_type": "medium confrontation shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.kabir} standing motionless in the long, dark corridor, facing the slightly open door of the neighboring apartment. The inspector is behind him, while the flickering corridor light casts two long shadows toward the camera.",
-          "session_delta_prompt": "End on the unresolved choice, with the open door acting as the final visual hook."
+          "prompt_action": "Show two palace guards restraining Minister Rudra while King Veer stands before him with a stern expression.",
+          "session_delta_prompt": "Rudra lowers his head as the guards secure his wrists."
+        },
+        {
+          "beat_id": "s05_b06",
+          "narration_text": "अगली सुबह छिपा हुआ अनाज जनता में बाँट दिया गया।",
+          "camera_type": "wide street-level shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show palace workers distributing grain sacks to grateful families in the kingdom's public square.",
+          "session_delta_prompt": "Villagers receive the supplies with relieved expressions."
+        },
+        {
+          "beat_id": "s05_b07",
+          "narration_text": "राज्य में फिर से खुशहाली लौट आई।",
+          "camera_type": "wide cinematic shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the lively kingdom market filled with villagers, merchants and colorful stalls under bright morning sunlight.",
+          "session_delta_prompt": "The streets feel peaceful and lively again."
+        },
+        {
+          "beat_id": "s05_b08",
+          "narration_text": "लेकिन राजा को तहखाने में एक और चीज़ मिली थी।",
+          "camera_type": "close-up on king",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show King Veer standing alone in the underground chamber, holding a small old metal key and studying it with a puzzled expression.",
+          "session_delta_prompt": "His eyes move toward the key's unusual markings."
+        },
+        {
+          "beat_id": "s05_b09",
+          "narration_text": "उस चाबी पर रानी के परिवार का निशान बना था।",
+          "camera_type": "extreme macro shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the old metal key resting in the king's palm, revealing a tiny engraved symbol matching Queen Tara's family crest.",
+          "session_delta_prompt": "The mysterious family symbol is sharply visible."
+        },
+        {
+          "beat_id": "s05_b10",
+          "narration_text": "तो क्या रानी इस रहस्य के बारे में पहले से जानती थी?",
+          "camera_type": "dramatic close-up on queen",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show Queen Tara standing in the palace corridor, looking directly toward the viewer with a calm but unreadable expression, one hand resting near her family pendant.",
+          "session_delta_prompt": "A faint mysterious smile appears on her face."
+        },
+        {
+          "beat_id": "s05_b11",
+          "narration_text": "आपको क्या लगता है, रानी का उस गुप्त दरवाज़े से क्या रिश्ता था?",
+          "camera_type": "cinematic final close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the old engraved key in the foreground and Queen Tara standing in soft focus behind it inside the palace corridor, leaving the connection mysterious.",
+          "session_delta_prompt": "Hold on the key and the queen's mysterious expression."
         }
       ]
     }

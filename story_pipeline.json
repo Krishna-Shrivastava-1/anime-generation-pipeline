@@ -1,203 +1,373 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "The Man Hiding Outside Her House",
-    "project_id": "hidden_man_outside_house",
+    "title": "The Last Train at 2:17 AM",
+    "project_id": "last_train_217_am",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Clean 2D cartoon illustration, indie webcomic art style, thin black line art, soft neutral-toned flat watercolor wash fills, minimalist background, storybook animation frame. Simple, modern digital drawing, flat design. Cinematic vertical compositions, expressive character faces, subtle shadows, varied camera angles, suspenseful atmosphere without graphic violence.",
-    "negative_prompt": "Photorealism, 3D rendering, gore, graphic violence, sexual assault depiction, explicit content, exaggerated horror, overly bright colors, messy backgrounds, text, subtitles, watermarks, inconsistent character designs."
+    "art_style": "Cinematic 2D dark fantasy horror illustration, atmospheric graphic novel art style, detailed hand-painted digital backgrounds, expressive character designs, dramatic chiaroscuro lighting, deep midnight blues, muted teal shadows, warm amber practical lights, subtle film grain, eerie volumetric fog, strong perspective, cinematic depth, dynamic compositions. Beautifully illustrated paranormal mystery with unsettling supernatural details, visually rich environments, consistent character designs, and a suspenseful storybook horror atmosphere. Every frame should feel like a distinct shot from an animated horror film.",
+    "negative_prompt": "Photorealism, 3D rendering, anime style, cute cartoon appearance, bright cheerful colors, flat empty backgrounds, low detail, inconsistent character designs, excessive gore, graphic injuries, visible text, subtitles, watermarks, logos, distorted anatomy, extra limbs, blurry faces."
   },
   "assets": {
-    "woman": {
+    "arjun": {
       "type": "character",
-      "label": "Woman walking home",
-      "visual_dna": "A young adult woman with shoulder-length dark brown hair, wearing a muted blue jacket, dark jeans, and comfortable sneakers. Alert expression, expressive eyes, consistent facial features and clothing throughout."
+      "label": "Arjun - the night traveler",
+      "visual_dna": "A 26-year-old Indian man with short slightly messy black hair, light stubble, tired brown eyes, wearing a dark olive-green jacket over a charcoal T-shirt, black jeans, and worn sneakers. Carries a dark brown backpack. Average build, expressive face. Maintain identical facial features, clothing, and backpack in every scene."
     },
-    "stalker": {
+    "conductor": {
       "type": "character",
-      "label": "Man following her",
-      "visual_dna": "An adult man with short dark hair, wearing a dark hooded jacket, dark trousers, and ordinary sneakers. His face is partially shadowed, with a suspicious and unsettling expression. Keep his appearance consistent."
+      "label": "The mysterious train conductor",
+      "visual_dna": "A thin elderly Indian railway conductor with a pale, exhausted face, deep-set dark eyes, a thick grey moustache, and a vintage dark navy railway uniform with brass buttons and an old-fashioned cap. His expression is emotionless and unsettling. His appearance should feel slightly unnatural, as if he has not aged normally."
     },
-    "home": {
+    "little_girl": {
+      "type": "character",
+      "label": "The girl in the train",
+      "visual_dna": "A mysterious young Indian girl around eight years old, with straight black hair falling over her shoulders, wearing an old-fashioned faded red frock and holding a small cloth doll. Her face is pale, her eyes are unusually still, and her expression is quiet rather than openly frightening."
+    },
+    "train": {
       "type": "environment",
-      "label": "Woman's house",
-      "visual_dna": "A modest suburban house with a front door, small porch, windows, and a narrow pathway leading to the street. A few plants and bushes near the entrance. Evening lighting."
+      "label": "The abandoned midnight train",
+      "visual_dna": "An old Indian passenger train with faded blue metal coaches, scratched windows, rusty edges, dim yellow interior lights, and an old locomotive. It looks strangely maintained despite appearing decades out of place. A faint layer of mist surrounds it."
     },
-    "bushes": {
+    "station": {
       "type": "environment",
-      "label": "Bushes outside the house",
-      "visual_dna": "Dense green bushes beside the woman's house, close to the front pathway. Thick enough to conceal a person standing behind them."
+      "label": "The deserted railway station",
+      "visual_dna": "A small isolated railway station in rural India at night, with an old concrete platform, rusted benches, a faded station building, a dim yellow lamp, overgrown weeds, and thick fog. No visible passengers or staff. The atmosphere is lonely and unsettling."
     },
-    "police_officers": {
-      "type": "character",
-      "label": "Police officers",
-      "visual_dna": "Two adult police officers wearing dark standard police uniforms, utility belts, and serious expressions. Professional and alert body language."
+    "train_interior": {
+      "type": "environment",
+      "label": "The empty train compartment",
+      "visual_dna": "An old second-class train compartment with faded blue seats, metal luggage racks, dusty windows, flickering yellow ceiling lights, worn flooring, and empty rows of seats. The corridor feels unusually long and dark."
     },
-    "evidence": {
+    "ticket": {
       "type": "prop",
-      "label": "Items found on the man",
-      "visual_dna": "A small collection of evidence items represented non-graphically: a set of handcuffs, a knife with its blade safely covered, and a packet of condoms. Arranged on an evidence table."
+      "label": "The strange railway ticket",
+      "visual_dna": "An old yellowed paper railway ticket with worn edges, faded ink, and a mysterious date that is not readable. It looks decades old and has been handled many times."
+    },
+    "doll": {
+      "type": "prop",
+      "label": "The little girl's cloth doll",
+      "visual_dna": "A small handmade cloth doll with faded red fabric, black thread hair, one slightly loose button eye, and a worn stitched smile. It looks old and fragile."
     },
     "phone": {
       "type": "prop",
-      "label": "Woman's phone",
-      "visual_dna": "A modern smartphone with a dark screen, used by the woman to call emergency services. No visible brand or readable text."
+      "label": "Arjun's smartphone",
+      "visual_dna": "A modern black smartphone with a slightly scratched screen and a simple dark case. Its screen can glow faintly in dark environments. No visible brand or readable text."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "home",
+      "environment_ref": "station",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "वह एक शाम अपने घर लौट रही थी। रास्ता लगभग खाली था और उसे बस जल्दी से घर पहुँचकर आराम करना था।",
-          "camera_type": "Wide establishing shot",
+          "narration_text": "रात के करीब दो बज रहे थे। अर्जुन एक छोटे से रेलवे स्टेशन पर अकेला खड़ा अपनी ट्रेन का इंतज़ार कर रहा था।",
+          "camera_type": "Extreme wide establishing shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.woman} walking alone along a quiet residential street in the evening. Her house is visible in the distance, with soft street lighting and an otherwise empty road.",
-          "session_delta_prompt": "Establish the quiet evening atmosphere and her ordinary walk home."
+          "prompt_action": "Show {assets.arjun} standing alone on the nearly empty platform of {assets.station}. A single yellow lamp illuminates a small circle around him while the rest of the station disappears into thick fog. Strong cinematic vertical composition.",
+          "session_delta_prompt": "Establish the isolated station, deep night atmosphere, and Arjun's loneliness."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "लेकिन कुछ देर बाद उसे महसूस हुआ कि कोई आदमी उसके पीछे चल रहा है।",
-          "camera_type": "Over-the-shoulder shot",
+          "narration_text": "उसकी आखिरी ट्रेन छूट चुकी थी। वह परेशान होकर बार-बार अपने फोन में टाइम देख रहा था।",
+          "camera_type": "Over-the-shoulder close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.woman} glancing over her shoulder. In the distant background, {assets.stalker} is walking in the same direction, maintaining some distance.",
-          "session_delta_prompt": "Introduce the man following her without revealing his intentions."
+          "prompt_action": "Show {assets.arjun} checking {assets.phone}, with the faint screen light reflecting on his tired face. The deserted platform and empty tracks are visible behind him.",
+          "session_delta_prompt": "Show his frustration and establish that he has been waiting for a long time."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "उसने अपनी चाल तेज़ कर दी, लेकिन वह आदमी भी उसके पीछे आता रहा। अब उसे साफ़ लगने लगा था कि कुछ गड़बड़ है।",
-          "camera_type": "Side tracking shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Show {assets.woman} walking faster with a worried expression while {assets.stalker} remains behind her in the same direction. Keep both characters visible at different distances.",
-          "session_delta_prompt": "Increase tension through her faster steps and anxious expression."
+          "narration_text": "तभी दूर पटरियों की तरफ से एक अजीब सी आवाज़ आने लगी। जैसे कोई पुरानी ट्रेन धीरे-धीरे उसकी तरफ आ रही हो।",
+          "camera_type": "Low-angle track shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show empty railway tracks stretching into dense fog. A tiny pair of yellow headlights appears far away, barely visible through the darkness. Arjun stands as a small silhouette near the platform edge.",
+          "session_delta_prompt": "Introduce the approaching train through distant headlights and growing tension."
         },
         {
           "beat_id": "s01_b04",
-          "narration_text": "जब वह अपने घर के पास पहुँची, तो उस आदमी ने खुद को पास की झाड़ियों में छिपा लिया।",
-          "camera_type": "Low-angle shot",
+          "narration_text": "कुछ ही सेकंड में एक पुरानी नीली ट्रेन उसके सामने आकर रुक गई। लेकिन अर्जुन ने ऐसी ट्रेन पहले कभी नहीं देखी थी।",
+          "camera_type": "Dramatic low-angle wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.stalker} crouching behind {assets.bushes} beside {assets.home}. The woman is approaching the front entrance, unaware of exactly where he is hiding.",
-          "session_delta_prompt": "Reveal the man's hiding place and create a suspenseful visual contrast."
+          "prompt_action": "Show {assets.train} arriving at {assets.station}, filling the vertical frame. Its faded blue coaches and dim yellow windows emerge from the fog. {assets.arjun} looks tiny beside the enormous train.",
+          "session_delta_prompt": "Reveal the mysterious train in a dramatic, visually striking arrival shot."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "home",
+      "environment_ref": "station",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "वह किसी तरह जल्दी से घर के अंदर पहुँची और दरवाज़ा बंद कर लिया। लेकिन उसके मन में डर अभी भी बना हुआ था।",
-          "camera_type": "Interior medium shot",
+          "narration_text": "अजीब बात ये थी कि ट्रेन के दरवाज़े अपने आप खुल गए। अंदर की सारी लाइटें जल रही थीं, लेकिन कोई यात्री दिखाई नहीं दे रहा था।",
+          "camera_type": "Train doorway point-of-view",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.woman} inside {assets.home}, closing the front door and leaning against it with a frightened expression.",
-          "session_delta_prompt": "Move the action indoors and show her immediate relief mixed with fear."
+          "prompt_action": "Show an open doorway of {assets.train}, revealing an empty, dimly lit compartment. {assets.arjun} stands outside looking inside. Mist drifts around the doorway.",
+          "session_delta_prompt": "Make the empty train look strangely inviting and unsettling."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "उसने देर नहीं की। अपना फोन उठाया और तुरंत पुलिस को कॉल कर दिया।",
-          "camera_type": "Close-up shot",
+          "narration_text": "अर्जुन ने सोचा कि शायद ये कोई दूसरी ट्रेन होगी। उसने अपना बैग उठाया और अंदर चढ़ गया।",
+          "camera_type": "Side medium shot",
           "action_mode": "in_place_action",
-          "prompt_action": "Show {assets.woman} holding {assets.phone} near her ear, speaking urgently while standing near the closed front door.",
-          "session_delta_prompt": "Focus on her decision to seek help immediately."
+          "prompt_action": "Show {assets.arjun} stepping into {assets.train} with {assets.arjun}'s backpack over one shoulder. The deserted platform remains visible behind him through the open doorway.",
+          "session_delta_prompt": "Show Arjun making the decision to board the mysterious train."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "उसने पुलिस को बताया कि एक आदमी उसका पीछा कर रहा था और अब उसके घर के बाहर कहीं छिपा हुआ है।",
-          "camera_type": "Close-up on face",
+          "narration_text": "अंदर का माहौल भी कुछ अलग था। पुरानी सीटें, पीली लाइटें और खिड़कियों पर जमी धूल... ऐसा लग रहा था जैसे ये ट्रेन सालों से चल रही हो।",
+          "camera_type": "Wide interior tracking shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.woman} explaining the situation over {assets.phone}. Her expression is tense, and her eyes occasionally glance toward the front window.",
-          "session_delta_prompt": "Emphasize her fear and urgency while she explains what happened."
+          "prompt_action": "Show the interior of {assets.train_interior} from a deep perspective, with rows of faded blue seats, dusty windows, old metal racks, and flickering lights. {assets.arjun} walks down the aisle, looking around.",
+          "session_delta_prompt": "Reveal the train's richly detailed and outdated interior."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "कुछ ही देर में पुलिस वहाँ पहुँच गई। अधिकारियों ने बिना शोर किए घर के आसपास की जगह को ध्यान से देखना शुरू किया।",
-          "camera_type": "Wide exterior shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.police_officers} carefully approaching {assets.home} and inspecting the area around {assets.bushes}. The scene should feel quiet and tense.",
-          "session_delta_prompt": "Introduce the police response and shift the focus outside the house."
+          "narration_text": "वह खिड़की के पास बैठ गया। ट्रेन चलने लगी, लेकिन बाहर स्टेशन पर कोई हलचल तक नहीं थी।",
+          "camera_type": "Window-side medium shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show {assets.arjun} sitting beside a dusty train window as {assets.train} begins moving. Outside, {assets.station} slowly disappears into the fog, with no people or activity anywhere.",
+          "session_delta_prompt": "Transition from the station to the mysterious journey."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "bushes",
+      "environment_ref": "train_interior",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "पुलिस ने झाड़ियों के पास जाँच की, और वहाँ छिपा हुआ वही आदमी पकड़ लिया गया।",
-          "camera_type": "Dynamic wide shot",
+          "narration_text": "कुछ देर बाद एक बूढ़ा कंडक्टर उसके पास आया। उसने बिना कुछ कहे अर्जुन से टिकट माँगा।",
+          "camera_type": "Over-the-shoulder shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.police_officers} discovering {assets.stalker} behind {assets.bushes}. One officer approaches him while the other remains alert. No physical violence.",
-          "session_delta_prompt": "Reveal the man's capture without showing unnecessary force."
+          "prompt_action": "Show {assets.conductor} standing beside the seated {assets.arjun}, extending one thin hand to ask for his ticket. The dim yellow light creates long shadows across the compartment.",
+          "session_delta_prompt": "Introduce the strange conductor with a mysterious, controlled presence."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "लेकिन असली डरावनी बात तो तब सामने आई, जब पुलिस को उसके पास कुछ ऐसी चीज़ें मिलीं जिनका वहाँ होना बिल्कुल सामान्य नहीं था।",
-          "camera_type": "Evidence close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.evidence} arranged on a clean evidence table. Use a serious investigative atmosphere without graphic or explicit details.",
-          "session_delta_prompt": "Build suspense around the items discovered by the police."
+          "narration_text": "अर्जुन ने अपना फोन दिखाकर कहा कि उसने टिकट ऑनलाइन बुक किया था। बूढ़े आदमी ने बस उसे कुछ सेकंड तक घूरा।",
+          "camera_type": "Tight two-shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show {assets.arjun} holding up {assets.phone} while {assets.conductor} stares at him without changing expression. Emphasize the contrast between modern phone technology and the conductor's old uniform.",
+          "session_delta_prompt": "Create an uncomfortable pause through their contrasting expressions."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "उसके पास हथकड़ियाँ, एक चाकू और कंडोम मिले। अब यह मामला सिर्फ पीछा किए जाने तक सीमित नहीं लग रहा था।",
-          "camera_type": "Top-down close-up",
-          "action_mode": "in_place_action",
-          "prompt_action": "Show a closer view of {assets.evidence}, with the handcuffs, covered knife, and packet clearly distinguishable but presented non-graphically.",
-          "session_delta_prompt": "Reveal the discovered items one by one through the composition."
+          "narration_text": "फिर उस बूढ़े ने अपनी जेब से एक पुराना टिकट निकाला और अर्जुन के हाथ में रख दिया।",
+          "camera_type": "Extreme close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the wrinkled hand of {assets.conductor} placing {assets.ticket} into the open palm of {assets.arjun}. Focus on the yellowed paper, faded ink, and unusual age of the ticket.",
+          "session_delta_prompt": "Make the mysterious ticket the central visual clue."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "बाद में बताया गया कि उस आदमी का डीएनए इलाके में हुई छह रेप की घटनाओं से मैच हुआ था।",
-          "camera_type": "Investigative medium shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show a police investigation setting with {assets.police_officers} reviewing case files and a DNA evidence report represented with abstract, unreadable markings. No real victims or assault scenes.",
-          "session_delta_prompt": "Connect the suspect to the reported investigation through symbolic forensic visuals."
+          "narration_text": "अर्जुन ने टिकट देखा तो उसके चेहरे का रंग उड़ गया। उस पर तारीख आज की नहीं, बल्कि कई साल पुरानी थी।",
+          "camera_type": "Overhead ticket close-up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show {assets.arjun} examining {assets.ticket} under the weak compartment light. His fingers tremble slightly. The printed details should be faded and unreadable, but the ticket clearly looks decades old.",
+          "session_delta_prompt": "Reveal that the ticket belongs to a time long before the present."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "home",
+      "environment_ref": "train_interior",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "बाद में उस महिला ने बताया कि वह अपनी सुरक्षा के लिए पहले से स्प्रिंट ट्रेनिंग करती थी।",
-          "camera_type": "Flashback medium shot",
+          "narration_text": "अर्जुन ने सिर उठाकर कंडक्टर से कुछ पूछना चाहा, लेकिन वह वहाँ से गायब हो चुका था।",
+          "camera_type": "Medium shot with empty background",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.woman} running during an athletic sprint training session on an outdoor track. Her posture is strong and focused, with natural daylight.",
-          "session_delta_prompt": "Transition into a visual flashback showing her running practice."
+          "prompt_action": "Show {assets.arjun} looking up from {assets.ticket} toward the aisle. The space where {assets.conductor} was standing is completely empty. The corridor stretches into darkness.",
+          "session_delta_prompt": "Create a sudden disappearance without showing how it happened."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "उसी ट्रेनिंग की वजह से वह उस आदमी से तेज़ भाग पाई और अपने घर तक पहुँच सकी।",
-          "camera_type": "Dynamic side tracking shot",
+          "narration_text": "उसने आसपास देखा। पूरी ट्रेन में अब भी कोई नहीं था। तभी पीछे की एक सीट से किसी बच्ची की धीमी आवाज़ सुनाई दी।",
+          "camera_type": "Long corridor shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.woman} sprinting along the residential street toward {assets.home}. Use dynamic motion lines and a clear sense of speed, with no physical contact or attack.",
-          "session_delta_prompt": "Visually connect her running ability with her escape."
+          "prompt_action": "Show {assets.arjun} standing in the aisle and turning toward the far end of {assets.train_interior}. A small silhouette of {assets.little_girl} is barely visible on a distant seat under a flickering light.",
+          "session_delta_prompt": "Introduce a second mysterious presence at the far end of the compartment."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "उसका मानना था कि अगर वह इतनी तेज़ नहीं भाग पाती, तो शायद उस रात उसके साथ कुछ बहुत बुरा हो सकता था।",
-          "camera_type": "Emotional close-up",
+          "narration_text": "वहाँ एक छोटी बच्ची बैठी थी। उसके हाथ में एक पुरानी गुड़िया थी और वह चुपचाप अर्जुन को देख रही थी।",
+          "camera_type": "Telephoto close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.woman} sitting safely inside {assets.home}, looking thoughtful and shaken as she remembers the incident. Keep the atmosphere quiet and respectful.",
-          "session_delta_prompt": "End on her emotional reaction and the seriousness of what could have happened."
+          "prompt_action": "Show {assets.little_girl} sitting alone on a faded blue seat, holding {assets.doll} in her lap. Her black hair frames her pale face, and she stares quietly toward the camera.",
+          "session_delta_prompt": "Reveal the girl clearly while keeping her expression subtly unsettling."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "सोचिए, वह आदमी उसके घर के बाहर छिपा बैठा था और उसके पास ऐसी चीज़ें भी थीं। अगर उसने उस दिन अपनी ट्रेनिंग और अपनी समझ पर भरोसा नहीं किया होता, तो क्या होता?",
-          "camera_type": "Wide cinematic closing shot",
+          "narration_text": "अर्जुन ने पूछा, बेटा तुम यहाँ अकेली क्या कर रही हो? बच्ची ने धीरे से जवाब दिया, मैं तो हमेशा से इसी ट्रेन में हूँ।",
+          "camera_type": "Alternating close-up composition",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.home} from across the quiet street at night. {assets.bushes} are visible beside the house, while a warm light glows through the window. Create a reflective, suspenseful ending.",
-          "session_delta_prompt": "Close the story with a quiet visual reminder of the danger she escaped."
+          "prompt_action": "Show {assets.arjun} facing {assets.little_girl} across the empty aisle. Arjun looks concerned while the girl remains perfectly still, clutching {assets.doll}.",
+          "session_delta_prompt": "Emphasize the unsettling contrast between Arjun's concern and the girl's calm response."
+        }
+      ]
+    },
+    {
+      "scene_id": 5,
+      "environment_ref": "train_interior",
+      "beats": [
+        {
+          "beat_id": "s05_b01",
+          "narration_text": "अर्जुन को उसकी बात समझ नहीं आई। उसने पूछा, तुम्हें कहाँ उतरना है? बच्ची ने खिड़की की तरफ इशारा कर दिया।",
+          "camera_type": "Side profile two-shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show {assets.little_girl} slowly pointing toward the dusty window while {assets.arjun} watches her with confusion. Her doll rests against her other arm.",
+          "session_delta_prompt": "Build tension around what the girl is pointing at."
+        },
+        {
+          "beat_id": "s05_b02",
+          "narration_text": "अर्जुन ने बाहर देखा तो उसका दिल ज़ोर से धड़कने लगा। ट्रेन के बाहर कोई स्टेशन नहीं था, सिर्फ अंधेरा और घना कोहरा था।",
+          "camera_type": "Window point-of-view shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the view through the window of {assets.train}: endless darkness, swirling fog, and faint blurred trees passing by. No buildings, platforms, or lights are visible.",
+          "session_delta_prompt": "Show that the train is traveling through a place that feels disconnected from the real world."
+        },
+        {
+          "beat_id": "s05_b03",
+          "narration_text": "तभी बच्ची ने एक और बात कही, अगला स्टेशन आने वाला है... लेकिन वहाँ कोई ट्रेन से वापस नहीं जाता।",
+          "camera_type": "Extreme close-up on girl",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.little_girl} looking directly toward {assets.arjun}, her expression completely calm as she speaks. A flickering light above her casts an unsettling shadow across her face.",
+          "session_delta_prompt": "Make the girl's warning the emotional turning point of the story."
+        },
+        {
+          "beat_id": "s05_b04",
+          "narration_text": "अर्जुन घबराकर दरवाज़े की तरफ भागा। उसने दरवाज़ा खोलने की कोशिश की, लेकिन वह अंदर से बंद था।",
+          "camera_type": "Dynamic tracking shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.arjun} rushing down the aisle of {assets.train_interior} toward the carriage door, gripping its handle and trying desperately to open it. Motion blur and tilted perspective create urgency.",
+          "session_delta_prompt": "Shift from slow suspense to sudden panic and urgent movement."
+        }
+      ]
+    },
+    {
+      "scene_id": 6,
+      "environment_ref": "train_interior",
+      "beats": [
+        {
+          "beat_id": "s06_b01",
+          "narration_text": "अचानक पूरी ट्रेन की लाइटें एक साथ बंद हो गईं। कुछ सेकंड तक इतना अंधेरा था कि अर्जुन को अपना हाथ भी दिखाई नहीं दे रहा था।",
+          "camera_type": "Dark silhouette shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.arjun} frozen in the aisle of {assets.train_interior} as every ceiling light goes out. Only a faint outline of his body is visible against the dark windows.",
+          "session_delta_prompt": "Create a sudden blackout and a moment of complete visual darkness."
+        },
+        {
+          "beat_id": "s06_b02",
+          "narration_text": "फिर अचानक एक तेज़ झटका लगा। ट्रेन रुक चुकी थी, लेकिन बाहर से किसी के दरवाज़ा खटखटाने की आवाज़ आने लगी।",
+          "camera_type": "Low-angle doorway shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.arjun} turning toward the carriage door as a shadow falls across its frosted glass. The train appears stationary, and a faint cold light leaks through the doorway edges.",
+          "session_delta_prompt": "Suggest that something is standing outside the carriage."
+        },
+        {
+          "beat_id": "s06_b03",
+          "narration_text": "दरवाज़े के शीशे पर एक चेहरा दिखाई दिया। अर्जुन पीछे हट गया... क्योंकि वह चेहरा उसी बूढ़े कंडक्टर का था।",
+          "camera_type": "Extreme close-up through glass",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the pale face of {assets.conductor} appearing behind the carriage door glass, his deep-set eyes staring directly inside. {assets.arjun} is visible as a frightened reflection on the glass.",
+          "session_delta_prompt": "Deliver a sharp supernatural reveal using reflections and close framing."
+        },
+        {
+          "beat_id": "s06_b04",
+          "narration_text": "लेकिन सबसे डरावनी बात ये थी कि बूढ़ा बाहर खड़ा नहीं था... वह अर्जुन के ठीक पीछे भी दिखाई दे रहा था।",
+          "camera_type": "Over-the-shoulder horror reveal",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.arjun} in the foreground, slowly turning his head. Behind him, {assets.conductor} stands silently in the dark aisle, while the same conductor's face remains faintly visible in the door glass reflection. Create an eerie supernatural double-presence effect.",
+          "session_delta_prompt": "Reveal that the conductor seems to be in two places at once."
+        }
+      ]
+    },
+    {
+      "scene_id": 7,
+      "environment_ref": "station",
+      "beats": [
+        {
+          "beat_id": "s07_b01",
+          "narration_text": "अर्जुन की आँखें बंद हो गईं। जब उसने दोबारा आँखें खोलीं, तो वह उसी सुनसान स्टेशन की बेंच पर पड़ा था।",
+          "camera_type": "Top-down waking shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.arjun} waking up on an old bench at {assets.station}. His backpack lies beside him. The platform is empty, and the familiar yellow lamp glows above him.",
+          "session_delta_prompt": "Create an abrupt transition back to the original station."
+        },
+        {
+          "beat_id": "s07_b02",
+          "narration_text": "उसने तुरंत अपना फोन देखा। टाइम सुबह के पाँच बज रहे थे। उसे लगा शायद ये सब कोई सपना था।",
+          "camera_type": "Close-up on phone and face",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show {assets.arjun} sitting up and checking {assets.phone}, his face confused and exhausted. Early morning blue light begins to replace the darkness around {assets.station}.",
+          "session_delta_prompt": "Suggest that the frightening journey may have been a dream."
+        },
+        {
+          "beat_id": "s07_b03",
+          "narration_text": "लेकिन तभी उसे अपनी जेब में कुछ कागज़ महसूस हुआ। उसने बाहर निकाला तो वही पुराना टिकट उसके हाथ में था।",
+          "camera_type": "Extreme close-up of hand",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.arjun} pulling {assets.ticket} from his jacket pocket. His fingers stop moving as he recognizes the same yellowed ticket. His shocked face is softly visible in the background.",
+          "session_delta_prompt": "Bring back the physical evidence that the journey was real."
+        },
+        {
+          "beat_id": "s07_b04",
+          "narration_text": "उसने टिकट को पलटकर देखा। पीछे एक छोटी सी तस्वीर बनी थी... उसी बच्ची की, जो ट्रेन में उसके सामने बैठी थी।",
+          "camera_type": "Macro ticket reveal",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the back of {assets.ticket} in extreme close-up. A small faded illustration resembling {assets.little_girl} is visible on the paper. {assets.arjun}'s trembling fingers hold the ticket against the morning light.",
+          "session_delta_prompt": "Reveal the final connection between the girl and the mysterious ticket."
+        }
+      ]
+    },
+    {
+      "scene_id": 8,
+      "environment_ref": "station",
+      "beats": [
+        {
+          "beat_id": "s08_b01",
+          "narration_text": "अर्जुन ने घबराकर स्टेशन के बाहर देखा। वहाँ एक बूढ़ा सफाई कर्मचारी झाड़ू लगा रहा था।",
+          "camera_type": "Wide morning shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.arjun} standing on the platform looking toward an elderly railway cleaner sweeping near the station building. Morning mist still hangs over {assets.station}.",
+          "session_delta_prompt": "Introduce an ordinary witness who may explain what happened."
+        },
+        {
+          "beat_id": "s08_b02",
+          "narration_text": "अर्जुन उसके पास गया और उस नीली ट्रेन के बारे में पूछा। बूढ़े आदमी ने उसकी बात सुनकर झाड़ू रोक दी।",
+          "camera_type": "Medium two-shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show {assets.arjun} speaking urgently to the elderly railway cleaner near the platform. The cleaner has stopped sweeping and looks at him with sudden concern.",
+          "session_delta_prompt": "Build anticipation before the final explanation."
+        },
+        {
+          "beat_id": "s08_b03",
+          "narration_text": "उस बूढ़े ने कहा, बेटा... इस स्टेशन पर रात के बाद कोई ट्रेन नहीं आती। और जिस ट्रेन की तुम बात कर रहे हो, वो तो तीस साल पहले बंद हो चुकी थी।",
+          "camera_type": "Tight close-up on cleaner",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the elderly railway cleaner speaking with a serious expression, his eyes fixed on {assets.arjun}. The old station building and empty tracks sit in the soft-focus background.",
+          "session_delta_prompt": "Deliver the revelation that the train has been out of service for decades."
+        },
+        {
+          "beat_id": "s08_b04",
+          "narration_text": "अर्जुन के हाथ से टिकट लगभग गिर गया। तभी दूर पटरियों के पास एक छोटी बच्ची लाल कपड़ों में खड़ी दिखाई दी। उसके हाथ में वही गुड़िया थी।",
+          "camera_type": "Long-lens final reveal",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.arjun} in the foreground, frozen in shock, while far down the misty tracks {assets.little_girl} stands in her faded red frock holding {assets.doll}. The morning light is cold and pale, and the girl looks directly toward him.",
+          "session_delta_prompt": "Reveal the girl at the station one final time, connecting the supernatural journey to the real world."
+        },
+        {
+          "beat_id": "s08_b05",
+          "narration_text": "अगले ही पल एक ट्रेन की सीटी सुनाई दी... और बच्ची गायब हो गई। अब सवाल ये है, अगर आप अर्जुन की जगह होते, तो क्या उस स्टेशन पर दोबारा कभी जाते?",
+          "camera_type": "Extreme wide cinematic ending",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.station} from a distant cinematic angle. {assets.arjun} stands alone near the platform while the tracks disappear into thick fog. A faint pair of yellow train lights glows far away, suggesting the mysterious train may return.",
+          "session_delta_prompt": "End with an unresolved supernatural mystery and a haunting visual echo of the train's arrival."
         }
       ]
     }

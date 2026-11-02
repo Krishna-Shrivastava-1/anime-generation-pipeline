@@ -1,3 +1,4 @@
+
 # name: Generate and Download Duck.ai Story Frames
 
 # on:
@@ -23,7 +24,7 @@
 # jobs:
 #   generate-story-frames:
 #     runs-on: ubuntu-latest
-#     timeout-minutes: 50
+#     timeout-minutes: 60
 
 #     steps:
 #       - name: Checkout repository
@@ -71,7 +72,7 @@
 #           PY
 
 #       - name: Automate Duck.ai Story Pipeline
-#         timeout-minutes: 50
+#         timeout-minutes: 55
 #         env:
 #           ASPECT_RATIO: ${{ inputs.aspect_ratio }}
 #           HEADED: ${{ inputs.headed }}
@@ -337,7 +338,6 @@
 #           assets = story.get("assets", {})
 #           global_style = story.get("global_style", {})
 
-#           # Global module variables
 #           browser = None
 #           context = None
 #           page = None
@@ -488,9 +488,9 @@
 #           PY
 
 #           if [ "$HEADED" = "true" ]; then
-#             timeout -k 15 2700 xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py
+#             timeout -k 15 3180 xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py
 #           else
-#             timeout -k 15 2700 python generate_story.py
+#             timeout -k 15 3180 python generate_story.py
 #           fi
 
 #       - name: Kill leftover browser processes
@@ -503,7 +503,7 @@
 #         run: |
 #           git config user.name "github-actions[bot]"
 #           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-#           git add build/frames/ build/pipeline_state.json
+#           git add -f build/frames/ build/pipeline_state.json
 #           if git diff --cached --quiet; then
 #             echo "No new frames to commit."
 #             exit 0
@@ -519,6 +519,17 @@
 #           name: duck-ai-debug
 #           path: debug/
 #           if-no-files-found: ignore
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -555,7 +566,7 @@ permissions:
 jobs:
   generate-story-frames:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
 
     steps:
       - name: Checkout repository
@@ -603,7 +614,7 @@ jobs:
           PY
 
       - name: Automate Duck.ai Story Pipeline
-        timeout-minutes: 55
+        timeout-minutes: 110
         env:
           ASPECT_RATIO: ${{ inputs.aspect_ratio }}
           HEADED: ${{ inputs.headed }}
@@ -615,7 +626,7 @@ jobs:
           import os, re, sys, json, base64, subprocess, time
           from io import BytesIO
           from pathlib import Path
-          from PIL import Image, ImageFilter, ImageStat
+          from PIL import Image
           from playwright.sync_api import sync_playwright
           from curl_cffi import requests
           from prompt_compiler import compile_beat_prompt
@@ -623,15 +634,14 @@ jobs:
           ASPECT_RATIO = os.environ.get("ASPECT_RATIO", "9:16")
           HEADED = os.environ.get("HEADED") == "true"
           IMAGE_WAIT = int(os.environ.get("IMAGE_WAIT_SECONDS", "180"))
-          LOOSE_AFTER = 60
-          FINAL_WAIT = 90
+          LOOSE_AFTER = 50
+          FINAL_WAIT = 75
           MAX_ATTEMPTS = 2
 
           OUTPUT_DIR = Path("build/frames"); OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
           DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
           STATE_FILE = Path("build/pipeline_state.json")
           RUN_LOG = DEBUG_DIR / "run.log"
-          NET_LOG = DEBUG_DIR / "network.log"
 
           TOR_PROXY = "socks5h://127.0.0.1:9050"
           BROWSER_PROXY = "socks5://127.0.0.1:9050"
@@ -639,10 +649,10 @@ jobs:
           CONTINUE_LABELS = re.compile(
               r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I)
 
-          def log(msg, path=RUN_LOG):
+          def log(msg):
               line = f"[{time.strftime('%H:%M:%S')}] {msg}"
               print(line, flush=True)
-              with open(path, "a", encoding="utf-8") as f:
+              with open(RUN_LOG, "a", encoding="utf-8") as f:
                   f.write(line + "\n")
 
           def snap(page, name):
@@ -660,11 +670,11 @@ jobs:
                   if subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0:
                       break
                   time.sleep(2)
-              time.sleep(5)
+              time.sleep(3)
 
           def click_continue(page):
               clicked_any = False
-              for _ in range(4):
+              for _ in range(3):
                   clicked = False
                   try:
                       buttons = page.get_by_role("button", name=CONTINUE_LABELS)
@@ -672,8 +682,8 @@ jobs:
                           btn = buttons.nth(i)
                           if btn.is_visible():
                               log(f"Clicking button: {(btn.inner_text() or '').strip()!r}")
-                              btn.click(timeout=4000)
-                              page.wait_for_timeout(1500)
+                              btn.click(timeout=3000)
+                              page.wait_for_timeout(1000)
                               clicked = clicked_any = True
                               break
                   except Exception:
@@ -686,6 +696,16 @@ jobs:
               return page.locator(
                   "textarea[name='user-prompt'], textarea[placeholder*='ask' i], "
                   "textarea[placeholder*='message' i], textarea").first
+
+          def human_paste_prompt(page, box, text):
+              """Pastes prompt via clipboard to simulate natural human behavior without bot delay."""
+              box.click()
+              page.wait_for_timeout(400)
+              page.evaluate("t => navigator.clipboard.writeText(t)", text)
+              page.wait_for_timeout(200)
+              page.keyboard.press("Control+v")
+              page.wait_for_timeout(500)
+              box.press("Enter")
 
           def all_images(page):
               return page.evaluate("""
@@ -740,22 +760,20 @@ jobs:
 
           def download_via_button(page):
               img = page.locator("[data-pick='1']").first
-              img.scroll_into_view_if_needed(timeout=5000)
-              img.hover(timeout=5000)
-              page.wait_for_timeout(1000)
+              img.scroll_into_view_if_needed(timeout=4000)
+              img.hover(timeout=4000)
+              page.wait_for_timeout(600)
               loc = (page.get_by_role("button", name=re.compile(r"download", re.I))
                      .or_(page.locator("button[aria-label*='ownload' i], button[title*='ownload' i], "
                                        "a[aria-label*='ownload' i], a[title*='ownload' i], "
                                        "[role=button][aria-label*='ownload' i]")))
-              count = loc.count()
-              for idx in range(count - 1, -1, -1):
+              for idx in range(loc.count() - 1, -1, -1):
                   btn = loc.nth(idx)
                   try:
                       if not btn.is_visible(): continue
-                      with page.expect_download(timeout=20000) as dl_info:
-                          btn.click(timeout=5000)
-                      dl = dl_info.value
-                      return Path(dl.path()).read_bytes()
+                      with page.expect_download(timeout=15000) as dl_info:
+                          btn.click(timeout=4000)
+                      return Path(dl_info.value.path()).read_bytes()
                   except Exception: pass
               raise RuntimeError("no working download button")
 
@@ -805,17 +823,15 @@ jobs:
           def fetch_with_curl(src):
               if not src or src.startswith(("data:", "blob:")):
                   raise RuntimeError("not a remote URL")
-              kwargs = dict(impersonate="chrome", timeout=60, headers={"Referer": "https://duck.ai/"})
-              kwargs["proxies"] = {"http": TOR_PROXY, "https": TOR_PROXY}
-              r = requests.get(src, **kwargs)
+              r = requests.get(src, impersonate="chrome", timeout=50,
+                               headers={"Referer": "https://duck.ai/"},
+                               proxies={"http": TOR_PROXY, "https": TOR_PROXY})
               r.raise_for_status()
               return r.content
 
           def screenshot_picked_image(page):
               el = page.locator("[data-pick='1']").first
-              if el.count():
-                  return el.screenshot(type="png", timeout=15000)
-              return None
+              return el.screenshot(type="png", timeout=12000) if el.count() else None
 
           def image_fingerprint(page, baseline):
               return page.evaluate("""
@@ -839,7 +855,7 @@ jobs:
                   }""", list(baseline))
 
           def wait_for_final_image(page, baseline, state, max_wait=FINAL_WAIT):
-              log("Waiting for final sharp image...")
+              log("Waiting for sharp image to settle...")
               start, last, stable = time.time(), None, 0
               while time.time() - start < max_wait:
                   click_continue(page)
@@ -850,9 +866,9 @@ jobs:
                       stable = 0
                   last = fp
                   blurred = bool(fp) and ("blur" in (fp["filter"] or "") or float(fp["opacity"] or 1) < 0.95)
-                  done = bool(fp) and not blurred and stable >= 6 and (state["chat_done"] or stable >= 16)
-                  if done: return True
-                  page.wait_for_timeout(2000)
+                  if bool(fp) and not blurred and stable >= 6 and (state["chat_done"] or stable >= 14):
+                      return True
+                  page.wait_for_timeout(1500)
               return False
 
           # Main Execution Logic
@@ -885,7 +901,8 @@ jobs:
               )
               context = browser.new_context(
                   viewport={"width": 1440, "height": 1000},
-                  user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
+                  user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+                  permissions=["clipboard-read", "clipboard-write"]
               )
               context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
               page = context.new_page()
@@ -932,27 +949,24 @@ jobs:
 
                           if not is_in_chat:
                               log("Opening https://duck.ai/chat ...")
-                              page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=90000)
-                              page.wait_for_timeout(4000)
+                              page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
+                              page.wait_for_timeout(3000)
                               click_continue(page)
 
                           box = get_prompt_box(page)
-                          box.wait_for(state="visible", timeout=45000)
+                          box.wait_for(state="visible", timeout=40000)
                           baseline = {i["full"] for i in all_images(page)}
 
-                          log(f"Typing prompt: {final_prompt[:100]}...")
-                          box.click()
-                          page.keyboard.type(final_prompt, delay=25)
+                          log(f"Entering prompt: {final_prompt[:90]}...")
+                          human_paste_prompt(page, box, final_prompt)
                           state["submitted"] = True
-                          page.keyboard.press("Enter")
-                          page.wait_for_timeout(2000)
 
                           if not is_in_chat:
-                              dl = time.time() + 60
+                              dl = time.time() + 50
                               while time.time() < dl:
                                   click_continue(page)
                                   if "chatID=" in page.url: break
-                                  page.wait_for_timeout(1500)
+                                  page.wait_for_timeout(1200)
 
                           log(f"Waiting up to {IMAGE_WAIT}s for image render...")
                           start_w = time.time()
@@ -965,7 +979,7 @@ jobs:
                                   wait_for_final_image(page, baseline, state)
                                   pick = find_new_image(page, baseline, loose=True) or pick
                                   break
-                              page.wait_for_timeout(2000)
+                              page.wait_for_timeout(1800)
 
                           if not pick:
                               raise RuntimeError(f"No image detected for {beat_id}")
@@ -988,7 +1002,7 @@ jobs:
                                       log(f"Extracted via {m_name}")
                                       break
                               except Exception as ex:
-                                  log(f"{m_name} failed: {str(ex)[:100]}")
+                                  log(f"{m_name} failed: {str(ex)[:90]}")
 
                           if not found:
                               raise RuntimeError("Could not download valid image data through any method.")
@@ -1001,7 +1015,7 @@ jobs:
                           with open(STATE_FILE, "w") as sf: json.dump(pipeline_state, sf, indent=2)
 
                           beat_done = True
-                          page.wait_for_timeout(3000)
+                          page.wait_for_timeout(2500)
                           break
 
                       except Exception as err:
@@ -1019,9 +1033,9 @@ jobs:
           PY
 
           if [ "$HEADED" = "true" ]; then
-            timeout -k 15 3180 xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py
+            xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py
           else
-            timeout -k 15 3180 python generate_story.py
+            python generate_story.py
           fi
 
       - name: Kill leftover browser processes
@@ -1031,6 +1045,7 @@ jobs:
           pkill -9 -f Xvfb || true
 
       - name: Commit and push generated story frames
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

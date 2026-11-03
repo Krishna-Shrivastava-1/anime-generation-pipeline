@@ -1,421 +1,261 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "राजा का आखिरी फैसला",
-    "project_id": "the_kings_final_judgment",
+    "title": "PowerShell vs CMD: The Ultimate Showdown",
+    "project_id": "powershell_vs_cmd_001",
     "language": "hi-IN",
-    "aspect_ratio": "9:16",
+    "aspect_ratio": "16:9",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Light comic-style 2D historical mystery thriller, polished illustrated storybook aesthetic, expressive faces, clean detailed outlines, rich royal colors, warm cinematic lighting, beautiful medieval Indian kingdom architecture, dynamic comic-book camera angles, strong visual storytelling, detailed environments, consistent character designs.",
-    "negative_prompt": "Photorealism, 3D render, horror, gore, modern objects, modern clothing, flat compositions, blurry details, inconsistent character designs, exaggerated cartoon proportions, text, captions, speech bubbles, watermarks, multiple moments in one image, montage, future events appearing before narration."
+    "art_style": "Clean professional whiteboard comparison video, bright white background, realistic photographic images of computer interfaces and technology, simple hand-drawn black stickman presenter, minimal black typography, subtle colored highlights, clean arrows and circles, modern educational entertainment aesthetic, consistent left-right comparison layout. CMD always appears on the left and PowerShell always appears on the right. Keep all text readable and visuals uncluttered.",
+    "negative_prompt": "No cartoon computer interfaces, no distorted terminal screenshots, no gibberish text, no excessive decorations, no dark backgrounds, no unnecessary characters, no watermarks, no logos invented, no inconsistent stickman design, no 3D cartoon style, no cluttered layouts."
   },
   "assets": {
-    "king_veer": {
-      "type": "character",
-      "label": "King Veer",
-      "visual_dna": "A 45-year-old Indian king with a neatly trimmed black and grey beard, shoulder-length dark hair, sharp brown eyes, a golden crown with a red ruby, deep maroon royal robes with gold embroidery, broad shoulders and a stern but thoughtful expression."
-    },
-    "queen_meera": {
-      "type": "character",
-      "label": "Queen Meera",
-      "visual_dna": "A 38-year-old Indian queen with expressive dark eyes, long black hair in a braided bun, a royal blue and gold saree, elegant gold jewelry, a small crescent-shaped forehead ornament and a calm, intelligent expression."
-    },
-    "prince_aarav": {
-      "type": "character",
-      "label": "Prince Aarav",
-      "visual_dna": "A 19-year-old Indian prince with a youthful face, short wavy black hair, clean-shaven, wearing a cream and royal blue embroidered tunic, a simple gold pendant and an observant expression."
-    },
-    "captain_arya": {
-      "type": "character",
-      "label": "Captain Arya",
-      "visual_dna": "A 32-year-old female palace guard captain with an athletic build, focused eyes, dark hair tied in a tight bun, bronze and navy armor, a red shoulder sash and a sword at her waist."
-    },
-    "royal_palace": {
+    "whiteboard": {
       "type": "environment",
-      "label": "Royal Palace",
-      "visual_dna": "A magnificent medieval Indian palace with sandstone walls, carved pillars, grand balconies, colorful glass windows, royal banners, golden lamps and a vast central courtyard."
+      "label": "Comparison Whiteboard",
+      "visual_dna": "A clean bright whiteboard studio with a pure white background, subtle paper texture, plenty of negative space, and a consistent two-column comparison layout. Left side reserved for CMD, right side reserved for PowerShell, presenter positioned near the bottom center."
     },
-    "throne_room": {
-      "type": "environment",
-      "label": "Throne Room",
-      "visual_dna": "A grand royal courtroom with a raised golden throne, maroon carpet, tall carved pillars, large arched windows and a circular stone emblem in the center of the floor."
+    "stickman": {
+      "type": "character",
+      "label": "Stickman Presenter",
+      "visual_dna": "A simple hand-drawn black stickman with a round head, thin black limbs, expressive minimal facial features, white body with black outlines, consistent proportions, friendly and curious personality."
     },
-    "palace_archive": {
-      "type": "environment",
-      "label": "Royal Archive",
-      "visual_dna": "A quiet palace archive filled with wooden shelves, rolled scrolls, old royal records, brass lamps and a large writing desk."
-    },
-    "old_bridge": {
-      "type": "environment",
-      "label": "Old Stone Bridge",
-      "visual_dna": "An ancient stone bridge over a deep river gorge, with weathered railings, carved pillars, steep rocky banks and a narrow path leading toward the palace."
-    },
-    "royal_dagger": {
+    "cmd_terminal": {
       "type": "prop",
-      "label": "Royal Dagger",
-      "visual_dna": "A short ceremonial dagger with a silver blade, a blue gemstone in its golden hilt and a tiny engraved royal crest."
+      "label": "Command Prompt",
+      "visual_dna": "Authentic Windows Command Prompt interface, black terminal background, white monospace text, realistic Windows command-line appearance, recognizable CMD window."
     },
-    "broken_crown": {
+    "powershell_terminal": {
       "type": "prop",
-      "label": "Broken Crown",
-      "visual_dna": "A small golden royal crown with one side bent and a missing blue gemstone, showing signs of an old impact."
+      "label": "PowerShell",
+      "visual_dna": "Authentic Windows PowerShell interface, dark blue terminal background, white monospace text, realistic PowerShell command-line appearance, recognizable PowerShell window."
     },
-    "sealed_letter": {
+    "old_computer": {
       "type": "prop",
-      "label": "Sealed Letter",
-      "visual_dna": "An old parchment letter folded twice and closed with dark red wax bearing the royal lion emblem."
+      "label": "Old Computer",
+      "visual_dna": "A vintage personal computer with a bulky CRT monitor, keyboard, and an old-fashioned computing appearance, representing early personal computing."
+    },
+    "modern_computer": {
+      "type": "prop",
+      "label": "Modern Computer",
+      "visual_dna": "A contemporary desktop computer with a slim monitor, modern keyboard, and clean professional appearance."
+    },
+    "process_data": {
+      "type": "prop",
+      "label": "Process Information",
+      "visual_dna": "A clean visual representation of computer processes with readable columns for process name, CPU usage, and memory usage, arranged as structured information cards."
+    },
+    "automation_icons": {
+      "type": "prop",
+      "label": "Automation Symbols",
+      "visual_dna": "Simple recognizable symbols representing automated computer tasks, folders, files, scripts, network connections, and system administration."
+    },
+    "os_logos": {
+      "type": "prop",
+      "label": "Operating Systems",
+      "visual_dna": "Recognizable official-style visual representations of Windows, Linux, and macOS operating systems, displayed as three separate clean symbols."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "throne_room",
+      "environment_ref": "whiteboard",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "जिस दिन राजा वीर ने अपने बेटे को देशद्रोही कहा, उसी दिन पूरे दरबार में सन्नाटा छा गया।",
-          "camera_type": "dramatic wide shot",
+          "narration_text": "ये दोनों देखने में लगभग एक जैसे लगते हैं। दोनों में कमांड लिखते हैं और दोनों से कंप्यूटर को कंट्रोल कर सकते हैं।",
+          "camera_type": "wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show King Veer standing before his golden throne, pointing accusingly toward Prince Aarav in the middle of the royal courtroom. Ministers and guards watch in shock.",
-          "session_delta_prompt": "The prince stands alone in the center of the court."
+          "prompt_action": "Show {assets.cmd_terminal} on the left and {assets.powershell_terminal} on the right, equally sized and clearly visible. Place {assets.stickman} at the bottom center looking confused at both terminals. Add a small question mark above the presenter's head.",
+          "session_delta_prompt": "Keep the whiteboard layout and both terminal windows in their fixed left-right positions."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "आरोप था कि राजकुमार ने राजा की हत्या की कोशिश की थी।",
-          "camera_type": "extreme close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show the royal dagger lying on a red velvet cushion before the throne, its blue gemstone hilt clearly visible.",
-          "session_delta_prompt": "A small dark stain is visible near the blade's tip."
-        },
-        {
-          "beat_id": "s01_b03",
-          "narration_text": "और सबसे बड़ा सबूत था, राजा के कमरे में मिला यही खंजर।",
-          "camera_type": "over-the-shoulder shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Prince Aarav staring at the dagger from across the courtroom, his face pale and confused.",
-          "session_delta_prompt": "His eyes remain fixed on the dagger."
-        },
-        {
-          "beat_id": "s01_b04",
-          "narration_text": "राजकुमार ने कहा, मैंने ऐसा कुछ नहीं किया।",
-          "camera_type": "tight close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Prince Aarav raising one hand in protest, looking directly toward his father with hurt and disbelief.",
-          "session_delta_prompt": "His expression is desperate but controlled."
-        },
-        {
-          "beat_id": "s01_b05",
-          "narration_text": "लेकिन राजा ने उसे उसी शाम जेल भेजने का आदेश दे दिया।",
-          "camera_type": "low-angle medium shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show King Veer seated rigidly on the throne, one hand raised as he gives the order to the guards.",
-          "session_delta_prompt": "The guards begin moving toward the prince."
+          "narration_text": "लेकिन क्या आपको पता है कि इनमें से एक दूसरे से कितना ज्यादा शक्तिशाली है?",
+          "camera_type": "medium_shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "The stickman raises one hand toward the two terminals with a curious expression. Add a large question mark between the two terminal windows and a subtle spotlight around both.",
+          "session_delta_prompt": "Preserve both terminal windows. Change only the stickman's pose and add the question mark."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "royal_palace",
+      "environment_ref": "whiteboard",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "लेकिन रानी मीरा को अपने बेटे की बात पर भरोसा था।",
-          "camera_type": "close-up reaction shot",
+          "narration_text": "बाईं तरफ है सीएमडी, यानी कमांड प्रॉम्प्ट। और दाईं तरफ है पावरशेल।",
+          "camera_type": "wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera standing beside a palace pillar, watching the prince being taken away, her face full of concern but not doubt.",
-          "session_delta_prompt": "Her eyes follow her son."
+          "prompt_action": "Highlight {assets.cmd_terminal} on the left with a clean label reading CMD. Highlight {assets.powershell_terminal} on the right with a clean label reading POWERSHELL. The stickman presenter points toward the left terminal.",
+          "session_delta_prompt": "Maintain the same terminal positions. Introduce the two subject labels and change the presenter's pointing direction."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "उसने राजा से बस एक रात माँगी।",
-          "camera_type": "medium two-shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera standing before King Veer in a quiet palace chamber, asking him for time with one hand raised.",
-          "session_delta_prompt": "The king listens without changing his expression."
-        },
-        {
-          "beat_id": "s02_b03",
-          "narration_text": "रानी ने कहा, अगर वह दोषी है, तो मैं खुद सज़ा दूँगी।",
-          "camera_type": "over-the-shoulder close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera looking firmly at the king, her posture straight and her expression determined.",
-          "session_delta_prompt": "The king looks at her in silence."
-        },
-        {
-          "beat_id": "s02_b04",
-          "narration_text": "राजा ने आखिरकार उसे सुबह तक का समय दे दिया।",
-          "camera_type": "close-up on king",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show King Veer giving a reluctant nod, seated beside a carved palace window.",
-          "session_delta_prompt": "His face remains stern."
-        },
-        {
-          "beat_id": "s02_b05",
-          "narration_text": "रानी सबसे पहले राजा के कमरे में पहुँची।",
-          "camera_type": "tracking shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera walking briskly through the royal corridor toward the king's private chamber, accompanied by no one.",
-          "session_delta_prompt": "Her blue and gold saree moves as she walks."
-        },
-        {
-          "beat_id": "s02_b06",
-          "narration_text": "वहाँ उसे खंजर के पास एक टूटा हुआ मुकुट मिला।",
-          "camera_type": "top-down close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera's hand picking up {assets.broken_crown} from the stone floor beside an empty velvet dagger stand.",
-          "session_delta_prompt": "The missing gemstone setting catches the light."
-        },
-        {
-          "beat_id": "s02_b07",
-          "narration_text": "वह मुकुट राजकुमार का नहीं, राजा का था।",
-          "camera_type": "macro detail shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show the broken crown in Queen Meera's palm, with the tiny royal lion crest engraved on its inner band.",
-          "session_delta_prompt": "The crest is sharply visible."
-        },
-        {
-          "beat_id": "s02_b08",
-          "narration_text": "रानी को याद आया कि राजा ने पिछली रात मुकुट पहना ही नहीं था।",
-          "camera_type": "memory-style medium shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show King Veer from the previous evening standing in his chamber without his crown, wearing his maroon royal robes.",
-          "session_delta_prompt": "The empty crown stand is visible in the background."
+          "narration_text": "दोनों कमांड लाइन टूल हैं, लेकिन सीएमडी मुख्य रूप से विंडोज़ के बेसिक कमांड चलाने के लिए बना था, जबकि पावरशेल को एडवांस्ड कमांड्स और ऑटोमेशन के लिए बनाया गया।",
+          "camera_type": "wide_shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show a simple basic command symbol below {assets.cmd_terminal}. Show advanced automation gears and script symbols below {assets.powershell_terminal}. The stickman switches to pointing toward PowerShell.",
+          "session_delta_prompt": "Keep the original terminal layout and labels. Add basic command and automation symbols underneath the respective terminals."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "palace_archive",
+      "environment_ref": "whiteboard",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "अब रानी को शक हुआ कि किसी ने सबूत जानबूझकर रखा था।",
-          "camera_type": "tight close-up",
+          "narration_text": "अब उम्र की बात करें तो सीएमडी काफी पुराना है। इसका इतिहास शुरुआती पीसी डॉस और विंडोज़ के समय से जुड़ा है।",
+          "camera_type": "medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera studying the broken crown on the archive desk, her eyes narrowed as she considers the evidence.",
-          "session_delta_prompt": "She turns the crown slightly in her hand."
+          "prompt_action": "Show {assets.old_computer} prominently on the left with a small timeline pointing toward the CMD terminal. The stickman looks toward the vintage computer with a surprised expression.",
+          "session_delta_prompt": "Keep the whiteboard background. Replace the previous comparison symbols with the vintage computer and a historical timeline on the left."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "उसने पुराने पहरेदारों का रजिस्टर मँगवाया।",
-          "camera_type": "top-down desk shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show an old palace guard register opened on a wooden archive desk, with Queen Meera's hand turning a brittle page.",
-          "session_delta_prompt": "Rows of handwritten entries fill the page."
-        },
-        {
-          "beat_id": "s03_b03",
-          "narration_text": "रजिस्टर में लिखा था कि रात को राजा के कमरे में सिर्फ एक आदमी गया था।",
-          "camera_type": "over-the-shoulder close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera reading one entry in the register, her finger resting beside a single visitor's name.",
-          "session_delta_prompt": "The name is partly covered by her fingertip."
-        },
-        {
-          "beat_id": "s03_b04",
-          "narration_text": "वह आदमी था, राजमहल का सबसे भरोसेमंद सेनापति।",
-          "camera_type": "insert close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show the register entry clearly indicating Captain Arya's predecessor, General Bhairav, as the only visitor recorded that night.",
-          "session_delta_prompt": "A royal stamp appears beside the entry."
-        },
-        {
-          "beat_id": "s03_b05",
-          "narration_text": "लेकिन सेनापति तो पाँच साल पहले मर चुका था।",
-          "camera_type": "reaction close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera staring at the register in disbelief, her fingers tightening around the page.",
-          "session_delta_prompt": "Her expression shifts from curiosity to alarm."
-        },
-        {
-          "beat_id": "s03_b06",
-          "narration_text": "रानी ने उसी रात का एक और रिकॉर्ड खोजा।",
-          "camera_type": "side medium shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera pulling a second old ledger from a high wooden shelf in the archive.",
-          "session_delta_prompt": "Dust falls from the book's cover."
-        },
-        {
-          "beat_id": "s03_b07",
-          "narration_text": "उसमें लिखा था कि सेनापति की मौत नदी वाले पुल पर हुई थी।",
-          "camera_type": "overhead document shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show an old official death record open on the desk, with a hand-drawn illustration of the stone bridge and a date beside it.",
-          "session_delta_prompt": "The date is visible beside the bridge drawing."
-        },
-        {
-          "beat_id": "s03_b08",
-          "narration_text": "और उसी तारीख के नीचे किसी ने राजा के हस्ताक्षर किए थे।",
-          "camera_type": "extreme macro shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show a close-up of the king's signature at the bottom of the old death record, with a faint ink smudge beside it.",
-          "session_delta_prompt": "The signature looks unusually shaky."
+          "narration_text": "वहीं पावरशेल दो हजार छह में आया और इसे माइक्रोसॉफ्ट ने ज्यादा एडवांस्ड सिस्टम मैनेजमेंट के लिए बनाया था।",
+          "camera_type": "wide_shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show {assets.modern_computer} on the right with a clear timeline marker reading 2006. Connect the timeline visually to {assets.powershell_terminal}. The stickman turns toward the right side.",
+          "session_delta_prompt": "Retain the vintage computer on the left. Add the modern computer and 2006 timeline marker on the right."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "old_bridge",
+      "environment_ref": "whiteboard",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "रानी समझ गई कि उस मौत की कहानी में कुछ गड़बड़ थी।",
-          "camera_type": "wide atmospheric shot",
+          "narration_text": "अब एक ही काम करके देखते हैं। कंप्यूटर में कौन-कौन से प्रोग्राम चल रहे हैं?",
+          "camera_type": "wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show the ancient stone bridge over a deep river gorge at dusk, with the palace visible far in the distance.",
-          "session_delta_prompt": "The bridge looks deserted."
+          "prompt_action": "Display {assets.cmd_terminal} on the left and {assets.powershell_terminal} on the right, both ready for typing. The stickman stands between them holding a small magnifying glass and looking at both screens.",
+          "session_delta_prompt": "Remove the vintage and modern computer visuals. Return to the standard two-terminal comparison layout."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "वह पुराने पुल पर पहुँची, जहाँ सेनापति की मौत बताई गई थी।",
-          "camera_type": "tracking rear shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera walking alone onto the old stone bridge, holding a small lantern.",
-          "session_delta_prompt": "Her footsteps echo across the empty bridge."
+          "narration_text": "सीएमडी में आप टास्कलिस्ट लिखेंगे। जबकि पावरशेल में गेट प्रोसेस।",
+          "camera_type": "medium_shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show the command tasklist being typed inside {assets.cmd_terminal}. Simultaneously show Get-Process being typed inside {assets.powershell_terminal}. Keep both commands readable and correctly spelled.",
+          "session_delta_prompt": "Preserve both terminal interfaces. Add only the respective commands inside each terminal."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "पुल के किनारे उसे पत्थर में फँसा एक छोटा तीर मिला।",
-          "camera_type": "ground-level macro shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show a tiny metal arrowhead lodged between two weathered stones along the bridge railing.",
-          "session_delta_prompt": "The arrowhead has a small blue thread tied around it."
-        },
-        {
-          "beat_id": "s04_b04",
-          "narration_text": "उस तीर पर वही नीला धागा था, जो राजकुमार के कपड़ों पर लगा था।",
-          "camera_type": "extreme close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera holding the small arrowhead with its blue thread, comparing it to a loose blue thread from Prince Aarav's royal tunic.",
-          "session_delta_prompt": "The two blue threads match in color and weave."
-        },
-        {
-          "beat_id": "s04_b05",
-          "narration_text": "लेकिन यह धागा राजकुमार के कपड़ों से नहीं, उसके पुराने तीर-कमान से आता था।",
-          "camera_type": "close-up on queen",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera realizing the distinction, holding the arrowhead in one hand and looking toward the palace in the distance.",
-          "session_delta_prompt": "Her expression becomes sharply focused."
-        },
-        {
-          "beat_id": "s04_b06",
-          "narration_text": "किसी ने राजकुमार का सामान इस्तेमाल करके उसे फँसाया था।",
-          "camera_type": "dramatic insert shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show a small royal archery case lying open on a palace storage shelf, with one arrow missing.",
-          "session_delta_prompt": "The empty slot in the case is clearly visible."
-        },
-        {
-          "beat_id": "s04_b07",
-          "narration_text": "अब रानी के पास झूठ पकड़ने का एक तरीका था।",
-          "camera_type": "close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera holding the old record and arrowhead together, her face calm and determined.",
-          "session_delta_prompt": "She turns back toward the palace."
+          "narration_text": "दोनों आपको चल रहे प्रोसेसेज़ दिखा देंगे। लेकिन असली अंतर अभी बाकी है!",
+          "camera_type": "wide_shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show a list of running processes appearing underneath both terminals. The stickman raises an index finger with an excited expression, signaling that a bigger difference is coming.",
+          "session_delta_prompt": "Keep both command examples visible. Add process lists and change the presenter's pose."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "throne_room",
+      "environment_ref": "whiteboard",
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "सुबह होते ही रानी ने पूरे दरबार को फिर बुलाया।",
-          "camera_type": "wide establishing shot",
+          "narration_text": "सीएमडी आमतौर पर कमांड का आउटपुट टेक्स्ट के रूप में देता है।",
+          "camera_type": "medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show the royal courtroom filled with ministers, guards and courtiers as Queen Meera enters through the tall carved doors.",
-          "session_delta_prompt": "All eyes turn toward the queen."
+          "prompt_action": "Zoom toward {assets.cmd_terminal}. Display simple plain-text command output as several lines of white monospace text. Add a small label reading PLAIN TEXT. The stickman points toward the output.",
+          "session_delta_prompt": "Focus on CMD. Keep the terminal appearance authentic and display only plain-text output."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "उसने राजा से पूछा, क्या आपको याद है कि सेनापति की मौत किस दिन हुई थी?",
-          "camera_type": "medium two-shot",
+          "narration_text": "लेकिन पावरशेल की सबसे बड़ी ताकत है इसके ऑब्जेक्ट्स। यानी यह सिर्फ टेक्स्ट नहीं, बल्कि डेटा की प्रॉपर्टीज़ भी समझता है।",
+          "camera_type": "medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera standing before King Veer, holding the old death record and asking him a direct question.",
-          "session_delta_prompt": "The king looks down at the document."
+          "prompt_action": "Zoom toward {assets.powershell_terminal}. Transform the visual output into structured data cards based on {assets.process_data}. Highlight process name, CPU usage, and memory usage as separate properties. Add a label reading STRUCTURED OBJECTS.",
+          "session_delta_prompt": "Shift visual focus from CMD to PowerShell. Introduce structured process information cards and property highlights."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "राजा ने कहा, उस दिन मैं राजधानी में था ही नहीं।",
-          "camera_type": "tight close-up on king",
+          "narration_text": "आप किसी प्रोसेस को उसके नाम, मेमोरी या सीपीयू इस्तेमाल के आधार पर आसानी से फिल्टर कर सकते हैं।",
+          "camera_type": "wide_shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show {assets.powershell_terminal} with the command Get-Process | Where-Object CPU -gt 10. Highlight CPU values above 10 in the structured process cards. The stickman points at the highlighted results.",
+          "session_delta_prompt": "Retain the structured process cards. Add the filtering command and highlight matching CPU values."
+        }
+      ]
+    },
+    {
+      "scene_id": 6,
+      "environment_ref": "whiteboard",
+      "beats": [
+        {
+          "beat_id": "s06_b01",
+          "narration_text": "ऑटोमेशन की बात करें तो सीएमडी बैच फाइल्स के जरिए बेसिक काम ऑटोमेट कर सकता है।",
+          "camera_type": "medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show King Veer looking surprised and answering firmly from his throne.",
-          "session_delta_prompt": "His eyes move toward the old record."
+          "prompt_action": "Show {assets.cmd_terminal} next to a simple .bat batch file icon. Display a basic automated file operation with a folder and a check mark. The stickman points toward the CMD side.",
+          "session_delta_prompt": "Replace the process filtering demonstration with a basic CMD batch file automation example."
         },
         {
-          "beat_id": "s05_b04",
-          "narration_text": "रानी ने तुरंत वह रिकॉर्ड सबके सामने रख दिया।",
-          "camera_type": "top-down insert shot",
+          "beat_id": "s06_b02",
+          "narration_text": "लेकिन पावरशेल में एडवांस्ड स्क्रिप्टिंग, सिस्टम मैनेजमेंट, फाइल हैंडलिंग और नेटवर्क एडमिनिस्ट्रेशन भी किया जा सकता है।",
+          "camera_type": "wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera placing the old death record on the central courtroom table, its royal signature facing the assembled ministers.",
-          "session_delta_prompt": "The courtiers lean forward to inspect it."
+          "prompt_action": "Show {assets.powershell_terminal} surrounded by {assets.automation_icons}, including a PowerShell script file, folders, system settings, and network nodes. The stickman points toward the PowerShell side with an impressed expression.",
+          "session_delta_prompt": "Keep the CMD batch example visible on the left. Introduce advanced PowerShell automation symbols on the right."
+        }
+      ]
+    },
+    {
+      "scene_id": 7,
+      "environment_ref": "whiteboard",
+      "beats": [
+        {
+          "beat_id": "s07_b01",
+          "narration_text": "और एक मजेदार बात! सीएमडी मुख्य रूप से विंडोज़ तक सीमित है।",
+          "camera_type": "medium_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.cmd_terminal} connected with a single Windows operating system symbol from {assets.os_logos}. The stickman points at the single connection.",
+          "session_delta_prompt": "Clear the automation symbols and show the CMD-to-Windows compatibility visual."
         },
         {
-          "beat_id": "s05_b05",
-          "narration_text": "कागज़ पर राजा के हस्ताक्षर थे, जबकि राजा वहाँ था ही नहीं।",
-          "camera_type": "close-up on document",
+          "beat_id": "s07_b02",
+          "narration_text": "लेकिन पावरशेल का नया वर्जन विंडोज़ के अलावा लिनक्स और मैक पर भी चलता है।",
+          "camera_type": "wide_shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show {assets.powershell_terminal} connected to three distinct operating system symbols from {assets.os_logos}: Windows, Linux, and macOS. The stickman looks impressed and gestures toward all three.",
+          "session_delta_prompt": "Retain the CMD compatibility visual on the left. Add Linux and macOS connections to the PowerShell side."
+        }
+      ]
+    },
+    {
+      "scene_id": 8,
+      "environment_ref": "whiteboard",
+      "beats": [
+        {
+          "beat_id": "s08_b01",
+          "narration_text": "तो आखिर कौन बेहतर है? बेसिक कमांड्स और पुराने विंडोज़ टास्क के लिए सीएमडी काफी है।",
+          "camera_type": "wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show the old record and the king's signature in sharp focus, with the king's hand visible in the background.",
-          "session_delta_prompt": "The contradiction is visually clear."
+          "prompt_action": "Show both {assets.cmd_terminal} and {assets.powershell_terminal} side by side. Highlight CMD with a clean label reading SIMPLE TASKS. The stickman stands in the center and points toward CMD.",
+          "session_delta_prompt": "Return to the original comparison layout. Remove the operating system symbols and highlight CMD for basic tasks."
         },
         {
-          "beat_id": "s05_b06",
-          "narration_text": "तभी राजा ने एक और बात बताई, उस रात उसका मुकुट भी गायब था।",
-          "camera_type": "reaction close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show King Veer leaning forward on his throne, speaking with a grave expression as he remembers the missing crown.",
-          "session_delta_prompt": "His hand grips the armrest."
+          "beat_id": "s08_b02",
+          "narration_text": "लेकिन एडवांस्ड ऑटोमेशन और सिस्टम कंट्रोल के लिए पावरशेल आगे है।",
+          "camera_type": "wide_shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Highlight {assets.powershell_terminal} with a clean label reading ADVANCED AUTOMATION. Show subtle gear and system control symbols around it. The stickman points toward PowerShell.",
+          "session_delta_prompt": "Keep both terminals visible. Shift the highlight from CMD to PowerShell and change the presenter's pointing direction."
         },
         {
-          "beat_id": "s05_b07",
-          "narration_text": "रानी ने सेनापति का नाम लिया, और दरबार में बैठे एक बूढ़े मंत्री का चेहरा सफेद पड़ गया।",
-          "camera_type": "reaction close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show an elderly minister in dark green robes suddenly going pale among the seated courtiers, his eyes fixed on Queen Meera.",
-          "session_delta_prompt": "His fingers tighten around his walking stick."
-        },
-        {
-          "beat_id": "s05_b08",
-          "narration_text": "रानी ने कहा, सेनापति मरा नहीं था, उसे नई पहचान देकर महल में छिपाया गया था।",
-          "camera_type": "dramatic medium shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera pointing toward the elderly minister, while the court turns toward him in shock.",
-          "session_delta_prompt": "The minister takes a small step backward."
-        },
-        {
-          "beat_id": "s05_b09",
-          "narration_text": "उस बूढ़े मंत्री ने भागने की कोशिश की, लेकिन सैनिकों ने उसे पकड़ लिया।",
-          "camera_type": "dynamic action shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show two palace guards grabbing the elderly minister as he tries to rush toward the courtroom doors.",
-          "session_delta_prompt": "His walking stick falls to the floor."
-        },
-        {
-          "beat_id": "s05_b10",
-          "narration_text": "राजा ने अपने बेटे को गले लगाया, लेकिन रानी की नज़र अब भी उस मंत्री पर थी।",
-          "camera_type": "medium emotional shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show King Veer embracing Prince Aarav in front of the throne, while Queen Meera watches the arrested minister in the background.",
-          "session_delta_prompt": "The prince closes his eyes in relief."
-        },
-        {
-          "beat_id": "s05_b11",
-          "narration_text": "क्योंकि मंत्री के हाथ में वही नीला धागा बँधा था, जो पुल पर मिला था।",
-          "camera_type": "extreme close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show the elderly minister's wrist held by a guard, revealing a short blue thread tied around it.",
-          "session_delta_prompt": "The blue thread matches the one found on the arrowhead."
-        },
-        {
-          "beat_id": "s05_b12",
-          "narration_text": "लेकिन अगर मंत्री ही सेनापति था, तो पाँच साल तक राजा के इतने करीब कौन रहा?",
-          "camera_type": "final dramatic close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Show Queen Meera looking toward the viewer with a troubled, questioning expression, the arrested minister blurred behind her.",
-          "session_delta_prompt": "Hold on the queen's unsettled expression, leaving the mystery unresolved."
+          "beat_id": "s08_b03",
+          "narration_text": "अब बताओ, अगला मुकाबला किन दो चीज़ों के बीच होना चाहिए?",
+          "camera_type": "medium_shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "Show the stickman facing the viewer and pointing toward a large empty speech bubble for audience suggestions. Keep both terminal windows smaller in the background. Add a simple comment icon near the speech bubble.",
+          "session_delta_prompt": "Preserve the whiteboard style. Move the stickman into a viewer-facing pose and introduce the final audience question area."
         }
       ]
     }

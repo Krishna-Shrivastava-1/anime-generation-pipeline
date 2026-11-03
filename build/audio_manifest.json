@@ -1,245 +1,119 @@
 {
-  "total_duration": 144.0,
+  "total_duration": 105.171,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 5.76,
-      "subtitle": "जिस दिन राजा वीर ने अपने बेटे को देशद्रोही कहा, उसी दिन पूरे दरबार में सन्नाटा छा गया।"
+      "duration_seconds": 7.308,
+      "subtitle": "ये दोनों देखने में लगभग एक जैसे लगते हैं। दोनों में कमांड लिखते हैं और दोनों से कंप्यूटर को कंट्रोल कर सकते हैं।"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 3.371,
-      "subtitle": "आरोप था कि राजकुमार ने राजा की हत्या की कोशिश की थी।"
-    },
-    {
-      "beat_id": "s01_b03",
-      "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 3.52,
-      "subtitle": "और सबसे बड़ा सबूत था, राजा के कमरे में मिला यही खंजर।"
-    },
-    {
-      "beat_id": "s01_b04",
-      "audio_file": "build/audio/s01_b04.wav",
-      "duration_seconds": 2.645,
-      "subtitle": "राजकुमार ने कहा, मैंने ऐसा कुछ नहीं किया।"
-    },
-    {
-      "beat_id": "s01_b05",
-      "audio_file": "build/audio/s01_b05.wav",
-      "duration_seconds": 3.605,
-      "subtitle": "लेकिन राजा ने उसे उसी शाम जेल भेजने का आदेश दे दिया।"
+      "duration_seconds": 4.565,
+      "subtitle": "लेकिन क्या आपको पता है कि इनमें से एक दूसरे से कितना ज्यादा शक्तिशाली है?"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 3.328,
-      "subtitle": "लेकिन रानी मीरा को अपने बेटे की बात पर भरोसा था।"
+      "duration_seconds": 4.321,
+      "subtitle": "बाईं तरफ है सीएमडी, यानी कमांड प्रॉम्प्ट। और दाईं तरफ है पावरशेल।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 2.091,
-      "subtitle": "उसने राजा से बस एक रात माँगी।"
-    },
-    {
-      "beat_id": "s02_b03",
-      "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 3.2,
-      "subtitle": "रानी ने कहा, अगर वह दोषी है, तो मैं खुद सज़ा दूँगी।"
-    },
-    {
-      "beat_id": "s02_b04",
-      "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 2.944,
-      "subtitle": "राजा ने आखिरकार उसे सुबह तक का समय दे दिया।"
-    },
-    {
-      "beat_id": "s02_b05",
-      "audio_file": "build/audio/s02_b05.wav",
-      "duration_seconds": 2.581,
-      "subtitle": "रानी सबसे पहले राजा के कमरे में पहुँची।"
-    },
-    {
-      "beat_id": "s02_b06",
-      "audio_file": "build/audio/s02_b06.wav",
-      "duration_seconds": 2.816,
-      "subtitle": "वहाँ उसे खंजर के पास एक टूटा हुआ मुकुट मिला।"
-    },
-    {
-      "beat_id": "s02_b07",
-      "audio_file": "build/audio/s02_b07.wav",
-      "duration_seconds": 2.389,
-      "subtitle": "वह मुकुट राजकुमार का नहीं, राजा का था।"
-    },
-    {
-      "beat_id": "s02_b08",
-      "audio_file": "build/audio/s02_b08.wav",
-      "duration_seconds": 3.733,
-      "subtitle": "रानी को याद आया कि राजा ने पिछली रात मुकुट पहना ही नहीं था।"
+      "duration_seconds": 10.091,
+      "subtitle": "दोनों कमांड लाइन टूल हैं, लेकिन सीएमडी मुख्य रूप से विंडोज़ के बेसिक कमांड चलाने के लिए बना था, जबकि पावरशेल को एडवांस्ड कमांड्स और ऑटोमेशन के लिए बनाया गया।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 3.499,
-      "subtitle": "अब रानी को शक हुआ कि किसी ने सबूत जानबूझकर रखा था।"
+      "duration_seconds": 6.753,
+      "subtitle": "अब उम्र की बात करें तो सीएमडी काफी पुराना है। इसका इतिहास शुरुआती पीसी डॉस और विंडोज़ के समय से जुड़ा है।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 2.859,
-      "subtitle": "उसने पुराने पहरेदारों का रजिस्टर मँगवाया।"
-    },
-    {
-      "beat_id": "s03_b03",
-      "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 4.331,
-      "subtitle": "रजिस्टर में लिखा था कि रात को राजा के कमरे में सिर्फ एक आदमी गया था।"
-    },
-    {
-      "beat_id": "s03_b04",
-      "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 3.584,
-      "subtitle": "वह आदमी था, राजमहल का सबसे भरोसेमंद सेनापति।"
-    },
-    {
-      "beat_id": "s03_b05",
-      "audio_file": "build/audio/s03_b05.wav",
-      "duration_seconds": 2.859,
-      "subtitle": "लेकिन सेनापति तो पाँच साल पहले मर चुका था।"
-    },
-    {
-      "beat_id": "s03_b06",
-      "audio_file": "build/audio/s03_b06.wav",
-      "duration_seconds": 2.411,
-      "subtitle": "रानी ने उसी रात का एक और रिकॉर्ड खोजा।"
-    },
-    {
-      "beat_id": "s03_b07",
-      "audio_file": "build/audio/s03_b07.wav",
-      "duration_seconds": 3.541,
-      "subtitle": "उसमें लिखा था कि सेनापति की मौत नदी वाले पुल पर हुई थी।"
-    },
-    {
-      "beat_id": "s03_b08",
-      "audio_file": "build/audio/s03_b08.wav",
-      "duration_seconds": 3.435,
-      "subtitle": "और उसी तारीख के नीचे किसी ने राजा के हस्ताक्षर किए थे।"
+      "duration_seconds": 6.741,
+      "subtitle": "वहीं पावरशेल दो हजार छह में आया और इसे माइक्रोसॉफ्ट ने ज्यादा एडवांस्ड सिस्टम मैनेजमेंट के लिए बनाया था।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 3.221,
-      "subtitle": "रानी समझ गई कि उस मौत की कहानी में कुछ गड़बड़ थी।"
+      "duration_seconds": 4.599,
+      "subtitle": "अब एक ही काम करके देखते हैं। कंप्यूटर में कौन-कौन से प्रोग्राम चल रहे हैं?"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 3.861,
-      "subtitle": "वह पुराने पुल पर पहुँची, जहाँ सेनापति की मौत बताई गई थी।"
+      "duration_seconds": 4.279,
+      "subtitle": "सीएमडी में आप टास्कलिस्ट लिखेंगे। जबकि पावरशेल में गेट प्रोसेस।"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 3.285,
-      "subtitle": "पुल के किनारे उसे पत्थर में फँसा एक छोटा तीर मिला।"
-    },
-    {
-      "beat_id": "s04_b04",
-      "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 3.989,
-      "subtitle": "उस तीर पर वही नीला धागा था, जो राजकुमार के कपड़ों पर लगा था।"
-    },
-    {
-      "beat_id": "s04_b05",
-      "audio_file": "build/audio/s04_b05.wav",
-      "duration_seconds": 4.864,
-      "subtitle": "लेकिन यह धागा राजकुमार के कपड़ों से नहीं, उसके पुराने तीर-कमान से आता था।"
-    },
-    {
-      "beat_id": "s04_b06",
-      "audio_file": "build/audio/s04_b06.wav",
-      "duration_seconds": 3.776,
-      "subtitle": "किसी ने राजकुमार का सामान इस्तेमाल करके उसे फँसाया था।"
-    },
-    {
-      "beat_id": "s04_b07",
-      "audio_file": "build/audio/s04_b07.wav",
-      "duration_seconds": 2.816,
-      "subtitle": "अब रानी के पास झूठ पकड़ने का एक तरीका था।"
+      "duration_seconds": 4.748,
+      "subtitle": "दोनों आपको चल रहे प्रोसेसेज़ दिखा देंगे। लेकिन असली अंतर अभी बाकी है!"
     },
     {
       "beat_id": "s05_b01",
       "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 2.965,
-      "subtitle": "सुबह होते ही रानी ने पूरे दरबार को फिर बुलाया।"
+      "duration_seconds": 3.755,
+      "subtitle": "सीएमडी आमतौर पर कमांड का आउटपुट टेक्स्ट के रूप में देता है।"
     },
     {
       "beat_id": "s05_b02",
       "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 4.459,
-      "subtitle": "उसने राजा से पूछा, क्या आपको याद है कि सेनापति की मौत किस दिन हुई थी?"
+      "duration_seconds": 7.308,
+      "subtitle": "लेकिन पावरशेल की सबसे बड़ी ताकत है इसके ऑब्जेक्ट्स। यानी यह सिर्फ टेक्स्ट नहीं, बल्कि डेटा की प्रॉपर्टीज़ भी समझता है।"
     },
     {
       "beat_id": "s05_b03",
       "audio_file": "build/audio/s05_b03.wav",
-      "duration_seconds": 2.859,
-      "subtitle": "राजा ने कहा, उस दिन मैं राजधानी में था ही नहीं।"
+      "duration_seconds": 6.4,
+      "subtitle": "आप किसी प्रोसेस को उसके नाम, मेमोरी या सीपीयू इस्तेमाल के आधार पर आसानी से फिल्टर कर सकते हैं।"
     },
     {
-      "beat_id": "s05_b04",
-      "audio_file": "build/audio/s05_b04.wav",
-      "duration_seconds": 2.88,
-      "subtitle": "रानी ने तुरंत वह रिकॉर्ड सबके सामने रख दिया।"
+      "beat_id": "s06_b01",
+      "audio_file": "build/audio/s06_b01.wav",
+      "duration_seconds": 5.227,
+      "subtitle": "ऑटोमेशन की बात करें तो सीएमडी बैच फाइल्स के जरिए बेसिक काम ऑटोमेट कर सकता है।"
     },
     {
-      "beat_id": "s05_b05",
-      "audio_file": "build/audio/s05_b05.wav",
-      "duration_seconds": 3.819,
-      "subtitle": "कागज़ पर राजा के हस्ताक्षर थे, जबकि राजा वहाँ था ही नहीं।"
+      "beat_id": "s06_b02",
+      "audio_file": "build/audio/s06_b02.wav",
+      "duration_seconds": 7.275,
+      "subtitle": "लेकिन पावरशेल में एडवांस्ड स्क्रिप्टिंग, सिस्टम मैनेजमेंट, फाइल हैंडलिंग और नेटवर्क एडमिनिस्ट्रेशन भी किया जा सकता है।"
     },
     {
-      "beat_id": "s05_b06",
-      "audio_file": "build/audio/s05_b06.wav",
-      "duration_seconds": 3.968,
-      "subtitle": "तभी राजा ने एक और बात बताई, उस रात उसका मुकुट भी गायब था।"
+      "beat_id": "s07_b01",
+      "audio_file": "build/audio/s07_b01.wav",
+      "duration_seconds": 3.957,
+      "subtitle": "और एक मजेदार बात! सीएमडी मुख्य रूप से विंडोज़ तक सीमित है।"
     },
     {
-      "beat_id": "s05_b07",
-      "audio_file": "build/audio/s05_b07.wav",
-      "duration_seconds": 5.504,
-      "subtitle": "रानी ने सेनापति का नाम लिया, और दरबार में बैठे एक बूढ़े मंत्री का चेहरा सफेद पड़ गया।"
+      "beat_id": "s07_b02",
+      "audio_file": "build/audio/s07_b02.wav",
+      "duration_seconds": 4.843,
+      "subtitle": "लेकिन पावरशेल का नया वर्जन विंडोज़ के अलावा लिनक्स और मैक पर भी चलता है।"
     },
     {
-      "beat_id": "s05_b08",
-      "audio_file": "build/audio/s05_b08.wav",
-      "duration_seconds": 5.205,
-      "subtitle": "रानी ने कहा, सेनापति मरा नहीं था, उसे नई पहचान देकर महल में छिपाया गया था।"
+      "beat_id": "s08_b01",
+      "audio_file": "build/audio/s08_b01.wav",
+      "duration_seconds": 5.236,
+      "subtitle": "तो आखिर कौन बेहतर है? बेसिक कमांड्स और पुराने विंडोज़ टास्क के लिए सीएमडी काफी है।"
     },
     {
-      "beat_id": "s05_b09",
-      "audio_file": "build/audio/s05_b09.wav",
-      "duration_seconds": 4.331,
-      "subtitle": "उस बूढ़े मंत्री ने भागने की कोशिश की, लेकिन सैनिकों ने उसे पकड़ लिया।"
+      "beat_id": "s08_b02",
+      "audio_file": "build/audio/s08_b02.wav",
+      "duration_seconds": 4.267,
+      "subtitle": "लेकिन एडवांस्ड ऑटोमेशन और सिस्टम कंट्रोल के लिए पावरशेल आगे है।"
     },
     {
-      "beat_id": "s05_b10",
-      "audio_file": "build/audio/s05_b10.wav",
-      "duration_seconds": 4.757,
-      "subtitle": "राजा ने अपने बेटे को गले लगाया, लेकिन रानी की नज़र अब भी उस मंत्री पर थी।"
-    },
-    {
-      "beat_id": "s05_b11",
-      "audio_file": "build/audio/s05_b11.wav",
-      "duration_seconds": 4.181,
-      "subtitle": "क्योंकि मंत्री के हाथ में वही नीला धागा बँधा था, जो पुल पर मिला था।"
-    },
-    {
-      "beat_id": "s05_b12",
-      "audio_file": "build/audio/s05_b12.wav",
-      "duration_seconds": 4.757,
-      "subtitle": "लेकिन अगर मंत्री ही सेनापति था, तो पाँच साल तक राजा के इतने करीब कौन रहा?"
+      "beat_id": "s08_b03",
+      "audio_file": "build/audio/s08_b03.wav",
+      "duration_seconds": 3.499,
+      "subtitle": "अब बताओ, अगला मुकाबला किन दो चीज़ों के बीच होना चाहिए?"
     }
   ]
 }

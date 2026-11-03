@@ -1,96 +1,71 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "IT (2017) - Pennywise की पूरी कहानी",
-    "project_id": "it_2017_fast_paced_recap",
+    "title": "IT 2017 - Pennywise Horror Story Recap",
+    "project_id": "it_2017_direct_image_prompts",
     "language": "hi-IN",
     "aspect_ratio": "16:9",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Fast-paced cinematic horror movie recap using photorealistic recreations of iconic scenes from IT (2017). Every beat must have a distinct composition, camera angle, character action or story moment. Target approximately 2–3 seconds per visual beat. Use realistic 1980s American locations, authentic film-inspired costumes, detailed human expressions, practical horror makeup, dramatic lighting, atmospheric fog, rain, shadows and cinematic depth. Pennywise must maintain his recognizable 2017 appearance in every shot: white clown makeup, orange-red hair, yellowish eyes, sinister smile and antique grey-white clown costume with orange-red pom-poms. Keep all recurring characters visually consistent. The hand-drawn stickman presenter has a round white face, expressive eyes, thin black limbs and a small red bow tie. Include him selectively at the edge of shots, introducing characters, pointing at clues or reacting to scares. Never let him obscure the realistic movie action. Use occasional subtle red arrows, circles and short labels for explanations. Do not reuse the same still image for consecutive beats. Every beat represents a new visual moment, not a static slideshow.",
-    "negative_prompt": "Cartoon environments, anime, vector illustrations of movie characters, childish visuals, generic horror stock images, repeated compositions, static character poses, inconsistent faces, changing costumes, inconsistent Pennywise makeup, modern cars, modern clothing, bright cheerful lighting, excessive gore, graphic injuries, blurry faces, distorted anatomy, extra limbs, text artifacts, watermarks, logos, stickman covering the main action."
+    "art_style": "Photorealistic cinematic horror imagery. Every image prompt must independently describe the complete visual: subjects, clothing, appearance, environment, action, camera framing, lighting and atmosphere. Do not use references to previous images, movie scenes, iconic scenes or named fictional characters as substitutes for visual descriptions. A terrifying recurring clown has chalk-white makeup, bright orange-red hair, yellowish eyes, an unnaturally wide smile and an antique grey-white clown costume with orange-red pom-poms. A recurring young boy wears a bright yellow raincoat. A recurring teenage group consists of seven distinct teenagers in authentic late-1980s clothing. Maintain their visual appearances consistently. Use different camera angles, close-ups, reaction shots, action shots and environmental details. Each beat should represent a different moment, approximately 2–3 seconds long. The hand-drawn stickman presenter has a round white face, expressive eyes, thin black limbs and a small red bow tie. Include him only when useful, positioned away from the main action.",
+    "negative_prompt": "Cartoon, anime, illustration, toy-like clown, generic happy circus clown, colourful children's art, flat vector graphics, low-resolution, blurry, duplicate characters, inconsistent faces, modern clothing, modern cars, distorted hands, extra limbs, text, captions, watermark, logo, excessive gore, graphic injury, static slideshow compositions."
   },
   "assets": {
     "host": {
       "type": "character",
       "label": "Stickman Presenter",
-      "visual_dna": "A consistent hand-drawn stickman with a round white face, expressive black eyes, thin black line-art limbs and a small red bow tie. Simple clean design, expressive gestures and poses. Maintain identical proportions and appearance in every appearance."
-    },
-    "derry": {
-      "type": "environment",
-      "label": "Derry Town",
-      "visual_dna": "A small American town in 1989, with authentic late-1980s architecture, suburban houses, telephone poles, empty roads, old shops, gloomy skies and unsettling quiet streets. Realistic cinematic atmosphere inspired by IT (2017)."
+      "visual_dna": "A simple hand-drawn stickman with a round white face, expressive black eyes, thin black line-art limbs and a small red bow tie. Identical appearance and proportions in every shot."
     },
     "georgie": {
       "type": "character",
-      "label": "Georgie Denbrough",
-      "visual_dna": "A young boy with short brown hair wearing a bright yellow raincoat and boots. Small, innocent appearance. Consistent with Georgie's appearance in IT (2017)."
+      "label": "Georgie",
+      "visual_dna": "A small seven-year-old boy with short brown hair, innocent facial features, a bright yellow hooded raincoat and matching rain boots."
     },
     "bill": {
       "type": "character",
-      "label": "Bill Denbrough",
-      "visual_dna": "A teenage boy with brown hair, casual late-1980s clothing and a determined but emotionally vulnerable expression. Consistent appearance throughout the film recap."
+      "label": "Bill",
+      "visual_dna": "A teenage boy with brown hair, a slim build and casual 1980s American clothing. Determined expression, emotionally attached to his missing younger brother."
     },
     "pennywise": {
       "type": "character",
-      "label": "Pennywise",
-      "visual_dna": "The terrifying dancing clown from IT (2017): chalk-white face makeup, bright orange-red hair, yellowish eyes, sinister exaggerated smile, pointed teeth and an antique grey-white clown costume with orange-red pom-poms. Photorealistic horror makeup, consistent face, costume and proportions in every scene."
+      "label": "Terrifying Horror Clown",
+      "visual_dna": "A terrifying supernatural clown with a chalk-white painted face, bright orange-red hair, yellowish eyes, deep facial creases, a disturbing wide smile and an antique grey-white Victorian clown costume with orange-red pom-poms. Long fingers, unsettling expressions and realistic horror makeup. Keep this exact appearance consistent."
     },
     "paper_boat": {
       "type": "prop",
-      "label": "Paper Boat",
-      "visual_dna": "A small folded white paper boat made by Bill for Georgie. Slightly wet and creased, with a handwritten name on it."
+      "label": "White Paper Boat",
+      "visual_dna": "A small folded white paper boat with visible creases and slightly wet edges."
     },
-    "storm_drain": {
+    "derry": {
       "type": "environment",
-      "label": "Storm Drain",
-      "visual_dna": "A dark concrete roadside storm drain in a rainy 1980s American neighbourhood. Water flows through the gutter into a black opening. Realistic wet pavement, rain splashes and deep shadows."
+      "label": "1980s Derry",
+      "visual_dna": "A quiet small American town in the late 1980s, with suburban houses, telephone poles, old shops, empty roads and gloomy weather."
     },
     "losers": {
       "type": "character",
-      "label": "The Losers Club",
-      "visual_dna": "Seven distinct teenagers from IT (2017): Bill, Beverly, Richie, Eddie, Ben, Mike and Stanley. Each has a recognizable consistent face, hairstyle and late-1980s outfit. Keep their appearances consistent across every group shot."
-    },
-    "richie": {
-      "type": "character",
-      "label": "Richie Tozier",
-      "visual_dna": "A teenage boy with dark curly hair, glasses and casual late-1980s clothing. Energetic, sarcastic and expressive. Consistent with IT (2017)."
-    },
-    "eddie": {
-      "type": "character",
-      "label": "Eddie Kaspbrak",
-      "visual_dna": "A slim teenage boy with short brown hair, glasses and late-1980s casual clothing. Nervous, anxious expressions. Consistent with IT (2017)."
+      "label": "Seven Teenagers",
+      "visual_dna": "Seven visually distinct teenagers: a brown-haired determined boy, a curly-haired boy with glasses, a slim nervous boy with glasses, a stocky brown-haired boy, a reddish-haired girl, a dark-haired boy and a boy with a neat hairstyle. All wear different authentic late-1980s casual clothing. Preserve each person's appearance."
     },
     "beverly": {
       "type": "character",
-      "label": "Beverly Marsh",
-      "visual_dna": "A teenage girl with long reddish hair and casual 1980s clothing. Brave, independent and emotionally vulnerable. Consistent with IT (2017)."
-    },
-    "ben": {
-      "type": "character",
-      "label": "Ben Hanscom",
-      "visual_dna": "A teenage boy with brown hair and a slightly stocky build, often carrying books. Intelligent, kind and shy. Consistent with IT (2017)."
+      "label": "Beverly",
+      "visual_dna": "A teenage girl with long reddish hair, fair complexion and casual late-1980s clothing. Brave and expressive."
     },
     "henry": {
       "type": "character",
-      "label": "Henry Bowers",
-      "visual_dna": "An aggressive teenage bully with short dark hair, a threatening expression and late-1980s clothing. Consistent with IT (2017)."
+      "label": "Henry",
+      "visual_dna": "An aggressive teenage boy with short dark hair, a hostile expression and rough late-1980s casual clothing."
     },
     "neibolt_house": {
       "type": "environment",
-      "label": "Neibolt Street House",
-      "visual_dna": "A decaying abandoned two-storey house with broken windows, peeling paint, overgrown grass, rotten wooden floors, dark corridors and a terrifying basement. Photorealistic and consistent with the house in IT (2017)."
+      "label": "Abandoned House",
+      "visual_dna": "A decaying two-storey American house with broken windows, peeling white paint, overgrown grass, rotten wooden floors and dark hallways."
     },
-    "pennywise_lair": {
+    "lair": {
       "type": "environment",
-      "label": "Underground Lair",
-      "visual_dna": "A massive underground cavern beneath Derry, with dark tunnels, old objects, floating children's belongings and an eerie supernatural atmosphere. A deep central chamber contains the floating children."
-    },
-    "deadlights": {
-      "type": "prop",
-      "label": "Deadlights",
-      "visual_dna": "Three intensely glowing orange supernatural lights surrounded by swirling eerie energy. A disturbing otherworldly visual effect associated with Pennywise."
+      "label": "Underground Cavern",
+      "visual_dna": "A vast underground cavern beneath a small American town, with damp stone walls, dark tunnels, scattered old objects and an eerie orange supernatural glow."
     }
   },
   "scenes": [
@@ -100,67 +75,67 @@
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "कहानी शुरू होती है डेरी शहर से।",
-          "camera_type": "wide_establishing_shot",
+          "narration_text": "कहानी शुरू होती है डेरी नाम के एक छोटे शहर से।",
+          "camera_type": "aerial_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Aerial cinematic view of a quiet 1989 American town under heavy storm clouds. Rain falls over suburban houses and empty streets. Stickman presenter appears in a small corner, introducing the town.",
-          "session_delta_prompt": "Establish the gloomy town of Derry in 1989."
+          "prompt_action": "Generate a photorealistic aerial view of a small American town in 1989. Old suburban houses, telephone poles, empty streets, dark storm clouds and heavy rain. Cinematic horror atmosphere, 16:9 wide composition, realistic film photography.",
+          "session_delta_prompt": "Dark rainy American town, establishing aerial view."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "जहाँ छोटा जॉर्जी बारिश में खेल रहा होता है।",
+          "narration_text": "जहाँ एक दिन छोटा जॉर्जी बारिश में खेलने निकलता है।",
           "camera_type": "medium_tracking_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Georgie in his bright yellow raincoat runs along a wet suburban pavement, smiling and holding a small paper boat. Camera tracks alongside him at child height.",
-          "session_delta_prompt": "Introduce Georgie running through the rainy neighbourhood."
+          "prompt_action": "Generate a realistic cinematic photograph of a seven-year-old boy with short brown hair wearing a bright yellow hooded raincoat and yellow rain boots. He runs happily along a wet suburban sidewalk holding a small white paper boat. Heavy rain, puddles, 1980s American houses in the background.",
+          "session_delta_prompt": "Young boy running with paper boat in rain."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "उसकी नाव पानी में बहने लगती है।",
-          "camera_type": "ground_level_close_up",
+          "narration_text": "लेकिन उसकी कागज़ की नाव पानी में बहने लगती है।",
+          "camera_type": "extreme_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Extreme close-up of Georgie's little white paper boat floating rapidly through a rainwater gutter. Water splashes around it as the camera follows its movement.",
-          "session_delta_prompt": "Show the paper boat moving through the gutter."
+          "prompt_action": "Generate an extreme close-up photograph of a tiny folded white paper boat floating quickly through a rain-filled roadside gutter. Rainwater splashes against its edges. Wet asphalt, tiny ripples, shallow depth of field, realistic cinematic photography.",
+          "session_delta_prompt": "Paper boat floating in rainwater."
         },
         {
           "beat_id": "s01_b04",
-          "narration_text": "और सीधे एक अँधेरे नाले में पहुँच जाती है।",
-          "camera_type": "low_angle_tracking",
+          "narration_text": "और सीधे एक अँधेरे नाले के अंदर पहुँच जाती है।",
+          "camera_type": "ground_level_tracking",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The paper boat approaches a large dark concrete storm drain. The camera moves from the wet street towards the black opening, creating a sense of dread.",
-          "session_delta_prompt": "Bring the boat to the storm drain entrance."
+          "prompt_action": "Generate a ground-level photorealistic view of a small white paper boat approaching the black opening of a large concrete storm drain. Rainwater flows rapidly into the drain. Wet concrete, dark tunnel interior, dramatic gloomy lighting.",
+          "session_delta_prompt": "Paper boat approaching a dark storm drain."
         },
         {
           "beat_id": "s01_b05",
-          "narration_text": "तभी अंदर से एक अजीब जोकर दिखाई देता है।",
-          "camera_type": "horror_reveal_close_up",
+          "narration_text": "तभी अँधेरे के अंदर से एक डरावना जोकर दिखाई देता है।",
+          "camera_type": "horror_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "From inside the storm drain, reveal Pennywise's pale face slowly emerging from complete darkness. His orange-red hair and yellowish eyes catch a faint reflection of daylight.",
-          "session_delta_prompt": "Reveal Pennywise's face inside the drain."
+          "prompt_action": "Generate a terrifying photorealistic horror portrait of a clown crouching deep inside a dark concrete storm drain. The clown has a chalk-white face, bright orange-red hair, yellowish eyes, an unnaturally wide sinister smile and an old-fashioned grey-white costume with orange-red pom-poms. Only his face is illuminated while the tunnel behind him is completely black. Extremely unsettling cinematic lighting.",
+          "session_delta_prompt": "White-faced orange-haired horror clown appears inside drain."
         },
         {
           "beat_id": "s01_b06",
           "narration_text": "वह जॉर्जी को नाव लौटाने का लालच देता है।",
-          "camera_type": "two_character_close_up",
+          "camera_type": "two_character_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Pennywise crouches inside the drain and smiles unnaturally at Georgie. The boy kneels outside, looking curious. The paper boat lies between them. Faithful cinematic recreation of the iconic scene.",
-          "session_delta_prompt": "Show Pennywise pretending to be friendly with Georgie."
+          "prompt_action": "Generate a photorealistic horror scene showing a small boy in a yellow raincoat kneeling beside a roadside storm drain. Inside the drain, a pale-faced clown with bright orange-red hair and a sinister smile crouches and holds out a small white paper boat. Heavy rain, wet pavement, frightening eye contact, realistic cinematic composition.",
+          "session_delta_prompt": "Clown offers paper boat to boy at drain."
         },
         {
           "beat_id": "s01_b07",
           "narration_text": "लेकिन अचानक वह उस पर हमला कर देता है।",
-          "camera_type": "fast_action_close_up",
+          "camera_type": "dynamic_action_close_up",
           "action_mode": "in_place_action",
-          "prompt_action": "Pennywise suddenly lunges out from the dark drain towards Georgie. Capture the shocking movement, Georgie's terrified reaction and splashing rainwater in one dramatic close-up. Avoid graphic injury.",
-          "session_delta_prompt": "Show the sudden attack without graphic detail."
+          "prompt_action": "Generate a frightening action photograph of a pale-faced orange-haired horror clown suddenly lunging out from a dark storm drain towards a terrified young boy wearing a yellow raincoat. The boy recoils in shock, rainwater splashes into the air, dramatic motion and harsh shadows, no graphic injury.",
+          "session_delta_prompt": "Clown lunges towards frightened boy."
         },
         {
           "beat_id": "s01_b08",
           "narration_text": "और जॉर्जी हमेशा के लिए गायब हो जाता है।",
-          "camera_type": "street_level_aftermath",
+          "camera_type": "aftermath_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The abandoned yellow raincoat is no longer visible. Georgie's paper boat floats alone in the rainwater beside the empty storm drain. Slow cinematic push-in. Stickman presenter looks horrified.",
-          "session_delta_prompt": "End the opening with the lonely paper boat and empty drain."
+          "prompt_action": "Generate a haunting photorealistic image of an abandoned white paper boat floating beside a dark concrete storm drain on an empty rainy street. A single yellow rain boot lies near a puddle. Cold grey lighting, unsettling silence, cinematic horror atmosphere.",
+          "session_delta_prompt": "Empty rainy street and abandoned paper boat."
         }
       ]
     },
@@ -173,64 +148,56 @@
           "narration_text": "कई महीने बाद भी उसका कोई पता नहीं चलता।",
           "camera_type": "close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Close-up of an old missing-child poster featuring Georgie's photograph, stuck to a telephone pole in rainy Derry. The paper is torn and soaked.",
-          "session_delta_prompt": "Show that Georgie remains missing."
+          "prompt_action": "Generate a realistic close-up of a missing child poster attached to a wooden telephone pole on a rainy American street. The poster contains a young brown-haired boy's photograph and missing-child information. Torn wet paper, gloomy surroundings, cinematic photography.",
+          "session_delta_prompt": "Missing child poster on rainy street."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "उसका भाई बिल उसे ढूँढना नहीं छोड़ता।",
+          "narration_text": "उसका बड़ा भाई बिल उसे ढूँढना नहीं छोड़ता।",
           "camera_type": "emotional_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Bill sits at his bedroom desk studying Georgie's photographs and drawing paper boats. His face shows grief and guilt. A dim desk lamp illuminates the room.",
-          "session_delta_prompt": "Introduce Bill and his emotional motivation."
+          "prompt_action": "Generate a photorealistic bedroom scene showing a teenage brown-haired boy sitting at a wooden desk. He studies several photographs of his missing little brother, holds a folded paper boat and looks deeply sad. A dim desk lamp, 1980s furniture and rainy window.",
+          "session_delta_prompt": "Teenage brother searching through photographs."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "डेरी में दूसरे बच्चे भी गायब होने लगते हैं।",
-          "camera_type": "street_tracking_shot",
+          "narration_text": "डेरी में दूसरे बच्चे भी रहस्यमय तरीके से गायब होने लगते हैं।",
+          "camera_type": "street_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A row of missing-child posters covers a Derry shop window. Camera tracks past the posters, revealing different children's photographs and worried family notices.",
-          "session_delta_prompt": "Show that the disappearances affect many families."
+          "prompt_action": "Generate a realistic photograph of an old American shop window covered with missing-child posters showing different children's faces. A deserted playground and empty street are visible in the background. Overcast skies, eerie atmosphere, 1980s setting.",
+          "session_delta_prompt": "Multiple missing-child posters across town."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "लेकिन शहर के लोग इस डर को दबाए रखते हैं।",
-          "camera_type": "wide_observation_shot",
+          "narration_text": "इसी दौरान बिल अपने कुछ दोस्तों के साथ लूजर्स क्लब बनाता है।",
+          "camera_type": "bicycle_tracking_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Ordinary adults walk through the town centre ignoring the missing posters. The camera frames their indifferent faces against the unsettling background. Stickman presenter gestures towards the posters.",
-          "session_delta_prompt": "Show the town's disturbing indifference."
+          "prompt_action": "Generate a photorealistic cinematic photograph of four teenage boys riding bicycles down a quiet American suburban street in 1989. One has brown hair, one has curly hair and glasses, one is slim with glasses and another has a neat hairstyle. Casual vintage clothing, summer daylight, realistic expressions.",
+          "session_delta_prompt": "Four teenage boys riding bicycles together."
         },
         {
           "beat_id": "s02_b05",
-          "narration_text": "बिल अपने दोस्तों के साथ लूजर्स क्लब बनाता है।",
-          "camera_type": "group_tracking_shot",
+          "narration_text": "बेन, माइक और बेवर्ली भी उनके दोस्त बन जाते हैं।",
+          "camera_type": "group_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Bill, Richie, Eddie and Stanley ride their bicycles down a quiet 1980s suburban road. Camera tracks alongside them as they laugh and talk.",
-          "session_delta_prompt": "Introduce Bill's original group of friends."
+          "prompt_action": "Generate a realistic cinematic group portrait of seven teenagers standing together outside an old American house. Four boys and three additional friends, including a teenage girl with long reddish hair. All have distinct faces, hairstyles and late-1980s outfits. Natural friendship and curiosity.",
+          "session_delta_prompt": "Seven teenagers together as a friendship group."
         },
         {
           "beat_id": "s02_b06",
-          "narration_text": "बाद में बेन, माइक और बेवर्ली भी उनसे जुड़ते हैं।",
-          "camera_type": "group_medium_shot",
+          "narration_text": "लेकिन जल्द ही सभी को अजीब और डरावनी चीज़ें दिखाई देने लगती हैं।",
+          "camera_type": "psychological_horror_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Ben, Mike and Beverly meet the other teenagers near a neighbourhood street. Show their distinct faces and outfits as the group gradually comes together.",
-          "session_delta_prompt": "Complete the introduction of all seven Losers Club members."
+          "prompt_action": "Generate a photorealistic horror image of a frightened teenage boy standing alone in a dimly lit school hallway. At the far end of the corridor, a mysterious pale figure with orange-red hair stands motionless. Flickering fluorescent lights, deep shadows and cinematic suspense.",
+          "session_delta_prompt": "Teenager sees a frightening clown-like figure in a hallway."
         },
         {
           "beat_id": "s02_b07",
-          "narration_text": "सभी के साथ एक अजीब घटना होने लगती है।",
-          "camera_type": "psychological_horror_close_up",
+          "narration_text": "क्योंकि एक डरावना जोकर हर बच्चे के डर का फायदा उठा रहा होता है।",
+          "camera_type": "low_angle_horror_portrait",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A close-up of a frightened teenager looking over his shoulder in a dim hallway. A disturbing shadow stretches across the wall behind him.",
-          "session_delta_prompt": "Begin the sequence of personal supernatural encounters."
-        },
-        {
-          "beat_id": "s02_b08",
-          "narration_text": "क्योंकि पेनीवाइज हर बच्चे के डर का रूप ले सकता है।",
-          "camera_type": "horror_portrait_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Pennywise stands in a dark corridor, his sinister smile barely visible. The background contains distorted shadowy shapes representing different fears. Keep his face and costume consistent.",
-          "session_delta_prompt": "Establish Pennywise as a supernatural creature that exploits fear."
+          "prompt_action": "Generate a photorealistic close-up portrait of a sinister supernatural clown standing in a dark room. Chalk-white face, bright orange-red hair, yellowish eyes, deep wrinkles, unnaturally wide smile and antique grey-white costume with red-orange pom-poms. His eyes stare directly into the camera.",
+          "session_delta_prompt": "Close-up of recurring terrifying clown."
         }
       ]
     },
@@ -243,64 +210,56 @@
           "narration_text": "बेन को शहर के पुराने रिकॉर्ड में एक डरावना सच मिलता है।",
           "camera_type": "over_the_shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Ben studies old newspaper archives in a library. His finger stops at a photograph of a past disappearance. Dusty shelves and warm library lighting surround him.",
-          "session_delta_prompt": "Show Ben researching Derry's history."
+          "prompt_action": "Generate a realistic photograph of a teenage boy sitting in an old public library, examining yellowed newspapers, historical photographs and old handwritten records about missing children. Dusty shelves, warm desk lamp and concentrated expression.",
+          "session_delta_prompt": "Teenager discovers historical newspaper records."
         },
         {
           "beat_id": "s03_b02",
           "narration_text": "हर सत्ताईस साल में बच्चों के गायब होने की घटनाएँ लौटती हैं।",
-          "camera_type": "macro_detail_shot",
+          "camera_type": "macro_detail",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Close-up of yellowed newspaper clippings and historical photographs arranged in chronological order. Several headlines mention missing children across different decades. Stickman presenter points at the repeated dates.",
-          "session_delta_prompt": "Explain the recurring twenty-seven-year disappearance cycle."
+          "prompt_action": "Generate a detailed overhead photograph of old newspaper clippings from several different decades arranged on a wooden table. Multiple headlines report missing children and strange disappearances. A handwritten timeline connects the years. Moody library lighting.",
+          "session_delta_prompt": "Historical evidence showing recurring disappearances."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "उधर बेवर्ली के बाथरूम में खून से भयानक हमला होता है।",
-          "camera_type": "horror_bathroom_wide_shot",
+          "narration_text": "बेवर्ली को भी अपने बाथरूम में भयानक खून दिखाई देता है।",
+          "camera_type": "bathroom_horror_wide",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Photorealistic recreation of Beverly's bathroom scene. Blood suddenly splatters across a white sink, mirror and bathroom walls. Beverly recoils in shock. Keep the scene frightening without graphic bodily injury.",
-          "session_delta_prompt": "Show Beverly's terrifying encounter with the supernatural blood."
+          "prompt_action": "Generate a photorealistic horror scene inside a small 1980s bathroom. A teenage girl with long reddish hair stands frozen in shock as dark red blood suddenly covers the white sink, mirror and bathroom walls. Realistic bathroom tiles, dramatic shadows, no graphic injury.",
+          "session_delta_prompt": "Red blood covering bathroom surfaces."
         },
         {
           "beat_id": "s03_b04",
           "narration_text": "लेकिन उसके पिता को वहाँ कुछ भी दिखाई नहीं देता।",
           "camera_type": "reaction_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Beverly's father stands in the bathroom looking confused at the apparently clean room while Beverly stares in disbelief. Use a tense over-the-shoulder composition.",
-          "session_delta_prompt": "Show that the supernatural events are not visible to everyone."
+          "prompt_action": "Generate a realistic photograph of a middle-aged man standing in a clean white bathroom looking confused. Beside him, a teenage girl with long reddish hair looks terrified and points at the apparently empty sink and mirror. Strong emotional contrast.",
+          "session_delta_prompt": "Father sees a clean bathroom while daughter is frightened."
         },
         {
           "beat_id": "s03_b05",
-          "narration_text": "बच्चों को समझ आता है कि यह सब पेनीवाइज का काम है।",
+          "narration_text": "तभी बच्चों को समझ आता है कि इन घटनाओं के पीछे वही जोकर है।",
           "camera_type": "group_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The seven teenagers gather in a garage, examining clues and sharing their frightening experiences. Bill listens intensely while Richie and Eddie look unsettled.",
-          "session_delta_prompt": "Show the group connecting their encounters to Pennywise."
+          "prompt_action": "Generate a photorealistic image of seven teenagers gathered around a table in a dark garage. Old photographs, newspaper clippings and a hand-drawn map are spread across the table. Their faces show fear and realization as they discuss a supernatural clown.",
+          "session_delta_prompt": "Seven teenagers connect the mysterious events."
         },
         {
           "beat_id": "s03_b06",
-          "narration_text": "और वे उसे ढूँढने निकल पड़ते हैं।",
-          "camera_type": "bicycle_tracking_shot",
+          "narration_text": "उनका शक एक सुनसान घर पर जाकर रुकता है।",
+          "camera_type": "wide_establishing",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The seven teenagers ride their bicycles together through a quiet Derry neighbourhood, passing old houses and telephone poles. Camera follows them from behind.",
-          "session_delta_prompt": "Show the Losers Club beginning their investigation."
+          "prompt_action": "Generate a photorealistic exterior photograph of a frightening abandoned two-storey American house. Broken windows, rotten porch, peeling white paint, overgrown grass, dark upstairs windows and grey stormy sky. Cinematic horror composition.",
+          "session_delta_prompt": "Abandoned house in a gloomy neighbourhood."
         },
         {
           "beat_id": "s03_b07",
-          "narration_text": "उनका शक एक सुनसान घर पर जाकर रुकता है।",
-          "camera_type": "wide_establishing_shot",
+          "narration_text": "जहाँ एक डरावना जोकर उनका इंतज़ार कर रहा होता है।",
+          "camera_type": "window_reveal",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The abandoned Neibolt Street house fills the frame. Broken windows, peeling paint, overgrown grass and a dark doorway. The seven teenagers stand at a distance.",
-          "session_delta_prompt": "Introduce the Neibolt Street house."
-        },
-        {
-          "beat_id": "s03_b08",
-          "narration_text": "जहाँ उनका सामना पहली बार असली पेनीवाइज से होता है।",
-          "camera_type": "dark_doorway_reveal",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Pennywise's white face appears in a dark upstairs window of the abandoned house. The camera rapidly pushes towards his yellowish eyes and sinister grin. Stickman presenter points in alarm.",
-          "session_delta_prompt": "Reveal Pennywise watching the children from the house."
+          "prompt_action": "Generate a terrifying photograph of a chalk-white-faced clown with bright orange-red hair staring through a broken upstairs window of a decaying abandoned house. Yellowish eyes, sinister smile, grey-white costume and deep shadows. The camera looks up from the street.",
+          "session_delta_prompt": "Clown watches from the abandoned house window."
         }
       ]
     },
@@ -310,207 +269,199 @@
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "बच्चे हिम्मत करके उस घर के अंदर जाते हैं।",
-          "camera_type": "interior_follow_shot",
+          "narration_text": "बच्चे हिम्मत करके उस घर के अंदर चले जाते हैं।",
+          "camera_type": "doorway_tracking",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Bill slowly pushes open the rotten front door while the other six teenagers follow him into the dark house. The camera moves behind them through the entrance.",
-          "session_delta_prompt": "Show the group entering the abandoned house."
+          "prompt_action": "Generate a photorealistic horror image of seven teenagers entering a rotten abandoned house through a creaking wooden front door. The first teenage boy holds a flashlight, while his friends cautiously follow him. Dark entrance, peeling walls, realistic 1980s clothes.",
+          "session_delta_prompt": "Teenagers entering a decaying abandoned house."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "अंदर हर तरफ अँधेरा और अजीब आवाज़ें हैं।",
-          "camera_type": "hallway_tracking_shot",
+          "narration_text": "अंदर अँधेरे कमरों में कुछ भयानक छिपा होता है।",
+          "camera_type": "interior_wide",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A narrow decaying hallway with peeling wallpaper, broken floorboards and flickering lights. The camera glides slowly past an open door and a moving shadow.",
-          "session_delta_prompt": "Build tension inside the house."
+          "prompt_action": "Generate a realistic photograph of a narrow abandoned-house hallway. Rotten floorboards, torn wallpaper, broken furniture, a half-open door and a weak flashlight beam illuminating dust in the air. Dark cinematic horror lighting.",
+          "session_delta_prompt": "Empty terrifying hallway inside house."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "अचानक एक भयानक आकृति उनके सामने आ जाती है।",
-          "camera_type": "horror_jump_reveal",
+          "narration_text": "अचानक उनके सामने एक डरावनी आकृति आ जाती है।",
+          "camera_type": "monster_reveal",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A monstrous distorted apparition suddenly emerges from a dark room. The teenagers recoil and raise their hands defensively. Photorealistic horror makeup and dramatic shadows.",
-          "session_delta_prompt": "Show the house's frightening supernatural encounter."
+          "prompt_action": "Generate a photorealistic horror image of a grotesque supernatural figure suddenly emerging from a dark room inside an abandoned house. Its face is distorted, eyes wide and mouth unnaturally open. Seven frightened teenagers recoil in the foreground. Dramatic shadows.",
+          "session_delta_prompt": "Supernatural apparition appears before teenagers."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "और पेनीवाइज उन पर हमला करने लगता है।",
-          "camera_type": "dynamic_action_shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Pennywise suddenly charges through the hallway towards the frightened teenagers. Capture a dynamic action frame with motion, terrified expressions and harsh overhead lighting.",
-          "session_delta_prompt": "Show Pennywise attacking the group inside the house."
+          "narration_text": "और वही जोकर उन पर हमला करने लगता है।",
+          "camera_type": "dynamic_action",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Generate a frightening photorealistic action scene of a pale-faced orange-haired clown charging through a dark hallway towards seven terrified teenagers. His grey-white costume moves as he lunges, yellowish eyes wide and sinister smile exposed. Strong motion and cinematic lighting.",
+          "session_delta_prompt": "Horror clown attacks teenagers in hallway."
         },
         {
           "beat_id": "s04_b05",
           "narration_text": "सभी किसी तरह वहाँ से भाग निकलते हैं।",
-          "camera_type": "handheld_escape_shot",
+          "camera_type": "handheld_escape",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The teenagers sprint through the front door of the abandoned house. Bill pulls one friend forward while Richie looks back in terror. The camera follows their escape.",
-          "session_delta_prompt": "Show the Losers Club escaping from Neibolt House."
+          "prompt_action": "Generate a photorealistic action photograph of seven teenagers sprinting out of an abandoned house into daylight. Their expressions show panic. One boy pulls another by the arm while someone looks backwards towards the dark entrance.",
+          "session_delta_prompt": "Teenagers escape the abandoned house."
         },
         {
           "beat_id": "s04_b06",
-          "narration_text": "लेकिन उनका डर अभी खत्म नहीं हुआ था।",
-          "camera_type": "street_reaction_close_up",
+          "narration_text": "लेकिन उनका खतरा अभी खत्म नहीं हुआ था।",
+          "camera_type": "reaction_medium",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Outside the house, the exhausted teenagers stand in the rain catching their breath. Bill looks back at the dark windows. A pale face is barely visible behind the glass.",
-          "session_delta_prompt": "Leave the threat unresolved and maintain suspense."
+          "prompt_action": "Generate a cinematic photograph of seven exhausted teenagers standing outside an abandoned house. One boy looks over his shoulder towards an upstairs window where a pale clown face is barely visible behind broken glass. Gloomy daylight and suspense.",
+          "session_delta_prompt": "Clown still watching the teenagers."
         },
         {
           "beat_id": "s04_b07",
-          "narration_text": "क्योंकि हेनरी बोवर्स भी उन्हें लगातार परेशान कर रहा था।",
-          "camera_type": "aggressive_medium_shot",
+          "narration_text": "उधर हेनरी नाम का एक गुंडा भी उन्हें लगातार परेशान करता है।",
+          "camera_type": "aggressive_medium",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Henry Bowers confronts the Losers Club in a late-1980s street. He steps aggressively towards them while his gang stands behind him. Stickman presenter gestures towards Henry as another threat.",
-          "session_delta_prompt": "Introduce Henry Bowers and his gang as human antagonists."
+          "prompt_action": "Generate a realistic late-1980s street photograph of an aggressive teenage bully with short dark hair confronting a group of seven younger teenagers. His face is angry and threatening. Two other teenage boys stand behind him. Natural outdoor lighting.",
+          "session_delta_prompt": "Teenage bully threatens the group."
         },
         {
           "beat_id": "s04_b08",
-          "narration_text": "और धीरे-धीरे सभी दोस्त एक-दूसरे से बिछड़ने लगते हैं।",
-          "camera_type": "emotional_wide_shot",
+          "narration_text": "धीरे-धीरे उनके बीच भी झगड़े होने लगते हैं।",
+          "camera_type": "emotional_group_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The seven teenagers stand separated in a quiet street, arguing and looking distressed. Bill is visibly frustrated while the others turn away. The frame emphasizes their growing separation.",
-          "session_delta_prompt": "Show the group beginning to fall apart."
+          "prompt_action": "Generate a realistic emotional scene of seven teenagers arguing in an empty suburban street. One boy points angrily while others look upset and disappointed. A reddish-haired girl stands apart. Late-1980s summer setting.",
+          "session_delta_prompt": "Friendship group begins to split apart."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "derry",
+      "environment_ref": "lair",
       "beats": [
         {
           "beat_id": "s05_b01",
           "narration_text": "लेकिन जब बेवर्ली गायब हो जाती है, बिल फिर सबको बुलाता है।",
-          "camera_type": "phone_call_close_up",
+          "camera_type": "telephone_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Bill urgently uses a late-1980s telephone in his home, trying to contact his friends. His face shows panic and determination.",
-          "session_delta_prompt": "Show Bill bringing the group back together after Beverly disappears."
+          "prompt_action": "Generate a realistic photograph of a worried teenage boy with brown hair urgently speaking into a beige rotary telephone in a 1980s bedroom. His face is tense and determined, old photographs on the wall and dim lighting.",
+          "session_delta_prompt": "Bill urgently calls his friends."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "उसे पता है कि पेनीवाइज उसे अपने ठिकाने पर ले गया है।",
-          "camera_type": "dark_tunnel_reveal",
+          "narration_text": "उसे पता चलता है कि वह जोकर उसे जमीन के नीचे ले गया है।",
+          "camera_type": "dark_tunnel",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A dark underground tunnel beneath Derry, with old pipes, wet stone walls and a faint orange glow far ahead. The camera moves deeper into the passage.",
-          "session_delta_prompt": "Establish the underground route to Pennywise's lair."
+          "prompt_action": "Generate a photorealistic underground tunnel beneath an American town. Damp stone walls, rusty pipes, dark water and a faint orange glow far away. A narrow passage descends into complete darkness. Cinematic horror photography.",
+          "session_delta_prompt": "Dark underground passage beneath town."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "बिल अपने दोस्तों के साथ नीचे उतर जाता है।",
-          "camera_type": "overhead_tracking_shot",
+          "narration_text": "बिल अपने छह दोस्तों के साथ नीचे उतर जाता है।",
+          "camera_type": "overhead_tracking",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The seven teenagers carefully descend a rough underground passage carrying flashlights. Their beams illuminate damp walls and scattered debris. Bill leads the group.",
-          "session_delta_prompt": "Show the Losers Club entering the underground tunnels."
+          "prompt_action": "Generate a realistic cinematic photograph of seven teenagers carefully descending into a dark underground tunnel using flashlights. The brown-haired boy leads, while his six friends follow closely. Wet stone steps, darkness and orange light ahead.",
+          "session_delta_prompt": "Seven teenagers descend into underground tunnels."
         },
         {
           "beat_id": "s05_b04",
           "narration_text": "वहाँ उन्हें गायब हुए बच्चे हवा में तैरते दिखाई देते हैं।",
           "camera_type": "wide_supernatural_reveal",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A huge underground cavern reveals several unconscious children floating motionless in the air. The Losers Club stands below, staring upward in horror. Photorealistic supernatural effects.",
-          "session_delta_prompt": "Reveal the floating missing children in Pennywise's lair."
+          "prompt_action": "Generate a photorealistic supernatural horror image of a vast underground cavern containing several unconscious children floating horizontally in midair. Seven teenagers stand below looking upward in terror. Dark rocky walls, eerie orange light and realistic visual effects.",
+          "session_delta_prompt": "Floating unconscious children in underground cavern."
         },
         {
           "beat_id": "s05_b05",
-          "narration_text": "और बीच में बेवर्ली भी उसी हालत में फँसी होती है।",
-          "camera_type": "character_reveal_close_up",
+          "narration_text": "उनमें बेवर्ली भी फँसी हुई होती है।",
+          "camera_type": "character_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Close-up of Beverly floating unconscious among the other children, her long reddish hair drifting slightly. The eerie underground lights illuminate her face.",
-          "session_delta_prompt": "Reveal Beverly among the floating children."
+          "prompt_action": "Generate a realistic close-up of a teenage girl with long reddish hair floating unconscious in a dark underground cavern. Her hair drifts slightly in the air. Other floating children appear blurred in the background, orange supernatural lighting.",
+          "session_delta_prompt": "Beverly floating unconscious among missing children."
         },
         {
           "beat_id": "s05_b06",
-          "narration_text": "तभी बिल को जॉर्जी जैसा दिखने वाला चेहरा नज़र आता है।",
+          "narration_text": "बिल को वहाँ अपने छोटे भाई जैसा दिखने वाला बच्चा भी दिखाई देता है।",
           "camera_type": "emotional_two_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Bill sees a child resembling Georgie standing in the underground chamber. The child looks at him with an unsettling familiar expression. Bill's face shows shock and grief.",
-          "session_delta_prompt": "Show Pennywise exploiting Bill's longing for Georgie."
+          "prompt_action": "Generate a photorealistic horror scene of a teenage boy standing face-to-face with a small child wearing a yellow raincoat in a dark underground cavern. The teenager looks shocked and emotional. The child stands motionless under a faint orange light.",
+          "session_delta_prompt": "Bill sees a child resembling his missing brother."
         },
         {
           "beat_id": "s05_b07",
-          "narration_text": "लेकिन वह समझ जाता है कि यह पेनीवाइज का धोखा है।",
-          "camera_type": "illusion_reveal_close_up",
-          "action_mode": "in_place_action",
-          "prompt_action": "The apparent Georgie illusion changes into Pennywise's terrifying white clown face. Bill steps backwards, realizing the deception. Use a dramatic supernatural transformation without cartoon effects.",
-          "session_delta_prompt": "Reveal the illusion as another manipulation by Pennywise."
+          "narration_text": "लेकिन वह समझ जाता है कि यह सिर्फ उस जोकर का धोखा है।",
+          "camera_type": "illusion_transformation",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Generate a terrifying photorealistic image of a small child in a yellow raincoat transforming into a supernatural clown. The child's innocent face is replaced by chalk-white makeup, orange-red hair, yellow eyes and a frightening grin. Dark underground cavern, eerie supernatural lighting.",
+          "session_delta_prompt": "False child illusion reveals the horror clown."
         },
         {
           "beat_id": "s05_b08",
-          "narration_text": "अब सातों दोस्त मिलकर उससे लड़ने का फैसला करते हैं।",
+          "narration_text": "अब सातों दोस्त मिलकर उस राक्षस से लड़ने का फैसला करते हैं।",
           "camera_type": "heroic_group_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The seven teenagers stand shoulder to shoulder in the underground cavern, facing Pennywise in the distance. Bill takes a step forward while the others gather behind him. Stickman presenter raises a fist.",
-          "session_delta_prompt": "Show the Losers Club united and ready to fight."
+          "prompt_action": "Generate a cinematic photorealistic image of seven teenagers standing shoulder to shoulder in a vast underground cavern. They face a terrifying pale-faced orange-haired clown in the distance. The teenagers look frightened but determined. Strong dramatic lighting.",
+          "session_delta_prompt": "Seven teenagers unite against the clown."
         }
       ]
     },
     {
       "scene_id": 6,
-      "environment_ref": "pennywise_lair",
+      "environment_ref": "lair",
       "beats": [
         {
           "beat_id": "s06_b01",
-          "narration_text": "इस बार वे भागते नहीं, बल्कि उसका सामना करते हैं।",
-          "camera_type": "low_angle_hero_shot",
+          "narration_text": "इस बार बच्चे भागते नहीं, बल्कि उसका सामना करते हैं।",
+          "camera_type": "low_angle_confrontation",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Bill advances towards Pennywise with determination. The clown stands across the cavern, towering over the teenagers. Dramatic low-angle cinematic composition.",
-          "session_delta_prompt": "Show Bill confronting Pennywise instead of running away."
+          "prompt_action": "Generate a photorealistic cinematic image of a teenage boy with brown hair walking fearlessly towards a terrifying pale-faced orange-haired clown in a dark underground cavern. The clown stands opposite him in an antique grey-white costume. Dramatic low-angle composition.",
+          "session_delta_prompt": "Teenage boy confronts horror clown."
         },
         {
           "beat_id": "s06_b02",
-          "narration_text": "रिची, एडी और बाकी दोस्त भी हमला शुरू कर देते हैं।",
-          "camera_type": "fast_action_group_shot",
+          "narration_text": "रिची, एडी और बाकी दोस्त भी उस पर हमला कर देते हैं।",
+          "camera_type": "dynamic_group_action",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Richie, Eddie, Ben, Mike, Stanley and Beverly's friends attack Pennywise from different directions in a fast-paced underground battle. Capture a dynamic wide frame with believable movement.",
-          "session_delta_prompt": "Show the group fighting Pennywise together."
+          "prompt_action": "Generate a photorealistic action scene of six teenagers attacking a terrifying white-faced orange-haired clown inside a dark cavern. One throws an object, another swings a wooden weapon and others rush forward. The clown recoils. Fast action composition, no graphic injury.",
+          "session_delta_prompt": "Teenagers attack clown together."
         },
         {
           "beat_id": "s06_b03",
-          "narration_text": "पेनीवाइज अब पहले की तरह ताकतवर नहीं दिखता।",
-          "camera_type": "horror_character_close_up",
+          "narration_text": "धीरे-धीरे वह कमजोर पड़ने लगता है।",
+          "camera_type": "villain_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Close-up of Pennywise looking increasingly frightened and angry. His sinister grin disappears as he recoils from the teenagers. His recognizable clown appearance remains unchanged.",
-          "session_delta_prompt": "Show Pennywise losing confidence and control."
+          "prompt_action": "Generate a photorealistic extreme close-up of a supernatural clown with white makeup and bright orange-red hair looking frightened and furious. His yellowish eyes are wide and his sinister smile disappears. Dark cavern background, cinematic shadows.",
+          "session_delta_prompt": "Clown looks frightened and vulnerable."
         },
         {
           "beat_id": "s06_b04",
-          "narration_text": "क्योंकि बच्चे अब उससे डरना बंद कर चुके होते हैं।",
-          "camera_type": "group_reaction_shot",
+          "narration_text": "क्योंकि अब बच्चे उससे डरना बंद कर चुके होते हैं।",
+          "camera_type": "group_reaction",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The Losers Club stand together facing Pennywise without retreating. Their frightened expressions transform into determination. Camera slowly pushes towards their united faces.",
-          "session_delta_prompt": "Emphasize that their courage weakens Pennywise."
+          "prompt_action": "Generate a cinematic realistic group photograph of seven teenagers standing together confidently in a dark cavern. Their expressions are determined rather than frightened. A pale-faced clown stands in the background looking weakened.",
+          "session_delta_prompt": "Group faces clown without fear."
         },
         {
           "beat_id": "s06_b05",
-          "narration_text": "वे उसे बुरी तरह हराकर पीछे हटने पर मजबूर कर देते हैं।",
-          "camera_type": "dramatic_action_close_up",
+          "narration_text": "वे मिलकर उसे पीछे हटने पर मजबूर कर देते हैं।",
+          "camera_type": "dramatic_action",
           "action_mode": "in_place_action",
-          "prompt_action": "Pennywise stumbles backwards towards a dark opening in the cavern as the teenagers stand their ground. The orange supernatural light fades around him. No graphic gore.",
-          "session_delta_prompt": "Show Pennywise defeated and retreating into darkness."
+          "prompt_action": "Generate a photorealistic horror action image of a supernatural orange-haired clown stumbling backwards towards a dark tunnel while seven teenagers stand their ground. The orange light around the clown fades, dramatic shadows and realistic movement.",
+          "session_delta_prompt": "Clown retreats into darkness."
         },
         {
           "beat_id": "s06_b06",
           "narration_text": "बिल अपने दोस्तों के साथ बेवर्ली को बचा लेता है।",
-          "camera_type": "emotional_rescue_close_up",
+          "camera_type": "emotional_rescue",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Beverly is safely back with the Losers Club. Bill and the others gather around her as she regains consciousness. Their faces show relief and exhaustion.",
-          "session_delta_prompt": "Show Beverly rescued and reunited with her friends."
+          "prompt_action": "Generate a photorealistic emotional image of seven teenagers surrounding a conscious reddish-haired teenage girl inside an underground cavern. One boy helps her stand while the others look relieved. Warm light falls on their faces.",
+          "session_delta_prompt": "Beverly reunited with friends."
         },
         {
           "beat_id": "s06_b07",
-          "narration_text": "सभी बच्चे उस खौफनाक जगह से बाहर निकल आते हैं।",
-          "camera_type": "tracking_escape_shot",
+          "narration_text": "और सभी उस खौफनाक जगह से बाहर निकल आते हैं।",
+          "camera_type": "escape_tracking",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The seven teenagers climb out of the underground passage into daylight. They are tired, muddy and relieved. Camera follows them from behind towards the bright exit.",
-          "session_delta_prompt": "Show the group's escape from the underground lair."
-        },
-        {
-          "beat_id": "s06_b08",
-          "narration_text": "लेकिन वे जानते हैं कि यह कहानी अभी खत्म नहीं हुई।",
-          "camera_type": "ominous_cinematic_close_up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A final dark view into the abandoned underground tunnel. Deep inside, a faint pair of yellowish eyes seems to watch from the darkness. Slow cinematic push-in, then fade to black.",
-          "session_delta_prompt": "Leave an ominous hint that Pennywise may return."
+          "prompt_action": "Generate a cinematic realistic photograph of seven exhausted teenagers climbing out of a dark underground tunnel into bright daylight. Their clothes are dirty and their faces show relief. Camera looks from inside the tunnel towards the exit.",
+          "session_delta_prompt": "Friends escape the underground lair."
         }
       ]
     },
@@ -520,19 +471,27 @@
       "beats": [
         {
           "beat_id": "s07_b01",
-          "narration_text": "जाने से पहले सातों दोस्त खून की कसम खाते हैं।",
-          "camera_type": "emotional_hand_close_up",
+          "narration_text": "लेकिन जाने से पहले सातों दोस्त खून की कसम खाते हैं।",
+          "camera_type": "hand_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Close-up of the seven teenagers joining their hands together in a solemn blood oath. Their hands are shown with a small symbolic cut, without graphic detail.",
-          "session_delta_prompt": "Show the symbolic blood oath."
+          "prompt_action": "Generate a photorealistic close-up of seven teenage hands joined together in a solemn friendship oath. A tiny symbolic cut is visible on one finger, with no graphic injury. Natural late-afternoon light.",
+          "session_delta_prompt": "Seven friends make a blood oath."
         },
         {
           "beat_id": "s07_b02",
-          "narration_text": "अगर पेनीवाइज लौटा, तो वे फिर साथ लड़ेंगे।",
-          "camera_type": "heroic_group_portrait",
+          "narration_text": "अगर वह जोकर वापस आया, तो वे फिर साथ लड़ेंगे।",
+          "camera_type": "cinematic_group_portrait",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The seven members of the Losers Club stand together in a dramatic late-afternoon group portrait. Bill looks determined, Beverly stands confidently and the others remain close together. Stickman presenter stands at the edge, giving a final approving gesture.",
-          "session_delta_prompt": "End with the group's promise to face Pennywise together again."
+          "prompt_action": "Generate a photorealistic cinematic group portrait of seven teenagers standing together on a quiet American street in 1989. Their expressions show courage, friendship and determination. Old houses and telephone poles in the background, sunset lighting.",
+          "session_delta_prompt": "The seven friends promise to stand together."
+        },
+        {
+          "beat_id": "s07_b03",
+          "narration_text": "क्योंकि डेरी का यह डर अभी पूरी तरह खत्म नहीं हुआ था।",
+          "camera_type": "ominous_final_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Generate a final terrifying photorealistic image of a dark concrete storm drain on an empty rainy American street at dusk. Deep inside the black opening, two faint yellowish eyes and a subtle white clown smile are barely visible. Cinematic horror lighting, deep shadows, unsettling atmosphere, fade-to-black composition.",
+          "session_delta_prompt": "Final ominous hint of the clown still lurking beneath Derry."
         }
       ]
     }

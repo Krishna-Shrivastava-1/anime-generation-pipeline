@@ -1,293 +1,149 @@
 {
-  "total_duration": 154.603,
+  "total_duration": 88.405,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 3.179,
-      "subtitle": "कहानी शुरू होती है डेरी नाम के एक छोटे शहर से।"
+      "duration_seconds": 3.84,
+      "subtitle": "पैसे कमाने हैं, लेकिन समझ नहीं आ रहा कि शुरुआत कहाँ से करें?"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 3.328,
-      "subtitle": "जहाँ एक दिन छोटा जॉर्जी बारिश में खेलने निकलता है।"
-    },
-    {
-      "beat_id": "s01_b03",
-      "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 3.115,
-      "subtitle": "लेकिन उसकी कागज़ की नाव पानी में बहने लगती है।"
-    },
-    {
-      "beat_id": "s01_b04",
-      "audio_file": "build/audio/s01_b04.wav",
-      "duration_seconds": 3.093,
-      "subtitle": "और सीधे एक अँधेरे नाले के अंदर पहुँच जाती है।"
-    },
-    {
-      "beat_id": "s01_b05",
-      "audio_file": "build/audio/s01_b05.wav",
-      "duration_seconds": 3.648,
-      "subtitle": "तभी अँधेरे के अंदर से एक डरावना जोकर दिखाई देता है।"
-    },
-    {
-      "beat_id": "s01_b06",
-      "audio_file": "build/audio/s01_b06.wav",
-      "duration_seconds": 2.624,
-      "subtitle": "वह जॉर्जी को नाव लौटाने का लालच देता है।"
-    },
-    {
-      "beat_id": "s01_b07",
-      "audio_file": "build/audio/s01_b07.wav",
-      "duration_seconds": 2.539,
-      "subtitle": "लेकिन अचानक वह उस पर हमला कर देता है।"
-    },
-    {
-      "beat_id": "s01_b08",
-      "audio_file": "build/audio/s01_b08.wav",
-      "duration_seconds": 2.517,
-      "subtitle": "और जॉर्जी हमेशा के लिए गायब हो जाता है।"
+      "duration_seconds": 5.099,
+      "subtitle": "तो चलो, जानते हैं पैसे कमाने के पाँच ऐसे तरीके, जिनसे तुम शुरुआत कर सकते हो।"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 2.731,
-      "subtitle": "कई महीने बाद भी उसका कोई पता नहीं चलता।"
+      "duration_seconds": 3.008,
+      "subtitle": "पहला तरीका है अपनी स्किल बेचकर पैसे कमाना।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 2.752,
-      "subtitle": "उसका बड़ा भाई बिल उसे ढूँढना नहीं छोड़ता।"
+      "duration_seconds": 3.733,
+      "subtitle": "जैसे वीडियो एडिटिंग, ग्राफिक डिजाइनिंग या वेबसाइट बनाना।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 4.011,
-      "subtitle": "डेरी में दूसरे बच्चे भी रहस्यमय तरीके से गायब होने लगते हैं।"
+      "duration_seconds": 3.627,
+      "subtitle": "इन सेवाओं को छोटे बिजनेस या ऑनलाइन क्लाइंट्स को ऑफर करो।"
     },
     {
       "beat_id": "s02_b04",
       "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 3.797,
-      "subtitle": "इसी दौरान बिल अपने कुछ दोस्तों के साथ लूजर्स क्लब बनाता है।"
-    },
-    {
-      "beat_id": "s02_b05",
-      "audio_file": "build/audio/s02_b05.wav",
-      "duration_seconds": 2.88,
-      "subtitle": "बेन, माइक और बेवर्ली भी उनके दोस्त बन जाते हैं।"
-    },
-    {
-      "beat_id": "s02_b06",
-      "audio_file": "build/audio/s02_b06.wav",
       "duration_seconds": 4.267,
-      "subtitle": "लेकिन जल्द ही सभी को अजीब और डरावनी चीज़ें दिखाई देने लगती हैं।"
-    },
-    {
-      "beat_id": "s02_b07",
-      "audio_file": "build/audio/s02_b07.wav",
-      "duration_seconds": 4.437,
-      "subtitle": "क्योंकि एक डरावना जोकर हर बच्चे के डर का फायदा उठा रहा होता है।"
+      "subtitle": "शुरुआत में एक छोटी स्किल सीखो, काम के नमूने बनाओ और क्लाइंट ढूँढो।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 3.755,
-      "subtitle": "बेन को शहर के पुराने रिकॉर्ड में एक डरावना सच मिलता है।"
+      "duration_seconds": 2.453,
+      "subtitle": "दूसरा तरीका है ऑनलाइन ट्यूशन देना।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 3.797,
-      "subtitle": "हर सत्ताईस साल में बच्चों के गायब होने की घटनाएँ लौटती हैं।"
+      "duration_seconds": 3.925,
+      "subtitle": "अगर तुम्हें मैथ्स, इंग्लिश, कोडिंग या कोई सब्जेक्ट अच्छे से आता है,"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 3.733,
-      "subtitle": "बेवर्ली को भी अपने बाथरूम में भयानक खून दिखाई देता है।"
+      "duration_seconds": 3.264,
+      "subtitle": "तो बच्चों या दूसरे स्टूडेंट्स को ऑनलाइन पढ़ा सकते हो।"
     },
     {
       "beat_id": "s03_b04",
       "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 3.072,
-      "subtitle": "लेकिन उसके पिता को वहाँ कुछ भी दिखाई नहीं देता।"
-    },
-    {
-      "beat_id": "s03_b05",
-      "audio_file": "build/audio/s03_b05.wav",
-      "duration_seconds": 4.096,
-      "subtitle": "तभी बच्चों को समझ आता है कि इन घटनाओं के पीछे वही जोकर है।"
-    },
-    {
-      "beat_id": "s03_b06",
-      "audio_file": "build/audio/s03_b06.wav",
-      "duration_seconds": 2.752,
-      "subtitle": "उनका शक एक सुनसान घर पर जाकर रुकता है।"
-    },
-    {
-      "beat_id": "s03_b07",
-      "audio_file": "build/audio/s03_b07.wav",
-      "duration_seconds": 3.413,
-      "subtitle": "जहाँ एक डरावना जोकर उनका इंतज़ार कर रहा होता है।"
+      "duration_seconds": 4.565,
+      "subtitle": "एक विषय चुनो, अपनी टाइमिंग तय करो और पहले कुछ स्टूडेंट्स से शुरुआत करो।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 2.923,
-      "subtitle": "बच्चे हिम्मत करके उस घर के अंदर चले जाते हैं।"
+      "duration_seconds": 2.048,
+      "subtitle": "तीसरा तरीका है कंटेंट बनाना।"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 2.752,
-      "subtitle": "अंदर अँधेरे कमरों में कुछ भयानक छिपा होता है।"
+      "duration_seconds": 5.312,
+      "subtitle": "यूट्यूब, इंस्टाग्राम या किसी प्लेटफॉर्म पर ऐसी चीजें शेयर करो, जो लोगों के काम आएँ।"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 3.136,
-      "subtitle": "अचानक उनके सामने एक डरावनी आकृति आ जाती है।"
+      "duration_seconds": 4.096,
+      "subtitle": "शुरुआत में व्यूज़ के पीछे मत भागो, लगातार अच्छी वीडियो बनाओ।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 2.56,
-      "subtitle": "और वही जोकर उन पर हमला करने लगता है।"
-    },
-    {
-      "beat_id": "s04_b05",
-      "audio_file": "build/audio/s04_b05.wav",
-      "duration_seconds": 2.368,
-      "subtitle": "सभी किसी तरह वहाँ से भाग निकलते हैं।"
-    },
-    {
-      "beat_id": "s04_b06",
-      "audio_file": "build/audio/s04_b06.wav",
-      "duration_seconds": 2.731,
-      "subtitle": "लेकिन उनका खतरा अभी खत्म नहीं हुआ था।"
-    },
-    {
-      "beat_id": "s04_b07",
-      "audio_file": "build/audio/s04_b07.wav",
-      "duration_seconds": 4.011,
-      "subtitle": "उधर हेनरी नाम का एक गुंडा भी उन्हें लगातार परेशान करता है।"
-    },
-    {
-      "beat_id": "s04_b08",
-      "audio_file": "build/audio/s04_b08.wav",
-      "duration_seconds": 2.731,
-      "subtitle": "धीरे-धीरे उनके बीच भी झगड़े होने लगते हैं।"
+      "duration_seconds": 4.309,
+      "subtitle": "आगे चलकर कमाई विज्ञापनों, ब्रांड डील्स और अपने प्रोडक्ट्स से हो सकती है।"
     },
     {
       "beat_id": "s05_b01",
       "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 3.691,
-      "subtitle": "लेकिन जब बेवर्ली गायब हो जाती है, बिल फिर सबको बुलाता है।"
+      "duration_seconds": 2.517,
+      "subtitle": "चौथा तरीका है डिजिटल प्रोडक्ट्स बेचना।"
     },
     {
       "beat_id": "s05_b02",
       "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 3.691,
-      "subtitle": "उसे पता चलता है कि वह जोकर उसे जमीन के नीचे ले गया है।"
+      "duration_seconds": 2.837,
+      "subtitle": "जैसे ई-बुक, नोट्स, टेम्पलेट्स या डिजाइन फाइल्स।"
     },
     {
       "beat_id": "s05_b03",
       "audio_file": "build/audio/s05_b03.wav",
-      "duration_seconds": 2.987,
-      "subtitle": "बिल अपने छह दोस्तों के साथ नीचे उतर जाता है।"
-    },
-    {
-      "beat_id": "s05_b04",
-      "audio_file": "build/audio/s05_b04.wav",
-      "duration_seconds": 3.435,
-      "subtitle": "वहाँ उन्हें गायब हुए बच्चे हवा में तैरते दिखाई देते हैं।"
-    },
-    {
-      "beat_id": "s05_b05",
-      "audio_file": "build/audio/s05_b05.wav",
-      "duration_seconds": 2.176,
-      "subtitle": "उनमें बेवर्ली भी फँसी हुई होती है।"
-    },
-    {
-      "beat_id": "s05_b06",
-      "audio_file": "build/audio/s05_b06.wav",
-      "duration_seconds": 4.395,
-      "subtitle": "बिल को वहाँ अपने छोटे भाई जैसा दिखने वाला बच्चा भी दिखाई देता है।"
-    },
-    {
-      "beat_id": "s05_b07",
-      "audio_file": "build/audio/s05_b07.wav",
-      "duration_seconds": 3.584,
-      "subtitle": "लेकिन वह समझ जाता है कि यह सिर्फ उस जोकर का धोखा है।"
-    },
-    {
-      "beat_id": "s05_b08",
-      "audio_file": "build/audio/s05_b08.wav",
-      "duration_seconds": 3.776,
-      "subtitle": "अब सातों दोस्त मिलकर उस राक्षस से लड़ने का फैसला करते हैं।"
+      "duration_seconds": 4.267,
+      "subtitle": "एक बार अच्छा प्रोडक्ट बनाओ, फिर उसे ऑनलाइन कई लोगों को बेच सकते हो।"
     },
     {
       "beat_id": "s06_b01",
       "audio_file": "build/audio/s06_b01.wav",
-      "duration_seconds": 3.456,
-      "subtitle": "इस बार बच्चे भागते नहीं, बल्कि उसका सामना करते हैं।"
+      "duration_seconds": 3.349,
+      "subtitle": "पाँचवाँ तरीका है रीसेलिंग या छोटा ऑनलाइन बिजनेस।"
     },
     {
       "beat_id": "s06_b02",
       "audio_file": "build/audio/s06_b02.wav",
-      "duration_seconds": 3.072,
-      "subtitle": "रिची, एडी और बाकी दोस्त भी उस पर हमला कर देते हैं।"
+      "duration_seconds": 3.008,
+      "subtitle": "ऐसे प्रोडक्ट चुनो जिनकी लोगों को सच में जरूरत हो।"
     },
     {
       "beat_id": "s06_b03",
       "audio_file": "build/audio/s06_b03.wav",
-      "duration_seconds": 2.261,
-      "subtitle": "धीरे-धीरे वह कमजोर पड़ने लगता है।"
-    },
-    {
-      "beat_id": "s06_b04",
-      "audio_file": "build/audio/s06_b04.wav",
-      "duration_seconds": 2.752,
-      "subtitle": "क्योंकि अब बच्चे उससे डरना बंद कर चुके होते हैं।"
-    },
-    {
-      "beat_id": "s06_b05",
-      "audio_file": "build/audio/s06_b05.wav",
-      "duration_seconds": 3.115,
-      "subtitle": "वे मिलकर उसे पीछे हटने पर मजबूर कर देते हैं।"
-    },
-    {
-      "beat_id": "s06_b06",
-      "audio_file": "build/audio/s06_b06.wav",
-      "duration_seconds": 3.008,
-      "subtitle": "बिल अपने दोस्तों के साथ बेवर्ली को बचा लेता है।"
-    },
-    {
-      "beat_id": "s06_b07",
-      "audio_file": "build/audio/s06_b07.wav",
-      "duration_seconds": 3.008,
-      "subtitle": "और सभी उस खौफनाक जगह से बाहर निकल आते हैं।"
+      "duration_seconds": 4.117,
+      "subtitle": "फिर उनकी कीमत, डिलीवरी और अपना मुनाफा सही से समझकर बेचो।"
     },
     {
       "beat_id": "s07_b01",
       "audio_file": "build/audio/s07_b01.wav",
-      "duration_seconds": 3.285,
-      "subtitle": "लेकिन जाने से पहले सातों दोस्त खून की कसम खाते हैं।"
+      "duration_seconds": 4.245,
+      "subtitle": "लेकिन एक बात याद रखना, जल्दी अमीर बनाने वाले वादों से बचना।"
     },
     {
       "beat_id": "s07_b02",
       "audio_file": "build/audio/s07_b02.wav",
-      "duration_seconds": 3.029,
-      "subtitle": "अगर वह जोकर वापस आया, तो वे फिर साथ लड़ेंगे।"
+      "duration_seconds": 3.712,
+      "subtitle": "किसी भी काम में समय, मेहनत और सीखने की जरूरत होती है।"
     },
     {
       "beat_id": "s07_b03",
       "audio_file": "build/audio/s07_b03.wav",
-      "duration_seconds": 3.136,
-      "subtitle": "क्योंकि डेरी का यह डर अभी पूरी तरह खत्म नहीं हुआ था।"
+      "duration_seconds": 3.371,
+      "subtitle": "तो इनमें से एक तरीका चुनो और आज ही पहला कदम उठाओ।"
+    },
+    {
+      "beat_id": "s07_b04",
+      "audio_file": "build/audio/s07_b04.wav",
+      "duration_seconds": 3.435,
+      "subtitle": "और कमेंट में बताओ, तुम कौन सा तरीका आज़माने वाले हो?"
     }
   ]
 }

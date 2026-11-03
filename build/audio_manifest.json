@@ -1,137 +1,155 @@
 {
-  "total_duration": 90.228,
+  "total_duration": 124.979,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 4.127,
-      "subtitle": "तुम्हारे साथ भी ऐसा होता है? महीने की शुरुआत में पैसे आते हैं..."
+      "duration_seconds": 4.736,
+      "subtitle": "सोचो, अगर तुम हर दिन सिर्फ सौ रुपये खर्च करते हो, तो पाँच साल बाद क्या होगा?"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 3.371,
-      "subtitle": "और महीने के आखिर तक अकाउंट लगभग खाली हो जाता है!"
+      "duration_seconds": 4.961,
+      "subtitle": "अब दो रास्ते हैं। पहले रास्ते में वही सौ रुपये रोज़ के स्नैक्स पर खर्च होते हैं।"
     },
     {
       "beat_id": "s01_b03",
       "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 4.907,
-      "subtitle": "तो आज सीखते हैं पैसे बचाने के पाँच आसान तरीके, जो सच में काम आ सकते हैं।"
+      "duration_seconds": 3.584,
+      "subtitle": "और दूसरे रास्ते में वही सौ रुपये हर दिन निवेश किए जाते हैं।"
+    },
+    {
+      "beat_id": "s01_b04",
+      "audio_file": "build/audio/s01_b04.wav",
+      "duration_seconds": 5.751,
+      "subtitle": "दोनों के पास शुरुआत में बराबर पैसे हैं। लेकिन पाँच साल बाद नतीजा काफी अलग हो सकता है।"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 3.797,
-      "subtitle": "पहला तरीका: सबसे पहले अपनी कमाई में से बचत अलग करो।"
+      "duration_seconds": 4.961,
+      "subtitle": "पहले हिसाब समझो। सौ रुपये रोज़ मतलब महीने के लगभग तीन हज़ार रुपये।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 6.123,
-      "subtitle": "जैसे तुम्हें दस हजार रुपये मिले, तो एक हजार या अपनी क्षमता के हिसाब से कुछ हिस्सा बचत में डाल दो।"
+      "duration_seconds": 3.904,
+      "subtitle": "और एक साल में यही रकम हो जाती है छत्तीस हज़ार पाँच सौ रुपये।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 5.568,
-      "subtitle": "बचा हुआ पैसा खर्च करने के बजाय, खर्च के बाद जो बचे उसे बचाने की गलती मत करना।"
+      "duration_seconds": 6.144,
+      "subtitle": "पाँच साल तक ऐसा करने पर तुम्हारे कुल एक लाख बयासी हज़ार पाँच सौ रुपये स्नैक्स में खर्च हो जाएंगे।"
+    },
+    {
+      "beat_id": "s02_b04",
+      "audio_file": "build/audio/s02_b04.wav",
+      "duration_seconds": 5.056,
+      "subtitle": "और बदले में तुम्हें मिलेंगे स्वादिष्ट स्नैक्स, लेकिन खर्च किए हुए पैसे वापस नहीं आएंगे।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 2.731,
-      "subtitle": "दूसरा तरीका: अपने खर्चों का हिसाब रखो।"
+      "duration_seconds": 3.008,
+      "subtitle": "अब वही सौ रुपये रोज़ निवेश करने की कल्पना करो।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 5.013,
-      "subtitle": "क्योंकि कई बार बड़े खर्च नहीं, बल्कि छोटे-छोटे खर्च तुम्हारे पैसे खत्म करते हैं।"
+      "duration_seconds": 5.184,
+      "subtitle": "पाँच साल में तुम अपनी जेब से कुल एक लाख बयासी हज़ार पाँच सौ रुपये निवेश करोगे।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 3.051,
-      "subtitle": "रोज़ बस दो मिनट निकालो और लिखो कि पैसा कहाँ गया।"
+      "duration_seconds": 4.684,
+      "subtitle": "लेकिन यहाँ एक फर्क है। निवेश किए गए पैसे को बढ़ने का मौका मिल सकता है।"
+    },
+    {
+      "beat_id": "s03_b04",
+      "audio_file": "build/audio/s03_b04.wav",
+      "duration_seconds": 4.416,
+      "subtitle": "मान लो, तुम्हारे निवेश पर औसतन दस प्रतिशत सालाना रिटर्न मिलता है।"
+    },
+    {
+      "beat_id": "s03_b05",
+      "audio_file": "build/audio/s03_b05.wav",
+      "duration_seconds": 6.443,
+      "subtitle": "तो रोज़ निवेश करने पर पाँच साल बाद तुम्हारी रकम लगभग दो लाख सैंतीस हज़ार रुपये हो सकती है।"
+    },
+    {
+      "beat_id": "s03_b06",
+      "audio_file": "build/audio/s03_b06.wav",
+      "duration_seconds": 6.208,
+      "subtitle": "यानी तुम्हारे एक लाख बयासी हज़ार पाँच सौ रुपये के निवेश पर लगभग चौवन हज़ार रुपये की बढ़त।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 3.797,
-      "subtitle": "तीसरा तरीका: कुछ खरीदने से पहले खुद से एक सवाल पूछो।"
+      "duration_seconds": 2.048,
+      "subtitle": "अब दोनों रास्तों को साथ में देखो।"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 4.075,
-      "subtitle": "क्या मुझे इसकी सच में जरूरत है, या बस अभी खरीदने का मन कर रहा है?"
+      "duration_seconds": 4.245,
+      "subtitle": "स्नैक्स वाले रास्ते में एक लाख बयासी हज़ार पाँच सौ रुपये खर्च हुए।"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 3.861,
-      "subtitle": "कोई गैर-जरूरी चीज़ पसंद आ जाए, तो चौबीस घंटे रुककर देखो।"
+      "duration_seconds": 5.333,
+      "subtitle": "निवेश वाले रास्ते में वही पैसे बढ़कर लगभग दो लाख सैंतीस हज़ार रुपये हो गए।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 3.435,
-      "subtitle": "हो सकता है अगले दिन तुम्हें लगे कि इसकी जरूरत ही नहीं थी!"
+      "duration_seconds": 6.741,
+      "subtitle": "दोनों में अपनी जेब से पैसा बराबर गया, लेकिन निवेश वाले रास्ते में लगभग चौवन हज़ार रुपये अतिरिक्त बने।"
+    },
+    {
+      "beat_id": "s04_b05",
+      "audio_file": "build/audio/s04_b05.wav",
+      "duration_seconds": 6.455,
+      "subtitle": "लेकिन एक बात याद रखना, दस प्रतिशत रिटर्न की कोई गारंटी नहीं है। बाज़ार में नुकसान भी हो सकता है।"
+    },
+    {
+      "beat_id": "s04_b06",
+      "audio_file": "build/audio/s04_b06.wav",
+      "duration_seconds": 6.561,
+      "subtitle": "यह सिर्फ समझाने के लिए एक उदाहरण है। असली नतीजा निवेश के तरीके, रिटर्न और समय पर निर्भर करेगा।"
     },
     {
       "beat_id": "s05_b01",
       "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 2.411,
-      "subtitle": "चौथा तरीका: हर महीने एक बजट बनाओ।"
+      "duration_seconds": 3.861,
+      "subtitle": "इसका मतलब यह नहीं कि तुम्हें स्नैक्स खाना बंद कर देना चाहिए।"
     },
     {
       "beat_id": "s05_b02",
       "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 5.163,
-      "subtitle": "कितना पैसा खाने, किराए, यात्रा और मनोरंजन पर खर्च करना है, पहले तय कर लो।"
+      "duration_seconds": 5.995,
+      "subtitle": "बस हर छोटी खरीदारी से पहले सोचो कि क्या यह पैसा तुम्हारे किसी बड़े लक्ष्य में काम आ सकता है?"
     },
     {
       "beat_id": "s05_b03",
       "audio_file": "build/audio/s05_b03.wav",
-      "duration_seconds": 3.307,
-      "subtitle": "और बजट खत्म होने पर उस खर्च को रोकने की कोशिश करो।"
+      "duration_seconds": 4.16,
+      "subtitle": "अगर रोज़ सौ रुपये बचाना मुश्किल है, तो छोटी रकम से शुरुआत करो।"
     },
     {
-      "beat_id": "s06_b01",
-      "audio_file": "build/audio/s06_b01.wav",
-      "duration_seconds": 2.453,
-      "subtitle": "पाँचवाँ तरीका: एक इमरजेंसी फंड बनाओ।"
+      "beat_id": "s05_b04",
+      "audio_file": "build/audio/s05_b04.wav",
+      "duration_seconds": 4.693,
+      "subtitle": "क्योंकि असली फर्क एक दिन में नहीं, बल्कि रोज़ लिए गए छोटे फैसलों से बनता है।"
     },
     {
-      "beat_id": "s06_b02",
-      "audio_file": "build/audio/s06_b02.wav",
-      "duration_seconds": 4.8,
-      "subtitle": "क्योंकि अचानक मेडिकल खर्च, नौकरी की परेशानी या कोई जरूरी काम आ सकता है।"
-    },
-    {
-      "beat_id": "s06_b03",
-      "audio_file": "build/audio/s06_b03.wav",
-      "duration_seconds": 4.011,
-      "subtitle": "धीरे-धीरे इतना बचाओ कि कुछ महीनों के जरूरी खर्च संभाल सको।"
-    },
-    {
-      "beat_id": "s07_b01",
-      "audio_file": "build/audio/s07_b01.wav",
-      "duration_seconds": 4.416,
-      "subtitle": "और सबसे जरूरी बात, पैसे बचाने का मतलब अपनी हर खुशी छोड़ना नहीं है।"
-    },
-    {
-      "beat_id": "s07_b02",
-      "audio_file": "build/audio/s07_b02.wav",
-      "duration_seconds": 4.501,
-      "subtitle": "बस सोच-समझकर खर्च करो, और अपने भविष्य के लिए थोड़ा पैसा जरूर रखो।"
-    },
-    {
-      "beat_id": "s07_b03",
-      "audio_file": "build/audio/s07_b03.wav",
-      "duration_seconds": 5.312,
-      "subtitle": "तो बताओ, तुम्हारी सबसे बड़ी परेशानी क्या है, पैसे बचाना या उन्हें खर्च होने से रोकना?"
+      "beat_id": "s05_b05",
+      "audio_file": "build/audio/s05_b05.wav",
+      "duration_seconds": 5.845,
+      "subtitle": "अब बताओ, अगर तुम्हारे पास रोज़ के सौ रुपये हों, तो तुम उन्हें स्नैक्स पर खर्च करोगे या निवेश करोगे?"
     }
   ]
 }

@@ -1,244 +1,276 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "पैसे बचाने के 5 स्मार्ट तरीके",
-    "project_id": "how_to_save_money_stickman_01",
+    "title": "₹100 रोज़ खर्च करना vs निवेश करना: 5 साल में कितना फर्क पड़ेगा?",
+    "project_id": "100_daily_spending_vs_investing_5_years",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Minimalist hand-drawn stickman explainer animation for an engaging YouTube Short. Warm off-white paper background, bold slightly imperfect black ink outlines, expressive round white faces, thin black stick limbs, and a consistent presenter with a small red bow tie. Use green for savings and money, red for unnecessary spending, and yellow for ideas. Funny exaggerated expressions, clear visual metaphors, dynamic camera compositions, simple uncluttered backgrounds, and strong visual storytelling. Every image should feel like part of the same illustrated animation. Vertical 9:16 composition.",
-    "negative_prompt": "Photorealism, 3D rendering, realistic human anatomy, detailed skin, complex backgrounds, excessive colors, gradients, clutter, tiny unreadable text, watermarks, logos, inconsistent stickman designs, extra limbs, distorted faces, illegible lettering."
+    "art_style": "Minimalist hand-drawn stickman explainer animation, warm off-white paper background, bold slightly imperfect black ink outlines, expressive characters, limited red, green and yellow accent colors, clean visual storytelling, simple readable props, dynamic compositions, consistent character design, vertical 9:16 framing.",
+    "negative_prompt": "Photorealism, 3D rendering, cluttered backgrounds, excessive text, tiny unreadable labels, inconsistent character design, extra limbs, distorted hands, watermarks, logos, overly bright colors."
   },
   "assets": {
-    "main_presenter": {
+    "main_character": {
       "type": "character",
-      "label": "Finance Stickman Presenter",
-      "visual_dna": "A minimalist hand-drawn stickman with a round white face, expressive black eyes, a flexible curved mouth, thin black arms and legs, and a small red bow tie. Friendly, curious, and expressive. Maintain exactly the same appearance in every frame."
+      "label": "Stickman Presenter",
+      "visual_dna": "A friendly hand-drawn stickman with a round white face, expressive black eyes, thin black stick arms and legs, and a small red bow tie. Consistent proportions and appearance in every scene."
     },
-    "money": {
-      "type": "prop",
-      "label": "Money and Savings",
-      "visual_dna": "Simple hand-drawn green currency notes, green coins, a wallet, and a transparent savings jar. Bold black outlines with minimal detail."
+    "snack_character": {
+      "type": "character",
+      "label": "Snack Spending Stickman",
+      "visual_dna": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a small red bow tie, holding snacks and looking excited. Same design as the main presenter."
+    },
+    "investing_character": {
+      "type": "character",
+      "label": "Investing Stickman",
+      "visual_dna": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a small red bow tie, holding a small growing plant and looking confident. Same design as the main presenter."
+    },
+    "paper_background": {
+      "type": "environment",
+      "label": "Warm Paper Background",
+      "visual_dna": "A clean warm off-white paper background with subtle texture, minimal hand-drawn decorative elements and plenty of empty space."
+    },
+    "snack_stall": {
+      "type": "environment",
+      "label": "Street Snack Stall",
+      "visual_dna": "A simple hand-drawn Indian street snack stall with a small counter, samosas, chips packets, tea cups and a handwritten price board. Warm, friendly and uncluttered."
+    },
+    "investment_space": {
+      "type": "environment",
+      "label": "Investment Growth Space",
+      "visual_dna": "A minimal off-white educational illustration space with a simple rising graph, rupee coins, a growing plant and a few green accent details."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "main_presenter",
+      "environment_ref": "paper_background",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "तुम्हारे साथ भी ऐसा होता है? महीने की शुरुआत में पैसे आते हैं...",
-          "camera_type": "medium shot",
+          "narration_text": "सोचो, अगर तुम हर दिन सिर्फ सौ रुपये खर्च करते हो, तो पाँच साल बाद क्या होगा?",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a small red bow tie happily receives a large stack of green currency notes. The presenter smiles excitedly and looks at the money. Minimal off-white paper background, bold black ink outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Show the presenter looking extremely happy about receiving money."
+          "prompt_action": "A friendly hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a small red bow tie stands close to the viewer, holding up a single 100-rupee note with a curious expression. Warm off-white paper background, bold imperfect black ink outlines, minimal red and green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter raises one eyebrow and points toward the 100-rupee note."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "और महीने के आखिर तक अकाउंट लगभग खाली हो जाता है!",
-          "camera_type": "close-up",
+          "narration_text": "अब दो रास्ते हैं। पहले रास्ते में वही सौ रुपये रोज़ के स्नैक्स पर खर्च होते हैं।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The same hand-drawn stickman with a round white face, expressive eyes, thin black limbs, and red bow tie turns an empty wallet upside down. A single tiny coin falls out while the presenter looks shocked. Off-white paper background, bold black outlines, a small red accent, vertical 9:16 composition.",
-          "session_delta_prompt": "Make the empty wallet and shocked expression the main focus."
+          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a red bow tie stands between two large paths. The left path leads toward a colorful Indian snack stall filled with samosas, chips and tea. The right path leads toward a small green growing plant and rupee coins. Warm off-white paper background, clean bold ink outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter points toward the snack stall first while the two paths remain clearly visible."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "तो आज सीखते हैं पैसे बचाने के पाँच आसान तरीके, जो सच में काम आ सकते हैं।",
+          "narration_text": "और दूसरे रास्ते में वही सौ रुपये हर दिन निवेश किए जाते हैं।",
+          "camera_type": "split-screen",
+          "action_mode": "in_place_action",
+          "prompt_action": "A clean vertical split-screen illustration. On the left, a hand-drawn stickman with a round white face and red bow tie buys a snack from a small stall. On the right, an identical stickman places a 100-rupee coin into a simple investment jar beside a tiny green plant. Warm off-white paper background, bold black outlines, red and green accents, vertical 9:16 layout.",
+          "session_delta_prompt": "The left character eats a snack while the right character drops a coin into the investment jar."
+        },
+        {
+          "beat_id": "s01_b04",
+          "narration_text": "दोनों के पास शुरुआत में बराबर पैसे हैं। लेकिन पाँच साल बाद नतीजा काफी अलग हो सकता है।",
           "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The same hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs, and red bow tie stands confidently beside five large green coins and a transparent savings jar. A yellow light bulb appears overhead. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter points enthusiastically toward the five savings symbols."
+          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin limbs and a red bow tie stands between two large transparent jars, each containing an equal small pile of rupee coins. He looks surprised while pointing toward a calendar marked with five years. Warm off-white paper background, bold black ink outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter gestures toward the five-year calendar as the two jars begin to represent different futures."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "main_presenter",
+      "environment_ref": "snack_stall",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "पहला तरीका: सबसे पहले अपनी कमाई में से बचत अलग करो।",
-          "camera_type": "wide shot",
+          "narration_text": "पहले हिसाब समझो। सौ रुपये रोज़ मतलब महीने के लगभग तीन हज़ार रुपये।",
+          "camera_type": "over-the-shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs, and red bow tie receives a stack of green currency notes. The presenter immediately separates a portion into a transparent savings jar before spending anything. Off-white paper background, bold black outlines, green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "Clearly show money being divided into savings before spending."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a small red bow tie stands at an Indian snack stall, looking at a simple hand-drawn calendar with thirty days circled and a pile of 100-rupee notes beside it. A few samosas and tea cups sit on the counter. Warm off-white background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The stickman counts coins while looking at the calendar."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "जैसे तुम्हें दस हजार रुपये मिले, तो एक हजार या अपनी क्षमता के हिसाब से कुछ हिस्सा बचत में डाल दो।",
+          "narration_text": "और एक साल में यही रकम हो जाती है छत्तीस हज़ार पाँच सौ रुपये।",
           "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn close-up illustration of a stickman's hands dividing ten thousand rupees worth of abstract green currency notes into two piles. One smaller pile goes into a transparent savings jar, while the larger pile remains for regular expenses. A small ten-percent visual slice is highlighted in yellow. Bold black outlines, off-white paper background, vertical 9:16 composition.",
-          "session_delta_prompt": "Make the example of separating a portion of income visually clear."
+          "prompt_action": "A close-up hand-drawn illustration of a calendar showing twelve months beside a growing stack of rupee notes and snack wrappers. A friendly stickman with a round white face and red bow tie points at the stack with a surprised expression. Warm off-white paper background, bold black ink outlines, limited red accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The money stack grows while snack wrappers pile up beside it."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "बचा हुआ पैसा खर्च करने के बजाय, खर्च के बाद जो बचे उसे बचाने की गलती मत करना।",
-          "camera_type": "reaction shot",
+          "narration_text": "पाँच साल तक ऐसा करने पर तुम्हारे कुल एक लाख बयासी हज़ार पाँच सौ रुपये स्नैक्स में खर्च हो जाएंगे।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, thin black limbs, and red bow tie watches as a pile of green money gets eaten by cartoon shopping bags, food orders, and entertainment icons. The presenter looks horrified at the nearly empty savings jar. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Show how spending first can leave almost nothing to save."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie stands beside a huge pile of empty snack packets, samosa plates and tea cups. A five-year calendar and a large stack of rupee notes appear beside him to represent the total money spent. Warm off-white paper background, bold black outlines, clean educational composition, vertical 9:16.",
+          "session_delta_prompt": "The snack pile grows dramatically and the stickman looks at it with a shocked expression."
+        },
+        {
+          "beat_id": "s02_b04",
+          "narration_text": "और बदले में तुम्हें मिलेंगे स्वादिष्ट स्नैक्स, लेकिन खर्च किए हुए पैसे वापस नहीं आएंगे।",
+          "camera_type": "reaction shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a small red bow tie sits happily eating a samosa, surrounded by empty snack wrappers and an empty wallet. He looks at the empty wallet with a slightly worried expression. Warm off-white paper background, bold black ink outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The stickman finishes the snack, checks his wallet and discovers it is empty."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "main_presenter",
+      "environment_ref": "investment_space",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "दूसरा तरीका: अपने खर्चों का हिसाब रखो।",
+          "narration_text": "अब वही सौ रुपये रोज़ निवेश करने की कल्पना करो।",
           "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs, and red bow tie sits at a desk writing expenses in a small notebook. A phone and a few green coins sit beside the notebook. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Make the presenter look focused and organized."
+          "prompt_action": "A friendly hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie carefully places a 100-rupee coin into a transparent investment jar beside a tiny green plant. Warm off-white paper background, bold black ink outlines, simple green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The stickman drops the coin into the jar and gives the tiny plant a hopeful look."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "क्योंकि कई बार बड़े खर्च नहीं, बल्कि छोटे-छोटे खर्च तुम्हारे पैसे खत्म करते हैं।",
-          "camera_type": "wide shot",
+          "narration_text": "पाँच साल में तुम अपनी जेब से कुल एक लाख बयासी हज़ार पाँच सौ रुपये निवेश करोगे।",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, thin black limbs, and red bow tie stands in the middle while many tiny shopping bags, snack packets, coffee cups, and online order boxes surround the presenter. Each small object pulls a tiny green coin away from an open wallet. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Show many small purchases adding up into a large pile of spending."
+          "prompt_action": "A close-up educational illustration showing a hand-drawn stickman's hand placing a 100-rupee coin into an investment jar every day. Beside it, a five-year calendar and a steadily growing pile of rupee coins represent the total contributions. Warm off-white paper background, bold black ink outlines, green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Coins steadily accumulate inside the jar as calendar pages turn forward."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "रोज़ बस दो मिनट निकालो और लिखो कि पैसा कहाँ गया।",
+          "narration_text": "लेकिन यहाँ एक फर्क है। निवेश किए गए पैसे को बढ़ने का मौका मिल सकता है।",
+          "camera_type": "wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie watches a green plant grow from a small pot. Rupee coins form the soil around its roots, and a simple upward arrow rises behind it. Warm off-white paper background, bold black outlines, green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The small plant grows taller and the upward arrow extends."
+        },
+        {
+          "beat_id": "s03_b04",
+          "narration_text": "मान लो, तुम्हारे निवेश पर औसतन दस प्रतिशत सालाना रिटर्न मिलता है।",
           "camera_type": "over-the-shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "An over-the-shoulder hand-drawn view of a stickman with a round white face, thin black limbs, and red bow tie recording three everyday expenses in a notebook: food, transport, and entertainment. A simple clock shows a short amount of time passing. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Show a simple expense-tracking habit that looks easy to maintain."
+          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a red bow tie points at a simple educational board showing a green rising line and a clearly visible ten-percent annual return assumption. A small disclaimer symbol appears near the board. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter taps the ten-percent assumption on the board, emphasizing that it is an example rather than a promise."
+        },
+        {
+          "beat_id": "s03_b05",
+          "narration_text": "तो रोज़ निवेश करने पर पाँच साल बाद तुम्हारी रकम लगभग दो लाख सैंतीस हज़ार रुपये हो सकती है।",
+          "camera_type": "wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie stands proudly beside a large transparent investment jar filled with rupee coins. A green rising graph and a five-year calendar sit behind the jar. The scene should visually communicate a final value of approximately 2.37 lakh rupees. Warm off-white paper background, bold black outlines, green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The investment jar fills with more coins and the stickman looks pleasantly surprised."
+        },
+        {
+          "beat_id": "s03_b06",
+          "narration_text": "यानी तुम्हारे एक लाख बयासी हज़ार पाँच सौ रुपये के निवेश पर लगभग चौवन हज़ार रुपये की बढ़त।",
+          "camera_type": "close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A clean hand-drawn financial comparison on a warm off-white background. Show one stack of rupee coins representing 1,82,500 invested and a separate smaller green stack representing approximately 54,000 growth. A friendly stickman with a round white face and red bow tie points at the extra green coins with an excited expression. Bold black outlines, minimal design, vertical 9:16 composition.",
+          "session_delta_prompt": "The green stack of additional coins appears beside the original investment stack."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "main_presenter",
+      "environment_ref": "paper_background",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "तीसरा तरीका: कुछ खरीदने से पहले खुद से एक सवाल पूछो।",
-          "camera_type": "close-up",
+          "narration_text": "अब दोनों रास्तों को साथ में देखो।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs, and red bow tie stands in front of a tempting online shopping screen. The presenter raises one finger thoughtfully, with a large yellow question mark above the head. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Make the presenter pause and think before purchasing."
+          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a red bow tie stands between two large side-by-side panels. The left panel shows snack packets and an empty wallet. The right panel shows an investment jar filled with coins and a green growing plant. Warm off-white paper background, bold black outlines, red and green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter stretches both arms outward to reveal the two contrasting outcomes."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "क्या मुझे इसकी सच में जरूरत है, या बस अभी खरीदने का मन कर रहा है?",
-          "camera_type": "split-screen",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn split-screen scene. On the left, a stickman with a round white face, thin black limbs, and red bow tie happily buys an unnecessary gadget. On the right, the same stickman pauses and thinks carefully before purchasing. A yellow question mark appears between the two versions. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Contrast impulsive buying with thoughtful buying."
+          "narration_text": "स्नैक्स वाले रास्ते में एक लाख बयासी हज़ार पाँच सौ रुपये खर्च हुए।",
+          "camera_type": "close-up",
+          "action_mode": "in_place_action",
+          "prompt_action": "The left comparison panel fills the frame. A hand-drawn stickman with a round white face and red bow tie stands beside a mountain of snack wrappers and an empty wallet. A large clear money total of 1,82,500 rupees is shown above the pile. Warm off-white background, bold black ink outlines, red accent details, vertical 9:16 composition.",
+          "session_delta_prompt": "The stickman looks at the empty wallet while the snack wrappers remain scattered around him."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "कोई गैर-जरूरी चीज़ पसंद आ जाए, तो चौबीस घंटे रुककर देखो।",
-          "camera_type": "medium shot",
+          "narration_text": "निवेश वाले रास्ते में वही पैसे बढ़कर लगभग दो लाख सैंतीस हज़ार रुपये हो गए।",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, thin black limbs, and red bow tie looks at a tempting shopping cart on a phone, then places the phone down beside a simple clock showing one full day passing. The shopping cart remains waiting on the screen. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Show the cooling-off period before an impulse purchase."
+          "prompt_action": "The right comparison panel fills the frame. A hand-drawn stickman with a round white face and red bow tie stands beside a transparent jar filled with rupee coins and a healthy green plant. A large clear money total of approximately 2,37,000 rupees appears above it. Warm off-white background, bold black ink outlines, green accent details, vertical 9:16 composition.",
+          "session_delta_prompt": "The stickman smiles as the investment jar glows subtly and the plant grows a little taller."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "हो सकता है अगले दिन तुम्हें लगे कि इसकी जरूरत ही नहीं थी!",
-          "camera_type": "reaction shot",
+          "narration_text": "दोनों में अपनी जेब से पैसा बराबर गया, लेकिन निवेश वाले रास्ते में लगभग चौवन हज़ार रुपये अतिरिक्त बने।",
+          "camera_type": "split-screen",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs, and red bow tie looks at the same shopping item the next day and shrugs with a relieved smile. The presenter closes the shopping cart and puts the saved green coins into a savings jar. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Show the presenter happily avoiding an unnecessary purchase."
+          "prompt_action": "A clear side-by-side hand-drawn comparison. Left: a stickman surrounded by snack wrappers with an empty wallet. Right: an identical stickman beside an investment jar, a green plant and an extra stack of coins. Add a simple visual arrow pointing to the extra investment growth. Warm off-white paper background, bold black outlines, red and green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The extra green coin stack on the investment side becomes more prominent while both sides show equal original contributions."
+        },
+        {
+          "beat_id": "s04_b05",
+          "narration_text": "लेकिन एक बात याद रखना, दस प्रतिशत रिटर्न की कोई गारंटी नहीं है। बाज़ार में नुकसान भी हो सकता है।",
+          "camera_type": "medium shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a red bow tie stands beside a simple investment graph that rises and falls rather than moving in a perfectly straight line. A small caution symbol and a few coins appear nearby. Warm off-white paper background, bold black outlines, muted green and red accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The graph moves through a small dip before rising again, while the presenter raises one finger to signal caution."
+        },
+        {
+          "beat_id": "s04_b06",
+          "narration_text": "यह सिर्फ समझाने के लिए एक उदाहरण है। असली नतीजा निवेश के तरीके, रिटर्न और समय पर निर्भर करेगा।",
+          "camera_type": "over-the-shoulder",
+          "action_mode": "in_place_action",
+          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a red bow tie points at a simple board showing three icons: an investment jar, a fluctuating graph and a five-year calendar. The composition feels like a clear educational explanation, not a sales pitch. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter points to each of the three icons in sequence."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "main_presenter",
+      "environment_ref": "paper_background",
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "चौथा तरीका: हर महीने एक बजट बनाओ।",
+          "narration_text": "इसका मतलब यह नहीं कि तुम्हें स्नैक्स खाना बंद कर देना चाहिए।",
           "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs, and red bow tie stands beside a large monthly calendar and a simple budget notebook. Three neat piles of green currency notes are arranged below. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter points toward the monthly calendar and budget notebook."
+          "prompt_action": "A friendly hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a red bow tie holds a samosa in one hand and a small investment jar in the other. He smiles warmly, showing that enjoying snacks and saving money can coexist. Warm off-white paper background, bold black outlines, balanced red and green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter happily takes a small bite of the samosa while keeping the investment jar safe in his other hand."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "कितना पैसा खाने, किराए, यात्रा और मनोरंजन पर खर्च करना है, पहले तय कर लो।",
-          "camera_type": "wide shot",
+          "narration_text": "बस हर छोटी खरीदारी से पहले सोचो कि क्या यह पैसा तुम्हारे किसी बड़े लक्ष्य में काम आ सकता है?",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn budgeting illustration with four separate sections: a small house for rent, a plate of food, a bus for travel, and a television for entertainment. A stickman with a round white face, thin black limbs, and red bow tie distributes green currency notes into each section. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Make the four expense categories distinct and easy to recognize."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie stands at a snack counter, holding a 100-rupee note in one hand. Above him are two thought bubbles: one showing a snack packet, the other showing a growing savings jar. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The stickman pauses before spending and thoughtfully compares the two options."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "और बजट खत्म होने पर उस खर्च को रोकने की कोशिश करो।",
-          "camera_type": "close-up",
-          "action_mode": "in_place_action",
-          "prompt_action": "A hand-drawn stickman with a round white face, thin black limbs, and red bow tie reaches toward an empty entertainment budget envelope, then stops and puts the wallet away. A small red stop symbol appears beside the empty envelope. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Show the presenter resisting extra spending after reaching the budget limit."
-        }
-      ]
-    },
-    {
-      "scene_id": 6,
-      "environment_ref": "main_presenter",
-      "beats": [
-        {
-          "beat_id": "s06_b01",
-          "narration_text": "पाँचवाँ तरीका: एक इमरजेंसी फंड बनाओ।",
-          "camera_type": "medium shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs, and red bow tie carefully places green coins into a separate transparent emergency savings jar. A small shield symbol appears on the jar. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Make the emergency jar look separate from everyday spending money."
-        },
-        {
-          "beat_id": "s06_b02",
-          "narration_text": "क्योंकि अचानक मेडिकल खर्च, नौकरी की परेशानी या कोई जरूरी काम आ सकता है।",
+          "narration_text": "अगर रोज़ सौ रुपये बचाना मुश्किल है, तो छोटी रकम से शुरुआत करो।",
           "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Three hand-drawn mini scenes show unexpected problems: a stickman visiting a clinic, another stickman looking worried beside an empty workplace desk, and a third facing a broken household appliance. A separate emergency savings jar appears in the foreground. Off-white paper background, bold black outlines, restrained red and green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "Show realistic unexpected expenses without making the scene frightening."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie drops a few small rupee coins into a savings jar. The jar starts nearly empty, with a tiny green sprout beside it. Warm off-white paper background, bold black ink outlines, simple green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "A few coins land in the jar and the stickman smiles at the small beginning."
         },
         {
-          "beat_id": "s06_b03",
-          "narration_text": "धीरे-धीरे इतना बचाओ कि कुछ महीनों के जरूरी खर्च संभाल सको।",
+          "beat_id": "s05_b04",
+          "narration_text": "क्योंकि असली फर्क एक दिन में नहीं, बल्कि रोज़ लिए गए छोटे फैसलों से बनता है।",
+          "camera_type": "tracking shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie walks along a path made of small rupee coins. At the end of the path is a larger savings jar and a healthy green tree. Warm off-white paper background, bold black outlines, green accents, inspiring but simple visual, vertical 9:16 composition.",
+          "session_delta_prompt": "The stickman walks forward as the coin path extends and the tree becomes taller."
+        },
+        {
+          "beat_id": "s05_b05",
+          "narration_text": "अब बताओ, अगर तुम्हारे पास रोज़ के सौ रुपये हों, तो तुम उन्हें स्नैक्स पर खर्च करोगे या निवेश करोगे?",
           "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, thin black limbs, and red bow tie looks at a growing emergency savings jar beside a calendar with several months marked. The jar gradually fills with green coins. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Show gradual progress toward building a financial safety cushion."
-        }
-      ]
-    },
-    {
-      "scene_id": 7,
-      "environment_ref": "main_presenter",
-      "beats": [
-        {
-          "beat_id": "s07_b01",
-          "narration_text": "और सबसे जरूरी बात, पैसे बचाने का मतलब अपनी हर खुशी छोड़ना नहीं है।",
-          "camera_type": "medium shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs, and red bow tie enjoys a small cup of coffee while keeping a savings jar safely beside the table. The presenter looks relaxed and happy. Off-white paper background, bold black outlines, green and yellow accents, vertical 9:16 composition.",
-          "session_delta_prompt": "Show a balanced lifestyle rather than extreme restriction."
-        },
-        {
-          "beat_id": "s07_b02",
-          "narration_text": "बस सोच-समझकर खर्च करो, और अपने भविष्य के लिए थोड़ा पैसा जरूर रखो।",
-          "camera_type": "wide shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, thin black limbs, and red bow tie stands between two simple symbols: a small shopping bag representing present enjoyment and a growing green savings jar representing the future. The presenter holds both hands out in a balanced pose. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Visually communicate balance between enjoying today and preparing for tomorrow."
-        },
-        {
-          "beat_id": "s07_b03",
-          "narration_text": "तो बताओ, तुम्हारी सबसे बड़ी परेशानी क्या है, पैसे बचाना या उन्हें खर्च होने से रोकना?",
-          "camera_type": "close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs, and red bow tie points directly toward the viewer. Two large speech bubbles appear: one contains a nearly empty savings jar, and the other contains a stickman surrounded by shopping bags. A simple comment icon sits below. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "End with a friendly, playful expression that encourages viewers to comment."
+          "prompt_action": "A friendly hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a small red bow tie faces the viewer directly. He holds a samosa in one hand and a rupee coin above a green investment jar in the other, with a playful questioning expression. Warm off-white paper background, bold black ink outlines, minimal red and green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter alternates pointing toward the samosa and the investment jar, then looks directly at the viewer as if asking for an answer."
         }
       ]
     }

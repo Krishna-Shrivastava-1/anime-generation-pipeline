@@ -1,61 +1,71 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "PowerShell vs CMD: The Ultimate Showdown",
-    "project_id": "powershell_vs_cmd_001",
+    "title": "Octopus vs Squid: Who Is Stranger?",
+    "project_id": "octopus_vs_squid_001",
     "language": "hi-IN",
     "aspect_ratio": "16:9",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Clean professional whiteboard comparison video, bright white background, realistic photographic images of computer interfaces and technology, simple hand-drawn black stickman presenter, minimal black typography, subtle colored highlights, clean arrows and circles, modern educational entertainment aesthetic, consistent left-right comparison layout. CMD always appears on the left and PowerShell always appears on the right. Keep all text readable and visuals uncluttered.",
-    "negative_prompt": "No cartoon computer interfaces, no distorted terminal screenshots, no gibberish text, no excessive decorations, no dark backgrounds, no unnecessary characters, no watermarks, no logos invented, no inconsistent stickman design, no 3D cartoon style, no cluttered layouts."
+    "art_style": "High-quality entertaining whiteboard comparison animation. Bright clean white background with subtle paper texture. Realistic photographic animal cutouts with accurate anatomy, combined with a highly expressive hand-drawn black stickman presenter. The presenter must be physically active and animated in every scene, with expressive poses, walking, jumping, leaning, reacting, pointing, and interacting with the subjects. Use a consistent left-right layout: octopus on the left and squid on the right. Use colorful arrows, circles, labels, and simple visual demonstrations. Dynamic visual storytelling, playful humor, frequent visual changes, clean professional composition.",
+    "negative_prompt": "Static presenter, motionless stickman, incorrect pointing direction, presenter pointing at the wrong animal, incorrect animal anatomy, extra limbs, missing tentacles, cartoon animal redesign, distorted animal photographs, cluttered whiteboard, excessive text, tiny unreadable labels, dark background, inconsistent character appearance, random decorative objects, multiple actions in one image, watermarks."
   },
   "assets": {
     "whiteboard": {
       "type": "environment",
       "label": "Comparison Whiteboard",
-      "visual_dna": "A clean bright whiteboard studio with a pure white background, subtle paper texture, plenty of negative space, and a consistent two-column comparison layout. Left side reserved for CMD, right side reserved for PowerShell, presenter positioned near the bottom center."
+      "visual_dna": "A bright white educational entertainment studio with a clean whiteboard background, subtle paper texture, generous empty space, two clear comparison zones, left zone for octopus and right zone for squid, and a small central space where the presenter can move freely."
     },
     "stickman": {
       "type": "character",
-      "label": "Stickman Presenter",
-      "visual_dna": "A simple hand-drawn black stickman with a round head, thin black limbs, expressive minimal facial features, white body with black outlines, consistent proportions, friendly and curious personality."
+      "label": "Expressive Stickman Presenter",
+      "visual_dna": "A distinctive hand-drawn black stickman with a large round white head, bold black outlines, expressive eyes, movable eyebrows, a flexible mouth, thin but clearly articulated arms and legs, and consistent proportions. Extremely expressive and energetic personality. Capable of walking, running, jumping, dancing, leaning, scratching his head, reacting with shock, pretending to swim, imitating animals, and interacting with objects. Keep the exact same character design in every scene."
     },
-    "cmd_terminal": {
+    "octopus": {
       "type": "prop",
-      "label": "Command Prompt",
-      "visual_dna": "Authentic Windows Command Prompt interface, black terminal background, white monospace text, realistic Windows command-line appearance, recognizable CMD window."
+      "label": "Octopus",
+      "visual_dna": "A realistic common octopus photographed underwater, rounded soft mantle, eight distinct flexible arms with visible suckers along their undersides, natural reddish-brown coloration, realistic marine anatomy, isolated against a clean background."
     },
-    "powershell_terminal": {
+    "squid": {
       "type": "prop",
-      "label": "PowerShell",
-      "visual_dna": "Authentic Windows PowerShell interface, dark blue terminal background, white monospace text, realistic PowerShell command-line appearance, recognizable PowerShell window."
+      "label": "Squid",
+      "visual_dna": "A realistic squid photographed underwater, elongated streamlined mantle, eight shorter arms and two noticeably longer feeding tentacles, visible fins near the mantle, realistic marine anatomy, natural coloration, isolated against a clean background."
     },
-    "old_computer": {
+    "octopus_arms": {
       "type": "prop",
-      "label": "Old Computer",
-      "visual_dna": "A vintage personal computer with a bulky CRT monitor, keyboard, and an old-fashioned computing appearance, representing early personal computing."
+      "label": "Octopus Arms",
+      "visual_dna": "A scientifically accurate close-up of eight octopus arms spreading outward, with visible rows of circular suckers along the undersides."
     },
-    "modern_computer": {
+    "squid_tentacles": {
       "type": "prop",
-      "label": "Modern Computer",
-      "visual_dna": "A contemporary desktop computer with a slim monitor, modern keyboard, and clean professional appearance."
+      "label": "Squid Tentacles",
+      "visual_dna": "A scientifically accurate close-up of a squid showing eight shorter arms and two longer feeding tentacles ending in specialized clubs."
     },
-    "process_data": {
+    "octopus_camouflage": {
       "type": "prop",
-      "label": "Process Information",
-      "visual_dna": "A clean visual representation of computer processes with readable columns for process name, CPU usage, and memory usage, arranged as structured information cards."
+      "label": "Octopus Camouflage",
+      "visual_dna": "A realistic octopus changing its skin coloration and texture to blend into a rocky underwater environment."
     },
-    "automation_icons": {
+    "squid_school": {
       "type": "prop",
-      "label": "Automation Symbols",
-      "visual_dna": "Simple recognizable symbols representing automated computer tasks, folders, files, scripts, network connections, and system administration."
+      "label": "Squid Group",
+      "visual_dna": "A group of realistic squid swimming together in an open ocean environment, maintaining coordinated movement."
     },
-    "os_logos": {
+    "octopus_ink": {
       "type": "prop",
-      "label": "Operating Systems",
-      "visual_dna": "Recognizable official-style visual representations of Windows, Linux, and macOS operating systems, displayed as three separate clean symbols."
+      "label": "Octopus Ink Cloud",
+      "visual_dna": "A realistic octopus releasing a dark ink cloud underwater as a defensive distraction."
+    },
+    "squid_ink": {
+      "type": "prop",
+      "label": "Squid Ink Cloud",
+      "visual_dna": "A realistic squid releasing a dark ink cloud underwater as a defensive distraction."
+    },
+    "comparison_labels": {
+      "type": "prop",
+      "label": "Comparison Labels",
+      "visual_dna": "Clean bold black typography on small whiteboard labels with subtle colored highlights, short readable phrases, arrows, and circles."
     }
   },
   "scenes": [
@@ -65,19 +75,19 @@
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "ये दोनों देखने में लगभग एक जैसे लगते हैं। दोनों में कमांड लिखते हैं और दोनों से कंप्यूटर को कंट्रोल कर सकते हैं।",
+          "narration_text": "समुद्र में दो ऐसे जीव रहते हैं जिन्हें देखकर लगता है जैसे किसी एलियन की दुनिया से आए हों!",
           "camera_type": "wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.cmd_terminal} on the left and {assets.powershell_terminal} on the right, equally sized and clearly visible. Place {assets.stickman} at the bottom center looking confused at both terminals. Add a small question mark above the presenter's head.",
-          "session_delta_prompt": "Keep the whiteboard layout and both terminal windows in their fixed left-right positions."
+          "prompt_action": "Show {assets.octopus} on the left and {assets.squid} on the right as large realistic photographic subjects. The stickman runs into the center of the whiteboard, suddenly stops, and stares at both creatures with wide eyes and an open mouth. Both arms are raised in surprise.",
+          "session_delta_prompt": "Establish the octopus-left and squid-right layout. Introduce the energetic stickman in the center in a surprised arrival pose."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "लेकिन क्या आपको पता है कि इनमें से एक दूसरे से कितना ज्यादा शक्तिशाली है?",
+          "narration_text": "एक के आठ हाथ हैं, दूसरे के भी आठ हाथ हैं... लेकिन रुकिए! इन दोनों में फर्क बहुत मजेदार है।",
           "camera_type": "medium_shot",
           "action_mode": "in_place_action",
-          "prompt_action": "The stickman raises one hand toward the two terminals with a curious expression. Add a large question mark between the two terminal windows and a subtle spotlight around both.",
-          "session_delta_prompt": "Preserve both terminal windows. Change only the stickman's pose and add the question mark."
+          "prompt_action": "The stickman walks toward the octopus on the LEFT, points specifically at its eight arms, then turns his head toward the squid on the RIGHT with a confused expression. Add a large question mark between the two animals.",
+          "session_delta_prompt": "Keep both animals fixed in their respective positions. Move the stickman toward the left animal and make his pointing direction unmistakably toward the octopus."
         }
       ]
     },
@@ -87,19 +97,19 @@
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "बाईं तरफ है सीएमडी, यानी कमांड प्रॉम्प्ट। और दाईं तरफ है पावरशेल।",
+          "narration_text": "पहले पहचान लेते हैं। बाईं तरफ है ऑक्टोपस और दाईं तरफ है स्क्विड।",
           "camera_type": "wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Highlight {assets.cmd_terminal} on the left with a clean label reading CMD. Highlight {assets.powershell_terminal} on the right with a clean label reading POWERSHELL. The stickman presenter points toward the left terminal.",
-          "session_delta_prompt": "Maintain the same terminal positions. Introduce the two subject labels and change the presenter's pointing direction."
+          "prompt_action": "Show {assets.octopus} on the LEFT with a clear label OCTOPUS directly underneath. Show {assets.squid} on the RIGHT with a clear label SQUID directly underneath. The stickman stands between them and points with his left hand toward the octopus and his right hand toward the squid.",
+          "session_delta_prompt": "Keep both animal positions fixed. Add accurate labels. The presenter's two hands must point toward their corresponding animals."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "दोनों कमांड लाइन टूल हैं, लेकिन सीएमडी मुख्य रूप से विंडोज़ के बेसिक कमांड चलाने के लिए बना था, जबकि पावरशेल को एडवांस्ड कमांड्स और ऑटोमेशन के लिए बनाया गया।",
-          "camera_type": "wide_shot",
+          "narration_text": "दोनों समुद्र में रहते हैं, दोनों के शरीर मुलायम होते हैं, और दोनों अपने दुश्मनों से बचने के लिए कमाल की तरकीबें जानते हैं।",
+          "camera_type": "medium_shot",
           "action_mode": "in_place_action",
-          "prompt_action": "Show a simple basic command symbol below {assets.cmd_terminal}. Show advanced automation gears and script symbols below {assets.powershell_terminal}. The stickman switches to pointing toward PowerShell.",
-          "session_delta_prompt": "Keep the original terminal layout and labels. Add basic command and automation symbols underneath the respective terminals."
+          "prompt_action": "The stickman pretends to swim by moving both arms and legs in a playful swimming pose between the two animals. Add small blue water waves underneath both animal photographs.",
+          "session_delta_prompt": "Retain both animal photographs and labels. Change the stickman into a playful swimming pose and add subtle water wave illustrations."
         }
       ]
     },
@@ -109,19 +119,19 @@
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "अब उम्र की बात करें तो सीएमडी काफी पुराना है। इसका इतिहास शुरुआती पीसी डॉस और विंडोज़ के समय से जुड़ा है।",
+          "narration_text": "सबसे पहले इनके हाथों का अंतर देखो। ऑक्टोपस के पूरे आठ हाथ होते हैं।",
           "camera_type": "medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.old_computer} prominently on the left with a small timeline pointing toward the CMD terminal. The stickman looks toward the vintage computer with a surprised expression.",
-          "session_delta_prompt": "Keep the whiteboard background. Replace the previous comparison symbols with the vintage computer and a historical timeline on the left."
+          "prompt_action": "Enlarge {assets.octopus_arms} on the LEFT side. Show all eight arms clearly separated with visible suckers. The stickman walks to the left, bends forward, and counts the arms with an exaggerated pointing gesture.",
+          "session_delta_prompt": "Focus on the octopus on the left. Keep the squid on the right smaller in the background. The stickman must point only toward the octopus arms."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "वहीं पावरशेल दो हजार छह में आया और इसे माइक्रोसॉफ्ट ने ज्यादा एडवांस्ड सिस्टम मैनेजमेंट के लिए बनाया था।",
-          "camera_type": "wide_shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Show {assets.modern_computer} on the right with a clear timeline marker reading 2006. Connect the timeline visually to {assets.powershell_terminal}. The stickman turns toward the right side.",
-          "session_delta_prompt": "Retain the vintage computer on the left. Add the modern computer and 2006 timeline marker on the right."
+          "narration_text": "लेकिन स्क्विड के आठ छोटे हाथों के अलावा दो लंबे टेंटेकल्स भी होते हैं। यानी कुल दस उपांग!",
+          "camera_type": "medium_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Enlarge {assets.squid_tentacles} on the RIGHT side. Clearly distinguish eight shorter arms from two long feeding tentacles. The stickman quickly runs from the left toward the right and stretches both of his arms forward to imitate the two long tentacles. Add labels reading 8 ARMS and 2 TENTACLES.",
+          "session_delta_prompt": "Shift visual focus to the squid on the right. Preserve the accurate distinction between eight arms and two longer tentacles. The stickman must now point and gesture toward the squid."
         }
       ]
     },
@@ -131,27 +141,19 @@
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "अब एक ही काम करके देखते हैं। कंप्यूटर में कौन-कौन से प्रोग्राम चल रहे हैं?",
-          "camera_type": "wide_shot",
+          "narration_text": "और जानते हो ऑक्टोपस की सबसे अजीब बात? उसके हाथों पर सक्शन कप होते हैं, जिनसे वो चीजों को पकड़ सकता है।",
+          "camera_type": "close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Display {assets.cmd_terminal} on the left and {assets.powershell_terminal} on the right, both ready for typing. The stickman stands between them holding a small magnifying glass and looking at both screens.",
-          "session_delta_prompt": "Remove the vintage and modern computer visuals. Return to the standard two-terminal comparison layout."
+          "prompt_action": "Show a close-up of the suckers on {assets.octopus_arms} on the LEFT. The stickman stands beside the close-up and pretends to stick his hand onto the whiteboard, looking amazed. Add a circular magnification around the suckers.",
+          "session_delta_prompt": "Keep the close-up specifically focused on octopus suckers. The stickman demonstrates sticking and gripping only on the octopus side."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "सीएमडी में आप टास्कलिस्ट लिखेंगे। जबकि पावरशेल में गेट प्रोसेस।",
+          "narration_text": "वो अपनी आठों भुजाओं से चीजों को छू सकता है, पकड़ सकता है और घूम सकता है।",
           "camera_type": "medium_shot",
           "action_mode": "in_place_action",
-          "prompt_action": "Show the command tasklist being typed inside {assets.cmd_terminal}. Simultaneously show Get-Process being typed inside {assets.powershell_terminal}. Keep both commands readable and correctly spelled.",
-          "session_delta_prompt": "Preserve both terminal interfaces. Add only the respective commands inside each terminal."
-        },
-        {
-          "beat_id": "s04_b03",
-          "narration_text": "दोनों आपको चल रहे प्रोसेसेज़ दिखा देंगे। लेकिन असली अंतर अभी बाकी है!",
-          "camera_type": "wide_shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Show a list of running processes appearing underneath both terminals. The stickman raises an index finger with an excited expression, signaling that a bigger difference is coming.",
-          "session_delta_prompt": "Keep both command examples visible. Add process lists and change the presenter's pose."
+          "prompt_action": "Show {assets.octopus} holding a small shell with one arm while its other arms explore the nearby rocks. The stickman imitates the octopus by extending both arms in different directions and looking hilariously overwhelmed.",
+          "session_delta_prompt": "Remain on the octopus side. Add a shell and rock interaction. Change the stickman's pose to an exaggerated imitation of multiple moving arms."
         }
       ]
     },
@@ -161,27 +163,19 @@
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "सीएमडी आमतौर पर कमांड का आउटपुट टेक्स्ट के रूप में देता है।",
+          "narration_text": "अब स्क्विड को देखो। इसका शरीर ज्यादा लंबा और तेज तैरने के हिसाब से बना होता है।",
           "camera_type": "medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Zoom toward {assets.cmd_terminal}. Display simple plain-text command output as several lines of white monospace text. Add a small label reading PLAIN TEXT. The stickman points toward the output.",
-          "session_delta_prompt": "Focus on CMD. Keep the terminal appearance authentic and display only plain-text output."
+          "prompt_action": "Show {assets.squid} prominently on the RIGHT with its streamlined elongated body and visible fins. The stickman runs across the whiteboard from the center to the right, leaning forward like a racing athlete and pointing toward the squid's body.",
+          "session_delta_prompt": "Shift attention to the squid on the right. Keep its elongated body and fins clearly visible. The presenter must face and point toward the squid."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "लेकिन पावरशेल की सबसे बड़ी ताकत है इसके ऑब्जेक्ट्स। यानी यह सिर्फ टेक्स्ट नहीं, बल्कि डेटा की प्रॉपर्टीज़ भी समझता है।",
-          "camera_type": "medium_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Zoom toward {assets.powershell_terminal}. Transform the visual output into structured data cards based on {assets.process_data}. Highlight process name, CPU usage, and memory usage as separate properties. Add a label reading STRUCTURED OBJECTS.",
-          "session_delta_prompt": "Shift visual focus from CMD to PowerShell. Introduce structured process information cards and property highlights."
-        },
-        {
-          "beat_id": "s05_b03",
-          "narration_text": "आप किसी प्रोसेस को उसके नाम, मेमोरी या सीपीयू इस्तेमाल के आधार पर आसानी से फिल्टर कर सकते हैं।",
-          "camera_type": "wide_shot",
+          "narration_text": "इसके शरीर के पीछे छोटे फिन्स होते हैं, जो तैरते समय इसे दिशा बदलने में मदद करते हैं।",
+          "camera_type": "close_up",
           "action_mode": "in_place_action",
-          "prompt_action": "Show {assets.powershell_terminal} with the command Get-Process | Where-Object CPU -gt 10. Highlight CPU values above 10 in the structured process cards. The stickman points at the highlighted results.",
-          "session_delta_prompt": "Retain the structured process cards. Add the filtering command and highlight matching CPU values."
+          "prompt_action": "Show a close-up of the fins near the mantle of {assets.squid}. Add two curved arrows showing water movement around the fins. The stickman bends down and points directly at the squid's fins.",
+          "session_delta_prompt": "Keep the squid as the only enlarged subject. The presenter points specifically at the fins near the squid's body, not toward the octopus."
         }
       ]
     },
@@ -191,19 +185,19 @@
       "beats": [
         {
           "beat_id": "s06_b01",
-          "narration_text": "ऑटोमेशन की बात करें तो सीएमडी बैच फाइल्स के जरिए बेसिक काम ऑटोमेट कर सकता है।",
-          "camera_type": "medium_shot",
+          "narration_text": "अब आते हैं इनके छिपने के हुनर पर। ऑक्टोपस रंग और त्वचा की बनावट बदलकर अपने आसपास में गायब जैसा हो सकता है।",
+          "camera_type": "wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.cmd_terminal} next to a simple .bat batch file icon. Display a basic automated file operation with a folder and a check mark. The stickman points toward the CMD side.",
-          "session_delta_prompt": "Replace the process filtering demonstration with a basic CMD batch file automation example."
+          "prompt_action": "Show {assets.octopus_camouflage} on the LEFT, with the octopus blending into rocky underwater surroundings. The stickman walks toward the left, covers his eyes with both hands, then peeks between his fingers while trying to find the camouflaged octopus.",
+          "session_delta_prompt": "Focus on the octopus camouflage demonstration. Keep the stickman searching on the left side, clearly interacting with the camouflaged animal."
         },
         {
           "beat_id": "s06_b02",
-          "narration_text": "लेकिन पावरशेल में एडवांस्ड स्क्रिप्टिंग, सिस्टम मैनेजमेंट, फाइल हैंडलिंग और नेटवर्क एडमिनिस्ट्रेशन भी किया जा सकता है।",
+          "narration_text": "स्क्विड भी रंग बदल सकता है, लेकिन कई स्क्विड अपने बड़े समूह में तैरने के लिए भी जाने जाते हैं।",
           "camera_type": "wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.powershell_terminal} surrounded by {assets.automation_icons}, including a PowerShell script file, folders, system settings, and network nodes. The stickman points toward the PowerShell side with an impressed expression.",
-          "session_delta_prompt": "Keep the CMD batch example visible on the left. Introduce advanced PowerShell automation symbols on the right."
+          "prompt_action": "Show {assets.squid_school} on the RIGHT with multiple squid swimming together. The stickman runs toward the right and tries to swim alongside the group, copying their direction with a funny synchronized swimming pose.",
+          "session_delta_prompt": "Shift attention from the octopus to the squid group on the right. The stickman must move to the right and imitate the squid swimming together."
         }
       ]
     },
@@ -213,19 +207,19 @@
       "beats": [
         {
           "beat_id": "s07_b01",
-          "narration_text": "और एक मजेदार बात! सीएमडी मुख्य रूप से विंडोज़ तक सीमित है।",
-          "camera_type": "medium_shot",
+          "narration_text": "लेकिन खतरा आते ही दोनों के पास एक जबरदस्त ट्रिक होती है। दोनों स्याही छोड़कर दुश्मन को चकमा दे सकते हैं।",
+          "camera_type": "wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.cmd_terminal} connected with a single Windows operating system symbol from {assets.os_logos}. The stickman points at the single connection.",
-          "session_delta_prompt": "Clear the automation symbols and show the CMD-to-Windows compatibility visual."
+          "prompt_action": "Show {assets.octopus_ink} on the LEFT and {assets.squid_ink} on the RIGHT, each releasing a separate dark ink cloud underwater. The stickman jumps backward in the center with a shocked expression and both hands raised.",
+          "session_delta_prompt": "Show both animals performing the same defensive technique. Keep the two ink clouds separate and the stickman in the center reacting to both."
         },
         {
           "beat_id": "s07_b02",
-          "narration_text": "लेकिन पावरशेल का नया वर्जन विंडोज़ के अलावा लिनक्स और मैक पर भी चलता है।",
-          "camera_type": "wide_shot",
+          "narration_text": "और ये स्याही सिर्फ धुआं बनाने के लिए नहीं होती, ये शिकारी का ध्यान भटकाने में मदद करती है ताकि ये भाग सकें।",
+          "camera_type": "medium_shot",
           "action_mode": "in_place_action",
-          "prompt_action": "Show {assets.powershell_terminal} connected to three distinct operating system symbols from {assets.os_logos}: Windows, Linux, and macOS. The stickman looks impressed and gestures toward all three.",
-          "session_delta_prompt": "Retain the CMD compatibility visual on the left. Add Linux and macOS connections to the PowerShell side."
+          "prompt_action": "Show the ink clouds spreading through the water. Both animals move away from their respective clouds. The stickman crouches behind a small illustrated ink cloud and then peeks out with a mischievous expression.",
+          "session_delta_prompt": "Retain the two ink clouds. Show both animals escaping away from the clouds and the stickman playfully demonstrating the distraction technique."
         }
       ]
     },
@@ -235,27 +229,27 @@
       "beats": [
         {
           "beat_id": "s08_b01",
-          "narration_text": "तो आखिर कौन बेहतर है? बेसिक कमांड्स और पुराने विंडोज़ टास्क के लिए सीएमडी काफी है।",
+          "narration_text": "तो अब बताओ, कौन ज्यादा अजीब है? आठ हाथों वाला ऑक्टोपस या दस उपांगों वाला स्क्विड?",
           "camera_type": "wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show both {assets.cmd_terminal} and {assets.powershell_terminal} side by side. Highlight CMD with a clean label reading SIMPLE TASKS. The stickman stands in the center and points toward CMD.",
-          "session_delta_prompt": "Return to the original comparison layout. Remove the operating system symbols and highlight CMD for basic tasks."
+          "prompt_action": "Bring {assets.octopus} back to the LEFT and {assets.squid} back to the RIGHT at equal size. The stickman runs into the center, looks left, looks right, scratches his head, and raises both hands as if unable to decide. Add two large question marks above the animals.",
+          "session_delta_prompt": "Restore the original balanced comparison layout. The stickman stands in the middle, visibly undecided and looking between both animals."
         },
         {
           "beat_id": "s08_b02",
-          "narration_text": "लेकिन एडवांस्ड ऑटोमेशन और सिस्टम कंट्रोल के लिए पावरशेल आगे है।",
-          "camera_type": "wide_shot",
+          "narration_text": "मेरे हिसाब से दोनों ही समुद्र के सबसे मजेदार जीवों में से हैं। लेकिन तुम्हें कौन ज्यादा पसंद आया?",
+          "camera_type": "medium_shot",
           "action_mode": "in_place_action",
-          "prompt_action": "Highlight {assets.powershell_terminal} with a clean label reading ADVANCED AUTOMATION. Show subtle gear and system control symbols around it. The stickman points toward PowerShell.",
-          "session_delta_prompt": "Keep both terminals visible. Shift the highlight from CMD to PowerShell and change the presenter's pointing direction."
+          "prompt_action": "The stickman walks toward the viewer, points directly outward with one hand, and gestures toward both animals with the other. Give the stickman a friendly smiling expression. Add a small speech bubble with two empty voting choices below the animals.",
+          "session_delta_prompt": "Keep both animals visible. Move the presenter toward the foreground and make him directly engage the audience."
         },
         {
           "beat_id": "s08_b03",
-          "narration_text": "अब बताओ, अगला मुकाबला किन दो चीज़ों के बीच होना चाहिए?",
-          "camera_type": "medium_shot",
+          "narration_text": "कमेंट में बताओ, और अगली बार किन दो अजीब चीजों का मुकाबला करवाना चाहते हो?",
+          "camera_type": "wide_shot",
           "action_mode": "in_place_action",
-          "prompt_action": "Show the stickman facing the viewer and pointing toward a large empty speech bubble for audience suggestions. Keep both terminal windows smaller in the background. Add a simple comment icon near the speech bubble.",
-          "session_delta_prompt": "Preserve the whiteboard style. Move the stickman into a viewer-facing pose and introduce the final audience question area."
+          "prompt_action": "The stickman excitedly points downward toward the comment area, then raises one hand as if inviting suggestions. Keep the octopus and squid smaller in the background. Add a clean readable label reading YOUR NEXT COMPARISON?",
+          "session_delta_prompt": "Finish with the presenter actively inviting audience participation. Preserve the same whiteboard identity and leave clear space for the comment prompt."
         }
       ]
     }

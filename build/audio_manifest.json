@@ -1,167 +1,137 @@
 {
-  "total_duration": 115.891,
+  "total_duration": 90.228,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 4.501,
-      "subtitle": "एक सेकंड सोचो... अगर कल सुबह उठते ही दुनिया का सारा पैसा गायब हो जाए?"
+      "duration_seconds": 4.127,
+      "subtitle": "तुम्हारे साथ भी ऐसा होता है? महीने की शुरुआत में पैसे आते हैं..."
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 3.264,
-      "subtitle": "न डॉलर, न रुपये, न ऑनलाइन पेमेंट... सिर्फ सोने के सिक्के!"
+      "duration_seconds": 3.371,
+      "subtitle": "और महीने के आखिर तक अकाउंट लगभग खाली हो जाता है!"
     },
     {
       "beat_id": "s01_b03",
       "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 4.971,
-      "subtitle": "और दुनिया वापस पुराने जमाने की तरह सोने, चाँदी और ताँबे से व्यापार करने लगे?"
+      "duration_seconds": 4.907,
+      "subtitle": "तो आज सीखते हैं पैसे बचाने के पाँच आसान तरीके, जो सच में काम आ सकते हैं।"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 5.781,
-      "subtitle": "सबसे पहले, तुम्हारी जेब में पड़े दस रुपये के सिक्के की जगह एक छोटा सोने का टुकड़ा होगा।"
+      "duration_seconds": 3.797,
+      "subtitle": "पहला तरीका: सबसे पहले अपनी कमाई में से बचत अलग करो।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 4.361,
-      "subtitle": "चाय पीनी है? सोना दो। किराना खरीदना है? सोना दो।"
+      "duration_seconds": 6.123,
+      "subtitle": "जैसे तुम्हें दस हजार रुपये मिले, तो एक हजार या अपनी क्षमता के हिसाब से कुछ हिस्सा बचत में डाल दो।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 2.411,
-      "subtitle": "सुनने में तो बड़ा शानदार लगता है, है ना?"
-    },
-    {
-      "beat_id": "s02_b04",
-      "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 2.197,
-      "subtitle": "लेकिन असली कहानी अब शुरू होती है।"
+      "duration_seconds": 5.568,
+      "subtitle": "बचा हुआ पैसा खर्च करने के बजाय, खर्च के बाद जो बचे उसे बचाने की गलती मत करना।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 4.181,
-      "subtitle": "पहली समस्या: हर चीज़ का छोटा-सा भुगतान करना मुश्किल हो जाएगा।"
+      "duration_seconds": 2.731,
+      "subtitle": "दूसरा तरीका: अपने खर्चों का हिसाब रखो।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 3.264,
-      "subtitle": "मान लो चाय की कीमत सिर्फ एक छोटा-सा सोने का कण है।"
+      "duration_seconds": 5.013,
+      "subtitle": "क्योंकि कई बार बड़े खर्च नहीं, बल्कि छोटे-छोटे खर्च तुम्हारे पैसे खत्म करते हैं।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 3.307,
-      "subtitle": "अब हर दुकान पर सोना तौलने वाली मशीन चाहिए होगी!"
-    },
-    {
-      "beat_id": "s03_b04",
-      "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 3.328,
-      "subtitle": "और अगर दुकानदार के पास छुट्टे सोने के सिक्के ही न हों तो?"
+      "duration_seconds": 3.051,
+      "subtitle": "रोज़ बस दो मिनट निकालो और लिखो कि पैसा कहाँ गया।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 3.605,
-      "subtitle": "दूसरी समस्या: सोना हर जगह बराबर मात्रा में नहीं मिलेगा।"
+      "duration_seconds": 3.797,
+      "subtitle": "तीसरा तरीका: कुछ खरीदने से पहले खुद से एक सवाल पूछो।"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 5.077,
-      "subtitle": "जिस देश के पास ज्यादा सोना होगा, उसके पास ज्यादा खरीदने की ताकत हो सकती है।"
+      "duration_seconds": 4.075,
+      "subtitle": "क्या मुझे इसकी सच में जरूरत है, या बस अभी खरीदने का मन कर रहा है?"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 4.736,
-      "subtitle": "लेकिन जिन देशों के पास सोना कम है, उनके लिए व्यापार करना मुश्किल हो सकता है।"
+      "duration_seconds": 3.861,
+      "subtitle": "कोई गैर-जरूरी चीज़ पसंद आ जाए, तो चौबीस घंटे रुककर देखो।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 4.821,
-      "subtitle": "और सोने की नई खदान मिलते ही उसकी कीमत और पूरी अर्थव्यवस्था हिल सकती है।"
+      "duration_seconds": 3.435,
+      "subtitle": "हो सकता है अगले दिन तुम्हें लगे कि इसकी जरूरत ही नहीं थी!"
     },
     {
       "beat_id": "s05_b01",
       "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 4.309,
-      "subtitle": "तीसरी समस्या: आज की दुनिया में व्यापार सिर्फ दुकानों तक सीमित नहीं है।"
+      "duration_seconds": 2.411,
+      "subtitle": "चौथा तरीका: हर महीने एक बजट बनाओ।"
     },
     {
       "beat_id": "s05_b02",
       "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 4.779,
-      "subtitle": "एक देश दूसरे देश से तेल खरीदता है, कंपनियाँ लाखों ऑनलाइन पेमेंट करती हैं।"
+      "duration_seconds": 5.163,
+      "subtitle": "कितना पैसा खाने, किराए, यात्रा और मनोरंजन पर खर्च करना है, पहले तय कर लो।"
     },
     {
       "beat_id": "s05_b03",
       "audio_file": "build/audio/s05_b03.wav",
-      "duration_seconds": 6.059,
-      "subtitle": "अब हर पेमेंट के लिए असली सोना एक जगह से दूसरी जगह भेजना पड़े, तो सोचो कितना समय लगेगा!"
-    },
-    {
-      "beat_id": "s05_b04",
-      "audio_file": "build/audio/s05_b04.wav",
-      "duration_seconds": 4.715,
-      "subtitle": "इसीलिए शायद सोने के डिजिटल सर्टिफिकेट या टोकन इस्तेमाल होने लगें।"
+      "duration_seconds": 3.307,
+      "subtitle": "और बजट खत्म होने पर उस खर्च को रोकने की कोशिश करो।"
     },
     {
       "beat_id": "s06_b01",
       "audio_file": "build/audio/s06_b01.wav",
-      "duration_seconds": 4.288,
-      "subtitle": "लेकिन रुक जाओ... क्या सोना इस्तेमाल करने से महँगाई खत्म हो जाएगी?"
+      "duration_seconds": 2.453,
+      "subtitle": "पाँचवाँ तरीका: एक इमरजेंसी फंड बनाओ।"
     },
     {
       "beat_id": "s06_b02",
       "audio_file": "build/audio/s06_b02.wav",
-      "duration_seconds": 4.917,
-      "subtitle": "जरूरी नहीं! अगर सोने की सप्लाई सीमित हो और अर्थव्यवस्था तेजी से बढ़े,"
+      "duration_seconds": 4.8,
+      "subtitle": "क्योंकि अचानक मेडिकल खर्च, नौकरी की परेशानी या कोई जरूरी काम आ सकता है।"
     },
     {
       "beat_id": "s06_b03",
       "audio_file": "build/audio/s06_b03.wav",
-      "duration_seconds": 4.544,
-      "subtitle": "तो सामान की कीमतें गिर सकती हैं, और कर्ज चुकाना ज्यादा मुश्किल हो सकता है।"
-    },
-    {
-      "beat_id": "s06_b04",
-      "audio_file": "build/audio/s06_b04.wav",
-      "duration_seconds": 5.44,
-      "subtitle": "और आर्थिक संकट आने पर सरकारों के पास तुरंत कदम उठाने की आजादी भी कम हो सकती है।"
+      "duration_seconds": 4.011,
+      "subtitle": "धीरे-धीरे इतना बचाओ कि कुछ महीनों के जरूरी खर्च संभाल सको।"
     },
     {
       "beat_id": "s07_b01",
       "audio_file": "build/audio/s07_b01.wav",
-      "duration_seconds": 2.527,
-      "subtitle": "तो क्या सोना बेकार है? बिल्कुल नहीं।"
+      "duration_seconds": 4.416,
+      "subtitle": "और सबसे जरूरी बात, पैसे बचाने का मतलब अपनी हर खुशी छोड़ना नहीं है।"
     },
     {
       "beat_id": "s07_b02",
       "audio_file": "build/audio/s07_b02.wav",
-      "duration_seconds": 4.075,
-      "subtitle": "सोना आज भी कई लोगों के लिए बचत और भरोसे का एक अहम साधन है।"
+      "duration_seconds": 4.501,
+      "subtitle": "बस सोच-समझकर खर्च करो, और अपने भविष्य के लिए थोड़ा पैसा जरूर रखो।"
     },
     {
       "beat_id": "s07_b03",
       "audio_file": "build/audio/s07_b03.wav",
-      "duration_seconds": 4.779,
-      "subtitle": "लेकिन पूरी दुनिया को सिर्फ सोने पर चलाना... शायद इतना आसान नहीं होगा।"
-    },
-    {
-      "beat_id": "s07_b04",
-      "audio_file": "build/audio/s07_b04.wav",
-      "duration_seconds": 5.653,
-      "subtitle": "अब बताओ, अगर कल से दुनिया में सिर्फ सोना ही पैसा बन जाए, तो तुम इसके पक्ष में हो या खिलाफ?"
+      "duration_seconds": 5.312,
+      "subtitle": "तो बताओ, तुम्हारी सबसे बड़ी परेशानी क्या है, पैसे बचाना या उन्हें खर्च होने से रोकना?"
     }
   ]
 }

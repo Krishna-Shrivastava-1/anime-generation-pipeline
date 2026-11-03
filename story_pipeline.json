@@ -1,344 +1,538 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "प्लास्टिक की बोतलें कैसे बनती हैं? कचरे से नई बोतल तक!",
-    "project_id": "how_plastic_bottles_are_made",
+    "title": "IT (2017) - Pennywise की पूरी कहानी",
+    "project_id": "it_2017_fast_paced_recap",
     "language": "hi-IN",
     "aspect_ratio": "16:9",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Pure hand-drawn stickman explainer animation in a clean whiteboard cartoon style. Every scene must look like a colourful educational doodle drawn by hand, NOT realistic, NOT 3D, NOT a cinematic cartoon world. Use a plain warm-white background with subtle paper texture. The main presenter is a consistent simple black stickman with a round white face, bold black outline, expressive eyes, curved eyebrows, a smiling mouth, thin black arms and legs, and simple cartoon hands. The stickman is the main character and must actively interact with the illustrations: pointing, explaining, holding objects, scratching his head, reacting with surprise, walking, jumping, and gesturing toward viewers. Manufacturing objects should be colourful, simple, recognisable hand-drawn illustrations with thick black outlines and bright flat fills. Use blue, cyan, green, yellow, orange, and red accents. Show each manufacturing step using large clear illustrations, arrows, labels, and visual transformations. Keep the composition uncluttered and readable. Use multiple different visual elements in every beat. The stickman should appear in most beats and should never look like a realistic human. Consistent presenter design in every image. Educational YouTube explainer aesthetic, playful, friendly, highly engaging, easy to understand at a glance.",
-    "negative_prompt": "Photorealism, realistic humans, 3D characters, anime, prehistoric environments, realistic factories, detailed industrial photography, complicated machinery, dark backgrounds, dirty horror-like garbage scenes, overly detailed textures, tiny unreadable text, static presenter, different stickman designs, inconsistent character proportions, cluttered compositions, excessive gradients, dull colours, cinematic lighting."
+    "art_style": "Fast-paced cinematic horror movie recap using photorealistic recreations of iconic scenes from IT (2017). Every beat must have a distinct composition, camera angle, character action or story moment. Target approximately 2–3 seconds per visual beat. Use realistic 1980s American locations, authentic film-inspired costumes, detailed human expressions, practical horror makeup, dramatic lighting, atmospheric fog, rain, shadows and cinematic depth. Pennywise must maintain his recognizable 2017 appearance in every shot: white clown makeup, orange-red hair, yellowish eyes, sinister smile and antique grey-white clown costume with orange-red pom-poms. Keep all recurring characters visually consistent. The hand-drawn stickman presenter has a round white face, expressive eyes, thin black limbs and a small red bow tie. Include him selectively at the edge of shots, introducing characters, pointing at clues or reacting to scares. Never let him obscure the realistic movie action. Use occasional subtle red arrows, circles and short labels for explanations. Do not reuse the same still image for consecutive beats. Every beat represents a new visual moment, not a static slideshow.",
+    "negative_prompt": "Cartoon environments, anime, vector illustrations of movie characters, childish visuals, generic horror stock images, repeated compositions, static character poses, inconsistent faces, changing costumes, inconsistent Pennywise makeup, modern cars, modern clothing, bright cheerful lighting, excessive gore, graphic injuries, blurry faces, distorted anatomy, extra limbs, text artifacts, watermarks, logos, stickman covering the main action."
   },
   "assets": {
     "host": {
       "type": "character",
       "label": "Stickman Presenter",
-      "visual_dna": "A simple friendly hand-drawn stickman presenter. Round white face with a thick black outline, two expressive black eyes, curved eyebrows, a smiling mouth, thin black stick arms and legs, simple cartoon hands, and a small red bow tie. Consistent head size, body proportions, facial design, and bow tie in every scene. Highly expressive and energetic."
+      "visual_dna": "A consistent hand-drawn stickman with a round white face, expressive black eyes, thin black line-art limbs and a small red bow tie. Simple clean design, expressive gestures and poses. Maintain identical proportions and appearance in every appearance."
     },
-    "whiteboard": {
+    "derry": {
       "type": "environment",
-      "label": "Whiteboard Background",
-      "visual_dna": "A clean warm-white drawing canvas with very subtle paper texture, plenty of empty space, and occasional colourful hand-drawn arrows, circles, and labels. No realistic environment."
+      "label": "Derry Town",
+      "visual_dna": "A small American town in 1989, with authentic late-1980s architecture, suburban houses, telephone poles, empty roads, old shops, gloomy skies and unsettling quiet streets. Realistic cinematic atmosphere inspired by IT (2017)."
     },
-    "plastic_scrap": {
-      "type": "prop",
-      "label": "Discarded Plastic Waste",
-      "visual_dna": "A pile of discarded plastic packaging, bottles, and containers illustrated as simple hand-drawn shapes. Include black, dark grey, blue, green, and transparent-looking plastic pieces. Colourful black-outlined doodle style, not dirty or disgusting."
+    "georgie": {
+      "type": "character",
+      "label": "Georgie Denbrough",
+      "visual_dna": "A young boy with short brown hair wearing a bright yellow raincoat and boots. Small, innocent appearance. Consistent with Georgie's appearance in IT (2017)."
     },
-    "used_pet_bottles": {
-      "type": "prop",
-      "label": "Used PET Bottles",
-      "visual_dna": "Several empty used transparent PET water bottles with simple blue caps, light blue highlights, and visible dents. Hand-drawn flat colourful illustration with bold black outlines."
+    "bill": {
+      "type": "character",
+      "label": "Bill Denbrough",
+      "visual_dna": "A teenage boy with brown hair, casual late-1980s clothing and a determined but emotionally vulnerable expression. Consistent appearance throughout the film recap."
     },
-    "sorting_belt": {
-      "type": "prop",
-      "label": "Sorting Conveyor",
-      "visual_dna": "A simplified hand-drawn conveyor belt with colourful plastic bottles moving along it. Clear blue and grey shapes, bold black outlines, and a few simple sorting arrows."
+    "pennywise": {
+      "type": "character",
+      "label": "Pennywise",
+      "visual_dna": "The terrifying dancing clown from IT (2017): chalk-white face makeup, bright orange-red hair, yellowish eyes, sinister exaggerated smile, pointed teeth and an antique grey-white clown costume with orange-red pom-poms. Photorealistic horror makeup, consistent face, costume and proportions in every scene."
     },
-    "sorting_bins": {
+    "paper_boat": {
       "type": "prop",
-      "label": "Plastic Sorting Bins",
-      "visual_dna": "Three simple colourful hand-drawn collection bins: one for clear plastic, one for coloured plastic, and one for unsuitable mixed plastic. Large simple symbols and clean visual distinction."
+      "label": "Paper Boat",
+      "visual_dna": "A small folded white paper boat made by Bill for Georgie. Slightly wet and creased, with a handwritten name on it."
     },
-    "clean_bottle": {
-      "type": "prop",
-      "label": "Clean Clear PET Bottle",
-      "visual_dna": "A transparent-looking PET water bottle drawn with light cyan outlines, white highlights, and a few pale blue reflections. It should look clean and polished, with a removable blue cap and label."
+    "storm_drain": {
+      "type": "environment",
+      "label": "Storm Drain",
+      "visual_dna": "A dark concrete roadside storm drain in a rainy 1980s American neighbourhood. Water flows through the gutter into a black opening. Realistic wet pavement, rain splashes and deep shadows."
     },
-    "washing_machine": {
-      "type": "prop",
-      "label": "Plastic Washing Machine",
-      "visual_dna": "A simplified colourful industrial washing machine illustrated like a hand-drawn doodle. Large blue water tank, spinning drum, bubbles, water splashes, and simple control buttons. No realistic machinery detail."
+    "losers": {
+      "type": "character",
+      "label": "The Losers Club",
+      "visual_dna": "Seven distinct teenagers from IT (2017): Bill, Beverly, Richie, Eddie, Ben, Mike and Stanley. Each has a recognizable consistent face, hairstyle and late-1980s outfit. Keep their appearances consistent across every group shot."
     },
-    "plastic_flakes": {
-      "type": "prop",
-      "label": "PET Plastic Flakes",
-      "visual_dna": "A pile of small light-blue and transparent-looking plastic flakes, like tiny irregular plastic chips. Clean, bright, hand-drawn illustration with bold black outlines."
+    "richie": {
+      "type": "character",
+      "label": "Richie Tozier",
+      "visual_dna": "A teenage boy with dark curly hair, glasses and casual late-1980s clothing. Energetic, sarcastic and expressive. Consistent with IT (2017)."
     },
-    "plastic_pellets": {
-      "type": "prop",
-      "label": "PET Plastic Pellets",
-      "visual_dna": "A handful of tiny uniform pale transparent-blue PET plastic pellets, represented as small rounded granules. Clean, colourful, simple doodle style."
+    "eddie": {
+      "type": "character",
+      "label": "Eddie Kaspbrak",
+      "visual_dna": "A slim teenage boy with short brown hair, glasses and late-1980s casual clothing. Nervous, anxious expressions. Consistent with IT (2017)."
     },
-    "extruder": {
-      "type": "prop",
-      "label": "Plastic Extruder",
-      "visual_dna": "A simplified hand-drawn plastic processing machine with a hopper at the top, a long heating barrel, a small temperature indicator, and a nozzle. Use blue, orange, and grey flat colours with thick black outlines."
+    "beverly": {
+      "type": "character",
+      "label": "Beverly Marsh",
+      "visual_dna": "A teenage girl with long reddish hair and casual 1980s clothing. Brave, independent and emotionally vulnerable. Consistent with IT (2017)."
     },
-    "molten_plastic": {
-      "type": "prop",
-      "label": "Molten PET Plastic",
-      "visual_dna": "A glowing orange-yellow stream of melted plastic flowing from a simple machine nozzle. Cartoon hand-drawn liquid shape, smooth and bright, with small heat marks."
+    "ben": {
+      "type": "character",
+      "label": "Ben Hanscom",
+      "visual_dna": "A teenage boy with brown hair and a slightly stocky build, often carrying books. Intelligent, kind and shy. Consistent with IT (2017)."
     },
-    "preform": {
-      "type": "prop",
-      "label": "Bottle Preform",
-      "visual_dna": "A small transparent pale-blue plastic tube shaped like a thick test tube with a finished bottle neck and screw threads. Clearly recognisable as a bottle preform, hand-drawn with bold outlines."
+    "henry": {
+      "type": "character",
+      "label": "Henry Bowers",
+      "visual_dna": "An aggressive teenage bully with short dark hair, a threatening expression and late-1980s clothing. Consistent with IT (2017)."
     },
-    "mould": {
-      "type": "prop",
-      "label": "Bottle Mould",
-      "visual_dna": "A simple open two-piece metal bottle mould with a bottle-shaped hollow cavity. Drawn in blue-grey flat colours with thick black outlines and simple mechanical details."
+    "neibolt_house": {
+      "type": "environment",
+      "label": "Neibolt Street House",
+      "visual_dna": "A decaying abandoned two-storey house with broken windows, peeling paint, overgrown grass, rotten wooden floors, dark corridors and a terrifying basement. Photorealistic and consistent with the house in IT (2017)."
     },
-    "air_nozzle": {
-      "type": "prop",
-      "label": "High Pressure Air Nozzle",
-      "visual_dna": "A simplified industrial air nozzle connected to a blue pipe, releasing visible blue air arrows into a plastic bottle preform."
+    "pennywise_lair": {
+      "type": "environment",
+      "label": "Underground Lair",
+      "visual_dna": "A massive underground cavern beneath Derry, with dark tunnels, old objects, floating children's belongings and an eerie supernatural atmosphere. A deep central chamber contains the floating children."
     },
-    "finished_bottle": {
+    "deadlights": {
       "type": "prop",
-      "label": "Finished Transparent Bottle",
-      "visual_dna": "A beautiful clean transparent water bottle with pale cyan edges, bright white reflective highlights, a blue screw cap, and a simple blue label. Hand-drawn colourful illustration with thick black outlines."
-    },
-    "quality_check": {
-      "type": "prop",
-      "label": "Quality Inspection",
-      "visual_dna": "A hand-drawn magnifying glass, green check marks, a transparent bottle silhouette, and simple inspection symbols. Bright green, blue, and yellow colours."
-    },
-    "bottle_collection": {
-      "type": "prop",
-      "label": "Finished Bottle Collection",
-      "visual_dna": "A neat row of colourful finished plastic bottles: transparent water bottles, pale-blue bottles, green bottles, and clear bottles with different simple labels. Bright flat hand-drawn illustration."
-    },
-    "recycling_symbol": {
-      "type": "prop",
-      "label": "Recycling Symbol",
-      "visual_dna": "A large hand-drawn green recycling symbol made from three thick curved arrows, with a small transparent bottle in the centre."
-    },
-    "black_product": {
-      "type": "prop",
-      "label": "Dark Recycled Plastic Product",
-      "visual_dna": "A simple dark-grey recycled plastic object such as a sturdy plant pot or industrial crate, drawn with thick black outlines and a small green recycling symbol."
+      "label": "Deadlights",
+      "visual_dna": "Three intensely glowing orange supernatural lights surrounded by swirling eerie energy. A disturbing otherworldly visual effect associated with Pennywise."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "whiteboard",
+      "environment_ref": "derry",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "दोस्तों, आपके हाथ में जो पानी की बोतल है, क्या आपने कभी सोचा है कि ये बनती कैसे है?",
-          "camera_type": "medium_presenter_shot",
+          "narration_text": "कहानी शुरू होती है डेरी शहर से।",
+          "camera_type": "wide_establishing_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.host} standing on the left, holding {assets.finished_bottle} in one hand and pointing excitedly toward it with the other. Add a large colourful question mark above the bottle. Clean whiteboard background.",
-          "session_delta_prompt": "Introduce the stickman host and the mystery of how a plastic bottle is manufactured."
+          "prompt_action": "Aerial cinematic view of a quiet 1989 American town under heavy storm clouds. Rain falls over suburban houses and empty streets. Stickman presenter appears in a small corner, introducing the town.",
+          "session_delta_prompt": "Establish the gloomy town of Derry in 1989."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "और मज़ेदार बात ये है कि कई नई प्लास्टिक की बोतलें पुरानी इस्तेमाल की हुई बोतलों से भी बनाई जा सकती हैं!",
-          "camera_type": "wide_explainer_shot",
+          "narration_text": "जहाँ छोटा जॉर्जी बारिश में खेल रहा होता है।",
+          "camera_type": "medium_tracking_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.host} pointing from {assets.used_pet_bottles} on the left toward a shiny {assets.finished_bottle} on the right. Draw a big curved green arrow connecting the old bottles to the new bottle. Add a surprised expression to the stickman.",
-          "session_delta_prompt": "Reveal the recycling concept with a clear old-to-new visual transformation."
+          "prompt_action": "Georgie in his bright yellow raincoat runs along a wet suburban pavement, smiling and holding a small paper boat. Camera tracks alongside him at child height.",
+          "session_delta_prompt": "Introduce Georgie running through the rainy neighbourhood."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "लेकिन रुकिए! पुरानी बोतल को उठाकर सीधे नई बोतल नहीं बना देते। इसके पीछे पूरी मशीनों वाली कहानी है!",
-          "camera_type": "comedic_close_up",
-          "action_mode": "in_place_action",
-          "prompt_action": "Show {assets.host} trying to push an old {assets.used_pet_bottles} directly into a finished bottle shape, then looking shocked as a red cross appears. Beside him, draw a simple sequence of machine icons with a green arrow.",
-          "session_delta_prompt": "Create curiosity about the actual multi-step manufacturing process."
+          "narration_text": "उसकी नाव पानी में बहने लगती है।",
+          "camera_type": "ground_level_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Extreme close-up of Georgie's little white paper boat floating rapidly through a rainwater gutter. Water splashes around it as the camera follows its movement.",
+          "session_delta_prompt": "Show the paper boat moving through the gutter."
         },
         {
           "beat_id": "s01_b04",
-          "narration_text": "चलो देखते हैं कि प्लास्टिक का कचरा कैसे बदलकर एक चमचमाती बोतल बन जाता है!",
-          "camera_type": "dynamic_wide_shot",
+          "narration_text": "और सीधे एक अँधेरे नाले में पहुँच जाती है।",
+          "camera_type": "low_angle_tracking",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.host} jumping excitedly and pointing toward a large illustrated process arrow: used bottles, tiny flakes, pellets, bottle preform, finished bottle. Use five large colourful icons arranged left to right.",
-          "session_delta_prompt": "Preview the full manufacturing journey and transition into the first step."
+          "prompt_action": "The paper boat approaches a large dark concrete storm drain. The camera moves from the wet street towards the black opening, creating a sense of dread.",
+          "session_delta_prompt": "Bring the boat to the storm drain entrance."
+        },
+        {
+          "beat_id": "s01_b05",
+          "narration_text": "तभी अंदर से एक अजीब जोकर दिखाई देता है।",
+          "camera_type": "horror_reveal_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "From inside the storm drain, reveal Pennywise's pale face slowly emerging from complete darkness. His orange-red hair and yellowish eyes catch a faint reflection of daylight.",
+          "session_delta_prompt": "Reveal Pennywise's face inside the drain."
+        },
+        {
+          "beat_id": "s01_b06",
+          "narration_text": "वह जॉर्जी को नाव लौटाने का लालच देता है।",
+          "camera_type": "two_character_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Pennywise crouches inside the drain and smiles unnaturally at Georgie. The boy kneels outside, looking curious. The paper boat lies between them. Faithful cinematic recreation of the iconic scene.",
+          "session_delta_prompt": "Show Pennywise pretending to be friendly with Georgie."
+        },
+        {
+          "beat_id": "s01_b07",
+          "narration_text": "लेकिन अचानक वह उस पर हमला कर देता है।",
+          "camera_type": "fast_action_close_up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Pennywise suddenly lunges out from the dark drain towards Georgie. Capture the shocking movement, Georgie's terrified reaction and splashing rainwater in one dramatic close-up. Avoid graphic injury.",
+          "session_delta_prompt": "Show the sudden attack without graphic detail."
+        },
+        {
+          "beat_id": "s01_b08",
+          "narration_text": "और जॉर्जी हमेशा के लिए गायब हो जाता है।",
+          "camera_type": "street_level_aftermath",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "The abandoned yellow raincoat is no longer visible. Georgie's paper boat floats alone in the rainwater beside the empty storm drain. Slow cinematic push-in. Stickman presenter looks horrified.",
+          "session_delta_prompt": "End the opening with the lonely paper boat and empty drain."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "whiteboard",
+      "environment_ref": "derry",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "सबसे पहले इकट्ठा किया जाता है इस्तेमाल किया हुआ प्लास्टिक। लेकिन हर तरह का प्लास्टिक एक जैसा नहीं होता।",
-          "camera_type": "wide_diagram_shot",
+          "narration_text": "कई महीने बाद भी उसका कोई पता नहीं चलता।",
+          "camera_type": "close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.host} standing beside {assets.plastic_scrap}, pointing at the different shapes and colours. Add simple floating labels represented by clean hand-drawn symbols for bottles, containers, and mixed plastic.",
-          "session_delta_prompt": "Introduce plastic waste collection and explain that different plastic types need different treatment."
+          "prompt_action": "Close-up of an old missing-child poster featuring Georgie's photograph, stuck to a telephone pole in rainy Derry. The paper is torn and soaked.",
+          "session_delta_prompt": "Show that Georgie remains missing."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "पानी की बोतलों में अक्सर पीईटी नाम का प्लास्टिक इस्तेमाल होता है। इसलिए सबसे पहले सही पीईटी बोतलें अलग की जाती हैं।",
-          "camera_type": "medium_diagram_shot",
+          "narration_text": "उसका भाई बिल उसे ढूँढना नहीं छोड़ता।",
+          "camera_type": "emotional_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.host} holding a large transparent {assets.used_pet_bottles} bottle. Draw a big magnifying glass over it and a green check mark. Keep other mixed plastic pieces faded in the background.",
-          "session_delta_prompt": "Introduce PET bottles as the selected material for this recycling process."
+          "prompt_action": "Bill sits at his bedroom desk studying Georgie's photographs and drawing paper boats. His face shows grief and guilt. A dim desk lamp illuminates the room.",
+          "session_delta_prompt": "Introduce Bill and his emotional motivation."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "फिर मशीनें और कर्मचारी बोतलों को उनके रंग और प्लास्टिक के प्रकार के हिसाब से छाँटते हैं।",
-          "camera_type": "side_process_shot",
+          "narration_text": "डेरी में दूसरे बच्चे भी गायब होने लगते हैं।",
+          "camera_type": "street_tracking_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.sorting_belt} moving clear, blue, green, and dark plastic bottles. {assets.host} stands beside it, pointing at each bottle as it moves toward {assets.sorting_bins}. Use simple arrows showing clear bottles going into one bin and coloured bottles into another.",
-          "session_delta_prompt": "Show the sorting stage with clearly separated plastic colours."
+          "prompt_action": "A row of missing-child posters covers a Derry shop window. Camera tracks past the posters, revealing different children's photographs and worried family notices.",
+          "session_delta_prompt": "Show that the disappearances affect many families."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "और एक ज़रूरी बात! काला या मिला-जुला प्लास्टिक सीधे पारदर्शी बोतल नहीं बन जाता। उसे अलग तरह से इस्तेमाल करना पड़ सकता है।",
-          "camera_type": "comparison_diagram",
+          "narration_text": "लेकिन शहर के लोग इस डर को दबाए रखते हैं।",
+          "camera_type": "wide_observation_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.host} pointing toward two distinct paths. On the left, clear PET bottles move toward a transparent bottle icon with a green arrow. On the right, dark mixed plastic moves toward {assets.black_product} with a grey arrow. Add a red cross between dark mixed plastic and the transparent bottle to show that ordinary recycling cannot simply make it clear.",
-          "session_delta_prompt": "Correct the misconception that black mixed plastic can simply become a transparent bottle through ordinary recycling."
+          "prompt_action": "Ordinary adults walk through the town centre ignoring the missing posters. The camera frames their indifferent faces against the unsettling background. Stickman presenter gestures towards the posters.",
+          "session_delta_prompt": "Show the town's disturbing indifference."
+        },
+        {
+          "beat_id": "s02_b05",
+          "narration_text": "बिल अपने दोस्तों के साथ लूजर्स क्लब बनाता है।",
+          "camera_type": "group_tracking_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Bill, Richie, Eddie and Stanley ride their bicycles down a quiet 1980s suburban road. Camera tracks alongside them as they laugh and talk.",
+          "session_delta_prompt": "Introduce Bill's original group of friends."
+        },
+        {
+          "beat_id": "s02_b06",
+          "narration_text": "बाद में बेन, माइक और बेवर्ली भी उनसे जुड़ते हैं।",
+          "camera_type": "group_medium_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Ben, Mike and Beverly meet the other teenagers near a neighbourhood street. Show their distinct faces and outfits as the group gradually comes together.",
+          "session_delta_prompt": "Complete the introduction of all seven Losers Club members."
+        },
+        {
+          "beat_id": "s02_b07",
+          "narration_text": "सभी के साथ एक अजीब घटना होने लगती है।",
+          "camera_type": "psychological_horror_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A close-up of a frightened teenager looking over his shoulder in a dim hallway. A disturbing shadow stretches across the wall behind him.",
+          "session_delta_prompt": "Begin the sequence of personal supernatural encounters."
+        },
+        {
+          "beat_id": "s02_b08",
+          "narration_text": "क्योंकि पेनीवाइज हर बच्चे के डर का रूप ले सकता है।",
+          "camera_type": "horror_portrait_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Pennywise stands in a dark corridor, his sinister smile barely visible. The background contains distorted shadowy shapes representing different fears. Keep his face and costume consistent.",
+          "session_delta_prompt": "Establish Pennywise as a supernatural creature that exploits fear."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "whiteboard",
+      "environment_ref": "derry",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "अब चुनी हुई बोतलों से उनके ढक्कन और लेबल हटाए जाते हैं।",
-          "camera_type": "medium_process_shot",
+          "narration_text": "बेन को शहर के पुराने रिकॉर्ड में एक डरावना सच मिलता है।",
+          "camera_type": "over_the_shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.host} holding a used bottle while a blue cap and colourful label are separated from it. Draw the cap flying into one small container and the label peeling away. Keep the bottle itself clear and recognisable.",
-          "session_delta_prompt": "Show removal of caps and labels before processing."
+          "prompt_action": "Ben studies old newspaper archives in a library. His finger stops at a photograph of a past disappearance. Dusty shelves and warm library lighting surround him.",
+          "session_delta_prompt": "Show Ben researching Derry's history."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "इसके बाद बोतलों को छोटे-छोटे टुकड़ों में काट दिया जाता है।",
-          "camera_type": "close_up_process_shot",
+          "narration_text": "हर सत्ताईस साल में बच्चों के गायब होने की घटनाएँ लौटती हैं।",
+          "camera_type": "macro_detail_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show a simplified hand-drawn cutting machine with a large opening. On one side, intact {assets.used_pet_bottles} enter; on the other side, a pile of small {assets.plastic_flakes} comes out. {assets.host} points at the flakes with an excited expression.",
-          "session_delta_prompt": "Show the transformation from whole bottles into small PET flakes."
+          "prompt_action": "Close-up of yellowed newspaper clippings and historical photographs arranged in chronological order. Several headlines mention missing children across different decades. Stickman presenter points at the repeated dates.",
+          "session_delta_prompt": "Explain the recurring twenty-seven-year disappearance cycle."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "अब इन टुकड़ों को पानी और खास सफाई की प्रक्रिया से धोया जाता है, ताकि गंदगी और बचे हुए लेबल हट सकें।",
-          "camera_type": "dynamic_washing_shot",
+          "narration_text": "उधर बेवर्ली के बाथरूम में खून से भयानक हमला होता है।",
+          "camera_type": "horror_bathroom_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.plastic_flakes} entering {assets.washing_machine}. Draw blue water splashes, white soap bubbles, and tiny dirt particles being washed away. {assets.host} stands beside the machine wearing imaginary safety goggles and giving a thumbs-up.",
-          "session_delta_prompt": "Explain washing and cleaning of the plastic flakes."
+          "prompt_action": "Photorealistic recreation of Beverly's bathroom scene. Blood suddenly splatters across a white sink, mirror and bathroom walls. Beverly recoils in shock. Keep the scene frightening without graphic bodily injury.",
+          "session_delta_prompt": "Show Beverly's terrifying encounter with the supernatural blood."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "सफाई के बाद टुकड़ों को सुखाया जाता है और उनकी क्वालिटी भी जाँची जाती है।",
-          "camera_type": "clean_result_shot",
+          "narration_text": "लेकिन उसके पिता को वहाँ कुछ भी दिखाई नहीं देता।",
+          "camera_type": "reaction_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show clean light-blue {assets.plastic_flakes} spread on a simple drying tray. Beside them, show {assets.quality_check}. {assets.host} holds a magnifying glass and inspects the clean flakes.",
-          "session_delta_prompt": "Show the cleaned and dried PET flakes ready for further processing."
+          "prompt_action": "Beverly's father stands in the bathroom looking confused at the apparently clean room while Beverly stares in disbelief. Use a tense over-the-shoulder composition.",
+          "session_delta_prompt": "Show that the supernatural events are not visible to everyone."
+        },
+        {
+          "beat_id": "s03_b05",
+          "narration_text": "बच्चों को समझ आता है कि यह सब पेनीवाइज का काम है।",
+          "camera_type": "group_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "The seven teenagers gather in a garage, examining clues and sharing their frightening experiences. Bill listens intensely while Richie and Eddie look unsettled.",
+          "session_delta_prompt": "Show the group connecting their encounters to Pennywise."
+        },
+        {
+          "beat_id": "s03_b06",
+          "narration_text": "और वे उसे ढूँढने निकल पड़ते हैं।",
+          "camera_type": "bicycle_tracking_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "The seven teenagers ride their bicycles together through a quiet Derry neighbourhood, passing old houses and telephone poles. Camera follows them from behind.",
+          "session_delta_prompt": "Show the Losers Club beginning their investigation."
+        },
+        {
+          "beat_id": "s03_b07",
+          "narration_text": "उनका शक एक सुनसान घर पर जाकर रुकता है।",
+          "camera_type": "wide_establishing_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "The abandoned Neibolt Street house fills the frame. Broken windows, peeling paint, overgrown grass and a dark doorway. The seven teenagers stand at a distance.",
+          "session_delta_prompt": "Introduce the Neibolt Street house."
+        },
+        {
+          "beat_id": "s03_b08",
+          "narration_text": "जहाँ उनका सामना पहली बार असली पेनीवाइज से होता है।",
+          "camera_type": "dark_doorway_reveal",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Pennywise's white face appears in a dark upstairs window of the abandoned house. The camera rapidly pushes towards his yellowish eyes and sinister grin. Stickman presenter points in alarm.",
+          "session_delta_prompt": "Reveal Pennywise watching the children from the house."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "whiteboard",
+      "environment_ref": "neibolt_house",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "अब इन साफ टुकड़ों को प्रोसेस करके छोटे-छोटे प्लास्टिक के दाने बनाए जा सकते हैं, जिन्हें पेलेट्स कहते हैं।",
-          "camera_type": "medium_explainer_shot",
+          "narration_text": "बच्चे हिम्मत करके उस घर के अंदर जाते हैं।",
+          "camera_type": "interior_follow_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.host} holding {assets.plastic_flakes} in one hand and {assets.plastic_pellets} in the other. Draw a thick blue arrow between them. Make the difference between flakes and small rounded pellets very clear.",
-          "session_delta_prompt": "Introduce PET pellets as the processed material used for manufacturing."
+          "prompt_action": "Bill slowly pushes open the rotten front door while the other six teenagers follow him into the dark house. The camera moves behind them through the entrance.",
+          "session_delta_prompt": "Show the group entering the abandoned house."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "इन दानों को गर्म करके पिघलाया जाता है, जिससे प्लास्टिक दोबारा आकार देने लायक बन जाता है।",
-          "camera_type": "machine_cutaway_shot",
+          "narration_text": "अंदर हर तरफ अँधेरा और अजीब आवाज़ें हैं।",
+          "camera_type": "hallway_tracking_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.plastic_pellets} falling into the hopper of {assets.extruder}. Inside a simplified transparent cutaway, draw the pellets becoming a smooth orange-yellow {assets.molten_plastic} stream. {assets.host} points at the heated section.",
-          "session_delta_prompt": "Show the pellets being heated and melted in a simplified industrial process."
+          "prompt_action": "A narrow decaying hallway with peeling wallpaper, broken floorboards and flickering lights. The camera glides slowly past an open door and a moving shadow.",
+          "session_delta_prompt": "Build tension inside the house."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "लेकिन बोतल अभी नहीं बनी है। फिलहाल प्लास्टिक को एक छोटे मोटे ट्यूब जैसे आकार में ढाला जाता है।",
-          "camera_type": "close_up_product_shot",
+          "narration_text": "अचानक एक भयानक आकृति उनके सामने आ जाती है।",
+          "camera_type": "horror_jump_reveal",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.molten_plastic} flowing into a simple moulding shape and emerging as {assets.preform}. {assets.host} holds the small preform next to his face, looking confused because it does not look like a bottle yet.",
-          "session_delta_prompt": "Reveal the bottle preform and create curiosity about how it becomes a full-sized bottle."
+          "prompt_action": "A monstrous distorted apparition suddenly emerges from a dark room. The teenagers recoil and raise their hands defensively. Photorealistic horror makeup and dramatic shadows.",
+          "session_delta_prompt": "Show the house's frightening supernatural encounter."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "इसे बोतल का प्रीफॉर्म कहते हैं। देखने में छोटा है, लेकिन असली बोतल का आकार इसी से बनने वाला है!",
-          "camera_type": "presenter_comparison_shot",
+          "narration_text": "और पेनीवाइज उन पर हमला करने लगता है।",
+          "camera_type": "dynamic_action_shot",
           "action_mode": "in_place_action",
-          "prompt_action": "Show {assets.host} holding {assets.preform} on one side and a large outline of {assets.finished_bottle} on the other. Draw a bold curved arrow between them and make the stickman gesture dramatically toward the tiny preform.",
-          "session_delta_prompt": "Emphasise that the small preform is the starting shape for the finished bottle."
+          "prompt_action": "Pennywise suddenly charges through the hallway towards the frightened teenagers. Capture a dynamic action frame with motion, terrified expressions and harsh overhead lighting.",
+          "session_delta_prompt": "Show Pennywise attacking the group inside the house."
+        },
+        {
+          "beat_id": "s04_b05",
+          "narration_text": "सभी किसी तरह वहाँ से भाग निकलते हैं।",
+          "camera_type": "handheld_escape_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "The teenagers sprint through the front door of the abandoned house. Bill pulls one friend forward while Richie looks back in terror. The camera follows their escape.",
+          "session_delta_prompt": "Show the Losers Club escaping from Neibolt House."
+        },
+        {
+          "beat_id": "s04_b06",
+          "narration_text": "लेकिन उनका डर अभी खत्म नहीं हुआ था।",
+          "camera_type": "street_reaction_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Outside the house, the exhausted teenagers stand in the rain catching their breath. Bill looks back at the dark windows. A pale face is barely visible behind the glass.",
+          "session_delta_prompt": "Leave the threat unresolved and maintain suspense."
+        },
+        {
+          "beat_id": "s04_b07",
+          "narration_text": "क्योंकि हेनरी बोवर्स भी उन्हें लगातार परेशान कर रहा था।",
+          "camera_type": "aggressive_medium_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Henry Bowers confronts the Losers Club in a late-1980s street. He steps aggressively towards them while his gang stands behind him. Stickman presenter gestures towards Henry as another threat.",
+          "session_delta_prompt": "Introduce Henry Bowers and his gang as human antagonists."
+        },
+        {
+          "beat_id": "s04_b08",
+          "narration_text": "और धीरे-धीरे सभी दोस्त एक-दूसरे से बिछड़ने लगते हैं।",
+          "camera_type": "emotional_wide_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "The seven teenagers stand separated in a quiet street, arguing and looking distressed. Bill is visibly frustrated while the others turn away. The frame emphasizes their growing separation.",
+          "session_delta_prompt": "Show the group beginning to fall apart."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "whiteboard",
+      "environment_ref": "derry",
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "अब आता है सबसे मज़ेदार हिस्सा! प्रीफॉर्म को गर्म करके एक खास साँचे के अंदर रखा जाता है।",
-          "camera_type": "wide_machine_shot",
+          "narration_text": "लेकिन जब बेवर्ली गायब हो जाती है, बिल फिर सबको बुलाता है।",
+          "camera_type": "phone_call_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.host} pointing toward {assets.mould}, which is open like two halves of a bottle-shaped case. A small warm {assets.preform} is positioned above the mould. Use orange heat lines and blue machine details.",
-          "session_delta_prompt": "Introduce the bottle mould and prepare for the blowing process."
+          "prompt_action": "Bill urgently uses a late-1980s telephone in his home, trying to contact his friends. His face shows panic and determination.",
+          "session_delta_prompt": "Show Bill bringing the group back together after Beverly disappears."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "फिर उसमें तेज़ दबाव से हवा भरी जाती है।",
-          "camera_type": "close_up_technical_shot",
+          "narration_text": "उसे पता है कि पेनीवाइज उसे अपने ठिकाने पर ले गया है।",
+          "camera_type": "dark_tunnel_reveal",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.air_nozzle} entering the top of {assets.preform} while it sits inside {assets.mould}. Draw several thick blue arrows showing air flowing downward into the preform. {assets.host} watches closely from the side.",
-          "session_delta_prompt": "Show high-pressure air entering the heated preform inside the mould."
+          "prompt_action": "A dark underground tunnel beneath Derry, with old pipes, wet stone walls and a faint orange glow far ahead. The camera moves deeper into the passage.",
+          "session_delta_prompt": "Establish the underground route to Pennywise's lair."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "हवा के दबाव से गर्म प्लास्टिक फैलता है और साँचे की दीवारों से चिपककर बोतल जैसा आकार ले लेता है!",
-          "camera_type": "mould_cutaway_shot",
+          "narration_text": "बिल अपने दोस्तों के साथ नीचे उतर जाता है।",
+          "camera_type": "overhead_tracking_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show a clear simplified cutaway of {assets.mould}. Inside, {assets.preform} expands outward into the shape of {assets.finished_bottle}. Use large blue arrows pointing outward and a playful expanding effect. {assets.host} jumps backward in amazement.",
-          "session_delta_prompt": "Show stretch blow moulding as the dramatic transformation from preform to bottle."
+          "prompt_action": "The seven teenagers carefully descend a rough underground passage carrying flashlights. Their beams illuminate damp walls and scattered debris. Bill leads the group.",
+          "session_delta_prompt": "Show the Losers Club entering the underground tunnels."
         },
         {
           "beat_id": "s05_b04",
-          "narration_text": "और जब साँचा खुलता है... सामने आती है एक नई, पारदर्शी प्लास्टिक की बोतल!",
-          "camera_type": "dramatic_reveal_shot",
+          "narration_text": "वहाँ उन्हें गायब हुए बच्चे हवा में तैरते दिखाई देते हैं।",
+          "camera_type": "wide_supernatural_reveal",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.mould} opening into two halves. A shiny transparent {assets.finished_bottle} appears in the centre with bright cyan highlights and sparkling hand-drawn stars. {assets.host} celebrates with both arms raised.",
-          "session_delta_prompt": "Reveal the finished transparent bottle in a colourful celebratory moment."
+          "prompt_action": "A huge underground cavern reveals several unconscious children floating motionless in the air. The Losers Club stands below, staring upward in horror. Photorealistic supernatural effects.",
+          "session_delta_prompt": "Reveal the floating missing children in Pennywise's lair."
+        },
+        {
+          "beat_id": "s05_b05",
+          "narration_text": "और बीच में बेवर्ली भी उसी हालत में फँसी होती है।",
+          "camera_type": "character_reveal_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Close-up of Beverly floating unconscious among the other children, her long reddish hair drifting slightly. The eerie underground lights illuminate her face.",
+          "session_delta_prompt": "Reveal Beverly among the floating children."
+        },
+        {
+          "beat_id": "s05_b06",
+          "narration_text": "तभी बिल को जॉर्जी जैसा दिखने वाला चेहरा नज़र आता है।",
+          "camera_type": "emotional_two_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Bill sees a child resembling Georgie standing in the underground chamber. The child looks at him with an unsettling familiar expression. Bill's face shows shock and grief.",
+          "session_delta_prompt": "Show Pennywise exploiting Bill's longing for Georgie."
+        },
+        {
+          "beat_id": "s05_b07",
+          "narration_text": "लेकिन वह समझ जाता है कि यह पेनीवाइज का धोखा है।",
+          "camera_type": "illusion_reveal_close_up",
+          "action_mode": "in_place_action",
+          "prompt_action": "The apparent Georgie illusion changes into Pennywise's terrifying white clown face. Bill steps backwards, realizing the deception. Use a dramatic supernatural transformation without cartoon effects.",
+          "session_delta_prompt": "Reveal the illusion as another manipulation by Pennywise."
+        },
+        {
+          "beat_id": "s05_b08",
+          "narration_text": "अब सातों दोस्त मिलकर उससे लड़ने का फैसला करते हैं।",
+          "camera_type": "heroic_group_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "The seven teenagers stand shoulder to shoulder in the underground cavern, facing Pennywise in the distance. Bill takes a step forward while the others gather behind him. Stickman presenter raises a fist.",
+          "session_delta_prompt": "Show the Losers Club united and ready to fight."
         }
       ]
     },
     {
       "scene_id": 6,
-      "environment_ref": "whiteboard",
+      "environment_ref": "pennywise_lair",
       "beats": [
         {
           "beat_id": "s06_b01",
-          "narration_text": "लेकिन काम अभी खत्म नहीं हुआ। हर बोतल की जाँच की जाती है कि उसका आकार और मजबूती सही है या नहीं।",
-          "camera_type": "inspection_medium_shot",
+          "narration_text": "इस बार वे भागते नहीं, बल्कि उसका सामना करते हैं।",
+          "camera_type": "low_angle_hero_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.host} inspecting {assets.finished_bottle} with a large magnifying glass. Add {assets.quality_check} symbols around the bottle, including a green check mark and a small warning symbol beside a defective bottle silhouette.",
-          "session_delta_prompt": "Show quality control and rejection of defective bottles."
+          "prompt_action": "Bill advances towards Pennywise with determination. The clown stands across the cavern, towering over the teenagers. Dramatic low-angle cinematic composition.",
+          "session_delta_prompt": "Show Bill confronting Pennywise instead of running away."
         },
         {
           "beat_id": "s06_b02",
-          "narration_text": "फिर उस पर ढक्कन और लेबल लगाया जाता है, और बोतल पैकिंग के लिए तैयार हो जाती है।",
-          "camera_type": "product_assembly_shot",
+          "narration_text": "रिची, एडी और बाकी दोस्त भी हमला शुरू कर देते हैं।",
+          "camera_type": "fast_action_group_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.host} placing a blue cap onto {assets.finished_bottle}. A colourful label wraps around the bottle, and several finished bottles appear neatly arranged beside it. Use simple arrows to show cap, label, and final product.",
-          "session_delta_prompt": "Show the final assembly and packaging preparation."
+          "prompt_action": "Richie, Eddie, Ben, Mike, Stanley and Beverly's friends attack Pennywise from different directions in a fast-paced underground battle. Capture a dynamic wide frame with believable movement.",
+          "session_delta_prompt": "Show the group fighting Pennywise together."
         },
         {
           "beat_id": "s06_b03",
-          "narration_text": "और इस तरह पुरानी बोतलों से मिला प्लास्टिक, सही सफाई और प्रोसेसिंग के बाद फिर से काम आ सकता है।",
-          "camera_type": "wide_transformation_diagram",
+          "narration_text": "पेनीवाइज अब पहले की तरह ताकतवर नहीं दिखता।",
+          "camera_type": "horror_character_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show a colourful circular recycling diagram: {assets.used_pet_bottles} transforms into {assets.plastic_flakes}, then {assets.plastic_pellets}, then {assets.preform}, and finally {assets.finished_bottle}. {assets.host} walks along the arrows, pointing to each stage.",
-          "session_delta_prompt": "Summarise the recycling journey from used PET bottles to new bottle products."
+          "prompt_action": "Close-up of Pennywise looking increasingly frightened and angry. His sinister grin disappears as he recoils from the teenagers. His recognizable clown appearance remains unchanged.",
+          "session_delta_prompt": "Show Pennywise losing confidence and control."
         },
         {
           "beat_id": "s06_b04",
-          "narration_text": "तो अगली बार जब आप पानी की बोतल देखें, याद रखना... इसके पीछे कितनी सारी मशीनें और कितने सारे स्टेप्स छिपे हैं! आपको अगली बार किस चीज़ का बनना देखना है? कमेंट में बताइए!",
-          "camera_type": "front_facing_final_shot",
+          "narration_text": "क्योंकि बच्चे अब उससे डरना बंद कर चुके होते हैं।",
+          "camera_type": "group_reaction_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.host} standing beside a large shiny {assets.finished_bottle} and a colourful row of {assets.bottle_collection}. He points directly toward the viewer with one hand and gives a thumbs-up with the other. Add three small floating doodle icons of a shoe, a glass jar, and a paper cup to suggest future how-it-is-made videos. Keep the background clean and colourful.",
-          "session_delta_prompt": "Finish with a direct-to-viewer question and an invitation to suggest the next manufacturing explainer."
+          "prompt_action": "The Losers Club stand together facing Pennywise without retreating. Their frightened expressions transform into determination. Camera slowly pushes towards their united faces.",
+          "session_delta_prompt": "Emphasize that their courage weakens Pennywise."
+        },
+        {
+          "beat_id": "s06_b05",
+          "narration_text": "वे उसे बुरी तरह हराकर पीछे हटने पर मजबूर कर देते हैं।",
+          "camera_type": "dramatic_action_close_up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Pennywise stumbles backwards towards a dark opening in the cavern as the teenagers stand their ground. The orange supernatural light fades around him. No graphic gore.",
+          "session_delta_prompt": "Show Pennywise defeated and retreating into darkness."
+        },
+        {
+          "beat_id": "s06_b06",
+          "narration_text": "बिल अपने दोस्तों के साथ बेवर्ली को बचा लेता है।",
+          "camera_type": "emotional_rescue_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Beverly is safely back with the Losers Club. Bill and the others gather around her as she regains consciousness. Their faces show relief and exhaustion.",
+          "session_delta_prompt": "Show Beverly rescued and reunited with her friends."
+        },
+        {
+          "beat_id": "s06_b07",
+          "narration_text": "सभी बच्चे उस खौफनाक जगह से बाहर निकल आते हैं।",
+          "camera_type": "tracking_escape_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "The seven teenagers climb out of the underground passage into daylight. They are tired, muddy and relieved. Camera follows them from behind towards the bright exit.",
+          "session_delta_prompt": "Show the group's escape from the underground lair."
+        },
+        {
+          "beat_id": "s06_b08",
+          "narration_text": "लेकिन वे जानते हैं कि यह कहानी अभी खत्म नहीं हुई।",
+          "camera_type": "ominous_cinematic_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A final dark view into the abandoned underground tunnel. Deep inside, a faint pair of yellowish eyes seems to watch from the darkness. Slow cinematic push-in, then fade to black.",
+          "session_delta_prompt": "Leave an ominous hint that Pennywise may return."
+        }
+      ]
+    },
+    {
+      "scene_id": 7,
+      "environment_ref": "derry",
+      "beats": [
+        {
+          "beat_id": "s07_b01",
+          "narration_text": "जाने से पहले सातों दोस्त खून की कसम खाते हैं।",
+          "camera_type": "emotional_hand_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Close-up of the seven teenagers joining their hands together in a solemn blood oath. Their hands are shown with a small symbolic cut, without graphic detail.",
+          "session_delta_prompt": "Show the symbolic blood oath."
+        },
+        {
+          "beat_id": "s07_b02",
+          "narration_text": "अगर पेनीवाइज लौटा, तो वे फिर साथ लड़ेंगे।",
+          "camera_type": "heroic_group_portrait",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "The seven members of the Losers Club stand together in a dramatic late-afternoon group portrait. Bill looks determined, Beverly stands confidently and the others remain close together. Stickman presenter stands at the edge, giving a final approving gesture.",
+          "session_delta_prompt": "End with the group's promise to face Pennywise together again."
         }
       ]
     }

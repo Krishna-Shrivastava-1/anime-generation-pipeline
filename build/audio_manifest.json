@@ -1,149 +1,305 @@
 {
-  "total_duration": 142.963,
+  "total_duration": 147.157,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 5.269,
-      "subtitle": "दोस्तों, आपके हाथ में जो पानी की बोतल है, क्या आपने कभी सोचा है कि ये बनती कैसे है?"
+      "duration_seconds": 2.069,
+      "subtitle": "कहानी शुरू होती है डेरी शहर से।"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 6.443,
-      "subtitle": "और मज़ेदार बात ये है कि कई नई प्लास्टिक की बोतलें पुरानी इस्तेमाल की हुई बोतलों से भी बनाई जा सकती हैं!"
+      "duration_seconds": 2.709,
+      "subtitle": "जहाँ छोटा जॉर्जी बारिश में खेल रहा होता है।"
     },
     {
       "beat_id": "s01_b03",
       "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 7.041,
-      "subtitle": "लेकिन रुकिए! पुरानी बोतल को उठाकर सीधे नई बोतल नहीं बना देते। इसके पीछे पूरी मशीनों वाली कहानी है!"
+      "duration_seconds": 2.112,
+      "subtitle": "उसकी नाव पानी में बहने लगती है।"
     },
     {
       "beat_id": "s01_b04",
       "audio_file": "build/audio/s01_b04.wav",
-      "duration_seconds": 5.077,
-      "subtitle": "चलो देखते हैं कि प्लास्टिक का कचरा कैसे बदलकर एक चमचमाती बोतल बन जाता है!"
+      "duration_seconds": 2.581,
+      "subtitle": "और सीधे एक अँधेरे नाले में पहुँच जाती है।"
+    },
+    {
+      "beat_id": "s01_b05",
+      "audio_file": "build/audio/s01_b05.wav",
+      "duration_seconds": 2.773,
+      "subtitle": "तभी अंदर से एक अजीब जोकर दिखाई देता है।"
+    },
+    {
+      "beat_id": "s01_b06",
+      "audio_file": "build/audio/s01_b06.wav",
+      "duration_seconds": 2.56,
+      "subtitle": "वह जॉर्जी को नाव लौटाने का लालच देता है।"
+    },
+    {
+      "beat_id": "s01_b07",
+      "audio_file": "build/audio/s01_b07.wav",
+      "duration_seconds": 2.603,
+      "subtitle": "लेकिन अचानक वह उस पर हमला कर देता है।"
+    },
+    {
+      "beat_id": "s01_b08",
+      "audio_file": "build/audio/s01_b08.wav",
+      "duration_seconds": 2.56,
+      "subtitle": "और जॉर्जी हमेशा के लिए गायब हो जाता है।"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 6.561,
-      "subtitle": "सबसे पहले इकट्ठा किया जाता है इस्तेमाल किया हुआ प्लास्टिक। लेकिन हर तरह का प्लास्टिक एक जैसा नहीं होता।"
+      "duration_seconds": 2.731,
+      "subtitle": "कई महीने बाद भी उसका कोई पता नहीं चलता।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 7.607,
-      "subtitle": "पानी की बोतलों में अक्सर पीईटी नाम का प्लास्टिक इस्तेमाल होता है। इसलिए सबसे पहले सही पीईटी बोतलें अलग की जाती हैं।"
+      "duration_seconds": 2.389,
+      "subtitle": "उसका भाई बिल उसे ढूँढना नहीं छोड़ता।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 5.632,
-      "subtitle": "फिर मशीनें और कर्मचारी बोतलों को उनके रंग और प्लास्टिक के प्रकार के हिसाब से छाँटते हैं।"
+      "duration_seconds": 2.773,
+      "subtitle": "डेरी में दूसरे बच्चे भी गायब होने लगते हैं।"
     },
     {
       "beat_id": "s02_b04",
       "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 8.3,
-      "subtitle": "और एक ज़रूरी बात! काला या मिला-जुला प्लास्टिक सीधे पारदर्शी बोतल नहीं बन जाता। उसे अलग तरह से इस्तेमाल करना पड़ सकता है।"
+      "duration_seconds": 2.859,
+      "subtitle": "लेकिन शहर के लोग इस डर को दबाए रखते हैं।"
+    },
+    {
+      "beat_id": "s02_b05",
+      "audio_file": "build/audio/s02_b05.wav",
+      "duration_seconds": 2.837,
+      "subtitle": "बिल अपने दोस्तों के साथ लूजर्स क्लब बनाता है।"
+    },
+    {
+      "beat_id": "s02_b06",
+      "audio_file": "build/audio/s02_b06.wav",
+      "duration_seconds": 2.901,
+      "subtitle": "बाद में बेन, माइक और बेवर्ली भी उनसे जुड़ते हैं।"
+    },
+    {
+      "beat_id": "s02_b07",
+      "audio_file": "build/audio/s02_b07.wav",
+      "duration_seconds": 2.688,
+      "subtitle": "सभी के साथ एक अजीब घटना होने लगती है।"
+    },
+    {
+      "beat_id": "s02_b08",
+      "audio_file": "build/audio/s02_b08.wav",
+      "duration_seconds": 3.051,
+      "subtitle": "क्योंकि पेनीवाइज हर बच्चे के डर का रूप ले सकता है।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 3.627,
-      "subtitle": "अब चुनी हुई बोतलों से उनके ढक्कन और लेबल हटाए जाते हैं।"
+      "duration_seconds": 3.755,
+      "subtitle": "बेन को शहर के पुराने रिकॉर्ड में एक डरावना सच मिलता है।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 3.669,
-      "subtitle": "इसके बाद बोतलों को छोटे-छोटे टुकड़ों में काट दिया जाता है।"
+      "duration_seconds": 3.755,
+      "subtitle": "हर सत्ताईस साल में बच्चों के गायब होने की घटनाएँ लौटती हैं।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 6.72,
-      "subtitle": "अब इन टुकड़ों को पानी और खास सफाई की प्रक्रिया से धोया जाता है, ताकि गंदगी और बचे हुए लेबल हट सकें।"
+      "duration_seconds": 3.627,
+      "subtitle": "उधर बेवर्ली के बाथरूम में खून से भयानक हमला होता है।"
     },
     {
       "beat_id": "s03_b04",
       "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 4.715,
-      "subtitle": "सफाई के बाद टुकड़ों को सुखाया जाता है और उनकी क्वालिटी भी जाँची जाती है।"
+      "duration_seconds": 3.072,
+      "subtitle": "लेकिन उसके पिता को वहाँ कुछ भी दिखाई नहीं देता।"
+    },
+    {
+      "beat_id": "s03_b05",
+      "audio_file": "build/audio/s03_b05.wav",
+      "duration_seconds": 3.243,
+      "subtitle": "बच्चों को समझ आता है कि यह सब पेनीवाइज का काम है।"
+    },
+    {
+      "beat_id": "s03_b06",
+      "audio_file": "build/audio/s03_b06.wav",
+      "duration_seconds": 2.027,
+      "subtitle": "और वे उसे ढूँढने निकल पड़ते हैं।"
+    },
+    {
+      "beat_id": "s03_b07",
+      "audio_file": "build/audio/s03_b07.wav",
+      "duration_seconds": 2.752,
+      "subtitle": "उनका शक एक सुनसान घर पर जाकर रुकता है।"
+    },
+    {
+      "beat_id": "s03_b08",
+      "audio_file": "build/audio/s03_b08.wav",
+      "duration_seconds": 3.349,
+      "subtitle": "जहाँ उनका सामना पहली बार असली पेनीवाइज से होता है।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 6.464,
-      "subtitle": "अब इन साफ टुकड़ों को प्रोसेस करके छोटे-छोटे प्लास्टिक के दाने बनाए जा सकते हैं, जिन्हें पेलेट्स कहते हैं।"
+      "duration_seconds": 2.603,
+      "subtitle": "बच्चे हिम्मत करके उस घर के अंदर जाते हैं।"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 5.696,
-      "subtitle": "इन दानों को गर्म करके पिघलाया जाता है, जिससे प्लास्टिक दोबारा आकार देने लायक बन जाता है।"
+      "duration_seconds": 2.581,
+      "subtitle": "अंदर हर तरफ अँधेरा और अजीब आवाज़ें हैं।"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 6.348,
-      "subtitle": "लेकिन बोतल अभी नहीं बनी है। फिलहाल प्लास्टिक को एक छोटे मोटे ट्यूब जैसे आकार में ढाला जाता है।"
+      "duration_seconds": 3.072,
+      "subtitle": "अचानक एक भयानक आकृति उनके सामने आ जाती है।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 6.241,
-      "subtitle": "इसे बोतल का प्रीफॉर्म कहते हैं। देखने में छोटा है, लेकिन असली बोतल का आकार इसी से बनने वाला है!"
+      "duration_seconds": 2.517,
+      "subtitle": "और पेनीवाइज उन पर हमला करने लगता है।"
+    },
+    {
+      "beat_id": "s04_b05",
+      "audio_file": "build/audio/s04_b05.wav",
+      "duration_seconds": 2.368,
+      "subtitle": "सभी किसी तरह वहाँ से भाग निकलते हैं।"
+    },
+    {
+      "beat_id": "s04_b06",
+      "audio_file": "build/audio/s04_b06.wav",
+      "duration_seconds": 2.389,
+      "subtitle": "लेकिन उनका डर अभी खत्म नहीं हुआ था।"
+    },
+    {
+      "beat_id": "s04_b07",
+      "audio_file": "build/audio/s04_b07.wav",
+      "duration_seconds": 3.584,
+      "subtitle": "क्योंकि हेनरी बोवर्स भी उन्हें लगातार परेशान कर रहा था।"
+    },
+    {
+      "beat_id": "s04_b08",
+      "audio_file": "build/audio/s04_b08.wav",
+      "duration_seconds": 3.349,
+      "subtitle": "और धीरे-धीरे सभी दोस्त एक-दूसरे से बिछड़ने लगते हैं।"
     },
     {
       "beat_id": "s05_b01",
       "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 5.664,
-      "subtitle": "अब आता है सबसे मज़ेदार हिस्सा! प्रीफॉर्म को गर्म करके एक खास साँचे के अंदर रखा जाता है।"
+      "duration_seconds": 3.733,
+      "subtitle": "लेकिन जब बेवर्ली गायब हो जाती है, बिल फिर सबको बुलाता है।"
     },
     {
       "beat_id": "s05_b02",
       "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 2.645,
-      "subtitle": "फिर उसमें तेज़ दबाव से हवा भरी जाती है।"
+      "duration_seconds": 3.435,
+      "subtitle": "उसे पता है कि पेनीवाइज उसे अपने ठिकाने पर ले गया है।"
     },
     {
       "beat_id": "s05_b03",
       "audio_file": "build/audio/s05_b03.wav",
-      "duration_seconds": 6.229,
-      "subtitle": "हवा के दबाव से गर्म प्लास्टिक फैलता है और साँचे की दीवारों से चिपककर बोतल जैसा आकार ले लेता है!"
+      "duration_seconds": 2.667,
+      "subtitle": "बिल अपने दोस्तों के साथ नीचे उतर जाता है।"
     },
     {
       "beat_id": "s05_b04",
       "audio_file": "build/audio/s05_b04.wav",
-      "duration_seconds": 4.373,
-      "subtitle": "और जब साँचा खुलता है... सामने आती है एक नई, पारदर्शी प्लास्टिक की बोतल!"
+      "duration_seconds": 3.435,
+      "subtitle": "वहाँ उन्हें गायब हुए बच्चे हवा में तैरते दिखाई देते हैं।"
+    },
+    {
+      "beat_id": "s05_b05",
+      "audio_file": "build/audio/s05_b05.wav",
+      "duration_seconds": 3.093,
+      "subtitle": "और बीच में बेवर्ली भी उसी हालत में फँसी होती है।"
+    },
+    {
+      "beat_id": "s05_b06",
+      "audio_file": "build/audio/s05_b06.wav",
+      "duration_seconds": 3.627,
+      "subtitle": "तभी बिल को जॉर्जी जैसा दिखने वाला चेहरा नज़र आता है।"
+    },
+    {
+      "beat_id": "s05_b07",
+      "audio_file": "build/audio/s05_b07.wav",
+      "duration_seconds": 3.243,
+      "subtitle": "लेकिन वह समझ जाता है कि यह पेनीवाइज का धोखा है।"
+    },
+    {
+      "beat_id": "s05_b08",
+      "audio_file": "build/audio/s05_b08.wav",
+      "duration_seconds": 3.264,
+      "subtitle": "अब सातों दोस्त मिलकर उससे लड़ने का फैसला करते हैं।"
     },
     {
       "beat_id": "s06_b01",
       "audio_file": "build/audio/s06_b01.wav",
-      "duration_seconds": 6.497,
-      "subtitle": "लेकिन काम अभी खत्म नहीं हुआ। हर बोतल की जाँच की जाती है कि उसका आकार और मजबूती सही है या नहीं।"
+      "duration_seconds": 3.221,
+      "subtitle": "इस बार वे भागते नहीं, बल्कि उसका सामना करते हैं।"
     },
     {
       "beat_id": "s06_b02",
       "audio_file": "build/audio/s06_b02.wav",
-      "duration_seconds": 5.077,
-      "subtitle": "फिर उस पर ढक्कन और लेबल लगाया जाता है, और बोतल पैकिंग के लिए तैयार हो जाती है।"
+      "duration_seconds": 2.923,
+      "subtitle": "रिची, एडी और बाकी दोस्त भी हमला शुरू कर देते हैं।"
     },
     {
       "beat_id": "s06_b03",
       "audio_file": "build/audio/s06_b03.wav",
-      "duration_seconds": 6.272,
-      "subtitle": "और इस तरह पुरानी बोतलों से मिला प्लास्टिक, सही सफाई और प्रोसेसिंग के बाद फिर से काम आ सकता है।"
+      "duration_seconds": 2.88,
+      "subtitle": "पेनीवाइज अब पहले की तरह ताकतवर नहीं दिखता।"
     },
     {
       "beat_id": "s06_b04",
       "audio_file": "build/audio/s06_b04.wav",
-      "duration_seconds": 10.793,
-      "subtitle": "तो अगली बार जब आप पानी की बोतल देखें, याद रखना... इसके पीछे कितनी सारी मशीनें और कितने सारे स्टेप्स छिपे हैं! आपको अगली बार किस चीज़ का बनना देखना है? कमेंट में बताइए!"
+      "duration_seconds": 2.837,
+      "subtitle": "क्योंकि बच्चे अब उससे डरना बंद कर चुके होते हैं।"
+    },
+    {
+      "beat_id": "s06_b05",
+      "audio_file": "build/audio/s06_b05.wav",
+      "duration_seconds": 3.712,
+      "subtitle": "वे उसे बुरी तरह हराकर पीछे हटने पर मजबूर कर देते हैं।"
+    },
+    {
+      "beat_id": "s06_b06",
+      "audio_file": "build/audio/s06_b06.wav",
+      "duration_seconds": 2.944,
+      "subtitle": "बिल अपने दोस्तों के साथ बेवर्ली को बचा लेता है।"
+    },
+    {
+      "beat_id": "s06_b07",
+      "audio_file": "build/audio/s06_b07.wav",
+      "duration_seconds": 3.093,
+      "subtitle": "सभी बच्चे उस खौफनाक जगह से बाहर निकल आते हैं।"
+    },
+    {
+      "beat_id": "s06_b08",
+      "audio_file": "build/audio/s06_b08.wav",
+      "duration_seconds": 3.136,
+      "subtitle": "लेकिन वे जानते हैं कि यह कहानी अभी खत्म नहीं हुई।"
+    },
+    {
+      "beat_id": "s07_b01",
+      "audio_file": "build/audio/s07_b01.wav",
+      "duration_seconds": 2.88,
+      "subtitle": "जाने से पहले सातों दोस्त खून की कसम खाते हैं।"
+    },
+    {
+      "beat_id": "s07_b02",
+      "audio_file": "build/audio/s07_b02.wav",
+      "duration_seconds": 2.795,
+      "subtitle": "अगर पेनीवाइज लौटा, तो वे फिर साथ लड़ेंगे।"
     }
   ]
 }

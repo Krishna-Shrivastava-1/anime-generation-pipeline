@@ -1,26 +1,31 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "पैसे कमाने के 5 असली तरीके",
-    "project_id": "earn_money_stickman_hindi_short_01",
+    "title": "What If Gold Replaced Money?",
+    "project_id": "what_if_gold_currency_01",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Minimalist hand-drawn stickman illustration style for an engaging YouTube finance short. Warm off-white paper background, bold slightly imperfect black ink outlines, simple expressive round white faces, thin black stick limbs, and a small red bow tie on the recurring presenter. Limited accent colors: green for money, yellow for ideas, and blue for technology. Friendly, humorous, conversational visual storytelling. Every image should feel like a frame from the same illustrated explainer. Clear silhouettes, uncluttered compositions, strong visual hierarchy, vertical 9:16 framing.",
+    "art_style": "Consistent minimalist hand-drawn stickman animation illustrations for an engaging, thought-provoking YouTube finance short. Warm off-white paper background, bold slightly imperfect black ink outlines, round white stickman faces with expressive eyes, thin black limbs, and a small red bow tie on the recurring presenter. Use gold yellow for gold, muted grey for paper currency, copper orange for copper coins, and silver grey for silver coins. Simple visual metaphors, funny reactions, dramatic visual contrasts, clean compositions, and strong storytelling. Vertical 9:16 framing. Every image should look like a frame from the same hand-drawn explainer animation.",
     "negative_prompt": "Photorealism, 3D rendering, realistic human anatomy, detailed skin, complex backgrounds, excessive colors, gradients, clutter, tiny unreadable text, watermarks, logos, inconsistent stickman designs, extra limbs, distorted faces, illegible lettering."
   },
   "assets": {
     "main_presenter": {
       "type": "character",
       "label": "Finance Stickman Presenter",
-      "visual_dna": "A simple hand-drawn stickman with a round white face, two expressive black eyes, a curved expressive mouth, thin black arms and legs, and a small red bow tie. Consistent proportions and recognizable appearance in every frame."
+      "visual_dna": "A minimalist hand-drawn stickman with a round white face, expressive black eyes, a flexible curved mouth, thin black arms and legs, and a small red bow tie. Friendly, curious, and expressive. Maintain the same appearance in every frame."
     },
-    "money_symbol": {
+    "gold_coins": {
       "type": "prop",
-      "label": "Money Illustration",
-      "visual_dna": "Simple hand-drawn green currency notes, coins, and a small money bag, outlined in black, without real currency-specific designs."
+      "label": "Gold Currency",
+      "visual_dna": "Small shiny-looking but flat hand-drawn yellow-gold coins with bold black outlines and a simple embossed circular symbol."
+    },
+    "paper_money": {
+      "type": "prop",
+      "label": "Paper Currency",
+      "visual_dna": "Simple rectangular grey-green paper banknotes with abstract symbols, bold black outlines, and no real country-specific currency design."
     }
   },
   "scenes": [
@@ -30,19 +35,27 @@
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "पैसे कमाने हैं, लेकिन समझ नहीं आ रहा कि शुरुआत कहाँ से करें?",
-          "camera_type": "medium shot",
+          "narration_text": "एक सेकंड सोचो... अगर कल सुबह उठते ही दुनिया का सारा पैसा गायब हो जाए?",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie stands in the center, looking confused while holding an empty wallet upside down. A few tiny coins fall out. Minimal off-white paper background, bold imperfect black ink outlines, green coin accents, vertical 9:16 composition.",
-          "session_delta_prompt": "Show the presenter looking directly at the viewer with a puzzled expression."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie wakes up in surprise. The presenter looks at an empty wallet, with scattered question marks floating around the head. Minimal off-white paper background, bold black ink outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "Make the presenter's expression shocked and curious."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "तो चलो, जानते हैं पैसे कमाने के पाँच ऐसे तरीके, जिनसे तुम शुरुआत कर सकते हो।",
-          "camera_type": "close-up",
+          "narration_text": "न डॉलर, न रुपये, न ऑनलाइन पेमेंट... सिर्फ सोने के सिक्के!",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie suddenly gets an idea. A large yellow light bulb appears above the head, surrounded by five small green money symbols. Minimal off-white paper background, bold black hand-drawn outlines, vertical 9:16 framing.",
-          "session_delta_prompt": "Make the presenter look excited and point upward toward the five symbols."
+          "prompt_action": "A hand-drawn stickman with a round white face, thin black limbs, and a red bow tie stands between a pile of crossed-out paper banknotes and a huge pile of yellow-gold coins. The presenter stares at the gold coins in disbelief. Off-white paper background, bold black outlines, grey and gold accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Make the contrast between paper money and gold coins immediately obvious."
+        },
+        {
+          "beat_id": "s01_b03",
+          "narration_text": "और दुनिया वापस पुराने जमाने की तरह सोने, चाँदी और ताँबे से व्यापार करने लगे?",
+          "camera_type": "tracking shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A hand-drawn stickman marketplace in an old-fashioned setting. A merchant stickman exchanges yellow-gold coins, silver-grey coins, and copper-orange coins for food, fabric, and tools. A second stickman watches the exchange with curiosity. Bold black ink outlines, off-white paper background, limited historical accent colors, vertical 9:16 composition.",
+          "session_delta_prompt": "Show a lively old-fashioned market where metal coins are the main method of payment."
         }
       ]
     },
@@ -52,35 +65,35 @@
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "पहला तरीका है अपनी स्किल बेचकर पैसे कमाना।",
-          "camera_type": "medium shot",
+          "narration_text": "सबसे पहले, तुम्हारी जेब में पड़े दस रुपये के सिक्के की जगह एक छोटा सोने का टुकड़ा होगा।",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie stands confidently beside a laptop displaying creative work. Several green coins float nearby. Minimal off-white paper background, bold black ink outlines, small blue and green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter gestures confidently toward the laptop."
+          "prompt_action": "A hand-drawn stickman with a round white face, thin black limbs, and a red bow tie holds a tiny yellow-gold coin between two fingers, examining it closely. The coin is drawn as a simple valuable metal disc with bold black outlines. Minimal off-white paper background, vertical 9:16 composition.",
+          "session_delta_prompt": "Make the tiny gold coin look precious and important."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "जैसे वीडियो एडिटिंग, ग्राफिक डिजाइनिंग या वेबसाइट बनाना।",
+          "narration_text": "चाय पीनी है? सोना दो। किराना खरीदना है? सोना दो।",
           "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Three hand-drawn mini scenes arranged vertically: a stickman editing a video timeline on a laptop, another designing a colorful poster on a computer, and another building a website with simple blocks and code. All characters have round white faces, thin black limbs, and simple black outlines. Off-white paper background with restrained blue and yellow accents, vertical 9:16 layout.",
-          "session_delta_prompt": "Make each skill visually distinct and easy to recognize."
+          "prompt_action": "Two hand-drawn mini marketplace scenes stacked vertically. In the first, a stickman customer gives a tiny gold coin to a tea seller and receives a steaming cup. In the second, another customer gives a gold coin to a grocery shopkeeper and receives a small grocery bag. Round white faces, thin black limbs, bold black outlines, off-white paper background, vertical 9:16 composition.",
+          "session_delta_prompt": "Make both everyday transactions easy to understand at a glance."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "इन सेवाओं को छोटे बिजनेस या ऑनलाइन क्लाइंट्स को ऑफर करो।",
-          "camera_type": "over-the-shoulder",
+          "narration_text": "सुनने में तो बड़ा शानदार लगता है, है ना?",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie sits at a laptop sending a service proposal. On the other side, a small business owner stickman happily receives the proposal. A green payment symbol appears between them. Minimal off-white paper background, bold black ink outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Show a clear client-to-freelancer interaction."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs, and a red bow tie smiles while holding a small pile of gold coins. A sparkling gold star appears above the coins. Minimal off-white paper background, bold black ink outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter looks playfully impressed and raises an eyebrow toward the viewer."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "शुरुआत में एक छोटी स्किल सीखो, काम के नमूने बनाओ और क्लाइंट ढूँढो।",
-          "camera_type": "close-up",
-          "action_mode": "in_place_action",
-          "prompt_action": "A hand-drawn stickman with a round white face, thin black limbs, and a red bow tie proudly displays a small portfolio folder containing three sample designs on a laptop screen. A checklist and a green coin sit beside the folder. Off-white paper background, bold black outlines, simple yellow and green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter proudly points at the completed portfolio."
+          "narration_text": "लेकिन असली कहानी अब शुरू होती है।",
+          "camera_type": "dramatic close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A hand-drawn stickman presenter with a round white face, thin black limbs, and a red bow tie suddenly looks serious. Behind the presenter, a giant gold coin casts a dramatic shadow across the off-white paper background. Bold black ink outlines, vertical 9:16 framing.",
+          "session_delta_prompt": "Shift the mood from excitement to suspense."
         }
       ]
     },
@@ -90,35 +103,35 @@
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "दूसरा तरीका है ऑनलाइन ट्यूशन देना।",
+          "narration_text": "पहली समस्या: हर चीज़ का छोटा-सा भुगतान करना मुश्किल हो जाएगा।",
           "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie stands beside a large whiteboard holding a marker. A small laptop is open nearby. Minimal off-white paper background, bold black ink outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter looks like a friendly teacher ready to explain something."
+          "prompt_action": "A hand-drawn stickman customer with a round white face and thin black limbs struggles to break a large gold coin into tiny pieces to pay for a small cup of tea. A confused tea seller watches. Bold black outlines, gold accents, off-white paper background, vertical 9:16 composition.",
+          "session_delta_prompt": "Show the customer looking frustrated because the coin is too valuable for a tiny purchase."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "अगर तुम्हें मैथ्स, इंग्लिश, कोडिंग या कोई सब्जेक्ट अच्छे से आता है,",
-          "camera_type": "wide shot",
+          "narration_text": "मान लो चाय की कीमत सिर्फ एक छोटा-सा सोने का कण है।",
+          "camera_type": "extreme close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman teacher with a round white face, thin black limbs, and a red bow tie stands in front of a whiteboard showing simple math symbols, English letters, and a tiny programming code window. Three student stickmen sit attentively with notebooks. Bold black outlines, off-white paper background, restrained blue and yellow accents, vertical 9:16 composition.",
-          "session_delta_prompt": "Show the teacher pointing toward the different subjects while students listen."
+          "prompt_action": "An extreme close-up hand-drawn illustration of a tiny gold particle resting on a fingertip beside a small tea cup. The gold particle is extremely small and difficult to handle. Bold black ink outlines, minimal gold accents, clean off-white paper background, vertical 9:16 composition.",
+          "session_delta_prompt": "Make the tiny gold particle visibly difficult to pick up."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "तो बच्चों या दूसरे स्टूडेंट्स को ऑनलाइन पढ़ा सकते हो।",
-          "camera_type": "over-the-shoulder",
+          "narration_text": "अब हर दुकान पर सोना तौलने वाली मशीन चाहिए होगी!",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman teacher with a round white face, expressive eyes, thin black limbs, and a red bow tie teaches through a laptop video call. Three small student faces appear in separate video-call panels on the screen. The teacher points at a simple digital whiteboard. Minimal off-white background, bold black ink outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Make the laptop screen and teaching interaction the main focus."
+          "prompt_action": "A hand-drawn shopkeeper stickman with a round white face, thin black limbs, and a simple apron carefully weighs a tiny gold piece on a small precision scale. A customer stickman waits impatiently in a queue. Off-white paper background, bold black outlines, yellow-gold accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Show the absurd inconvenience of weighing gold for an everyday purchase."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "एक विषय चुनो, अपनी टाइमिंग तय करो और पहले कुछ स्टूडेंट्स से शुरुआत करो।",
-          "camera_type": "medium shot",
+          "narration_text": "और अगर दुकानदार के पास छुट्टे सोने के सिक्के ही न हों तो?",
+          "camera_type": "reaction shot",
           "action_mode": "in_place_action",
-          "prompt_action": "A hand-drawn stickman teacher with a round white face, thin black limbs, and a red bow tie writes a simple weekly timetable on a board. Two student stickmen sit at a desk with open books. A small green payment icon appears near the timetable. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Show a practical, organized tutoring setup."
+          "prompt_action": "A hand-drawn shopkeeper stickman with a round white face and thin black limbs turns both empty pockets inside out. A customer stickman stands waiting with a gold coin in hand, looking annoyed. Minimal off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "Give both characters exaggerated, funny expressions of frustration."
         }
       ]
     },
@@ -128,35 +141,35 @@
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "तीसरा तरीका है कंटेंट बनाना।",
-          "camera_type": "medium shot",
+          "narration_text": "दूसरी समस्या: सोना हर जगह बराबर मात्रा में नहीं मिलेगा।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie stands in front of a smartphone mounted on a small tripod, ready to record a video. A tiny yellow idea bulb floats above the phone. Minimal off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter looks enthusiastic and ready to record."
+          "prompt_action": "A hand-drawn world map on an off-white paper background. One region contains a large pile of gold nuggets while another region has almost none. Two stickman traders stand on opposite sides, looking concerned. Bold black ink outlines, gold and muted blue accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Make the uneven distribution of gold visually clear."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "यूट्यूब, इंस्टाग्राम या किसी प्लेटफॉर्म पर ऐसी चीजें शेयर करो, जो लोगों के काम आएँ।",
-          "camera_type": "wide shot",
+          "narration_text": "जिस देश के पास ज्यादा सोना होगा, उसके पास ज्यादा खरीदने की ताकत हो सकती है।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman creator with a round white face, thin black limbs, and a red bow tie records a short educational video using a smartphone and tripod. Around the creator are simple illustrated icons of a camera, a helpful tutorial, a recipe card, and a learning notebook. Off-white paper background, bold black outlines, small blue and yellow accents, vertical 9:16 composition.",
-          "session_delta_prompt": "Show the creator actively recording useful content."
+          "prompt_action": "A hand-drawn stickman leader with a round white face and thin black limbs stands beside an enormous mountain of gold coins, while a second leader stands beside a nearly empty coin basket. Both look toward each other across a simple map. Bold black outlines, gold and grey accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Show the difference in gold reserves between the two regions."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "शुरुआत में व्यूज़ के पीछे मत भागो, लगातार अच्छी वीडियो बनाओ।",
-          "camera_type": "close-up",
+          "narration_text": "लेकिन जिन देशों के पास सोना कम है, उनके लिए व्यापार करना मुश्किल हो सकता है।",
+          "camera_type": "tracking shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman creator with a round white face, thin black limbs, and a red bow tie looks determined while editing a video on a laptop. A calendar with several marked days and a row of completed video thumbnails are visible. A large distracting view counter is crossed out. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Emphasize consistency and quality rather than chasing numbers."
+          "prompt_action": "A hand-drawn stickman trader from a region with very few gold coins approaches a market stall full of goods. The merchant refuses the trade because the trader has too little gold. The trader looks disappointed. Off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "Focus on the difficulty of trading when a country or trader has limited gold."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "आगे चलकर कमाई विज्ञापनों, ब्रांड डील्स और अपने प्रोडक्ट्स से हो सकती है।",
-          "camera_type": "medium shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "A hand-drawn stickman creator with a round white face, thin black limbs, and a red bow tie stands beside three clear income illustrations: a video screen with a small advertisement symbol, a handshake between two stickmen representing a brand partnership, and a digital product displayed on a laptop. Green coins appear near each illustration. Off-white paper background, bold black ink outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Show three separate possible income sources, not instant guaranteed money."
+          "narration_text": "और सोने की नई खदान मिलते ही उसकी कीमत और पूरी अर्थव्यवस्था हिल सकती है।",
+          "camera_type": "dramatic wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A hand-drawn mining scene where stickman miners discover a huge gold vein inside a mountain. Outside, two traders watch a balance scale holding gold coins on one side and everyday goods on the other, as the scale begins to tilt. Off-white paper background, bold black outlines, gold accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Show a sudden gold discovery creating uncertainty in the value of gold."
         }
       ]
     },
@@ -166,27 +179,35 @@
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "चौथा तरीका है डिजिटल प्रोडक्ट्स बेचना।",
-          "camera_type": "medium shot",
+          "narration_text": "तीसरी समस्या: आज की दुनिया में व्यापार सिर्फ दुकानों तक सीमित नहीं है।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie stands beside a laptop displaying a digital shop with simple downloadable products. The presenter points toward the screen. Off-white paper background, bold black outlines, small green and blue accents, vertical 9:16 composition.",
-          "session_delta_prompt": "Make the digital shop look simple and approachable."
+          "prompt_action": "A hand-drawn stickman presenter with a round white face, thin black limbs, and a red bow tie stands in front of a huge globe surrounded by cargo ships, airplanes, factories, and delivery trucks. Off-white paper background, bold black ink outlines, blue and gold accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Make the modern global economy look enormous and interconnected."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "जैसे ई-बुक, नोट्स, टेम्पलेट्स या डिजाइन फाइल्स।",
-          "camera_type": "close-up",
+          "narration_text": "एक देश दूसरे देश से तेल खरीदता है, कंपनियाँ लाखों ऑनलाइन पेमेंट करती हैं।",
+          "camera_type": "split-screen",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Four hand-drawn digital products arranged clearly: an e-book cover, a collection of study notes, a planner template, and a graphic design file shown on a laptop screen. A hand-drawn stickman with a round white face, thin black limbs, and a red bow tie points toward them. Off-white paper background, bold black outlines, restrained green and yellow accents, vertical 9:16 composition.",
-          "session_delta_prompt": "Keep each digital product visually distinct."
+          "prompt_action": "A hand-drawn split-screen illustration. On one side, a cargo ship carries oil barrels between two countries. On the other side, a business stickman sits at a computer sending a large digital payment represented by a glowing simple payment symbol. Bold black outlines, off-white paper background, muted blue and gold accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Contrast physical international trade with fast digital payments."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "एक बार अच्छा प्रोडक्ट बनाओ, फिर उसे ऑनलाइन कई लोगों को बेच सकते हो।",
-          "camera_type": "wide shot",
+          "narration_text": "अब हर पेमेंट के लिए असली सोना एक जगह से दूसरी जगह भेजना पड़े, तो सोचो कितना समय लगेगा!",
+          "camera_type": "tracking shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman creator with a round white face, thin black limbs, and a red bow tie uploads one digital planner from a laptop. Several separate customer stickmen receive their own copies on small screens, with green payment symbols appearing beside the transactions. Off-white paper background, bold black ink outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Illustrate one product reaching multiple customers, without implying guaranteed sales."
+          "prompt_action": "A hand-drawn cargo plane and a large armored delivery truck transport heavy gold bars across a globe. Several stickman businesspeople wait impatiently beside clocks and delayed shipment symbols. Off-white paper background, bold black ink outlines, gold and blue accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Emphasize the slowness and logistical burden of physically moving gold."
+        },
+        {
+          "beat_id": "s05_b04",
+          "narration_text": "इसीलिए शायद सोने के डिजिटल सर्टिफिकेट या टोकन इस्तेमाल होने लगें।",
+          "camera_type": "close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A hand-drawn stickman with a round white face, thin black limbs, and a red bow tie looks at a smartphone displaying a simple digital gold token icon. Behind the phone, a locked vault contains neatly stacked gold bars. A thin dotted line connects the digital token to the physical gold vault. Off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "Show the idea of digital claims backed by gold, not a magical disappearance of the physical asset."
         }
       ]
     },
@@ -196,27 +217,35 @@
       "beats": [
         {
           "beat_id": "s06_b01",
-          "narration_text": "पाँचवाँ तरीका है रीसेलिंग या छोटा ऑनलाइन बिजनेस।",
-          "camera_type": "medium shot",
+          "narration_text": "लेकिन रुक जाओ... क्या सोना इस्तेमाल करने से महँगाई खत्म हो जाएगी?",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie stands beside a small table displaying neatly packed products and cardboard parcels. A simple smartphone shows an online store. Off-white paper background, bold black outlines, green and blue accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter introduces the small business idea with an inviting gesture."
+          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs, and a red bow tie points toward a large question mark. Behind the presenter, a small shopping basket contains food items with rising price tags. Off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter looks curious and challenges the viewer to think."
         },
         {
           "beat_id": "s06_b02",
-          "narration_text": "ऐसे प्रोडक्ट चुनो जिनकी लोगों को सच में जरूरत हो।",
-          "camera_type": "close-up",
+          "narration_text": "जरूरी नहीं! अगर सोने की सप्लाई सीमित हो और अर्थव्यवस्था तेजी से बढ़े,",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman entrepreneur with a round white face, thin black limbs, and a red bow tie studies three everyday products on a table: a water bottle, a notebook, and a small desk lamp. A magnifying glass highlights product quality while a customer stickman examines one item. Off-white paper background, bold black ink outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Focus on choosing useful products and understanding customers."
+          "prompt_action": "A hand-drawn illustration of a growing city with more houses, factories, shops, and people, while a small locked vault contains only a limited number of gold bars. A simple balance scale between the city and the vault tilts unevenly. Off-white paper background, bold black ink outlines, gold and blue accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Show economic activity growing faster than the available gold supply."
         },
         {
           "beat_id": "s06_b03",
-          "narration_text": "फिर उनकी कीमत, डिलीवरी और अपना मुनाफा सही से समझकर बेचो।",
-          "camera_type": "over-the-shoulder",
+          "narration_text": "तो सामान की कीमतें गिर सकती हैं, और कर्ज चुकाना ज्यादा मुश्किल हो सकता है।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman entrepreneur with a round white face, thin black limbs, and a red bow tie calculates a simple product budget on a notebook. Three clearly drawn symbols represent purchase cost, delivery cost, and remaining profit. A small parcel sits beside the notebook. Off-white paper background, bold black outlines, green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "Show the presenter carefully calculating costs before selling."
+          "prompt_action": "A hand-drawn stickman shopkeeper lowers price tags on shelves while a second stickman borrower struggles to carry a huge debt ledger. A small pile of gold coins sits beside the ledger. Off-white paper background, bold black outlines, muted green and gold accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Visually connect falling prices with the burden of repaying fixed debts."
+        },
+        {
+          "beat_id": "s06_b04",
+          "narration_text": "और आर्थिक संकट आने पर सरकारों के पास तुरंत कदम उठाने की आजादी भी कम हो सकती है।",
+          "camera_type": "wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A hand-drawn government building with a stickman leader standing outside, looking worried at a locked gold vault. Nearby, a factory is slowing down and workers wait anxiously. A simple emergency lever is visible but blocked by a chain attached to the vault. Off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "Use the locked vault as a metaphor for limited policy flexibility."
         }
       ]
     },
@@ -226,35 +255,35 @@
       "beats": [
         {
           "beat_id": "s07_b01",
-          "narration_text": "लेकिन एक बात याद रखना, जल्दी अमीर बनाने वाले वादों से बचना।",
+          "narration_text": "तो क्या सोना बेकार है? बिल्कुल नहीं।",
           "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie steps away from a suspicious sign showing a flashy money bag and a large exaggerated promise symbol. The presenter raises one hand in a warning gesture. Off-white paper background, bold black outlines, red warning accent, vertical 9:16 composition.",
-          "session_delta_prompt": "Give the presenter a serious but friendly warning expression."
+          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive black eyes, thin black limbs, and a red bow tie holds a beautiful gold coin carefully in one hand. The presenter shakes the other hand to reject an exaggerated crossed-out symbol. Off-white paper background, bold black outlines, gold accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Make the presenter look confident and balanced, not dismissive of gold."
         },
         {
           "beat_id": "s07_b02",
-          "narration_text": "किसी भी काम में समय, मेहनत और सीखने की जरूरत होती है।",
-          "camera_type": "wide shot",
+          "narration_text": "सोना आज भी कई लोगों के लिए बचत और भरोसे का एक अहम साधन है।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, thin black limbs, and a red bow tie climbs a staircase made of three large steps labeled visually with a book, a clock, and a small completed project. A few green coins wait at the top. Off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "Show progress as gradual effort rather than instant success."
+          "prompt_action": "A hand-drawn family stickman with round white faces and thin black limbs carefully places a few gold coins into a small secure savings box. Their expressions are calm and thoughtful. Off-white paper background, bold black outlines, warm gold accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Show gold as a store of value and a form of savings."
         },
         {
           "beat_id": "s07_b03",
-          "narration_text": "तो इनमें से एक तरीका चुनो और आज ही पहला कदम उठाओ।",
-          "camera_type": "medium shot",
+          "narration_text": "लेकिन पूरी दुनिया को सिर्फ सोने पर चलाना... शायद इतना आसान नहीं होगा।",
+          "camera_type": "dramatic wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie confidently takes the first step forward. Behind the presenter are five small icons representing freelancing, tutoring, content creation, digital products, and reselling. A large yellow light bulb shines above. Minimal off-white paper background, bold black ink outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "End with an energetic, encouraging pose."
+          "prompt_action": "A giant hand-drawn gold coin sits beneath a globe representing the world economy. The globe is connected to factories, shops, cargo ships, banks, and homes by many thin lines. The gold coin looks too small to support all the activity alone. Off-white paper background, bold black outlines, gold and muted blue accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Create a thought-provoking image showing the complexity of a gold-only global economy."
         },
         {
           "beat_id": "s07_b04",
-          "narration_text": "और कमेंट में बताओ, तुम कौन सा तरीका आज़माने वाले हो?",
+          "narration_text": "अब बताओ, अगर कल से दुनिया में सिर्फ सोना ही पैसा बन जाए, तो तुम इसके पक्ष में हो या खिलाफ?",
           "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive friendly eyes, thin black limbs, and a red bow tie points toward a large empty speech bubble and a simple comment icon. The presenter smiles directly at the viewer. Minimal off-white paper background, bold black outlines, small green accent, clean vertical 9:16 composition.",
-          "session_delta_prompt": "Finish with a friendly inviting expression and a clear comment gesture."
+          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs, and a red bow tie points directly toward the viewer. Two large speech bubbles appear on either side: one contains a smiling gold coin, the other contains a worried face beside a gold coin. A simple comment icon sits below. Off-white paper background, bold black ink outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "End with a playful debate invitation and direct eye contact with the viewer."
         }
       ]
     }

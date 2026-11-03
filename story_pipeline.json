@@ -1,255 +1,372 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "Octopus vs Squid: Who Is Stranger?",
-    "project_id": "octopus_vs_squid_001",
+    "title": "इंसानों ने खेती करना कैसे सीखा? | पाषाण युग की मज़ेदार कहानी",
+    "project_id": "how_humans_discovered_farming",
     "language": "hi-IN",
     "aspect_ratio": "16:9",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "High-quality entertaining whiteboard comparison animation. Bright clean white background with subtle paper texture. Realistic photographic animal cutouts with accurate anatomy, combined with a highly expressive hand-drawn black stickman presenter. The presenter must be physically active and animated in every scene, with expressive poses, walking, jumping, leaning, reacting, pointing, and interacting with the subjects. Use a consistent left-right layout: octopus on the left and squid on the right. Use colorful arrows, circles, labels, and simple visual demonstrations. Dynamic visual storytelling, playful humor, frequent visual changes, clean professional composition.",
-    "negative_prompt": "Static presenter, motionless stickman, incorrect pointing direction, presenter pointing at the wrong animal, incorrect animal anatomy, extra limbs, missing tentacles, cartoon animal redesign, distorted animal photographs, cluttered whiteboard, excessive text, tiny unreadable labels, dark background, inconsistent character appearance, random decorative objects, multiple actions in one image, watermarks."
+    "art_style": "A highly entertaining cartoonish prehistoric animated story set in the Stone Age. Bright cinematic 2D cartoon illustration with a hand-drawn expressive stickman-style caveman protagonist. The caveman has a consistent recognizable design: round expressive head, simple black line limbs, messy dark hair, one front tooth, primitive brown animal-skin clothing, and exaggerated facial expressions. Rich prehistoric environments with caves, forests, rivers, wildlife, primitive huts, stones, seeds, and crops. Use colorful detailed backgrounds while keeping the protagonist visually consistent. Every beat should show a distinct action, camera composition, or visual development. The character must remain physically active, interacting with objects and reacting to events. Use dynamic storytelling, funny physical comedy, visual surprises, and clear readable compositions. Avoid modern objects, modern clothing, modern buildings, and photorealistic humans.",
+    "negative_prompt": "Modern technology, smartphones, vehicles, modern farms, tractors, modern clothing, skyscrapers, futuristic objects, photorealistic humans, horror atmosphere, overly dark scenes, static character poses, identical repeated compositions, cluttered frames, excessive text, distorted anatomy, extra limbs, inconsistent character design."
   },
   "assets": {
-    "whiteboard": {
-      "type": "environment",
-      "label": "Comparison Whiteboard",
-      "visual_dna": "A bright white educational entertainment studio with a clean whiteboard background, subtle paper texture, generous empty space, two clear comparison zones, left zone for octopus and right zone for squid, and a small central space where the presenter can move freely."
-    },
-    "stickman": {
+    "caveman": {
       "type": "character",
-      "label": "Expressive Stickman Presenter",
-      "visual_dna": "A distinctive hand-drawn black stickman with a large round white head, bold black outlines, expressive eyes, movable eyebrows, a flexible mouth, thin but clearly articulated arms and legs, and consistent proportions. Extremely expressive and energetic personality. Capable of walking, running, jumping, dancing, leaning, scratching his head, reacting with shock, pretending to swim, imitating animals, and interacting with objects. Keep the exact same character design in every scene."
+      "label": "Curious Caveman",
+      "visual_dna": "A funny expressive cartoon caveman with a round head, large eyes, messy dark hair, one visible front tooth, simple black stick-like arms and legs, and a rough brown animal-skin outfit. He has exaggerated facial expressions and energetic body language. Maintain exactly the same face, proportions, hair, and clothing in every appearance."
     },
-    "octopus": {
-      "type": "prop",
-      "label": "Octopus",
-      "visual_dna": "A realistic common octopus photographed underwater, rounded soft mantle, eight distinct flexible arms with visible suckers along their undersides, natural reddish-brown coloration, realistic marine anatomy, isolated against a clean background."
+    "caveman_friend": {
+      "type": "character",
+      "label": "Caveman Friend",
+      "visual_dna": "A slightly taller cartoon prehistoric human with a round head, thick eyebrows, messy reddish-brown hair, simple black line limbs, and a rough beige animal-skin outfit. Expressive and humorous, with a consistent design."
     },
-    "squid": {
-      "type": "prop",
-      "label": "Squid",
-      "visual_dna": "A realistic squid photographed underwater, elongated streamlined mantle, eight shorter arms and two noticeably longer feeding tentacles, visible fins near the mantle, realistic marine anatomy, natural coloration, isolated against a clean background."
+    "prehistoric_valley": {
+      "type": "environment",
+      "label": "Prehistoric Valley",
+      "visual_dna": "A colorful prehistoric valley with green hills, enormous trees, a flowing river, bushes, scattered stones, distant mountains, and a bright blue sky. No modern structures or objects."
     },
-    "octopus_arms": {
-      "type": "prop",
-      "label": "Octopus Arms",
-      "visual_dna": "A scientifically accurate close-up of eight octopus arms spreading outward, with visible rows of circular suckers along the undersides."
+    "cave_home": {
+      "type": "environment",
+      "label": "Caveman Cave",
+      "visual_dna": "A cozy primitive cave entrance surrounded by rocks, trees, animal bones, a small fire, and simple stone tools. Warm orange firelight contrasts with the cool green outdoor environment."
     },
-    "squid_tentacles": {
-      "type": "prop",
-      "label": "Squid Tentacles",
-      "visual_dna": "A scientifically accurate close-up of a squid showing eight shorter arms and two longer feeding tentacles ending in specialized clubs."
+    "ancient_forest": {
+      "type": "environment",
+      "label": "Ancient Forest",
+      "visual_dna": "A dense prehistoric forest with oversized trees, thick bushes, wild berries, ferns, vines, mushrooms, and a small stream. Colorful cartoon environment filled with natural details."
     },
-    "octopus_camouflage": {
-      "type": "prop",
-      "label": "Octopus Camouflage",
-      "visual_dna": "A realistic octopus changing its skin coloration and texture to blend into a rocky underwater environment."
+    "wild_grassland": {
+      "type": "environment",
+      "label": "Wild Grassland",
+      "visual_dna": "An expansive prehistoric grassland with tall golden grass, scattered wild plants, distant mountains, and a few harmless grazing animals. Bright daylight and playful cartoon atmosphere."
     },
-    "squid_school": {
+    "stone_tools": {
       "type": "prop",
-      "label": "Squid Group",
-      "visual_dna": "A group of realistic squid swimming together in an open ocean environment, maintaining coordinated movement."
+      "label": "Primitive Stone Tools",
+      "visual_dna": "Rough prehistoric stone tools including a sharp hand axe, a stone knife, and a wooden digging stick. Handmade, primitive, and believable for the Stone Age."
     },
-    "octopus_ink": {
+    "wild_seeds": {
       "type": "prop",
-      "label": "Octopus Ink Cloud",
-      "visual_dna": "A realistic octopus releasing a dark ink cloud underwater as a defensive distraction."
+      "label": "Wild Grass Seeds",
+      "visual_dna": "Small golden wild grass seeds and grain heads growing naturally on tall grass. Clearly visible individual seeds with a simple recognizable cartoon appearance."
     },
-    "squid_ink": {
+    "grain_bundle": {
       "type": "prop",
-      "label": "Squid Ink Cloud",
-      "visual_dna": "A realistic squid releasing a dark ink cloud underwater as a defensive distraction."
+      "label": "Wild Grain Bundle",
+      "visual_dna": "A bundle of golden wild grain stalks with heavy seed heads, tied loosely with a natural vine. Primitive and harvested by hand."
     },
-    "comparison_labels": {
+    "wooden_digging_stick": {
       "type": "prop",
-      "label": "Comparison Labels",
-      "visual_dna": "Clean bold black typography on small whiteboard labels with subtle colored highlights, short readable phrases, arrows, and circles."
+      "label": "Wooden Digging Stick",
+      "visual_dna": "A long rough wooden stick with a sharpened end, used by prehistoric humans to dig small holes in soft soil."
+    },
+    "small_seeds": {
+      "type": "prop",
+      "label": "Planting Seeds",
+      "visual_dna": "A handful of tiny golden grain seeds resting in a caveman's palm, clearly visible and simple in shape."
+    },
+    "sprouting_plant": {
+      "type": "prop",
+      "label": "Growing Seedling",
+      "visual_dna": "A tiny bright green seedling emerging from dark brown soil, with two fresh leaves and a visible seed at its base."
+    },
+    "growing_crops": {
+      "type": "prop",
+      "label": "Growing Grain Field",
+      "visual_dna": "Rows of primitive golden grain plants at different growth stages, from small green sprouts to mature golden stalks, growing in naturally prepared soil."
+    },
+    "rain_cloud": {
+      "type": "prop",
+      "label": "Rain Cloud",
+      "visual_dna": "A large friendly cartoon grey cloud releasing visible raindrops over a small patch of soil and plants. Playful weather illustration, not threatening."
+    },
+    "wild_boar": {
+      "type": "prop",
+      "label": "Wild Boar",
+      "visual_dna": "A cartoon prehistoric wild boar with dark brown fur, curved tusks, short legs, and a funny expressive face. Non-threatening animal character."
+    },
+    "primitive_hut": {
+      "type": "environment",
+      "label": "First Farming Settlement",
+      "visual_dna": "A small prehistoric settlement with simple huts made from branches, leaves, and mud, surrounded by primitive crop plots, wooden fences, storage baskets, and a nearby river."
+    },
+    "grain_basket": {
+      "type": "prop",
+      "label": "Harvest Basket",
+      "visual_dna": "A handmade woven basket filled with golden grain seeds and harvested stalks. Primitive natural materials, clearly visible grain."
+    },
+    "domesticated_goat": {
+      "type": "prop",
+      "label": "Early Domesticated Goat",
+      "visual_dna": "A friendly small prehistoric goat with cream-colored fur, short curved horns, and a simple rope around its neck. Cute cartoon expression."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "whiteboard",
+      "environment_ref": "prehistoric_valley",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "समुद्र में दो ऐसे जीव रहते हैं जिन्हें देखकर लगता है जैसे किसी एलियन की दुनिया से आए हों!",
-          "camera_type": "wide_shot",
+          "narration_text": "ज़रा सोचो... आज हम आराम से खाना खाते हैं, लेकिन हज़ारों साल पहले इंसानों के लिए खाना ढूँढना भी किसी एडवेंचर से कम नहीं था!",
+          "camera_type": "wide_establishing_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.octopus} on the left and {assets.squid} on the right as large realistic photographic subjects. The stickman runs into the center of the whiteboard, suddenly stops, and stares at both creatures with wide eyes and an open mouth. Both arms are raised in surprise.",
-          "session_delta_prompt": "Establish the octopus-left and squid-right layout. Introduce the energetic stickman in the center in a surprised arrival pose."
+          "prompt_action": "Show a vast beautiful prehistoric valley. {assets.caveman} runs across the foreground while carrying a tiny stone tool, looking around desperately for food. Add distant wild animals, trees, and a flowing river. His expression is exaggerated and funny.",
+          "session_delta_prompt": "Establish a prehistoric world and introduce the energetic caveman protagonist."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "एक के आठ हाथ हैं, दूसरे के भी आठ हाथ हैं... लेकिन रुकिए! इन दोनों में फर्क बहुत मजेदार है।",
-          "camera_type": "medium_shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "The stickman walks toward the octopus on the LEFT, points specifically at its eight arms, then turns his head toward the squid on the RIGHT with a confused expression. Add a large question mark between the two animals.",
-          "session_delta_prompt": "Keep both animals fixed in their respective positions. Move the stickman toward the left animal and make his pointing direction unmistakably toward the octopus."
+          "narration_text": "ना कोई दुकान, ना बाज़ार... और ना ही घर पर खाना ऑर्डर करने का कोई तरीका!",
+          "camera_type": "medium_comedy_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.caveman} standing outside {assets.cave_home}, checking his empty hands and pockets with a shocked expression. He looks toward the viewer, shrugs dramatically, and finds absolutely nothing to eat.",
+          "session_delta_prompt": "The caveman realizes there is no easy way to get food."
+        },
+        {
+          "beat_id": "s01_b03",
+          "narration_text": "उन्हें कभी जानवरों का शिकार करना पड़ता, तो कभी जंगल में फल और पौधे ढूँढने पड़ते थे।",
+          "camera_type": "dynamic_tracking_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.caveman} running through {assets.ancient_forest}, carrying {assets.stone_tools}. He reaches toward wild berries while a harmless small animal quickly runs past him. Use energetic movement and exaggerated surprise.",
+          "session_delta_prompt": "Show the daily struggle of hunting and gathering food."
+        },
+        {
+          "beat_id": "s01_b04",
+          "narration_text": "और सबसे बड़ी परेशानी? आज खाना मिल गया, लेकिन कल मिलेगा या नहीं... इसकी कोई गारंटी नहीं थी!",
+          "camera_type": "close_up_reaction",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.caveman} sitting beside a nearly empty food basket outside {assets.cave_home}. He looks at the empty basket, then at the darkening sky, with a worried and confused expression.",
+          "session_delta_prompt": "Create tension around the uncertainty of finding food every day."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "whiteboard",
+      "environment_ref": "wild_grassland",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "पहले पहचान लेते हैं। बाईं तरफ है ऑक्टोपस और दाईं तरफ है स्क्विड।",
-          "camera_type": "wide_shot",
+          "narration_text": "एक दिन हमारा गुफावाला हीरो खाने की तलाश में घूम रहा था। तभी उसे घास के बीच कुछ सुनहरे दाने दिखाई दिए।",
+          "camera_type": "low_angle_discovery_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.octopus} on the LEFT with a clear label OCTOPUS directly underneath. Show {assets.squid} on the RIGHT with a clear label SQUID directly underneath. The stickman stands between them and points with his left hand toward the octopus and his right hand toward the squid.",
-          "session_delta_prompt": "Keep both animal positions fixed. Add accurate labels. The presenter's two hands must point toward their corresponding animals."
+          "prompt_action": "Show {assets.caveman} walking through {assets.wild_grassland}. He suddenly stops, bends his knees, and notices {assets.wild_seeds} growing among the tall grass. His eyes become enormous with curiosity.",
+          "session_delta_prompt": "Introduce wild grain as a surprising discovery."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "दोनों समुद्र में रहते हैं, दोनों के शरीर मुलायम होते हैं, और दोनों अपने दुश्मनों से बचने के लिए कमाल की तरकीबें जानते हैं।",
-          "camera_type": "medium_shot",
+          "narration_text": "उसने उन दानों को तोड़ा, चखा और सोचा... अरे! ये तो खाने लायक हैं!",
+          "camera_type": "extreme_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show a close-up of {assets.caveman} holding {assets.grain_bundle}. He tastes a few seeds, pauses, and suddenly smiles with delight. Show a few golden seeds clearly in his hand.",
+          "session_delta_prompt": "The caveman discovers that wild grains can be eaten."
+        },
+        {
+          "beat_id": "s02_b03",
+          "narration_text": "अब वो रोज़ ऐसे दाने ढूँढने लगा। लेकिन एक दिन उसके दिमाग में एक अजीब सवाल आया...",
+          "camera_type": "medium_side_shot",
           "action_mode": "in_place_action",
-          "prompt_action": "The stickman pretends to swim by moving both arms and legs in a playful swimming pose between the two animals. Add small blue water waves underneath both animal photographs.",
-          "session_delta_prompt": "Retain both animal photographs and labels. Change the stickman into a playful swimming pose and add subtle water wave illustrations."
+          "prompt_action": "Show {assets.caveman} happily collecting several {assets.grain_bundle} into {assets.grain_basket}. Then he stops, scratches his head, and looks thoughtfully at a handful of seeds.",
+          "session_delta_prompt": "Move from gathering wild grains toward the first idea of growing them."
+        },
+        {
+          "beat_id": "s02_b04",
+          "narration_text": "अगर ये पौधे यहाँ उग सकते हैं, तो क्या मैं इन्हें अपनी गुफा के पास भी उगा सकता हूँ?",
+          "camera_type": "dramatic_idea_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.caveman} looking at a few {assets.wild_seeds} in his palm. A playful glowing lightbulb appears above his head. Behind him, show the wild grain field on one side and {assets.cave_home} on the other.",
+          "session_delta_prompt": "Show the moment the caveman imagines deliberately growing food."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "whiteboard",
+      "environment_ref": "cave_home",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "सबसे पहले इनके हाथों का अंतर देखो। ऑक्टोपस के पूरे आठ हाथ होते हैं।",
-          "camera_type": "medium_shot",
+          "narration_text": "उसने कुछ दाने बचाए और उन्हें अपनी गुफा के पास नरम मिट्टी में डालने का फैसला किया।",
+          "camera_type": "overhead_ground_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Enlarge {assets.octopus_arms} on the LEFT side. Show all eight arms clearly separated with visible suckers. The stickman walks to the left, bends forward, and counts the arms with an exaggerated pointing gesture.",
-          "session_delta_prompt": "Focus on the octopus on the left. Keep the squid on the right smaller in the background. The stickman must point only toward the octopus arms."
+          "prompt_action": "Show {assets.caveman} kneeling beside {assets.cave_home}, carefully opening his palm and placing {assets.small_seeds} onto a small patch of dark soil. Keep the seeds clearly visible.",
+          "session_delta_prompt": "The first intentional planting experiment begins."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "लेकिन स्क्विड के आठ छोटे हाथों के अलावा दो लंबे टेंटेकल्स भी होते हैं। यानी कुल दस उपांग!",
-          "camera_type": "medium_shot",
+          "narration_text": "लेकिन मिट्टी में दाने डालने से ही पौधे थोड़ी उग जाते हैं! उसे मिट्टी खोदनी भी पड़ी।",
+          "camera_type": "action_side_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Enlarge {assets.squid_tentacles} on the RIGHT side. Clearly distinguish eight shorter arms from two long feeding tentacles. The stickman quickly runs from the left toward the right and stretches both of his arms forward to imitate the two long tentacles. Add labels reading 8 ARMS and 2 TENTACLES.",
-          "session_delta_prompt": "Shift visual focus to the squid on the right. Preserve the accurate distinction between eight arms and two longer tentacles. The stickman must now point and gesture toward the squid."
+          "prompt_action": "Show {assets.caveman} using {assets.wooden_digging_stick} to poke small holes in the soil. He struggles comically, loses balance, and falls backward onto the grass.",
+          "session_delta_prompt": "Show primitive soil preparation with a humorous failure."
+        },
+        {
+          "beat_id": "s03_b03",
+          "narration_text": "उसने छोटे-छोटे गड्ढे बनाए, उनमें बीज डाले और ऊपर से मिट्टी ढक दी।",
+          "camera_type": "top_down_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show a clear top-down view of {assets.caveman} carefully placing {assets.small_seeds} into several small holes in the soil and gently covering them with earth using his hands. The action should be easy to understand.",
+          "session_delta_prompt": "Complete the simple planting process."
+        },
+        {
+          "beat_id": "s03_b04",
+          "narration_text": "अब बस इंतज़ार था... लेकिन हमारे गुफावाले को इंतज़ार करना बिल्कुल पसंद नहीं था!",
+          "camera_type": "comedic_medium_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.caveman} sitting directly beside the planted soil patch, staring intensely at the ground with his face almost touching it. His eyes are wide open and he looks impatient.",
+          "session_delta_prompt": "Build anticipation while showing the caveman's impatience."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "whiteboard",
+      "environment_ref": "wild_grassland",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "और जानते हो ऑक्टोपस की सबसे अजीब बात? उसके हाथों पर सक्शन कप होते हैं, जिनसे वो चीजों को पकड़ सकता है।",
-          "camera_type": "close_up",
+          "narration_text": "कुछ समय बीता। बारिश हुई, मिट्टी गीली हुई और सूरज की गर्मी भी मिली।",
+          "camera_type": "wide_weather_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show a close-up of the suckers on {assets.octopus_arms} on the LEFT. The stickman stands beside the close-up and pretends to stick his hand onto the whiteboard, looking amazed. Add a circular magnification around the suckers.",
-          "session_delta_prompt": "Keep the close-up specifically focused on octopus suckers. The stickman demonstrates sticking and gripping only on the octopus side."
+          "prompt_action": "Show {assets.rain_cloud} releasing rain over the planted soil patch near {assets.cave_home}. Then warm sunlight breaks through the clouds. {assets.caveman} watches the weather change with hopeful excitement.",
+          "session_delta_prompt": "Show rain and sunlight supporting the growth of planted seeds."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "वो अपनी आठों भुजाओं से चीजों को छू सकता है, पकड़ सकता है और घूम सकता है।",
-          "camera_type": "medium_shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Show {assets.octopus} holding a small shell with one arm while its other arms explore the nearby rocks. The stickman imitates the octopus by extending both arms in different directions and looking hilariously overwhelmed.",
-          "session_delta_prompt": "Remain on the octopus side. Add a shell and rock interaction. Change the stickman's pose to an exaggerated imitation of multiple moving arms."
+          "narration_text": "और फिर एक सुबह... मिट्टी से एक नन्हा सा हरा पौधा बाहर निकल आया!",
+          "camera_type": "macro_ground_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.sprouting_plant} emerging from the dark soil in a beautiful close-up. Tiny water droplets rest on its fresh green leaves. Keep the background softly blurred.",
+          "session_delta_prompt": "Reveal the first successful sprout."
+        },
+        {
+          "beat_id": "s04_b03",
+          "narration_text": "हमारा गुफावाला उसे देखकर उछल पड़ा! उसे समझ आ गया कि बीज बोकर भी खाना उगाया जा सकता है।",
+          "camera_type": "dynamic_low_angle",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.caveman} jumping high into the air beside {assets.sprouting_plant}, both arms raised, mouth wide open in excitement. The tiny plant remains clearly visible in the foreground.",
+          "session_delta_prompt": "The caveman celebrates the successful experiment."
+        },
+        {
+          "beat_id": "s04_b04",
+          "narration_text": "अब उसने अकेले एक पौधे से काम नहीं चलाया। उसने और ज़्यादा बीज बोने शुरू कर दिए!",
+          "camera_type": "wide_dynamic_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.caveman} energetically planting many {assets.small_seeds} across a larger prepared patch of soil using {assets.wooden_digging_stick}. Several tiny {assets.sprouting_plant} seedlings are already visible.",
+          "session_delta_prompt": "Expand the experiment into deliberate crop growing."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "whiteboard",
+      "environment_ref": "wild_grassland",
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "अब स्क्विड को देखो। इसका शरीर ज्यादा लंबा और तेज तैरने के हिसाब से बना होता है।",
-          "camera_type": "medium_shot",
+          "narration_text": "धीरे-धीरे छोटे पौधे बड़े होने लगे। कुछ समय बाद वहाँ सुनहरी फसल लहराने लगी।",
+          "camera_type": "cinematic_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.squid} prominently on the RIGHT with its streamlined elongated body and visible fins. The stickman runs across the whiteboard from the center to the right, leaning forward like a racing athlete and pointing toward the squid's body.",
-          "session_delta_prompt": "Shift attention to the squid on the right. Keep its elongated body and fins clearly visible. The presenter must face and point toward the squid."
+          "prompt_action": "Show {assets.growing_crops} spreading across the field near {assets.cave_home}. {assets.caveman} walks between the growing plants, amazed by their height and golden color.",
+          "session_delta_prompt": "Show the transformation from tiny sprouts into a mature grain crop."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "इसके शरीर के पीछे छोटे फिन्स होते हैं, जो तैरते समय इसे दिशा बदलने में मदद करते हैं।",
-          "camera_type": "close_up",
-          "action_mode": "in_place_action",
-          "prompt_action": "Show a close-up of the fins near the mantle of {assets.squid}. Add two curved arrows showing water movement around the fins. The stickman bends down and points directly at the squid's fins.",
-          "session_delta_prompt": "Keep the squid as the only enlarged subject. The presenter points specifically at the fins near the squid's body, not toward the octopus."
+          "narration_text": "अब उसे हर दिन जंगल में खाना ढूँढने के लिए भटकना नहीं पड़ता था। खाना उसके पास ही उग रहा था!",
+          "camera_type": "tracking_medium_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.caveman} relaxing beside his growing grain field, holding a handful of golden grain and smiling proudly. In the distant background, show the forest he once searched for food.",
+          "session_delta_prompt": "Highlight the advantage of having a nearby food supply."
+        },
+        {
+          "beat_id": "s05_b03",
+          "narration_text": "उसने फसल काटी, दाने इकट्ठे किए और उन्हें टोकरियों में भरकर रखने लगा।",
+          "camera_type": "harvest_action_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.caveman} cutting mature golden stalks with a primitive stone tool and placing them into {assets.grain_basket}. Several harvested bundles and loose grains are visible around him.",
+          "session_delta_prompt": "Introduce harvesting and collecting food for later."
+        },
+        {
+          "beat_id": "s05_b04",
+          "narration_text": "और अब उसके पास सिर्फ आज के लिए नहीं, आने वाले दिनों के लिए भी खाना था!",
+          "camera_type": "interior_cave_wide_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show the inside of {assets.cave_home} with several {assets.grain_basket} baskets filled with golden grain. {assets.caveman} proudly counts the baskets, smiling like a wealthy treasure collector.",
+          "session_delta_prompt": "Show stored food and the beginning of food security."
         }
       ]
     },
     {
       "scene_id": 6,
-      "environment_ref": "whiteboard",
+      "environment_ref": "primitive_hut",
       "beats": [
         {
           "beat_id": "s06_b01",
-          "narration_text": "अब आते हैं इनके छिपने के हुनर पर। ऑक्टोपस रंग और त्वचा की बनावट बदलकर अपने आसपास में गायब जैसा हो सकता है।",
-          "camera_type": "wide_shot",
+          "narration_text": "लेकिन खेती का एक और बड़ा फायदा था। अब इंसानों को खाने के लिए हर वक्त एक जगह से दूसरी जगह नहीं जाना पड़ता था।",
+          "camera_type": "wide_settlement_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.octopus_camouflage} on the LEFT, with the octopus blending into rocky underwater surroundings. The stickman walks toward the left, covers his eyes with both hands, then peeks between his fingers while trying to find the camouflaged octopus.",
-          "session_delta_prompt": "Focus on the octopus camouflage demonstration. Keep the stickman searching on the left side, clearly interacting with the camouflaged animal."
+          "prompt_action": "Show {assets.caveman} standing beside {assets.primitive_hut}, looking at the nearby crops and river. In the far background, show a small group of prehistoric humans carrying their belongings toward the settlement.",
+          "session_delta_prompt": "Introduce the transition from constantly moving to living near cultivated land."
         },
         {
           "beat_id": "s06_b02",
-          "narration_text": "स्क्विड भी रंग बदल सकता है, लेकिन कई स्क्विड अपने बड़े समूह में तैरने के लिए भी जाने जाते हैं।",
-          "camera_type": "wide_shot",
+          "narration_text": "लोग धीरे-धीरे खेतों के पास रहने लगे। उन्होंने छोटी झोपड़ियाँ बनाईं और मिलकर काम करना शुरू किया।",
+          "camera_type": "wide_community_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.squid_school} on the RIGHT with multiple squid swimming together. The stickman runs toward the right and tries to swim alongside the group, copying their direction with a funny synchronized swimming pose.",
-          "session_delta_prompt": "Shift attention from the octopus to the squid group on the right. The stickman must move to the right and imitate the squid swimming together."
+          "prompt_action": "Show a growing prehistoric village with several {assets.primitive_hut} huts. {assets.caveman} and {assets.caveman_friend} carry wooden branches together while other cartoon prehistoric villagers work near the crops.",
+          "session_delta_prompt": "Show the growth of permanent settlements and cooperation."
+        },
+        {
+          "beat_id": "s06_b03",
+          "narration_text": "कुछ लोग बीज बोते, कुछ फसल काटते और कुछ खाने को सुरक्षित रखते। काम बँटने लगा!",
+          "camera_type": "three_layer_composition",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show three clear activities in one coherent village scene: one villager planting seeds in soil, another harvesting {assets.growing_crops}, and {assets.caveman} placing harvested grain into {assets.grain_basket}. The main caveman actively gestures toward the different tasks.",
+          "session_delta_prompt": "Show how farming encouraged people to divide and organize their work."
+        },
+        {
+          "beat_id": "s06_b04",
+          "narration_text": "धीरे-धीरे कुछ जानवर भी पाले जाने लगे। जैसे बकरियाँ, जो दूध और दूसरे कामों में मदद कर सकती थीं।",
+          "camera_type": "playful_animal_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.caveman} gently feeding {assets.domesticated_goat} beside a simple wooden fence near {assets.primitive_hut}. The goat playfully nudges him, making him stumble backward with a funny expression.",
+          "session_delta_prompt": "Introduce animal domestication as another development in early farming communities."
         }
       ]
     },
     {
       "scene_id": 7,
-      "environment_ref": "whiteboard",
+      "environment_ref": "primitive_hut",
       "beats": [
         {
           "beat_id": "s07_b01",
-          "narration_text": "लेकिन खतरा आते ही दोनों के पास एक जबरदस्त ट्रिक होती है। दोनों स्याही छोड़कर दुश्मन को चकमा दे सकते हैं।",
-          "camera_type": "wide_shot",
+          "narration_text": "और बस! एक छोटी सी खोज ने इंसानों की ज़िंदगी बदलनी शुरू कर दी। खेती ने उन्हें एक जगह बसने और बड़ी बस्तियाँ बनाने में मदद की।",
+          "camera_type": "cinematic_crane_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Show {assets.octopus_ink} on the LEFT and {assets.squid_ink} on the RIGHT, each releasing a separate dark ink cloud underwater. The stickman jumps backward in the center with a shocked expression and both hands raised.",
-          "session_delta_prompt": "Show both animals performing the same defensive technique. Keep the two ink clouds separate and the stickman in the center reacting to both."
+          "prompt_action": "Show a thriving prehistoric settlement with multiple {assets.primitive_hut} huts, golden fields, villagers working together, and {assets.domesticated_goat} near a fence. {assets.caveman} stands on a small hill looking proudly at the village.",
+          "session_delta_prompt": "Reveal the larger impact of farming on human communities."
         },
         {
           "beat_id": "s07_b02",
-          "narration_text": "और ये स्याही सिर्फ धुआं बनाने के लिए नहीं होती, ये शिकारी का ध्यान भटकाने में मदद करती है ताकि ये भाग सकें।",
-          "camera_type": "medium_shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "Show the ink clouds spreading through the water. Both animals move away from their respective clouds. The stickman crouches behind a small illustrated ink cloud and then peeks out with a mischievous expression.",
-          "session_delta_prompt": "Retain the two ink clouds. Show both animals escaping away from the clouds and the stickman playfully demonstrating the distraction technique."
-        }
-      ]
-    },
-    {
-      "scene_id": 8,
-      "environment_ref": "whiteboard",
-      "beats": [
-        {
-          "beat_id": "s08_b01",
-          "narration_text": "तो अब बताओ, कौन ज्यादा अजीब है? आठ हाथों वाला ऑक्टोपस या दस उपांगों वाला स्क्विड?",
-          "camera_type": "wide_shot",
+          "narration_text": "आगे चलकर खेती से गाँव बने, फिर बड़े समाज और सभ्यताएँ विकसित हुईं।",
+          "camera_type": "evolutionary_panorama",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Bring {assets.octopus} back to the LEFT and {assets.squid} back to the RIGHT at equal size. The stickman runs into the center, looks left, looks right, scratches his head, and raises both hands as if unable to decide. Add two large question marks above the animals.",
-          "session_delta_prompt": "Restore the original balanced comparison layout. The stickman stands in the middle, visibly undecided and looking between both animals."
+          "prompt_action": "Show a visual progression from a small prehistoric farming settlement in the foreground to a larger ancient village in the middle distance and an early river-valley town far in the background. Keep the progression historically grounded and avoid modern buildings. {assets.caveman} points excitedly toward the growing settlement.",
+          "session_delta_prompt": "Visually suggest how settled agriculture helped support larger communities and civilizations over long periods."
         },
         {
-          "beat_id": "s08_b02",
-          "narration_text": "मेरे हिसाब से दोनों ही समुद्र के सबसे मजेदार जीवों में से हैं। लेकिन तुम्हें कौन ज्यादा पसंद आया?",
-          "camera_type": "medium_shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "The stickman walks toward the viewer, points directly outward with one hand, and gestures toward both animals with the other. Give the stickman a friendly smiling expression. Add a small speech bubble with two empty voting choices below the animals.",
-          "session_delta_prompt": "Keep both animals visible. Move the presenter toward the foreground and make him directly engage the audience."
+          "beat_id": "s07_b03",
+          "narration_text": "सोचो, अगर उस दिन किसी इंसान ने ज़मीन में बीज डालकर प्रयोग ही नहीं किया होता, तो हमारी दुनिया कितनी अलग होती!",
+          "camera_type": "medium_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.caveman} holding a tiny {assets.small_seeds} seed in one hand and pointing toward the flourishing settlement with the other. He looks thoughtful and amazed. Use a warm sunset behind him.",
+          "session_delta_prompt": "Connect the tiny seed experiment to the enormous long-term impact of agriculture."
         },
         {
-          "beat_id": "s08_b03",
-          "narration_text": "कमेंट में बताओ, और अगली बार किन दो अजीब चीजों का मुकाबला करवाना चाहते हो?",
-          "camera_type": "wide_shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "The stickman excitedly points downward toward the comment area, then raises one hand as if inviting suggestions. Keep the octopus and squid smaller in the background. Add a clean readable label reading YOUR NEXT COMPARISON?",
-          "session_delta_prompt": "Finish with the presenter actively inviting audience participation. Preserve the same whiteboard identity and leave clear space for the comment prompt."
+          "beat_id": "s07_b04",
+          "narration_text": "तो बताओ, तुम्हारे हिसाब से इंसानों की सबसे बड़ी खोज क्या थी? आग, पहिया या खेती? कमेंट में ज़रूर बताना!",
+          "camera_type": "front_facing_comedy_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Show {assets.caveman} facing the viewer with an excited smile, pointing toward three floating cartoon symbols: a glowing campfire, a primitive wooden wheel, and a golden grain plant. He gestures invitingly toward the viewer as if asking a question.",
+          "session_delta_prompt": "End with an engaging viewer question and a playful direct-to-camera pose."
         }
       ]
     }

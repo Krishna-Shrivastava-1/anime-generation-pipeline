@@ -1,497 +1,260 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "IT 2017 - Pennywise Horror Story Recap",
-    "project_id": "it_2017_direct_image_prompts",
+    "title": "पैसे कमाने के 5 असली तरीके",
+    "project_id": "earn_money_stickman_hindi_short_01",
     "language": "hi-IN",
-    "aspect_ratio": "16:9",
+    "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Photorealistic cinematic horror imagery. Every image prompt must independently describe the complete visual: subjects, clothing, appearance, environment, action, camera framing, lighting and atmosphere. Do not use references to previous images, movie scenes, iconic scenes or named fictional characters as substitutes for visual descriptions. A terrifying recurring clown has chalk-white makeup, bright orange-red hair, yellowish eyes, an unnaturally wide smile and an antique grey-white clown costume with orange-red pom-poms. A recurring young boy wears a bright yellow raincoat. A recurring teenage group consists of seven distinct teenagers in authentic late-1980s clothing. Maintain their visual appearances consistently. Use different camera angles, close-ups, reaction shots, action shots and environmental details. Each beat should represent a different moment, approximately 2–3 seconds long. The hand-drawn stickman presenter has a round white face, expressive eyes, thin black limbs and a small red bow tie. Include him only when useful, positioned away from the main action.",
-    "negative_prompt": "Cartoon, anime, illustration, toy-like clown, generic happy circus clown, colourful children's art, flat vector graphics, low-resolution, blurry, duplicate characters, inconsistent faces, modern clothing, modern cars, distorted hands, extra limbs, text, captions, watermark, logo, excessive gore, graphic injury, static slideshow compositions."
+    "art_style": "Minimalist hand-drawn stickman illustration style for an engaging YouTube finance short. Warm off-white paper background, bold slightly imperfect black ink outlines, simple expressive round white faces, thin black stick limbs, and a small red bow tie on the recurring presenter. Limited accent colors: green for money, yellow for ideas, and blue for technology. Friendly, humorous, conversational visual storytelling. Every image should feel like a frame from the same illustrated explainer. Clear silhouettes, uncluttered compositions, strong visual hierarchy, vertical 9:16 framing.",
+    "negative_prompt": "Photorealism, 3D rendering, realistic human anatomy, detailed skin, complex backgrounds, excessive colors, gradients, clutter, tiny unreadable text, watermarks, logos, inconsistent stickman designs, extra limbs, distorted faces, illegible lettering."
   },
   "assets": {
-    "host": {
+    "main_presenter": {
       "type": "character",
-      "label": "Stickman Presenter",
-      "visual_dna": "A simple hand-drawn stickman with a round white face, expressive black eyes, thin black line-art limbs and a small red bow tie. Identical appearance and proportions in every shot."
+      "label": "Finance Stickman Presenter",
+      "visual_dna": "A simple hand-drawn stickman with a round white face, two expressive black eyes, a curved expressive mouth, thin black arms and legs, and a small red bow tie. Consistent proportions and recognizable appearance in every frame."
     },
-    "georgie": {
-      "type": "character",
-      "label": "Georgie",
-      "visual_dna": "A small seven-year-old boy with short brown hair, innocent facial features, a bright yellow hooded raincoat and matching rain boots."
-    },
-    "bill": {
-      "type": "character",
-      "label": "Bill",
-      "visual_dna": "A teenage boy with brown hair, a slim build and casual 1980s American clothing. Determined expression, emotionally attached to his missing younger brother."
-    },
-    "pennywise": {
-      "type": "character",
-      "label": "Terrifying Horror Clown",
-      "visual_dna": "A terrifying supernatural clown with a chalk-white painted face, bright orange-red hair, yellowish eyes, deep facial creases, a disturbing wide smile and an antique grey-white Victorian clown costume with orange-red pom-poms. Long fingers, unsettling expressions and realistic horror makeup. Keep this exact appearance consistent."
-    },
-    "paper_boat": {
+    "money_symbol": {
       "type": "prop",
-      "label": "White Paper Boat",
-      "visual_dna": "A small folded white paper boat with visible creases and slightly wet edges."
-    },
-    "derry": {
-      "type": "environment",
-      "label": "1980s Derry",
-      "visual_dna": "A quiet small American town in the late 1980s, with suburban houses, telephone poles, old shops, empty roads and gloomy weather."
-    },
-    "losers": {
-      "type": "character",
-      "label": "Seven Teenagers",
-      "visual_dna": "Seven visually distinct teenagers: a brown-haired determined boy, a curly-haired boy with glasses, a slim nervous boy with glasses, a stocky brown-haired boy, a reddish-haired girl, a dark-haired boy and a boy with a neat hairstyle. All wear different authentic late-1980s casual clothing. Preserve each person's appearance."
-    },
-    "beverly": {
-      "type": "character",
-      "label": "Beverly",
-      "visual_dna": "A teenage girl with long reddish hair, fair complexion and casual late-1980s clothing. Brave and expressive."
-    },
-    "henry": {
-      "type": "character",
-      "label": "Henry",
-      "visual_dna": "An aggressive teenage boy with short dark hair, a hostile expression and rough late-1980s casual clothing."
-    },
-    "neibolt_house": {
-      "type": "environment",
-      "label": "Abandoned House",
-      "visual_dna": "A decaying two-storey American house with broken windows, peeling white paint, overgrown grass, rotten wooden floors and dark hallways."
-    },
-    "lair": {
-      "type": "environment",
-      "label": "Underground Cavern",
-      "visual_dna": "A vast underground cavern beneath a small American town, with damp stone walls, dark tunnels, scattered old objects and an eerie orange supernatural glow."
+      "label": "Money Illustration",
+      "visual_dna": "Simple hand-drawn green currency notes, coins, and a small money bag, outlined in black, without real currency-specific designs."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "derry",
+      "environment_ref": "main_presenter",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "कहानी शुरू होती है डेरी नाम के एक छोटे शहर से।",
-          "camera_type": "aerial_wide_shot",
+          "narration_text": "पैसे कमाने हैं, लेकिन समझ नहीं आ रहा कि शुरुआत कहाँ से करें?",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic aerial view of a small American town in 1989. Old suburban houses, telephone poles, empty streets, dark storm clouds and heavy rain. Cinematic horror atmosphere, 16:9 wide composition, realistic film photography.",
-          "session_delta_prompt": "Dark rainy American town, establishing aerial view."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie stands in the center, looking confused while holding an empty wallet upside down. A few tiny coins fall out. Minimal off-white paper background, bold imperfect black ink outlines, green coin accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Show the presenter looking directly at the viewer with a puzzled expression."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "जहाँ एक दिन छोटा जॉर्जी बारिश में खेलने निकलता है।",
-          "camera_type": "medium_tracking_shot",
+          "narration_text": "तो चलो, जानते हैं पैसे कमाने के पाँच ऐसे तरीके, जिनसे तुम शुरुआत कर सकते हो।",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a realistic cinematic photograph of a seven-year-old boy with short brown hair wearing a bright yellow hooded raincoat and yellow rain boots. He runs happily along a wet suburban sidewalk holding a small white paper boat. Heavy rain, puddles, 1980s American houses in the background.",
-          "session_delta_prompt": "Young boy running with paper boat in rain."
-        },
-        {
-          "beat_id": "s01_b03",
-          "narration_text": "लेकिन उसकी कागज़ की नाव पानी में बहने लगती है।",
-          "camera_type": "extreme_close_up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate an extreme close-up photograph of a tiny folded white paper boat floating quickly through a rain-filled roadside gutter. Rainwater splashes against its edges. Wet asphalt, tiny ripples, shallow depth of field, realistic cinematic photography.",
-          "session_delta_prompt": "Paper boat floating in rainwater."
-        },
-        {
-          "beat_id": "s01_b04",
-          "narration_text": "और सीधे एक अँधेरे नाले के अंदर पहुँच जाती है।",
-          "camera_type": "ground_level_tracking",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a ground-level photorealistic view of a small white paper boat approaching the black opening of a large concrete storm drain. Rainwater flows rapidly into the drain. Wet concrete, dark tunnel interior, dramatic gloomy lighting.",
-          "session_delta_prompt": "Paper boat approaching a dark storm drain."
-        },
-        {
-          "beat_id": "s01_b05",
-          "narration_text": "तभी अँधेरे के अंदर से एक डरावना जोकर दिखाई देता है।",
-          "camera_type": "horror_close_up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a terrifying photorealistic horror portrait of a clown crouching deep inside a dark concrete storm drain. The clown has a chalk-white face, bright orange-red hair, yellowish eyes, an unnaturally wide sinister smile and an old-fashioned grey-white costume with orange-red pom-poms. Only his face is illuminated while the tunnel behind him is completely black. Extremely unsettling cinematic lighting.",
-          "session_delta_prompt": "White-faced orange-haired horror clown appears inside drain."
-        },
-        {
-          "beat_id": "s01_b06",
-          "narration_text": "वह जॉर्जी को नाव लौटाने का लालच देता है।",
-          "camera_type": "two_character_medium_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic horror scene showing a small boy in a yellow raincoat kneeling beside a roadside storm drain. Inside the drain, a pale-faced clown with bright orange-red hair and a sinister smile crouches and holds out a small white paper boat. Heavy rain, wet pavement, frightening eye contact, realistic cinematic composition.",
-          "session_delta_prompt": "Clown offers paper boat to boy at drain."
-        },
-        {
-          "beat_id": "s01_b07",
-          "narration_text": "लेकिन अचानक वह उस पर हमला कर देता है।",
-          "camera_type": "dynamic_action_close_up",
-          "action_mode": "in_place_action",
-          "prompt_action": "Generate a frightening action photograph of a pale-faced orange-haired horror clown suddenly lunging out from a dark storm drain towards a terrified young boy wearing a yellow raincoat. The boy recoils in shock, rainwater splashes into the air, dramatic motion and harsh shadows, no graphic injury.",
-          "session_delta_prompt": "Clown lunges towards frightened boy."
-        },
-        {
-          "beat_id": "s01_b08",
-          "narration_text": "और जॉर्जी हमेशा के लिए गायब हो जाता है।",
-          "camera_type": "aftermath_close_up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a haunting photorealistic image of an abandoned white paper boat floating beside a dark concrete storm drain on an empty rainy street. A single yellow rain boot lies near a puddle. Cold grey lighting, unsettling silence, cinematic horror atmosphere.",
-          "session_delta_prompt": "Empty rainy street and abandoned paper boat."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie suddenly gets an idea. A large yellow light bulb appears above the head, surrounded by five small green money symbols. Minimal off-white paper background, bold black hand-drawn outlines, vertical 9:16 framing.",
+          "session_delta_prompt": "Make the presenter look excited and point upward toward the five symbols."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "derry",
+      "environment_ref": "main_presenter",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "कई महीने बाद भी उसका कोई पता नहीं चलता।",
-          "camera_type": "close_up",
+          "narration_text": "पहला तरीका है अपनी स्किल बेचकर पैसे कमाना।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a realistic close-up of a missing child poster attached to a wooden telephone pole on a rainy American street. The poster contains a young brown-haired boy's photograph and missing-child information. Torn wet paper, gloomy surroundings, cinematic photography.",
-          "session_delta_prompt": "Missing child poster on rainy street."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie stands confidently beside a laptop displaying creative work. Several green coins float nearby. Minimal off-white paper background, bold black ink outlines, small blue and green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter gestures confidently toward the laptop."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "उसका बड़ा भाई बिल उसे ढूँढना नहीं छोड़ता।",
-          "camera_type": "emotional_medium_shot",
+          "narration_text": "जैसे वीडियो एडिटिंग, ग्राफिक डिजाइनिंग या वेबसाइट बनाना।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic bedroom scene showing a teenage brown-haired boy sitting at a wooden desk. He studies several photographs of his missing little brother, holds a folded paper boat and looks deeply sad. A dim desk lamp, 1980s furniture and rainy window.",
-          "session_delta_prompt": "Teenage brother searching through photographs."
+          "prompt_action": "Three hand-drawn mini scenes arranged vertically: a stickman editing a video timeline on a laptop, another designing a colorful poster on a computer, and another building a website with simple blocks and code. All characters have round white faces, thin black limbs, and simple black outlines. Off-white paper background with restrained blue and yellow accents, vertical 9:16 layout.",
+          "session_delta_prompt": "Make each skill visually distinct and easy to recognize."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "डेरी में दूसरे बच्चे भी रहस्यमय तरीके से गायब होने लगते हैं।",
-          "camera_type": "street_wide_shot",
+          "narration_text": "इन सेवाओं को छोटे बिजनेस या ऑनलाइन क्लाइंट्स को ऑफर करो।",
+          "camera_type": "over-the-shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a realistic photograph of an old American shop window covered with missing-child posters showing different children's faces. A deserted playground and empty street are visible in the background. Overcast skies, eerie atmosphere, 1980s setting.",
-          "session_delta_prompt": "Multiple missing-child posters across town."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie sits at a laptop sending a service proposal. On the other side, a small business owner stickman happily receives the proposal. A green payment symbol appears between them. Minimal off-white paper background, bold black ink outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "Show a clear client-to-freelancer interaction."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "इसी दौरान बिल अपने कुछ दोस्तों के साथ लूजर्स क्लब बनाता है।",
-          "camera_type": "bicycle_tracking_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic cinematic photograph of four teenage boys riding bicycles down a quiet American suburban street in 1989. One has brown hair, one has curly hair and glasses, one is slim with glasses and another has a neat hairstyle. Casual vintage clothing, summer daylight, realistic expressions.",
-          "session_delta_prompt": "Four teenage boys riding bicycles together."
-        },
-        {
-          "beat_id": "s02_b05",
-          "narration_text": "बेन, माइक और बेवर्ली भी उनके दोस्त बन जाते हैं।",
-          "camera_type": "group_medium_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a realistic cinematic group portrait of seven teenagers standing together outside an old American house. Four boys and three additional friends, including a teenage girl with long reddish hair. All have distinct faces, hairstyles and late-1980s outfits. Natural friendship and curiosity.",
-          "session_delta_prompt": "Seven teenagers together as a friendship group."
-        },
-        {
-          "beat_id": "s02_b06",
-          "narration_text": "लेकिन जल्द ही सभी को अजीब और डरावनी चीज़ें दिखाई देने लगती हैं।",
-          "camera_type": "psychological_horror_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic horror image of a frightened teenage boy standing alone in a dimly lit school hallway. At the far end of the corridor, a mysterious pale figure with orange-red hair stands motionless. Flickering fluorescent lights, deep shadows and cinematic suspense.",
-          "session_delta_prompt": "Teenager sees a frightening clown-like figure in a hallway."
-        },
-        {
-          "beat_id": "s02_b07",
-          "narration_text": "क्योंकि एक डरावना जोकर हर बच्चे के डर का फायदा उठा रहा होता है।",
-          "camera_type": "low_angle_horror_portrait",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic close-up portrait of a sinister supernatural clown standing in a dark room. Chalk-white face, bright orange-red hair, yellowish eyes, deep wrinkles, unnaturally wide smile and antique grey-white costume with red-orange pom-poms. His eyes stare directly into the camera.",
-          "session_delta_prompt": "Close-up of recurring terrifying clown."
+          "narration_text": "शुरुआत में एक छोटी स्किल सीखो, काम के नमूने बनाओ और क्लाइंट ढूँढो।",
+          "camera_type": "close-up",
+          "action_mode": "in_place_action",
+          "prompt_action": "A hand-drawn stickman with a round white face, thin black limbs, and a red bow tie proudly displays a small portfolio folder containing three sample designs on a laptop screen. A checklist and a green coin sit beside the folder. Off-white paper background, bold black outlines, simple yellow and green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter proudly points at the completed portfolio."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "derry",
+      "environment_ref": "main_presenter",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "बेन को शहर के पुराने रिकॉर्ड में एक डरावना सच मिलता है।",
-          "camera_type": "over_the_shoulder",
+          "narration_text": "दूसरा तरीका है ऑनलाइन ट्यूशन देना।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a realistic photograph of a teenage boy sitting in an old public library, examining yellowed newspapers, historical photographs and old handwritten records about missing children. Dusty shelves, warm desk lamp and concentrated expression.",
-          "session_delta_prompt": "Teenager discovers historical newspaper records."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie stands beside a large whiteboard holding a marker. A small laptop is open nearby. Minimal off-white paper background, bold black ink outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter looks like a friendly teacher ready to explain something."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "हर सत्ताईस साल में बच्चों के गायब होने की घटनाएँ लौटती हैं।",
-          "camera_type": "macro_detail",
+          "narration_text": "अगर तुम्हें मैथ्स, इंग्लिश, कोडिंग या कोई सब्जेक्ट अच्छे से आता है,",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a detailed overhead photograph of old newspaper clippings from several different decades arranged on a wooden table. Multiple headlines report missing children and strange disappearances. A handwritten timeline connects the years. Moody library lighting.",
-          "session_delta_prompt": "Historical evidence showing recurring disappearances."
+          "prompt_action": "A hand-drawn stickman teacher with a round white face, thin black limbs, and a red bow tie stands in front of a whiteboard showing simple math symbols, English letters, and a tiny programming code window. Three student stickmen sit attentively with notebooks. Bold black outlines, off-white paper background, restrained blue and yellow accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Show the teacher pointing toward the different subjects while students listen."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "बेवर्ली को भी अपने बाथरूम में भयानक खून दिखाई देता है।",
-          "camera_type": "bathroom_horror_wide",
+          "narration_text": "तो बच्चों या दूसरे स्टूडेंट्स को ऑनलाइन पढ़ा सकते हो।",
+          "camera_type": "over-the-shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic horror scene inside a small 1980s bathroom. A teenage girl with long reddish hair stands frozen in shock as dark red blood suddenly covers the white sink, mirror and bathroom walls. Realistic bathroom tiles, dramatic shadows, no graphic injury.",
-          "session_delta_prompt": "Red blood covering bathroom surfaces."
+          "prompt_action": "A hand-drawn stickman teacher with a round white face, expressive eyes, thin black limbs, and a red bow tie teaches through a laptop video call. Three small student faces appear in separate video-call panels on the screen. The teacher points at a simple digital whiteboard. Minimal off-white background, bold black ink outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "Make the laptop screen and teaching interaction the main focus."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "लेकिन उसके पिता को वहाँ कुछ भी दिखाई नहीं देता।",
-          "camera_type": "reaction_close_up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a realistic photograph of a middle-aged man standing in a clean white bathroom looking confused. Beside him, a teenage girl with long reddish hair looks terrified and points at the apparently empty sink and mirror. Strong emotional contrast.",
-          "session_delta_prompt": "Father sees a clean bathroom while daughter is frightened."
-        },
-        {
-          "beat_id": "s03_b05",
-          "narration_text": "तभी बच्चों को समझ आता है कि इन घटनाओं के पीछे वही जोकर है।",
-          "camera_type": "group_close_up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic image of seven teenagers gathered around a table in a dark garage. Old photographs, newspaper clippings and a hand-drawn map are spread across the table. Their faces show fear and realization as they discuss a supernatural clown.",
-          "session_delta_prompt": "Seven teenagers connect the mysterious events."
-        },
-        {
-          "beat_id": "s03_b06",
-          "narration_text": "उनका शक एक सुनसान घर पर जाकर रुकता है।",
-          "camera_type": "wide_establishing",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic exterior photograph of a frightening abandoned two-storey American house. Broken windows, rotten porch, peeling white paint, overgrown grass, dark upstairs windows and grey stormy sky. Cinematic horror composition.",
-          "session_delta_prompt": "Abandoned house in a gloomy neighbourhood."
-        },
-        {
-          "beat_id": "s03_b07",
-          "narration_text": "जहाँ एक डरावना जोकर उनका इंतज़ार कर रहा होता है।",
-          "camera_type": "window_reveal",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a terrifying photograph of a chalk-white-faced clown with bright orange-red hair staring through a broken upstairs window of a decaying abandoned house. Yellowish eyes, sinister smile, grey-white costume and deep shadows. The camera looks up from the street.",
-          "session_delta_prompt": "Clown watches from the abandoned house window."
+          "narration_text": "एक विषय चुनो, अपनी टाइमिंग तय करो और पहले कुछ स्टूडेंट्स से शुरुआत करो।",
+          "camera_type": "medium shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "A hand-drawn stickman teacher with a round white face, thin black limbs, and a red bow tie writes a simple weekly timetable on a board. Two student stickmen sit at a desk with open books. A small green payment icon appears near the timetable. Off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "Show a practical, organized tutoring setup."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "neibolt_house",
+      "environment_ref": "main_presenter",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "बच्चे हिम्मत करके उस घर के अंदर चले जाते हैं।",
-          "camera_type": "doorway_tracking",
+          "narration_text": "तीसरा तरीका है कंटेंट बनाना।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic horror image of seven teenagers entering a rotten abandoned house through a creaking wooden front door. The first teenage boy holds a flashlight, while his friends cautiously follow him. Dark entrance, peeling walls, realistic 1980s clothes.",
-          "session_delta_prompt": "Teenagers entering a decaying abandoned house."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie stands in front of a smartphone mounted on a small tripod, ready to record a video. A tiny yellow idea bulb floats above the phone. Minimal off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter looks enthusiastic and ready to record."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "अंदर अँधेरे कमरों में कुछ भयानक छिपा होता है।",
-          "camera_type": "interior_wide",
+          "narration_text": "यूट्यूब, इंस्टाग्राम या किसी प्लेटफॉर्म पर ऐसी चीजें शेयर करो, जो लोगों के काम आएँ।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a realistic photograph of a narrow abandoned-house hallway. Rotten floorboards, torn wallpaper, broken furniture, a half-open door and a weak flashlight beam illuminating dust in the air. Dark cinematic horror lighting.",
-          "session_delta_prompt": "Empty terrifying hallway inside house."
+          "prompt_action": "A hand-drawn stickman creator with a round white face, thin black limbs, and a red bow tie records a short educational video using a smartphone and tripod. Around the creator are simple illustrated icons of a camera, a helpful tutorial, a recipe card, and a learning notebook. Off-white paper background, bold black outlines, small blue and yellow accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Show the creator actively recording useful content."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "अचानक उनके सामने एक डरावनी आकृति आ जाती है।",
-          "camera_type": "monster_reveal",
+          "narration_text": "शुरुआत में व्यूज़ के पीछे मत भागो, लगातार अच्छी वीडियो बनाओ।",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic horror image of a grotesque supernatural figure suddenly emerging from a dark room inside an abandoned house. Its face is distorted, eyes wide and mouth unnaturally open. Seven frightened teenagers recoil in the foreground. Dramatic shadows.",
-          "session_delta_prompt": "Supernatural apparition appears before teenagers."
+          "prompt_action": "A hand-drawn stickman creator with a round white face, thin black limbs, and a red bow tie looks determined while editing a video on a laptop. A calendar with several marked days and a row of completed video thumbnails are visible. A large distracting view counter is crossed out. Off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "Emphasize consistency and quality rather than chasing numbers."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "और वही जोकर उन पर हमला करने लगता है।",
-          "camera_type": "dynamic_action",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a frightening photorealistic action scene of a pale-faced orange-haired clown charging through a dark hallway towards seven terrified teenagers. His grey-white costume moves as he lunges, yellowish eyes wide and sinister smile exposed. Strong motion and cinematic lighting.",
-          "session_delta_prompt": "Horror clown attacks teenagers in hallway."
-        },
-        {
-          "beat_id": "s04_b05",
-          "narration_text": "सभी किसी तरह वहाँ से भाग निकलते हैं।",
-          "camera_type": "handheld_escape",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic action photograph of seven teenagers sprinting out of an abandoned house into daylight. Their expressions show panic. One boy pulls another by the arm while someone looks backwards towards the dark entrance.",
-          "session_delta_prompt": "Teenagers escape the abandoned house."
-        },
-        {
-          "beat_id": "s04_b06",
-          "narration_text": "लेकिन उनका खतरा अभी खत्म नहीं हुआ था।",
-          "camera_type": "reaction_medium",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a cinematic photograph of seven exhausted teenagers standing outside an abandoned house. One boy looks over his shoulder towards an upstairs window where a pale clown face is barely visible behind broken glass. Gloomy daylight and suspense.",
-          "session_delta_prompt": "Clown still watching the teenagers."
-        },
-        {
-          "beat_id": "s04_b07",
-          "narration_text": "उधर हेनरी नाम का एक गुंडा भी उन्हें लगातार परेशान करता है।",
-          "camera_type": "aggressive_medium",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a realistic late-1980s street photograph of an aggressive teenage bully with short dark hair confronting a group of seven younger teenagers. His face is angry and threatening. Two other teenage boys stand behind him. Natural outdoor lighting.",
-          "session_delta_prompt": "Teenage bully threatens the group."
-        },
-        {
-          "beat_id": "s04_b08",
-          "narration_text": "धीरे-धीरे उनके बीच भी झगड़े होने लगते हैं।",
-          "camera_type": "emotional_group_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a realistic emotional scene of seven teenagers arguing in an empty suburban street. One boy points angrily while others look upset and disappointed. A reddish-haired girl stands apart. Late-1980s summer setting.",
-          "session_delta_prompt": "Friendship group begins to split apart."
+          "narration_text": "आगे चलकर कमाई विज्ञापनों, ब्रांड डील्स और अपने प्रोडक्ट्स से हो सकती है।",
+          "camera_type": "medium shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "A hand-drawn stickman creator with a round white face, thin black limbs, and a red bow tie stands beside three clear income illustrations: a video screen with a small advertisement symbol, a handshake between two stickmen representing a brand partnership, and a digital product displayed on a laptop. Green coins appear near each illustration. Off-white paper background, bold black ink outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "Show three separate possible income sources, not instant guaranteed money."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "lair",
+      "environment_ref": "main_presenter",
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "लेकिन जब बेवर्ली गायब हो जाती है, बिल फिर सबको बुलाता है।",
-          "camera_type": "telephone_close_up",
+          "narration_text": "चौथा तरीका है डिजिटल प्रोडक्ट्स बेचना।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a realistic photograph of a worried teenage boy with brown hair urgently speaking into a beige rotary telephone in a 1980s bedroom. His face is tense and determined, old photographs on the wall and dim lighting.",
-          "session_delta_prompt": "Bill urgently calls his friends."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie stands beside a laptop displaying a digital shop with simple downloadable products. The presenter points toward the screen. Off-white paper background, bold black outlines, small green and blue accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Make the digital shop look simple and approachable."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "उसे पता चलता है कि वह जोकर उसे जमीन के नीचे ले गया है।",
-          "camera_type": "dark_tunnel",
+          "narration_text": "जैसे ई-बुक, नोट्स, टेम्पलेट्स या डिजाइन फाइल्स।",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic underground tunnel beneath an American town. Damp stone walls, rusty pipes, dark water and a faint orange glow far away. A narrow passage descends into complete darkness. Cinematic horror photography.",
-          "session_delta_prompt": "Dark underground passage beneath town."
+          "prompt_action": "Four hand-drawn digital products arranged clearly: an e-book cover, a collection of study notes, a planner template, and a graphic design file shown on a laptop screen. A hand-drawn stickman with a round white face, thin black limbs, and a red bow tie points toward them. Off-white paper background, bold black outlines, restrained green and yellow accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Keep each digital product visually distinct."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "बिल अपने छह दोस्तों के साथ नीचे उतर जाता है।",
-          "camera_type": "overhead_tracking",
+          "narration_text": "एक बार अच्छा प्रोडक्ट बनाओ, फिर उसे ऑनलाइन कई लोगों को बेच सकते हो।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a realistic cinematic photograph of seven teenagers carefully descending into a dark underground tunnel using flashlights. The brown-haired boy leads, while his six friends follow closely. Wet stone steps, darkness and orange light ahead.",
-          "session_delta_prompt": "Seven teenagers descend into underground tunnels."
-        },
-        {
-          "beat_id": "s05_b04",
-          "narration_text": "वहाँ उन्हें गायब हुए बच्चे हवा में तैरते दिखाई देते हैं।",
-          "camera_type": "wide_supernatural_reveal",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic supernatural horror image of a vast underground cavern containing several unconscious children floating horizontally in midair. Seven teenagers stand below looking upward in terror. Dark rocky walls, eerie orange light and realistic visual effects.",
-          "session_delta_prompt": "Floating unconscious children in underground cavern."
-        },
-        {
-          "beat_id": "s05_b05",
-          "narration_text": "उनमें बेवर्ली भी फँसी हुई होती है।",
-          "camera_type": "character_close_up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a realistic close-up of a teenage girl with long reddish hair floating unconscious in a dark underground cavern. Her hair drifts slightly in the air. Other floating children appear blurred in the background, orange supernatural lighting.",
-          "session_delta_prompt": "Beverly floating unconscious among missing children."
-        },
-        {
-          "beat_id": "s05_b06",
-          "narration_text": "बिल को वहाँ अपने छोटे भाई जैसा दिखने वाला बच्चा भी दिखाई देता है।",
-          "camera_type": "emotional_two_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic horror scene of a teenage boy standing face-to-face with a small child wearing a yellow raincoat in a dark underground cavern. The teenager looks shocked and emotional. The child stands motionless under a faint orange light.",
-          "session_delta_prompt": "Bill sees a child resembling his missing brother."
-        },
-        {
-          "beat_id": "s05_b07",
-          "narration_text": "लेकिन वह समझ जाता है कि यह सिर्फ उस जोकर का धोखा है।",
-          "camera_type": "illusion_transformation",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a terrifying photorealistic image of a small child in a yellow raincoat transforming into a supernatural clown. The child's innocent face is replaced by chalk-white makeup, orange-red hair, yellow eyes and a frightening grin. Dark underground cavern, eerie supernatural lighting.",
-          "session_delta_prompt": "False child illusion reveals the horror clown."
-        },
-        {
-          "beat_id": "s05_b08",
-          "narration_text": "अब सातों दोस्त मिलकर उस राक्षस से लड़ने का फैसला करते हैं।",
-          "camera_type": "heroic_group_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a cinematic photorealistic image of seven teenagers standing shoulder to shoulder in a vast underground cavern. They face a terrifying pale-faced orange-haired clown in the distance. The teenagers look frightened but determined. Strong dramatic lighting.",
-          "session_delta_prompt": "Seven teenagers unite against the clown."
+          "prompt_action": "A hand-drawn stickman creator with a round white face, thin black limbs, and a red bow tie uploads one digital planner from a laptop. Several separate customer stickmen receive their own copies on small screens, with green payment symbols appearing beside the transactions. Off-white paper background, bold black ink outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "Illustrate one product reaching multiple customers, without implying guaranteed sales."
         }
       ]
     },
     {
       "scene_id": 6,
-      "environment_ref": "lair",
+      "environment_ref": "main_presenter",
       "beats": [
         {
           "beat_id": "s06_b01",
-          "narration_text": "इस बार बच्चे भागते नहीं, बल्कि उसका सामना करते हैं।",
-          "camera_type": "low_angle_confrontation",
+          "narration_text": "पाँचवाँ तरीका है रीसेलिंग या छोटा ऑनलाइन बिजनेस।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic cinematic image of a teenage boy with brown hair walking fearlessly towards a terrifying pale-faced orange-haired clown in a dark underground cavern. The clown stands opposite him in an antique grey-white costume. Dramatic low-angle composition.",
-          "session_delta_prompt": "Teenage boy confronts horror clown."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie stands beside a small table displaying neatly packed products and cardboard parcels. A simple smartphone shows an online store. Off-white paper background, bold black outlines, green and blue accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter introduces the small business idea with an inviting gesture."
         },
         {
           "beat_id": "s06_b02",
-          "narration_text": "रिची, एडी और बाकी दोस्त भी उस पर हमला कर देते हैं।",
-          "camera_type": "dynamic_group_action",
+          "narration_text": "ऐसे प्रोडक्ट चुनो जिनकी लोगों को सच में जरूरत हो।",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic action scene of six teenagers attacking a terrifying white-faced orange-haired clown inside a dark cavern. One throws an object, another swings a wooden weapon and others rush forward. The clown recoils. Fast action composition, no graphic injury.",
-          "session_delta_prompt": "Teenagers attack clown together."
+          "prompt_action": "A hand-drawn stickman entrepreneur with a round white face, thin black limbs, and a red bow tie studies three everyday products on a table: a water bottle, a notebook, and a small desk lamp. A magnifying glass highlights product quality while a customer stickman examines one item. Off-white paper background, bold black ink outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "Focus on choosing useful products and understanding customers."
         },
         {
           "beat_id": "s06_b03",
-          "narration_text": "धीरे-धीरे वह कमजोर पड़ने लगता है।",
-          "camera_type": "villain_close_up",
+          "narration_text": "फिर उनकी कीमत, डिलीवरी और अपना मुनाफा सही से समझकर बेचो।",
+          "camera_type": "over-the-shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic extreme close-up of a supernatural clown with white makeup and bright orange-red hair looking frightened and furious. His yellowish eyes are wide and his sinister smile disappears. Dark cavern background, cinematic shadows.",
-          "session_delta_prompt": "Clown looks frightened and vulnerable."
-        },
-        {
-          "beat_id": "s06_b04",
-          "narration_text": "क्योंकि अब बच्चे उससे डरना बंद कर चुके होते हैं।",
-          "camera_type": "group_reaction",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a cinematic realistic group photograph of seven teenagers standing together confidently in a dark cavern. Their expressions are determined rather than frightened. A pale-faced clown stands in the background looking weakened.",
-          "session_delta_prompt": "Group faces clown without fear."
-        },
-        {
-          "beat_id": "s06_b05",
-          "narration_text": "वे मिलकर उसे पीछे हटने पर मजबूर कर देते हैं।",
-          "camera_type": "dramatic_action",
-          "action_mode": "in_place_action",
-          "prompt_action": "Generate a photorealistic horror action image of a supernatural orange-haired clown stumbling backwards towards a dark tunnel while seven teenagers stand their ground. The orange light around the clown fades, dramatic shadows and realistic movement.",
-          "session_delta_prompt": "Clown retreats into darkness."
-        },
-        {
-          "beat_id": "s06_b06",
-          "narration_text": "बिल अपने दोस्तों के साथ बेवर्ली को बचा लेता है।",
-          "camera_type": "emotional_rescue",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic emotional image of seven teenagers surrounding a conscious reddish-haired teenage girl inside an underground cavern. One boy helps her stand while the others look relieved. Warm light falls on their faces.",
-          "session_delta_prompt": "Beverly reunited with friends."
-        },
-        {
-          "beat_id": "s06_b07",
-          "narration_text": "और सभी उस खौफनाक जगह से बाहर निकल आते हैं।",
-          "camera_type": "escape_tracking",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a cinematic realistic photograph of seven exhausted teenagers climbing out of a dark underground tunnel into bright daylight. Their clothes are dirty and their faces show relief. Camera looks from inside the tunnel towards the exit.",
-          "session_delta_prompt": "Friends escape the underground lair."
+          "prompt_action": "A hand-drawn stickman entrepreneur with a round white face, thin black limbs, and a red bow tie calculates a simple product budget on a notebook. Three clearly drawn symbols represent purchase cost, delivery cost, and remaining profit. A small parcel sits beside the notebook. Off-white paper background, bold black outlines, green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "Show the presenter carefully calculating costs before selling."
         }
       ]
     },
     {
       "scene_id": 7,
-      "environment_ref": "derry",
+      "environment_ref": "main_presenter",
       "beats": [
         {
           "beat_id": "s07_b01",
-          "narration_text": "लेकिन जाने से पहले सातों दोस्त खून की कसम खाते हैं।",
-          "camera_type": "hand_close_up",
+          "narration_text": "लेकिन एक बात याद रखना, जल्दी अमीर बनाने वाले वादों से बचना।",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic close-up of seven teenage hands joined together in a solemn friendship oath. A tiny symbolic cut is visible on one finger, with no graphic injury. Natural late-afternoon light.",
-          "session_delta_prompt": "Seven friends make a blood oath."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie steps away from a suspicious sign showing a flashy money bag and a large exaggerated promise symbol. The presenter raises one hand in a warning gesture. Off-white paper background, bold black outlines, red warning accent, vertical 9:16 composition.",
+          "session_delta_prompt": "Give the presenter a serious but friendly warning expression."
         },
         {
           "beat_id": "s07_b02",
-          "narration_text": "अगर वह जोकर वापस आया, तो वे फिर साथ लड़ेंगे।",
-          "camera_type": "cinematic_group_portrait",
+          "narration_text": "किसी भी काम में समय, मेहनत और सीखने की जरूरत होती है।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a photorealistic cinematic group portrait of seven teenagers standing together on a quiet American street in 1989. Their expressions show courage, friendship and determination. Old houses and telephone poles in the background, sunset lighting.",
-          "session_delta_prompt": "The seven friends promise to stand together."
+          "prompt_action": "A hand-drawn stickman with a round white face, thin black limbs, and a red bow tie climbs a staircase made of three large steps labeled visually with a book, a clock, and a small completed project. A few green coins wait at the top. Off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "Show progress as gradual effort rather than instant success."
         },
         {
           "beat_id": "s07_b03",
-          "narration_text": "क्योंकि डेरी का यह डर अभी पूरी तरह खत्म नहीं हुआ था।",
-          "camera_type": "ominous_final_shot",
+          "narration_text": "तो इनमें से एक तरीका चुनो और आज ही पहला कदम उठाओ।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Generate a final terrifying photorealistic image of a dark concrete storm drain on an empty rainy American street at dusk. Deep inside the black opening, two faint yellowish eyes and a subtle white clown smile are barely visible. Cinematic horror lighting, deep shadows, unsettling atmosphere, fade-to-black composition.",
-          "session_delta_prompt": "Final ominous hint of the clown still lurking beneath Derry."
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive black eyes, thin black limbs, and a red bow tie confidently takes the first step forward. Behind the presenter are five small icons representing freelancing, tutoring, content creation, digital products, and reselling. A large yellow light bulb shines above. Minimal off-white paper background, bold black ink outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "End with an energetic, encouraging pose."
+        },
+        {
+          "beat_id": "s07_b04",
+          "narration_text": "और कमेंट में बताओ, तुम कौन सा तरीका आज़माने वाले हो?",
+          "camera_type": "close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A hand-drawn stickman with a round white face, expressive friendly eyes, thin black limbs, and a red bow tie points toward a large empty speech bubble and a simple comment icon. The presenter smiles directly at the viewer. Minimal off-white paper background, bold black outlines, small green accent, clean vertical 9:16 composition.",
+          "session_delta_prompt": "Finish with a friendly inviting expression and a clear comment gesture."
         }
       ]
     }

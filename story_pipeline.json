@@ -1,340 +1,273 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "What If the World Never Invented Plastic?",
-    "project_id": "what_if_world_never_invented_plastic",
+    "title": "पत्थर युग का वो शिकारी, जिसने एक असंभव काम कर दिखाया",
+    "project_id": "stone_age_the_fire_that_saved_everyone",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Minimalist hand-drawn stickman explainer animation, warm off-white paper background, bold slightly imperfect black ink outlines, limited earthy accent colors, uncluttered compositions, expressive body language, simple readable props, dynamic visual storytelling. CRITICAL CHARACTER EYE DESIGN: Every stickman must have exactly two tiny, simple, solid-black dot or small oval eyes. Eyes must be completely filled black shapes with no pupils, no irises, no highlights, no reflections, no eye whites, no eyelashes, no detailed anatomy and no realistic features. Keep the exact same cute, simple dot-eye design in every single image. The recurring presenter has a round white face, two tiny solid-black dot eyes, a simple curved mouth, thin black stick limbs and a small red bow tie. Maintain identical face proportions and eye design throughout.",
-    "negative_prompt": "Detailed eyes, realistic eyes, visible pupils, irises, eye highlights, eye reflections, eye whites, eyelashes, eyebrows with realistic detail, human anatomy, photorealism, 3D rendering, inconsistent character faces, different eye styles, extra limbs, distorted hands, cluttered backgrounds, excessive text, watermarks, logos, overly bright colors."
+    "art_style": "Cinematic minimalist hand-drawn stickman storytelling, warm textured off-white paper mixed with prehistoric earthy environments, bold slightly imperfect black ink outlines, dramatic shadows, orange firelight, muted brown and dark green accents, expressive body language, dynamic camera angles, visually engaging suspense. CHARACTER CONSISTENCY IS CRITICAL: Every stickman has a perfectly round white face, exactly two tiny solid-black dot eyes, no pupils, no irises, no highlights, no reflections, no eye whites, no eyelashes and no realistic eye details. Eyes must remain identical tiny filled black dots in every single image. Main hero always has the same round face, tiny dot eyes, simple curved mouth, thin black stick limbs and a small red bow tie, adapted naturally to a primitive animal-skin shoulder wrap. Keep all characters visually consistent.",
+    "negative_prompt": "Detailed eyes, realistic eyes, pupils, irises, eye highlights, reflections, eye whites, eyelashes, inconsistent character design, photorealism, 3D rendering, modern clothes, modern buildings, guns, metal tools, plastic objects, smartphones, excessive text, cluttered composition, extra limbs, distorted faces, watermarks, logos."
   },
   "assets": {
-    "presenter": {
+    "hero": {
       "type": "character",
-      "label": "Recurring Stickman Presenter",
-      "visual_dna": "A cute minimalist hand-drawn stickman with a perfectly round white face, exactly two tiny solid-black dot eyes with absolutely no pupils, irises, highlights or eye details, a simple curved black mouth, thin black stick arms and legs, and a small red bow tie. The eyes must always look like two simple filled black dots. Identical face shape, eye size, spacing and proportions in every appearance."
+      "label": "Kanu - The Young Hunter",
+      "visual_dna": "A young prehistoric hand-drawn stickman with a perfectly round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin black limbs, a small red bow tie and a rough brown animal-skin shoulder wrap. Same face shape, eye size and spacing in every appearance. Curious, brave but sometimes impulsive."
     },
-    "shopkeeper": {
+    "elder": {
       "type": "character",
-      "label": "Old World Shopkeeper",
-      "visual_dna": "A minimalist hand-drawn stickman shopkeeper with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, a simple curved mouth, thin black limbs and a small brown apron. Same simple cute eye style as the presenter."
+      "label": "The Wise Elder",
+      "visual_dna": "An older prehistoric hand-drawn stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, a simple curved mouth, thin black limbs, a long grey beard and a rough dark brown animal-skin cloak. Calm and thoughtful, with consistent simple dot eyes."
     },
-    "customer": {
+    "friend": {
       "type": "character",
-      "label": "Customer",
-      "visual_dna": "A minimalist hand-drawn stickman with a round white face, exactly two tiny solid-black dot eyes without pupils, irises or highlights, a simple curved mouth, thin black limbs and a small blue scarf. Same simple cute eye style as the presenter."
+      "label": "Mira - Kanu's Friend",
+      "visual_dna": "A young prehistoric hand-drawn stickman with a perfectly round white face, exactly two tiny solid-black dot eyes without pupils or highlights, a simple curved mouth, thin black limbs and a dark green animal-skin wrap. Same cute minimal eye design and proportions as the other characters."
     },
-    "old_market": {
-      "type": "environment",
-      "label": "Traditional Market",
-      "visual_dna": "A charming old-fashioned marketplace with wooden stalls, glass jars, paper bags, cloth sacks, metal containers, baskets and handwritten signs. Warm earthy colors, hand-drawn outlines and a nostalgic atmosphere."
+    "wolf": {
+      "type": "character",
+      "label": "The Wild Wolf",
+      "visual_dna": "A lean prehistoric grey wolf with a hand-drawn expressive face, pointed ears, dark nose, sharp teeth and a rough fur outline. Animal-like rather than stickman-like, dramatic but not monstrous."
     },
-    "paper_packaging": {
+    "stone_camp": {
       "type": "environment",
-      "label": "Paper Packaging Workshop",
-      "visual_dna": "A traditional packaging workshop with brown paper sheets, cardboard boxes, paper rolls, starch-based glue, wooden tools and twine. Warm off-white and earthy tones."
+      "label": "Prehistoric Cave Camp",
+      "visual_dna": "A prehistoric campsite beside a rocky cave, scattered stones, animal-skin shelters, wooden spears, a small fire pit and distant hills. Earthy brown palette, hand-drawn ink outlines, dramatic natural lighting."
     },
-    "glass_factory": {
+    "forest": {
       "type": "environment",
-      "label": "Glassmaking Workshop",
-      "visual_dna": "A traditional glass workshop with a furnace, glowing molten glass, glass bottles, jars and skilled workers using long metal tools. Warm orange light and hand-drawn industrial details."
+      "label": "Ancient Forest",
+      "visual_dna": "A dense prehistoric forest with towering trees, tangled roots, large ferns, rocks, bushes and a narrow muddy trail. Deep green and earthy brown palette, atmospheric shadows and hand-drawn outlines."
     },
-    "metal_factory": {
+    "river": {
       "type": "environment",
-      "label": "Metal Packaging Workshop",
-      "visual_dna": "A traditional metalworking workshop with tin containers, steel cans, metal sheets, hand tools and a small furnace. Industrial but clean, with muted grey and earthy colors."
-    },
-    "natural_materials": {
-      "type": "environment",
-      "label": "Natural Materials Workshop",
-      "visual_dna": "A workshop filled with woven cloth, jute, cotton, natural rubber, wooden containers, baskets, rope and plant-based materials. Warm organic colors and simple handmade details."
+      "label": "Prehistoric River",
+      "visual_dna": "A cold flowing river between large rocks, muddy banks, primitive vegetation and a small rocky crossing. Hand-drawn natural scenery with dark blue water and earthy colors."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "old_market",
+      "environment_ref": "stone_camp",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "एक पल के लिए सोचो... अगर इंसानों ने कभी प्लास्टिक बनाया ही नहीं होता, तो हमारी दुनिया कैसी दिखती?",
-          "camera_type": "close-up",
+          "narration_text": "सोचो, तुम हजारों साल पहले पत्थर के युग में पैदा हुए होते। न मोबाइल, न बिजली, न दुकान... और न ही कोई मदद के लिए तैयार।",
+          "camera_type": "wide cinematic shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A cute minimalist hand-drawn stickman presenter with a perfectly round white face, exactly two tiny solid-black dot eyes with no pupils or highlights, a simple curved mouth, thin black limbs and a small red bow tie stands in an old-fashioned marketplace. He looks curious and points toward the viewer. Wooden stalls, glass jars and cloth bags in the background. Warm off-white paper texture, bold imperfect black ink outlines, earthy accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter tilts his head slightly and raises one hand as if asking an intriguing question."
+          "prompt_action": "A vast prehistoric landscape at sunrise with rocky hills, a dark cave and a small group of primitive stickman humans near a tiny campfire. In the foreground stands Kanu, a young prehistoric stickman with a perfectly round white face, exactly two tiny solid-black dot eyes without pupils or highlights, a simple curved mouth, thin black limbs, a small red bow tie and a rough brown animal-skin shoulder wrap. Dramatic cinematic hand-drawn composition, warm earthy tones, vertical 9:16.",
+          "session_delta_prompt": "Slowly reveal the lonely prehistoric landscape and move toward Kanu standing near the cave."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "आज प्लास्टिक हमारी ज़िंदगी में इतना घुस चुका है कि शायद हमें एहसास भी नहीं होता कि हम इसका इस्तेमाल कितनी बार करते हैं।",
-          "camera_type": "wide shot",
+          "narration_text": "तुम्हारा नाम कानू है। तुम अपनी छोटी सी टोली के साथ जंगल के किनारे रहते हो।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin black limbs and red bow tie stands in the center of a modern everyday scene surrounded by plastic water bottles, food containers, shopping bags, phone cases, pens, pipes and packaging. The presenter looks overwhelmed by the number of objects. Warm off-white paper background, bold black ink outlines, limited colors, vertical 9:16 composition.",
-          "session_delta_prompt": "Everyday plastic objects appear around the presenter until he is surrounded on all sides."
+          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, a simple curved mouth, thin black limbs, red bow tie and rough brown animal-skin shoulder wrap, stands beside a rocky cave with his small tribe. Other primitive stickman villagers wear simple animal-skin wraps and carry wooden spears. A small campfire glows nearby. Warm prehistoric morning light, hand-drawn ink outlines, vertical 9:16.",
+          "session_delta_prompt": "Kanu looks around at his tribe as villagers prepare for the day."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "पानी की बोतल से लेकर मोबाइल के कवर तक, खाने की पैकिंग से लेकर तारों की सुरक्षा तक।",
-          "camera_type": "montage",
+          "narration_text": "एक सुबह तुम्हारे कबीले का खाना लगभग खत्म हो चुका है। सबकी उम्मीद अब तुम्हारे शिकार पर टिकी है।",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A clean hand-drawn montage showing four large everyday objects: a disposable water bottle, a food packet, a mobile phone case and an insulated electrical cable. A cute minimalist stickman presenter with a round white face, two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie points toward each object. Warm off-white paper background, bold black outlines, simple colorful accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter points from the water bottle to the food packet, then the phone case and electrical cable."
+          "prompt_action": "Inside a prehistoric cave, Kanu with his round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap looks at an almost empty woven food basket. A few berries and roots remain. His tribe watches anxiously in the background. Moody morning lighting, bold hand-drawn outlines, vertical 9:16.",
+          "session_delta_prompt": "Kanu peers into the nearly empty basket while the other villagers exchange worried looks."
         },
         {
           "beat_id": "s01_b04",
-          "narration_text": "लेकिन अगर प्लास्टिक कभी बना ही नहीं होता, तो इंसानों को इन सब चीज़ों के लिए दूसरे रास्ते खोजने पड़ते।",
-          "camera_type": "reaction shot",
+          "narration_text": "तुम अपना भाला उठाते हो और जंगल की तरफ निकल पड़ते हो। लेकिन तुम्हें अंदाजा नहीं कि आज का दिन तुम्हारी जिंदगी बदलने वाला है।",
+          "camera_type": "tracking shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A cute minimalist hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, a simple curved mouth, thin limbs and a red bow tie stands beside a large empty question mark. Around him are small floating icons of a bottle, shopping bag, food box and electrical cable, each shown as a simple outline. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter looks at the empty question mark and gestures as if inviting the viewer into an alternate world."
+          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin black limbs, red bow tie and brown animal-skin shoulder wrap, grips a long wooden spear tipped with sharpened stone. He walks away from the cave toward a dark ancient forest. His tribe watches from behind. Cinematic low-angle hand-drawn illustration, dramatic sunlight, vertical 9:16.",
+          "session_delta_prompt": "Kanu tightens his grip on the spear and walks toward the forest as the camera follows from behind."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "old_market",
+      "environment_ref": "forest",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "सबसे पहले सोचो, तुम दुकान से सामान खरीदने जाते। दुकानदार तुम्हें प्लास्टिक की थैली नहीं देता।",
-          "camera_type": "medium shot",
+          "narration_text": "जंगल में दूर तुम्हें एक हिरण दिखाई देता है। तुम धीरे-धीरे उसके पीछे बढ़ते हो।",
+          "camera_type": "over-the-shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Inside a traditional hand-drawn Indian marketplace, a cute stickman customer with a round white face, two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and blue scarf stands at a wooden shop counter. A stickman shopkeeper with the same simple dot eyes, round white face and brown apron holds up an empty hand instead of offering a plastic bag. Warm earthy colors, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The customer looks confused as the shopkeeper gestures toward alternatives behind the counter."
+          "prompt_action": "From behind Kanu, show a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap crouching behind a thick tree while holding a stone-tipped wooden spear. In the distance, a deer stands near bushes. Dense prehistoric forest, filtered sunlight, hand-drawn cinematic style, vertical 9:16.",
+          "session_delta_prompt": "Kanu carefully leans around the tree while the deer remains alert in the distance."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "उसकी जगह मिलती कागज़ की थैली, कपड़े का बैग या फिर जूट का थैला।",
+          "narration_text": "तुम्हें लगता है शिकार आसान होगा। लेकिन तभी जंगल में एक तेज आवाज गूंजती है।",
           "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A close-up hand-drawn display of three practical shopping alternatives arranged neatly on a wooden counter: a folded brown paper bag, a reusable cotton cloth bag and a woven jute sack. A cute stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie points toward them. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter lifts the cloth bag and opens it to show its reusable design."
+          "prompt_action": "Kanu, the young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, freezes suddenly with his spear raised. His head turns sharply toward a dark section of the forest. Leaves shake, birds fly out of the trees and distant branches bend. Dramatic hand-drawn suspense, vertical 9:16.",
+          "session_delta_prompt": "Kanu suddenly turns toward the noise as birds scatter upward."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "लोग अपने साथ थैला लेकर चलते, और एक ही बैग को बार-बार इस्तेमाल करते।",
-          "camera_type": "tracking shot",
+          "narration_text": "तुम पीछे देखते हो... और वहां एक विशाल जंगली भेड़िया खड़ा है। उसकी नजर सीधे तुम पर है।",
+          "camera_type": "low-angle reveal",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A cute minimalist stickman customer with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin black limbs and blue scarf walks through a traditional market carrying a reusable cloth shopping bag filled with vegetables and groceries. Wooden shops and baskets line the path. Warm off-white paper background, earthy colors, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The customer walks confidently with the cloth bag swinging gently by his side."
+          "prompt_action": "A large wild grey wolf stands between ancient trees, facing Kanu. In the foreground, Kanu is seen from behind, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, holding a wooden spear. The wolf has pointed ears, dark nose, visible teeth and intense posture. Dark forest shadows, dramatic cinematic hand-drawn outlines, vertical 9:16.",
+          "session_delta_prompt": "The wolf slowly steps out of the shadows and stares at Kanu."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "अब पानी और दूध की बात करें। आज की तरह हल्की प्लास्टिक बोतलें नहीं होतीं।",
-          "camera_type": "medium shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands beside a wooden table. On the table are an empty modern-style plastic bottle crossed out and two sturdy glass bottles. Warm old-fashioned shop setting, bold black ink outlines, earthy accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter pushes the plastic bottle aside and picks up a glass bottle."
+          "narration_text": "तुम्हारे हाथ कांपने लगते हैं। सामने भेड़िया है और पीछे जाने का रास्ता भी आसान नहीं।",
+          "camera_type": "close-up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Close-up of Kanu, a young prehistoric stickman with a perfectly round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap. He grips his stone-tipped wooden spear with trembling hands. The wolf's dark silhouette is visible behind him between trees. Dramatic shadows, earthy colors, hand-drawn ink style, vertical 9:16.",
+          "session_delta_prompt": "Kanu's hands tremble slightly as he tightens his grip on the spear."
         },
         {
           "beat_id": "s02_b05",
-          "narration_text": "दूध, तेल और कई पेय पदार्थ काँच की बोतलों में मिलते, जिन्हें खाली होने पर वापस किया जा सकता था।",
-          "camera_type": "wide shot",
+          "narration_text": "भेड़िया धीरे-धीरे तुम्हारी तरफ बढ़ता है। अब तुम्हें कुछ ऐसा करना होगा जिससे तुम बच सको।",
+          "camera_type": "wide cinematic shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A traditional milk delivery scene in a hand-drawn Indian neighborhood. A cute stickman milk seller with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth and thin limbs hands a glass milk bottle to a customer with the same simple dot-eye design. Several clean empty glass bottles wait in wooden crates for collection. Warm earthy background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The customer returns an empty glass bottle while receiving a filled one."
-        },
-        {
-          "beat_id": "s02_b06",
-          "narration_text": "मतलब पैकेजिंग का नियम बदल जाता। फेंको और भूल जाओ नहीं, बल्कि इस्तेमाल करो और वापस लौटाओ।",
-          "camera_type": "wide shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A cute minimalist stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands beside a circular reuse system illustrated with three large glass bottles moving from shop to customer, then back to shop in wooden crates. Warm off-white paper background, bold black outlines, earthy green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The glass bottles move around the reuse cycle and return neatly to the shop."
+          "prompt_action": "A tense prehistoric forest confrontation. Kanu, a young stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, stands holding a wooden spear. A grey wolf advances slowly from the opposite side. Tall trees and thick roots surround them. Dramatic low lighting, hand-drawn cinematic composition, vertical 9:16.",
+          "session_delta_prompt": "The wolf takes one cautious step forward while Kanu shifts his feet backward."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "paper_packaging",
+      "environment_ref": "forest",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "लेकिन ऑनलाइन ऑर्डर और पार्सल का क्या होता? हर डिब्बे को सुरक्षित पहुँचाना भी ज़रूरी है।",
-          "camera_type": "wide shot",
+          "narration_text": "तुम्हें अचानक याद आता है कि तुम्हारे पास एक चीज है जिससे भेड़िया डर सकता है। आग।",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands beside a delivery worker holding a fragile parcel. The parcel is a brown cardboard box with a hand-drawn fragile symbol. A delivery bicycle and several stacked cardboard boxes are visible. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter carefully points at the fragile cardboard parcel."
+          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, looks down at a small burning torch in his hand. Orange flames illuminate his face while the grey wolf stands blurred in the background. Dramatic warm firelight, dark forest, bold hand-drawn outlines, vertical 9:16.",
+          "session_delta_prompt": "Kanu glances at the burning torch and suddenly raises it."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "यहाँ काम आता कागज़ और गत्ता। मजबूत कार्डबोर्ड के डिब्बे सामान को संभाल सकते थे।",
-          "camera_type": "close-up",
+          "narration_text": "तुम जलती हुई लकड़ी को ऊपर उठाते हो। भेड़िया आग की लपटें देखकर एक पल के लिए रुक जाता है।",
+          "camera_type": "low-angle shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A close-up hand-drawn illustration of a sturdy corrugated cardboard box with its layered wavy interior clearly visible. A cute minimalist stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie points to the layers. Warm off-white paper background, bold black outlines, earthy brown tones, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter taps the corrugated cardboard layers to show how they add strength."
+          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, stands bravely holding a large flaming wooden torch above his head. The grey wolf pauses a few steps away, cautious of the fire. Orange firelight illuminates the dark forest, cinematic hand-drawn ink outlines, vertical 9:16.",
+          "session_delta_prompt": "Kanu raises the torch higher as the wolf hesitates and steps back."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "और डिब्बे को बंद करने के लिए प्लास्टिक टेप की जगह कागज़ की गोंद वाली टेप इस्तेमाल होती।",
-          "camera_type": "over-the-shoulder",
+          "narration_text": "तुम आग को आगे रखते हुए धीरे-धीरे पीछे हटते हो। आखिरकार भेड़िया जंगल में गायब हो जाता है।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A traditional packaging worker with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth and thin limbs seals a cardboard parcel using brown gummed paper tape. A small bowl of starch-based glue and a paper tape roll sit on the workbench. A cute stickman presenter with identical simple dot eyes and red bow tie watches. Warm paper workshop, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The worker pulls the paper tape across the box seam and presses it down firmly."
+          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, carefully backs away while holding a flaming torch in front of him. The grey wolf turns and disappears into thick forest bushes. Glowing firelight against deep green trees, hand-drawn cinematic style, vertical 9:16.",
+          "session_delta_prompt": "The wolf retreats into the bushes while Kanu keeps the torch raised and moves backward."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "जहाँ ज़्यादा मजबूती चाहिए होती, वहाँ रस्सी, कपड़े की पट्टी या धातु की क्लिप भी काम आती।",
-          "camera_type": "montage",
+          "narration_text": "तुम बच तो जाते हो, लेकिन अब तुम्हारे पास शिकार नहीं है। और सूरज भी ढलने लगा है।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn packaging workbench showing three methods of securing parcels: a cardboard box tied with natural jute twine, a package wrapped with a strong cloth strip, and a box secured with a small metal clip. A cute stickman presenter with a round white face, two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie points at the options. Warm off-white background, bold black outlines, earthy colors, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter points to the twine, then the cloth strip and finally the metal clip."
-        },
-        {
-          "beat_id": "s03_b05",
-          "narration_text": "नाज़ुक सामान के लिए लकड़ी की पेटियाँ, कागज़ की परतें और सूखी घास जैसी भराई इस्तेमाल की जा सकती थी।",
-          "camera_type": "close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn wooden shipping crate opened to reveal a fragile glass object protected by folded paper layers and clean dry straw-like packing material. A cute minimalist stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie examines the protective packing. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter gently lifts a paper layer to reveal the protected fragile item."
+          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, stands alone in the forest holding a fading torch and an empty wooden spear. The sun is setting behind the trees, casting long orange shadows. His posture looks exhausted and disappointed. Cinematic hand-drawn composition, vertical 9:16.",
+          "session_delta_prompt": "Kanu lowers his spear and looks toward the fading sunlight."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "glass_factory",
+      "environment_ref": "river",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "अब सवाल है, अगर प्लास्टिक नहीं होता तो काँच और धातु का इस्तेमाल कितना बढ़ता?",
+          "narration_text": "घर लौटने के लिए तुम नदी के पास पहुंचते हो। लेकिन बारिश के कारण पानी बहुत तेज बह रहा है।",
           "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands between a traditional glass furnace and a metalworking workshop. Glass bottles, steel cans and metal containers are displayed around him. Warm orange furnace glow, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter turns from the glowing glass furnace toward the metal containers."
+          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, stands on a rocky riverbank. A fast flowing river with dark blue water separates him from the other side. The sky is cloudy and rocks are wet from rain. Dramatic prehistoric landscape, hand-drawn ink outlines, vertical 9:16.",
+          "session_delta_prompt": "Kanu approaches the riverbank and stops as he sees the strong current."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "खाने-पीने की चीज़ों के लिए काँच के जार, स्टील के डिब्बे और टिन के कैन इस्तेमाल होते।",
-          "camera_type": "close-up",
+          "narration_text": "तुम पानी में उतरने की हिम्मत नहीं करते। तभी तुम्हें नदी के ऊपर कुछ बड़े पत्थर दिखाई देते हैं।",
+          "camera_type": "over-the-shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A neat hand-drawn display of food packaging alternatives: transparent glass jars containing pickles and jam, reusable steel lunch containers and sealed tin cans. A cute minimalist stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie points toward the containers. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter opens a steel container and then gestures toward the glass jars."
+          "prompt_action": "Over Kanu's shoulder, show several large rocks protruding from the flowing prehistoric river, forming an uneven possible crossing. Kanu is a young stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap. He studies the rocks carefully from the bank. Hand-drawn cinematic style, cool blue water and earthy rocks, vertical 9:16.",
+          "session_delta_prompt": "Kanu looks from one exposed rock to the next, considering a route across."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "इनका फायदा था कि इन्हें लंबे समय तक दोबारा इस्तेमाल किया जा सकता था।",
-          "camera_type": "medium shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "A cute hand-drawn stickman customer with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth and thin limbs washes a sturdy glass jar and steel food container at a simple sink. Several clean containers are arranged on a shelf ready for reuse. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
-          "session_delta_prompt": "The customer washes the jar, dries it and places it neatly back on the shelf."
+          "narration_text": "तुम एक-एक पत्थर पर पैर रखते हुए आगे बढ़ते हो। हर कदम पर संतुलन बनाना पड़ता है।",
+          "camera_type": "side tracking shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, carefully steps across large rocks in a fast-flowing river. His arms stretch out for balance and water splashes around the stones. Cinematic hand-drawn outlines, dramatic blue water, vertical 9:16.",
+          "session_delta_prompt": "Kanu cautiously shifts his weight from one rock to the next, keeping his arms out for balance."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "लेकिन एक समस्या भी थी। काँच भारी होता है और गिरने पर टूट सकता है।",
-          "camera_type": "reaction shot",
+          "narration_text": "अचानक तुम्हारा पैर फिसलता है। तुम एक पत्थर को पकड़कर खुद को गिरने से बचा लेते हो।",
+          "camera_type": "dynamic close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands beside a large heavy glass bottle. In a separate safe visual panel, a dropped glass jar is shown broken on the floor with no person nearby. The presenter looks concerned. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter tries lifting the heavy bottle, then reacts with concern as the separate jar illustration shows broken glass."
+          "prompt_action": "A dramatic hand-drawn action scene of Kanu slipping on a wet river rock, one hand gripping the edge of a larger stone while water rushes below. Kanu has a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap. His wooden spear is still secured in his other hand. Strong motion lines and splashing water, vertical 9:16.",
+          "session_delta_prompt": "Kanu's foot slips, his body tilts and his hand catches the rock just in time."
         },
         {
           "beat_id": "s04_b05",
-          "narration_text": "धातु के डिब्बे भी बनाना और दूर तक पहुँचाना कई बार ज़्यादा महँगा पड़ सकता था।",
-          "camera_type": "wide shot",
+          "narration_text": "काफी कोशिश के बाद तुम नदी पार कर लेते हो। दूर तुम्हें अपने कबीले की आग दिखाई देती है।",
+          "camera_type": "wide cinematic shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A traditional metal packaging workshop with a hand-drawn worker using tools to shape steel cans. A cute stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands beside a heavy stack of metal containers and a delivery cart. Warm earthy industrial setting, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The worker struggles to move a heavy stack of metal containers onto the delivery cart."
+          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, stands exhausted on the far riverbank. In the distance, a warm orange campfire glows near the rocky cave where his tribe lives. Twilight sky and ancient landscape, cinematic hand-drawn style, vertical 9:16.",
+          "session_delta_prompt": "Kanu notices the distant campfire and straightens up with relief."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "natural_materials",
+      "environment_ref": "stone_camp",
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "और सिर्फ पैकेजिंग ही नहीं। कपड़े, जूते और रोज़मर्रा की कई चीज़ों में भी बदलाव आता।",
-          "camera_type": "wide shot",
+          "narration_text": "जब तुम वापस पहुंचते हो, सब तुम्हारे पास दौड़कर आते हैं। उन्हें लगता है कि तुम कोई शिकार लेकर लौटे हो।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A cute minimalist hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands inside a traditional goods shop. Around him are cotton clothes, leather shoes, jute bags, woven baskets and wooden household objects. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter gestures around the shop, highlighting the variety of natural materials."
+          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, arrives at the prehistoric cave camp empty-handed. Several tribe members run toward him with hopeful expressions. A warm campfire glows in the center. Earthy cinematic hand-drawn style, vertical 9:16.",
+          "session_delta_prompt": "The tribe members approach Kanu eagerly, expecting him to bring food."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "कपास, ऊन, चमड़ा, जूट और प्राकृतिक रबर कई कामों में इस्तेमाल होते।",
-          "camera_type": "montage",
+          "narration_text": "लेकिन तुम्हारे हाथ खाली हैं। तुम उन्हें बताते हो कि आज तुम्हारा सामना एक जंगली भेड़िये से हुआ।",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A clean hand-drawn material showcase arranged in five sections: a cotton bale, folded wool fabric, a leather shoe, a woven jute bag and a small natural rubber sheet. A cute stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands beside the display. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter points to each material as the camera shifts across the display."
+          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, gestures toward the forest while explaining his encounter. His spear is empty and his clothes are muddy. Tribe members with matching simple dot eyes listen with shocked expressions. Campfire lighting, hand-drawn ink style, vertical 9:16.",
+          "session_delta_prompt": "Kanu points toward the dark forest while the tribe listens closely."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "बिजली के तारों और मशीनों के लिए भी काँच, सिरेमिक, कपड़े, रबर और दूसरे इंसुलेटिंग पदार्थों के विकल्प मौजूद थे।",
-          "camera_type": "close-up",
+          "narration_text": "तभी बूढ़ा बुजुर्ग आगे आता है। वह तुम्हारी बात सुनकर कहता है, आज तुम शिकार नहीं लाए... लेकिन तुमने कुछ ज्यादा जरूरी चीज सीखी है।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn educational workshop illustration showing an electrical cable with cloth braiding, ceramic insulators on a simple electrical assembly and rubber tubing beside a small machine. A cute stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie points toward the materials. Warm off-white paper background, bold black outlines, muted colors, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter traces the cloth-covered wire and points to the ceramic insulator."
+          "prompt_action": "The wise elder, a prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin black limbs, long grey beard and dark brown animal-skin cloak, stands beside Kanu. Kanu has the same round white face, two tiny solid-black dot eyes, red bow tie and brown shoulder wrap. The elder places a reassuring hand on Kanu's shoulder beside the campfire. Warm orange firelight, cinematic hand-drawn style, vertical 9:16.",
+          "session_delta_prompt": "The elder gently places his hand on Kanu's shoulder and speaks calmly."
         },
         {
           "beat_id": "s05_b04",
-          "narration_text": "हालाँकि हर जगह ये विकल्प प्लास्टिक जितने हल्के, सस्ते या सुविधाजनक नहीं होते।",
-          "camera_type": "medium shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie compares a lightweight plastic bottle silhouette with a heavier glass bottle, a cloth bag and a metal container. A simple balance scale tilts under the weight of the alternatives. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter lifts the glass bottle with effort and then looks at the lighter alternatives thoughtfully."
-        }
-      ]
-    },
-    {
-      "scene_id": 6,
-      "environment_ref": "old_market",
-      "beats": [
-        {
-          "beat_id": "s06_b01",
-          "narration_text": "तो क्या प्लास्टिक के बिना दुनिया बेहतर होती? ज़रूरी नहीं।",
+          "narration_text": "वह कहता है, ताकतवर होना जरूरी है, लेकिन खतरे को पहचानना और सही समय पर समझदारी दिखाना उससे भी ज्यादा जरूरी है।",
           "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A cute minimalist hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands between two contrasting scenes: one with littered plastic waste and another with heavy glass bottles, cut trees and metal containers. He has a thoughtful expression. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter looks from one side to the other, showing that both worlds have trade-offs."
+          "prompt_action": "The wise elder, a prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, grey beard, thin limbs and dark brown animal-skin cloak, speaks thoughtfully beside a glowing campfire. Kanu, with his round white face, tiny solid-black dot eyes, red bow tie and brown animal-skin shoulder wrap, listens carefully. Warm dramatic orange lighting, bold hand-drawn outlines, vertical 9:16.",
+          "session_delta_prompt": "The elder raises one finger to emphasize his lesson while Kanu listens quietly."
         },
         {
-          "beat_id": "s06_b02",
-          "narration_text": "काँच, धातु और कागज़ के भी अपने पर्यावरणीय नुकसान हैं। इन्हें बनाने में ऊर्जा, पानी और कच्चा माल लगता है।",
-          "camera_type": "wide shot",
+          "beat_id": "s05_b05",
+          "narration_text": "उस रात तुम्हें समझ आता है कि पत्थर के युग में जिंदा रहने के लिए सिर्फ शिकार करना नहीं, हर दिन सीखना भी जरूरी था।",
+          "camera_type": "wide cinematic shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn educational scene showing three production areas: a glass furnace using energy, a metal factory using raw metal sheets and a paper mill with stacked timber and paper rolls. A cute stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands in front, looking thoughtful. Warm earthy colors, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter points toward the furnace, metal sheets and paper rolls in sequence."
+          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, sits beside his tribe around a glowing campfire under a star-filled prehistoric sky. His spear rests beside him. The wise elder and friend Mira sit nearby, sharing the warmth of the fire. Peaceful cinematic hand-drawn illustration, warm orange light, vertical 9:16.",
+          "session_delta_prompt": "The camera slowly pulls back as the tribe gathers around the fire and Kanu looks thoughtfully into the flames."
         },
         {
-          "beat_id": "s06_b03",
-          "narration_text": "शायद ऐसी दुनिया में हम चीज़ें कम फेंकते, ज़्यादा मरम्मत करते और पैकेजिंग को बार-बार इस्तेमाल करते।",
-          "camera_type": "tracking shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A charming hand-drawn scene of a small neighborhood repair and reuse workshop. A cute stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth and thin limbs repairs a wooden container while another character cleans glass bottles and folds reusable cloth bags. Warm off-white paper background, earthy green accents, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The characters repair, clean and organize their reusable items instead of throwing them away."
-        },
-        {
-          "beat_id": "s06_b04",
-          "narration_text": "दुकानों में सामान लौटाने की व्यवस्था होती, और घरों में खाली बोतलें और डिब्बे फेंकने के बजाय संभालकर रखे जाते।",
-          "camera_type": "wide shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A traditional neighborhood shop with wooden shelves, reusable glass bottles, metal tins and paper packages. A cute stickman customer with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth and thin limbs returns empty bottles to a shopkeeper with the same dot-eye style. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
-          "session_delta_prompt": "The shopkeeper accepts the returned bottles and places them into a collection crate."
-        },
-        {
-          "beat_id": "s06_b05",
-          "narration_text": "लेकिन दुनिया शायद ज़्यादा भारी, महँगी और मेहनत वाली भी होती।",
-          "camera_type": "wide shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie struggles to carry a large wooden crate filled with glass bottles and metal containers. A delivery cart with heavy reusable packaging is behind him. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter strains slightly under the heavy crate, then sets it down carefully."
-        },
-        {
-          "beat_id": "s06_b06",
-          "narration_text": "तो प्लास्टिक के बिना दुनिया में पैकेजिंग गायब नहीं होती। बस उसका तरीका बदल जाता।",
-          "camera_type": "wide shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A beautiful hand-drawn panoramic marketplace in an alternate world without plastic. Show paper bags, cardboard boxes sealed with paper tape, glass bottles, metal cans, cloth sacks, jute baskets, wooden crates and twine. Cute stickman shoppers and shopkeepers with round white faces, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouths and thin limbs interact naturally. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
-          "session_delta_prompt": "The marketplace comes alive as shoppers exchange reusable containers and carry paper and cloth bags."
-        },
-        {
-          "beat_id": "s06_b07",
-          "narration_text": "अब तुम्हारी बारी। क्या तुम ऐसी दुनिया में रहना पसंद करते, जहाँ प्लास्टिक नहीं होता, लेकिन हर चीज़ दोबारा इस्तेमाल करनी पड़ती?",
+          "beat_id": "s05_b06",
+          "narration_text": "और सोचो, अगर तुम कानू की जगह होते, तो उस भेड़िये से बचने के लिए क्या करते? कमेंट में बताना।",
           "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A cute minimalist hand-drawn stickman presenter with a perfectly round white face, exactly two tiny solid-black dot eyes with no pupils, highlights or details, a simple curved mouth, thin black limbs and a small red bow tie faces the viewer directly. He holds a reusable glass bottle in one hand and a folded cloth bag in the other, with a playful questioning expression. Warm off-white paper background, bold black outlines, earthy accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter raises both alternatives slightly and tilts his head toward the viewer, inviting an answer."
+          "prompt_action": "Kanu, the young prehistoric stickman with a perfectly round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin black limbs, small red bow tie and brown animal-skin shoulder wrap, faces the viewer directly. He holds a small burning torch in one hand and a wooden spear in the other, with a playful questioning expression. Dark forest silhouette behind him and warm firelight on his face, bold cinematic hand-drawn style, vertical 9:16.",
+          "session_delta_prompt": "Kanu raises the torch slightly and tilts his head toward the viewer, inviting them to answer."
         }
       ]
     }

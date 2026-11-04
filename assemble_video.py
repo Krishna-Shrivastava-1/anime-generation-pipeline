@@ -97,7 +97,6 @@
 
 
 
-
 import os
 import re
 import json
@@ -140,8 +139,8 @@ BGM_FILE = Path("bgm.mp3")
 
 # Freesound API Configuration
 FREESOUND_API_KEY = "Bs9vTK3Anfb9CPgXomEI3RTWCTRmlS34cOb1NIox"
-SFX_MIN_DUR = 0.3
-SFX_MAX_DUR = 8.0
+SFX_MIN_DUR = 0.2
+SFX_MAX_DUR = 6.0
 
 # Groq API Configuration
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "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")
@@ -149,7 +148,6 @@ GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "gsk_JC7hKNBZUuKPUCxlfBqGWGdyb3FYB
 if not GROQ_API_KEY:
     print("\n" + "="*70)
     print("❌ ERROR: GROQ_API_KEY is not set!")
-    print('Run: $env:GROQ_API_KEY="your_groq_key_here"')
     print("="*70 + "\n")
     exit(1)
 
@@ -236,7 +234,7 @@ def align_ground_truth_to_audio(audio_path: Path, ground_truth_text: str, output
 
 
 # =====================================================================
-# 2. FREESOUND API (Downloads-Ranked Quality Search)
+# 2. FREESOUND API (Clean Foley Filtering + Relevance Search)
 # =====================================================================
 
 class FreesoundAudioAPI:
@@ -246,31 +244,49 @@ class FreesoundAudioAPI:
         "User-Agent": "AudioStoryFoleyBot/3.0"
     }
 
+    # Blacklist irrelevant tags that ruin clean Foley (music, synths, loops, cars/crashes unless asked)
+    NEGATIVE_TAG_FILTER = "-tag:music -tag:beat -tag:loop -tag:song -tag:synth -tag:electronic"
+
+    @classmethod
+    def clean_query_term(cls, term: str) -> str:
+        """Sanitizes text queries for Freesound API."""
+        cleaned = re.sub(r'[^a-zA-Z0-9\s]', ' ', term)
+        return " ".join(cleaned.split())
+
     @classmethod
     def search_and_download(cls, query: str, fallback_query: str = "") -> Path | None:
-        slug = re.sub(r'[^a-zA-Z0-9_-]', '_', query.strip().lower())
+        q_clean = cls.clean_query_term(query)
+        fb_clean = cls.clean_query_term(fallback_query)
+
+        slug = re.sub(r'[^a-zA-Z0-9_-]', '_', q_clean.strip().lower())
         cached_files = list(SFX_DIR.glob(f"{slug}_*.mp3"))
         if cached_files and cached_files[0].stat().st_size > 1024:
             return cached_files[0]
 
-        # Order of search attempts
-        queries_to_try = [query]
-        if fallback_query and fallback_query.lower() != query.lower():
-            queries_to_try.append(fallback_query)
+        # Prioritize search attempts:
+        # 1. Exact query with negative filter and duration constraint
+        # 2. Fallback query with negative filter
+        # 3. First two material words (e.g. 'glass bottle') instead of the last verb (e.g. 'break')
+        queries_to_try = [q_clean]
+        if fb_clean and fb_clean != q_clean:
+            queries_to_try.append(fb_clean)
 
-        # Add single-word core noun as final safety
-        words = query.strip().split()
-        if len(words) > 1:
-            queries_to_try.append(words[-1])
+        words = q_clean.split()
+        if len(words) >= 2:
+            # Fallback to the object/material itself (e.g., 'glass bottle', 'door wood')
+            queries_to_try.append(f"{words[0]} {words[1]}")
 
-        for q in queries_to_try:
-            # Sort by downloads_desc: Gives studio-grade Foley with verified community usage
+        for attempt_query in queries_to_try:
+            if not attempt_query.strip():
+                continue
+
+            # Sort by "score" (relevance) instead of downloads_desc to prevent generic high-download car crashes
             params = {
-                "query": q,
-                "filter": f"duration:[{SFX_MIN_DUR} TO {SFX_MAX_DUR}]",
-                "sort": "downloads_desc",
-                "fields": "id,name,previews,duration,num_downloads",
-                "page_size": 4
+                "query": attempt_query,
+                "filter": f"duration:[{SFX_MIN_DUR} TO {SFX_MAX_DUR}] {cls.NEGATIVE_TAG_FILTER}",
+                "sort": "score",
+                "fields": "id,name,previews,duration,num_downloads,rating_avg",
+                "page_size": 5
             }
 
             try:
@@ -279,13 +295,16 @@ class FreesoundAudioAPI:
                     continue
 
                 results = resp.json().get("results", [])
+                
+                # If strict negative filter returns nothing, loosen filter slightly
                 if not results:
-                    # Retry without duration restriction
-                    params.pop("filter", None)
+                    params["filter"] = f"duration:[{SFX_MIN_DUR} TO {SFX_MAX_DUR}]"
+                    params["sort"] = "rating_desc"
                     resp = requests.get(cls.BASE_URL, headers=cls.HEADERS, params=params, timeout=10)
                     results = resp.json().get("results", []) if resp.status_code == 200 else []
 
                 if results:
+                    # Pick the top rated/relevant match
                     chosen = results[0]
                     sound_id = chosen["id"]
                     previews = chosen.get("previews", {})
@@ -295,7 +314,7 @@ class FreesoundAudioAPI:
                         continue
 
                     target_file = SFX_DIR / f"{slug}_{sound_id}.mp3"
-                    print(f"      🔗 Downloading Freesound #{sound_id} ('{chosen.get('name')[:35]}')...")
+                    print(f"      🔗 Downloading Freesound #{sound_id} ('{chosen.get('name')[:35]}') for '{attempt_query}'...")
 
                     audio_resp = requests.get(download_url, headers=cls.HEADERS, timeout=15)
                     if audio_resp.status_code == 200 and len(audio_resp.content) > 1024:
@@ -305,28 +324,23 @@ class FreesoundAudioAPI:
                         return target_file
 
             except Exception as e:
-                print(f"      ⚠️ Freesound lookup failed for '{q}': {e}")
+                print(f"      ⚠️ Freesound lookup failed for '{attempt_query}': {e}")
 
-        print(f"      ❌ Freesound: No sounds found for {queries_to_try}")
+        print(f"      ❌ Freesound: No reasonable sounds found for queries: {queries_to_try}")
         return None
 
 
 # =====================================================================
-# 3. ADVANCED TRANSIENT ONSET DETECTOR (Accurate Crux Timing)
+# 3. TRANSIENT ONSET DETECTOR
 # =====================================================================
 
 def detect_audio_transient_onset(data: np.ndarray, sr: int) -> float:
-    """
-    Finds the exact attack onset (first physical impact/sound start).
-    Prevents sounds from hitting late if there is dead air before the hit.
-    """
     if len(data) == 0:
         return 0.0
 
     peak = np.max(np.abs(data)) + 1e-9
     norm_data = np.abs(data) / peak
 
-    # 10ms energy smoothing window
     win = max(1, int(sr * 0.01))
     energy = np.convolve(norm_data**2, np.ones(win) / win, mode='same')
     max_e = np.max(energy)
@@ -334,44 +348,31 @@ def detect_audio_transient_onset(data: np.ndarray, sr: int) -> float:
     if max_e < 1e-4:
         return 0.0
 
-    # Onset is when energy exceeds 8% of peak transient
     threshold = max_e * 0.08
     indices = np.where(energy >= threshold)[0]
     if len(indices) == 0:
         return 0.0
 
     onset_sec = indices[0] / float(sr)
-    # Cap pre-roll compensation to a reasonable maximum
     return min(onset_sec, 1.2)
 
 
 def process_sfx_audio(raw_sfx_path: Path, sound_type: str, max_duration_sec: float, output_path: Path) -> float:
-    """
-    - Preserves natural room reverb tails for transient impacts (clicks, shots, slams).
-    - Trims only excessively long sustained ambient files.
-    - Returns attack_onset_sec for sample-accurate trigger alignment.
-    """
     data, sr = sf.read(str(raw_sfx_path), dtype="float32")
     if data.ndim > 1:
         data = np.mean(data, axis=1)
 
     duration_sec = len(data) / float(sr)
-
-    # Detect attack onset
     onset_sec = detect_audio_transient_onset(data, sr)
 
-    # Handling based on sound type
     if sound_type == "transient":
-        # Keep short sounds intact to preserve natural reverb tail
-        if duration_sec > max_duration_sec + 1.0:
-            target_samples = int((max_duration_sec + 0.8) * sr)
+        if duration_sec > max_duration_sec + 0.8:
+            target_samples = int((max_duration_sec + 0.6) * sr)
             data = data[:target_samples]
-            # Soft 100ms fade-out
             fade = min(int(sr * 0.1), len(data) // 4)
             if fade > 0:
                 data[-fade:] *= 0.5 * (1 + np.cos(np.linspace(0, np.pi, fade)))
     else:
-        # Ambient/sustained: trim to desired length with a smooth 150ms fade
         target_samples = int(max_duration_sec * sr)
         if len(data) > target_samples:
             data = data[:target_samples]
@@ -384,33 +385,35 @@ def process_sfx_audio(raw_sfx_path: Path, sound_type: str, max_duration_sec: flo
 
 
 # =====================================================================
-# 4. GROQ SOUND DIRECTOR (Dynamic 0 to 4 Cues + Tag Engineering)
+# 4. GROQ SOUND DIRECTOR (Grounded Foley Context)
 # =====================================================================
 
 def query_groq_sound_director(beat_id: str, prompt_action: str, narration_text: str, words_timeline: List[Dict]) -> List[Dict]:
     system_instruction = (
-        "You are an elite Hollywood Foley Mixer and Sound Supervisor. "
-        "Analyze the visual action and spoken Hindi narration to build a dynamic, polyphonic soundscape.\n\n"
-        "CUE DENSITY RULES:\n"
-        "- Output between 0 and 4 sound cues based on actual scene density. DO NOT force a fixed number.\n"
-        "- 0 Cues: For quiet, emotional, introspective, or dialogue moments where sounds would distract.\n"
-        "- 1 Cue: A single focused dramatic action (e.g. switch flick, phone ping, gun shot).\n"
-        "- 2 to 4 Cues: Layered, concurrent sounds (e.g. ambient rain + footsteps + car horn).\n\n"
-        "FREESOUND TAG RULES:\n"
-        "- Freesound searches work best with standard Foley tags (1 to 2 words, hyphenated or spaced).\n"
-        "- Examples: 'phone-vibration', 'door-creak', 'metal-gate-slam', 'footsteps-wood', 'wind-howl', 'paper-rustle'.\n"
-        "- Avoid long conversational sentences like 'phone vibrating on wooden coffee table in room'.\n\n"
-        "Return ONLY a JSON object:\n"
+        "You are a realistic Foley Sound Editor. Your job is to select physical sound effects "
+        "that accurately match the LITERAL objects and actions happening in the Hindi narration.\n\n"
+        "STRICT REALISM & MATCHING RULES:\n"
+        "1. GROUND TO PHYSICAL OBJECTS: If the scene mentions a bottle, glass, water, cup, book, or door, choose "
+        "sounds specifically containing those physical materials (e.g. 'glass clink', 'bottle set on table', 'liquid pouring').\n"
+        "2. ABSOLUTELY NO UNPROMPTED DRAMATIC SFX: NEVER output 'car crash', 'explosion', 'gunshot', or 'cinematic hit' "
+        "unless a vehicle crash or weapon is explicitly mentioned in the text.\n"
+        "3. QUERY FORMAT FOR FREESOUND:\n"
+        "   - Use 2-3 precise natural English words describing the exact material and action.\n"
+        "   - Good: 'glass bottle clink', 'bottle cork pop', 'pouring water', 'footsteps wood', 'paper turn', 'door creak'\n"
+        "   - Bad: 'smash' (too vague), 'break' (causes car crashes), 'dramatic_impact_cinematic_boom'\n"
+        "4. DENSITY: Output between 0 and 2 precise cues. If there is no distinct physical interaction, return an empty list [].\n\n"
+        "Return strictly a JSON object with this schema:\n"
         "{\n"
+        '  "scene_analysis": "One sentence explaining physical objects present",\n'
         '  "sfx_cues": [\n'
         '    {\n'
-        '      "freesound_tag": "short primary tag (e.g. door-creak)",\n'
-        '      "fallback_tag": "broad alternative (e.g. creak)",\n'
-        '      "sound_type": "transient" or "ambient",\n'
-        '      "trigger_word": "Exact Hindi word from timestamps",\n'
-        '      "target_ms": integer_start_ms_from_timestamps,\n'
-        '      "duration_sec": float_duration_in_seconds,\n'
-        '      "volume": float_between_0.35_and_0.75\n'
+        '      "freesound_tag": "glass bottle clink",\n'
+        '      "fallback_tag": "glass impact",\n'
+        '      "sound_type": "transient",\n'
+        '      "trigger_word": "Hindi word from the timeline",\n'
+        '      "target_ms": integer_start_ms,\n'
+        '      "duration_sec": 1.5,\n'
+        '      "volume": 0.55\n'
         '    }\n'
         '  ]\n'
         "}"
@@ -418,12 +421,13 @@ def query_groq_sound_director(beat_id: str, prompt_action: str, narration_text: 
 
     user_content = f"""
 Beat ID: {beat_id}
-Action Context: {prompt_action if prompt_action else 'Story scene'}
+Visual Prompt Context: {prompt_action if prompt_action else 'Story scene'}
 Spoken Hindi Narration: {narration_text}
+
 Word-by-word Timestamps (ms):
 {json.dumps(words_timeline, ensure_ascii=False)}
 
-Decide 0 to 4 sound cues that naturally fit this beat. Output valid JSON.
+Identify literal physical materials and objects in the narration and select 0 to 2 matching Foley sound cues.
 """
 
     try:
@@ -434,10 +438,13 @@ Decide 0 to 4 sound cues that naturally fit this beat. Output valid JSON.
                 {"role": "user", "content": user_content}
             ],
             response_format={"type": "json_object"},
-            temperature=0.3,
-            max_tokens=900
+            temperature=0.1,  # Lower temperature for grounded factual choices
+            max_tokens=600
         )
         data = json.loads(completion.choices[0].message.content)
+        analysis = data.get("scene_analysis", "")
+        if analysis:
+            print(f"   🔎 Scene Foley Context: {analysis}")
         return data.get("sfx_cues", [])
     except Exception as e:
         print(f"   ⚠️ Groq Sound Director error on {beat_id}: {e}")
@@ -481,7 +488,7 @@ def assemble_story_video_with_dynamic_sfx(aspect_ratio="9:16"):
     
     current_timeline_time = 0.0
     beats_list = manifest.get("beats", [])
-    print(f"\n🎬 Assembling {len(beats_list)} beats with Dynamic Polyphonic Foley...\n")
+    print(f"\n🎬 Assembling {len(beats_list)} beats with Grounded Foley...\n")
 
     for idx, item in enumerate(beats_list):
         beat_id = item["beat_id"]
@@ -503,7 +510,7 @@ def assemble_story_video_with_dynamic_sfx(aspect_ratio="9:16"):
         v_clip = ImageClip(frame_arr).with_duration(beat_dur)
         video_clips.append(v_clip)
 
-        # 1. Hindi Word Alignment
+        # 1. Word alignment
         beat_script = script_beats.get(beat_id, {})
         prompt_action = beat_script.get("prompt_action", "")
         narration_text = item.get("subtitle", beat_script.get("narration_text", ""))
@@ -515,7 +522,7 @@ def assemble_story_video_with_dynamic_sfx(aspect_ratio="9:16"):
             output_json=ts_file
         )
 
-        # 2. Dynamic Foley Decisions (0 to 4 cues)
+        # 2. Sound Director Decisions
         sfx_cues = query_groq_sound_director(
             beat_id=beat_id,
             prompt_action=prompt_action,
@@ -523,18 +530,18 @@ def assemble_story_video_with_dynamic_sfx(aspect_ratio="9:16"):
             words_timeline=words_timeline
         )
 
-        print(f"   🎯 Groq decided on {len(sfx_cues)} sound cue(s)")
+        print(f"   🎯 Foley cues chosen: {len(sfx_cues)}")
 
-        # 3. Layer Polyphonic Sound Effects
+        # 3. Download & Process Correct SFX
         for sfx_idx, cue in enumerate(sfx_cues):
             tag = cue.get("freesound_tag", "")
             fallback = cue.get("fallback_tag", "")
             sound_type = cue.get("sound_type", "transient")
             target_ms = cue.get("target_ms", 0)
             duration_sec = float(cue.get("duration_sec", 2.0))
-            volume = float(cue.get("volume", 0.55))
+            volume = float(cue.get("volume", 0.50))
 
-            print(f"      [{sfx_idx+1}] Tag: '{tag}' | Type: {sound_type} | Target: {target_ms}ms | Trigger: '{cue.get('trigger_word')}'")
+            print(f"      [{sfx_idx+1}] Searching: '{tag}' (Alt: '{fallback}') | Target: {target_ms}ms")
 
             raw_sfx = FreesoundAudioAPI.search_and_download(tag, fallback)
             if not raw_sfx:
@@ -548,20 +555,17 @@ def assemble_story_video_with_dynamic_sfx(aspect_ratio="9:16"):
                 output_path=processed_sfx_path
             )
 
-            # Precise trigger alignment compensating for transient attack onset
             target_impact_time = current_timeline_time + (target_ms / 1000.0)
             sfx_start_time = max(0.0, target_impact_time - onset_sec)
 
             sfx_clip = AudioFileClip(str(processed_sfx_path))
             sfx_clip = sfx_clip.with_volume_scaled(volume).with_start(sfx_start_time)
-            
-            # Polyphonic: Add as parallel independent audio track
             all_audio_tracks.append(sfx_clip)
 
-            print(f"         ⚡ Layered Polyphonically @ {sfx_start_time:.2f}s (Attack onset: -{onset_sec*1000:.0f}ms, Vol: {volume})")
+            print(f"         ⚡ Attached @ {sfx_start_time:.2f}s (Attack onset: -{onset_sec*1000:.0f}ms)")
 
         current_timeline_time += beat_dur
-        print(f"   ⏱️ Beat finished. Master Timeline: {current_timeline_time:.2f}s\n")
+        print(f"   ⏱️ Beat complete. Timeline: {current_timeline_time:.2f}s\n")
 
     if not video_clips:
         print("❌ No video clips found.")
@@ -569,19 +573,19 @@ def assemble_story_video_with_dynamic_sfx(aspect_ratio="9:16"):
 
     final_video = concatenate_videoclips(video_clips, method="compose")
 
-    # 4. Background Music (ducked to 10%)
+    # 4. Optional BGM bed
     if BGM_FILE.exists():
         print("🎵 Layering Ambient BGM Bed (ducked to 10%)...")
         bgm = AudioFileClip(str(BGM_FILE))
         bgm = afx.audio_loop(bgm, duration=final_video.duration).with_volume_scaled(0.10)
         all_audio_tracks.append(bgm)
 
-    # 5. Composite Polyphonic Audio Master
-    print(f"🎛️ Compositing {len(all_audio_tracks)} parallel audio tracks...")
+    # 5. Render
+    print(f"🎛️ Mixing {len(all_audio_tracks)} audio tracks...")
     final_audio = CompositeAudioClip(all_audio_tracks)
     final_video = final_video.with_audio(final_audio)
 
-    print(f"\n🚀 Rendering Master MP4: {OUTPUT_VIDEO}...")
+    print(f"\n🚀 Rendering Final MP4: {OUTPUT_VIDEO}...")
     final_video.write_videofile(
         str(OUTPUT_VIDEO),
         fps=30,
@@ -590,7 +594,7 @@ def assemble_story_video_with_dynamic_sfx(aspect_ratio="9:16"):
         threads=4,
         preset="medium"
     )
-    print(f"\n🎉 VIDEO COMPLETE WITH ADVANCED FOLEY SYNC: {OUTPUT_VIDEO}")
+    print(f"\n🎉 Render complete: {OUTPUT_VIDEO}")
 
 
 if __name__ == "__main__":

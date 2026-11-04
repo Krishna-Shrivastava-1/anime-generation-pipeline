@@ -1,276 +1,340 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "₹100 रोज़ खर्च करना vs निवेश करना: 5 साल में कितना फर्क पड़ेगा?",
-    "project_id": "100_daily_spending_vs_investing_5_years",
+    "title": "What If the World Never Invented Plastic?",
+    "project_id": "what_if_world_never_invented_plastic",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Minimalist hand-drawn stickman explainer animation, warm off-white paper background, bold slightly imperfect black ink outlines, expressive characters, limited red, green and yellow accent colors, clean visual storytelling, simple readable props, dynamic compositions, consistent character design, vertical 9:16 framing.",
-    "negative_prompt": "Photorealism, 3D rendering, cluttered backgrounds, excessive text, tiny unreadable labels, inconsistent character design, extra limbs, distorted hands, watermarks, logos, overly bright colors."
+    "art_style": "Minimalist hand-drawn stickman explainer animation, warm off-white paper background, bold slightly imperfect black ink outlines, limited earthy accent colors, uncluttered compositions, expressive body language, simple readable props, dynamic visual storytelling. CRITICAL CHARACTER EYE DESIGN: Every stickman must have exactly two tiny, simple, solid-black dot or small oval eyes. Eyes must be completely filled black shapes with no pupils, no irises, no highlights, no reflections, no eye whites, no eyelashes, no detailed anatomy and no realistic features. Keep the exact same cute, simple dot-eye design in every single image. The recurring presenter has a round white face, two tiny solid-black dot eyes, a simple curved mouth, thin black stick limbs and a small red bow tie. Maintain identical face proportions and eye design throughout.",
+    "negative_prompt": "Detailed eyes, realistic eyes, visible pupils, irises, eye highlights, eye reflections, eye whites, eyelashes, eyebrows with realistic detail, human anatomy, photorealism, 3D rendering, inconsistent character faces, different eye styles, extra limbs, distorted hands, cluttered backgrounds, excessive text, watermarks, logos, overly bright colors."
   },
   "assets": {
-    "main_character": {
+    "presenter": {
       "type": "character",
-      "label": "Stickman Presenter",
-      "visual_dna": "A friendly hand-drawn stickman with a round white face, expressive black eyes, thin black stick arms and legs, and a small red bow tie. Consistent proportions and appearance in every scene."
+      "label": "Recurring Stickman Presenter",
+      "visual_dna": "A cute minimalist hand-drawn stickman with a perfectly round white face, exactly two tiny solid-black dot eyes with absolutely no pupils, irises, highlights or eye details, a simple curved black mouth, thin black stick arms and legs, and a small red bow tie. The eyes must always look like two simple filled black dots. Identical face shape, eye size, spacing and proportions in every appearance."
     },
-    "snack_character": {
+    "shopkeeper": {
       "type": "character",
-      "label": "Snack Spending Stickman",
-      "visual_dna": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a small red bow tie, holding snacks and looking excited. Same design as the main presenter."
+      "label": "Old World Shopkeeper",
+      "visual_dna": "A minimalist hand-drawn stickman shopkeeper with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, a simple curved mouth, thin black limbs and a small brown apron. Same simple cute eye style as the presenter."
     },
-    "investing_character": {
+    "customer": {
       "type": "character",
-      "label": "Investing Stickman",
-      "visual_dna": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a small red bow tie, holding a small growing plant and looking confident. Same design as the main presenter."
+      "label": "Customer",
+      "visual_dna": "A minimalist hand-drawn stickman with a round white face, exactly two tiny solid-black dot eyes without pupils, irises or highlights, a simple curved mouth, thin black limbs and a small blue scarf. Same simple cute eye style as the presenter."
     },
-    "paper_background": {
+    "old_market": {
       "type": "environment",
-      "label": "Warm Paper Background",
-      "visual_dna": "A clean warm off-white paper background with subtle texture, minimal hand-drawn decorative elements and plenty of empty space."
+      "label": "Traditional Market",
+      "visual_dna": "A charming old-fashioned marketplace with wooden stalls, glass jars, paper bags, cloth sacks, metal containers, baskets and handwritten signs. Warm earthy colors, hand-drawn outlines and a nostalgic atmosphere."
     },
-    "snack_stall": {
+    "paper_packaging": {
       "type": "environment",
-      "label": "Street Snack Stall",
-      "visual_dna": "A simple hand-drawn Indian street snack stall with a small counter, samosas, chips packets, tea cups and a handwritten price board. Warm, friendly and uncluttered."
+      "label": "Paper Packaging Workshop",
+      "visual_dna": "A traditional packaging workshop with brown paper sheets, cardboard boxes, paper rolls, starch-based glue, wooden tools and twine. Warm off-white and earthy tones."
     },
-    "investment_space": {
+    "glass_factory": {
       "type": "environment",
-      "label": "Investment Growth Space",
-      "visual_dna": "A minimal off-white educational illustration space with a simple rising graph, rupee coins, a growing plant and a few green accent details."
+      "label": "Glassmaking Workshop",
+      "visual_dna": "A traditional glass workshop with a furnace, glowing molten glass, glass bottles, jars and skilled workers using long metal tools. Warm orange light and hand-drawn industrial details."
+    },
+    "metal_factory": {
+      "type": "environment",
+      "label": "Metal Packaging Workshop",
+      "visual_dna": "A traditional metalworking workshop with tin containers, steel cans, metal sheets, hand tools and a small furnace. Industrial but clean, with muted grey and earthy colors."
+    },
+    "natural_materials": {
+      "type": "environment",
+      "label": "Natural Materials Workshop",
+      "visual_dna": "A workshop filled with woven cloth, jute, cotton, natural rubber, wooden containers, baskets, rope and plant-based materials. Warm organic colors and simple handmade details."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "paper_background",
+      "environment_ref": "old_market",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "सोचो, अगर तुम हर दिन सिर्फ सौ रुपये खर्च करते हो, तो पाँच साल बाद क्या होगा?",
+          "narration_text": "एक पल के लिए सोचो... अगर इंसानों ने कभी प्लास्टिक बनाया ही नहीं होता, तो हमारी दुनिया कैसी दिखती?",
           "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A friendly hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a small red bow tie stands close to the viewer, holding up a single 100-rupee note with a curious expression. Warm off-white paper background, bold imperfect black ink outlines, minimal red and green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter raises one eyebrow and points toward the 100-rupee note."
+          "prompt_action": "A cute minimalist hand-drawn stickman presenter with a perfectly round white face, exactly two tiny solid-black dot eyes with no pupils or highlights, a simple curved mouth, thin black limbs and a small red bow tie stands in an old-fashioned marketplace. He looks curious and points toward the viewer. Wooden stalls, glass jars and cloth bags in the background. Warm off-white paper texture, bold imperfect black ink outlines, earthy accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter tilts his head slightly and raises one hand as if asking an intriguing question."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "अब दो रास्ते हैं। पहले रास्ते में वही सौ रुपये रोज़ के स्नैक्स पर खर्च होते हैं।",
+          "narration_text": "आज प्लास्टिक हमारी ज़िंदगी में इतना घुस चुका है कि शायद हमें एहसास भी नहीं होता कि हम इसका इस्तेमाल कितनी बार करते हैं।",
           "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a red bow tie stands between two large paths. The left path leads toward a colorful Indian snack stall filled with samosas, chips and tea. The right path leads toward a small green growing plant and rupee coins. Warm off-white paper background, clean bold ink outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter points toward the snack stall first while the two paths remain clearly visible."
+          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin black limbs and red bow tie stands in the center of a modern everyday scene surrounded by plastic water bottles, food containers, shopping bags, phone cases, pens, pipes and packaging. The presenter looks overwhelmed by the number of objects. Warm off-white paper background, bold black ink outlines, limited colors, vertical 9:16 composition.",
+          "session_delta_prompt": "Everyday plastic objects appear around the presenter until he is surrounded on all sides."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "और दूसरे रास्ते में वही सौ रुपये हर दिन निवेश किए जाते हैं।",
-          "camera_type": "split-screen",
-          "action_mode": "in_place_action",
-          "prompt_action": "A clean vertical split-screen illustration. On the left, a hand-drawn stickman with a round white face and red bow tie buys a snack from a small stall. On the right, an identical stickman places a 100-rupee coin into a simple investment jar beside a tiny green plant. Warm off-white paper background, bold black outlines, red and green accents, vertical 9:16 layout.",
-          "session_delta_prompt": "The left character eats a snack while the right character drops a coin into the investment jar."
+          "narration_text": "पानी की बोतल से लेकर मोबाइल के कवर तक, खाने की पैकिंग से लेकर तारों की सुरक्षा तक।",
+          "camera_type": "montage",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A clean hand-drawn montage showing four large everyday objects: a disposable water bottle, a food packet, a mobile phone case and an insulated electrical cable. A cute minimalist stickman presenter with a round white face, two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie points toward each object. Warm off-white paper background, bold black outlines, simple colorful accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter points from the water bottle to the food packet, then the phone case and electrical cable."
         },
         {
           "beat_id": "s01_b04",
-          "narration_text": "दोनों के पास शुरुआत में बराबर पैसे हैं। लेकिन पाँच साल बाद नतीजा काफी अलग हो सकता है।",
-          "camera_type": "medium shot",
+          "narration_text": "लेकिन अगर प्लास्टिक कभी बना ही नहीं होता, तो इंसानों को इन सब चीज़ों के लिए दूसरे रास्ते खोजने पड़ते।",
+          "camera_type": "reaction shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin limbs and a red bow tie stands between two large transparent jars, each containing an equal small pile of rupee coins. He looks surprised while pointing toward a calendar marked with five years. Warm off-white paper background, bold black ink outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter gestures toward the five-year calendar as the two jars begin to represent different futures."
+          "prompt_action": "A cute minimalist hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, a simple curved mouth, thin limbs and a red bow tie stands beside a large empty question mark. Around him are small floating icons of a bottle, shopping bag, food box and electrical cable, each shown as a simple outline. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter looks at the empty question mark and gestures as if inviting the viewer into an alternate world."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "snack_stall",
+      "environment_ref": "old_market",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "पहले हिसाब समझो। सौ रुपये रोज़ मतलब महीने के लगभग तीन हज़ार रुपये।",
-          "camera_type": "over-the-shoulder",
+          "narration_text": "सबसे पहले सोचो, तुम दुकान से सामान खरीदने जाते। दुकानदार तुम्हें प्लास्टिक की थैली नहीं देता।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a small red bow tie stands at an Indian snack stall, looking at a simple hand-drawn calendar with thirty days circled and a pile of 100-rupee notes beside it. A few samosas and tea cups sit on the counter. Warm off-white background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The stickman counts coins while looking at the calendar."
+          "prompt_action": "Inside a traditional hand-drawn Indian marketplace, a cute stickman customer with a round white face, two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and blue scarf stands at a wooden shop counter. A stickman shopkeeper with the same simple dot eyes, round white face and brown apron holds up an empty hand instead of offering a plastic bag. Warm earthy colors, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The customer looks confused as the shopkeeper gestures toward alternatives behind the counter."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "और एक साल में यही रकम हो जाती है छत्तीस हज़ार पाँच सौ रुपये।",
+          "narration_text": "उसकी जगह मिलती कागज़ की थैली, कपड़े का बैग या फिर जूट का थैला।",
           "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A close-up hand-drawn illustration of a calendar showing twelve months beside a growing stack of rupee notes and snack wrappers. A friendly stickman with a round white face and red bow tie points at the stack with a surprised expression. Warm off-white paper background, bold black ink outlines, limited red accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The money stack grows while snack wrappers pile up beside it."
+          "prompt_action": "A close-up hand-drawn display of three practical shopping alternatives arranged neatly on a wooden counter: a folded brown paper bag, a reusable cotton cloth bag and a woven jute sack. A cute stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie points toward them. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter lifts the cloth bag and opens it to show its reusable design."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "पाँच साल तक ऐसा करने पर तुम्हारे कुल एक लाख बयासी हज़ार पाँच सौ रुपये स्नैक्स में खर्च हो जाएंगे।",
-          "camera_type": "wide shot",
+          "narration_text": "लोग अपने साथ थैला लेकर चलते, और एक ही बैग को बार-बार इस्तेमाल करते।",
+          "camera_type": "tracking shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie stands beside a huge pile of empty snack packets, samosa plates and tea cups. A five-year calendar and a large stack of rupee notes appear beside him to represent the total money spent. Warm off-white paper background, bold black outlines, clean educational composition, vertical 9:16.",
-          "session_delta_prompt": "The snack pile grows dramatically and the stickman looks at it with a shocked expression."
+          "prompt_action": "A cute minimalist stickman customer with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin black limbs and blue scarf walks through a traditional market carrying a reusable cloth shopping bag filled with vegetables and groceries. Wooden shops and baskets line the path. Warm off-white paper background, earthy colors, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The customer walks confidently with the cloth bag swinging gently by his side."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "और बदले में तुम्हें मिलेंगे स्वादिष्ट स्नैक्स, लेकिन खर्च किए हुए पैसे वापस नहीं आएंगे।",
-          "camera_type": "reaction shot",
-          "action_mode": "in_place_action",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a small red bow tie sits happily eating a samosa, surrounded by empty snack wrappers and an empty wallet. He looks at the empty wallet with a slightly worried expression. Warm off-white paper background, bold black ink outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The stickman finishes the snack, checks his wallet and discovers it is empty."
+          "narration_text": "अब पानी और दूध की बात करें। आज की तरह हल्की प्लास्टिक बोतलें नहीं होतीं।",
+          "camera_type": "medium shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands beside a wooden table. On the table are an empty modern-style plastic bottle crossed out and two sturdy glass bottles. Warm old-fashioned shop setting, bold black ink outlines, earthy accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter pushes the plastic bottle aside and picks up a glass bottle."
+        },
+        {
+          "beat_id": "s02_b05",
+          "narration_text": "दूध, तेल और कई पेय पदार्थ काँच की बोतलों में मिलते, जिन्हें खाली होने पर वापस किया जा सकता था।",
+          "camera_type": "wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A traditional milk delivery scene in a hand-drawn Indian neighborhood. A cute stickman milk seller with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth and thin limbs hands a glass milk bottle to a customer with the same simple dot-eye design. Several clean empty glass bottles wait in wooden crates for collection. Warm earthy background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The customer returns an empty glass bottle while receiving a filled one."
+        },
+        {
+          "beat_id": "s02_b06",
+          "narration_text": "मतलब पैकेजिंग का नियम बदल जाता। फेंको और भूल जाओ नहीं, बल्कि इस्तेमाल करो और वापस लौटाओ।",
+          "camera_type": "wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A cute minimalist stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands beside a circular reuse system illustrated with three large glass bottles moving from shop to customer, then back to shop in wooden crates. Warm off-white paper background, bold black outlines, earthy green accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The glass bottles move around the reuse cycle and return neatly to the shop."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "investment_space",
+      "environment_ref": "paper_packaging",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "अब वही सौ रुपये रोज़ निवेश करने की कल्पना करो।",
-          "camera_type": "medium shot",
+          "narration_text": "लेकिन ऑनलाइन ऑर्डर और पार्सल का क्या होता? हर डिब्बे को सुरक्षित पहुँचाना भी ज़रूरी है।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A friendly hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie carefully places a 100-rupee coin into a transparent investment jar beside a tiny green plant. Warm off-white paper background, bold black ink outlines, simple green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The stickman drops the coin into the jar and gives the tiny plant a hopeful look."
+          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands beside a delivery worker holding a fragile parcel. The parcel is a brown cardboard box with a hand-drawn fragile symbol. A delivery bicycle and several stacked cardboard boxes are visible. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter carefully points at the fragile cardboard parcel."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "पाँच साल में तुम अपनी जेब से कुल एक लाख बयासी हज़ार पाँच सौ रुपये निवेश करोगे।",
+          "narration_text": "यहाँ काम आता कागज़ और गत्ता। मजबूत कार्डबोर्ड के डिब्बे सामान को संभाल सकते थे।",
           "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A close-up educational illustration showing a hand-drawn stickman's hand placing a 100-rupee coin into an investment jar every day. Beside it, a five-year calendar and a steadily growing pile of rupee coins represent the total contributions. Warm off-white paper background, bold black ink outlines, green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "Coins steadily accumulate inside the jar as calendar pages turn forward."
+          "prompt_action": "A close-up hand-drawn illustration of a sturdy corrugated cardboard box with its layered wavy interior clearly visible. A cute minimalist stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie points to the layers. Warm off-white paper background, bold black outlines, earthy brown tones, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter taps the corrugated cardboard layers to show how they add strength."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "लेकिन यहाँ एक फर्क है। निवेश किए गए पैसे को बढ़ने का मौका मिल सकता है।",
-          "camera_type": "wide shot",
+          "narration_text": "और डिब्बे को बंद करने के लिए प्लास्टिक टेप की जगह कागज़ की गोंद वाली टेप इस्तेमाल होती।",
+          "camera_type": "over-the-shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie watches a green plant grow from a small pot. Rupee coins form the soil around its roots, and a simple upward arrow rises behind it. Warm off-white paper background, bold black outlines, green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The small plant grows taller and the upward arrow extends."
+          "prompt_action": "A traditional packaging worker with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth and thin limbs seals a cardboard parcel using brown gummed paper tape. A small bowl of starch-based glue and a paper tape roll sit on the workbench. A cute stickman presenter with identical simple dot eyes and red bow tie watches. Warm paper workshop, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The worker pulls the paper tape across the box seam and presses it down firmly."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "मान लो, तुम्हारे निवेश पर औसतन दस प्रतिशत सालाना रिटर्न मिलता है।",
-          "camera_type": "over-the-shoulder",
+          "narration_text": "जहाँ ज़्यादा मजबूती चाहिए होती, वहाँ रस्सी, कपड़े की पट्टी या धातु की क्लिप भी काम आती।",
+          "camera_type": "montage",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a red bow tie points at a simple educational board showing a green rising line and a clearly visible ten-percent annual return assumption. A small disclaimer symbol appears near the board. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter taps the ten-percent assumption on the board, emphasizing that it is an example rather than a promise."
+          "prompt_action": "A hand-drawn packaging workbench showing three methods of securing parcels: a cardboard box tied with natural jute twine, a package wrapped with a strong cloth strip, and a box secured with a small metal clip. A cute stickman presenter with a round white face, two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie points at the options. Warm off-white background, bold black outlines, earthy colors, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter points to the twine, then the cloth strip and finally the metal clip."
         },
         {
           "beat_id": "s03_b05",
-          "narration_text": "तो रोज़ निवेश करने पर पाँच साल बाद तुम्हारी रकम लगभग दो लाख सैंतीस हज़ार रुपये हो सकती है।",
-          "camera_type": "wide shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie stands proudly beside a large transparent investment jar filled with rupee coins. A green rising graph and a five-year calendar sit behind the jar. The scene should visually communicate a final value of approximately 2.37 lakh rupees. Warm off-white paper background, bold black outlines, green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The investment jar fills with more coins and the stickman looks pleasantly surprised."
-        },
-        {
-          "beat_id": "s03_b06",
-          "narration_text": "यानी तुम्हारे एक लाख बयासी हज़ार पाँच सौ रुपये के निवेश पर लगभग चौवन हज़ार रुपये की बढ़त।",
+          "narration_text": "नाज़ुक सामान के लिए लकड़ी की पेटियाँ, कागज़ की परतें और सूखी घास जैसी भराई इस्तेमाल की जा सकती थी।",
           "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A clean hand-drawn financial comparison on a warm off-white background. Show one stack of rupee coins representing 1,82,500 invested and a separate smaller green stack representing approximately 54,000 growth. A friendly stickman with a round white face and red bow tie points at the extra green coins with an excited expression. Bold black outlines, minimal design, vertical 9:16 composition.",
-          "session_delta_prompt": "The green stack of additional coins appears beside the original investment stack."
+          "prompt_action": "A hand-drawn wooden shipping crate opened to reveal a fragile glass object protected by folded paper layers and clean dry straw-like packing material. A cute minimalist stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie examines the protective packing. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter gently lifts a paper layer to reveal the protected fragile item."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "paper_background",
+      "environment_ref": "glass_factory",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "अब दोनों रास्तों को साथ में देखो।",
+          "narration_text": "अब सवाल है, अगर प्लास्टिक नहीं होता तो काँच और धातु का इस्तेमाल कितना बढ़ता?",
           "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a red bow tie stands between two large side-by-side panels. The left panel shows snack packets and an empty wallet. The right panel shows an investment jar filled with coins and a green growing plant. Warm off-white paper background, bold black outlines, red and green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter stretches both arms outward to reveal the two contrasting outcomes."
+          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands between a traditional glass furnace and a metalworking workshop. Glass bottles, steel cans and metal containers are displayed around him. Warm orange furnace glow, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter turns from the glowing glass furnace toward the metal containers."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "स्नैक्स वाले रास्ते में एक लाख बयासी हज़ार पाँच सौ रुपये खर्च हुए।",
+          "narration_text": "खाने-पीने की चीज़ों के लिए काँच के जार, स्टील के डिब्बे और टिन के कैन इस्तेमाल होते।",
           "camera_type": "close-up",
-          "action_mode": "in_place_action",
-          "prompt_action": "The left comparison panel fills the frame. A hand-drawn stickman with a round white face and red bow tie stands beside a mountain of snack wrappers and an empty wallet. A large clear money total of 1,82,500 rupees is shown above the pile. Warm off-white background, bold black ink outlines, red accent details, vertical 9:16 composition.",
-          "session_delta_prompt": "The stickman looks at the empty wallet while the snack wrappers remain scattered around him."
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A neat hand-drawn display of food packaging alternatives: transparent glass jars containing pickles and jam, reusable steel lunch containers and sealed tin cans. A cute minimalist stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie points toward the containers. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter opens a steel container and then gestures toward the glass jars."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "निवेश वाले रास्ते में वही पैसे बढ़कर लगभग दो लाख सैंतीस हज़ार रुपये हो गए।",
-          "camera_type": "close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "The right comparison panel fills the frame. A hand-drawn stickman with a round white face and red bow tie stands beside a transparent jar filled with rupee coins and a healthy green plant. A large clear money total of approximately 2,37,000 rupees appears above it. Warm off-white background, bold black ink outlines, green accent details, vertical 9:16 composition.",
-          "session_delta_prompt": "The stickman smiles as the investment jar glows subtly and the plant grows a little taller."
+          "narration_text": "इनका फायदा था कि इन्हें लंबे समय तक दोबारा इस्तेमाल किया जा सकता था।",
+          "camera_type": "medium shot",
+          "action_mode": "in_place_action",
+          "prompt_action": "A cute hand-drawn stickman customer with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth and thin limbs washes a sturdy glass jar and steel food container at a simple sink. Several clean containers are arranged on a shelf ready for reuse. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
+          "session_delta_prompt": "The customer washes the jar, dries it and places it neatly back on the shelf."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "दोनों में अपनी जेब से पैसा बराबर गया, लेकिन निवेश वाले रास्ते में लगभग चौवन हज़ार रुपये अतिरिक्त बने।",
-          "camera_type": "split-screen",
+          "narration_text": "लेकिन एक समस्या भी थी। काँच भारी होता है और गिरने पर टूट सकता है।",
+          "camera_type": "reaction shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A clear side-by-side hand-drawn comparison. Left: a stickman surrounded by snack wrappers with an empty wallet. Right: an identical stickman beside an investment jar, a green plant and an extra stack of coins. Add a simple visual arrow pointing to the extra investment growth. Warm off-white paper background, bold black outlines, red and green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The extra green coin stack on the investment side becomes more prominent while both sides show equal original contributions."
+          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands beside a large heavy glass bottle. In a separate safe visual panel, a dropped glass jar is shown broken on the floor with no person nearby. The presenter looks concerned. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter tries lifting the heavy bottle, then reacts with concern as the separate jar illustration shows broken glass."
         },
         {
           "beat_id": "s04_b05",
-          "narration_text": "लेकिन एक बात याद रखना, दस प्रतिशत रिटर्न की कोई गारंटी नहीं है। बाज़ार में नुकसान भी हो सकता है।",
-          "camera_type": "medium shot",
+          "narration_text": "धातु के डिब्बे भी बनाना और दूर तक पहुँचाना कई बार ज़्यादा महँगा पड़ सकता था।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a red bow tie stands beside a simple investment graph that rises and falls rather than moving in a perfectly straight line. A small caution symbol and a few coins appear nearby. Warm off-white paper background, bold black outlines, muted green and red accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The graph moves through a small dip before rising again, while the presenter raises one finger to signal caution."
-        },
-        {
-          "beat_id": "s04_b06",
-          "narration_text": "यह सिर्फ समझाने के लिए एक उदाहरण है। असली नतीजा निवेश के तरीके, रिटर्न और समय पर निर्भर करेगा।",
-          "camera_type": "over-the-shoulder",
-          "action_mode": "in_place_action",
-          "prompt_action": "A hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a red bow tie points at a simple board showing three icons: an investment jar, a fluctuating graph and a five-year calendar. The composition feels like a clear educational explanation, not a sales pitch. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter points to each of the three icons in sequence."
+          "prompt_action": "A traditional metal packaging workshop with a hand-drawn worker using tools to shape steel cans. A cute stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands beside a heavy stack of metal containers and a delivery cart. Warm earthy industrial setting, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The worker struggles to move a heavy stack of metal containers onto the delivery cart."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "paper_background",
+      "environment_ref": "natural_materials",
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "इसका मतलब यह नहीं कि तुम्हें स्नैक्स खाना बंद कर देना चाहिए।",
-          "camera_type": "medium shot",
+          "narration_text": "और सिर्फ पैकेजिंग ही नहीं। कपड़े, जूते और रोज़मर्रा की कई चीज़ों में भी बदलाव आता।",
+          "camera_type": "wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A friendly hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a red bow tie holds a samosa in one hand and a small investment jar in the other. He smiles warmly, showing that enjoying snacks and saving money can coexist. Warm off-white paper background, bold black outlines, balanced red and green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter happily takes a small bite of the samosa while keeping the investment jar safe in his other hand."
+          "prompt_action": "A cute minimalist hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands inside a traditional goods shop. Around him are cotton clothes, leather shoes, jute bags, woven baskets and wooden household objects. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter gestures around the shop, highlighting the variety of natural materials."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "बस हर छोटी खरीदारी से पहले सोचो कि क्या यह पैसा तुम्हारे किसी बड़े लक्ष्य में काम आ सकता है?",
-          "camera_type": "close-up",
+          "narration_text": "कपास, ऊन, चमड़ा, जूट और प्राकृतिक रबर कई कामों में इस्तेमाल होते।",
+          "camera_type": "montage",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie stands at a snack counter, holding a 100-rupee note in one hand. Above him are two thought bubbles: one showing a snack packet, the other showing a growing savings jar. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
-          "session_delta_prompt": "The stickman pauses before spending and thoughtfully compares the two options."
+          "prompt_action": "A clean hand-drawn material showcase arranged in five sections: a cotton bale, folded wool fabric, a leather shoe, a woven jute bag and a small natural rubber sheet. A cute stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands beside the display. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter points to each material as the camera shifts across the display."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "अगर रोज़ सौ रुपये बचाना मुश्किल है, तो छोटी रकम से शुरुआत करो।",
-          "camera_type": "wide shot",
+          "narration_text": "बिजली के तारों और मशीनों के लिए भी काँच, सिरेमिक, कपड़े, रबर और दूसरे इंसुलेटिंग पदार्थों के विकल्प मौजूद थे।",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie drops a few small rupee coins into a savings jar. The jar starts nearly empty, with a tiny green sprout beside it. Warm off-white paper background, bold black ink outlines, simple green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "A few coins land in the jar and the stickman smiles at the small beginning."
+          "prompt_action": "A hand-drawn educational workshop illustration showing an electrical cable with cloth braiding, ceramic insulators on a simple electrical assembly and rubber tubing beside a small machine. A cute stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie points toward the materials. Warm off-white paper background, bold black outlines, muted colors, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter traces the cloth-covered wire and points to the ceramic insulator."
         },
         {
           "beat_id": "s05_b04",
-          "narration_text": "क्योंकि असली फर्क एक दिन में नहीं, बल्कि रोज़ लिए गए छोटे फैसलों से बनता है।",
-          "camera_type": "tracking shot",
+          "narration_text": "हालाँकि हर जगह ये विकल्प प्लास्टिक जितने हल्के, सस्ते या सुविधाजनक नहीं होते।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn stickman with a round white face, expressive eyes, thin black limbs and a red bow tie walks along a path made of small rupee coins. At the end of the path is a larger savings jar and a healthy green tree. Warm off-white paper background, bold black outlines, green accents, inspiring but simple visual, vertical 9:16 composition.",
-          "session_delta_prompt": "The stickman walks forward as the coin path extends and the tree becomes taller."
-        },
+          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie compares a lightweight plastic bottle silhouette with a heavier glass bottle, a cloth bag and a metal container. A simple balance scale tilts under the weight of the alternatives. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter lifts the glass bottle with effort and then looks at the lighter alternatives thoughtfully."
+        }
+      ]
+    },
+    {
+      "scene_id": 6,
+      "environment_ref": "old_market",
+      "beats": [
         {
-          "beat_id": "s05_b05",
-          "narration_text": "अब बताओ, अगर तुम्हारे पास रोज़ के सौ रुपये हों, तो तुम उन्हें स्नैक्स पर खर्च करोगे या निवेश करोगे?",
+          "beat_id": "s06_b01",
+          "narration_text": "तो क्या प्लास्टिक के बिना दुनिया बेहतर होती? ज़रूरी नहीं।",
           "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A friendly hand-drawn stickman presenter with a round white face, expressive eyes, thin black limbs and a small red bow tie faces the viewer directly. He holds a samosa in one hand and a rupee coin above a green investment jar in the other, with a playful questioning expression. Warm off-white paper background, bold black ink outlines, minimal red and green accents, vertical 9:16 composition.",
-          "session_delta_prompt": "The presenter alternates pointing toward the samosa and the investment jar, then looks directly at the viewer as if asking for an answer."
+          "prompt_action": "A cute minimalist hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands between two contrasting scenes: one with littered plastic waste and another with heavy glass bottles, cut trees and metal containers. He has a thoughtful expression. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter looks from one side to the other, showing that both worlds have trade-offs."
+        },
+        {
+          "beat_id": "s06_b02",
+          "narration_text": "काँच, धातु और कागज़ के भी अपने पर्यावरणीय नुकसान हैं। इन्हें बनाने में ऊर्जा, पानी और कच्चा माल लगता है।",
+          "camera_type": "wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A hand-drawn educational scene showing three production areas: a glass furnace using energy, a metal factory using raw metal sheets and a paper mill with stacked timber and paper rolls. A cute stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie stands in front, looking thoughtful. Warm earthy colors, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter points toward the furnace, metal sheets and paper rolls in sequence."
+        },
+        {
+          "beat_id": "s06_b03",
+          "narration_text": "शायद ऐसी दुनिया में हम चीज़ें कम फेंकते, ज़्यादा मरम्मत करते और पैकेजिंग को बार-बार इस्तेमाल करते।",
+          "camera_type": "tracking shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A charming hand-drawn scene of a small neighborhood repair and reuse workshop. A cute stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth and thin limbs repairs a wooden container while another character cleans glass bottles and folds reusable cloth bags. Warm off-white paper background, earthy green accents, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The characters repair, clean and organize their reusable items instead of throwing them away."
+        },
+        {
+          "beat_id": "s06_b04",
+          "narration_text": "दुकानों में सामान लौटाने की व्यवस्था होती, और घरों में खाली बोतलें और डिब्बे फेंकने के बजाय संभालकर रखे जाते।",
+          "camera_type": "wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A traditional neighborhood shop with wooden shelves, reusable glass bottles, metal tins and paper packages. A cute stickman customer with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth and thin limbs returns empty bottles to a shopkeeper with the same dot-eye style. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
+          "session_delta_prompt": "The shopkeeper accepts the returned bottles and places them into a collection crate."
+        },
+        {
+          "beat_id": "s06_b05",
+          "narration_text": "लेकिन दुनिया शायद ज़्यादा भारी, महँगी और मेहनत वाली भी होती।",
+          "camera_type": "wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A cute hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin limbs and red bow tie struggles to carry a large wooden crate filled with glass bottles and metal containers. A delivery cart with heavy reusable packaging is behind him. Warm off-white paper background, bold black outlines, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter strains slightly under the heavy crate, then sets it down carefully."
+        },
+        {
+          "beat_id": "s06_b06",
+          "narration_text": "तो प्लास्टिक के बिना दुनिया में पैकेजिंग गायब नहीं होती। बस उसका तरीका बदल जाता।",
+          "camera_type": "wide shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A beautiful hand-drawn panoramic marketplace in an alternate world without plastic. Show paper bags, cardboard boxes sealed with paper tape, glass bottles, metal cans, cloth sacks, jute baskets, wooden crates and twine. Cute stickman shoppers and shopkeepers with round white faces, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouths and thin limbs interact naturally. Warm off-white paper background, bold black outlines, earthy colors, vertical 9:16 composition.",
+          "session_delta_prompt": "The marketplace comes alive as shoppers exchange reusable containers and carry paper and cloth bags."
+        },
+        {
+          "beat_id": "s06_b07",
+          "narration_text": "अब तुम्हारी बारी। क्या तुम ऐसी दुनिया में रहना पसंद करते, जहाँ प्लास्टिक नहीं होता, लेकिन हर चीज़ दोबारा इस्तेमाल करनी पड़ती?",
+          "camera_type": "close-up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A cute minimalist hand-drawn stickman presenter with a perfectly round white face, exactly two tiny solid-black dot eyes with no pupils, highlights or details, a simple curved mouth, thin black limbs and a small red bow tie faces the viewer directly. He holds a reusable glass bottle in one hand and a folded cloth bag in the other, with a playful questioning expression. Warm off-white paper background, bold black outlines, earthy accents, vertical 9:16 composition.",
+          "session_delta_prompt": "The presenter raises both alternatives slightly and tilts his head toward the viewer, inviting an answer."
         }
       ]
     }

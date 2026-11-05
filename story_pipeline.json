@@ -59,21 +59,21 @@
       "environment_ref": "bedroom",
       "beats": [
         {
-      "beat_id": "s01_b01",
-      "narration_text": "आयरन मैन की फिल्में तो आपने देखी ही होंगी। सोचिए, अगर आपके पास भी असली ज़िंदगी में जार्विस जैसा एआई असिस्टेंट होता तो?",
-      "camera_type": "cinematic_close_up",
-      "action_mode": "new_camera_angle",
-      "prompt_action": "A cinematic, highly detailed depiction of Iron Man in his iconic red-and-gold metallic armored suit, standing confidently inside a futuristic high-tech laboratory. His glowing blue arc reactor is clearly visible on his chest, with subtle blue lights reflecting off the polished armor. Dramatic cinematic lighting, sophisticated futuristic technology in the background, recognizable Iron Man superhero aesthetic, dynamic low-angle composition, vertical 9:16 frame. This image must focus on Iron Man himself, not a holographic assistant. No text, no captions, no watermark.",
-      "session_delta_prompt": "Establish the cinematic Iron Man reference before transitioning to the fictional personal AI assistant."
-    },
+          "beat_id": "s01_b01",
+          "narration_text": "सोचो, सुबह तुम्हारी आँख खुलने से पहले ही कोई तुम्हारे पूरे दिन की तैयारी कर चुका हो।",
+          "camera_type": "cinematic_wide_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 cinematic hand-drawn illustration of a young stickman sleeping peacefully in a modern bedroom. A small electric-blue holographic orb with a bright circular core and three thin orbiting rings floats beside the bed, gently illuminating the room. The sleeping character wears a dark blue hoodie, black trousers and white sneakers placed near the bed. The character has a perfectly round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm sunrise through the window, off-white paper texture, bold black ink outlines.",
+          "session_delta_prompt": "Establish the main character's bedroom and the exact appearance of the blue holographic orb. Keep both consistent throughout."
+        },
         {
-      "beat_id": "s01_b02",
-      "narration_text": "एक ऐसा असिस्टेंट, जो आपके लिए सोच सके, काम कर सके और हर वक्त आपकी मदद कर सके।",
-      "camera_type": "holographic_reveal",
-      "action_mode": "new_camera_angle",
-      "prompt_action": "A small floating electric-blue holographic AI orb materializing in the center of a futuristic dark room, representing a personal assistant inspired by the technology of Iron Man's JARVIS. The orb has a bright circular blue core surrounded by exactly three thin glowing blue orbiting rings. It has absolutely no face, no eyes, no mouth, and no humanoid body. Blue holographic particles and subtle light rays emerge around it. Cinematic futuristic atmosphere, clean uncluttered composition, dramatic blue lighting, vertical 9:16 frame. No Iron Man character in this image. No text, no captions, no watermark.",
-      "session_delta_prompt": "Keep the holographic assistant identical in every later appearance: one small electric-blue floating orb, bright circular core, exactly three thin orbiting rings, no face and no humanoid body."
-    },
+          "beat_id": "s01_b02",
+          "narration_text": "तुम्हारा अपना एआई असिस्टेंट, बिल्कुल आयरन मैन के जार्विस जैसा।",
+          "camera_type": "extreme_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 close-up of the same electric-blue holographic orb floating above a wooden desk. Its bright circular core glows softly, surrounded by exactly three thin orbiting blue rings and tiny particles. In the background, the young stickman owner in a dark blue hoodie watches it with curiosity. The character has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm paper texture, cinematic blue glow, bold black outlines.",
+          "session_delta_prompt": "The AI must remain a non-humanoid blue orb with exactly three orbiting rings. Keep the owner's dark blue hoodie."
+        },
         {
           "beat_id": "s01_b03",
           "narration_text": "तुम बस कहते, जार्विस, आज मुझे क्या-क्या करना है?",

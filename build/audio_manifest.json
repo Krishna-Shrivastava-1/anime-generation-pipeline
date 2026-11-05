@@ -1,28 +1,28 @@
 {
-  "total_duration": 112.588,
+  "total_duration": 108.629,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 7.564,
-      "subtitle": "आयरन मैन की फिल्में तो आपने देखी ही होंगी। सोचिए, अगर आपके पास भी असली ज़िंदगी में जार्विस जैसा एआई असिस्टेंट होता तो?"
+      "duration_seconds": 5.312,
+      "subtitle": "सोचो, सुबह तुम्हारी आँख खुलने से पहले ही कोई तुम्हारे पूरे दिन की तैयारी कर चुका हो।"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 5.504,
-      "subtitle": "एक ऐसा असिस्टेंट, जो आपके लिए सोच सके, काम कर सके और हर वक्त आपकी मदद कर सके।"
+      "duration_seconds": 3.861,
+      "subtitle": "तुम्हारा अपना एआई असिस्टेंट, बिल्कुल आयरन मैन के जार्विस जैसा।"
     },
     {
       "beat_id": "s01_b03",
       "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 2.923,
+      "duration_seconds": 2.987,
       "subtitle": "तुम बस कहते, जार्विस, आज मुझे क्या-क्या करना है?"
     },
     {
       "beat_id": "s01_b04",
       "audio_file": "build/audio/s01_b04.wav",
-      "duration_seconds": 5.803,
+      "duration_seconds": 5.845,
       "subtitle": "और जार्विस जवाब देता, तुम्हारी मीटिंग दस बजे है, मौसम अच्छा है और तुम्हारा नाश्ता तैयार है।"
     },
     {
@@ -34,61 +34,61 @@
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 4.075,
+      "duration_seconds": 4.032,
       "subtitle": "लाइट्स ऑन, पर्दे खुल जाते और कॉफी मशीन तुम्हारी कॉफी बना देती।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 4.608,
+      "duration_seconds": 4.672,
       "subtitle": "तुम्हें कुछ ढूँढना होता, तो वो सेकंडों में बता देता कि सामान कहाँ रखा है।"
     },
     {
       "beat_id": "s02_b04",
       "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 4.736,
+      "duration_seconds": 4.779,
       "subtitle": "और अगर तुम घर से बाहर निकलते, तो वो तुम्हारे फोन पर भी तुम्हारे साथ रहता।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 4.459,
+      "duration_seconds": 4.587,
       "subtitle": "रास्ते में जाम होता, तो जार्विस तुम्हें सबसे तेज़ दूसरा रास्ता बता देता।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 4.928,
+      "duration_seconds": 4.907,
       "subtitle": "ऑफिस पहुँचने से पहले वो तुम्हारे ईमेल और मीटिंग की तैयारी भी कर चुका होता।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 3.733,
+      "duration_seconds": 3.691,
       "subtitle": "तुम कहते, जार्विस, इस प्रोजेक्ट के लिए एक अच्छा आइडिया ढूँढो।"
     },
     {
       "beat_id": "s03_b04",
       "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 5.205,
+      "duration_seconds": 5.184,
       "subtitle": "और वो तुम्हारे लिए रिसर्च करता, जानकारी समझाता और एक शुरुआती प्लान बना देता।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 3.541,
+      "duration_seconds": 3.563,
       "subtitle": "शाम को तुम अपने दोस्त से कहते, आज मूवी देखने चलते हैं।"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 4.523,
+      "duration_seconds": 4.48,
       "subtitle": "जार्विस तुरंत पास के सिनेमाघर, शो टाइम और टिकट के विकल्प दिखा देता।"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 4.075,
+      "duration_seconds": 3.925,
       "subtitle": "तुम बस एक विकल्प चुनते और बाकी छोटी-मोटी तैयारी वो कर देता।"
     },
     {
@@ -100,13 +100,13 @@
     {
       "beat_id": "s05_b01",
       "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 5.44,
+      "duration_seconds": 5.269,
       "subtitle": "लेकिन एक रात तुम सोचते, अगर जार्विस को मेरी हर बात पता है, तो क्या ये सुरक्षित भी है?"
     },
     {
       "beat_id": "s05_b02",
       "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 4.928,
+      "duration_seconds": 4.907,
       "subtitle": "क्योंकि उसे तुम्हारी आवाज़, लोकेशन, आदतें और कई निजी जानकारियाँ मिल सकती थीं।"
     },
     {
@@ -124,19 +124,19 @@
     {
       "beat_id": "s06_b01",
       "audio_file": "build/audio/s06_b01.wav",
-      "duration_seconds": 7.317,
+      "duration_seconds": 7.467,
       "subtitle": "फिर भी, कल्पना करो कि तुम्हारे पास ऐसा असिस्टेंट हो जो तुम्हारा समय बचाए और तुम्हें बेहतर काम करने में मदद करे।"
     },
     {
       "beat_id": "s06_b02",
       "audio_file": "build/audio/s06_b02.wav",
-      "duration_seconds": 3.563,
+      "duration_seconds": 3.541,
       "subtitle": "शायद भविष्य में जार्विस सिर्फ फिल्मों का सपना नहीं रहेगा।"
     },
     {
       "beat_id": "s06_b03",
       "audio_file": "build/audio/s06_b03.wav",
-      "duration_seconds": 5.653,
+      "duration_seconds": 5.611,
       "subtitle": "और अब बताओ, अगर तुम्हारे पास अपना जार्विस होता, तो सबसे पहले उससे कौन सा काम करवाते?"
     }
   ]

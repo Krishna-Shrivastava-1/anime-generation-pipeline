@@ -2,55 +2,65 @@
   "$schema_version": "2.0.0",
   "project_meta": {
     "title": "What If AI Was Never Invented After 2022?",
-    "project_id": "what_if_ai_never_arrived_2022",
+    "project_id": "what_if_ai_never_arrived_2022_extended",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Minimalist hand-drawn stickman explainer, cinematic storytelling, warm off-white paper texture, bold slightly imperfect black ink outlines, limited earthy accent colors with muted blue for technology and warm orange for highlights. The recurring presenter has a perfectly round white face, exactly two tiny solid-black dot eyes of identical size and spacing, no pupils, irises, eye whites, highlights, reflections or eyelashes, a simple curved mouth, thin black stick limbs and a small red bow tie. Every other stickman character must use exactly the same two tiny solid-black dot eyes, with identical shape, size and spacing. Keep characters visually consistent throughout. Vertical 9:16 composition, expressive poses, clear visual storytelling, uncluttered backgrounds.",
-    "negative_prompt": "No realistic human anatomy, no 3D rendering, no photorealism, no detailed facial features, no changing eye styles, no pupils, no irises, no eye whites, no eye highlights, no reflections, no eyelashes, no eyebrows covering eyes, no extra eyes, no text-heavy images, no watermarks, no logos, no cluttered compositions."
+    "art_style": "Minimalist hand-drawn stickman explainer with cinematic storytelling. Warm off-white paper texture, bold slightly imperfect black ink outlines, limited earthy accent colors, muted blue for technology and warm orange for highlights. The recurring presenter has a perfectly round white face, exactly two tiny simple solid-black dot eyes of identical size and spacing, no pupils, irises, eye whites, highlights, reflections or eyelashes, a simple curved mouth, thin black stick limbs and a small red bow tie. Every stickman character must have exactly two tiny solid-black dot eyes with identical shape, size and spacing. Keep character designs consistent across all scenes. Dynamic poses, clear visual storytelling, uncluttered vertical 9:16 compositions.",
+    "negative_prompt": "No photorealism, no 3D rendering, no realistic anatomy, no detailed facial features, no changing eye styles, no pupils, no irises, no eye whites, no eye highlights, no reflections, no eyelashes, no extra eyes, no inconsistent character designs, no watermarks, no logos, no cluttered compositions, no text-heavy images."
   },
   "assets": {
     "presenter": {
       "type": "character",
       "label": "Recurring stickman presenter",
-      "visual_dna": "A minimalist stickman with a perfectly round white face, exactly two tiny solid-black dot eyes, identical in size and spacing in every appearance, a simple curved mouth, thin black stick limbs and a small red bow tie. No pupils, irises, eye whites, highlights or realistic eye details."
+      "visual_dna": "A minimalist stickman with a perfectly round white face, exactly two tiny solid-black dot eyes identical in size and spacing in every appearance, a simple curved mouth, thin black stick limbs and a small red bow tie. No pupils, irises, eye whites, highlights or realistic eye details."
     },
     "student": {
       "type": "character",
       "label": "Young student",
-      "visual_dna": "A simple black-ink stickman with a round white face, exactly two tiny solid-black dot eyes, identical in size and spacing to the presenter, thin limbs, a blue backpack and simple casual clothing. No detailed facial features."
+      "visual_dna": "A simple black-ink stickman with a round white face, exactly two tiny solid-black dot eyes, identical in size and spacing to the presenter, thin limbs and a blue backpack. No detailed facial features."
+    },
+    "teacher": {
+      "type": "character",
+      "label": "Teacher",
+      "visual_dna": "A simple black-ink stickman with a round white face, exactly two tiny solid-black dot eyes, identical in size and spacing to the presenter, thin limbs and simple formal clothing. No detailed facial features."
     },
     "office_worker": {
       "type": "character",
       "label": "Office worker",
-      "visual_dna": "A simple black-ink stickman with a round white face, exactly two tiny solid-black dot eyes, identical in size and spacing to the presenter, thin limbs, a muted green shirt and dark trousers. No detailed facial features."
+      "visual_dna": "A simple black-ink stickman with a round white face, exactly two tiny solid-black dot eyes, identical in size and spacing to the presenter, thin limbs, muted green shirt and dark trousers. No detailed facial features."
     },
-    "small_business_owner": {
+    "business_owner": {
       "type": "character",
       "label": "Small business owner",
       "visual_dna": "A simple black-ink stickman with a round white face, exactly two tiny solid-black dot eyes, identical in size and spacing to the presenter, thin limbs and a muted mustard apron. No detailed facial features."
     },
     "world": {
       "type": "environment",
-      "label": "Everyday modern world",
-      "visual_dna": "A hand-drawn modern city with homes, offices, schools, shops, roads and simple technology, illustrated on warm off-white paper with bold black outlines and restrained earthy colors."
+      "label": "Modern city",
+      "visual_dna": "A modern city with homes, offices, schools, shops, roads, smartphones and computers, illustrated on warm off-white paper with bold black outlines and restrained earthy colors."
     },
     "home_desk": {
       "type": "environment",
       "label": "Home study desk",
-      "visual_dna": "A compact home study corner with a wooden desk, laptop, notebooks, desk lamp and a window, drawn with minimalist black ink outlines and muted warm colors."
+      "visual_dna": "A compact home study corner with wooden desk, laptop, notebooks, desk lamp, books and a window, drawn with minimalist black ink outlines and muted warm colors."
+    },
+    "classroom": {
+      "type": "environment",
+      "label": "Traditional classroom",
+      "visual_dna": "A simple classroom with wooden desks, a chalkboard, books and windows, illustrated with bold black ink outlines and muted earthy colors."
     },
     "office": {
       "type": "environment",
       "label": "Modern office",
-      "visual_dna": "A simple contemporary office with desks, computers, glass partitions and a few potted plants, in a minimalist hand-drawn style."
+      "visual_dna": "A contemporary office with desks, computers, glass partitions, paperwork and potted plants, in a minimalist hand-drawn style."
     },
     "shop": {
       "type": "environment",
-      "label": "Small local shop",
-      "visual_dna": "A modest neighborhood shop with shelves, a counter, product boxes and a handwritten price board, drawn with simple ink lines and muted earthy colors."
+      "label": "Small neighborhood shop",
+      "visual_dna": "A modest neighborhood shop with shelves, a counter, product boxes, a basic computer and a simple display window, drawn with black ink outlines and muted earthy colors."
     }
   },
   "scenes": [
@@ -63,16 +73,32 @@
           "narration_text": "सोचो, अगर दो हज़ार बाईस के बाद एआई आम लोगों तक कभी पहुँचा ही नहीं होता?",
           "camera_type": "dramatic_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 cinematic hand-drawn illustration of the recurring presenter standing in front of a modern city, holding a glowing smartphone while a large floating AI symbol made of simple connected lines appears above the phone and then fades into a question mark. The presenter has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm off-white paper background, bold black ink outlines, muted blue and orange accents, dramatic but uncluttered composition.",
-          "session_delta_prompt": "Keep the presenter and city consistent. The AI symbol should be visually simple and recognizable without any readable text."
+          "prompt_action": "Vertical 9:16 cinematic hand-drawn illustration of the recurring presenter standing in a modern city, holding a smartphone. A huge glowing artificial intelligence symbol floats above the city like a mysterious invention. The presenter has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm off-white paper, bold black ink outlines, muted blue and orange accents, dramatic lighting.",
+          "session_delta_prompt": "Keep the presenter recognizable with identical tiny dot eyes and red bow tie. Make the AI symbol the main visual focus."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "ना चैटजीपीटी, ना आम लोगों के लिए एआई इमेज और वीडियो टूल्स।",
-          "camera_type": "close_up",
-          "action_mode": "in_place_action",
-          "prompt_action": "Vertical 9:16 close-up of the recurring stickman presenter looking at a smartphone showing three empty app-style panels: a blank chat bubble, an empty image frame and a blank video screen, each crossed out with a simple black line. The presenter has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth and a small red bow tie. Minimalist hand-drawn black ink, warm paper texture, muted blue accents, no readable words or logos.",
-          "session_delta_prompt": "Keep the phone and the three crossed-out empty panels clear and visually simple."
+          "narration_text": "ना चैटजीपीटी जैसा चैटबॉट, ना आम लोगों के लिए एआई इमेज बनाने वाले टूल्स।",
+          "camera_type": "extreme_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 close-up of a smartphone held by the recurring presenter. The screen shows an empty chat window with a blank message bubble and a separate empty image-generation frame, both crossed out with simple black lines. The presenter's round white face is visible behind the phone with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth and red bow tie. Minimalist hand-drawn black ink, warm paper texture, muted blue accents.",
+          "session_delta_prompt": "Make the empty chat and image panels instantly recognizable. Keep the presenter's eye design identical."
+        },
+        {
+          "beat_id": "s01_b03",
+          "narration_text": "ना कुछ सेकंड में जवाब, ना एक कमांड से तस्वीरें और वीडियो।",
+          "camera_type": "over_the_shoulder",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 over-the-shoulder view of the recurring presenter looking at a laptop. On the desk are a blank image canvas, a video editing timeline with empty frames and a long unanswered question written on paper. The presenter has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a round white face and red bow tie. Warm paper texture, black ink outlines, muted earthy colors.",
+          "session_delta_prompt": "Show the absence of instant creative tools through the empty screen and unfinished work."
+        },
+        {
+          "beat_id": "s01_b04",
+          "narration_text": "और इसका असर हमारी रोज़मर्रा की ज़िंदगी पर पड़ता।",
+          "camera_type": "low_angle_city_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 cinematic city scene showing a student with books, an office worker carrying paperwork and a shop owner arranging products. The recurring presenter stands in the foreground looking across the busy city. Every character has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. The presenter wears a red bow tie. Warm off-white paper, bold ink outlines, muted earthy colors.",
+          "session_delta_prompt": "Introduce the three everyday situations that the following scenes will explore."
         }
       ]
     },
@@ -82,19 +108,35 @@
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "सबसे पहले, पढ़ाई का तरीका अलग होता। स्टूडेंट्स हर सवाल का जवाब तुरंत नहीं पूछ पाते।",
+          "narration_text": "सबसे पहले, पढ़ाई का तरीका बदल जाता।",
           "camera_type": "medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn scene of a young student sitting at a wooden study desk, surrounded by thick textbooks and handwritten notebooks, looking confused at a difficult question on paper. The student has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, and simple stick limbs. A laptop sits closed beside the books. Warm off-white paper, bold black outlines, muted earthy colors, expressive but simple pose.",
-          "session_delta_prompt": "Keep the student, desk and textbooks consistent. Show the challenge through the pile of books and puzzled posture, not detailed facial features."
+          "prompt_action": "Vertical 9:16 hand-drawn scene of a young student sitting at a wooden study desk with a laptop, thick textbooks and notebooks. The student looks at a difficult question on paper. The student has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, and simple stick limbs. Warm off-white paper, black ink outlines, muted blue backpack beside the desk.",
+          "session_delta_prompt": "Keep the same student and blue backpack throughout the study sequence."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "लोग किताबें पढ़ते, टीचर्स से पूछते और जवाब ढूँढने में ज़्यादा समय लगाते।",
-          "camera_type": "over_the_shoulder",
+          "narration_text": "किसी मुश्किल सवाल का जवाब चाहिए होता, तो तुरंत चैटबॉट से पूछने का विकल्प नहीं होता।",
+          "camera_type": "close_up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Vertical 9:16 close-up of the same student staring at a laptop with a traditional search page represented by simple search bars and tiny webpage rectangles, not a chatbot. A large question mark floats above the screen. The student has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Hand-drawn black ink, warm paper texture, muted colors.",
+          "session_delta_prompt": "Keep the laptop and student consistent. Make the search interface look traditional and simple."
+        },
+        {
+          "beat_id": "s02_b03",
+          "narration_text": "स्टूडेंट्स को किताबें खंगालनी पड़तीं और अलग-अलग वेबसाइट्स पर जवाब ढूँढना पड़ता।",
+          "camera_type": "top_down_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 over-the-shoulder view of the same student reading an open textbook while a teacher stickman points toward a large chalkboard filled with simple diagrams and symbols. Both characters have round white faces with exactly two tiny solid-black dot eyes each, no pupils, irises, eye whites, highlights or reflections. Warm classroom setting, black ink outlines, muted green and ochre accents, no readable text.",
-          "session_delta_prompt": "Preserve the student's blue backpack and consistent simple dot eyes for both characters."
+          "prompt_action": "Vertical 9:16 top-down view of the student's wooden desk almost covered by open textbooks, handwritten notes, printed webpages and a laptop. The student's hands flip through pages while searching for an answer. Show the student's round white head near the desk edge with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm paper texture, bold black ink outlines, muted earthy colors.",
+          "session_delta_prompt": "Emphasize the amount of manual searching with a visually rich but readable desk arrangement."
+        },
+        {
+          "beat_id": "s02_b04",
+          "narration_text": "और कभी-कभी एक छोटा सा कॉन्सेप्ट समझने में भी काफी समय लग जाता।",
+          "camera_type": "side_profile",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 side view of the same student sitting late at night at the study desk, staring at a complicated textbook diagram. A desk lamp illuminates the books while a wall clock indicates that several hours have passed. The student has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Cinematic warm orange lamp light, hand-drawn black ink on off-white paper.",
+          "session_delta_prompt": "Use lighting and the clock to communicate time passing, not exaggerated distress."
         }
       ]
     },
@@ -104,19 +146,35 @@
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "ऑफिस में ईमेल, रिपोर्ट और प्रेज़ेंटेशन बनाने का काम भी ज़्यादातर खुद करना पड़ता।",
+          "narration_text": "ऑफिस में भी काम का तरीका काफी अलग होता।",
           "camera_type": "wide_office_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn modern office scene with the office worker sitting at a desk, facing a computer monitor, surrounded by paper documents, printed charts and sticky notes. The worker has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, thin black stick limbs, muted green shirt and dark trousers. A wall clock shows time passing. Warm paper texture, bold black outlines, restrained colors.",
-          "session_delta_prompt": "Keep the same office worker and office layout. Use paper piles and the clock to communicate repetitive work."
+          "prompt_action": "Vertical 9:16 wide hand-drawn modern office scene with several desks, computers, paper files and workers typing. The main office worker sits in the center wearing a muted green shirt and dark trousers. The worker has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm off-white paper, bold black outlines, muted earthy colors.",
+          "session_delta_prompt": "Keep the main office worker's green shirt and simple face consistent in all office beats."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "कई छोटे कामों में इंसानों का समय लगता, जिन्हें आज एआई कुछ ही सेकंड में शुरू कर देता है।",
-          "camera_type": "top_down_desk_view",
+          "narration_text": "ईमेल लिखना, रिपोर्ट बनाना और प्रेज़ेंटेशन तैयार करना खुद करना पड़ता।",
+          "camera_type": "medium_desk_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 top-down view of the same office worker's crowded desk, with a long checklist of simple task icons: email envelope, document page, chart and calendar. The worker's hands are busy sorting papers and typing on a keyboard. The worker's round white face is partially visible with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Hand-drawn ink style, warm paper texture, muted blue and orange accents, no readable words.",
-          "session_delta_prompt": "Show multiple small tasks competing for attention without adding extra characters or changing the worker's design."
+          "prompt_action": "Vertical 9:16 hand-drawn scene of the same office worker typing an email on a computer while paper reports and a presentation printout lie scattered across the desk. The worker has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a round white face and green shirt. Warm office lighting, bold black ink outlines, muted blue accents.",
+          "session_delta_prompt": "Clearly show three separate work items: email on screen, report pages and presentation sheets."
+        },
+        {
+          "beat_id": "s03_b03",
+          "narration_text": "किसी लंबे डॉक्यूमेंट का सार चाहिए होता, तो उसे खुद पढ़कर नोट्स बनाने पड़ते।",
+          "camera_type": "over_the_shoulder",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 over-the-shoulder illustration of the same office worker reading a very thick document, highlighting lines with a marker and writing a summary in a notebook. The worker's round white face is partly visible with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm paper texture, black ink outlines, green shirt, muted orange accents.",
+          "session_delta_prompt": "Focus on the manual process of reading, highlighting and summarizing."
+        },
+        {
+          "beat_id": "s03_b04",
+          "narration_text": "आज जिन छोटे कामों की शुरुआत एआई कर देता है, उनमें भी इंसान का काफी समय जाता।",
+          "camera_type": "high_angle_office_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 high-angle view of the same office worker surrounded by multiple unfinished tasks: an email draft, a report, a presentation chart, a spreadsheet and a calendar. The worker sits in the middle looking at the workload. Exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Hand-drawn ink style, warm paper texture, muted earthy palette.",
+          "session_delta_prompt": "Create a clear visual of competing tasks without making the office look chaotic or unrealistic."
         }
       ]
     },
@@ -126,19 +184,35 @@
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "छोटे बिज़नेस वालों के लिए भी विज्ञापन, डिज़ाइन और नए आइडिया बनाना मुश्किल और महँगा रहता।",
-          "camera_type": "medium_shot",
+          "narration_text": "छोटे बिज़नेस वालों की दुनिया भी थोड़ी अलग होती।",
+          "camera_type": "wide_shop_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 scene inside a modest neighborhood shop. The small business owner stands behind the counter, looking at a plain empty promotional poster, a basic camera and scattered paper sketches. The owner has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, thin stick limbs and a mustard apron. Shelves of ordinary products in the background, warm off-white paper, bold black ink outlines, muted earthy colors.",
-          "session_delta_prompt": "Keep the shop owner, counter and shelves consistent. The blank poster should suggest a lack of affordable design resources."
+          "prompt_action": "Vertical 9:16 hand-drawn neighborhood shop with shelves of products, a small counter and a business owner in a mustard apron. The owner has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. The owner stands behind the counter looking at a blank promotional poster. Warm off-white paper, bold black outlines, muted earthy colors.",
+          "session_delta_prompt": "Keep the same shop owner, mustard apron, shelves and counter throughout this sequence."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "आज वही इंसान कम बजट में भी डिज़ाइन, आइडिया और कंटेंट तैयार कर सकता है।",
+          "narration_text": "एक अच्छा विज्ञापन या प्रोडक्ट डिज़ाइन बनवाने के लिए डिजाइनर ढूँढना पड़ता।",
+          "camera_type": "close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 close-up of the shop owner's counter showing a blank product advertisement poster, a pencil sketch of a product and a phone displaying a simple contact list with no readable words. The owner's round white face appears in the background with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm paper texture, bold black ink outlines, mustard apron visible.",
+          "session_delta_prompt": "Show the challenge of arranging design help through the blank poster and contact list."
+        },
+        {
+          "beat_id": "s04_b03",
+          "narration_text": "हर छोटे दुकानदार के पास इसके लिए बड़ा बजट भी नहीं होता।",
+          "camera_type": "medium_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 scene of the same shop owner counting a few coins beside a notebook of business expenses, with an unfinished promotional poster on the counter. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, round white face and mustard apron. Warm muted lighting, hand-drawn black ink outlines, off-white paper.",
+          "session_delta_prompt": "Communicate a limited budget respectfully without portraying the owner as helpless."
+        },
+        {
+          "beat_id": "s04_b04",
+          "narration_text": "एआई के आने से अब वही इंसान कम बजट में भी कई क्रिएटिव काम शुरू कर सकता है।",
           "camera_type": "dynamic_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn scene of the same small business owner confidently using a laptop on the shop counter. Floating around the laptop are three simple visual results: a neat product poster, a lightbulb idea icon and a short video frame, all represented without readable text. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a round white face and mustard apron. Warm paper texture, black ink outlines, muted blue and orange accents.",
-          "session_delta_prompt": "Show the same shop owner now looking productive, with simple visual examples of affordable creative work."
+          "prompt_action": "Vertical 9:16 scene of the same shop owner confidently using a laptop on the counter. Floating beside the laptop are three clear visual examples: a colorful product poster, a lightbulb idea sketch and a short video thumbnail. The owner has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, thin stick limbs and mustard apron. Warm paper texture, black ink outlines, muted blue and orange accents.",
+          "session_delta_prompt": "Show the owner using accessible creative tools, not a magical instant transformation."
         }
       ]
     },
@@ -148,27 +222,51 @@
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "लेकिन दुनिया रुकती नहीं। लोग फिर भी इंटरनेट पर खोजते, पुराने सॉफ्टवेयर इस्तेमाल करते और इंसानों से मदद लेते।",
-          "camera_type": "panoramic_wide_shot",
+          "narration_text": "लेकिन एक बात समझो, एआई के बिना दुनिया खत्म नहीं हो जाती।",
+          "camera_type": "dramatic_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 wide hand-drawn city composition showing everyday people using traditional tools: a student searching through books, an office worker typing into a conventional software interface, and a person asking a colleague for help. All stickman characters have round white faces with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm off-white paper, bold black outlines, muted earthy colors, clear separated visual groups.",
-          "session_delta_prompt": "Show a functioning world that is less automated, not a ruined or technologically primitive world."
+          "prompt_action": "Vertical 9:16 expansive hand-drawn city scene showing busy streets, schools, offices, shops and people continuing their daily routines. The recurring presenter stands in the foreground with a calm thoughtful pose. The presenter has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a round white face and red bow tie. Warm off-white paper, bold black ink outlines, muted earthy colors.",
+          "session_delta_prompt": "Show a normal functioning world without AI, not a destroyed or primitive world."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "शायद काम थोड़ा धीमा होता, लेकिन इंसान सीखना और नई चीज़ें बनाना बंद नहीं करते।",
-          "camera_type": "low_angle_hero_shot",
+          "narration_text": "लोग फिर भी इंटरनेट इस्तेमाल करते, पुराने सॉफ्टवेयर से काम करते और एक-दूसरे से मदद लेते।",
+          "camera_type": "three_panel_visual",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 uplifting hand-drawn scene of the recurring presenter standing beside a group of ordinary stickman people building something together: one sketches an idea, another types on a laptop, and another assembles a small prototype. Every character has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. The presenter has a red bow tie. Warm golden light, off-white paper texture, bold imperfect black ink outlines, restrained earthy colors.",
-          "session_delta_prompt": "Keep the presenter recognizable and show collaboration, creativity and human problem-solving."
+          "prompt_action": "Vertical 9:16 three-part hand-drawn composition. First section shows a stickman searching on a traditional computer. Second section shows an office worker using conventional software and spreadsheets. Third section shows two stickmen discussing a problem face to face. Every character has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm paper texture, black ink outlines, muted earthy colors.",
+          "session_delta_prompt": "Make the three different ways of solving problems easy to distinguish."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "तो एआई के बिना दुनिया शायद धीमी होती, लेकिन क्या वो बेहतर होती? ये तो इस बात पर निर्भर करता कि हम एआई का इस्तेमाल कैसे करते हैं।",
-          "camera_type": "close_up_to_wide_reveal",
+          "narration_text": "बस कई कामों में ज्यादा मेहनत और ज्यादा समय लगता।",
+          "camera_type": "wide_workplace_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 cinematic final composition. The recurring presenter stands in the center holding a smartphone in one hand and a small glowing lightbulb in the other. Behind the presenter, one side shows people collaborating without AI and the other side shows people using AI tools thoughtfully. The presenter has a perfectly round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm off-white paper, bold black ink outlines, balanced muted blue and orange accents, thoughtful hopeful atmosphere, no readable text.",
-          "session_delta_prompt": "End on a balanced visual contrast between human creativity and AI assistance. Preserve the presenter's exact dot-eye design."
+          "prompt_action": "Vertical 9:16 hand-drawn montage-like scene of three people working carefully: a student studying books, an office worker manually preparing charts and a shop owner drawing a product poster. All stickman characters have exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm off-white paper, bold ink outlines, muted orange and blue accents.",
+          "session_delta_prompt": "Show effort and patience through distinct manual activities, keeping every character's eyes identical."
+        },
+        {
+          "beat_id": "s05_b04",
+          "narration_text": "और शायद इंसान नई चीज़ें बनाने के लिए दूसरे रास्ते खोज लेते।",
+          "camera_type": "low_angle_hero_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 uplifting scene of a group of stickman people collaborating around a table, sketching inventions, assembling a small prototype and discussing ideas. The recurring presenter stands beside them, wearing a small red bow tie. Every character has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm golden light, off-white paper texture, bold imperfect black ink outlines, earthy colors.",
+          "session_delta_prompt": "Emphasize human creativity, teamwork and problem-solving."
+        },
+        {
+          "beat_id": "s05_b05",
+          "narration_text": "तो एआई के बिना दुनिया शायद थोड़ी धीमी होती, लेकिन क्या वो बेहतर होती?",
+          "camera_type": "balanced_split_composition",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 balanced split composition. On the left, a group of stickman people work together with books, paper and traditional computers. On the right, another group uses AI-assisted computers to create designs and organize information. The recurring presenter stands in the center between both worlds. Every character has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. The presenter has a red bow tie. Warm paper texture, black ink outlines, muted blue and orange accents.",
+          "session_delta_prompt": "Create a thoughtful comparison, not a good-versus-evil battle. Keep both worlds equally human and productive."
+        },
+        {
+          "beat_id": "s05_b06",
+          "narration_text": "शायद असली सवाल ये नहीं कि एआई होता या नहीं, बल्कि ये है कि हम उसका इस्तेमाल कैसे करते हैं।",
+          "camera_type": "cinematic_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 cinematic final illustration of the recurring presenter holding a smartphone in one hand and a glowing lightbulb in the other. Behind the presenter, a subtle city skyline and small groups of people learning, working and creating together. The presenter has a perfectly round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm golden light, off-white paper, bold black ink outlines, restrained blue and orange accents, hopeful thoughtful atmosphere.",
+          "session_delta_prompt": "End with a strong memorable image of technology guided by human choices. Preserve the exact dot-eye design."
         }
       ]
     }

@@ -1,15 +1,15 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "What If AI Was Never Invented After 2022?",
-    "project_id": "what_if_ai_never_arrived_2022_extended",
+    "title": "What If All Humans Became Vegetarian?",
+    "project_id": "what_if_every_human_became_vegetarian",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Minimalist hand-drawn stickman explainer with cinematic storytelling. Warm off-white paper texture, bold slightly imperfect black ink outlines, limited earthy accent colors, muted blue for technology and warm orange for highlights. The recurring presenter has a perfectly round white face, exactly two tiny simple solid-black dot eyes of identical size and spacing, no pupils, irises, eye whites, highlights, reflections or eyelashes, a simple curved mouth, thin black stick limbs and a small red bow tie. Every stickman character must have exactly two tiny solid-black dot eyes with identical shape, size and spacing. Keep character designs consistent across all scenes. Dynamic poses, clear visual storytelling, uncluttered vertical 9:16 compositions.",
-    "negative_prompt": "No photorealism, no 3D rendering, no realistic anatomy, no detailed facial features, no changing eye styles, no pupils, no irises, no eye whites, no eye highlights, no reflections, no eyelashes, no extra eyes, no inconsistent character designs, no watermarks, no logos, no cluttered compositions, no text-heavy images."
+    "art_style": "Minimalist hand-drawn stickman storytelling with emotional cinematic visuals. Warm off-white paper texture, bold slightly imperfect black ink outlines, limited earthy colors, soft green fields, muted blue skies and warm orange sunlight. All human and animal characters use a consistent simple cartoon design. Stickman humans have round white faces, exactly two tiny solid-black dot eyes of identical size and spacing, no pupils, irises, eye whites, highlights, reflections or eyelashes, simple curved mouths, thin black stick limbs. The recurring presenter also wears a small red bow tie. Animals have simple expressive cartoon faces with tiny black dot eyes. For any animal shown as dead, use only two simple black X marks over its eyes as a non-graphic cartoon symbol. Never show blood, wounds, slaughter, knives, graphic suffering or disturbing imagery. Vertical 9:16 composition, one clear visual action per image, emotionally engaging but gentle storytelling.",
+    "negative_prompt": "No blood, gore, wounds, slaughter scenes, knives, butcher scenes, graphic animal cruelty, realistic dead bodies, disturbing imagery, realistic anatomy, photorealism, 3D rendering, detailed human faces, changing stickman eye designs, pupils, irises, eye whites, highlights, reflections, eyelashes, extra eyes, watermarks, logos, readable text."
   },
   "assets": {
     "presenter": {
@@ -17,50 +17,50 @@
       "label": "Recurring stickman presenter",
       "visual_dna": "A minimalist stickman with a perfectly round white face, exactly two tiny solid-black dot eyes identical in size and spacing in every appearance, a simple curved mouth, thin black stick limbs and a small red bow tie. No pupils, irises, eye whites, highlights or realistic eye details."
     },
-    "student": {
+    "cow": {
       "type": "character",
-      "label": "Young student",
-      "visual_dna": "A simple black-ink stickman with a round white face, exactly two tiny solid-black dot eyes, identical in size and spacing to the presenter, thin limbs and a blue backpack. No detailed facial features."
+      "label": "Gentle cow",
+      "visual_dna": "A friendly cartoon black-and-white cow with a rounded body, four simple legs, small horns, a pink muzzle and two tiny black dot eyes. Consistent proportions and gentle expression."
     },
-    "teacher": {
+    "chicken": {
       "type": "character",
-      "label": "Teacher",
-      "visual_dna": "A simple black-ink stickman with a round white face, exactly two tiny solid-black dot eyes, identical in size and spacing to the presenter, thin limbs and simple formal clothing. No detailed facial features."
+      "label": "Small hen",
+      "visual_dna": "A small cartoon brown hen with a rounded body, tiny wings, a red comb, orange beak and two tiny black dot eyes. Simple friendly hand-drawn design."
     },
-    "office_worker": {
+    "pig": {
       "type": "character",
-      "label": "Office worker",
-      "visual_dna": "A simple black-ink stickman with a round white face, exactly two tiny solid-black dot eyes, identical in size and spacing to the presenter, thin limbs, muted green shirt and dark trousers. No detailed facial features."
+      "label": "Pink pig",
+      "visual_dna": "A cute rounded pink cartoon pig with short legs, a curly tail, a round snout and two tiny black dot eyes. Gentle expressive design."
     },
-    "business_owner": {
+    "goat": {
       "type": "character",
-      "label": "Small business owner",
-      "visual_dna": "A simple black-ink stickman with a round white face, exactly two tiny solid-black dot eyes, identical in size and spacing to the presenter, thin limbs and a muted mustard apron. No detailed facial features."
+      "label": "Young goat",
+      "visual_dna": "A small light-brown cartoon goat with short curved horns, four simple legs, floppy ears and two tiny black dot eyes."
+    },
+    "farmer": {
+      "type": "character",
+      "label": "Farmer",
+      "visual_dna": "A simple stickman farmer with a round white face, exactly two tiny solid-black dot eyes, no pupils or highlights, thin black limbs, a straw hat and muted green clothes."
     },
     "world": {
       "type": "environment",
-      "label": "Modern city",
-      "visual_dna": "A modern city with homes, offices, schools, shops, roads, smartphones and computers, illustrated on warm off-white paper with bold black outlines and restrained earthy colors."
+      "label": "Modern human world",
+      "visual_dna": "A modern world with cities, supermarkets, restaurants, farms, roads and homes. Minimalist hand-drawn illustration with warm off-white paper, bold black outlines and earthy colors."
     },
-    "home_desk": {
+    "farm": {
       "type": "environment",
-      "label": "Home study desk",
-      "visual_dna": "A compact home study corner with wooden desk, laptop, notebooks, desk lamp, books and a window, drawn with minimalist black ink outlines and muted warm colors."
+      "label": "Open green farm",
+      "visual_dna": "A peaceful green farm with grassy fields, wooden fences, a red barn, trees, a small pond and a wide blue sky. Warm sunlight and hand-drawn black outlines."
     },
-    "classroom": {
+    "market": {
       "type": "environment",
-      "label": "Traditional classroom",
-      "visual_dna": "A simple classroom with wooden desks, a chalkboard, books and windows, illustrated with bold black ink outlines and muted earthy colors."
+      "label": "Modern food market",
+      "visual_dna": "A clean modern grocery market with shelves of vegetables, fruits, grains, pulses, dairy alternatives and packaged foods. Simple hand-drawn style with muted colors."
     },
-    "office": {
+    "restaurant": {
       "type": "environment",
-      "label": "Modern office",
-      "visual_dna": "A contemporary office with desks, computers, glass partitions, paperwork and potted plants, in a minimalist hand-drawn style."
-    },
-    "shop": {
-      "type": "environment",
-      "label": "Small neighborhood shop",
-      "visual_dna": "A modest neighborhood shop with shelves, a counter, product boxes, a basic computer and a simple display window, drawn with black ink outlines and muted earthy colors."
+      "label": "Modern restaurant",
+      "visual_dna": "A cozy modern restaurant with wooden tables, simple chairs, a counter and a display of colorful plant-based meals. Warm lighting and minimalist ink outlines."
     }
   },
   "scenes": [
@@ -70,149 +70,149 @@
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "सोचो, अगर दो हज़ार बाईस के बाद एआई आम लोगों तक कभी पहुँचा ही नहीं होता?",
+          "narration_text": "सोचो, अगर आज से पूरी दुनिया के इंसान शाकाहारी बन जाएँ?",
           "camera_type": "dramatic_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 cinematic hand-drawn illustration of the recurring presenter standing in a modern city, holding a smartphone. A huge glowing artificial intelligence symbol floats above the city like a mysterious invention. The presenter has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm off-white paper, bold black ink outlines, muted blue and orange accents, dramatic lighting.",
-          "session_delta_prompt": "Keep the presenter recognizable with identical tiny dot eyes and red bow tie. Make the AI symbol the main visual focus."
+          "prompt_action": "Vertical 9:16 cinematic hand-drawn illustration of the recurring stickman presenter standing in the center of a modern city, surrounded by cows, chickens, pigs and goats walking peacefully among green parks. The presenter has a round white face, exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black limbs and a small red bow tie. Warm off-white paper, bold black ink outlines, hopeful sunlight, earthy colors.",
+          "session_delta_prompt": "Establish a modern world where humans and animals share space peacefully. Keep all character designs simple and consistent."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "ना चैटजीपीटी जैसा चैटबॉट, ना आम लोगों के लिए एआई इमेज बनाने वाले टूल्स।",
-          "camera_type": "extreme_close_up",
+          "narration_text": "ना मांस के लिए जानवर मारे जाते, ना उनकी ज़िंदगी इंसानों की थाली के लिए होती।",
+          "camera_type": "medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 close-up of a smartphone held by the recurring presenter. The screen shows an empty chat window with a blank message bubble and a separate empty image-generation frame, both crossed out with simple black lines. The presenter's round white face is visible behind the phone with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth and red bow tie. Minimalist hand-drawn black ink, warm paper texture, muted blue accents.",
-          "session_delta_prompt": "Make the empty chat and image panels instantly recognizable. Keep the presenter's eye design identical."
+          "prompt_action": "Vertical 9:16 hand-drawn scene showing a peaceful cow, hen, pig and goat standing freely in a green field while a human family watches them from a respectful distance. The animals have simple cartoon faces with tiny black dot eyes. The humans have round white faces with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm paper texture, bold black outlines, soft green and yellow colors, no graphic imagery.",
+          "session_delta_prompt": "Show animals as living individuals, not food products. Keep the scene gentle and hopeful."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "ना कुछ सेकंड में जवाब, ना एक कमांड से तस्वीरें और वीडियो।",
-          "camera_type": "over_the_shoulder",
+          "narration_text": "सबसे बड़ा बदलाव हमारी प्लेट से शुरू होता।",
+          "camera_type": "top_down_food_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 over-the-shoulder view of the recurring presenter looking at a laptop. On the desk are a blank image canvas, a video editing timeline with empty frames and a long unanswered question written on paper. The presenter has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a round white face and red bow tie. Warm paper texture, black ink outlines, muted earthy colors.",
-          "session_delta_prompt": "Show the absence of instant creative tools through the empty screen and unfinished work."
-        },
-        {
-          "beat_id": "s01_b04",
-          "narration_text": "और इसका असर हमारी रोज़मर्रा की ज़िंदगी पर पड़ता।",
-          "camera_type": "low_angle_city_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 cinematic city scene showing a student with books, an office worker carrying paperwork and a shop owner arranging products. The recurring presenter stands in the foreground looking across the busy city. Every character has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. The presenter wears a red bow tie. Warm off-white paper, bold ink outlines, muted earthy colors.",
-          "session_delta_prompt": "Introduce the three everyday situations that the following scenes will explore."
+          "prompt_action": "Vertical 9:16 top-down view of a dining table. A human hand gently places a colorful plate filled with rice, lentils, vegetables, salad and flatbread in the center. Around the plate are fresh fruits and grains. No meat products anywhere. Warm hand-drawn ink style, off-white paper background, earthy green and orange colors.",
+          "session_delta_prompt": "Make the vegetarian meal look delicious, varied and familiar rather than restrictive."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "home_desk",
+      "environment_ref": "farm",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "सबसे पहले, पढ़ाई का तरीका बदल जाता।",
-          "camera_type": "medium_shot",
+          "narration_text": "फार्मों पर गायें, मुर्गियाँ, सूअर और बकरियाँ अब आज़ादी से घूम पातीं।",
+          "camera_type": "wide_farm_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn scene of a young student sitting at a wooden study desk with a laptop, thick textbooks and notebooks. The student looks at a difficult question on paper. The student has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, and simple stick limbs. Warm off-white paper, black ink outlines, muted blue backpack beside the desk.",
-          "session_delta_prompt": "Keep the same student and blue backpack throughout the study sequence."
+          "prompt_action": "Vertical 9:16 wide hand-drawn illustration of a peaceful green farm with cows grazing, hens walking through grass, pigs resting in the shade and goats exploring near a wooden fence. A red barn and trees sit in the background. All animals have simple cartoon faces with tiny black dot eyes. Warm golden sunlight, off-white paper texture, bold black outlines.",
+          "session_delta_prompt": "Give each animal enough space and show natural relaxed behavior. No cages or distress."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "किसी मुश्किल सवाल का जवाब चाहिए होता, तो तुरंत चैटबॉट से पूछने का विकल्प नहीं होता।",
-          "camera_type": "close_up",
-          "action_mode": "in_place_action",
-          "prompt_action": "Vertical 9:16 close-up of the same student staring at a laptop with a traditional search page represented by simple search bars and tiny webpage rectangles, not a chatbot. A large question mark floats above the screen. The student has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Hand-drawn black ink, warm paper texture, muted colors.",
-          "session_delta_prompt": "Keep the laptop and student consistent. Make the search interface look traditional and simple."
+          "narration_text": "मुर्गियाँ मिट्टी में दाना खोजतीं, और गायें खुले मैदान में चरतीं।",
+          "camera_type": "ground_level_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 ground-level close-up of a brown hen scratching soft earth and pecking at seeds while a black-and-white cow grazes peacefully behind her. Both animals have simple cartoon faces with tiny black dot eyes. Fresh green grass, tiny flowers, warm sunlight, hand-drawn black ink outlines on off-white paper.",
+          "session_delta_prompt": "Focus on natural animal behaviors and a calm environment."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "स्टूडेंट्स को किताबें खंगालनी पड़तीं और अलग-अलग वेबसाइट्स पर जवाब ढूँढना पड़ता।",
-          "camera_type": "top_down_shot",
+          "narration_text": "लेकिन एक ही दिन में दुनिया बदलना इतना आसान भी नहीं होता।",
+          "camera_type": "dramatic_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 top-down view of the student's wooden desk almost covered by open textbooks, handwritten notes, printed webpages and a laptop. The student's hands flip through pages while searching for an answer. Show the student's round white head near the desk edge with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm paper texture, bold black ink outlines, muted earthy colors.",
-          "session_delta_prompt": "Emphasize the amount of manual searching with a visually rich but readable desk arrangement."
+          "prompt_action": "Vertical 9:16 hand-drawn scene of a farmer standing thoughtfully in front of a large farm, holding a notebook and looking at rows of animal shelters and green fields. The farmer has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, thin black stick limbs, straw hat and green clothes. Warm earthy colors, gentle thoughtful mood.",
+          "session_delta_prompt": "Introduce the practical challenge of changing an enormous food system. Keep the farmer's appearance consistent."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "और कभी-कभी एक छोटा सा कॉन्सेप्ट समझने में भी काफी समय लग जाता।",
-          "camera_type": "side_profile",
+          "narration_text": "पहले से मौजूद लाखों जानवरों की देखभाल करनी पड़ती।",
+          "camera_type": "wide_rescue_farm_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 side view of the same student sitting late at night at the study desk, staring at a complicated textbook diagram. A desk lamp illuminates the books while a wall clock indicates that several hours have passed. The student has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Cinematic warm orange lamp light, hand-drawn black ink on off-white paper.",
-          "session_delta_prompt": "Use lighting and the clock to communicate time passing, not exaggerated distress."
+          "prompt_action": "Vertical 9:16 wide illustration of a large peaceful animal sanctuary with many cows, pigs, goats and chickens in separate spacious grassy areas. Several caretakers carry food and water buckets. All humans have round white faces with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Animals have tiny dot eyes and relaxed expressions. Warm off-white paper, black outlines, soft green landscape.",
+          "session_delta_prompt": "Show organized long-term care, food, water and shelter for existing animals."
+        },
+        {
+          "beat_id": "s02_b05",
+          "narration_text": "और धीरे-धीरे मांस के लिए नए जानवर पालने की ज़रूरत कम हो जाती।",
+          "camera_type": "wide_field_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 hand-drawn farm scene showing an old livestock barn being converted into a spacious animal shelter and green vegetable-growing area. The farmer stands nearby with a hopeful posture. A cow and goat walk freely outside. The farmer has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm sunlight, bold black ink outlines, earthy green palette.",
+          "session_delta_prompt": "Suggest a gradual transition from meat production toward animal care and other uses of farmland."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "office",
+      "environment_ref": "market",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "ऑफिस में भी काम का तरीका काफी अलग होता।",
-          "camera_type": "wide_office_shot",
+          "narration_text": "सुपरमार्केट की तस्वीर भी बदल जाती।",
+          "camera_type": "wide_market_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 wide hand-drawn modern office scene with several desks, computers, paper files and workers typing. The main office worker sits in the center wearing a muted green shirt and dark trousers. The worker has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm off-white paper, bold black outlines, muted earthy colors.",
-          "session_delta_prompt": "Keep the main office worker's green shirt and simple face consistent in all office beats."
+          "prompt_action": "Vertical 9:16 wide hand-drawn modern supermarket with colorful displays of vegetables, fruits, grains, beans, nuts and plant-based food products. A few stickman shoppers walk through the aisles carrying baskets. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm off-white paper, bold black ink outlines, lively green and orange accents.",
+          "session_delta_prompt": "Make the market look modern, busy and abundant, not empty or unrealistic."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "ईमेल लिखना, रिपोर्ट बनाना और प्रेज़ेंटेशन तैयार करना खुद करना पड़ता।",
-          "camera_type": "medium_desk_shot",
+          "narration_text": "दालें, सब्ज़ियाँ, फल, अनाज और प्रोटीन के दूसरे विकल्प ज़्यादा अहम हो जाते।",
+          "camera_type": "close_up_food_display",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn scene of the same office worker typing an email on a computer while paper reports and a presentation printout lie scattered across the desk. The worker has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a round white face and green shirt. Warm office lighting, bold black ink outlines, muted blue accents.",
-          "session_delta_prompt": "Clearly show three separate work items: email on screen, report pages and presentation sheets."
+          "prompt_action": "Vertical 9:16 close-up of a beautiful market display with lentils, chickpeas, kidney beans, tofu, nuts, leafy greens, tomatoes, bananas and whole grains arranged in separate wooden baskets. A shopper's hand reaches toward a basket of beans. Hand-drawn black ink outlines, warm paper texture, rich but restrained earthy colors.",
+          "session_delta_prompt": "Show a wide variety of plant-based foods and protein sources clearly."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "किसी लंबे डॉक्यूमेंट का सार चाहिए होता, तो उसे खुद पढ़कर नोट्स बनाने पड़ते।",
-          "camera_type": "over_the_shoulder",
+          "narration_text": "रेस्टोरेंट नए स्वाद और नई रेसिपी बनाते।",
+          "camera_type": "restaurant_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 over-the-shoulder illustration of the same office worker reading a very thick document, highlighting lines with a marker and writing a summary in a notebook. The worker's round white face is partly visible with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm paper texture, black ink outlines, green shirt, muted orange accents.",
-          "session_delta_prompt": "Focus on the manual process of reading, highlighting and summarizing."
+          "prompt_action": "Vertical 9:16 cozy modern restaurant where a chef stickman prepares colorful vegetarian dishes: vegetable curry, lentil bowls, grilled vegetables and fresh salads. The chef has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, thin stick limbs and a simple chef hat. Warm orange kitchen light, hand-drawn black ink outlines.",
+          "session_delta_prompt": "Make vegetarian food look creative, appetizing and suitable for a modern restaurant."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "आज जिन छोटे कामों की शुरुआत एआई कर देता है, उनमें भी इंसान का काफी समय जाता।",
-          "camera_type": "high_angle_office_shot",
+          "narration_text": "और लोगों को अपनी सेहत के लिए सही पोषण का ध्यान भी रखना पड़ता।",
+          "camera_type": "top_down_table_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 high-angle view of the same office worker surrounded by multiple unfinished tasks: an email draft, a report, a presentation chart, a spreadsheet and a calendar. The worker sits in the middle looking at the workload. Exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Hand-drawn ink style, warm paper texture, muted earthy palette.",
-          "session_delta_prompt": "Create a clear visual of competing tasks without making the office look chaotic or unrealistic."
+          "prompt_action": "Vertical 9:16 top-down hand-drawn view of a balanced vegetarian meal with lentils, beans, vegetables, whole grains, fruit and a fortified food package. A simple notebook beside the plate shows tiny food icons arranged as a balanced meal diagram, without readable text. Warm off-white paper, bold black outlines, muted green and orange accents.",
+          "session_delta_prompt": "Communicate that a healthy vegetarian diet needs variety and planning, not just removing meat."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "shop",
+      "environment_ref": "world",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "छोटे बिज़नेस वालों की दुनिया भी थोड़ी अलग होती।",
-          "camera_type": "wide_shop_shot",
+          "narration_text": "दुनिया भर के किसानों को भी नई फसलें उगाने और नए काम सीखने पड़ते।",
+          "camera_type": "wide_farmland_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn neighborhood shop with shelves of products, a small counter and a business owner in a mustard apron. The owner has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. The owner stands behind the counter looking at a blank promotional poster. Warm off-white paper, bold black outlines, muted earthy colors.",
-          "session_delta_prompt": "Keep the same shop owner, mustard apron, shelves and counter throughout this sequence."
+          "prompt_action": "Vertical 9:16 hand-drawn illustration of farmers working in wide fields of beans, lentils, vegetables and grains. One farmer plants seedlings while another checks a crop row. Each farmer has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, simple stick limbs and earthy work clothes. Bright warm daylight, green fields, bold black ink outlines.",
+          "session_delta_prompt": "Show farmers adapting their work through new crops and agricultural skills."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "एक अच्छा विज्ञापन या प्रोडक्ट डिज़ाइन बनवाने के लिए डिजाइनर ढूँढना पड़ता।",
-          "camera_type": "close_up",
+          "narration_text": "कुछ जगह ज़मीन पर खाने की फसलें उग सकतीं, जहाँ पहले पशुओं के लिए चारा उगता था।",
+          "camera_type": "aerial_farmland_view",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 close-up of the shop owner's counter showing a blank product advertisement poster, a pencil sketch of a product and a phone displaying a simple contact list with no readable words. The owner's round white face appears in the background with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm paper texture, bold black ink outlines, mustard apron visible.",
-          "session_delta_prompt": "Show the challenge of arranging design help through the blank poster and contact list."
+          "prompt_action": "Vertical 9:16 aerial-style hand-drawn view of farmland divided into green crop plots. One side shows a grassy animal-feed field and the other shows rows of lentils, beans and vegetables. A small tractor moves along a path. Warm off-white paper texture, bold black ink outlines, muted green and brown colors.",
+          "session_delta_prompt": "Show a possible land-use change, not a claim that all grazing land can grow crops."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "हर छोटे दुकानदार के पास इसके लिए बड़ा बजट भी नहीं होता।",
-          "camera_type": "medium_shot",
+          "narration_text": "कुछ जानवरों को बचाने के लिए बड़े अभयारण्य और सुरक्षित जगहें बनानी पड़तीं।",
+          "camera_type": "panoramic_nature_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 scene of the same shop owner counting a few coins beside a notebook of business expenses, with an unfinished promotional poster on the counter. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, round white face and mustard apron. Warm muted lighting, hand-drawn black ink outlines, off-white paper.",
-          "session_delta_prompt": "Communicate a limited budget respectfully without portraying the owner as helpless."
+          "prompt_action": "Vertical 9:16 panoramic hand-drawn sanctuary with green hills, ponds, trees, open grassland and groups of cows, goats, pigs and chickens living in spacious protected areas. A few caretakers walk along a wooden path. Animals have tiny black dot eyes and peaceful expressions. Warm golden light, bold ink outlines, off-white paper texture.",
+          "session_delta_prompt": "Show that animal welfare requires space, resources and careful management."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "एआई के आने से अब वही इंसान कम बजट में भी कई क्रिएटिव काम शुरू कर सकता है।",
-          "camera_type": "dynamic_medium_shot",
+          "narration_text": "और इंसान सीखते कि जानवर सिर्फ खाने की चीज़ नहीं, बल्कि अपनी ज़िंदगी जीने वाले जीव हैं।",
+          "camera_type": "emotional_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 scene of the same shop owner confidently using a laptop on the counter. Floating beside the laptop are three clear visual examples: a colorful product poster, a lightbulb idea sketch and a short video thumbnail. The owner has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, thin stick limbs and mustard apron. Warm paper texture, black ink outlines, muted blue and orange accents.",
-          "session_delta_prompt": "Show the owner using accessible creative tools, not a magical instant transformation."
+          "prompt_action": "Vertical 9:16 emotional close-up of a gentle black-and-white cow standing beside a young goat in a green field, looking calmly toward the viewer. In the soft background, a stickman child watches with curiosity and kindness. The child has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Animals have tiny dot eyes. Soft golden sunlight, warm paper texture, gentle hand-drawn outlines.",
+          "session_delta_prompt": "Create an empathetic moment that treats animals as living beings with their own needs and behaviors."
         }
       ]
     },
@@ -222,51 +222,43 @@
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "लेकिन एक बात समझो, एआई के बिना दुनिया खत्म नहीं हो जाती।",
-          "camera_type": "dramatic_wide_shot",
+          "narration_text": "क्या इससे धरती को भी फायदा होता? कुछ मामलों में, हाँ।",
+          "camera_type": "dramatic_wide_nature_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 expansive hand-drawn city scene showing busy streets, schools, offices, shops and people continuing their daily routines. The recurring presenter stands in the foreground with a calm thoughtful pose. The presenter has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a round white face and red bow tie. Warm off-white paper, bold black ink outlines, muted earthy colors.",
-          "session_delta_prompt": "Show a normal functioning world without AI, not a destroyed or primitive world."
+          "prompt_action": "Vertical 9:16 hand-drawn view of a green planet with forests, fields, rivers and a modern city. A small group of cows and goats graze peacefully in a field while birds fly overhead. The recurring presenter stands in the foreground pointing toward the planet. The presenter has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, round white face and red bow tie. Warm earthy colors, bold ink outlines.",
+          "session_delta_prompt": "Introduce environmental possibilities with a hopeful but balanced visual."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "लोग फिर भी इंटरनेट इस्तेमाल करते, पुराने सॉफ्टवेयर से काम करते और एक-दूसरे से मदद लेते।",
-          "camera_type": "three_panel_visual",
+          "narration_text": "क्योंकि कुछ तरह की पशुपालन गतिविधियों से ग्रीनहाउस गैसें निकलती हैं और बहुत ज़मीन भी इस्तेमाल होती है।",
+          "camera_type": "split_environment_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 three-part hand-drawn composition. First section shows a stickman searching on a traditional computer. Second section shows an office worker using conventional software and spreadsheets. Third section shows two stickmen discussing a problem face to face. Every character has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm paper texture, black ink outlines, muted earthy colors.",
-          "session_delta_prompt": "Make the three different ways of solving problems easy to distinguish."
+          "prompt_action": "Vertical 9:16 split hand-drawn composition. On the left, a livestock farm with cows in a field and a few simple pale gas-cloud symbols rising into the sky. On the right, a wide green field with trees and crops. No smoke disaster or dramatic pollution. Bold black outlines, warm off-white paper, muted earthy colors.",
+          "session_delta_prompt": "Use simple educational symbols to represent environmental impacts without implying every farm has identical effects."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "बस कई कामों में ज्यादा मेहनत और ज्यादा समय लगता।",
-          "camera_type": "wide_workplace_shot",
+          "narration_text": "लेकिन खेती भी पानी, ज़मीन और संसाधन इस्तेमाल करती है, इसलिए हर समस्या अपने आप खत्म नहीं होती।",
+          "camera_type": "top_down_farmland_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn montage-like scene of three people working carefully: a student studying books, an office worker manually preparing charts and a shop owner drawing a product poster. All stickman characters have exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm off-white paper, bold ink outlines, muted orange and blue accents.",
-          "session_delta_prompt": "Show effort and patience through distinct manual activities, keeping every character's eyes identical."
+          "prompt_action": "Vertical 9:16 hand-drawn illustration of a farmer watering vegetable crops with a small irrigation channel. Nearby are a water tank, soil rows, trees and a sun overhead. The farmer has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, round white face and straw hat. Warm paper texture, black ink outlines, muted green and brown palette.",
+          "session_delta_prompt": "Show that plant agriculture also needs responsible water and land management."
         },
         {
           "beat_id": "s05_b04",
-          "narration_text": "और शायद इंसान नई चीज़ें बनाने के लिए दूसरे रास्ते खोज लेते।",
-          "camera_type": "low_angle_hero_shot",
+          "narration_text": "फिर भी, करोड़ों जानवरों को बेहतर ज़िंदगी मिलने का मतलब बहुत बड़ा बदलाव होता।",
+          "camera_type": "wide_sanctuary_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 uplifting scene of a group of stickman people collaborating around a table, sketching inventions, assembling a small prototype and discussing ideas. The recurring presenter stands beside them, wearing a small red bow tie. Every character has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm golden light, off-white paper texture, bold imperfect black ink outlines, earthy colors.",
-          "session_delta_prompt": "Emphasize human creativity, teamwork and problem-solving."
+          "prompt_action": "Vertical 9:16 hopeful wide scene of many cows, goats, pigs and chickens living in open green sanctuary fields, drinking from a pond, resting under trees and walking freely. The animals have consistent simple cartoon faces with tiny black dot eyes. A few caretakers watch from a distance. Warm golden sunlight, off-white paper texture, bold black outlines, soft earthy colors.",
+          "session_delta_prompt": "Make the scene emotionally uplifting, with animals visibly safe and able to move naturally."
         },
         {
           "beat_id": "s05_b05",
-          "narration_text": "तो एआई के बिना दुनिया शायद थोड़ी धीमी होती, लेकिन क्या वो बेहतर होती?",
-          "camera_type": "balanced_split_composition",
+          "narration_text": "तो सोचो, अगर हमारी थाली बदलने से किसी जानवर को पूरी ज़िंदगी मिल सके, क्या तुम ये बदलाव अपनाओगे?",
+          "camera_type": "cinematic_final_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 balanced split composition. On the left, a group of stickman people work together with books, paper and traditional computers. On the right, another group uses AI-assisted computers to create designs and organize information. The recurring presenter stands in the center between both worlds. Every character has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. The presenter has a red bow tie. Warm paper texture, black ink outlines, muted blue and orange accents.",
-          "session_delta_prompt": "Create a thoughtful comparison, not a good-versus-evil battle. Keep both worlds equally human and productive."
-        },
-        {
-          "beat_id": "s05_b06",
-          "narration_text": "शायद असली सवाल ये नहीं कि एआई होता या नहीं, बल्कि ये है कि हम उसका इस्तेमाल कैसे करते हैं।",
-          "camera_type": "cinematic_close_up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 cinematic final illustration of the recurring presenter holding a smartphone in one hand and a glowing lightbulb in the other. Behind the presenter, a subtle city skyline and small groups of people learning, working and creating together. The presenter has a perfectly round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm golden light, off-white paper, bold black ink outlines, restrained blue and orange accents, hopeful thoughtful atmosphere.",
-          "session_delta_prompt": "End with a strong memorable image of technology guided by human choices. Preserve the exact dot-eye design."
+          "prompt_action": "Vertical 9:16 cinematic final illustration of the recurring presenter sitting on a grassy hill, looking over a peaceful sanctuary where a cow, hen, pig and goat live freely. The presenter has a perfectly round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm sunset, gentle golden light, hand-drawn black ink outlines, off-white paper texture, emotional hopeful ending.",
+          "session_delta_prompt": "End with a calm memorable image of humans choosing compassion and animals living peacefully. Preserve the presenter's exact eye design."
         }
       ]
     }

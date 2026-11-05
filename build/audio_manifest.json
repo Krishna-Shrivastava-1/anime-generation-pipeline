@@ -1,137 +1,131 @@
 {
-  "total_duration": 95.765,
+  "total_duration": 91.209,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 4.843,
-      "subtitle": "सोचो, अगर दो हज़ार बाईस के बाद एआई आम लोगों तक कभी पहुँचा ही नहीं होता?"
+      "duration_seconds": 3.477,
+      "subtitle": "सोचो, अगर आज से पूरी दुनिया के इंसान शाकाहारी बन जाएँ?"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 4.971,
-      "subtitle": "ना चैटजीपीटी जैसा चैटबॉट, ना आम लोगों के लिए एआई इमेज बनाने वाले टूल्स।"
+      "duration_seconds": 4.608,
+      "subtitle": "ना मांस के लिए जानवर मारे जाते, ना उनकी ज़िंदगी इंसानों की थाली के लिए होती।"
     },
     {
       "beat_id": "s01_b03",
       "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 3.776,
-      "subtitle": "ना कुछ सेकंड में जवाब, ना एक कमांड से तस्वीरें और वीडियो।"
-    },
-    {
-      "beat_id": "s01_b04",
-      "audio_file": "build/audio/s01_b04.wav",
-      "duration_seconds": 3.029,
-      "subtitle": "और इसका असर हमारी रोज़मर्रा की ज़िंदगी पर पड़ता।"
+      "duration_seconds": 2.688,
+      "subtitle": "सबसे बड़ा बदलाव हमारी प्लेट से शुरू होता।"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 2.645,
-      "subtitle": "सबसे पहले, पढ़ाई का तरीका बदल जाता।"
+      "duration_seconds": 4.096,
+      "subtitle": "फार्मों पर गायें, मुर्गियाँ, सूअर और बकरियाँ अब आज़ादी से घूम पातीं।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 5.504,
-      "subtitle": "किसी मुश्किल सवाल का जवाब चाहिए होता, तो तुरंत चैटबॉट से पूछने का विकल्प नहीं होता।"
+      "duration_seconds": 3.669,
+      "subtitle": "मुर्गियाँ मिट्टी में दाना खोजतीं, और गायें खुले मैदान में चरतीं।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 5.163,
-      "subtitle": "स्टूडेंट्स को किताबें खंगालनी पड़तीं और अलग-अलग वेबसाइट्स पर जवाब ढूँढना पड़ता।"
+      "duration_seconds": 3.776,
+      "subtitle": "लेकिन एक ही दिन में दुनिया बदलना इतना आसान भी नहीं होता।"
     },
     {
       "beat_id": "s02_b04",
       "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 4.437,
-      "subtitle": "और कभी-कभी एक छोटा सा कॉन्सेप्ट समझने में भी काफी समय लग जाता।"
+      "duration_seconds": 3.499,
+      "subtitle": "पहले से मौजूद लाखों जानवरों की देखभाल करनी पड़ती।"
+    },
+    {
+      "beat_id": "s02_b05",
+      "audio_file": "build/audio/s02_b05.wav",
+      "duration_seconds": 4.181,
+      "subtitle": "और धीरे-धीरे मांस के लिए नए जानवर पालने की ज़रूरत कम हो जाती।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 2.731,
-      "subtitle": "ऑफिस में भी काम का तरीका काफी अलग होता।"
+      "duration_seconds": 2.347,
+      "subtitle": "सुपरमार्केट की तस्वीर भी बदल जाती।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 4.715,
-      "subtitle": "ईमेल लिखना, रिपोर्ट बनाना और प्रेज़ेंटेशन तैयार करना खुद करना पड़ता।"
+      "duration_seconds": 4.608,
+      "subtitle": "दालें, सब्ज़ियाँ, फल, अनाज और प्रोटीन के दूसरे विकल्प ज़्यादा अहम हो जाते।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 4.949,
-      "subtitle": "किसी लंबे डॉक्यूमेंट का सार चाहिए होता, तो उसे खुद पढ़कर नोट्स बनाने पड़ते।"
+      "duration_seconds": 2.496,
+      "subtitle": "रेस्टोरेंट नए स्वाद और नई रेसिपी बनाते।"
     },
     {
       "beat_id": "s03_b04",
       "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 5.184,
-      "subtitle": "आज जिन छोटे कामों की शुरुआत एआई कर देता है, उनमें भी इंसान का काफी समय जाता।"
+      "duration_seconds": 4.011,
+      "subtitle": "और लोगों को अपनी सेहत के लिए सही पोषण का ध्यान भी रखना पड़ता।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 3.029,
-      "subtitle": "छोटे बिज़नेस वालों की दुनिया भी थोड़ी अलग होती।"
+      "duration_seconds": 4.373,
+      "subtitle": "दुनिया भर के किसानों को भी नई फसलें उगाने और नए काम सीखने पड़ते।"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 4.693,
-      "subtitle": "एक अच्छा विज्ञापन या प्रोडक्ट डिज़ाइन बनवाने के लिए डिजाइनर ढूँढना पड़ता।"
+      "duration_seconds": 5.12,
+      "subtitle": "कुछ जगह ज़मीन पर खाने की फसलें उग सकतीं, जहाँ पहले पशुओं के लिए चारा उगता था।"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 3.861,
-      "subtitle": "हर छोटे दुकानदार के पास इसके लिए बड़ा बजट भी नहीं होता।"
+      "duration_seconds": 4.715,
+      "subtitle": "कुछ जानवरों को बचाने के लिए बड़े अभयारण्य और सुरक्षित जगहें बनानी पड़तीं।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 5.013,
-      "subtitle": "एआई के आने से अब वही इंसान कम बजट में भी कई क्रिएटिव काम शुरू कर सकता है।"
+      "duration_seconds": 5.44,
+      "subtitle": "और इंसान सीखते कि जानवर सिर्फ खाने की चीज़ नहीं, बल्कि अपनी ज़िंदगी जीने वाले जीव हैं।"
     },
     {
       "beat_id": "s05_b01",
       "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 3.733,
-      "subtitle": "लेकिन एक बात समझो, एआई के बिना दुनिया खत्म नहीं हो जाती।"
+      "duration_seconds": 3.508,
+      "subtitle": "क्या इससे धरती को भी फायदा होता? कुछ मामलों में, हाँ।"
     },
     {
       "beat_id": "s05_b02",
       "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 6.165,
-      "subtitle": "लोग फिर भी इंटरनेट इस्तेमाल करते, पुराने सॉफ्टवेयर से काम करते और एक-दूसरे से मदद लेते।"
+      "duration_seconds": 6.592,
+      "subtitle": "क्योंकि कुछ तरह की पशुपालन गतिविधियों से ग्रीनहाउस गैसें निकलती हैं और बहुत ज़मीन भी इस्तेमाल होती है।"
     },
     {
       "beat_id": "s05_b03",
       "audio_file": "build/audio/s05_b03.wav",
-      "duration_seconds": 3.136,
-      "subtitle": "बस कई कामों में ज्यादा मेहनत और ज्यादा समय लगता।"
+      "duration_seconds": 6.571,
+      "subtitle": "लेकिन खेती भी पानी, ज़मीन और संसाधन इस्तेमाल करती है, इसलिए हर समस्या अपने आप खत्म नहीं होती।"
     },
     {
       "beat_id": "s05_b04",
       "audio_file": "build/audio/s05_b04.wav",
-      "duration_seconds": 4.117,
-      "subtitle": "और शायद इंसान नई चीज़ें बनाने के लिए दूसरे रास्ते खोज लेते।"
+      "duration_seconds": 5.12,
+      "subtitle": "फिर भी, करोड़ों जानवरों को बेहतर ज़िंदगी मिलने का मतलब बहुत बड़ा बदलाव होता।"
     },
     {
       "beat_id": "s05_b05",
       "audio_file": "build/audio/s05_b05.wav",
-      "duration_seconds": 4.352,
-      "subtitle": "तो एआई के बिना दुनिया शायद थोड़ी धीमी होती, लेकिन क्या वो बेहतर होती?"
-    },
-    {
-      "beat_id": "s05_b06",
-      "audio_file": "build/audio/s05_b06.wav",
-      "duration_seconds": 5.717,
-      "subtitle": "शायद असली सवाल ये नहीं कि एआई होता या नहीं, बल्कि ये है कि हम उसका इस्तेमाल कैसे करते हैं।"
+      "duration_seconds": 6.315,
+      "subtitle": "तो सोचो, अगर हमारी थाली बदलने से किसी जानवर को पूरी ज़िंदगी मिल सके, क्या तुम ये बदलाव अपनाओगे?"
     }
   ]
 }

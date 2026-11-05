@@ -1,131 +1,143 @@
 {
-  "total_duration": 91.209,
+  "total_duration": 99.136,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 3.477,
-      "subtitle": "सोचो, अगर आज से पूरी दुनिया के इंसान शाकाहारी बन जाएँ?"
+      "duration_seconds": 3.456,
+      "subtitle": "सोचो, अगर दुनिया का हर इंसान बिना पंखों के उड़ सकता?"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 4.608,
-      "subtitle": "ना मांस के लिए जानवर मारे जाते, ना उनकी ज़िंदगी इंसानों की थाली के लिए होती।"
+      "duration_seconds": 5.333,
+      "subtitle": "ना हवाई जहाज़, ना ट्रैफिक जाम, बस घर से उड़ो और सीधे अपनी मंज़िल पर पहुँच जाओ।"
     },
     {
       "beat_id": "s01_b03",
       "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 2.688,
-      "subtitle": "सबसे बड़ा बदलाव हमारी प्लेट से शुरू होता।"
+      "duration_seconds": 5.269,
+      "subtitle": "सुबह ऑफिस जाने के लिए लोग बस बालकनी से छलाँग लगाते और हवा में आगे बढ़ जाते।"
+    },
+    {
+      "beat_id": "s01_b04",
+      "audio_file": "build/audio/s01_b04.wav",
+      "duration_seconds": 3.072,
+      "subtitle": "लेकिन कुछ ही दिनों में हमारी पूरी दुनिया बदल जाती।"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 4.096,
-      "subtitle": "फार्मों पर गायें, मुर्गियाँ, सूअर और बकरियाँ अब आज़ादी से घूम पातीं।"
+      "duration_seconds": 3.84,
+      "subtitle": "सबसे पहले, सड़कों पर गाड़ियों की ज़रूरत बहुत कम हो सकती थी।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 3.669,
-      "subtitle": "मुर्गियाँ मिट्टी में दाना खोजतीं, और गायें खुले मैदान में चरतीं।"
+      "duration_seconds": 4.267,
+      "subtitle": "पार्किंग की जगहें खाली होतीं और शहरों की सड़कों का नक्शा बदल जाता।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 3.776,
-      "subtitle": "लेकिन एक ही दिन में दुनिया बदलना इतना आसान भी नहीं होता।"
+      "duration_seconds": 4.587,
+      "subtitle": "दूर रहने वाले दोस्त और परिवार भी कुछ ही मिनटों में एक-दूसरे से मिल सकते।"
     },
     {
       "beat_id": "s02_b04",
       "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 3.499,
-      "subtitle": "पहले से मौजूद लाखों जानवरों की देखभाल करनी पड़ती।"
+      "duration_seconds": 3.563,
+      "subtitle": "लेकिन आसमान भी धीरे-धीरे सड़कों जितना व्यस्त हो जाता।"
     },
     {
       "beat_id": "s02_b05",
       "audio_file": "build/audio/s02_b05.wav",
-      "duration_seconds": 4.181,
-      "subtitle": "और धीरे-धीरे मांस के लिए नए जानवर पालने की ज़रूरत कम हो जाती।"
+      "duration_seconds": 4.309,
+      "subtitle": "इसलिए हवा में भी ट्रैफिक नियम, लेन और उड़ने की सीमाएँ बनानी पड़तीं।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 2.347,
-      "subtitle": "सुपरमार्केट की तस्वीर भी बदल जाती।"
+      "duration_seconds": 2.603,
+      "subtitle": "घर और इमारतें भी पहले जैसी नहीं बनतीं।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 4.608,
-      "subtitle": "दालें, सब्ज़ियाँ, फल, अनाज और प्रोटीन के दूसरे विकल्प ज़्यादा अहम हो जाते।"
+      "duration_seconds": 3.115,
+      "subtitle": "लोग खिड़कियों और बालकनी से सीधे अंदर आने लगते।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 2.496,
-      "subtitle": "रेस्टोरेंट नए स्वाद और नई रेसिपी बनाते।"
+      "duration_seconds": 4.352,
+      "subtitle": "ऊँची मंज़िलों तक पहुँचने के लिए लिफ्ट का इंतज़ार भी शायद कम हो जाता।"
     },
     {
       "beat_id": "s03_b04",
       "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 4.011,
-      "subtitle": "और लोगों को अपनी सेहत के लिए सही पोषण का ध्यान भी रखना पड़ता।"
+      "duration_seconds": 5.333,
+      "subtitle": "लेकिन बच्चों, बुज़ुर्गों और उड़ने में परेशानी वाले लोगों के लिए लिफ्ट फिर भी ज़रूरी रहती।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 4.373,
-      "subtitle": "दुनिया भर के किसानों को भी नई फसलें उगाने और नए काम सीखने पड़ते।"
+      "duration_seconds": 2.581,
+      "subtitle": "डिलीवरी का काम भी पूरी तरह बदल जाता।"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 5.12,
-      "subtitle": "कुछ जगह ज़मीन पर खाने की फसलें उग सकतीं, जहाँ पहले पशुओं के लिए चारा उगता था।"
+      "duration_seconds": 4.736,
+      "subtitle": "लोग सामान लेकर हवा में उड़ते और शायद कुछ डिलीवरी पहले से तेज़ हो जातीं।"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 4.715,
-      "subtitle": "कुछ जानवरों को बचाने के लिए बड़े अभयारण्य और सुरक्षित जगहें बनानी पड़तीं।"
+      "duration_seconds": 4.971,
+      "subtitle": "लेकिन भारी सामान, मशीनें और बड़े पार्सल फिर भी गाड़ियों से ही पहुँचाने पड़ते।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 5.44,
-      "subtitle": "और इंसान सीखते कि जानवर सिर्फ खाने की चीज़ नहीं, बल्कि अपनी ज़िंदगी जीने वाले जीव हैं।"
+      "duration_seconds": 3.989,
+      "subtitle": "और बारिश, तेज़ हवा या तूफ़ान में उड़ना खतरनाक भी हो सकता था।"
     },
     {
       "beat_id": "s05_b01",
       "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 3.508,
-      "subtitle": "क्या इससे धरती को भी फायदा होता? कुछ मामलों में, हाँ।"
+      "duration_seconds": 4.267,
+      "subtitle": "और सोचो, पहाड़, समुद्र और जंगल देखने का अनुभव कितना अलग होता।"
     },
     {
       "beat_id": "s05_b02",
       "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 6.592,
-      "subtitle": "क्योंकि कुछ तरह की पशुपालन गतिविधियों से ग्रीनहाउस गैसें निकलती हैं और बहुत ज़मीन भी इस्तेमाल होती है।"
+      "duration_seconds": 4.885,
+      "subtitle": "जहाँ पहुँचने में पहले घंटों लगते, वहाँ शायद सीधे उड़कर पहुँचा जा सकता।"
     },
     {
       "beat_id": "s05_b03",
       "audio_file": "build/audio/s05_b03.wav",
-      "duration_seconds": 6.571,
-      "subtitle": "लेकिन खेती भी पानी, ज़मीन और संसाधन इस्तेमाल करती है, इसलिए हर समस्या अपने आप खत्म नहीं होती।"
+      "duration_seconds": 5.931,
+      "subtitle": "लेकिन हर किसी के पास उड़ने की एक जैसी ताकत या क्षमता नहीं होती, तो बराबरी का सवाल भी उठता।"
     },
     {
       "beat_id": "s05_b04",
       "audio_file": "build/audio/s05_b04.wav",
-      "duration_seconds": 5.12,
-      "subtitle": "फिर भी, करोड़ों जानवरों को बेहतर ज़िंदगी मिलने का मतलब बहुत बड़ा बदलाव होता।"
+      "duration_seconds": 6.613,
+      "subtitle": "शहरों को ऐसे बनाना पड़ता जहाँ उड़ने वाले और ज़मीन पर रहने वाले, दोनों आसानी से सफर कर सकें।"
     },
     {
-      "beat_id": "s05_b05",
-      "audio_file": "build/audio/s05_b05.wav",
-      "duration_seconds": 6.315,
-      "subtitle": "तो सोचो, अगर हमारी थाली बदलने से किसी जानवर को पूरी ज़िंदगी मिल सके, क्या तुम ये बदलाव अपनाओगे?"
+      "beat_id": "s06_b01",
+      "audio_file": "build/audio/s06_b01.wav",
+      "duration_seconds": 4.48,
+      "subtitle": "तो उड़ने की ताकत दुनिया को आज़ाद तो बनाती, लेकिन नई समस्याएँ भी लाती।"
+    },
+    {
+      "beat_id": "s06_b02",
+      "audio_file": "build/audio/s06_b02.wav",
+      "duration_seconds": 3.584,
+      "subtitle": "और अब बताओ, अगर तुम उड़ सकते, तो सबसे पहले कहाँ जाते?"
     }
   ]
 }

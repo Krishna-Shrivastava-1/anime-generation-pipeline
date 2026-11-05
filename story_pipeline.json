@@ -1,264 +1,276 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "What If All Humans Became Vegetarian?",
-    "project_id": "what_if_every_human_became_vegetarian",
+    "title": "What If Every Human Could Fly?",
+    "project_id": "what_if_every_human_could_fly",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Minimalist hand-drawn stickman storytelling with emotional cinematic visuals. Warm off-white paper texture, bold slightly imperfect black ink outlines, limited earthy colors, soft green fields, muted blue skies and warm orange sunlight. All human and animal characters use a consistent simple cartoon design. Stickman humans have round white faces, exactly two tiny solid-black dot eyes of identical size and spacing, no pupils, irises, eye whites, highlights, reflections or eyelashes, simple curved mouths, thin black stick limbs. The recurring presenter also wears a small red bow tie. Animals have simple expressive cartoon faces with tiny black dot eyes. For any animal shown as dead, use only two simple black X marks over its eyes as a non-graphic cartoon symbol. Never show blood, wounds, slaughter, knives, graphic suffering or disturbing imagery. Vertical 9:16 composition, one clear visual action per image, emotionally engaging but gentle storytelling.",
-    "negative_prompt": "No blood, gore, wounds, slaughter scenes, knives, butcher scenes, graphic animal cruelty, realistic dead bodies, disturbing imagery, realistic anatomy, photorealism, 3D rendering, detailed human faces, changing stickman eye designs, pupils, irises, eye whites, highlights, reflections, eyelashes, extra eyes, watermarks, logos, readable text."
+    "art_style": "Minimalist hand-drawn stickman storytelling with cinematic imaginative visuals. Warm off-white paper texture, bold slightly imperfect black ink outlines, limited earthy accent colors, soft blue skies and warm orange sunlight. All human characters have round white faces, exactly two tiny solid-black dot eyes of identical size and spacing, no pupils, irises, eye whites, highlights, reflections or eyelashes, simple curved mouths and thin black stick limbs. The recurring presenter always has a small red bow tie. Keep identical eye design and character proportions across every image. Dynamic aerial perspectives, expressive poses, clear silhouettes, imaginative but believable everyday environments, vertical 9:16 composition.",
+    "negative_prompt": "No photorealism, no 3D rendering, no realistic anatomy, no detailed human faces, no changing eye styles, no pupils, no irises, no eye whites, no highlights, no reflections, no eyelashes, no extra eyes, no wings growing from human bodies, no superhero costumes, no text, no watermarks, no logos, no cluttered compositions."
   },
   "assets": {
     "presenter": {
       "type": "character",
       "label": "Recurring stickman presenter",
-      "visual_dna": "A minimalist stickman with a perfectly round white face, exactly two tiny solid-black dot eyes identical in size and spacing in every appearance, a simple curved mouth, thin black stick limbs and a small red bow tie. No pupils, irises, eye whites, highlights or realistic eye details."
+      "visual_dna": "A minimalist stickman with a perfectly round white face, exactly two tiny solid-black dot eyes identical in size and spacing in every appearance, a simple curved mouth, thin black stick limbs and a small red bow tie. No pupils, irises, eye whites or highlights."
     },
-    "cow": {
+    "commuter": {
       "type": "character",
-      "label": "Gentle cow",
-      "visual_dna": "A friendly cartoon black-and-white cow with a rounded body, four simple legs, small horns, a pink muzzle and two tiny black dot eyes. Consistent proportions and gentle expression."
+      "label": "Everyday flying commuter",
+      "visual_dna": "A simple stickman with a round white face, exactly two tiny solid-black dot eyes, thin black stick limbs, a blue shirt, dark trousers and a small backpack. No detailed facial features."
     },
-    "chicken": {
+    "child": {
       "type": "character",
-      "label": "Small hen",
-      "visual_dna": "A small cartoon brown hen with a rounded body, tiny wings, a red comb, orange beak and two tiny black dot eyes. Simple friendly hand-drawn design."
+      "label": "Flying child",
+      "visual_dna": "A small cartoon stickman child with a round white face, exactly two tiny solid-black dot eyes, thin black stick limbs, a yellow shirt and shorts. No detailed facial features."
     },
-    "pig": {
+    "delivery_worker": {
       "type": "character",
-      "label": "Pink pig",
-      "visual_dna": "A cute rounded pink cartoon pig with short legs, a curly tail, a round snout and two tiny black dot eyes. Gentle expressive design."
+      "label": "Flying delivery worker",
+      "visual_dna": "A simple stickman with a round white face, exactly two tiny solid-black dot eyes, thin black stick limbs, an orange delivery jacket and a compact delivery backpack. No detailed facial features."
     },
-    "goat": {
-      "type": "character",
-      "label": "Young goat",
-      "visual_dna": "A small light-brown cartoon goat with short curved horns, four simple legs, floppy ears and two tiny black dot eyes."
-    },
-    "farmer": {
-      "type": "character",
-      "label": "Farmer",
-      "visual_dna": "A simple stickman farmer with a round white face, exactly two tiny solid-black dot eyes, no pupils or highlights, thin black limbs, a straw hat and muted green clothes."
-    },
-    "world": {
+    "city": {
       "type": "environment",
-      "label": "Modern human world",
-      "visual_dna": "A modern world with cities, supermarkets, restaurants, farms, roads and homes. Minimalist hand-drawn illustration with warm off-white paper, bold black outlines and earthy colors."
+      "label": "Modern flying city",
+      "visual_dna": "A modern city with skyscrapers, apartment buildings, roads, parks, rooftop platforms and people flying between buildings. Minimalist hand-drawn black outlines, warm paper texture and muted colors."
     },
-    "farm": {
+    "home": {
       "type": "environment",
-      "label": "Open green farm",
-      "visual_dna": "A peaceful green farm with grassy fields, wooden fences, a red barn, trees, a small pond and a wide blue sky. Warm sunlight and hand-drawn black outlines."
+      "label": "Modern apartment",
+      "visual_dna": "A contemporary apartment with a balcony, large windows, simple furniture and a rooftop access area, illustrated with warm earthy colors and bold ink outlines."
     },
-    "market": {
+    "countryside": {
       "type": "environment",
-      "label": "Modern food market",
-      "visual_dna": "A clean modern grocery market with shelves of vegetables, fruits, grains, pulses, dairy alternatives and packaged foods. Simple hand-drawn style with muted colors."
+      "label": "Open countryside",
+      "visual_dna": "A beautiful countryside landscape with green hills, a river, trees, small houses and distant mountains, drawn in a minimalist hand-drawn style."
     },
-    "restaurant": {
+    "airport": {
       "type": "environment",
-      "label": "Modern restaurant",
-      "visual_dna": "A cozy modern restaurant with wooden tables, simple chairs, a counter and a display of colorful plant-based meals. Warm lighting and minimalist ink outlines."
+      "label": "Modern airport",
+      "visual_dna": "A modern airport terminal with glass windows, runways, passenger seating and aircraft, illustrated with simple black outlines and muted blue and grey colors."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "world",
+      "environment_ref": "city",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "सोचो, अगर आज से पूरी दुनिया के इंसान शाकाहारी बन जाएँ?",
-          "camera_type": "dramatic_wide_shot",
+          "narration_text": "सोचो, अगर दुनिया का हर इंसान बिना पंखों के उड़ सकता?",
+          "camera_type": "dramatic_aerial_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 cinematic hand-drawn illustration of the recurring stickman presenter standing in the center of a modern city, surrounded by cows, chickens, pigs and goats walking peacefully among green parks. The presenter has a round white face, exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black limbs and a small red bow tie. Warm off-white paper, bold black ink outlines, hopeful sunlight, earthy colors.",
-          "session_delta_prompt": "Establish a modern world where humans and animals share space peacefully. Keep all character designs simple and consistent."
+          "prompt_action": "Vertical 9:16 cinematic hand-drawn illustration of the recurring stickman presenter floating high above a modern city, looking down at skyscrapers and tiny flying people everywhere. The presenter has a round white face, exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm off-white paper, bold black ink outlines, bright blue sky, dramatic sunlight.",
+          "session_delta_prompt": "Establish the extraordinary premise: ordinary people can fly naturally without wings or machines. Keep the presenter design consistent."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "ना मांस के लिए जानवर मारे जाते, ना उनकी ज़िंदगी इंसानों की थाली के लिए होती।",
-          "camera_type": "medium_shot",
+          "narration_text": "ना हवाई जहाज़, ना ट्रैफिक जाम, बस घर से उड़ो और सीधे अपनी मंज़िल पर पहुँच जाओ।",
+          "camera_type": "bird_eye_view",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn scene showing a peaceful cow, hen, pig and goat standing freely in a green field while a human family watches them from a respectful distance. The animals have simple cartoon faces with tiny black dot eyes. The humans have round white faces with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm paper texture, bold black outlines, soft green and yellow colors, no graphic imagery.",
-          "session_delta_prompt": "Show animals as living individuals, not food products. Keep the scene gentle and hopeful."
+          "prompt_action": "Vertical 9:16 bird's-eye view of a busy modern city. Cars are stuck in a long traffic jam on the roads, while dozens of ordinary stickman people fly freely above the buildings toward different destinations. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm paper texture, bold black ink outlines, muted blue and orange accents.",
+          "session_delta_prompt": "Create a clear contrast between crowded roads and open aerial movement."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "सबसे बड़ा बदलाव हमारी प्लेट से शुरू होता।",
-          "camera_type": "top_down_food_shot",
+          "narration_text": "सुबह ऑफिस जाने के लिए लोग बस बालकनी से छलाँग लगाते और हवा में आगे बढ़ जाते।",
+          "camera_type": "balcony_side_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 top-down view of a dining table. A human hand gently places a colorful plate filled with rice, lentils, vegetables, salad and flatbread in the center. Around the plate are fresh fruits and grains. No meat products anywhere. Warm hand-drawn ink style, off-white paper background, earthy green and orange colors.",
-          "session_delta_prompt": "Make the vegetarian meal look delicious, varied and familiar rather than restrictive."
+          "prompt_action": "Vertical 9:16 hand-drawn scene of a commuter stepping carefully off an apartment balcony and beginning to float into the sky, smiling with arms slightly extended. The commuter has a round white face, exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, blue shirt, dark trousers and a small backpack. Modern apartment building, bright morning sunlight, bold black outlines, off-white paper texture.",
+          "session_delta_prompt": "Show controlled, effortless flight rather than a dangerous uncontrolled fall."
+        },
+        {
+          "beat_id": "s01_b04",
+          "narration_text": "लेकिन कुछ ही दिनों में हमारी पूरी दुनिया बदल जाती।",
+          "camera_type": "low_angle_city_reveal",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 dramatic view from a city street looking upward at hundreds of people flying between tall buildings, crossing above roads and landing on rooftops. Some carry briefcases, backpacks and shopping bags. Every stickman has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm sunlight, hand-drawn black ink outlines, dynamic sky composition.",
+          "session_delta_prompt": "Make the city feel alive with flight becoming an ordinary part of daily life."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "farm",
+      "environment_ref": "city",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "फार्मों पर गायें, मुर्गियाँ, सूअर और बकरियाँ अब आज़ादी से घूम पातीं।",
-          "camera_type": "wide_farm_shot",
+          "narration_text": "सबसे पहले, सड़कों पर गाड़ियों की ज़रूरत बहुत कम हो सकती थी।",
+          "camera_type": "wide_road_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 wide hand-drawn illustration of a peaceful green farm with cows grazing, hens walking through grass, pigs resting in the shade and goats exploring near a wooden fence. A red barn and trees sit in the background. All animals have simple cartoon faces with tiny black dot eyes. Warm golden sunlight, off-white paper texture, bold black outlines.",
-          "session_delta_prompt": "Give each animal enough space and show natural relaxed behavior. No cages or distress."
+          "prompt_action": "Vertical 9:16 wide hand-drawn city road with very few cars and buses, while people fly above the road in different directions. A commuter with a blue shirt and backpack floats past a traffic signal. All characters have exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm off-white paper, bold black ink outlines, muted colors.",
+          "session_delta_prompt": "Show fewer vehicles but retain some ground transport for people and goods."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "मुर्गियाँ मिट्टी में दाना खोजतीं, और गायें खुले मैदान में चरतीं।",
-          "camera_type": "ground_level_close_up",
+          "narration_text": "पार्किंग की जगहें खाली होतीं और शहरों की सड़कों का नक्शा बदल जाता।",
+          "camera_type": "high_angle_urban_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 ground-level close-up of a brown hen scratching soft earth and pecking at seeds while a black-and-white cow grazes peacefully behind her. Both animals have simple cartoon faces with tiny black dot eyes. Fresh green grass, tiny flowers, warm sunlight, hand-drawn black ink outlines on off-white paper.",
-          "session_delta_prompt": "Focus on natural animal behaviors and a calm environment."
+          "prompt_action": "Vertical 9:16 high-angle hand-drawn view of a city where an old parking lot has been transformed into a green public park with trees, benches and walking paths. A few people fly above the park. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm sunlight, off-white paper, bold black ink outlines, earthy green accents.",
+          "session_delta_prompt": "Visualize one possible use for land freed from excessive parking."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "लेकिन एक ही दिन में दुनिया बदलना इतना आसान भी नहीं होता।",
-          "camera_type": "dramatic_medium_shot",
+          "narration_text": "दूर रहने वाले दोस्त और परिवार भी कुछ ही मिनटों में एक-दूसरे से मिल सकते।",
+          "camera_type": "emotional_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn scene of a farmer standing thoughtfully in front of a large farm, holding a notebook and looking at rows of animal shelters and green fields. The farmer has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, thin black stick limbs, straw hat and green clothes. Warm earthy colors, gentle thoughtful mood.",
-          "session_delta_prompt": "Introduce the practical challenge of changing an enormous food system. Keep the farmer's appearance consistent."
+          "prompt_action": "Vertical 9:16 warm hand-drawn scene of two stickman friends flying toward each other above a small neighborhood, arms open for a friendly greeting. Both have round white faces with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. One wears a blue shirt, the other a mustard jacket. Soft afternoon sunlight, warm paper texture, bold black outlines.",
+          "session_delta_prompt": "Focus on the emotional benefit of easier visits and connection."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "पहले से मौजूद लाखों जानवरों की देखभाल करनी पड़ती।",
-          "camera_type": "wide_rescue_farm_shot",
+          "narration_text": "लेकिन आसमान भी धीरे-धीरे सड़कों जितना व्यस्त हो जाता।",
+          "camera_type": "aerial_crowd_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 wide illustration of a large peaceful animal sanctuary with many cows, pigs, goats and chickens in separate spacious grassy areas. Several caretakers carry food and water buckets. All humans have round white faces with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Animals have tiny dot eyes and relaxed expressions. Warm off-white paper, black outlines, soft green landscape.",
-          "session_delta_prompt": "Show organized long-term care, food, water and shelter for existing animals."
+          "prompt_action": "Vertical 9:16 aerial view of a busy sky filled with people flying in different directions between buildings, some carrying bags and briefcases. Their paths nearly intersect, with a few simple floating directional arrows indicating traffic flow. Every character has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Bold black ink, off-white paper, muted blue sky.",
+          "session_delta_prompt": "Introduce aerial congestion as an unexpected consequence of everyone flying."
         },
         {
           "beat_id": "s02_b05",
-          "narration_text": "और धीरे-धीरे मांस के लिए नए जानवर पालने की ज़रूरत कम हो जाती।",
-          "camera_type": "wide_field_shot",
+          "narration_text": "इसलिए हवा में भी ट्रैफिक नियम, लेन और उड़ने की सीमाएँ बनानी पड़तीं।",
+          "camera_type": "wide_aerial_city_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn farm scene showing an old livestock barn being converted into a spacious animal shelter and green vegetable-growing area. The farmer stands nearby with a hopeful posture. A cow and goat walk freely outside. The farmer has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm sunlight, bold black ink outlines, earthy green palette.",
-          "session_delta_prompt": "Suggest a gradual transition from meat production toward animal care and other uses of farmland."
+          "prompt_action": "Vertical 9:16 hand-drawn futuristic city sky with clearly separated aerial lanes marked by simple floating lines and arrows. People fly in orderly directions at different heights, while a small sky traffic control tower watches over them. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Clean bold ink outlines, warm paper texture, muted blue and orange colors.",
+          "session_delta_prompt": "Show a practical organized flying system rather than a chaotic sky."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "market",
+      "environment_ref": "home",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "सुपरमार्केट की तस्वीर भी बदल जाती।",
-          "camera_type": "wide_market_shot",
+          "narration_text": "घर और इमारतें भी पहले जैसी नहीं बनतीं।",
+          "camera_type": "architectural_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 wide hand-drawn modern supermarket with colorful displays of vegetables, fruits, grains, beans, nuts and plant-based food products. A few stickman shoppers walk through the aisles carrying baskets. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm off-white paper, bold black ink outlines, lively green and orange accents.",
-          "session_delta_prompt": "Make the market look modern, busy and abundant, not empty or unrealistic."
+          "prompt_action": "Vertical 9:16 hand-drawn architectural view of a modern apartment building with balconies, rooftop landing platforms and open sky access points. Several people hover near different floors. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm off-white paper, bold black outlines, muted earthy colors.",
+          "session_delta_prompt": "Introduce how buildings might adapt to a population that can fly."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "दालें, सब्ज़ियाँ, फल, अनाज और प्रोटीन के दूसरे विकल्प ज़्यादा अहम हो जाते।",
-          "camera_type": "close_up_food_display",
+          "narration_text": "लोग खिड़कियों और बालकनी से सीधे अंदर आने लगते।",
+          "camera_type": "interior_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 close-up of a beautiful market display with lentils, chickpeas, kidney beans, tofu, nuts, leafy greens, tomatoes, bananas and whole grains arranged in separate wooden baskets. A shopper's hand reaches toward a basket of beans. Hand-drawn black ink outlines, warm paper texture, rich but restrained earthy colors.",
-          "session_delta_prompt": "Show a wide variety of plant-based foods and protein sources clearly."
+          "prompt_action": "Vertical 9:16 interior view of a modern apartment living room. A stickman resident gently floats through a large open balcony doorway carrying a grocery bag. The resident has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, simple stick limbs and casual clothes. Warm sunlight enters through the window, hand-drawn black ink outlines.",
+          "session_delta_prompt": "Show a normal home arrival through the balcony, keeping the action friendly and safe."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "रेस्टोरेंट नए स्वाद और नई रेसिपी बनाते।",
-          "camera_type": "restaurant_medium_shot",
+          "narration_text": "ऊँची मंज़िलों तक पहुँचने के लिए लिफ्ट का इंतज़ार भी शायद कम हो जाता।",
+          "camera_type": "vertical_building_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 cozy modern restaurant where a chef stickman prepares colorful vegetarian dishes: vegetable curry, lentil bowls, grilled vegetables and fresh salads. The chef has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, thin stick limbs and a simple chef hat. Warm orange kitchen light, hand-drawn black ink outlines.",
-          "session_delta_prompt": "Make vegetarian food look creative, appetizing and suitable for a modern restaurant."
+          "prompt_action": "Vertical 9:16 dramatic upward view of a tall apartment building with a long elevator queue visible through the lobby windows, while several residents fly upward along the outside of the building toward their balconies. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Bold hand-drawn outlines, warm paper texture, muted blue sky.",
+          "session_delta_prompt": "Use the contrast between the elevator queue and people flying outside to tell the story."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "और लोगों को अपनी सेहत के लिए सही पोषण का ध्यान भी रखना पड़ता।",
-          "camera_type": "top_down_table_shot",
+          "narration_text": "लेकिन बच्चों, बुज़ुर्गों और उड़ने में परेशानी वाले लोगों के लिए लिफ्ट फिर भी ज़रूरी रहती।",
+          "camera_type": "ground_level_emotional_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 top-down hand-drawn view of a balanced vegetarian meal with lentils, beans, vegetables, whole grains, fruit and a fortified food package. A simple notebook beside the plate shows tiny food icons arranged as a balanced meal diagram, without readable text. Warm off-white paper, bold black outlines, muted green and orange accents.",
-          "session_delta_prompt": "Communicate that a healthy vegetarian diet needs variety and planning, not just removing meat."
+          "prompt_action": "Vertical 9:16 thoughtful hand-drawn scene of an older stickman and a young child entering a spacious elevator while other residents fly outside the building. Both characters have round white faces with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm gentle lighting, bold black ink outlines, muted earthy colors.",
+          "session_delta_prompt": "Show that accessible transport remains important even in a flying world."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "world",
+      "environment_ref": "city",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "दुनिया भर के किसानों को भी नई फसलें उगाने और नए काम सीखने पड़ते।",
-          "camera_type": "wide_farmland_shot",
+          "narration_text": "डिलीवरी का काम भी पूरी तरह बदल जाता।",
+          "camera_type": "dynamic_tracking_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn illustration of farmers working in wide fields of beans, lentils, vegetables and grains. One farmer plants seedlings while another checks a crop row. Each farmer has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, simple stick limbs and earthy work clothes. Bright warm daylight, green fields, bold black ink outlines.",
-          "session_delta_prompt": "Show farmers adapting their work through new crops and agricultural skills."
+          "prompt_action": "Vertical 9:16 dynamic hand-drawn scene of a flying delivery worker carrying a compact delivery backpack and a small parcel, gliding between city buildings. The worker has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, thin stick limbs and an orange jacket. Warm paper texture, bold black outlines, bright sky.",
+          "session_delta_prompt": "Keep the delivery worker's orange jacket and compact backpack consistent."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "कुछ जगह ज़मीन पर खाने की फसलें उग सकतीं, जहाँ पहले पशुओं के लिए चारा उगता था।",
-          "camera_type": "aerial_farmland_view",
+          "narration_text": "लोग सामान लेकर हवा में उड़ते और शायद कुछ डिलीवरी पहले से तेज़ हो जातीं।",
+          "camera_type": "side_tracking_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 aerial-style hand-drawn view of farmland divided into green crop plots. One side shows a grassy animal-feed field and the other shows rows of lentils, beans and vegetables. A small tractor moves along a path. Warm off-white paper texture, bold black ink outlines, muted green and brown colors.",
-          "session_delta_prompt": "Show a possible land-use change, not a claim that all grazing land can grow crops."
+          "prompt_action": "Vertical 9:16 side view of the same flying delivery worker carrying a small parcel toward an apartment balcony. Below, a traditional delivery van moves along the road. The worker has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, round white face and orange jacket. Hand-drawn black ink outlines, warm paper background.",
+          "session_delta_prompt": "Contrast a flying delivery route with a ground delivery van without implying every delivery becomes faster."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "कुछ जानवरों को बचाने के लिए बड़े अभयारण्य और सुरक्षित जगहें बनानी पड़तीं।",
-          "camera_type": "panoramic_nature_shot",
+          "narration_text": "लेकिन भारी सामान, मशीनें और बड़े पार्सल फिर भी गाड़ियों से ही पहुँचाने पड़ते।",
+          "camera_type": "low_angle_logistics_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 panoramic hand-drawn sanctuary with green hills, ponds, trees, open grassland and groups of cows, goats, pigs and chickens living in spacious protected areas. A few caretakers walk along a wooden path. Animals have tiny black dot eyes and peaceful expressions. Warm golden light, bold ink outlines, off-white paper texture.",
-          "session_delta_prompt": "Show that animal welfare requires space, resources and careful management."
+          "prompt_action": "Vertical 9:16 hand-drawn logistics scene showing a delivery truck carrying a large refrigerator and furniture boxes along a city street. Above it, a delivery worker flies with only a small lightweight parcel. The worker has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, round white face and orange jacket. Warm earthy colors, bold black outlines.",
+          "session_delta_prompt": "Clearly distinguish small personal deliveries from heavy freight that still needs vehicles."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "और इंसान सीखते कि जानवर सिर्फ खाने की चीज़ नहीं, बल्कि अपनी ज़िंदगी जीने वाले जीव हैं।",
-          "camera_type": "emotional_close_up",
+          "narration_text": "और बारिश, तेज़ हवा या तूफ़ान में उड़ना खतरनाक भी हो सकता था।",
+          "camera_type": "dramatic_weather_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 emotional close-up of a gentle black-and-white cow standing beside a young goat in a green field, looking calmly toward the viewer. In the soft background, a stickman child watches with curiosity and kindness. The child has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Animals have tiny dot eyes. Soft golden sunlight, warm paper texture, gentle hand-drawn outlines.",
-          "session_delta_prompt": "Create an empathetic moment that treats animals as living beings with their own needs and behaviors."
+          "prompt_action": "Vertical 9:16 dramatic hand-drawn scene of a strong storm over a modern city. Dark clouds, slanted rain and wind lines fill the sky. A commuter wearing a blue shirt and backpack safely waits under a building shelter instead of flying. The commuter has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Bold black outlines, muted blue-grey colors, warm paper texture.",
+          "session_delta_prompt": "Show that flying is weather-dependent and people need safe alternatives."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "world",
+      "environment_ref": "countryside",
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "क्या इससे धरती को भी फायदा होता? कुछ मामलों में, हाँ।",
-          "camera_type": "dramatic_wide_nature_shot",
+          "narration_text": "और सोचो, पहाड़, समुद्र और जंगल देखने का अनुभव कितना अलग होता।",
+          "camera_type": "epic_aerial_landscape",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn view of a green planet with forests, fields, rivers and a modern city. A small group of cows and goats graze peacefully in a field while birds fly overhead. The recurring presenter stands in the foreground pointing toward the planet. The presenter has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, round white face and red bow tie. Warm earthy colors, bold ink outlines.",
-          "session_delta_prompt": "Introduce environmental possibilities with a hopeful but balanced visual."
+          "prompt_action": "Vertical 9:16 breathtaking hand-drawn aerial landscape of green mountains, a winding river, dense forests and a distant ocean. Several tiny stickman people fly high above the landscape, enjoying the view. Every character has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm golden sunlight, off-white paper texture, bold black ink outlines.",
+          "session_delta_prompt": "Create a beautiful sense of freedom and scale."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "क्योंकि कुछ तरह की पशुपालन गतिविधियों से ग्रीनहाउस गैसें निकलती हैं और बहुत ज़मीन भी इस्तेमाल होती है।",
-          "camera_type": "split_environment_shot",
+          "narration_text": "जहाँ पहुँचने में पहले घंटों लगते, वहाँ शायद सीधे उड़कर पहुँचा जा सकता।",
+          "camera_type": "wide_mountain_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 split hand-drawn composition. On the left, a livestock farm with cows in a field and a few simple pale gas-cloud symbols rising into the sky. On the right, a wide green field with trees and crops. No smoke disaster or dramatic pollution. Bold black outlines, warm off-white paper, muted earthy colors.",
-          "session_delta_prompt": "Use simple educational symbols to represent environmental impacts without implying every farm has identical effects."
+          "prompt_action": "Vertical 9:16 hand-drawn scene of a winding mountain road with a small car traveling slowly below, while a stickman traveler flies directly above the valley toward a mountain viewpoint. The traveler has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, simple stick limbs and a small backpack. Warm sunset, bold ink outlines, muted green and blue palette.",
+          "session_delta_prompt": "Show the difference between a winding road and a direct aerial route."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "लेकिन खेती भी पानी, ज़मीन और संसाधन इस्तेमाल करती है, इसलिए हर समस्या अपने आप खत्म नहीं होती।",
-          "camera_type": "top_down_farmland_shot",
+          "narration_text": "लेकिन हर किसी के पास उड़ने की एक जैसी ताकत या क्षमता नहीं होती, तो बराबरी का सवाल भी उठता।",
+          "camera_type": "emotional_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn illustration of a farmer watering vegetable crops with a small irrigation channel. Nearby are a water tank, soil rows, trees and a sun overhead. The farmer has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, round white face and straw hat. Warm paper texture, black ink outlines, muted green and brown palette.",
-          "session_delta_prompt": "Show that plant agriculture also needs responsible water and land management."
+          "prompt_action": "Vertical 9:16 thoughtful hand-drawn scene showing a group of stickman people flying together at different heights while one person stands comfortably on a rooftop platform using a safe elevator entrance. The standing person is included respectfully, not isolated. All characters have exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm paper texture, soft blue sky and earthy colors.",
+          "session_delta_prompt": "Raise the issue of different abilities and equal access without portraying anyone negatively."
         },
         {
           "beat_id": "s05_b04",
-          "narration_text": "फिर भी, करोड़ों जानवरों को बेहतर ज़िंदगी मिलने का मतलब बहुत बड़ा बदलाव होता।",
-          "camera_type": "wide_sanctuary_shot",
+          "narration_text": "शहरों को ऐसे बनाना पड़ता जहाँ उड़ने वाले और ज़मीन पर रहने वाले, दोनों आसानी से सफर कर सकें।",
+          "camera_type": "panoramic_city_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hopeful wide scene of many cows, goats, pigs and chickens living in open green sanctuary fields, drinking from a pond, resting under trees and walking freely. The animals have consistent simple cartoon faces with tiny black dot eyes. A few caretakers watch from a distance. Warm golden sunlight, off-white paper texture, bold black outlines, soft earthy colors.",
-          "session_delta_prompt": "Make the scene emotionally uplifting, with animals visibly safe and able to move naturally."
+          "prompt_action": "Vertical 9:16 panoramic hand-drawn futuristic city showing people flying in organized sky lanes, others walking on wide sidewalks, accessible elevators in buildings and buses on the roads. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm off-white paper, bold black outlines, muted green, blue and orange accents.",
+          "session_delta_prompt": "Show an inclusive city designed for both flying and non-flying travel."
+        }
+      ]
+    },
+    {
+      "scene_id": 6,
+      "environment_ref": "city",
+      "beats": [
+        {
+          "beat_id": "s06_b01",
+          "narration_text": "तो उड़ने की ताकत दुनिया को आज़ाद तो बनाती, लेकिन नई समस्याएँ भी लाती।",
+          "camera_type": "dramatic_aerial_wide_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 cinematic view of a modern city skyline with people flying in organized aerial lanes, a few rooftop landing areas, ground vehicles and green parks. The recurring presenter floats in the foreground, looking thoughtfully at the transformed city. The presenter has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, round white face and red bow tie. Warm golden light, hand-drawn ink outlines.",
+          "session_delta_prompt": "Bring together the benefits and challenges of a world where everyone can fly."
         },
         {
-          "beat_id": "s05_b05",
-          "narration_text": "तो सोचो, अगर हमारी थाली बदलने से किसी जानवर को पूरी ज़िंदगी मिल सके, क्या तुम ये बदलाव अपनाओगे?",
-          "camera_type": "cinematic_final_shot",
+          "beat_id": "s06_b02",
+          "narration_text": "और अब बताओ, अगर तुम उड़ सकते, तो सबसे पहले कहाँ जाते?",
+          "camera_type": "close_up_final_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 cinematic final illustration of the recurring presenter sitting on a grassy hill, looking over a peaceful sanctuary where a cow, hen, pig and goat live freely. The presenter has a perfectly round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm sunset, gentle golden light, hand-drawn black ink outlines, off-white paper texture, emotional hopeful ending.",
-          "session_delta_prompt": "End with a calm memorable image of humans choosing compassion and animals living peacefully. Preserve the presenter's exact eye design."
+          "prompt_action": "Vertical 9:16 close-up of the recurring presenter floating above the city with one hand raised, pointing toward three distant destinations visible in the sky: snowy mountains, a tropical beach and a glowing modern skyline. The presenter has a perfectly round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm off-white paper texture, bold black ink outlines, inviting sunset atmosphere.",
+          "session_delta_prompt": "Finish with an inviting question and a visually exciting choice of destinations. Keep the presenter's exact eye design."
         }
       ]
     }

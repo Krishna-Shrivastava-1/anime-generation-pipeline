@@ -1,273 +1,174 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "पत्थर युग का वो शिकारी, जिसने एक असंभव काम कर दिखाया",
-    "project_id": "stone_age_the_fire_that_saved_everyone",
+    "title": "What If AI Was Never Invented After 2022?",
+    "project_id": "what_if_ai_never_arrived_2022",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Cinematic minimalist hand-drawn stickman storytelling, warm textured off-white paper mixed with prehistoric earthy environments, bold slightly imperfect black ink outlines, dramatic shadows, orange firelight, muted brown and dark green accents, expressive body language, dynamic camera angles, visually engaging suspense. CHARACTER CONSISTENCY IS CRITICAL: Every stickman has a perfectly round white face, exactly two tiny solid-black dot eyes, no pupils, no irises, no highlights, no reflections, no eye whites, no eyelashes and no realistic eye details. Eyes must remain identical tiny filled black dots in every single image. Main hero always has the same round face, tiny dot eyes, simple curved mouth, thin black stick limbs and a small red bow tie, adapted naturally to a primitive animal-skin shoulder wrap. Keep all characters visually consistent.",
-    "negative_prompt": "Detailed eyes, realistic eyes, pupils, irises, eye highlights, reflections, eye whites, eyelashes, inconsistent character design, photorealism, 3D rendering, modern clothes, modern buildings, guns, metal tools, plastic objects, smartphones, excessive text, cluttered composition, extra limbs, distorted faces, watermarks, logos."
+    "art_style": "Minimalist hand-drawn stickman explainer, cinematic storytelling, warm off-white paper texture, bold slightly imperfect black ink outlines, limited earthy accent colors with muted blue for technology and warm orange for highlights. The recurring presenter has a perfectly round white face, exactly two tiny solid-black dot eyes of identical size and spacing, no pupils, irises, eye whites, highlights, reflections or eyelashes, a simple curved mouth, thin black stick limbs and a small red bow tie. Every other stickman character must use exactly the same two tiny solid-black dot eyes, with identical shape, size and spacing. Keep characters visually consistent throughout. Vertical 9:16 composition, expressive poses, clear visual storytelling, uncluttered backgrounds.",
+    "negative_prompt": "No realistic human anatomy, no 3D rendering, no photorealism, no detailed facial features, no changing eye styles, no pupils, no irises, no eye whites, no eye highlights, no reflections, no eyelashes, no eyebrows covering eyes, no extra eyes, no text-heavy images, no watermarks, no logos, no cluttered compositions."
   },
   "assets": {
-    "hero": {
+    "presenter": {
       "type": "character",
-      "label": "Kanu - The Young Hunter",
-      "visual_dna": "A young prehistoric hand-drawn stickman with a perfectly round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin black limbs, a small red bow tie and a rough brown animal-skin shoulder wrap. Same face shape, eye size and spacing in every appearance. Curious, brave but sometimes impulsive."
+      "label": "Recurring stickman presenter",
+      "visual_dna": "A minimalist stickman with a perfectly round white face, exactly two tiny solid-black dot eyes, identical in size and spacing in every appearance, a simple curved mouth, thin black stick limbs and a small red bow tie. No pupils, irises, eye whites, highlights or realistic eye details."
     },
-    "elder": {
+    "student": {
       "type": "character",
-      "label": "The Wise Elder",
-      "visual_dna": "An older prehistoric hand-drawn stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, a simple curved mouth, thin black limbs, a long grey beard and a rough dark brown animal-skin cloak. Calm and thoughtful, with consistent simple dot eyes."
+      "label": "Young student",
+      "visual_dna": "A simple black-ink stickman with a round white face, exactly two tiny solid-black dot eyes, identical in size and spacing to the presenter, thin limbs, a blue backpack and simple casual clothing. No detailed facial features."
     },
-    "friend": {
+    "office_worker": {
       "type": "character",
-      "label": "Mira - Kanu's Friend",
-      "visual_dna": "A young prehistoric hand-drawn stickman with a perfectly round white face, exactly two tiny solid-black dot eyes without pupils or highlights, a simple curved mouth, thin black limbs and a dark green animal-skin wrap. Same cute minimal eye design and proportions as the other characters."
+      "label": "Office worker",
+      "visual_dna": "A simple black-ink stickman with a round white face, exactly two tiny solid-black dot eyes, identical in size and spacing to the presenter, thin limbs, a muted green shirt and dark trousers. No detailed facial features."
     },
-    "wolf": {
+    "small_business_owner": {
       "type": "character",
-      "label": "The Wild Wolf",
-      "visual_dna": "A lean prehistoric grey wolf with a hand-drawn expressive face, pointed ears, dark nose, sharp teeth and a rough fur outline. Animal-like rather than stickman-like, dramatic but not monstrous."
+      "label": "Small business owner",
+      "visual_dna": "A simple black-ink stickman with a round white face, exactly two tiny solid-black dot eyes, identical in size and spacing to the presenter, thin limbs and a muted mustard apron. No detailed facial features."
     },
-    "stone_camp": {
+    "world": {
       "type": "environment",
-      "label": "Prehistoric Cave Camp",
-      "visual_dna": "A prehistoric campsite beside a rocky cave, scattered stones, animal-skin shelters, wooden spears, a small fire pit and distant hills. Earthy brown palette, hand-drawn ink outlines, dramatic natural lighting."
+      "label": "Everyday modern world",
+      "visual_dna": "A hand-drawn modern city with homes, offices, schools, shops, roads and simple technology, illustrated on warm off-white paper with bold black outlines and restrained earthy colors."
     },
-    "forest": {
+    "home_desk": {
       "type": "environment",
-      "label": "Ancient Forest",
-      "visual_dna": "A dense prehistoric forest with towering trees, tangled roots, large ferns, rocks, bushes and a narrow muddy trail. Deep green and earthy brown palette, atmospheric shadows and hand-drawn outlines."
+      "label": "Home study desk",
+      "visual_dna": "A compact home study corner with a wooden desk, laptop, notebooks, desk lamp and a window, drawn with minimalist black ink outlines and muted warm colors."
     },
-    "river": {
+    "office": {
       "type": "environment",
-      "label": "Prehistoric River",
-      "visual_dna": "A cold flowing river between large rocks, muddy banks, primitive vegetation and a small rocky crossing. Hand-drawn natural scenery with dark blue water and earthy colors."
+      "label": "Modern office",
+      "visual_dna": "A simple contemporary office with desks, computers, glass partitions and a few potted plants, in a minimalist hand-drawn style."
+    },
+    "shop": {
+      "type": "environment",
+      "label": "Small local shop",
+      "visual_dna": "A modest neighborhood shop with shelves, a counter, product boxes and a handwritten price board, drawn with simple ink lines and muted earthy colors."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "stone_camp",
+      "environment_ref": "world",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "सोचो, तुम हजारों साल पहले पत्थर के युग में पैदा हुए होते। न मोबाइल, न बिजली, न दुकान... और न ही कोई मदद के लिए तैयार।",
-          "camera_type": "wide cinematic shot",
+          "narration_text": "सोचो, अगर दो हज़ार बाईस के बाद एआई आम लोगों तक कभी पहुँचा ही नहीं होता?",
+          "camera_type": "dramatic_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A vast prehistoric landscape at sunrise with rocky hills, a dark cave and a small group of primitive stickman humans near a tiny campfire. In the foreground stands Kanu, a young prehistoric stickman with a perfectly round white face, exactly two tiny solid-black dot eyes without pupils or highlights, a simple curved mouth, thin black limbs, a small red bow tie and a rough brown animal-skin shoulder wrap. Dramatic cinematic hand-drawn composition, warm earthy tones, vertical 9:16.",
-          "session_delta_prompt": "Slowly reveal the lonely prehistoric landscape and move toward Kanu standing near the cave."
+          "prompt_action": "Vertical 9:16 cinematic hand-drawn illustration of the recurring presenter standing in front of a modern city, holding a glowing smartphone while a large floating AI symbol made of simple connected lines appears above the phone and then fades into a question mark. The presenter has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm off-white paper background, bold black ink outlines, muted blue and orange accents, dramatic but uncluttered composition.",
+          "session_delta_prompt": "Keep the presenter and city consistent. The AI symbol should be visually simple and recognizable without any readable text."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "तुम्हारा नाम कानू है। तुम अपनी छोटी सी टोली के साथ जंगल के किनारे रहते हो।",
-          "camera_type": "medium shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, a simple curved mouth, thin black limbs, red bow tie and rough brown animal-skin shoulder wrap, stands beside a rocky cave with his small tribe. Other primitive stickman villagers wear simple animal-skin wraps and carry wooden spears. A small campfire glows nearby. Warm prehistoric morning light, hand-drawn ink outlines, vertical 9:16.",
-          "session_delta_prompt": "Kanu looks around at his tribe as villagers prepare for the day."
-        },
-        {
-          "beat_id": "s01_b03",
-          "narration_text": "एक सुबह तुम्हारे कबीले का खाना लगभग खत्म हो चुका है। सबकी उम्मीद अब तुम्हारे शिकार पर टिकी है।",
-          "camera_type": "close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Inside a prehistoric cave, Kanu with his round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap looks at an almost empty woven food basket. A few berries and roots remain. His tribe watches anxiously in the background. Moody morning lighting, bold hand-drawn outlines, vertical 9:16.",
-          "session_delta_prompt": "Kanu peers into the nearly empty basket while the other villagers exchange worried looks."
-        },
-        {
-          "beat_id": "s01_b04",
-          "narration_text": "तुम अपना भाला उठाते हो और जंगल की तरफ निकल पड़ते हो। लेकिन तुम्हें अंदाजा नहीं कि आज का दिन तुम्हारी जिंदगी बदलने वाला है।",
-          "camera_type": "tracking shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin black limbs, red bow tie and brown animal-skin shoulder wrap, grips a long wooden spear tipped with sharpened stone. He walks away from the cave toward a dark ancient forest. His tribe watches from behind. Cinematic low-angle hand-drawn illustration, dramatic sunlight, vertical 9:16.",
-          "session_delta_prompt": "Kanu tightens his grip on the spear and walks toward the forest as the camera follows from behind."
+          "narration_text": "ना चैटजीपीटी, ना आम लोगों के लिए एआई इमेज और वीडियो टूल्स।",
+          "camera_type": "close_up",
+          "action_mode": "in_place_action",
+          "prompt_action": "Vertical 9:16 close-up of the recurring stickman presenter looking at a smartphone showing three empty app-style panels: a blank chat bubble, an empty image frame and a blank video screen, each crossed out with a simple black line. The presenter has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth and a small red bow tie. Minimalist hand-drawn black ink, warm paper texture, muted blue accents, no readable words or logos.",
+          "session_delta_prompt": "Keep the phone and the three crossed-out empty panels clear and visually simple."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "forest",
+      "environment_ref": "home_desk",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "जंगल में दूर तुम्हें एक हिरण दिखाई देता है। तुम धीरे-धीरे उसके पीछे बढ़ते हो।",
-          "camera_type": "over-the-shoulder",
+          "narration_text": "सबसे पहले, पढ़ाई का तरीका अलग होता। स्टूडेंट्स हर सवाल का जवाब तुरंत नहीं पूछ पाते।",
+          "camera_type": "medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "From behind Kanu, show a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap crouching behind a thick tree while holding a stone-tipped wooden spear. In the distance, a deer stands near bushes. Dense prehistoric forest, filtered sunlight, hand-drawn cinematic style, vertical 9:16.",
-          "session_delta_prompt": "Kanu carefully leans around the tree while the deer remains alert in the distance."
+          "prompt_action": "Vertical 9:16 hand-drawn scene of a young student sitting at a wooden study desk, surrounded by thick textbooks and handwritten notebooks, looking confused at a difficult question on paper. The student has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, and simple stick limbs. A laptop sits closed beside the books. Warm off-white paper, bold black outlines, muted earthy colors, expressive but simple pose.",
+          "session_delta_prompt": "Keep the student, desk and textbooks consistent. Show the challenge through the pile of books and puzzled posture, not detailed facial features."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "तुम्हें लगता है शिकार आसान होगा। लेकिन तभी जंगल में एक तेज आवाज गूंजती है।",
-          "camera_type": "close-up",
+          "narration_text": "लोग किताबें पढ़ते, टीचर्स से पूछते और जवाब ढूँढने में ज़्यादा समय लगाते।",
+          "camera_type": "over_the_shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, the young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, freezes suddenly with his spear raised. His head turns sharply toward a dark section of the forest. Leaves shake, birds fly out of the trees and distant branches bend. Dramatic hand-drawn suspense, vertical 9:16.",
-          "session_delta_prompt": "Kanu suddenly turns toward the noise as birds scatter upward."
-        },
-        {
-          "beat_id": "s02_b03",
-          "narration_text": "तुम पीछे देखते हो... और वहां एक विशाल जंगली भेड़िया खड़ा है। उसकी नजर सीधे तुम पर है।",
-          "camera_type": "low-angle reveal",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A large wild grey wolf stands between ancient trees, facing Kanu. In the foreground, Kanu is seen from behind, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, holding a wooden spear. The wolf has pointed ears, dark nose, visible teeth and intense posture. Dark forest shadows, dramatic cinematic hand-drawn outlines, vertical 9:16.",
-          "session_delta_prompt": "The wolf slowly steps out of the shadows and stares at Kanu."
-        },
-        {
-          "beat_id": "s02_b04",
-          "narration_text": "तुम्हारे हाथ कांपने लगते हैं। सामने भेड़िया है और पीछे जाने का रास्ता भी आसान नहीं।",
-          "camera_type": "close-up",
-          "action_mode": "in_place_action",
-          "prompt_action": "Close-up of Kanu, a young prehistoric stickman with a perfectly round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap. He grips his stone-tipped wooden spear with trembling hands. The wolf's dark silhouette is visible behind him between trees. Dramatic shadows, earthy colors, hand-drawn ink style, vertical 9:16.",
-          "session_delta_prompt": "Kanu's hands tremble slightly as he tightens his grip on the spear."
-        },
-        {
-          "beat_id": "s02_b05",
-          "narration_text": "भेड़िया धीरे-धीरे तुम्हारी तरफ बढ़ता है। अब तुम्हें कुछ ऐसा करना होगा जिससे तुम बच सको।",
-          "camera_type": "wide cinematic shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A tense prehistoric forest confrontation. Kanu, a young stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, stands holding a wooden spear. A grey wolf advances slowly from the opposite side. Tall trees and thick roots surround them. Dramatic low lighting, hand-drawn cinematic composition, vertical 9:16.",
-          "session_delta_prompt": "The wolf takes one cautious step forward while Kanu shifts his feet backward."
+          "prompt_action": "Vertical 9:16 over-the-shoulder view of the same student reading an open textbook while a teacher stickman points toward a large chalkboard filled with simple diagrams and symbols. Both characters have round white faces with exactly two tiny solid-black dot eyes each, no pupils, irises, eye whites, highlights or reflections. Warm classroom setting, black ink outlines, muted green and ochre accents, no readable text.",
+          "session_delta_prompt": "Preserve the student's blue backpack and consistent simple dot eyes for both characters."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "forest",
+      "environment_ref": "office",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "तुम्हें अचानक याद आता है कि तुम्हारे पास एक चीज है जिससे भेड़िया डर सकता है। आग।",
-          "camera_type": "close-up",
+          "narration_text": "ऑफिस में ईमेल, रिपोर्ट और प्रेज़ेंटेशन बनाने का काम भी ज़्यादातर खुद करना पड़ता।",
+          "camera_type": "wide_office_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, looks down at a small burning torch in his hand. Orange flames illuminate his face while the grey wolf stands blurred in the background. Dramatic warm firelight, dark forest, bold hand-drawn outlines, vertical 9:16.",
-          "session_delta_prompt": "Kanu glances at the burning torch and suddenly raises it."
+          "prompt_action": "Vertical 9:16 hand-drawn modern office scene with the office worker sitting at a desk, facing a computer monitor, surrounded by paper documents, printed charts and sticky notes. The worker has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, thin black stick limbs, muted green shirt and dark trousers. A wall clock shows time passing. Warm paper texture, bold black outlines, restrained colors.",
+          "session_delta_prompt": "Keep the same office worker and office layout. Use paper piles and the clock to communicate repetitive work."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "तुम जलती हुई लकड़ी को ऊपर उठाते हो। भेड़िया आग की लपटें देखकर एक पल के लिए रुक जाता है।",
-          "camera_type": "low-angle shot",
+          "narration_text": "कई छोटे कामों में इंसानों का समय लगता, जिन्हें आज एआई कुछ ही सेकंड में शुरू कर देता है।",
+          "camera_type": "top_down_desk_view",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, stands bravely holding a large flaming wooden torch above his head. The grey wolf pauses a few steps away, cautious of the fire. Orange firelight illuminates the dark forest, cinematic hand-drawn ink outlines, vertical 9:16.",
-          "session_delta_prompt": "Kanu raises the torch higher as the wolf hesitates and steps back."
-        },
-        {
-          "beat_id": "s03_b03",
-          "narration_text": "तुम आग को आगे रखते हुए धीरे-धीरे पीछे हटते हो। आखिरकार भेड़िया जंगल में गायब हो जाता है।",
-          "camera_type": "wide shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, carefully backs away while holding a flaming torch in front of him. The grey wolf turns and disappears into thick forest bushes. Glowing firelight against deep green trees, hand-drawn cinematic style, vertical 9:16.",
-          "session_delta_prompt": "The wolf retreats into the bushes while Kanu keeps the torch raised and moves backward."
-        },
-        {
-          "beat_id": "s03_b04",
-          "narration_text": "तुम बच तो जाते हो, लेकिन अब तुम्हारे पास शिकार नहीं है। और सूरज भी ढलने लगा है।",
-          "camera_type": "wide shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, stands alone in the forest holding a fading torch and an empty wooden spear. The sun is setting behind the trees, casting long orange shadows. His posture looks exhausted and disappointed. Cinematic hand-drawn composition, vertical 9:16.",
-          "session_delta_prompt": "Kanu lowers his spear and looks toward the fading sunlight."
+          "prompt_action": "Vertical 9:16 top-down view of the same office worker's crowded desk, with a long checklist of simple task icons: email envelope, document page, chart and calendar. The worker's hands are busy sorting papers and typing on a keyboard. The worker's round white face is partially visible with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Hand-drawn ink style, warm paper texture, muted blue and orange accents, no readable words.",
+          "session_delta_prompt": "Show multiple small tasks competing for attention without adding extra characters or changing the worker's design."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "river",
+      "environment_ref": "shop",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "घर लौटने के लिए तुम नदी के पास पहुंचते हो। लेकिन बारिश के कारण पानी बहुत तेज बह रहा है।",
-          "camera_type": "wide shot",
+          "narration_text": "छोटे बिज़नेस वालों के लिए भी विज्ञापन, डिज़ाइन और नए आइडिया बनाना मुश्किल और महँगा रहता।",
+          "camera_type": "medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, stands on a rocky riverbank. A fast flowing river with dark blue water separates him from the other side. The sky is cloudy and rocks are wet from rain. Dramatic prehistoric landscape, hand-drawn ink outlines, vertical 9:16.",
-          "session_delta_prompt": "Kanu approaches the riverbank and stops as he sees the strong current."
+          "prompt_action": "Vertical 9:16 scene inside a modest neighborhood shop. The small business owner stands behind the counter, looking at a plain empty promotional poster, a basic camera and scattered paper sketches. The owner has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, thin stick limbs and a mustard apron. Shelves of ordinary products in the background, warm off-white paper, bold black ink outlines, muted earthy colors.",
+          "session_delta_prompt": "Keep the shop owner, counter and shelves consistent. The blank poster should suggest a lack of affordable design resources."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "तुम पानी में उतरने की हिम्मत नहीं करते। तभी तुम्हें नदी के ऊपर कुछ बड़े पत्थर दिखाई देते हैं।",
-          "camera_type": "over-the-shoulder",
+          "narration_text": "आज वही इंसान कम बजट में भी डिज़ाइन, आइडिया और कंटेंट तैयार कर सकता है।",
+          "camera_type": "dynamic_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Over Kanu's shoulder, show several large rocks protruding from the flowing prehistoric river, forming an uneven possible crossing. Kanu is a young stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap. He studies the rocks carefully from the bank. Hand-drawn cinematic style, cool blue water and earthy rocks, vertical 9:16.",
-          "session_delta_prompt": "Kanu looks from one exposed rock to the next, considering a route across."
-        },
-        {
-          "beat_id": "s04_b03",
-          "narration_text": "तुम एक-एक पत्थर पर पैर रखते हुए आगे बढ़ते हो। हर कदम पर संतुलन बनाना पड़ता है।",
-          "camera_type": "side tracking shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, carefully steps across large rocks in a fast-flowing river. His arms stretch out for balance and water splashes around the stones. Cinematic hand-drawn outlines, dramatic blue water, vertical 9:16.",
-          "session_delta_prompt": "Kanu cautiously shifts his weight from one rock to the next, keeping his arms out for balance."
-        },
-        {
-          "beat_id": "s04_b04",
-          "narration_text": "अचानक तुम्हारा पैर फिसलता है। तुम एक पत्थर को पकड़कर खुद को गिरने से बचा लेते हो।",
-          "camera_type": "dynamic close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A dramatic hand-drawn action scene of Kanu slipping on a wet river rock, one hand gripping the edge of a larger stone while water rushes below. Kanu has a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap. His wooden spear is still secured in his other hand. Strong motion lines and splashing water, vertical 9:16.",
-          "session_delta_prompt": "Kanu's foot slips, his body tilts and his hand catches the rock just in time."
-        },
-        {
-          "beat_id": "s04_b05",
-          "narration_text": "काफी कोशिश के बाद तुम नदी पार कर लेते हो। दूर तुम्हें अपने कबीले की आग दिखाई देती है।",
-          "camera_type": "wide cinematic shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, stands exhausted on the far riverbank. In the distance, a warm orange campfire glows near the rocky cave where his tribe lives. Twilight sky and ancient landscape, cinematic hand-drawn style, vertical 9:16.",
-          "session_delta_prompt": "Kanu notices the distant campfire and straightens up with relief."
+          "prompt_action": "Vertical 9:16 hand-drawn scene of the same small business owner confidently using a laptop on the shop counter. Floating around the laptop are three simple visual results: a neat product poster, a lightbulb idea icon and a short video frame, all represented without readable text. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a round white face and mustard apron. Warm paper texture, black ink outlines, muted blue and orange accents.",
+          "session_delta_prompt": "Show the same shop owner now looking productive, with simple visual examples of affordable creative work."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "stone_camp",
+      "environment_ref": "world",
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "जब तुम वापस पहुंचते हो, सब तुम्हारे पास दौड़कर आते हैं। उन्हें लगता है कि तुम कोई शिकार लेकर लौटे हो।",
-          "camera_type": "medium shot",
+          "narration_text": "लेकिन दुनिया रुकती नहीं। लोग फिर भी इंटरनेट पर खोजते, पुराने सॉफ्टवेयर इस्तेमाल करते और इंसानों से मदद लेते।",
+          "camera_type": "panoramic_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, arrives at the prehistoric cave camp empty-handed. Several tribe members run toward him with hopeful expressions. A warm campfire glows in the center. Earthy cinematic hand-drawn style, vertical 9:16.",
-          "session_delta_prompt": "The tribe members approach Kanu eagerly, expecting him to bring food."
+          "prompt_action": "Vertical 9:16 wide hand-drawn city composition showing everyday people using traditional tools: a student searching through books, an office worker typing into a conventional software interface, and a person asking a colleague for help. All stickman characters have round white faces with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm off-white paper, bold black outlines, muted earthy colors, clear separated visual groups.",
+          "session_delta_prompt": "Show a functioning world that is less automated, not a ruined or technologically primitive world."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "लेकिन तुम्हारे हाथ खाली हैं। तुम उन्हें बताते हो कि आज तुम्हारा सामना एक जंगली भेड़िये से हुआ।",
-          "camera_type": "close-up",
+          "narration_text": "शायद काम थोड़ा धीमा होता, लेकिन इंसान सीखना और नई चीज़ें बनाना बंद नहीं करते।",
+          "camera_type": "low_angle_hero_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, gestures toward the forest while explaining his encounter. His spear is empty and his clothes are muddy. Tribe members with matching simple dot eyes listen with shocked expressions. Campfire lighting, hand-drawn ink style, vertical 9:16.",
-          "session_delta_prompt": "Kanu points toward the dark forest while the tribe listens closely."
+          "prompt_action": "Vertical 9:16 uplifting hand-drawn scene of the recurring presenter standing beside a group of ordinary stickman people building something together: one sketches an idea, another types on a laptop, and another assembles a small prototype. Every character has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. The presenter has a red bow tie. Warm golden light, off-white paper texture, bold imperfect black ink outlines, restrained earthy colors.",
+          "session_delta_prompt": "Keep the presenter recognizable and show collaboration, creativity and human problem-solving."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "तभी बूढ़ा बुजुर्ग आगे आता है। वह तुम्हारी बात सुनकर कहता है, आज तुम शिकार नहीं लाए... लेकिन तुमने कुछ ज्यादा जरूरी चीज सीखी है।",
-          "camera_type": "medium shot",
+          "narration_text": "तो एआई के बिना दुनिया शायद धीमी होती, लेकिन क्या वो बेहतर होती? ये तो इस बात पर निर्भर करता कि हम एआई का इस्तेमाल कैसे करते हैं।",
+          "camera_type": "close_up_to_wide_reveal",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The wise elder, a prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin black limbs, long grey beard and dark brown animal-skin cloak, stands beside Kanu. Kanu has the same round white face, two tiny solid-black dot eyes, red bow tie and brown shoulder wrap. The elder places a reassuring hand on Kanu's shoulder beside the campfire. Warm orange firelight, cinematic hand-drawn style, vertical 9:16.",
-          "session_delta_prompt": "The elder gently places his hand on Kanu's shoulder and speaks calmly."
-        },
-        {
-          "beat_id": "s05_b04",
-          "narration_text": "वह कहता है, ताकतवर होना जरूरी है, लेकिन खतरे को पहचानना और सही समय पर समझदारी दिखाना उससे भी ज्यादा जरूरी है।",
-          "camera_type": "close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "The wise elder, a prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, grey beard, thin limbs and dark brown animal-skin cloak, speaks thoughtfully beside a glowing campfire. Kanu, with his round white face, tiny solid-black dot eyes, red bow tie and brown animal-skin shoulder wrap, listens carefully. Warm dramatic orange lighting, bold hand-drawn outlines, vertical 9:16.",
-          "session_delta_prompt": "The elder raises one finger to emphasize his lesson while Kanu listens quietly."
-        },
-        {
-          "beat_id": "s05_b05",
-          "narration_text": "उस रात तुम्हें समझ आता है कि पत्थर के युग में जिंदा रहने के लिए सिर्फ शिकार करना नहीं, हर दिन सीखना भी जरूरी था।",
-          "camera_type": "wide cinematic shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, a young prehistoric stickman with a round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, red bow tie and brown animal-skin shoulder wrap, sits beside his tribe around a glowing campfire under a star-filled prehistoric sky. His spear rests beside him. The wise elder and friend Mira sit nearby, sharing the warmth of the fire. Peaceful cinematic hand-drawn illustration, warm orange light, vertical 9:16.",
-          "session_delta_prompt": "The camera slowly pulls back as the tribe gathers around the fire and Kanu looks thoughtfully into the flames."
-        },
-        {
-          "beat_id": "s05_b06",
-          "narration_text": "और सोचो, अगर तुम कानू की जगह होते, तो उस भेड़िये से बचने के लिए क्या करते? कमेंट में बताना।",
-          "camera_type": "close-up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Kanu, the young prehistoric stickman with a perfectly round white face, exactly two tiny solid-black dot eyes without pupils or highlights, simple curved mouth, thin black limbs, small red bow tie and brown animal-skin shoulder wrap, faces the viewer directly. He holds a small burning torch in one hand and a wooden spear in the other, with a playful questioning expression. Dark forest silhouette behind him and warm firelight on his face, bold cinematic hand-drawn style, vertical 9:16.",
-          "session_delta_prompt": "Kanu raises the torch slightly and tilts his head toward the viewer, inviting them to answer."
+          "prompt_action": "Vertical 9:16 cinematic final composition. The recurring presenter stands in the center holding a smartphone in one hand and a small glowing lightbulb in the other. Behind the presenter, one side shows people collaborating without AI and the other side shows people using AI tools thoughtfully. The presenter has a perfectly round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm off-white paper, bold black ink outlines, balanced muted blue and orange accents, thoughtful hopeful atmosphere, no readable text.",
+          "session_delta_prompt": "End on a balanced visual contrast between human creativity and AI assistance. Preserve the presenter's exact dot-eye design."
         }
       ]
     }

@@ -1,178 +1,170 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "What If Every Human Could Fly?",
-    "project_id": "what_if_every_human_could_fly",
+    "title": "What If You Had Your Own JARVIS in Real Life?",
+    "project_id": "your_own_jarvis_real_life",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Minimalist hand-drawn stickman storytelling with cinematic imaginative visuals. Warm off-white paper texture, bold slightly imperfect black ink outlines, limited earthy accent colors, soft blue skies and warm orange sunlight. All human characters have round white faces, exactly two tiny solid-black dot eyes of identical size and spacing, no pupils, irises, eye whites, highlights, reflections or eyelashes, simple curved mouths and thin black stick limbs. The recurring presenter always has a small red bow tie. Keep identical eye design and character proportions across every image. Dynamic aerial perspectives, expressive poses, clear silhouettes, imaginative but believable everyday environments, vertical 9:16 composition.",
-    "negative_prompt": "No photorealism, no 3D rendering, no realistic anatomy, no detailed human faces, no changing eye styles, no pupils, no irises, no eye whites, no highlights, no reflections, no eyelashes, no extra eyes, no wings growing from human bodies, no superhero costumes, no text, no watermarks, no logos, no cluttered compositions."
+    "art_style": "Cinematic minimalist hand-drawn stickman storytelling, with warm off-white paper texture, bold slightly imperfect black ink outlines and limited accent colors: muted blue for holographic AI interfaces, warm orange for lighting, and earthy tones for environments. The main human character is a young stickman with a perfectly round white face, exactly two tiny solid-black dot eyes of identical size and spacing, no pupils, irises, eye whites, highlights, reflections or eyelashes, a simple curved mouth, thin black stick limbs, a dark blue hoodie, black trousers and white sneakers. The AI assistant is represented by a consistent small floating blue holographic orb with a simple glowing circular core and three thin orbiting rings, never a humanoid face. Every other stickman character must have exactly two tiny solid-black dot eyes with identical shape, size and spacing. Maintain exact character clothing, proportions, face design, AI orb design and color palette in every image. Vertical 9:16 framing, expressive camera angles, cinematic lighting, one clear action per image, rich visual storytelling without clutter.",
+    "negative_prompt": "No photorealism, no 3D rendering, no realistic human anatomy, no detailed human faces, no changing eye styles, no pupils, no irises, no eye whites, no highlights, no reflections, no eyelashes, no extra eyes, no different hoodie colors, no inconsistent character proportions, no humanoid AI robot, no different AI orb design, no text, no watermarks, no logos, no cluttered compositions."
   },
   "assets": {
-    "presenter": {
+    "main_character": {
       "type": "character",
-      "label": "Recurring stickman presenter",
-      "visual_dna": "A minimalist stickman with a perfectly round white face, exactly two tiny solid-black dot eyes identical in size and spacing in every appearance, a simple curved mouth, thin black stick limbs and a small red bow tie. No pupils, irises, eye whites or highlights."
+      "label": "Young owner",
+      "visual_dna": "A young minimalist stickman with a perfectly round white face, exactly two tiny solid-black dot eyes identical in size and spacing in every appearance, no pupils or highlights, a simple curved mouth, thin black stick limbs, dark blue hoodie, black trousers and white sneakers. Never change clothing, face or proportions."
     },
-    "commuter": {
-      "type": "character",
-      "label": "Everyday flying commuter",
-      "visual_dna": "A simple stickman with a round white face, exactly two tiny solid-black dot eyes, thin black stick limbs, a blue shirt, dark trousers and a small backpack. No detailed facial features."
+    "jarvis_orb": {
+      "type": "prop",
+      "label": "JARVIS holographic assistant",
+      "visual_dna": "A small floating electric-blue holographic orb with a bright circular core, three thin orbiting blue rings and tiny pulsing particles. No face, no eyes, no mouth, no humanoid body. Always identical in shape, size, glow and blue color."
     },
-    "child": {
+    "friend": {
       "type": "character",
-      "label": "Flying child",
-      "visual_dna": "A small cartoon stickman child with a round white face, exactly two tiny solid-black dot eyes, thin black stick limbs, a yellow shirt and shorts. No detailed facial features."
+      "label": "Best friend",
+      "visual_dna": "A minimalist stickman with a round white face, exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, thin black stick limbs, mustard-yellow sweatshirt, dark trousers and simple sneakers."
     },
     "delivery_worker": {
       "type": "character",
-      "label": "Flying delivery worker",
-      "visual_dna": "A simple stickman with a round white face, exactly two tiny solid-black dot eyes, thin black stick limbs, an orange delivery jacket and a compact delivery backpack. No detailed facial features."
+      "label": "Delivery worker",
+      "visual_dna": "A simple stickman with a round white face, exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, thin black stick limbs and an orange delivery jacket with a compact delivery bag."
     },
-    "city": {
+    "bedroom": {
       "type": "environment",
-      "label": "Modern flying city",
-      "visual_dna": "A modern city with skyscrapers, apartment buildings, roads, parks, rooftop platforms and people flying between buildings. Minimalist hand-drawn black outlines, warm paper texture and muted colors."
+      "label": "Young owner's bedroom",
+      "visual_dna": "A cozy modern bedroom with a wooden desk, laptop, smartphone, bookshelf, bed, window and warm desk lamp. Minimalist hand-drawn black outlines, off-white paper and muted blue and orange accents."
     },
     "home": {
       "type": "environment",
       "label": "Modern apartment",
-      "visual_dna": "A contemporary apartment with a balcony, large windows, simple furniture and a rooftop access area, illustrated with warm earthy colors and bold ink outlines."
+      "visual_dna": "A compact modern apartment with a living room, kitchen, balcony, sofa, dining table and smart home devices. Warm cinematic lighting, bold black ink outlines and earthy colors."
     },
-    "countryside": {
+    "city": {
       "type": "environment",
-      "label": "Open countryside",
-      "visual_dna": "A beautiful countryside landscape with green hills, a river, trees, small houses and distant mountains, drawn in a minimalist hand-drawn style."
+      "label": "Modern city",
+      "visual_dna": "A modern city skyline with apartments, offices, shops, traffic, parks and distant buildings, illustrated in a minimalist hand-drawn style with warm paper texture."
     },
-    "airport": {
+    "office": {
       "type": "environment",
-      "label": "Modern airport",
-      "visual_dna": "A modern airport terminal with glass windows, runways, passenger seating and aircraft, illustrated with simple black outlines and muted blue and grey colors."
+      "label": "Modern workplace",
+      "visual_dna": "A modern office with desks, laptops, glass walls, meeting tables and a large presentation screen. Minimalist black ink outlines and muted blue-grey colors."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "city",
+      "environment_ref": "bedroom",
       "beats": [
         {
-          "beat_id": "s01_b01",
-          "narration_text": "सोचो, अगर दुनिया का हर इंसान बिना पंखों के उड़ सकता?",
-          "camera_type": "dramatic_aerial_wide_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 cinematic hand-drawn illustration of the recurring stickman presenter floating high above a modern city, looking down at skyscrapers and tiny flying people everywhere. The presenter has a round white face, exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm off-white paper, bold black ink outlines, bright blue sky, dramatic sunlight.",
-          "session_delta_prompt": "Establish the extraordinary premise: ordinary people can fly naturally without wings or machines. Keep the presenter design consistent."
-        },
+      "beat_id": "s01_b01",
+      "narration_text": "आयरन मैन की फिल्में तो आपने देखी ही होंगी। सोचिए, अगर आपके पास भी असली ज़िंदगी में जार्विस जैसा एआई असिस्टेंट होता तो?",
+      "camera_type": "cinematic_close_up",
+      "action_mode": "new_camera_angle",
+      "prompt_action": "A cinematic, highly detailed depiction of Iron Man in his iconic red-and-gold metallic armored suit, standing confidently inside a futuristic high-tech laboratory. His glowing blue arc reactor is clearly visible on his chest, with subtle blue lights reflecting off the polished armor. Dramatic cinematic lighting, sophisticated futuristic technology in the background, recognizable Iron Man superhero aesthetic, dynamic low-angle composition, vertical 9:16 frame. This image must focus on Iron Man himself, not a holographic assistant. No text, no captions, no watermark.",
+      "session_delta_prompt": "Establish the cinematic Iron Man reference before transitioning to the fictional personal AI assistant."
+    },
         {
-          "beat_id": "s01_b02",
-          "narration_text": "ना हवाई जहाज़, ना ट्रैफिक जाम, बस घर से उड़ो और सीधे अपनी मंज़िल पर पहुँच जाओ।",
-          "camera_type": "bird_eye_view",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 bird's-eye view of a busy modern city. Cars are stuck in a long traffic jam on the roads, while dozens of ordinary stickman people fly freely above the buildings toward different destinations. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections. Warm paper texture, bold black ink outlines, muted blue and orange accents.",
-          "session_delta_prompt": "Create a clear contrast between crowded roads and open aerial movement."
-        },
+      "beat_id": "s01_b02",
+      "narration_text": "एक ऐसा असिस्टेंट, जो आपके लिए सोच सके, काम कर सके और हर वक्त आपकी मदद कर सके।",
+      "camera_type": "holographic_reveal",
+      "action_mode": "new_camera_angle",
+      "prompt_action": "A small floating electric-blue holographic AI orb materializing in the center of a futuristic dark room, representing a personal assistant inspired by the technology of Iron Man's JARVIS. The orb has a bright circular blue core surrounded by exactly three thin glowing blue orbiting rings. It has absolutely no face, no eyes, no mouth, and no humanoid body. Blue holographic particles and subtle light rays emerge around it. Cinematic futuristic atmosphere, clean uncluttered composition, dramatic blue lighting, vertical 9:16 frame. No Iron Man character in this image. No text, no captions, no watermark.",
+      "session_delta_prompt": "Keep the holographic assistant identical in every later appearance: one small electric-blue floating orb, bright circular core, exactly three thin orbiting rings, no face and no humanoid body."
+    },
         {
           "beat_id": "s01_b03",
-          "narration_text": "सुबह ऑफिस जाने के लिए लोग बस बालकनी से छलाँग लगाते और हवा में आगे बढ़ जाते।",
-          "camera_type": "balcony_side_shot",
+          "narration_text": "तुम बस कहते, जार्विस, आज मुझे क्या-क्या करना है?",
+          "camera_type": "over_the_shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn scene of a commuter stepping carefully off an apartment balcony and beginning to float into the sky, smiling with arms slightly extended. The commuter has a round white face, exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, blue shirt, dark trousers and a small backpack. Modern apartment building, bright morning sunlight, bold black outlines, off-white paper texture.",
-          "session_delta_prompt": "Show controlled, effortless flight rather than a dangerous uncontrolled fall."
+          "prompt_action": "Vertical 9:16 over-the-shoulder view of the young stickman owner sitting up in bed and speaking toward the floating blue holographic orb. The orb has a bright circular core and exactly three thin orbiting rings. The owner has a round white face, exactly two tiny solid-black dot eyes, no pupils or highlights, dark blue hoodie and black trousers. Morning light enters the bedroom window, cinematic hand-drawn black ink style.",
+          "session_delta_prompt": "Show the first spoken interaction between the owner and the consistent blue AI orb."
         },
         {
           "beat_id": "s01_b04",
-          "narration_text": "लेकिन कुछ ही दिनों में हमारी पूरी दुनिया बदल जाती।",
-          "camera_type": "low_angle_city_reveal",
+          "narration_text": "और जार्विस जवाब देता, तुम्हारी मीटिंग दस बजे है, मौसम अच्छा है और तुम्हारा नाश्ता तैयार है।",
+          "camera_type": "medium_room_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 dramatic view from a city street looking upward at hundreds of people flying between tall buildings, crossing above roads and landing on rooftops. Some carry briefcases, backpacks and shopping bags. Every stickman has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm sunlight, hand-drawn black ink outlines, dynamic sky composition.",
-          "session_delta_prompt": "Make the city feel alive with flight becoming an ordinary part of daily life."
+          "prompt_action": "Vertical 9:16 hand-drawn bedroom scene showing the blue holographic orb projecting three clean floating icons: a calendar with a meeting symbol, a sun symbol and a breakfast plate. The young stickman owner sits on the bed looking surprised and impressed. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie and black trousers. The orb has its exact circular core and three orbiting rings. Warm morning light, bold black ink outlines, no readable text.",
+          "session_delta_prompt": "Use icons instead of text to communicate the assistant's useful morning briefing."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "city",
+      "environment_ref": "home",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "सबसे पहले, सड़कों पर गाड़ियों की ज़रूरत बहुत कम हो सकती थी।",
-          "camera_type": "wide_road_shot",
+          "narration_text": "तुम उठते और कहते, जार्विस, आज घर का पूरा सिस्टम संभाल लो।",
+          "camera_type": "wide_living_room_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 wide hand-drawn city road with very few cars and buses, while people fly above the road in different directions. A commuter with a blue shirt and backpack floats past a traffic signal. All characters have exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm off-white paper, bold black ink outlines, muted colors.",
-          "session_delta_prompt": "Show fewer vehicles but retain some ground transport for people and goods."
+          "prompt_action": "Vertical 9:16 wide hand-drawn view of the young owner standing in a modern apartment living room and speaking toward the floating blue holographic orb. The owner wears the same dark blue hoodie, black trousers and white sneakers, with exactly two tiny solid-black dot eyes and no detailed facial features. The orb has a bright circular core and three thin orbiting rings. Sofa, window and smart home devices in the background, warm cinematic light.",
+          "session_delta_prompt": "Keep the apartment layout and owner clothing consistent. The orb floats at the owner's eye level."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "पार्किंग की जगहें खाली होतीं और शहरों की सड़कों का नक्शा बदल जाता।",
-          "camera_type": "high_angle_urban_shot",
+          "narration_text": "लाइट्स ऑन, पर्दे खुल जाते और कॉफी मशीन तुम्हारी कॉफी बना देती।",
+          "camera_type": "dynamic_room_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 high-angle hand-drawn view of a city where an old parking lot has been transformed into a green public park with trees, benches and walking paths. A few people fly above the park. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm sunlight, off-white paper, bold black ink outlines, earthy green accents.",
-          "session_delta_prompt": "Visualize one possible use for land freed from excessive parking."
+          "prompt_action": "Vertical 9:16 dynamic hand-drawn scene of the same apartment transforming as smart lights switch on, curtains slide open and a coffee machine starts preparing coffee. The young owner stands in the center watching everything happen. The owner has exactly two tiny solid-black dot eyes, no pupils or highlights, dark blue hoodie and black trousers. The electric-blue AI orb floats beside the ceiling with its circular core and three orbiting rings. Warm morning sunlight, bold black outlines.",
+          "session_delta_prompt": "Show three clearly visible smart-home actions happening together while preserving the same room."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "दूर रहने वाले दोस्त और परिवार भी कुछ ही मिनटों में एक-दूसरे से मिल सकते।",
-          "camera_type": "emotional_medium_shot",
+          "narration_text": "तुम्हें कुछ ढूँढना होता, तो वो सेकंडों में बता देता कि सामान कहाँ रखा है।",
+          "camera_type": "close_up_search_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 warm hand-drawn scene of two stickman friends flying toward each other above a small neighborhood, arms open for a friendly greeting. Both have round white faces with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. One wears a blue shirt, the other a mustard jacket. Soft afternoon sunlight, warm paper texture, bold black outlines.",
-          "session_delta_prompt": "Focus on the emotional benefit of easier visits and connection."
+          "prompt_action": "Vertical 9:16 close-up hand-drawn scene of the owner looking for a missing set of keys near the sofa while the blue holographic orb projects a glowing arrow toward a small table where the keys are lying. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, and wears the same dark blue hoodie. The orb has three orbiting rings and a bright circular core. Warm apartment lighting, black ink outlines.",
+          "session_delta_prompt": "Make the keys and projected direction obvious. Keep the orb design unchanged."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "लेकिन आसमान भी धीरे-धीरे सड़कों जितना व्यस्त हो जाता।",
-          "camera_type": "aerial_crowd_shot",
+          "narration_text": "और अगर तुम घर से बाहर निकलते, तो वो तुम्हारे फोन पर भी तुम्हारे साथ रहता।",
+          "camera_type": "balcony_exit_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 aerial view of a busy sky filled with people flying in different directions between buildings, some carrying bags and briefcases. Their paths nearly intersect, with a few simple floating directional arrows indicating traffic flow. Every character has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Bold black ink, off-white paper, muted blue sky.",
-          "session_delta_prompt": "Introduce aerial congestion as an unexpected consequence of everyone flying."
-        },
-        {
-          "beat_id": "s02_b05",
-          "narration_text": "इसलिए हवा में भी ट्रैफिक नियम, लेन और उड़ने की सीमाएँ बनानी पड़तीं।",
-          "camera_type": "wide_aerial_city_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn futuristic city sky with clearly separated aerial lanes marked by simple floating lines and arrows. People fly in orderly directions at different heights, while a small sky traffic control tower watches over them. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Clean bold ink outlines, warm paper texture, muted blue and orange colors.",
-          "session_delta_prompt": "Show a practical organized flying system rather than a chaotic sky."
+          "prompt_action": "Vertical 9:16 hand-drawn scene of the owner leaving the apartment through the front door while holding a smartphone. A tiny blue holographic orb appears as a glowing interface above the phone, with the same circular core and three orbiting rings. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie, black trousers and white sneakers. Modern apartment hallway, warm lighting, bold black outlines.",
+          "session_delta_prompt": "Show the assistant moving from home projection to a compact phone interface while retaining its exact blue orb identity."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "home",
+      "environment_ref": "city",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "घर और इमारतें भी पहले जैसी नहीं बनतीं।",
-          "camera_type": "architectural_wide_shot",
+          "narration_text": "रास्ते में जाम होता, तो जार्विस तुम्हें सबसे तेज़ दूसरा रास्ता बता देता।",
+          "camera_type": "bird_eye_city_view",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn architectural view of a modern apartment building with balconies, rooftop landing platforms and open sky access points. Several people hover near different floors. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm off-white paper, bold black outlines, muted earthy colors.",
-          "session_delta_prompt": "Introduce how buildings might adapt to a population that can fly."
+          "prompt_action": "Vertical 9:16 bird's-eye hand-drawn view of a modern city road with a long traffic jam. The young owner stands on the sidewalk holding a smartphone. Above the phone floats the consistent electric-blue AI orb with a bright circular core and three orbiting rings, projecting a simple glowing alternate route on a map icon. The owner has exactly two tiny solid-black dot eyes, no pupils or highlights, dark blue hoodie and black trousers. Bold black ink outlines, muted city colors.",
+          "session_delta_prompt": "Show a practical navigation suggestion, with the same owner and orb design."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "लोग खिड़कियों और बालकनी से सीधे अंदर आने लगते।",
-          "camera_type": "interior_wide_shot",
+          "narration_text": "ऑफिस पहुँचने से पहले वो तुम्हारे ईमेल और मीटिंग की तैयारी भी कर चुका होता।",
+          "camera_type": "office_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 interior view of a modern apartment living room. A stickman resident gently floats through a large open balcony doorway carrying a grocery bag. The resident has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, simple stick limbs and casual clothes. Warm sunlight enters through the window, hand-drawn black ink outlines.",
-          "session_delta_prompt": "Show a normal home arrival through the balcony, keeping the action friendly and safe."
+          "prompt_action": "Vertical 9:16 hand-drawn modern office scene. The young owner sits at a desk with a laptop while the blue holographic orb projects a neat email envelope icon, calendar icon and presentation chart icon above the desk. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie and black trousers. The orb has its circular core and three orbiting rings. Muted blue-grey office, warm light, bold black outlines.",
+          "session_delta_prompt": "Show the assistant preparing useful work materials, not making decisions without the owner's approval."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "ऊँची मंज़िलों तक पहुँचने के लिए लिफ्ट का इंतज़ार भी शायद कम हो जाता।",
-          "camera_type": "vertical_building_shot",
+          "narration_text": "तुम कहते, जार्विस, इस प्रोजेक्ट के लिए एक अच्छा आइडिया ढूँढो।",
+          "camera_type": "medium_desk_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 dramatic upward view of a tall apartment building with a long elevator queue visible through the lobby windows, while several residents fly upward along the outside of the building toward their balconies. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Bold hand-drawn outlines, warm paper texture, muted blue sky.",
-          "session_delta_prompt": "Use the contrast between the elevator queue and people flying outside to tell the story."
+          "prompt_action": "Vertical 9:16 medium hand-drawn shot of the owner leaning toward a laptop and speaking to the floating blue holographic orb. The orb projects a glowing lightbulb icon surrounded by small idea sketches and connected nodes. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie and black trousers. Warm office lighting, black ink outlines, off-white paper texture.",
+          "session_delta_prompt": "Keep the same AI orb and owner. Show brainstorming through simple visual icons."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "लेकिन बच्चों, बुज़ुर्गों और उड़ने में परेशानी वाले लोगों के लिए लिफ्ट फिर भी ज़रूरी रहती।",
-          "camera_type": "ground_level_emotional_shot",
+          "narration_text": "और वो तुम्हारे लिए रिसर्च करता, जानकारी समझाता और एक शुरुआती प्लान बना देता।",
+          "camera_type": "top_down_desk_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 thoughtful hand-drawn scene of an older stickman and a young child entering a spacious elevator while other residents fly outside the building. Both characters have round white faces with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm gentle lighting, bold black ink outlines, muted earthy colors.",
-          "session_delta_prompt": "Show that accessible transport remains important even in a flying world."
+          "prompt_action": "Vertical 9:16 top-down hand-drawn view of a desk with organized research pages, a simple project roadmap, charts and a laptop. The blue holographic orb floats above the desk projecting connected information cards and a small progress diagram. The owner in the dark blue hoodie is visible at the edge of the frame with exactly two tiny solid-black dot eyes, no pupils or highlights. Warm paper texture, bold black ink outlines, muted blue accents, no readable text.",
+          "session_delta_prompt": "Show research and planning as organized visual outputs. Do not add extra AI characters."
         }
       ]
     },
@@ -182,95 +174,103 @@
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "डिलीवरी का काम भी पूरी तरह बदल जाता।",
-          "camera_type": "dynamic_tracking_shot",
+          "narration_text": "शाम को तुम अपने दोस्त से कहते, आज मूवी देखने चलते हैं।",
+          "camera_type": "street_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 dynamic hand-drawn scene of a flying delivery worker carrying a compact delivery backpack and a small parcel, gliding between city buildings. The worker has a round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, thin stick limbs and an orange jacket. Warm paper texture, bold black outlines, bright sky.",
-          "session_delta_prompt": "Keep the delivery worker's orange jacket and compact backpack consistent."
+          "prompt_action": "Vertical 9:16 hand-drawn city street scene at sunset. The owner in a dark blue hoodie meets a friend wearing a mustard-yellow sweatshirt. Both have round white faces with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. The owner holds a smartphone with the familiar blue AI orb glowing above it, showing a bright circular core and three orbiting rings. Warm sunset, bold black ink outlines.",
+          "session_delta_prompt": "Introduce the friend with consistent mustard-yellow clothing and simple dot eyes."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "लोग सामान लेकर हवा में उड़ते और शायद कुछ डिलीवरी पहले से तेज़ हो जातीं।",
-          "camera_type": "side_tracking_shot",
+          "narration_text": "जार्विस तुरंत पास के सिनेमाघर, शो टाइम और टिकट के विकल्प दिखा देता।",
+          "camera_type": "phone_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 side view of the same flying delivery worker carrying a small parcel toward an apartment balcony. Below, a traditional delivery van moves along the road. The worker has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, round white face and orange jacket. Hand-drawn black ink outlines, warm paper background.",
-          "session_delta_prompt": "Contrast a flying delivery route with a ground delivery van without implying every delivery becomes faster."
+          "prompt_action": "Vertical 9:16 close-up of the owner's smartphone showing simple movie ticket icons, a cinema building symbol and three time-slot panels. The consistent blue holographic orb floats above the phone with its bright circular core and three orbiting rings. The owner's hand and dark blue hoodie sleeve are visible. Hand-drawn black outlines, warm paper texture, muted blue and orange accents, no readable text.",
+          "session_delta_prompt": "Show a clear set of options rather than claiming the assistant purchases tickets without permission."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "लेकिन भारी सामान, मशीनें और बड़े पार्सल फिर भी गाड़ियों से ही पहुँचाने पड़ते।",
-          "camera_type": "low_angle_logistics_shot",
+          "narration_text": "तुम बस एक विकल्प चुनते और बाकी छोटी-मोटी तैयारी वो कर देता।",
+          "camera_type": "over_the_shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn logistics scene showing a delivery truck carrying a large refrigerator and furniture boxes along a city street. Above it, a delivery worker flies with only a small lightweight parcel. The worker has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, round white face and orange jacket. Warm earthy colors, bold black outlines.",
-          "session_delta_prompt": "Clearly distinguish small personal deliveries from heavy freight that still needs vehicles."
+          "prompt_action": "Vertical 9:16 over-the-shoulder hand-drawn shot of the owner selecting one movie ticket option on a smartphone. The blue holographic orb projects a simple confirmation symbol and a small calendar icon. The owner has exactly two tiny solid-black dot eyes, no pupils or highlights, dark blue hoodie. The friend in a mustard-yellow sweatshirt stands beside him. Warm city evening, bold black outlines.",
+          "session_delta_prompt": "Make the human selection visible. The AI only completes authorized preparation."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "और बारिश, तेज़ हवा या तूफ़ान में उड़ना खतरनाक भी हो सकता था।",
-          "camera_type": "dramatic_weather_shot",
+          "narration_text": "और तुम्हें लगता, जैसे तुम्हारे पास एक ऐसा दोस्त है जो हर काम में मदद करता है।",
+          "camera_type": "emotional_two_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 dramatic hand-drawn scene of a strong storm over a modern city. Dark clouds, slanted rain and wind lines fill the sky. A commuter wearing a blue shirt and backpack safely waits under a building shelter instead of flying. The commuter has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Bold black outlines, muted blue-grey colors, warm paper texture.",
-          "session_delta_prompt": "Show that flying is weather-dependent and people need safe alternatives."
+          "prompt_action": "Vertical 9:16 warm cinematic hand-drawn scene of the owner and friend walking together through the city at sunset, smiling and chatting. The owner's smartphone glows softly with the familiar blue holographic orb floating above it, with its circular core and three orbiting rings. Both stickmen have exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Owner wears dark blue hoodie; friend wears mustard-yellow sweatshirt. Warm golden light, off-white paper texture.",
+          "session_delta_prompt": "Create a friendly emotional moment showing how the assistant frees up time for human relationships."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "countryside",
+      "environment_ref": "bedroom",
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "और सोचो, पहाड़, समुद्र और जंगल देखने का अनुभव कितना अलग होता।",
-          "camera_type": "epic_aerial_landscape",
+          "narration_text": "लेकिन एक रात तुम सोचते, अगर जार्विस को मेरी हर बात पता है, तो क्या ये सुरक्षित भी है?",
+          "camera_type": "nighttime_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 breathtaking hand-drawn aerial landscape of green mountains, a winding river, dense forests and a distant ocean. Several tiny stickman people fly high above the landscape, enjoying the view. Every character has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm golden sunlight, off-white paper texture, bold black ink outlines.",
-          "session_delta_prompt": "Create a beautiful sense of freedom and scale."
+          "prompt_action": "Vertical 9:16 cinematic nighttime bedroom scene. The owner sits at the edge of the bed holding a smartphone, looking thoughtfully at the glowing blue holographic orb floating nearby. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie and black trousers. The orb retains its circular core and three orbiting rings. Deep blue moonlight, warm desk lamp, hand-drawn black outlines.",
+          "session_delta_prompt": "Shift the mood from excitement to thoughtful concern while keeping the same bedroom and character designs."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "जहाँ पहुँचने में पहले घंटों लगते, वहाँ शायद सीधे उड़कर पहुँचा जा सकता।",
-          "camera_type": "wide_mountain_shot",
+          "narration_text": "क्योंकि उसे तुम्हारी आवाज़, लोकेशन, आदतें और कई निजी जानकारियाँ मिल सकती थीं।",
+          "camera_type": "dramatic_overhead_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn scene of a winding mountain road with a small car traveling slowly below, while a stickman traveler flies directly above the valley toward a mountain viewpoint. The traveler has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, simple stick limbs and a small backpack. Warm sunset, bold ink outlines, muted green and blue palette.",
-          "session_delta_prompt": "Show the difference between a winding road and a direct aerial route."
+          "prompt_action": "Vertical 9:16 dramatic overhead hand-drawn view of the owner's smartphone on a desk. Around it float simple privacy icons: a microphone, location pin, calendar, home symbol and personal document. The blue holographic orb hovers above the phone with its exact circular core and three orbiting rings. The owner in a dark blue hoodie watches carefully, with exactly two tiny solid-black dot eyes, no pupils or highlights. Dark blue and warm orange lighting, bold black outlines.",
+          "session_delta_prompt": "Represent privacy concerns with symbols, without suggesting the assistant is secretly spying."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "लेकिन हर किसी के पास उड़ने की एक जैसी ताकत या क्षमता नहीं होती, तो बराबरी का सवाल भी उठता।",
-          "camera_type": "emotional_medium_shot",
+          "narration_text": "अगर उसका गलत इस्तेमाल हुआ, तो तुम्हारी पूरी ज़िंदगी की जानकारी खतरे में पड़ सकती थी।",
+          "camera_type": "symbolic_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 thoughtful hand-drawn scene showing a group of stickman people flying together at different heights while one person stands comfortably on a rooftop platform using a safe elevator entrance. The standing person is included respectfully, not isolated. All characters have exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm paper texture, soft blue sky and earthy colors.",
-          "session_delta_prompt": "Raise the issue of different abilities and equal access without portraying anyone negatively."
+          "prompt_action": "Vertical 9:16 symbolic hand-drawn illustration of a smartphone surrounded by floating personal data icons, with a large protective shield in front of them. The blue holographic orb remains nearby, its circular core and three orbiting rings clearly visible. The owner stands beside the phone, wearing the dark blue hoodie, with exactly two tiny solid-black dot eyes, no pupils or highlights. Moody blue lighting, black ink outlines, off-white paper texture.",
+          "session_delta_prompt": "Communicate that personal data needs strong protection and user control."
         },
         {
           "beat_id": "s05_b04",
-          "narration_text": "शहरों को ऐसे बनाना पड़ता जहाँ उड़ने वाले और ज़मीन पर रहने वाले, दोनों आसानी से सफर कर सकें।",
-          "camera_type": "panoramic_city_shot",
+          "narration_text": "इसलिए असली जार्विस सिर्फ स्मार्ट नहीं, बल्कि सुरक्षित और तुम्हारे कंट्रोल में भी होना चाहिए।",
+          "camera_type": "hero_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 panoramic hand-drawn futuristic city showing people flying in organized sky lanes, others walking on wide sidewalks, accessible elevators in buildings and buses on the roads. Every human has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm off-white paper, bold black outlines, muted green, blue and orange accents.",
-          "session_delta_prompt": "Show an inclusive city designed for both flying and non-flying travel."
+          "prompt_action": "Vertical 9:16 uplifting hand-drawn scene of the owner standing confidently beside the blue holographic orb. A clear shield icon and a simple privacy settings panel float between them, showing a lock, microphone toggle and permission symbols. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie, black trousers and white sneakers. The orb retains its circular core and three orbiting rings. Warm golden light, bold black outlines.",
+          "session_delta_prompt": "Show user control, permissions and security as essential features of a trustworthy assistant."
         }
       ]
     },
     {
       "scene_id": 6,
-      "environment_ref": "city",
+      "environment_ref": "bedroom",
       "beats": [
         {
           "beat_id": "s06_b01",
-          "narration_text": "तो उड़ने की ताकत दुनिया को आज़ाद तो बनाती, लेकिन नई समस्याएँ भी लाती।",
-          "camera_type": "dramatic_aerial_wide_shot",
+          "narration_text": "फिर भी, कल्पना करो कि तुम्हारे पास ऐसा असिस्टेंट हो जो तुम्हारा समय बचाए और तुम्हें बेहतर काम करने में मदद करे।",
+          "camera_type": "cinematic_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 cinematic view of a modern city skyline with people flying in organized aerial lanes, a few rooftop landing areas, ground vehicles and green parks. The recurring presenter floats in the foreground, looking thoughtfully at the transformed city. The presenter has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, round white face and red bow tie. Warm golden light, hand-drawn ink outlines.",
-          "session_delta_prompt": "Bring together the benefits and challenges of a world where everyone can fly."
+          "prompt_action": "Vertical 9:16 cinematic hand-drawn scene of the owner sitting at a clean desk, calmly working on a laptop while the blue holographic orb organizes floating calendar, idea and task icons nearby. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie, black trousers and white sneakers. The orb has its exact circular core and three orbiting rings. Warm sunrise, cozy bedroom, off-white paper texture, bold black outlines.",
+          "session_delta_prompt": "Return to a hopeful tone. Show the AI as a helpful tool that supports the owner's own work."
         },
         {
           "beat_id": "s06_b02",
-          "narration_text": "और अब बताओ, अगर तुम उड़ सकते, तो सबसे पहले कहाँ जाते?",
-          "camera_type": "close_up_final_shot",
+          "narration_text": "शायद भविष्य में जार्विस सिर्फ फिल्मों का सपना नहीं रहेगा।",
+          "camera_type": "low_angle_hero_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 close-up of the recurring presenter floating above the city with one hand raised, pointing toward three distant destinations visible in the sky: snowy mountains, a tropical beach and a glowing modern skyline. The presenter has a perfectly round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs and a small red bow tie. Warm off-white paper texture, bold black ink outlines, inviting sunset atmosphere.",
-          "session_delta_prompt": "Finish with an inviting question and a visually exciting choice of destinations. Keep the presenter's exact eye design."
+          "prompt_action": "Vertical 9:16 imaginative cinematic illustration of the owner standing at the apartment balcony overlooking a modern city at sunrise. The blue holographic orb floats beside the owner, glowing brightly with its circular core and three orbiting rings. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie and black trousers. Warm golden sunlight, sweeping city skyline, bold hand-drawn ink outlines.",
+          "session_delta_prompt": "Make the image feel like a glimpse of a possible future, not a claim that this exact technology already exists."
+        },
+        {
+          "beat_id": "s06_b03",
+          "narration_text": "और अब बताओ, अगर तुम्हारे पास अपना जार्विस होता, तो सबसे पहले उससे कौन सा काम करवाते?",
+          "camera_type": "final_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Vertical 9:16 final close-up of the owner looking directly toward the viewer while holding a smartphone. The familiar electric-blue holographic orb floats above the phone with its bright circular core and exactly three thin orbiting rings. The owner has a perfectly round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs, dark blue hoodie and black trousers. Warm cinematic golden light, off-white paper texture, bold black ink outlines, inviting composition.",
+          "session_delta_prompt": "End with a direct audience question. Preserve the exact owner design and blue AI orb appearance."
         }
       ]
     }

@@ -1,0 +1,67 @@
+[
+  {
+    "word": "और",
+    "start_ms": 0,
+    "end_ms": 147
+  },
+  {
+    "word": "बारिश,",
+    "start_ms": 147,
+    "end_ms": 567
+  },
+  {
+    "word": "तेज़",
+    "start_ms": 567,
+    "end_ms": 892
+  },
+  {
+    "word": "हवा",
+    "start_ms": 892,
+    "end_ms": 1142
+  },
+  {
+    "word": "या",
+    "start_ms": 1142,
+    "end_ms": 1319
+  },
+  {
+    "word": "तूफ़ान",
+    "start_ms": 1319,
+    "end_ms": 1820
+  },
+  {
+    "word": "में",
+    "start_ms": 1820,
+    "end_ms": 2101
+  },
+  {
+    "word": "उड़ना",
+    "start_ms": 2101,
+    "end_ms": 2499
+  },
+  {
+    "word": "खतरनाक",
+    "start_ms": 2499,
+    "end_ms": 2971
+  },
+  {
+    "word": "भी",
+    "start_ms": 2971,
+    "end_ms": 3148
+  },
+  {
+    "word": "हो",
+    "start_ms": 3148,
+    "end_ms": 3324
+  },
+  {
+    "word": "सकता",
+    "start_ms": 3324,
+    "end_ms": 3649
+  },
+  {
+    "word": "था।",
+    "start_ms": 3649,
+    "end_ms": 3900
+  }
+]

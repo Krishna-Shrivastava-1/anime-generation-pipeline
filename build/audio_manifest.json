@@ -1,143 +1,143 @@
 {
-  "total_duration": 99.136,
+  "total_duration": 112.588,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 3.456,
-      "subtitle": "सोचो, अगर दुनिया का हर इंसान बिना पंखों के उड़ सकता?"
+      "duration_seconds": 7.564,
+      "subtitle": "आयरन मैन की फिल्में तो आपने देखी ही होंगी। सोचिए, अगर आपके पास भी असली ज़िंदगी में जार्विस जैसा एआई असिस्टेंट होता तो?"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 5.333,
-      "subtitle": "ना हवाई जहाज़, ना ट्रैफिक जाम, बस घर से उड़ो और सीधे अपनी मंज़िल पर पहुँच जाओ।"
+      "duration_seconds": 5.504,
+      "subtitle": "एक ऐसा असिस्टेंट, जो आपके लिए सोच सके, काम कर सके और हर वक्त आपकी मदद कर सके।"
     },
     {
       "beat_id": "s01_b03",
       "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 5.269,
-      "subtitle": "सुबह ऑफिस जाने के लिए लोग बस बालकनी से छलाँग लगाते और हवा में आगे बढ़ जाते।"
+      "duration_seconds": 2.923,
+      "subtitle": "तुम बस कहते, जार्विस, आज मुझे क्या-क्या करना है?"
     },
     {
       "beat_id": "s01_b04",
       "audio_file": "build/audio/s01_b04.wav",
-      "duration_seconds": 3.072,
-      "subtitle": "लेकिन कुछ ही दिनों में हमारी पूरी दुनिया बदल जाती।"
+      "duration_seconds": 5.803,
+      "subtitle": "और जार्विस जवाब देता, तुम्हारी मीटिंग दस बजे है, मौसम अच्छा है और तुम्हारा नाश्ता तैयार है।"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 3.84,
-      "subtitle": "सबसे पहले, सड़कों पर गाड़ियों की ज़रूरत बहुत कम हो सकती थी।"
+      "duration_seconds": 3.861,
+      "subtitle": "तुम उठते और कहते, जार्विस, आज घर का पूरा सिस्टम संभाल लो।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 4.267,
-      "subtitle": "पार्किंग की जगहें खाली होतीं और शहरों की सड़कों का नक्शा बदल जाता।"
+      "duration_seconds": 4.075,
+      "subtitle": "लाइट्स ऑन, पर्दे खुल जाते और कॉफी मशीन तुम्हारी कॉफी बना देती।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 4.587,
-      "subtitle": "दूर रहने वाले दोस्त और परिवार भी कुछ ही मिनटों में एक-दूसरे से मिल सकते।"
+      "duration_seconds": 4.608,
+      "subtitle": "तुम्हें कुछ ढूँढना होता, तो वो सेकंडों में बता देता कि सामान कहाँ रखा है।"
     },
     {
       "beat_id": "s02_b04",
       "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 3.563,
-      "subtitle": "लेकिन आसमान भी धीरे-धीरे सड़कों जितना व्यस्त हो जाता।"
-    },
-    {
-      "beat_id": "s02_b05",
-      "audio_file": "build/audio/s02_b05.wav",
-      "duration_seconds": 4.309,
-      "subtitle": "इसलिए हवा में भी ट्रैफिक नियम, लेन और उड़ने की सीमाएँ बनानी पड़तीं।"
+      "duration_seconds": 4.736,
+      "subtitle": "और अगर तुम घर से बाहर निकलते, तो वो तुम्हारे फोन पर भी तुम्हारे साथ रहता।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 2.603,
-      "subtitle": "घर और इमारतें भी पहले जैसी नहीं बनतीं।"
+      "duration_seconds": 4.459,
+      "subtitle": "रास्ते में जाम होता, तो जार्विस तुम्हें सबसे तेज़ दूसरा रास्ता बता देता।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 3.115,
-      "subtitle": "लोग खिड़कियों और बालकनी से सीधे अंदर आने लगते।"
+      "duration_seconds": 4.928,
+      "subtitle": "ऑफिस पहुँचने से पहले वो तुम्हारे ईमेल और मीटिंग की तैयारी भी कर चुका होता।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 4.352,
-      "subtitle": "ऊँची मंज़िलों तक पहुँचने के लिए लिफ्ट का इंतज़ार भी शायद कम हो जाता।"
+      "duration_seconds": 3.733,
+      "subtitle": "तुम कहते, जार्विस, इस प्रोजेक्ट के लिए एक अच्छा आइडिया ढूँढो।"
     },
     {
       "beat_id": "s03_b04",
       "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 5.333,
-      "subtitle": "लेकिन बच्चों, बुज़ुर्गों और उड़ने में परेशानी वाले लोगों के लिए लिफ्ट फिर भी ज़रूरी रहती।"
+      "duration_seconds": 5.205,
+      "subtitle": "और वो तुम्हारे लिए रिसर्च करता, जानकारी समझाता और एक शुरुआती प्लान बना देता।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 2.581,
-      "subtitle": "डिलीवरी का काम भी पूरी तरह बदल जाता।"
+      "duration_seconds": 3.541,
+      "subtitle": "शाम को तुम अपने दोस्त से कहते, आज मूवी देखने चलते हैं।"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 4.736,
-      "subtitle": "लोग सामान लेकर हवा में उड़ते और शायद कुछ डिलीवरी पहले से तेज़ हो जातीं।"
+      "duration_seconds": 4.523,
+      "subtitle": "जार्विस तुरंत पास के सिनेमाघर, शो टाइम और टिकट के विकल्प दिखा देता।"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 4.971,
-      "subtitle": "लेकिन भारी सामान, मशीनें और बड़े पार्सल फिर भी गाड़ियों से ही पहुँचाने पड़ते।"
+      "duration_seconds": 4.075,
+      "subtitle": "तुम बस एक विकल्प चुनते और बाकी छोटी-मोटी तैयारी वो कर देता।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 3.989,
-      "subtitle": "और बारिश, तेज़ हवा या तूफ़ान में उड़ना खतरनाक भी हो सकता था।"
+      "duration_seconds": 5.035,
+      "subtitle": "और तुम्हें लगता, जैसे तुम्हारे पास एक ऐसा दोस्त है जो हर काम में मदद करता है।"
     },
     {
       "beat_id": "s05_b01",
       "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 4.267,
-      "subtitle": "और सोचो, पहाड़, समुद्र और जंगल देखने का अनुभव कितना अलग होता।"
+      "duration_seconds": 5.44,
+      "subtitle": "लेकिन एक रात तुम सोचते, अगर जार्विस को मेरी हर बात पता है, तो क्या ये सुरक्षित भी है?"
     },
     {
       "beat_id": "s05_b02",
       "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 4.885,
-      "subtitle": "जहाँ पहुँचने में पहले घंटों लगते, वहाँ शायद सीधे उड़कर पहुँचा जा सकता।"
+      "duration_seconds": 4.928,
+      "subtitle": "क्योंकि उसे तुम्हारी आवाज़, लोकेशन, आदतें और कई निजी जानकारियाँ मिल सकती थीं।"
     },
     {
       "beat_id": "s05_b03",
       "audio_file": "build/audio/s05_b03.wav",
-      "duration_seconds": 5.931,
-      "subtitle": "लेकिन हर किसी के पास उड़ने की एक जैसी ताकत या क्षमता नहीं होती, तो बराबरी का सवाल भी उठता।"
+      "duration_seconds": 5.483,
+      "subtitle": "अगर उसका गलत इस्तेमाल हुआ, तो तुम्हारी पूरी ज़िंदगी की जानकारी खतरे में पड़ सकती थी।"
     },
     {
       "beat_id": "s05_b04",
       "audio_file": "build/audio/s05_b04.wav",
-      "duration_seconds": 6.613,
-      "subtitle": "शहरों को ऐसे बनाना पड़ता जहाँ उड़ने वाले और ज़मीन पर रहने वाले, दोनों आसानी से सफर कर सकें।"
+      "duration_seconds": 5.632,
+      "subtitle": "इसलिए असली जार्विस सिर्फ स्मार्ट नहीं, बल्कि सुरक्षित और तुम्हारे कंट्रोल में भी होना चाहिए।"
     },
     {
       "beat_id": "s06_b01",
       "audio_file": "build/audio/s06_b01.wav",
-      "duration_seconds": 4.48,
-      "subtitle": "तो उड़ने की ताकत दुनिया को आज़ाद तो बनाती, लेकिन नई समस्याएँ भी लाती।"
+      "duration_seconds": 7.317,
+      "subtitle": "फिर भी, कल्पना करो कि तुम्हारे पास ऐसा असिस्टेंट हो जो तुम्हारा समय बचाए और तुम्हें बेहतर काम करने में मदद करे।"
     },
     {
       "beat_id": "s06_b02",
       "audio_file": "build/audio/s06_b02.wav",
-      "duration_seconds": 3.584,
-      "subtitle": "और अब बताओ, अगर तुम उड़ सकते, तो सबसे पहले कहाँ जाते?"
+      "duration_seconds": 3.563,
+      "subtitle": "शायद भविष्य में जार्विस सिर्फ फिल्मों का सपना नहीं रहेगा।"
+    },
+    {
+      "beat_id": "s06_b03",
+      "audio_file": "build/audio/s06_b03.wav",
+      "duration_seconds": 5.653,
+      "subtitle": "और अब बताओ, अगर तुम्हारे पास अपना जार्विस होता, तो सबसे पहले उससे कौन सा काम करवाते?"
     }
   ]
 }

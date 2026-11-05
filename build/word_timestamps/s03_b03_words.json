@@ -1,0 +1,72 @@
+[
+  {
+    "word": "ऊँची",
+    "start_ms": 0,
+    "end_ms": 321
+  },
+  {
+    "word": "मंज़िलों",
+    "start_ms": 321,
+    "end_ms": 980
+  },
+  {
+    "word": "तक",
+    "start_ms": 980,
+    "end_ms": 1126
+  },
+  {
+    "word": "पहुँचने",
+    "start_ms": 1126,
+    "end_ms": 1653
+  },
+  {
+    "word": "के",
+    "start_ms": 1653,
+    "end_ms": 1829
+  },
+  {
+    "word": "लिए",
+    "start_ms": 1829,
+    "end_ms": 2033
+  },
+  {
+    "word": "लिफ्ट",
+    "start_ms": 2033,
+    "end_ms": 2289
+  },
+  {
+    "word": "का",
+    "start_ms": 2289,
+    "end_ms": 2465
+  },
+  {
+    "word": "इंतज़ार",
+    "start_ms": 2465,
+    "end_ms": 3036
+  },
+  {
+    "word": "भी",
+    "start_ms": 3036,
+    "end_ms": 3211
+  },
+  {
+    "word": "शायद",
+    "start_ms": 3211,
+    "end_ms": 3533
+  },
+  {
+    "word": "कम",
+    "start_ms": 3533,
+    "end_ms": 3680
+  },
+  {
+    "word": "हो",
+    "start_ms": 3680,
+    "end_ms": 3855
+  },
+  {
+    "word": "जाता।",
+    "start_ms": 3855,
+    "end_ms": 4279
+  }
+]

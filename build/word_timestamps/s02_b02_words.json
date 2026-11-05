@@ -1,0 +1,67 @@
+[
+  {
+    "word": "पार्किंग",
+    "start_ms": 0,
+    "end_ms": 518
+  },
+  {
+    "word": "की",
+    "start_ms": 518,
+    "end_ms": 689
+  },
+  {
+    "word": "जगहें",
+    "start_ms": 689,
+    "end_ms": 1101
+  },
+  {
+    "word": "खाली",
+    "start_ms": 1101,
+    "end_ms": 1443
+  },
+  {
+    "word": "होतीं",
+    "start_ms": 1443,
+    "end_ms": 1883
+  },
+  {
+    "word": "और",
+    "start_ms": 1883,
+    "end_ms": 2026
+  },
+  {
+    "word": "शहरों",
+    "start_ms": 2026,
+    "end_ms": 2438
+  },
+  {
+    "word": "की",
+    "start_ms": 2438,
+    "end_ms": 2608
+  },
+  {
+    "word": "सड़कों",
+    "start_ms": 2608,
+    "end_ms": 3092
+  },
+  {
+    "word": "का",
+    "start_ms": 3092,
+    "end_ms": 3262
+  },
+  {
+    "word": "नक्शा",
+    "start_ms": 3262,
+    "end_ms": 3554
+  },
+  {
+    "word": "बदल",
+    "start_ms": 3554,
+    "end_ms": 3767
+  },
+  {
+    "word": "जाता।",
+    "start_ms": 3767,
+    "end_ms": 4180
+  }
+]

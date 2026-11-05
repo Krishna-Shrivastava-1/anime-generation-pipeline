@@ -1,0 +1,42 @@
+[
+  {
+    "word": "डिलीवरी",
+    "start_ms": 0,
+    "end_ms": 586
+  },
+  {
+    "word": "का",
+    "start_ms": 586,
+    "end_ms": 771
+  },
+  {
+    "word": "काम",
+    "start_ms": 771,
+    "end_ms": 1033
+  },
+  {
+    "word": "भी",
+    "start_ms": 1033,
+    "end_ms": 1219
+  },
+  {
+    "word": "पूरी",
+    "start_ms": 1219,
+    "end_ms": 1589
+  },
+  {
+    "word": "तरह",
+    "start_ms": 1589,
+    "end_ms": 1820
+  },
+  {
+    "word": "बदल",
+    "start_ms": 1820,
+    "end_ms": 2052
+  },
+  {
+    "word": "जाता।",
+    "start_ms": 2052,
+    "end_ms": 2499
+  }
+]

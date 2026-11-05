@@ -1,0 +1,87 @@
+[
+  {
+    "word": "सुबह",
+    "start_ms": 0,
+    "end_ms": 304
+  },
+  {
+    "word": "ऑफिस",
+    "start_ms": 304,
+    "end_ms": 609
+  },
+  {
+    "word": "जाने",
+    "start_ms": 609,
+    "end_ms": 995
+  },
+  {
+    "word": "के",
+    "start_ms": 995,
+    "end_ms": 1187
+  },
+  {
+    "word": "लिए",
+    "start_ms": 1187,
+    "end_ms": 1412
+  },
+  {
+    "word": "लोग",
+    "start_ms": 1412,
+    "end_ms": 1685
+  },
+  {
+    "word": "बस",
+    "start_ms": 1685,
+    "end_ms": 1845
+  },
+  {
+    "word": "बालकनी",
+    "start_ms": 1845,
+    "end_ms": 2391
+  },
+  {
+    "word": "से",
+    "start_ms": 2391,
+    "end_ms": 2583
+  },
+  {
+    "word": "छलाँग",
+    "start_ms": 2583,
+    "end_ms": 3017
+  },
+  {
+    "word": "लगाते",
+    "start_ms": 3017,
+    "end_ms": 3482
+  },
+  {
+    "word": "और",
+    "start_ms": 3482,
+    "end_ms": 3643
+  },
+  {
+    "word": "हवा",
+    "start_ms": 3643,
+    "end_ms": 3916
+  },
+  {
+    "word": "में",
+    "start_ms": 3916,
+    "end_ms": 4220
+  },
+  {
+    "word": "आगे",
+    "start_ms": 4220,
+    "end_ms": 4493
+  },
+  {
+    "word": "बढ़",
+    "start_ms": 4493,
+    "end_ms": 4734
+  },
+  {
+    "word": "जाते।",
+    "start_ms": 4734,
+    "end_ms": 5200
+  }
+]

@@ -1,42 +1,67 @@
 [
   {
-    "word": "घर",
+    "word": "रास्ते",
     "start_ms": 0,
-    "end_ms": 142
+    "end_ms": 399
   },
   {
-    "word": "और",
-    "start_ms": 142,
-    "end_ms": 284
+    "word": "में",
+    "start_ms": 399,
+    "end_ms": 676
   },
   {
-    "word": "इमारतें",
-    "start_ms": 284,
-    "end_ms": 868
+    "word": "जाम",
+    "start_ms": 676,
+    "end_ms": 923
   },
   {
-    "word": "भी",
-    "start_ms": 868,
-    "end_ms": 1039
+    "word": "होता,",
+    "start_ms": 923,
+    "end_ms": 1308
   },
   {
-    "word": "पहले",
-    "start_ms": 1039,
-    "end_ms": 1352
+    "word": "तो",
+    "start_ms": 1308,
+    "end_ms": 1483
   },
   {
-    "word": "जैसी",
-    "start_ms": 1352,
-    "end_ms": 1694
+    "word": "जार्विस",
+    "start_ms": 1483,
+    "end_ms": 1911
   },
   {
-    "word": "नहीं",
-    "start_ms": 1694,
-    "end_ms": 2035
+    "word": "तुम्हें",
+    "start_ms": 1911,
+    "end_ms": 2369
   },
   {
-    "word": "बनतीं।",
-    "start_ms": 2035,
-    "end_ms": 2520
+    "word": "सबसे",
+    "start_ms": 2369,
+    "end_ms": 2689
+  },
+  {
+    "word": "तेज़",
+    "start_ms": 2689,
+    "end_ms": 3009
+  },
+  {
+    "word": "दूसरा",
+    "start_ms": 3009,
+    "end_ms": 3431
+  },
+  {
+    "word": "रास्ता",
+    "start_ms": 3431,
+    "end_ms": 3831
+  },
+  {
+    "word": "बता",
+    "start_ms": 3831,
+    "end_ms": 4078
+  },
+  {
+    "word": "देता।",
+    "start_ms": 4078,
+    "end_ms": 4500
   }
 ]

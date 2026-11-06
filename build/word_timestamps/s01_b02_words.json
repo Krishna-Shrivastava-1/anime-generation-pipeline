@@ -1,87 +1,52 @@
 [
   {
-    "word": "ना",
+    "word": "तुम्हारा",
     "start_ms": 0,
-    "end_ms": 195
+    "end_ms": 550
   },
   {
-    "word": "हवाई",
-    "start_ms": 195,
-    "end_ms": 554
+    "word": "अपना",
+    "start_ms": 550,
+    "end_ms": 881
   },
   {
-    "word": "जहाज़,",
-    "start_ms": 554,
-    "end_ms": 1034
+    "word": "एआई",
+    "start_ms": 881,
+    "end_ms": 1107
   },
   {
-    "word": "ना",
-    "start_ms": 1034,
-    "end_ms": 1230
+    "word": "असिस्टेंट,",
+    "start_ms": 1107,
+    "end_ms": 1770
   },
   {
-    "word": "ट्रैफिक",
-    "start_ms": 1230,
-    "end_ms": 1711
+    "word": "बिल्कुल",
+    "start_ms": 1770,
+    "end_ms": 2170
   },
   {
-    "word": "जाम,",
-    "start_ms": 1711,
-    "end_ms": 2029
+    "word": "आयरन",
+    "start_ms": 2170,
+    "end_ms": 2471
   },
   {
-    "word": "बस",
-    "start_ms": 2029,
-    "end_ms": 2192
+    "word": "मैन",
+    "start_ms": 2471,
+    "end_ms": 2727
   },
   {
-    "word": "घर",
-    "start_ms": 2192,
-    "end_ms": 2355
+    "word": "के",
+    "start_ms": 2727,
+    "end_ms": 2908
   },
   {
-    "word": "से",
-    "start_ms": 2355,
-    "end_ms": 2550
+    "word": "जार्विस",
+    "start_ms": 2908,
+    "end_ms": 3352
   },
   {
-    "word": "उड़ो",
-    "start_ms": 2550,
-    "end_ms": 2909
-  },
-  {
-    "word": "और",
-    "start_ms": 2909,
-    "end_ms": 3072
-  },
-  {
-    "word": "सीधे",
-    "start_ms": 3072,
-    "end_ms": 3463
-  },
-  {
-    "word": "अपनी",
-    "start_ms": 3463,
-    "end_ms": 3822
-  },
-  {
-    "word": "मंज़िल",
-    "start_ms": 3822,
-    "end_ms": 4327
-  },
-  {
-    "word": "पर",
-    "start_ms": 4327,
-    "end_ms": 4490
-  },
-  {
-    "word": "पहुँच",
-    "start_ms": 4490,
-    "end_ms": 4881
-  },
-  {
-    "word": "जाओ।",
-    "start_ms": 4881,
-    "end_ms": 5239
+    "word": "जैसा।",
+    "start_ms": 3352,
+    "end_ms": 3789
   }
 ]

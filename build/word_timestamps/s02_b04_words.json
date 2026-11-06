@@ -1,47 +1,82 @@
 [
   {
-    "word": "लेकिन",
+    "word": "और",
     "start_ms": 0,
-    "end_ms": 387
+    "end_ms": 158
   },
   {
-    "word": "आसमान",
-    "start_ms": 387,
-    "end_ms": 789
+    "word": "अगर",
+    "start_ms": 158,
+    "end_ms": 396
+  },
+  {
+    "word": "तुम",
+    "start_ms": 396,
+    "end_ms": 618
+  },
+  {
+    "word": "घर",
+    "start_ms": 618,
+    "end_ms": 776
+  },
+  {
+    "word": "से",
+    "start_ms": 776,
+    "end_ms": 966
+  },
+  {
+    "word": "बाहर",
+    "start_ms": 966,
+    "end_ms": 1315
+  },
+  {
+    "word": "निकलते,",
+    "start_ms": 1315,
+    "end_ms": 1846
+  },
+  {
+    "word": "तो",
+    "start_ms": 1846,
+    "end_ms": 2036
+  },
+  {
+    "word": "वो",
+    "start_ms": 2036,
+    "end_ms": 2227
+  },
+  {
+    "word": "तुम्हारे",
+    "start_ms": 2227,
+    "end_ms": 2805
+  },
+  {
+    "word": "फोन",
+    "start_ms": 2805,
+    "end_ms": 3075
+  },
+  {
+    "word": "पर",
+    "start_ms": 3075,
+    "end_ms": 3233
   },
   {
     "word": "भी",
-    "start_ms": 789,
-    "end_ms": 968
+    "start_ms": 3233,
+    "end_ms": 3423
   },
   {
-    "word": "धीरे-धीरे",
-    "start_ms": 968,
-    "end_ms": 1721
+    "word": "तुम्हारे",
+    "start_ms": 3423,
+    "end_ms": 4002
   },
   {
-    "word": "सड़कों",
-    "start_ms": 1721,
-    "end_ms": 2228
+    "word": "साथ",
+    "start_ms": 4002,
+    "end_ms": 4272
   },
   {
-    "word": "जितना",
-    "start_ms": 2228,
-    "end_ms": 2615
-  },
-  {
-    "word": "व्यस्त",
-    "start_ms": 2615,
-    "end_ms": 2868
-  },
-  {
-    "word": "हो",
-    "start_ms": 2868,
-    "end_ms": 3047
-  },
-  {
-    "word": "जाता।",
-    "start_ms": 3047,
-    "end_ms": 3479
+    "word": "रहता।",
+    "start_ms": 4272,
+    "end_ms": 4699
   }
 ]

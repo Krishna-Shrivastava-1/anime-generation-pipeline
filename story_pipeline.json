@@ -1,276 +1,286 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "What If You Had Your Own JARVIS in Real Life?",
-    "project_id": "your_own_jarvis_real_life",
+    "title": "What If Electricity Was Never Invented?",
+    "project_id": "what_if_electricity_never_invented_001",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Cinematic minimalist hand-drawn stickman storytelling, with warm off-white paper texture, bold slightly imperfect black ink outlines and limited accent colors: muted blue for holographic AI interfaces, warm orange for lighting, and earthy tones for environments. The main human character is a young stickman with a perfectly round white face, exactly two tiny solid-black dot eyes of identical size and spacing, no pupils, irises, eye whites, highlights, reflections or eyelashes, a simple curved mouth, thin black stick limbs, a dark blue hoodie, black trousers and white sneakers. The AI assistant is represented by a consistent small floating blue holographic orb with a simple glowing circular core and three thin orbiting rings, never a humanoid face. Every other stickman character must have exactly two tiny solid-black dot eyes with identical shape, size and spacing. Maintain exact character clothing, proportions, face design, AI orb design and color palette in every image. Vertical 9:16 framing, expressive camera angles, cinematic lighting, one clear action per image, rich visual storytelling without clutter.",
-    "negative_prompt": "No photorealism, no 3D rendering, no realistic human anatomy, no detailed human faces, no changing eye styles, no pupils, no irises, no eye whites, no highlights, no reflections, no eyelashes, no extra eyes, no different hoodie colors, no inconsistent character proportions, no humanoid AI robot, no different AI orb design, no text, no watermarks, no logos, no cluttered compositions."
+    "art_style": "Minimalist hand-drawn stickman storytelling animation, vertical 9:16 composition. Warm off-white paper background, bold slightly imperfect black ink outlines, simple expressive stickman characters with round white faces, exactly two tiny solid-black dot eyes, no pupils, no irises, no highlights, no eye whites, no eyelashes, and no realistic eye details. Identical eye size, shape, and spacing in every image. Thin black stick limbs, simple curved mouths, limited earthy accent colors such as muted brown, orange, dark blue, and pale yellow. Hand-drawn environments with simple but recognizable objects, expressive body language, cinematic visual storytelling, varied camera angles, clear foreground and background separation, visually engaging compositions. Every beat is a distinct illustration matching the exact moment of narration. Keep recurring characters visually consistent.",
+    "negative_prompt": "Photorealism, 3D rendering, anime, detailed realistic human anatomy, complex facial features, pupils, irises, eye highlights, reflections in eyes, eye whites, eyelashes, changing eye shapes, inconsistent character designs, cluttered backgrounds, excessive text, captions, subtitles, logos, watermarks, blurry artwork, overly detailed textures, modern electric appliances, glowing screens, electric streetlights, or electrical infrastructure in a world where electricity never existed."
   },
   "assets": {
     "main_character": {
       "type": "character",
-      "label": "Young owner",
-      "visual_dna": "A young minimalist stickman with a perfectly round white face, exactly two tiny solid-black dot eyes identical in size and spacing in every appearance, no pupils or highlights, a simple curved mouth, thin black stick limbs, dark blue hoodie, black trousers and white sneakers. Never change clothing, face or proportions."
+      "label": "Curious young stickman narrator",
+      "visual_dna": "A simple young male stickman with a round white face, exactly two tiny solid-black dot eyes with identical spacing, a small curved black mouth, thin black stick arms and legs, a muted dark-blue shirt, black trousers, and simple white shoes. No hair, no pupils, no realistic facial features. Maintain the exact same appearance throughout."
     },
-    "jarvis_orb": {
+    "old_friend": {
+      "type": "character",
+      "label": "Stickman friend",
+      "visual_dna": "A simple stickman with a round white face, exactly two tiny solid-black dot eyes, a curved mouth, thin black limbs, a muted mustard-yellow shirt, dark trousers, and brown shoes. Identical simple facial style to the main character."
+    },
+    "historical_worker": {
+      "type": "character",
+      "label": "Old-world worker",
+      "visual_dna": "A simple hand-drawn stickman with a round white face, exactly two tiny solid-black dot eyes, a curved mouth, thin black limbs, a brown work shirt, dark trousers, and a simple beige cap."
+    },
+    "historical_city": {
+      "type": "environment",
+      "label": "Pre-electricity city",
+      "visual_dna": "A hand-drawn historical town with brick buildings, narrow cobblestone streets, wooden shopfronts, horse-drawn carts, oil lamps, candles, chimneys, and muted brown and earthy colors. No electrical poles, cables, electric lights, or modern electronic devices."
+    },
+    "old_house": {
+      "type": "environment",
+      "label": "Candlelit home",
+      "visual_dna": "A modest historical home with wooden furniture, small windows, a fireplace, candles, oil lamps, a wooden dining table, and warm orange candlelight. No electric appliances or electronic screens."
+    },
+    "workshop": {
+      "type": "environment",
+      "label": "Steam-powered factory",
+      "visual_dna": "A historical industrial workshop with large mechanical gears, belts, steam engines, iron pipes, chimneys, wooden floors, and workers operating machinery. No electric motors, electric wiring, or modern automation."
+    },
+    "countryside": {
+      "type": "environment",
+      "label": "Rural countryside",
+      "visual_dna": "A hand-drawn rural landscape with green fields, wooden houses, dirt roads, wells, farm animals, windmills, and a distant village. No electrical infrastructure."
+    },
+    "steam_train": {
       "type": "prop",
-      "label": "JARVIS holographic assistant",
-      "visual_dna": "A small floating electric-blue holographic orb with a bright circular core, three thin orbiting blue rings and tiny pulsing particles. No face, no eyes, no mouth, no humanoid body. Always identical in shape, size, glow and blue color."
+      "label": "Steam locomotive",
+      "visual_dna": "A traditional black steam locomotive with a tall smokestack, large metal wheels, connecting rods, a coal tender, and white steam clouds. No electric components."
     },
-    "friend": {
-      "type": "character",
-      "label": "Best friend",
-      "visual_dna": "A minimalist stickman with a round white face, exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, thin black stick limbs, mustard-yellow sweatshirt, dark trousers and simple sneakers."
+    "oil_lamp": {
+      "type": "prop",
+      "label": "Oil lamp",
+      "visual_dna": "A small traditional brass oil lamp with a glass chimney and a warm orange-yellow flame."
     },
-    "delivery_worker": {
-      "type": "character",
-      "label": "Delivery worker",
-      "visual_dna": "A simple stickman with a round white face, exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, thin black stick limbs and an orange delivery jacket with a compact delivery bag."
-    },
-    "bedroom": {
-      "type": "environment",
-      "label": "Young owner's bedroom",
-      "visual_dna": "A cozy modern bedroom with a wooden desk, laptop, smartphone, bookshelf, bed, window and warm desk lamp. Minimalist hand-drawn black outlines, off-white paper and muted blue and orange accents."
-    },
-    "home": {
-      "type": "environment",
-      "label": "Modern apartment",
-      "visual_dna": "A compact modern apartment with a living room, kitchen, balcony, sofa, dining table and smart home devices. Warm cinematic lighting, bold black ink outlines and earthy colors."
-    },
-    "city": {
-      "type": "environment",
-      "label": "Modern city",
-      "visual_dna": "A modern city skyline with apartments, offices, shops, traffic, parks and distant buildings, illustrated in a minimalist hand-drawn style with warm paper texture."
-    },
-    "office": {
-      "type": "environment",
-      "label": "Modern workplace",
-      "visual_dna": "A modern office with desks, laptops, glass walls, meeting tables and a large presentation screen. Minimalist black ink outlines and muted blue-grey colors."
+    "mechanical_clock": {
+      "type": "prop",
+      "label": "Mechanical clock",
+      "visual_dna": "A traditional wooden wall clock with visible mechanical gears, two hands, and a pendulum."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "bedroom",
+      "environment_ref": "historical_city",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "सोचो, सुबह तुम्हारी आँख खुलने से पहले ही कोई तुम्हारे पूरे दिन की तैयारी कर चुका हो।",
-          "camera_type": "cinematic_wide_shot",
+          "narration_text": "ज़रा सोचिए, अगर दुनिया में बिजली कभी आई ही नहीं होती, तो हमारी ज़िंदगी कैसी होती?",
+          "camera_type": "wide_establishing_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 cinematic hand-drawn illustration of a young stickman sleeping peacefully in a modern bedroom. A small electric-blue holographic orb with a bright circular core and three thin orbiting rings floats beside the bed, gently illuminating the room. The sleeping character wears a dark blue hoodie, black trousers and white sneakers placed near the bed. The character has a perfectly round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm sunrise through the window, off-white paper texture, bold black ink outlines.",
-          "session_delta_prompt": "Establish the main character's bedroom and the exact appearance of the blue holographic orb. Keep both consistent throughout."
+          "prompt_action": "A dramatic hand-drawn view of a historical town at night, completely dark except for scattered candle flames and oil lamps glowing inside wooden windows. A young male stickman with a round white face, exactly two tiny solid-black dot eyes, a muted dark-blue shirt, black trousers, and white shoes stands in the foreground looking at the dark town in disbelief. Bold imperfect black ink outlines, warm off-white paper texture, muted earthy colors, cinematic vertical 9:16 composition.",
+          "session_delta_prompt": "Establish the historical no-electricity world and keep the main character's dark-blue shirt, black trousers, white shoes, and identical dot eyes consistent."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "तुम्हारा अपना एआई असिस्टेंट, बिल्कुल आयरन मैन के जार्विस जैसा।",
-          "camera_type": "extreme_close_up",
+          "narration_text": "सबसे पहले, रात होते ही शहरों की रौनक गायब हो जाती।",
+          "camera_type": "high_angle_city_view",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 close-up of the same electric-blue holographic orb floating above a wooden desk. Its bright circular core glows softly, surrounded by exactly three thin orbiting blue rings and tiny particles. In the background, the young stickman owner in a dark blue hoodie watches it with curiosity. The character has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Warm paper texture, cinematic blue glow, bold black outlines.",
-          "session_delta_prompt": "The AI must remain a non-humanoid blue orb with exactly three orbiting rings. Keep the owner's dark blue hoodie."
+          "prompt_action": "A bird's-eye hand-drawn view of a historical town at night. Narrow streets are almost completely black, with only a few tiny orange oil lamps outside houses and shops. Buildings have dark windows, and the moon provides faint light. A few tiny stickman silhouettes walk carefully through the darkness. No electric streetlights, no illuminated signs, no electric cables. Minimalist hand-drawn black ink illustration, earthy colors, vertical 9:16."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "तुम बस कहते, जार्विस, आज मुझे क्या-क्या करना है?",
-          "camera_type": "over_the_shoulder",
+          "narration_text": "सड़कों पर स्ट्रीट लाइट नहीं, घरों में बल्ब नहीं।",
+          "camera_type": "street_level_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 over-the-shoulder view of the young stickman owner sitting up in bed and speaking toward the floating blue holographic orb. The orb has a bright circular core and exactly three thin orbiting rings. The owner has a round white face, exactly two tiny solid-black dot eyes, no pupils or highlights, dark blue hoodie and black trousers. Morning light enters the bedroom window, cinematic hand-drawn black ink style.",
-          "session_delta_prompt": "Show the first spoken interaction between the owner and the consistent blue AI orb."
+          "prompt_action": "A dark historical street with empty wooden streetlamp posts nowhere to be seen, brick houses with dark windows, and one tiny oil lamp hanging outside a shop. A young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes points toward the pitch-black street. Minimalist hand-drawn stickman art, bold imperfect black outlines, off-white paper background, muted brown and orange accents, vertical 9:16."
         },
         {
           "beat_id": "s01_b04",
-          "narration_text": "और जार्विस जवाब देता, तुम्हारी मीटिंग दस बजे है, मौसम अच्छा है और तुम्हारा नाश्ता तैयार है।",
-          "camera_type": "medium_room_shot",
+          "narration_text": "और आपका मोबाइल? वो तो पैदा ही नहीं होता!",
+          "camera_type": "comedic_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn bedroom scene showing the blue holographic orb projecting three clean floating icons: a calendar with a meeting symbol, a sun symbol and a breakfast plate. The young stickman owner sits on the bed looking surprised and impressed. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie and black trousers. The orb has its exact circular core and three orbiting rings. Warm morning light, bold black ink outlines, no readable text.",
-          "session_delta_prompt": "Use icons instead of text to communicate the assistant's useful morning briefing."
+          "prompt_action": "A funny hand-drawn illustration of a young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes holding an empty hand in front of himself and staring at it in confusion. A crossed-out modern smartphone is drawn beside him as a simple conceptual symbol, not as an object existing in this world. Bold black ink outlines, warm off-white background, minimal earthy colors, expressive comedy, vertical 9:16."
+        },
+        {
+          "beat_id": "s01_b05",
+          "narration_text": "लेकिन असली कहानी इससे कहीं ज़्यादा दिलचस्प है।",
+          "camera_type": "dramatic_low_angle",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "The young male stickman narrator, round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, white shoes, stands dramatically in the center while the background splits into two hand-drawn worlds: a dark candlelit historical town on one side and a giant steam-powered industrial city on the other. He raises one finger as if revealing a surprising secret. Cinematic hand-drawn composition, bold black outlines, warm off-white paper, vertical 9:16."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "home",
+      "environment_ref": "old_house",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "तुम उठते और कहते, जार्विस, आज घर का पूरा सिस्टम संभाल लो।",
-          "camera_type": "wide_living_room_shot",
+          "narration_text": "सुबह उठने के लिए अलार्म नहीं, आपको सूरज और मुर्गे पर भरोसा करना पड़ता।",
+          "camera_type": "bedroom_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 wide hand-drawn view of the young owner standing in a modern apartment living room and speaking toward the floating blue holographic orb. The owner wears the same dark blue hoodie, black trousers and white sneakers, with exactly two tiny solid-black dot eyes and no detailed facial features. The orb has a bright circular core and three thin orbiting rings. Sofa, window and smart home devices in the background, warm cinematic light.",
-          "session_delta_prompt": "Keep the apartment layout and owner clothing consistent. The orb floats at the owner's eye level."
+          "prompt_action": "Inside a modest historical bedroom, the young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes is waking up on a simple wooden bed. Sunlight enters through a small window while a cartoon rooster stands outside crowing. A traditional mechanical clock sits on a wooden table. No electronic alarm clocks. Minimalist hand-drawn illustration, earthy colors, vertical 9:16."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "लाइट्स ऑन, पर्दे खुल जाते और कॉफी मशीन तुम्हारी कॉफी बना देती।",
-          "camera_type": "dynamic_room_wide_shot",
+          "narration_text": "रात में पढ़ना हो, तो मोमबत्ती या तेल का दीया जलाना पड़ता।",
+          "camera_type": "over_the_shoulder",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 dynamic hand-drawn scene of the same apartment transforming as smart lights switch on, curtains slide open and a coffee machine starts preparing coffee. The young owner stands in the center watching everything happen. The owner has exactly two tiny solid-black dot eyes, no pupils or highlights, dark blue hoodie and black trousers. The electric-blue AI orb floats beside the ceiling with its circular core and three orbiting rings. Warm morning sunlight, bold black outlines.",
-          "session_delta_prompt": "Show three clearly visible smart-home actions happening together while preserving the same room."
+          "prompt_action": "Over-the-shoulder view of the young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, and black trousers studying an open book at a wooden table. A small brass oil lamp with a glass chimney and warm orange flame illuminates the pages. Dark corners surround the tiny pool of light. Bold black hand-drawn outlines, off-white paper, muted brown and orange accents, vertical 9:16."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "तुम्हें कुछ ढूँढना होता, तो वो सेकंडों में बता देता कि सामान कहाँ रखा है।",
-          "camera_type": "close_up_search_shot",
+          "narration_text": "खाना फ्रिज में नहीं, बल्कि बर्फ, नमक और खास तरीकों से सुरक्षित रखा जाता।",
+          "camera_type": "kitchen_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 close-up hand-drawn scene of the owner looking for a missing set of keys near the sofa while the blue holographic orb projects a glowing arrow toward a small table where the keys are lying. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, and wears the same dark blue hoodie. The orb has three orbiting rings and a bright circular core. Warm apartment lighting, black ink outlines.",
-          "session_delta_prompt": "Make the keys and projected direction obvious. Keep the orb design unchanged."
+          "prompt_action": "A historical kitchen with a wooden icebox containing large blocks of ice, vegetables, milk bottles, and food containers. The young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes opens the icebox with a surprised expression. Nearby are jars of pickled vegetables and salted food. No refrigerator or electric appliances. Minimalist hand-drawn style, vertical 9:16."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "और अगर तुम घर से बाहर निकलते, तो वो तुम्हारे फोन पर भी तुम्हारे साथ रहता।",
-          "camera_type": "balcony_exit_shot",
+          "narration_text": "गर्मी में पंखा नहीं, बस हाथ वाला पंखा और खुली खिड़कियाँ।",
+          "camera_type": "side_profile",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn scene of the owner leaving the apartment through the front door while holding a smartphone. A tiny blue holographic orb appears as a glowing interface above the phone, with the same circular core and three orbiting rings. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie, black trousers and white sneakers. Modern apartment hallway, warm lighting, bold black outlines.",
-          "session_delta_prompt": "Show the assistant moving from home projection to a compact phone interface while retaining its exact blue orb identity."
+          "prompt_action": "Inside a warm historical home, the young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, and black trousers sits sweating slightly while waving a traditional folded hand fan. Open wooden windows reveal a sunny courtyard and trees. No electric fan or air conditioner. Simple hand-drawn black ink outlines, muted earthy palette, vertical 9:16."
+        },
+        {
+          "beat_id": "s02_b05",
+          "narration_text": "और कपड़े धोने से लेकर पानी लाने तक, बहुत से काम हाथों से करने पड़ते।",
+          "camera_type": "dynamic_action_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A lively historical courtyard where the young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes carries two heavy water buckets while another simple stickman washes clothes by hand in a wooden tub. A rope clothesline hangs overhead. No washing machine, electric pump, or modern plumbing. Hand-drawn black outlines, earthy colors, vertical 9:16."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "city",
+      "environment_ref": "workshop",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "रास्ते में जाम होता, तो जार्विस तुम्हें सबसे तेज़ दूसरा रास्ता बता देता।",
-          "camera_type": "bird_eye_city_view",
+          "narration_text": "अब सोचिए, बिजली के बिना कारखाने कैसे चलते?",
+          "camera_type": "factory_establishing_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 bird's-eye hand-drawn view of a modern city road with a long traffic jam. The young owner stands on the sidewalk holding a smartphone. Above the phone floats the consistent electric-blue AI orb with a bright circular core and three orbiting rings, projecting a simple glowing alternate route on a map icon. The owner has exactly two tiny solid-black dot eyes, no pupils or highlights, dark blue hoodie and black trousers. Bold black ink outlines, muted city colors.",
-          "session_delta_prompt": "Show a practical navigation suggestion, with the same owner and orb design."
+          "prompt_action": "A giant historical factory interior filled with huge iron gears, mechanical belts, thick pipes, a coal-fired steam engine, and tall brick chimneys. Workers in simple brown clothing operate heavy machines. The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes stands at the entrance looking amazed. No electric motors or wires. Hand-drawn industrial illustration, vertical 9:16."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "ऑफिस पहुँचने से पहले वो तुम्हारे ईमेल और मीटिंग की तैयारी भी कर चुका होता।",
-          "camera_type": "office_wide_shot",
+          "narration_text": "भाप के इंजन और कोयले से चलने वाली मशीनें बहुत बड़ा काम करतीं।",
+          "camera_type": "machine_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn modern office scene. The young owner sits at a desk with a laptop while the blue holographic orb projects a neat email envelope icon, calendar icon and presentation chart icon above the desk. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie and black trousers. The orb has its circular core and three orbiting rings. Muted blue-grey office, warm light, bold black outlines.",
-          "session_delta_prompt": "Show the assistant preparing useful work materials, not making decisions without the owner's approval."
+          "prompt_action": "Close-up of a massive historical steam engine inside a factory, with a large moving piston, spinning flywheel, connected iron rods, thick steam clouds, and coal burning in a furnace. A simple stickman worker with a round white face, exactly two tiny solid-black dot eyes, beige cap, brown work shirt, and dark trousers operates a mechanical lever. Bold imperfect black outlines, warm industrial earthy palette, vertical 9:16."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "तुम कहते, जार्विस, इस प्रोजेक्ट के लिए एक अच्छा आइडिया ढूँढो।",
-          "camera_type": "medium_desk_shot",
+          "narration_text": "लेकिन हर मशीन को चलाने के लिए भाप, ईंधन और मेहनत चाहिए होती।",
+          "camera_type": "low_angle_factory_action",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 medium hand-drawn shot of the owner leaning toward a laptop and speaking to the floating blue holographic orb. The orb projects a glowing lightbulb icon surrounded by small idea sketches and connected nodes. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie and black trousers. Warm office lighting, black ink outlines, off-white paper texture.",
-          "session_delta_prompt": "Keep the same AI orb and owner. Show brainstorming through simple visual icons."
+          "prompt_action": "A historical factory worker with a round white face, exactly two tiny solid-black dot eyes, beige cap, brown shirt, and dark trousers pushes a heavy coal cart toward a giant furnace. Steam pipes and mechanical gears fill the background. The young male narrator stickman with dark-blue shirt, black trousers, white shoes, and identical dot eyes watches the exhausting process. No electric machines. Hand-drawn storytelling illustration, vertical 9:16."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "और वो तुम्हारे लिए रिसर्च करता, जानकारी समझाता और एक शुरुआती प्लान बना देता।",
-          "camera_type": "top_down_desk_shot",
+          "narration_text": "इसलिए सामान बनाना महँगा होता और उत्पादन भी धीमा रहता।",
+          "camera_type": "wide_factory_view",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 top-down hand-drawn view of a desk with organized research pages, a simple project roadmap, charts and a laptop. The blue holographic orb floats above the desk projecting connected information cards and a small progress diagram. The owner in the dark blue hoodie is visible at the edge of the frame with exactly two tiny solid-black dot eyes, no pupils or highlights. Warm paper texture, bold black ink outlines, muted blue accents, no readable text.",
-          "session_delta_prompt": "Show research and planning as organized visual outputs. Do not add extra AI characters."
+          "prompt_action": "Inside a small historical workshop, three stickman workers with round white faces and exactly two tiny solid-black dot eyes manually assemble wooden furniture and metal tools. A few finished products sit on a table while a long queue of unfinished items fills the workshop. The young male narrator in a dark-blue shirt, black trousers, and white shoes looks at the slow production with concern. Bold hand-drawn ink outlines, vertical 9:16."
+        },
+        {
+          "beat_id": "s03_b05",
+          "narration_text": "और दुनिया में आज जितनी तेज़ औद्योगिक तरक्की दिखती है, शायद उतनी नहीं होती।",
+          "camera_type": "split_composition",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A visual comparison in one hand-drawn image: on the left, a small historical workshop with a few workers manually making products; on the right, a much larger steam-powered factory with mechanical gears and smoke stacks but no electric machinery. The young male stickman narrator, round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, white shoes, stands between both sides pointing at the contrast. Earthy ink illustration, vertical 9:16."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "city",
+      "environment_ref": "historical_city",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "शाम को तुम अपने दोस्त से कहते, आज मूवी देखने चलते हैं।",
-          "camera_type": "street_medium_shot",
+          "narration_text": "सफर भी आज जैसा आसान नहीं होता।",
+          "camera_type": "street_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 hand-drawn city street scene at sunset. The owner in a dark blue hoodie meets a friend wearing a mustard-yellow sweatshirt. Both have round white faces with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. The owner holds a smartphone with the familiar blue AI orb glowing above it, showing a bright circular core and three orbiting rings. Warm sunset, bold black ink outlines.",
-          "session_delta_prompt": "Introduce the friend with consistent mustard-yellow clothing and simple dot eyes."
+          "prompt_action": "A busy historical cobblestone street with horse-drawn carriages, people walking, merchants carrying goods, and wooden carts. The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes stands beside a carriage looking at the crowded road. No cars, electric traffic lights, or electric vehicles. Minimalist hand-drawn illustration, vertical 9:16."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "जार्विस तुरंत पास के सिनेमाघर, शो टाइम और टिकट के विकल्प दिखा देता।",
-          "camera_type": "phone_close_up",
+          "narration_text": "लंबी दूरी के लिए भाप वाले जहाज़ और ट्रेनें इस्तेमाल होतीं।",
+          "camera_type": "railway_low_angle",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 close-up of the owner's smartphone showing simple movie ticket icons, a cinema building symbol and three time-slot panels. The consistent blue holographic orb floats above the phone with its bright circular core and three orbiting rings. The owner's hand and dark blue hoodie sleeve are visible. Hand-drawn black outlines, warm paper texture, muted blue and orange accents, no readable text.",
-          "session_delta_prompt": "Show a clear set of options rather than claiming the assistant purchases tickets without permission."
+          "prompt_action": "A powerful black steam locomotive with a tall smokestack, large metal wheels, connecting rods, and a coal tender pulls wooden passenger carriages through a countryside railway station. Thick white steam rises into the sky. Several stickman passengers with simple white round faces and exactly two tiny black dot eyes wait on the platform. Hand-drawn bold ink lines, muted earthy colors, vertical 9:16."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "तुम बस एक विकल्प चुनते और बाकी छोटी-मोटी तैयारी वो कर देता।",
-          "camera_type": "over_the_shoulder",
+          "narration_text": "हवाई जहाज़ों की दुनिया भी शायद आज जैसी विकसित नहीं होती।",
+          "camera_type": "historical_aviation_view",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 over-the-shoulder hand-drawn shot of the owner selecting one movie ticket option on a smartphone. The blue holographic orb projects a simple confirmation symbol and a small calendar icon. The owner has exactly two tiny solid-black dot eyes, no pupils or highlights, dark blue hoodie. The friend in a mustard-yellow sweatshirt stands beside him. Warm city evening, bold black outlines.",
-          "session_delta_prompt": "Make the human selection visible. The AI only completes authorized preparation."
+          "prompt_action": "A historical aviation field with a simple early propeller airplane parked on a grassy runway. A few stickman mechanics with round white faces and exactly two tiny solid-black dot eyes inspect its wooden wings and propeller. The young male narrator in a dark-blue shirt, black trousers, and white shoes watches from the side. No modern jet aircraft or airport technology. Hand-drawn vintage illustration, vertical 9:16."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "और तुम्हें लगता, जैसे तुम्हारे पास एक ऐसा दोस्त है जो हर काम में मदद करता है।",
-          "camera_type": "emotional_two_shot",
+          "narration_text": "क्योंकि आधुनिक विमानों को दिशा देने, नियंत्रित करने और सुरक्षित उड़ाने में बिजली की अहम भूमिका है।",
+          "camera_type": "aircraft_cockpit_view",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 warm cinematic hand-drawn scene of the owner and friend walking together through the city at sunset, smiling and chatting. The owner's smartphone glows softly with the familiar blue holographic orb floating above it, with its circular core and three orbiting rings. Both stickmen have exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights. Owner wears dark blue hoodie; friend wears mustard-yellow sweatshirt. Warm golden light, off-white paper texture.",
-          "session_delta_prompt": "Create a friendly emotional moment showing how the assistant frees up time for human relationships."
+          "prompt_action": "A conceptual hand-drawn comparison showing a vintage propeller airplane cockpit with simple mechanical gauges, levers, and analog instruments, beside a faint outline of a modern aircraft cockpit with digital displays crossed out as an unavailable technology. A simple stickman pilot with a round white face and exactly two tiny black dot eyes sits in the vintage cockpit. No electric screens in the historical airplane. Vertical 9:16, clean black ink illustration."
+        },
+        {
+          "beat_id": "s04_b05",
+          "narration_text": "और दुनिया के अलग-अलग हिस्सों से बात करना भी बहुत मुश्किल होता।",
+          "camera_type": "medium_storytelling_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Two simple stickmen with round white faces and exactly two tiny solid-black dot eyes stand on opposite sides of a hand-drawn world map. One wears a dark-blue shirt and black trousers, the other a mustard-yellow shirt and dark trousers. A paper letter travels between them along a dotted route, showing slow communication across long distances. No phones, computers, or digital networks. Off-white paper and bold black outlines, vertical 9:16."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "bedroom",
+      "environment_ref": "countryside",
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "लेकिन एक रात तुम सोचते, अगर जार्विस को मेरी हर बात पता है, तो क्या ये सुरक्षित भी है?",
-          "camera_type": "nighttime_close_up",
+          "narration_text": "लेकिन एक बात और है, बिजली के बिना दुनिया पूरी तरह रुक भी नहीं जाती।",
+          "camera_type": "wide_countryside_reveal",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 cinematic nighttime bedroom scene. The owner sits at the edge of the bed holding a smartphone, looking thoughtfully at the glowing blue holographic orb floating nearby. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie and black trousers. The orb retains its circular core and three orbiting rings. Deep blue moonlight, warm desk lamp, hand-drawn black outlines.",
-          "session_delta_prompt": "Shift the mood from excitement to thoughtful concern while keeping the same bedroom and character designs."
+          "prompt_action": "A beautiful hand-drawn countryside scene with green fields, windmills, water wheels, wooden houses, farmers, and animals under a bright morning sky. The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes looks around with a relieved smile. Warm off-white paper, earthy green and brown accents, vertical 9:16."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "क्योंकि उसे तुम्हारी आवाज़, लोकेशन, आदतें और कई निजी जानकारियाँ मिल सकती थीं।",
-          "camera_type": "dramatic_overhead_shot",
+          "narration_text": "हवा से पवनचक्कियाँ चलतीं, पानी से चक्कियाँ और मशीनें।",
+          "camera_type": "dynamic_windmill_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 dramatic overhead hand-drawn view of the owner's smartphone on a desk. Around it float simple privacy icons: a microphone, location pin, calendar, home symbol and personal document. The blue holographic orb hovers above the phone with its exact circular core and three orbiting rings. The owner in a dark blue hoodie watches carefully, with exactly two tiny solid-black dot eyes, no pupils or highlights. Dark blue and warm orange lighting, bold black outlines.",
-          "session_delta_prompt": "Represent privacy concerns with symbols, without suggesting the assistant is secretly spying."
+          "prompt_action": "A large traditional wooden windmill turning in a green countryside field while a nearby flowing river rotates a wooden water wheel connected to a grain mill. A farmer stickman with a round white face, exactly two tiny solid-black dot eyes, beige cap, and brown clothes watches the machinery work. No electric motors or wiring. Minimalist hand-drawn illustration with bold black outlines, vertical 9:16."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "अगर उसका गलत इस्तेमाल हुआ, तो तुम्हारी पूरी ज़िंदगी की जानकारी खतरे में पड़ सकती थी।",
-          "camera_type": "symbolic_close_up",
+          "narration_text": "लोग मोमबत्ती, तेल के दीये और प्राकृतिक रोशनी का इस्तेमाल करते।",
+          "camera_type": "warm_interior_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 symbolic hand-drawn illustration of a smartphone surrounded by floating personal data icons, with a large protective shield in front of them. The blue holographic orb remains nearby, its circular core and three orbiting rings clearly visible. The owner stands beside the phone, wearing the dark blue hoodie, with exactly two tiny solid-black dot eyes, no pupils or highlights. Moody blue lighting, black ink outlines, off-white paper texture.",
-          "session_delta_prompt": "Communicate that personal data needs strong protection and user control."
+          "prompt_action": "A cozy historical home interior illuminated by sunlight entering through a large wooden window and several small candles and brass oil lamps. The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, and black trousers sits with family members around a wooden table. No electric bulbs. Warm orange and golden light, simple hand-drawn ink style, vertical 9:16."
         },
         {
           "beat_id": "s05_b04",
-          "narration_text": "इसलिए असली जार्विस सिर्फ स्मार्ट नहीं, बल्कि सुरक्षित और तुम्हारे कंट्रोल में भी होना चाहिए।",
-          "camera_type": "hero_medium_shot",
+          "narration_text": "कुछ तकनीकें आगे बढ़तीं, लेकिन कंप्यूटर, इंटरनेट और आधुनिक डिजिटल दुनिया शायद होती ही नहीं।",
+          "camera_type": "conceptual_technology_comparison",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 uplifting hand-drawn scene of the owner standing confidently beside the blue holographic orb. A clear shield icon and a simple privacy settings panel float between them, showing a lock, microphone toggle and permission symbols. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie, black trousers and white sneakers. The orb retains its circular core and three orbiting rings. Warm golden light, bold black outlines.",
-          "session_delta_prompt": "Show user control, permissions and security as essential features of a trustworthy assistant."
-        }
-      ]
-    },
-    {
-      "scene_id": 6,
-      "environment_ref": "bedroom",
-      "beats": [
-        {
-          "beat_id": "s06_b01",
-          "narration_text": "फिर भी, कल्पना करो कि तुम्हारे पास ऐसा असिस्टेंट हो जो तुम्हारा समय बचाए और तुम्हें बेहतर काम करने में मदद करे।",
-          "camera_type": "cinematic_wide_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 cinematic hand-drawn scene of the owner sitting at a clean desk, calmly working on a laptop while the blue holographic orb organizes floating calendar, idea and task icons nearby. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie, black trousers and white sneakers. The orb has its exact circular core and three orbiting rings. Warm sunrise, cozy bedroom, off-white paper texture, bold black outlines.",
-          "session_delta_prompt": "Return to a hopeful tone. Show the AI as a helpful tool that supports the owner's own work."
+          "prompt_action": "A hand-drawn conceptual image showing a traditional mechanical calculating machine with visible gears, a paper notebook, a mechanical typewriter, and a wooden filing cabinet. The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes points toward these mechanical tools. In the background, faint outlines of a computer, smartphone, and internet symbol are crossed out as unavailable technologies. No actual electronic screens. Vertical 9:16."
         },
         {
-          "beat_id": "s06_b02",
-          "narration_text": "शायद भविष्य में जार्विस सिर्फ फिल्मों का सपना नहीं रहेगा।",
-          "camera_type": "low_angle_hero_shot",
+          "beat_id": "s05_b05",
+          "narration_text": "अस्पतालों में भी कई आधुनिक मशीनें नहीं होतीं, इसलिए इलाज कहीं ज़्यादा कठिन हो सकता था।",
+          "camera_type": "hospital_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 imaginative cinematic illustration of the owner standing at the apartment balcony overlooking a modern city at sunrise. The blue holographic orb floats beside the owner, glowing brightly with its circular core and three orbiting rings. The owner has exactly two tiny solid-black dot eyes, no pupils, irises, eye whites or highlights, dark blue hoodie and black trousers. Warm golden sunlight, sweeping city skyline, bold hand-drawn ink outlines.",
-          "session_delta_prompt": "Make the image feel like a glimpse of a possible future, not a claim that this exact technology already exists."
+          "prompt_action": "A historical hospital ward with wooden beds, natural window light, simple medical instruments, glass medicine bottles, and doctors in old-fashioned clothing. A doctor stickman with a round white face, exactly two tiny solid-black dot eyes, and a white coat checks a patient manually while the young male narrator in a dark-blue shirt, black trousers, and white shoes watches with concern. No electric monitors, scanners, or electronic medical equipment. Hand-drawn illustration, vertical 9:16."
         },
         {
-          "beat_id": "s06_b03",
-          "narration_text": "और अब बताओ, अगर तुम्हारे पास अपना जार्विस होता, तो सबसे पहले उससे कौन सा काम करवाते?",
-          "camera_type": "final_close_up",
+          "beat_id": "s05_b06",
+          "narration_text": "और सबसे बड़ी बात, हमारी पूरी जीवनशैली आज से कई पीढ़ियाँ पीछे हो सकती थी।",
+          "camera_type": "dramatic_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Vertical 9:16 final close-up of the owner looking directly toward the viewer while holding a smartphone. The familiar electric-blue holographic orb floats above the phone with its bright circular core and exactly three thin orbiting rings. The owner has a perfectly round white face with exactly two tiny solid-black dot eyes, no pupils, irises, eye whites, highlights or reflections, a simple curved mouth, thin black stick limbs, dark blue hoodie and black trousers. Warm cinematic golden light, off-white paper texture, bold black ink outlines, inviting composition.",
-          "session_delta_prompt": "End with a direct audience question. Preserve the exact owner design and blue AI orb appearance."
+          "prompt_action": "A sweeping hand-drawn panoramic view of a historical town with horse carts, candlelit homes, steam-powered factories, windmills, and people doing everyday tasks manually. The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes stands on a small hill looking over the entire town. Cinematic warm sunset, bold black ink outlines, earthy colors, vertical 9:16."
+        },
+        {
+          "beat_id": "s05_b07",
+          "narration_text": "तो बताइए, क्या आप ऐसी दुनिया में एक दिन भी रह पाएँगे?",
+          "camera_type": "direct_to_camera_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes faces the viewer directly with one eyebrow-free simple curved mouth expression, one hand pointing toward the viewer and the other holding a small glowing oil lamp. Behind him is a softly illustrated candlelit historical town at dusk. Leave clean negative space around the character, no written words, bold hand-drawn black ink, warm off-white paper, vertical 9:16."
         }
       ]
     }

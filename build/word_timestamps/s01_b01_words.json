@@ -1,57 +1,87 @@
 [
   {
     "word": "सोचो,",
-    "start_ms": 10,
-    "end_ms": 403
+    "start_ms": 0,
+    "end_ms": 388
   },
   {
-    "word": "अगर",
-    "start_ms": 403,
-    "end_ms": 626
+    "word": "सुबह",
+    "start_ms": 388,
+    "end_ms": 667
   },
   {
-    "word": "दुनिया",
-    "start_ms": 626,
-    "end_ms": 1073
+    "word": "तुम्हारी",
+    "start_ms": 667,
+    "end_ms": 1202
   },
   {
-    "word": "का",
-    "start_ms": 1073,
-    "end_ms": 1251
+    "word": "आँख",
+    "start_ms": 1202,
+    "end_ms": 1423
   },
   {
-    "word": "हर",
-    "start_ms": 1251,
-    "end_ms": 1400
+    "word": "खुलने",
+    "start_ms": 1423,
+    "end_ms": 1804
   },
   {
-    "word": "इंसान",
-    "start_ms": 1400,
-    "end_ms": 1831
+    "word": "से",
+    "start_ms": 1804,
+    "end_ms": 1980
   },
   {
-    "word": "बिना",
-    "start_ms": 1831,
-    "end_ms": 2143
+    "word": "पहले",
+    "start_ms": 1980,
+    "end_ms": 2303
   },
   {
-    "word": "पंखों",
-    "start_ms": 2143,
-    "end_ms": 2604
+    "word": "ही",
+    "start_ms": 2303,
+    "end_ms": 2479
   },
   {
-    "word": "के",
-    "start_ms": 2604,
-    "end_ms": 2782
+    "word": "कोई",
+    "start_ms": 2479,
+    "end_ms": 2728
   },
   {
-    "word": "उड़",
-    "start_ms": 2782,
-    "end_ms": 3005
+    "word": "तुम्हारे",
+    "start_ms": 2728,
+    "end_ms": 3264
   },
   {
-    "word": "सकता?",
-    "start_ms": 3005,
-    "end_ms": 3370
+    "word": "पूरे",
+    "start_ms": 3264,
+    "end_ms": 3616
+  },
+  {
+    "word": "दिन",
+    "start_ms": 3616,
+    "end_ms": 3821
+  },
+  {
+    "word": "की",
+    "start_ms": 3821,
+    "end_ms": 3997
+  },
+  {
+    "word": "तैयारी",
+    "start_ms": 3997,
+    "end_ms": 4525
+  },
+  {
+    "word": "कर",
+    "start_ms": 4525,
+    "end_ms": 4672
+  },
+  {
+    "word": "चुका",
+    "start_ms": 4672,
+    "end_ms": 4980
+  },
+  {
+    "word": "हो।",
+    "start_ms": 4980,
+    "end_ms": 5229
   }
 ]

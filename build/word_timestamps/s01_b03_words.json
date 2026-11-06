@@ -1,87 +1,47 @@
 [
   {
-    "word": "सुबह",
+    "word": "तुम",
     "start_ms": 0,
-    "end_ms": 304
-  },
-  {
-    "word": "ऑफिस",
-    "start_ms": 304,
-    "end_ms": 609
-  },
-  {
-    "word": "जाने",
-    "start_ms": 609,
-    "end_ms": 995
-  },
-  {
-    "word": "के",
-    "start_ms": 995,
-    "end_ms": 1187
-  },
-  {
-    "word": "लिए",
-    "start_ms": 1187,
-    "end_ms": 1412
-  },
-  {
-    "word": "लोग",
-    "start_ms": 1412,
-    "end_ms": 1685
+    "end_ms": 222
   },
   {
     "word": "बस",
-    "start_ms": 1685,
-    "end_ms": 1845
+    "start_ms": 222,
+    "end_ms": 382
   },
   {
-    "word": "बालकनी",
-    "start_ms": 1845,
-    "end_ms": 2391
+    "word": "कहते,",
+    "start_ms": 382,
+    "end_ms": 772
   },
   {
-    "word": "से",
-    "start_ms": 2391,
-    "end_ms": 2583
+    "word": "जार्विस,",
+    "start_ms": 772,
+    "end_ms": 1281
   },
   {
-    "word": "छलाँग",
-    "start_ms": 2583,
-    "end_ms": 3017
+    "word": "आज",
+    "start_ms": 1281,
+    "end_ms": 1441
   },
   {
-    "word": "लगाते",
-    "start_ms": 3017,
-    "end_ms": 3482
+    "word": "मुझे",
+    "start_ms": 1441,
+    "end_ms": 1775
   },
   {
-    "word": "और",
-    "start_ms": 3482,
-    "end_ms": 3643
+    "word": "क्या-क्या",
+    "start_ms": 1775,
+    "end_ms": 2308
   },
   {
-    "word": "हवा",
-    "start_ms": 3643,
-    "end_ms": 3916
+    "word": "करना",
+    "start_ms": 2308,
+    "end_ms": 2659
   },
   {
-    "word": "में",
-    "start_ms": 3916,
-    "end_ms": 4220
-  },
-  {
-    "word": "आगे",
-    "start_ms": 4220,
-    "end_ms": 4493
-  },
-  {
-    "word": "बढ़",
-    "start_ms": 4493,
-    "end_ms": 4734
-  },
-  {
-    "word": "जाते।",
-    "start_ms": 4734,
-    "end_ms": 5200
+    "word": "है?",
+    "start_ms": 2659,
+    "end_ms": 2890
   }
 ]

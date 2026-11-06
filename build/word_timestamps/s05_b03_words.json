@@ -1,102 +1,82 @@
 [
   {
-    "word": "लेकिन",
+    "word": "अगर",
     "start_ms": 0,
-    "end_ms": 391
+    "end_ms": 222
   },
   {
-    "word": "हर",
-    "start_ms": 391,
-    "end_ms": 541
+    "word": "उसका",
+    "start_ms": 222,
+    "end_ms": 549
   },
   {
-    "word": "किसी",
-    "start_ms": 541,
-    "end_ms": 857
+    "word": "गलत",
+    "start_ms": 549,
+    "end_ms": 771
   },
   {
-    "word": "के",
-    "start_ms": 857,
-    "end_ms": 1038
+    "word": "इस्तेमाल",
+    "start_ms": 771,
+    "end_ms": 1328
   },
   {
-    "word": "पास",
-    "start_ms": 1038,
-    "end_ms": 1294
-  },
-  {
-    "word": "उड़ने",
-    "start_ms": 1294,
-    "end_ms": 1700
-  },
-  {
-    "word": "की",
-    "start_ms": 1700,
-    "end_ms": 1881
-  },
-  {
-    "word": "एक",
-    "start_ms": 1881,
-    "end_ms": 2031
-  },
-  {
-    "word": "जैसी",
-    "start_ms": 2031,
-    "end_ms": 2393
-  },
-  {
-    "word": "ताकत",
-    "start_ms": 2393,
-    "end_ms": 2724
-  },
-  {
-    "word": "या",
-    "start_ms": 2724,
-    "end_ms": 2904
-  },
-  {
-    "word": "क्षमता",
-    "start_ms": 2904,
-    "end_ms": 3288
-  },
-  {
-    "word": "नहीं",
-    "start_ms": 3288,
-    "end_ms": 3650
-  },
-  {
-    "word": "होती,",
-    "start_ms": 3650,
-    "end_ms": 4048
+    "word": "हुआ,",
+    "start_ms": 1328,
+    "end_ms": 1573
   },
   {
     "word": "तो",
-    "start_ms": 4048,
-    "end_ms": 4229
+    "start_ms": 1573,
+    "end_ms": 1751
   },
   {
-    "word": "बराबरी",
-    "start_ms": 4229,
-    "end_ms": 4741
+    "word": "तुम्हारी",
+    "start_ms": 1751,
+    "end_ms": 2293
   },
   {
-    "word": "का",
-    "start_ms": 4741,
-    "end_ms": 4921
+    "word": "पूरी",
+    "start_ms": 2293,
+    "end_ms": 2649
   },
   {
-    "word": "सवाल",
-    "start_ms": 4921,
-    "end_ms": 5252
+    "word": "ज़िंदगी",
+    "start_ms": 2649,
+    "end_ms": 3213
   },
   {
-    "word": "भी",
-    "start_ms": 5252,
-    "end_ms": 5433
+    "word": "की",
+    "start_ms": 3213,
+    "end_ms": 3391
   },
   {
-    "word": "उठता।",
-    "start_ms": 5433,
-    "end_ms": 5840
+    "word": "जानकारी",
+    "start_ms": 3391,
+    "end_ms": 3999
+  },
+  {
+    "word": "खतरे",
+    "start_ms": 3999,
+    "end_ms": 4326
+  },
+  {
+    "word": "में",
+    "start_ms": 4326,
+    "end_ms": 4608
+  },
+  {
+    "word": "पड़",
+    "start_ms": 4608,
+    "end_ms": 4831
+  },
+  {
+    "word": "सकती",
+    "start_ms": 4831,
+    "end_ms": 5157
+  },
+  {
+    "word": "थी।",
+    "start_ms": 5157,
+    "end_ms": 5409
   }
 ]

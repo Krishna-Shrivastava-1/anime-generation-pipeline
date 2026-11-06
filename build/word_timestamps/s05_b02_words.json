@@ -1,67 +1,67 @@
 [
   {
-    "word": "जहाँ",
+    "word": "क्योंकि",
     "start_ms": 0,
-    "end_ms": 333
+    "end_ms": 453
   },
   {
-    "word": "पहुँचने",
-    "start_ms": 333,
-    "end_ms": 878
+    "word": "उसे",
+    "start_ms": 453,
+    "end_ms": 698
   },
   {
-    "word": "में",
-    "start_ms": 878,
-    "end_ms": 1166
+    "word": "तुम्हारी",
+    "start_ms": 698,
+    "end_ms": 1224
   },
   {
-    "word": "पहले",
-    "start_ms": 1166,
-    "end_ms": 1499
+    "word": "आवाज़,",
+    "start_ms": 1224,
+    "end_ms": 1649
   },
   {
-    "word": "घंटों",
-    "start_ms": 1499,
-    "end_ms": 1969
+    "word": "लोकेशन,",
+    "start_ms": 1649,
+    "end_ms": 2175
   },
   {
-    "word": "लगते,",
-    "start_ms": 1969,
-    "end_ms": 2340
+    "word": "आदतें",
+    "start_ms": 2175,
+    "end_ms": 2592
   },
   {
-    "word": "वहाँ",
-    "start_ms": 2340,
-    "end_ms": 2673
+    "word": "और",
+    "start_ms": 2592,
+    "end_ms": 2736
   },
   {
-    "word": "शायद",
-    "start_ms": 2673,
-    "end_ms": 3007
+    "word": "कई",
+    "start_ms": 2736,
+    "end_ms": 2880
   },
   {
-    "word": "सीधे",
-    "start_ms": 3007,
-    "end_ms": 3370
+    "word": "निजी",
+    "start_ms": 2880,
+    "end_ms": 3183
   },
   {
-    "word": "उड़कर",
-    "start_ms": 3370,
-    "end_ms": 3749
+    "word": "जानकारियाँ",
+    "start_ms": 3183,
+    "end_ms": 3975
   },
   {
-    "word": "पहुँचा",
-    "start_ms": 3749,
-    "end_ms": 4219
+    "word": "मिल",
+    "start_ms": 3975,
+    "end_ms": 4177
   },
   {
-    "word": "जा",
-    "start_ms": 4219,
-    "end_ms": 4400
+    "word": "सकती",
+    "start_ms": 4177,
+    "end_ms": 4494
   },
   {
-    "word": "सकता।",
-    "start_ms": 4400,
-    "end_ms": 4810
+    "word": "थीं।",
+    "start_ms": 4494,
+    "end_ms": 4840
   }
 ]

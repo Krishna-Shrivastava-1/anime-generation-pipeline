@@ -1,72 +1,112 @@
 [
   {
-    "word": "तो",
+    "word": "फिर",
     "start_ms": 0,
-    "end_ms": 176
+    "end_ms": 228
   },
   {
-    "word": "उड़ने",
-    "start_ms": 176,
-    "end_ms": 574
+    "word": "भी,",
+    "start_ms": 228,
+    "end_ms": 464
   },
   {
-    "word": "की",
-    "start_ms": 574,
-    "end_ms": 751
+    "word": "कल्पना",
+    "start_ms": 464,
+    "end_ms": 880
   },
   {
-    "word": "ताकत",
-    "start_ms": 751,
-    "end_ms": 1075
+    "word": "करो",
+    "start_ms": 880,
+    "end_ms": 1158
   },
   {
-    "word": "दुनिया",
-    "start_ms": 1075,
-    "end_ms": 1517
+    "word": "कि",
+    "start_ms": 1158,
+    "end_ms": 1305
   },
   {
-    "word": "को",
-    "start_ms": 1517,
-    "end_ms": 1694
+    "word": "तुम्हारे",
+    "start_ms": 1305,
+    "end_ms": 1900
   },
   {
-    "word": "आज़ाद",
-    "start_ms": 1694,
-    "end_ms": 2091
+    "word": "पास",
+    "start_ms": 1900,
+    "end_ms": 2177
   },
   {
-    "word": "तो",
-    "start_ms": 2091,
-    "end_ms": 2268
+    "word": "ऐसा",
+    "start_ms": 2177,
+    "end_ms": 2455
   },
   {
-    "word": "बनाती,",
-    "start_ms": 2268,
-    "end_ms": 2732
+    "word": "असिस्टेंट",
+    "start_ms": 2455,
+    "end_ms": 3132
   },
   {
-    "word": "लेकिन",
-    "start_ms": 2732,
-    "end_ms": 3115
+    "word": "हो",
+    "start_ms": 3132,
+    "end_ms": 3327
   },
   {
-    "word": "नई",
-    "start_ms": 3115,
-    "end_ms": 3263
+    "word": "जो",
+    "start_ms": 3327,
+    "end_ms": 3523
   },
   {
-    "word": "समस्याएँ",
-    "start_ms": 3263,
-    "end_ms": 3786
+    "word": "तुम्हारा",
+    "start_ms": 3523,
+    "end_ms": 4119
   },
   {
-    "word": "भी",
-    "start_ms": 3786,
-    "end_ms": 3962
+    "word": "समय",
+    "start_ms": 4119,
+    "end_ms": 4363
   },
   {
-    "word": "लाती।",
-    "start_ms": 3962,
-    "end_ms": 4390
+    "word": "बचाए",
+    "start_ms": 4363,
+    "end_ms": 4722
+  },
+  {
+    "word": "और",
+    "start_ms": 4722,
+    "end_ms": 4885
+  },
+  {
+    "word": "तुम्हें",
+    "start_ms": 4885,
+    "end_ms": 5399
+  },
+  {
+    "word": "बेहतर",
+    "start_ms": 5399,
+    "end_ms": 5840
+  },
+  {
+    "word": "काम",
+    "start_ms": 5840,
+    "end_ms": 6117
+  },
+  {
+    "word": "करने",
+    "start_ms": 6117,
+    "end_ms": 6476
+  },
+  {
+    "word": "में",
+    "start_ms": 6476,
+    "end_ms": 6786
+  },
+  {
+    "word": "मदद",
+    "start_ms": 6786,
+    "end_ms": 7031
+  },
+  {
+    "word": "करे।",
+    "start_ms": 7031,
+    "end_ms": 7389
   }
 ]

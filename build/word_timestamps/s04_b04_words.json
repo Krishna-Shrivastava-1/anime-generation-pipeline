@@ -2,66 +2,86 @@
   {
     "word": "और",
     "start_ms": 0,
-    "end_ms": 147
+    "end_ms": 157
   },
   {
-    "word": "बारिश,",
-    "start_ms": 147,
-    "end_ms": 567
+    "word": "तुम्हें",
+    "start_ms": 157,
+    "end_ms": 652
   },
   {
-    "word": "तेज़",
-    "start_ms": 567,
-    "end_ms": 892
+    "word": "लगता,",
+    "start_ms": 652,
+    "end_ms": 1037
   },
   {
-    "word": "हवा",
-    "start_ms": 892,
-    "end_ms": 1142
+    "word": "जैसे",
+    "start_ms": 1037,
+    "end_ms": 1414
   },
   {
-    "word": "या",
-    "start_ms": 1142,
-    "end_ms": 1319
+    "word": "तुम्हारे",
+    "start_ms": 1414,
+    "end_ms": 1987
   },
   {
-    "word": "तूफ़ान",
-    "start_ms": 1319,
-    "end_ms": 1820
+    "word": "पास",
+    "start_ms": 1987,
+    "end_ms": 2254
+  },
+  {
+    "word": "एक",
+    "start_ms": 2254,
+    "end_ms": 2412
+  },
+  {
+    "word": "ऐसा",
+    "start_ms": 2412,
+    "end_ms": 2679
+  },
+  {
+    "word": "दोस्त",
+    "start_ms": 2679,
+    "end_ms": 3001
+  },
+  {
+    "word": "है",
+    "start_ms": 3001,
+    "end_ms": 3189
+  },
+  {
+    "word": "जो",
+    "start_ms": 3189,
+    "end_ms": 3378
+  },
+  {
+    "word": "हर",
+    "start_ms": 3378,
+    "end_ms": 3535
+  },
+  {
+    "word": "काम",
+    "start_ms": 3535,
+    "end_ms": 3802
   },
   {
     "word": "में",
-    "start_ms": 1820,
-    "end_ms": 2101
+    "start_ms": 3802,
+    "end_ms": 4101
   },
   {
-    "word": "उड़ना",
-    "start_ms": 2101,
-    "end_ms": 2499
+    "word": "मदद",
+    "start_ms": 4101,
+    "end_ms": 4337
   },
   {
-    "word": "खतरनाक",
-    "start_ms": 2499,
-    "end_ms": 2971
+    "word": "करता",
+    "start_ms": 4337,
+    "end_ms": 4682
   },
   {
-    "word": "भी",
-    "start_ms": 2971,
-    "end_ms": 3148
-  },
-  {
-    "word": "हो",
-    "start_ms": 3148,
-    "end_ms": 3324
-  },
-  {
-    "word": "सकता",
-    "start_ms": 3324,
-    "end_ms": 3649
-  },
-  {
-    "word": "था।",
-    "start_ms": 3649,
-    "end_ms": 3900
+    "word": "है।",
+    "start_ms": 4682,
+    "end_ms": 4949
   }
 ]

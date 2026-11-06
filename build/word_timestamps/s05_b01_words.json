@@ -1,62 +1,97 @@
 [
   {
-    "word": "और",
+    "word": "लेकिन",
     "start_ms": 0,
-    "end_ms": 163
+    "end_ms": 405
   },
   {
-    "word": "सोचो,",
-    "start_ms": 163,
-    "end_ms": 598
+    "word": "एक",
+    "start_ms": 405,
+    "end_ms": 560
   },
   {
-    "word": "पहाड़,",
-    "start_ms": 598,
-    "end_ms": 1082
+    "word": "रात",
+    "start_ms": 560,
+    "end_ms": 825
   },
   {
-    "word": "समुद्र",
-    "start_ms": 1082,
-    "end_ms": 1451
+    "word": "तुम",
+    "start_ms": 825,
+    "end_ms": 1043
   },
   {
-    "word": "और",
-    "start_ms": 1451,
-    "end_ms": 1615
+    "word": "सोचते,",
+    "start_ms": 1043,
+    "end_ms": 1534
   },
   {
-    "word": "जंगल",
-    "start_ms": 1615,
-    "end_ms": 1976
+    "word": "अगर",
+    "start_ms": 1534,
+    "end_ms": 1768
   },
   {
-    "word": "देखने",
-    "start_ms": 1976,
-    "end_ms": 2451
+    "word": "जार्विस",
+    "start_ms": 1768,
+    "end_ms": 2228
   },
   {
-    "word": "का",
-    "start_ms": 2451,
-    "end_ms": 2648
+    "word": "को",
+    "start_ms": 2228,
+    "end_ms": 2415
   },
   {
-    "word": "अनुभव",
-    "start_ms": 2648,
-    "end_ms": 3042
+    "word": "मेरी",
+    "start_ms": 2415,
+    "end_ms": 2789
   },
   {
-    "word": "कितना",
-    "start_ms": 3042,
-    "end_ms": 3468
+    "word": "हर",
+    "start_ms": 2789,
+    "end_ms": 2945
   },
   {
-    "word": "अलग",
-    "start_ms": 3468,
-    "end_ms": 3714
+    "word": "बात",
+    "start_ms": 2945,
+    "end_ms": 3209
   },
   {
-    "word": "होता।",
-    "start_ms": 3714,
-    "end_ms": 4189
+    "word": "पता",
+    "start_ms": 3209,
+    "end_ms": 3474
+  },
+  {
+    "word": "है,",
+    "start_ms": 3474,
+    "end_ms": 3700
+  },
+  {
+    "word": "तो",
+    "start_ms": 3700,
+    "end_ms": 3887
+  },
+  {
+    "word": "क्या",
+    "start_ms": 3887,
+    "end_ms": 4129
+  },
+  {
+    "word": "ये",
+    "start_ms": 4129,
+    "end_ms": 4316
+  },
+  {
+    "word": "सुरक्षित",
+    "start_ms": 4316,
+    "end_ms": 4807
+  },
+  {
+    "word": "भी",
+    "start_ms": 4807,
+    "end_ms": 4994
+  },
+  {
+    "word": "है?",
+    "start_ms": 4994,
+    "end_ms": 5219
   }
 ]

@@ -2,96 +2,76 @@
   {
     "word": "लेकिन",
     "start_ms": 0,
-    "end_ms": 405
+    "end_ms": 379
   },
   {
     "word": "एक",
-    "start_ms": 405,
-    "end_ms": 560
-  },
-  {
-    "word": "रात",
-    "start_ms": 560,
-    "end_ms": 825
-  },
-  {
-    "word": "तुम",
-    "start_ms": 825,
-    "end_ms": 1043
-  },
-  {
-    "word": "सोचते,",
-    "start_ms": 1043,
-    "end_ms": 1534
-  },
-  {
-    "word": "अगर",
-    "start_ms": 1534,
-    "end_ms": 1768
-  },
-  {
-    "word": "जार्विस",
-    "start_ms": 1768,
-    "end_ms": 2228
-  },
-  {
-    "word": "को",
-    "start_ms": 2228,
-    "end_ms": 2415
-  },
-  {
-    "word": "मेरी",
-    "start_ms": 2415,
-    "end_ms": 2789
-  },
-  {
-    "word": "हर",
-    "start_ms": 2789,
-    "end_ms": 2945
+    "start_ms": 379,
+    "end_ms": 525
   },
   {
     "word": "बात",
-    "start_ms": 2945,
-    "end_ms": 3209
+    "start_ms": 525,
+    "end_ms": 773
   },
   {
-    "word": "पता",
-    "start_ms": 3209,
-    "end_ms": 3474
+    "word": "और",
+    "start_ms": 773,
+    "end_ms": 918
   },
   {
     "word": "है,",
-    "start_ms": 3474,
-    "end_ms": 3700
+    "start_ms": 918,
+    "end_ms": 1130
   },
   {
-    "word": "तो",
-    "start_ms": 3700,
-    "end_ms": 3887
+    "word": "बिजली",
+    "start_ms": 1130,
+    "end_ms": 1509
   },
   {
-    "word": "क्या",
-    "start_ms": 3887,
-    "end_ms": 4129
+    "word": "के",
+    "start_ms": 1509,
+    "end_ms": 1684
   },
   {
-    "word": "ये",
-    "start_ms": 4129,
-    "end_ms": 4316
+    "word": "बिना",
+    "start_ms": 1684,
+    "end_ms": 1991
   },
   {
-    "word": "सुरक्षित",
-    "start_ms": 4316,
-    "end_ms": 4807
+    "word": "दुनिया",
+    "start_ms": 1991,
+    "end_ms": 2428
+  },
+  {
+    "word": "पूरी",
+    "start_ms": 2428,
+    "end_ms": 2778
+  },
+  {
+    "word": "तरह",
+    "start_ms": 2778,
+    "end_ms": 2997
+  },
+  {
+    "word": "रुक",
+    "start_ms": 2997,
+    "end_ms": 3201
   },
   {
     "word": "भी",
-    "start_ms": 4807,
-    "end_ms": 4994
+    "start_ms": 3201,
+    "end_ms": 3376
   },
   {
-    "word": "है?",
-    "start_ms": 4994,
-    "end_ms": 5219
+    "word": "नहीं",
+    "start_ms": 3376,
+    "end_ms": 3726
+  },
+  {
+    "word": "जाती।",
+    "start_ms": 3726,
+    "end_ms": 4149
   }
 ]

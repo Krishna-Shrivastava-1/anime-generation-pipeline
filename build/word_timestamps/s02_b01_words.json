@@ -1,62 +1,72 @@
 [
   {
-    "word": "तुम",
+    "word": "सुबह",
     "start_ms": 0,
-    "end_ms": 233
+    "end_ms": 289
   },
   {
-    "word": "उठते",
-    "start_ms": 233,
-    "end_ms": 599
+    "word": "उठने",
+    "start_ms": 289,
+    "end_ms": 623
+  },
+  {
+    "word": "के",
+    "start_ms": 623,
+    "end_ms": 806
+  },
+  {
+    "word": "लिए",
+    "start_ms": 806,
+    "end_ms": 1019
+  },
+  {
+    "word": "अलार्म",
+    "start_ms": 1019,
+    "end_ms": 1407
+  },
+  {
+    "word": "नहीं,",
+    "start_ms": 1407,
+    "end_ms": 1810
+  },
+  {
+    "word": "आपको",
+    "start_ms": 1810,
+    "end_ms": 2145
+  },
+  {
+    "word": "सूरज",
+    "start_ms": 2145,
+    "end_ms": 2480
   },
   {
     "word": "और",
-    "start_ms": 599,
-    "end_ms": 765
+    "start_ms": 2480,
+    "end_ms": 2632
   },
   {
-    "word": "कहते,",
-    "start_ms": 765,
-    "end_ms": 1173
+    "word": "मुर्गे",
+    "start_ms": 2632,
+    "end_ms": 3004
   },
   {
-    "word": "जार्विस,",
-    "start_ms": 1173,
-    "end_ms": 1706
+    "word": "पर",
+    "start_ms": 3004,
+    "end_ms": 3157
   },
   {
-    "word": "आज",
-    "start_ms": 1706,
-    "end_ms": 1873
+    "word": "भरोसा",
+    "start_ms": 3157,
+    "end_ms": 3598
   },
   {
-    "word": "घर",
-    "start_ms": 1873,
-    "end_ms": 2039
+    "word": "करना",
+    "start_ms": 3598,
+    "end_ms": 3933
   },
   {
-    "word": "का",
-    "start_ms": 2039,
-    "end_ms": 2239
-  },
-  {
-    "word": "पूरा",
-    "start_ms": 2239,
-    "end_ms": 2639
-  },
-  {
-    "word": "सिस्टम",
-    "start_ms": 2639,
-    "end_ms": 3014
-  },
-  {
-    "word": "संभाल",
-    "start_ms": 3014,
-    "end_ms": 3496
-  },
-  {
-    "word": "लो।",
-    "start_ms": 3496,
-    "end_ms": 3780
+    "word": "पड़ता।",
+    "start_ms": 3933,
+    "end_ms": 4420
   }
 ]

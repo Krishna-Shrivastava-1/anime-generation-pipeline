@@ -1,72 +1,52 @@
 [
   {
-    "word": "और",
+    "word": "इसलिए",
     "start_ms": 0,
-    "end_ms": 161
+    "end_ms": 395
   },
   {
-    "word": "वो",
-    "start_ms": 161,
-    "end_ms": 355
+    "word": "सामान",
+    "start_ms": 395,
+    "end_ms": 873
   },
   {
-    "word": "तुम्हारे",
-    "start_ms": 355,
-    "end_ms": 944
+    "word": "बनाना",
+    "start_ms": 873,
+    "end_ms": 1352
   },
   {
-    "word": "लिए",
-    "start_ms": 944,
-    "end_ms": 1170
+    "word": "महँगा",
+    "start_ms": 1352,
+    "end_ms": 1797
   },
   {
-    "word": "रिसर्च",
-    "start_ms": 1170,
-    "end_ms": 1533
-  },
-  {
-    "word": "करता,",
-    "start_ms": 1533,
-    "end_ms": 1928
-  },
-  {
-    "word": "जानकारी",
-    "start_ms": 1928,
-    "end_ms": 2590
-  },
-  {
-    "word": "समझाता",
-    "start_ms": 2590,
-    "end_ms": 3139
+    "word": "होता",
+    "start_ms": 1797,
+    "end_ms": 2193
   },
   {
     "word": "और",
-    "start_ms": 3139,
-    "end_ms": 3300
+    "start_ms": 2193,
+    "end_ms": 2358
   },
   {
-    "word": "एक",
-    "start_ms": 3300,
-    "end_ms": 3461
+    "word": "उत्पादन",
+    "start_ms": 2358,
+    "end_ms": 2861
   },
   {
-    "word": "शुरुआती",
-    "start_ms": 3461,
-    "end_ms": 4026
+    "word": "भी",
+    "start_ms": 2861,
+    "end_ms": 3058
   },
   {
-    "word": "प्लान",
-    "start_ms": 4026,
-    "end_ms": 4357
+    "word": "धीमा",
+    "start_ms": 3058,
+    "end_ms": 3454
   },
   {
-    "word": "बना",
-    "start_ms": 4357,
-    "end_ms": 4631
-  },
-  {
-    "word": "देता।",
-    "start_ms": 4631,
-    "end_ms": 5100
+    "word": "रहता।",
+    "start_ms": 3454,
+    "end_ms": 3900
   }
 ]

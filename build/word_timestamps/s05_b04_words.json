@@ -1,77 +1,77 @@
 [
   {
-    "word": "इसलिए",
+    "word": "कुछ",
     "start_ms": 0,
-    "end_ms": 372
+    "end_ms": 208
   },
   {
-    "word": "असली",
-    "start_ms": 372,
-    "end_ms": 714
+    "word": "तकनीकें",
+    "start_ms": 208,
+    "end_ms": 818
   },
   {
-    "word": "जार्विस",
-    "start_ms": 714,
-    "end_ms": 1172
+    "word": "आगे",
+    "start_ms": 818,
+    "end_ms": 1071
   },
   {
-    "word": "सिर्फ",
-    "start_ms": 1172,
-    "end_ms": 1443
+    "word": "बढ़तीं,",
+    "start_ms": 1071,
+    "end_ms": 1614
   },
   {
-    "word": "स्मार्ट",
-    "start_ms": 1443,
-    "end_ms": 1816
+    "word": "लेकिन",
+    "start_ms": 1614,
+    "end_ms": 2001
   },
   {
-    "word": "नहीं,",
-    "start_ms": 1816,
-    "end_ms": 2227
+    "word": "कंप्यूटर,",
+    "start_ms": 2001,
+    "end_ms": 2596
   },
   {
-    "word": "बल्कि",
-    "start_ms": 2227,
-    "end_ms": 2499
-  },
-  {
-    "word": "सुरक्षित",
-    "start_ms": 2499,
-    "end_ms": 2988
+    "word": "इंटरनेट",
+    "start_ms": 2596,
+    "end_ms": 3176
   },
   {
     "word": "और",
-    "start_ms": 2988,
-    "end_ms": 3143
+    "start_ms": 3176,
+    "end_ms": 3325
   },
   {
-    "word": "तुम्हारे",
-    "start_ms": 3143,
-    "end_ms": 3710
+    "word": "आधुनिक",
+    "start_ms": 3325,
+    "end_ms": 3742
   },
   {
-    "word": "कंट्रोल",
-    "start_ms": 3710,
-    "end_ms": 4214
+    "word": "डिजिटल",
+    "start_ms": 3742,
+    "end_ms": 4159
   },
   {
-    "word": "में",
-    "start_ms": 4214,
-    "end_ms": 4509
+    "word": "दुनिया",
+    "start_ms": 4159,
+    "end_ms": 4605
   },
   {
-    "word": "भी",
-    "start_ms": 4509,
-    "end_ms": 4696
+    "word": "शायद",
+    "start_ms": 4605,
+    "end_ms": 4932
   },
   {
-    "word": "होना",
-    "start_ms": 4696,
-    "end_ms": 5068
+    "word": "होती",
+    "start_ms": 4932,
+    "end_ms": 5289
   },
   {
-    "word": "चाहिए।",
-    "start_ms": 5068,
-    "end_ms": 5550
+    "word": "ही",
+    "start_ms": 5289,
+    "end_ms": 5468
+  },
+  {
+    "word": "नहीं।",
+    "start_ms": 5468,
+    "end_ms": 5899
   }
 ]

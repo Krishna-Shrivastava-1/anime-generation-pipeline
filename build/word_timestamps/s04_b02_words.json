@@ -1,67 +1,57 @@
 [
   {
-    "word": "जार्विस",
+    "word": "लंबी",
     "start_ms": 0,
-    "end_ms": 467
+    "end_ms": 334
   },
   {
-    "word": "तुरंत",
-    "start_ms": 467,
-    "end_ms": 879
-  },
-  {
-    "word": "पास",
-    "start_ms": 879,
-    "end_ms": 1149
+    "word": "दूरी",
+    "start_ms": 334,
+    "end_ms": 668
   },
   {
     "word": "के",
-    "start_ms": 1149,
-    "end_ms": 1339
+    "start_ms": 668,
+    "end_ms": 835
   },
   {
-    "word": "सिनेमाघर,",
-    "start_ms": 1339,
-    "end_ms": 2061
+    "word": "लिए",
+    "start_ms": 835,
+    "end_ms": 1030
   },
   {
-    "word": "शो",
-    "start_ms": 2061,
-    "end_ms": 2251
+    "word": "भाप",
+    "start_ms": 1030,
+    "end_ms": 1267
   },
   {
-    "word": "टाइम",
-    "start_ms": 2251,
-    "end_ms": 2600
+    "word": "वाले",
+    "start_ms": 1267,
+    "end_ms": 1601
+  },
+  {
+    "word": "जहाज़",
+    "start_ms": 1601,
+    "end_ms": 1977
   },
   {
     "word": "और",
-    "start_ms": 2600,
-    "end_ms": 2758
+    "start_ms": 1977,
+    "end_ms": 2116
   },
   {
-    "word": "टिकट",
-    "start_ms": 2758,
-    "end_ms": 3060
+    "word": "ट्रेनें",
+    "start_ms": 2116,
+    "end_ms": 2596
   },
   {
-    "word": "के",
-    "start_ms": 3060,
-    "end_ms": 3250
+    "word": "इस्तेमाल",
+    "start_ms": 2596,
+    "end_ms": 3118
   },
   {
-    "word": "विकल्प",
-    "start_ms": 3250,
-    "end_ms": 3607
-  },
-  {
-    "word": "दिखा",
-    "start_ms": 3607,
-    "end_ms": 3940
-  },
-  {
-    "word": "देता।",
-    "start_ms": 3940,
-    "end_ms": 4399
+    "word": "होतीं।",
+    "start_ms": 3118,
+    "end_ms": 3620
   }
 ]

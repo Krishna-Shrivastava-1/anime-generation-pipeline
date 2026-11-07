@@ -1,77 +1,72 @@
 [
   {
-    "word": "तुम्हें",
+    "word": "खाना",
     "start_ms": 0,
-    "end_ms": 443
+    "end_ms": 378
   },
   {
-    "word": "कुछ",
-    "start_ms": 443,
-    "end_ms": 640
-  },
-  {
-    "word": "ढूँढना",
-    "start_ms": 640,
-    "end_ms": 1118
-  },
-  {
-    "word": "होता,",
-    "start_ms": 1118,
-    "end_ms": 1491
-  },
-  {
-    "word": "तो",
-    "start_ms": 1491,
-    "end_ms": 1659
-  },
-  {
-    "word": "वो",
-    "start_ms": 1659,
-    "end_ms": 1828
-  },
-  {
-    "word": "सेकंडों",
-    "start_ms": 1828,
-    "end_ms": 2433
+    "word": "फ्रिज",
+    "start_ms": 378,
+    "end_ms": 654
   },
   {
     "word": "में",
-    "start_ms": 2433,
-    "end_ms": 2700
+    "start_ms": 654,
+    "end_ms": 953
   },
   {
-    "word": "बता",
-    "start_ms": 2700,
-    "end_ms": 2940
+    "word": "नहीं,",
+    "start_ms": 953,
+    "end_ms": 1371
   },
   {
-    "word": "देता",
-    "start_ms": 2940,
-    "end_ms": 3277
+    "word": "बल्कि",
+    "start_ms": 1371,
+    "end_ms": 1647
   },
   {
-    "word": "कि",
-    "start_ms": 3277,
-    "end_ms": 3404
+    "word": "बर्फ,",
+    "start_ms": 1647,
+    "end_ms": 1899
   },
   {
-    "word": "सामान",
-    "start_ms": 3404,
-    "end_ms": 3812
+    "word": "नमक",
+    "start_ms": 1899,
+    "end_ms": 2136
   },
   {
-    "word": "कहाँ",
-    "start_ms": 3812,
-    "end_ms": 4121
+    "word": "और",
+    "start_ms": 2136,
+    "end_ms": 2293
+  },
+  {
+    "word": "खास",
+    "start_ms": 2293,
+    "end_ms": 2561
+  },
+  {
+    "word": "तरीकों",
+    "start_ms": 2561,
+    "end_ms": 3129
+  },
+  {
+    "word": "से",
+    "start_ms": 3129,
+    "end_ms": 3318
+  },
+  {
+    "word": "सुरक्षित",
+    "start_ms": 3318,
+    "end_ms": 3814
   },
   {
     "word": "रखा",
-    "start_ms": 4121,
-    "end_ms": 4360
+    "start_ms": 3814,
+    "end_ms": 4082
   },
   {
-    "word": "है।",
-    "start_ms": 4360,
-    "end_ms": 4599
+    "word": "जाता।",
+    "start_ms": 4082,
+    "end_ms": 4539
   }
 ]

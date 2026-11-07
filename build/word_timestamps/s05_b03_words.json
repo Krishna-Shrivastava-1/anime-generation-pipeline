@@ -1,82 +1,57 @@
 [
   {
-    "word": "अगर",
+    "word": "लोग",
     "start_ms": 0,
-    "end_ms": 222
+    "end_ms": 251
   },
   {
-    "word": "उसका",
-    "start_ms": 222,
-    "end_ms": 549
+    "word": "मोमबत्ती,",
+    "start_ms": 251,
+    "end_ms": 843
   },
   {
-    "word": "गलत",
-    "start_ms": 549,
-    "end_ms": 771
+    "word": "तेल",
+    "start_ms": 843,
+    "end_ms": 1094
+  },
+  {
+    "word": "के",
+    "start_ms": 1094,
+    "end_ms": 1272
+  },
+  {
+    "word": "दीये",
+    "start_ms": 1272,
+    "end_ms": 1627
+  },
+  {
+    "word": "और",
+    "start_ms": 1627,
+    "end_ms": 1775
+  },
+  {
+    "word": "प्राकृतिक",
+    "start_ms": 1775,
+    "end_ms": 2359
+  },
+  {
+    "word": "रोशनी",
+    "start_ms": 2359,
+    "end_ms": 2788
+  },
+  {
+    "word": "का",
+    "start_ms": 2788,
+    "end_ms": 2965
   },
   {
     "word": "इस्तेमाल",
-    "start_ms": 771,
-    "end_ms": 1328
+    "start_ms": 2965,
+    "end_ms": 3520
   },
   {
-    "word": "हुआ,",
-    "start_ms": 1328,
-    "end_ms": 1573
-  },
-  {
-    "word": "तो",
-    "start_ms": 1573,
-    "end_ms": 1751
-  },
-  {
-    "word": "तुम्हारी",
-    "start_ms": 1751,
-    "end_ms": 2293
-  },
-  {
-    "word": "पूरी",
-    "start_ms": 2293,
-    "end_ms": 2649
-  },
-  {
-    "word": "ज़िंदगी",
-    "start_ms": 2649,
-    "end_ms": 3213
-  },
-  {
-    "word": "की",
-    "start_ms": 3213,
-    "end_ms": 3391
-  },
-  {
-    "word": "जानकारी",
-    "start_ms": 3391,
-    "end_ms": 3999
-  },
-  {
-    "word": "खतरे",
-    "start_ms": 3999,
-    "end_ms": 4326
-  },
-  {
-    "word": "में",
-    "start_ms": 4326,
-    "end_ms": 4608
-  },
-  {
-    "word": "पड़",
-    "start_ms": 4608,
-    "end_ms": 4831
-  },
-  {
-    "word": "सकती",
-    "start_ms": 4831,
-    "end_ms": 5157
-  },
-  {
-    "word": "थी।",
-    "start_ms": 5157,
-    "end_ms": 5409
+    "word": "करते।",
+    "start_ms": 3520,
+    "end_ms": 3920
   }
 ]

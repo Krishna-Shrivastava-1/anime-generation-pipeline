@@ -1,67 +1,47 @@
 [
   {
-    "word": "क्योंकि",
-    "start_ms": 0,
-    "end_ms": 453
+    "word": "हवा",
+    "start_ms": 10,
+    "end_ms": 254
   },
   {
-    "word": "उसे",
-    "start_ms": 453,
-    "end_ms": 698
+    "word": "से",
+    "start_ms": 254,
+    "end_ms": 427
   },
   {
-    "word": "तुम्हारी",
-    "start_ms": 698,
-    "end_ms": 1224
+    "word": "पवनचक्कियाँ",
+    "start_ms": 427,
+    "end_ms": 1139
   },
   {
-    "word": "आवाज़,",
-    "start_ms": 1224,
-    "end_ms": 1649
+    "word": "चलतीं,",
+    "start_ms": 1139,
+    "end_ms": 1592
   },
   {
-    "word": "लोकेशन,",
-    "start_ms": 1649,
-    "end_ms": 2175
+    "word": "पानी",
+    "start_ms": 1592,
+    "end_ms": 1937
   },
   {
-    "word": "आदतें",
-    "start_ms": 2175,
-    "end_ms": 2592
+    "word": "से",
+    "start_ms": 1937,
+    "end_ms": 2110
+  },
+  {
+    "word": "चक्कियाँ",
+    "start_ms": 2110,
+    "end_ms": 2606
   },
   {
     "word": "और",
-    "start_ms": 2592,
-    "end_ms": 2736
+    "start_ms": 2606,
+    "end_ms": 2750
   },
   {
-    "word": "कई",
-    "start_ms": 2736,
-    "end_ms": 2880
-  },
-  {
-    "word": "निजी",
-    "start_ms": 2880,
-    "end_ms": 3183
-  },
-  {
-    "word": "जानकारियाँ",
-    "start_ms": 3183,
-    "end_ms": 3975
-  },
-  {
-    "word": "मिल",
-    "start_ms": 3975,
-    "end_ms": 4177
-  },
-  {
-    "word": "सकती",
-    "start_ms": 4177,
-    "end_ms": 4494
-  },
-  {
-    "word": "थीं।",
-    "start_ms": 4494,
-    "end_ms": 4840
+    "word": "मशीनें।",
+    "start_ms": 2750,
+    "end_ms": 3340
   }
 ]

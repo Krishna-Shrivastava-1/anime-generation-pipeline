@@ -1,62 +1,37 @@
 [
   {
-    "word": "शाम",
+    "word": "सफर",
     "start_ms": 0,
-    "end_ms": 255
+    "end_ms": 249
   },
   {
-    "word": "को",
-    "start_ms": 255,
-    "end_ms": 435
-  },
-  {
-    "word": "तुम",
-    "start_ms": 435,
-    "end_ms": 645
-  },
-  {
-    "word": "अपने",
-    "start_ms": 645,
-    "end_ms": 976
-  },
-  {
-    "word": "दोस्त",
-    "start_ms": 976,
-    "end_ms": 1284
-  },
-  {
-    "word": "से",
-    "start_ms": 1284,
-    "end_ms": 1464
-  },
-  {
-    "word": "कहते,",
-    "start_ms": 1464,
-    "end_ms": 1832
+    "word": "भी",
+    "start_ms": 249,
+    "end_ms": 448
   },
   {
     "word": "आज",
-    "start_ms": 1832,
-    "end_ms": 1982
+    "start_ms": 448,
+    "end_ms": 614
   },
   {
-    "word": "मूवी",
-    "start_ms": 1982,
-    "end_ms": 2343
+    "word": "जैसा",
+    "start_ms": 614,
+    "end_ms": 1013
   },
   {
-    "word": "देखने",
-    "start_ms": 2343,
-    "end_ms": 2779
+    "word": "आसान",
+    "start_ms": 1013,
+    "end_ms": 1379
   },
   {
-    "word": "चलते",
-    "start_ms": 2779,
-    "end_ms": 3109
+    "word": "नहीं",
+    "start_ms": 1379,
+    "end_ms": 1778
   },
   {
-    "word": "हैं।",
-    "start_ms": 3109,
-    "end_ms": 3470
+    "word": "होता।",
+    "start_ms": 1778,
+    "end_ms": 2260
   }
 ]

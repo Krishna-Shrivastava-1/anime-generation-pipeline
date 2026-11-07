@@ -1,87 +1,82 @@
 [
   {
-    "word": "सोचो,",
+    "word": "ज़रा",
     "start_ms": 0,
-    "end_ms": 388
+    "end_ms": 312
   },
   {
-    "word": "सुबह",
-    "start_ms": 388,
-    "end_ms": 667
+    "word": "सोचिए,",
+    "start_ms": 312,
+    "end_ms": 716
   },
   {
-    "word": "तुम्हारी",
-    "start_ms": 667,
-    "end_ms": 1202
+    "word": "अगर",
+    "start_ms": 716,
+    "end_ms": 929
   },
   {
-    "word": "आँख",
-    "start_ms": 1202,
-    "end_ms": 1423
+    "word": "दुनिया",
+    "start_ms": 929,
+    "end_ms": 1354
   },
   {
-    "word": "खुलने",
-    "start_ms": 1423,
-    "end_ms": 1804
+    "word": "में",
+    "start_ms": 1354,
+    "end_ms": 1624
   },
   {
-    "word": "से",
-    "start_ms": 1804,
-    "end_ms": 1980
+    "word": "बिजली",
+    "start_ms": 1624,
+    "end_ms": 1993
   },
   {
-    "word": "पहले",
-    "start_ms": 1980,
-    "end_ms": 2303
+    "word": "कभी",
+    "start_ms": 1993,
+    "end_ms": 2234
+  },
+  {
+    "word": "आई",
+    "start_ms": 2234,
+    "end_ms": 2376
   },
   {
     "word": "ही",
-    "start_ms": 2303,
-    "end_ms": 2479
+    "start_ms": 2376,
+    "end_ms": 2546
   },
   {
-    "word": "कोई",
-    "start_ms": 2479,
-    "end_ms": 2728
+    "word": "नहीं",
+    "start_ms": 2546,
+    "end_ms": 2886
   },
   {
-    "word": "तुम्हारे",
-    "start_ms": 2728,
-    "end_ms": 3264
+    "word": "होती,",
+    "start_ms": 2886,
+    "end_ms": 3262
   },
   {
-    "word": "पूरे",
-    "start_ms": 3264,
-    "end_ms": 3616
+    "word": "तो",
+    "start_ms": 3262,
+    "end_ms": 3433
   },
   {
-    "word": "दिन",
-    "start_ms": 3616,
-    "end_ms": 3821
+    "word": "हमारी",
+    "start_ms": 3433,
+    "end_ms": 3844
   },
   {
-    "word": "की",
-    "start_ms": 3821,
-    "end_ms": 3997
+    "word": "ज़िंदगी",
+    "start_ms": 3844,
+    "end_ms": 4383
   },
   {
-    "word": "तैयारी",
-    "start_ms": 3997,
-    "end_ms": 4525
+    "word": "कैसी",
+    "start_ms": 4383,
+    "end_ms": 4724
   },
   {
-    "word": "कर",
-    "start_ms": 4525,
-    "end_ms": 4672
-  },
-  {
-    "word": "चुका",
-    "start_ms": 4672,
-    "end_ms": 4980
-  },
-  {
-    "word": "हो।",
-    "start_ms": 4980,
-    "end_ms": 5229
+    "word": "होती?",
+    "start_ms": 4724,
+    "end_ms": 5099
   }
 ]

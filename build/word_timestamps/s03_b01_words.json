@@ -1,67 +1,42 @@
 [
   {
-    "word": "रास्ते",
+    "word": "अब",
     "start_ms": 0,
-    "end_ms": 399
+    "end_ms": 152
   },
   {
-    "word": "में",
-    "start_ms": 399,
-    "end_ms": 676
+    "word": "सोचिए,",
+    "start_ms": 152,
+    "end_ms": 586
   },
   {
-    "word": "जाम",
-    "start_ms": 676,
-    "end_ms": 923
+    "word": "बिजली",
+    "start_ms": 586,
+    "end_ms": 983
   },
   {
-    "word": "होता,",
-    "start_ms": 923,
-    "end_ms": 1308
+    "word": "के",
+    "start_ms": 983,
+    "end_ms": 1165
   },
   {
-    "word": "तो",
-    "start_ms": 1308,
-    "end_ms": 1483
+    "word": "बिना",
+    "start_ms": 1165,
+    "end_ms": 1485
   },
   {
-    "word": "जार्विस",
-    "start_ms": 1483,
-    "end_ms": 1911
+    "word": "कारखाने",
+    "start_ms": 1485,
+    "end_ms": 2110
   },
   {
-    "word": "तुम्हें",
-    "start_ms": 1911,
-    "end_ms": 2369
+    "word": "कैसे",
+    "start_ms": 2110,
+    "end_ms": 2476
   },
   {
-    "word": "सबसे",
-    "start_ms": 2369,
-    "end_ms": 2689
-  },
-  {
-    "word": "तेज़",
-    "start_ms": 2689,
-    "end_ms": 3009
-  },
-  {
-    "word": "दूसरा",
-    "start_ms": 3009,
-    "end_ms": 3431
-  },
-  {
-    "word": "रास्ता",
-    "start_ms": 3431,
-    "end_ms": 3831
-  },
-  {
-    "word": "बता",
-    "start_ms": 3831,
-    "end_ms": 4078
-  },
-  {
-    "word": "देता।",
-    "start_ms": 4078,
-    "end_ms": 4500
+    "word": "चलते?",
+    "start_ms": 2476,
+    "end_ms": 2850
   }
 ]

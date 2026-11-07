@@ -1,77 +1,67 @@
 [
   {
-    "word": "ऑफिस",
+    "word": "भाप",
     "start_ms": 0,
-    "end_ms": 283
+    "end_ms": 273
   },
   {
-    "word": "पहुँचने",
-    "start_ms": 283,
-    "end_ms": 822
+    "word": "के",
+    "start_ms": 273,
+    "end_ms": 466
   },
   {
-    "word": "से",
-    "start_ms": 822,
-    "end_ms": 1001
-  },
-  {
-    "word": "पहले",
-    "start_ms": 1001,
-    "end_ms": 1330
-  },
-  {
-    "word": "वो",
-    "start_ms": 1330,
-    "end_ms": 1509
-  },
-  {
-    "word": "तुम्हारे",
-    "start_ms": 1509,
-    "end_ms": 2055
-  },
-  {
-    "word": "ईमेल",
-    "start_ms": 2055,
-    "end_ms": 2383
+    "word": "इंजन",
+    "start_ms": 466,
+    "end_ms": 820
   },
   {
     "word": "और",
-    "start_ms": 2383,
-    "end_ms": 2533
+    "start_ms": 820,
+    "end_ms": 981
   },
   {
-    "word": "मीटिंग",
-    "start_ms": 2533,
-    "end_ms": 3026
+    "word": "कोयले",
+    "start_ms": 981,
+    "end_ms": 1447
   },
   {
-    "word": "की",
-    "start_ms": 3026,
-    "end_ms": 3205
+    "word": "से",
+    "start_ms": 1447,
+    "end_ms": 1640
   },
   {
-    "word": "तैयारी",
-    "start_ms": 3205,
-    "end_ms": 3743
+    "word": "चलने",
+    "start_ms": 1640,
+    "end_ms": 1994
   },
   {
-    "word": "भी",
-    "start_ms": 3743,
-    "end_ms": 3923
+    "word": "वाली",
+    "start_ms": 1994,
+    "end_ms": 2380
   },
   {
-    "word": "कर",
-    "start_ms": 3923,
-    "end_ms": 4072
+    "word": "मशीनें",
+    "start_ms": 2380,
+    "end_ms": 2959
   },
   {
-    "word": "चुका",
-    "start_ms": 4072,
-    "end_ms": 4386
+    "word": "बहुत",
+    "start_ms": 2959,
+    "end_ms": 3265
   },
   {
-    "word": "होता।",
-    "start_ms": 4386,
-    "end_ms": 4820
+    "word": "बड़ा",
+    "start_ms": 3265,
+    "end_ms": 3619
+  },
+  {
+    "word": "काम",
+    "start_ms": 3619,
+    "end_ms": 3893
+  },
+  {
+    "word": "करतीं।",
+    "start_ms": 3893,
+    "end_ms": 4439
   }
 ]

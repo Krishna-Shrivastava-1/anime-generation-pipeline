@@ -1,47 +1,47 @@
 [
   {
-    "word": "तुम",
+    "word": "सड़कों",
     "start_ms": 0,
-    "end_ms": 222
+    "end_ms": 440
   },
   {
-    "word": "बस",
-    "start_ms": 222,
-    "end_ms": 382
+    "word": "पर",
+    "start_ms": 440,
+    "end_ms": 570
   },
   {
-    "word": "कहते,",
-    "start_ms": 382,
-    "end_ms": 772
+    "word": "स्ट्रीट",
+    "start_ms": 570,
+    "end_ms": 881
   },
   {
-    "word": "जार्विस,",
-    "start_ms": 772,
-    "end_ms": 1281
+    "word": "लाइट",
+    "start_ms": 881,
+    "end_ms": 1167
   },
   {
-    "word": "आज",
-    "start_ms": 1281,
-    "end_ms": 1441
+    "word": "नहीं,",
+    "start_ms": 1167,
+    "end_ms": 1511
   },
   {
-    "word": "मुझे",
-    "start_ms": 1441,
-    "end_ms": 1775
+    "word": "घरों",
+    "start_ms": 1511,
+    "end_ms": 1822
   },
   {
-    "word": "क्या-क्या",
-    "start_ms": 1775,
-    "end_ms": 2308
+    "word": "में",
+    "start_ms": 1822,
+    "end_ms": 2068
   },
   {
-    "word": "करना",
-    "start_ms": 2308,
-    "end_ms": 2659
+    "word": "बल्ब",
+    "start_ms": 2068,
+    "end_ms": 2243
   },
   {
-    "word": "है?",
-    "start_ms": 2659,
-    "end_ms": 2890
+    "word": "नहीं।",
+    "start_ms": 2243,
+    "end_ms": 2620
   }
 ]

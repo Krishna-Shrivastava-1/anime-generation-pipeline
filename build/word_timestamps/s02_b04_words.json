@@ -1,82 +1,57 @@
 [
   {
-    "word": "और",
+    "word": "गर्मी",
     "start_ms": 0,
-    "end_ms": 158
+    "end_ms": 303
   },
   {
-    "word": "अगर",
-    "start_ms": 158,
-    "end_ms": 396
+    "word": "में",
+    "start_ms": 303,
+    "end_ms": 584
   },
   {
-    "word": "तुम",
-    "start_ms": 396,
-    "end_ms": 618
+    "word": "पंखा",
+    "start_ms": 584,
+    "end_ms": 939
   },
   {
-    "word": "घर",
-    "start_ms": 618,
-    "end_ms": 776
+    "word": "नहीं,",
+    "start_ms": 939,
+    "end_ms": 1331
   },
   {
-    "word": "से",
-    "start_ms": 776,
-    "end_ms": 966
+    "word": "बस",
+    "start_ms": 1331,
+    "end_ms": 1479
   },
   {
-    "word": "बाहर",
-    "start_ms": 966,
-    "end_ms": 1315
+    "word": "हाथ",
+    "start_ms": 1479,
+    "end_ms": 1731
   },
   {
-    "word": "निकलते,",
-    "start_ms": 1315,
-    "end_ms": 1846
+    "word": "वाला",
+    "start_ms": 1731,
+    "end_ms": 2086
   },
   {
-    "word": "तो",
-    "start_ms": 1846,
-    "end_ms": 2036
+    "word": "पंखा",
+    "start_ms": 2086,
+    "end_ms": 2441
   },
   {
-    "word": "वो",
-    "start_ms": 2036,
-    "end_ms": 2227
+    "word": "और",
+    "start_ms": 2441,
+    "end_ms": 2589
   },
   {
-    "word": "तुम्हारे",
-    "start_ms": 2227,
-    "end_ms": 2805
+    "word": "खुली",
+    "start_ms": 2589,
+    "end_ms": 2900
   },
   {
-    "word": "फोन",
-    "start_ms": 2805,
-    "end_ms": 3075
-  },
-  {
-    "word": "पर",
-    "start_ms": 3075,
-    "end_ms": 3233
-  },
-  {
-    "word": "भी",
-    "start_ms": 3233,
-    "end_ms": 3423
-  },
-  {
-    "word": "तुम्हारे",
-    "start_ms": 3423,
-    "end_ms": 4002
-  },
-  {
-    "word": "साथ",
-    "start_ms": 4002,
-    "end_ms": 4272
-  },
-  {
-    "word": "रहता।",
-    "start_ms": 4272,
-    "end_ms": 4699
+    "word": "खिड़कियाँ।",
+    "start_ms": 2900,
+    "end_ms": 3639
   }
 ]

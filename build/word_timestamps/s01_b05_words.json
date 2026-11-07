@@ -1,0 +1,42 @@
+[
+  {
+    "word": "लेकिन",
+    "start_ms": 0,
+    "end_ms": 370
+  },
+  {
+    "word": "असली",
+    "start_ms": 370,
+    "end_ms": 684
+  },
+  {
+    "word": "कहानी",
+    "start_ms": 684,
+    "end_ms": 1097
+  },
+  {
+    "word": "इससे",
+    "start_ms": 1097,
+    "end_ms": 1410
+  },
+  {
+    "word": "कहीं",
+    "start_ms": 1410,
+    "end_ms": 1752
+  },
+  {
+    "word": "ज़्यादा",
+    "start_ms": 1752,
+    "end_ms": 2215
+  },
+  {
+    "word": "दिलचस्प",
+    "start_ms": 2215,
+    "end_ms": 2607
+  },
+  {
+    "word": "है।",
+    "start_ms": 2607,
+    "end_ms": 2850
+  }
+]

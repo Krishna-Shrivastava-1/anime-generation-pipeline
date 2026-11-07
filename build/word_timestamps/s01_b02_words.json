@@ -1,52 +1,57 @@
 [
   {
-    "word": "तुम्हारा",
+    "word": "सबसे",
     "start_ms": 0,
-    "end_ms": 550
+    "end_ms": 319
   },
   {
-    "word": "अपना",
-    "start_ms": 550,
-    "end_ms": 881
+    "word": "पहले,",
+    "start_ms": 319,
+    "end_ms": 674
   },
   {
-    "word": "एआई",
-    "start_ms": 881,
-    "end_ms": 1107
+    "word": "रात",
+    "start_ms": 674,
+    "end_ms": 920
   },
   {
-    "word": "असिस्टेंट,",
-    "start_ms": 1107,
-    "end_ms": 1770
+    "word": "होते",
+    "start_ms": 920,
+    "end_ms": 1268
   },
   {
-    "word": "बिल्कुल",
-    "start_ms": 1770,
-    "end_ms": 2170
+    "word": "ही",
+    "start_ms": 1268,
+    "end_ms": 1442
   },
   {
-    "word": "आयरन",
-    "start_ms": 2170,
-    "end_ms": 2471
+    "word": "शहरों",
+    "start_ms": 1442,
+    "end_ms": 1863
   },
   {
-    "word": "मैन",
-    "start_ms": 2471,
-    "end_ms": 2727
+    "word": "की",
+    "start_ms": 1863,
+    "end_ms": 2037
   },
   {
-    "word": "के",
-    "start_ms": 2727,
-    "end_ms": 2908
+    "word": "रौनक",
+    "start_ms": 2037,
+    "end_ms": 2356
   },
   {
-    "word": "जार्विस",
-    "start_ms": 2908,
-    "end_ms": 3352
+    "word": "गायब",
+    "start_ms": 2356,
+    "end_ms": 2675
   },
   {
-    "word": "जैसा।",
-    "start_ms": 3352,
-    "end_ms": 3789
+    "word": "हो",
+    "start_ms": 2675,
+    "end_ms": 2849
+  },
+  {
+    "word": "जाती।",
+    "start_ms": 2849,
+    "end_ms": 3269
   }
 ]

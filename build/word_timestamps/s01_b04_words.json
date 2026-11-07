@@ -2,86 +2,46 @@
   {
     "word": "और",
     "start_ms": 0,
-    "end_ms": 154
+    "end_ms": 155
   },
   {
-    "word": "जार्विस",
-    "start_ms": 154,
-    "end_ms": 611
+    "word": "आपका",
+    "start_ms": 155,
+    "end_ms": 496
   },
   {
-    "word": "जवाब",
-    "start_ms": 611,
-    "end_ms": 951
+    "word": "मोबाइल?",
+    "start_ms": 496,
+    "end_ms": 1063
   },
   {
-    "word": "देता,",
-    "start_ms": 951,
-    "end_ms": 1361
+    "word": "वो",
+    "start_ms": 1063,
+    "end_ms": 1250
   },
   {
-    "word": "तुम्हारी",
-    "start_ms": 1361,
-    "end_ms": 1926
+    "word": "तो",
+    "start_ms": 1250,
+    "end_ms": 1436
   },
   {
-    "word": "मीटिंग",
-    "start_ms": 1926,
-    "end_ms": 2437
+    "word": "पैदा",
+    "start_ms": 1436,
+    "end_ms": 1809
   },
   {
-    "word": "दस",
-    "start_ms": 2437,
-    "end_ms": 2592
+    "word": "ही",
+    "start_ms": 1809,
+    "end_ms": 1995
   },
   {
-    "word": "बजे",
-    "start_ms": 2592,
-    "end_ms": 2855
+    "word": "नहीं",
+    "start_ms": 1995,
+    "end_ms": 2368
   },
   {
-    "word": "है,",
-    "start_ms": 2855,
-    "end_ms": 3079
-  },
-  {
-    "word": "मौसम",
-    "start_ms": 3079,
-    "end_ms": 3420
-  },
-  {
-    "word": "अच्छा",
-    "start_ms": 3420,
-    "end_ms": 3737
-  },
-  {
-    "word": "है",
-    "start_ms": 3737,
-    "end_ms": 3922
-  },
-  {
-    "word": "और",
-    "start_ms": 3922,
-    "end_ms": 4077
-  },
-  {
-    "word": "तुम्हारा",
-    "start_ms": 4077,
-    "end_ms": 4642
-  },
-  {
-    "word": "नाश्ता",
-    "start_ms": 4642,
-    "end_ms": 5068
-  },
-  {
-    "word": "तैयार",
-    "start_ms": 5068,
-    "end_ms": 5516
-  },
-  {
-    "word": "है।",
-    "start_ms": 5516,
-    "end_ms": 5780
+    "word": "होता!",
+    "start_ms": 2368,
+    "end_ms": 2780
   }
 ]

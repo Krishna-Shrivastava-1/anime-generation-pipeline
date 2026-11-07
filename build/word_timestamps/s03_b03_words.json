@@ -1,57 +1,67 @@
 [
   {
-    "word": "तुम",
+    "word": "लेकिन",
     "start_ms": 0,
-    "end_ms": 211
+    "end_ms": 422
   },
   {
-    "word": "कहते,",
-    "start_ms": 211,
-    "end_ms": 582
+    "word": "हर",
+    "start_ms": 422,
+    "end_ms": 584
   },
   {
-    "word": "जार्विस,",
-    "start_ms": 582,
-    "end_ms": 1066
+    "word": "मशीन",
+    "start_ms": 584,
+    "end_ms": 942
   },
   {
-    "word": "इस",
-    "start_ms": 1066,
-    "end_ms": 1217
+    "word": "को",
+    "start_ms": 942,
+    "end_ms": 1137
   },
   {
-    "word": "प्रोजेक्ट",
-    "start_ms": 1217,
-    "end_ms": 1762
+    "word": "चलाने",
+    "start_ms": 1137,
+    "end_ms": 1608
   },
   {
     "word": "के",
-    "start_ms": 1762,
-    "end_ms": 1943
+    "start_ms": 1608,
+    "end_ms": 1803
   },
   {
     "word": "लिए",
-    "start_ms": 1943,
-    "end_ms": 2155
+    "start_ms": 1803,
+    "end_ms": 2030
   },
   {
-    "word": "एक",
-    "start_ms": 2155,
-    "end_ms": 2306
+    "word": "भाप,",
+    "start_ms": 2030,
+    "end_ms": 2347
   },
   {
-    "word": "अच्छा",
-    "start_ms": 2306,
-    "end_ms": 2616
+    "word": "ईंधन",
+    "start_ms": 2347,
+    "end_ms": 2705
   },
   {
-    "word": "आइडिया",
-    "start_ms": 2616,
-    "end_ms": 3085
+    "word": "और",
+    "start_ms": 2705,
+    "end_ms": 2867
   },
   {
-    "word": "ढूँढो।",
-    "start_ms": 3085,
-    "end_ms": 3599
+    "word": "मेहनत",
+    "start_ms": 2867,
+    "end_ms": 3306
+  },
+  {
+    "word": "चाहिए",
+    "start_ms": 3306,
+    "end_ms": 3728
+  },
+  {
+    "word": "होती।",
+    "start_ms": 3728,
+    "end_ms": 4199
   }
 ]

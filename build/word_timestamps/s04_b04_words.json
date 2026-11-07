@@ -1,87 +1,87 @@
 [
   {
-    "word": "और",
+    "word": "क्योंकि",
     "start_ms": 0,
-    "end_ms": 157
+    "end_ms": 458
   },
   {
-    "word": "तुम्हें",
-    "start_ms": 157,
-    "end_ms": 652
+    "word": "आधुनिक",
+    "start_ms": 458,
+    "end_ms": 866
   },
   {
-    "word": "लगता,",
-    "start_ms": 652,
-    "end_ms": 1037
+    "word": "विमानों",
+    "start_ms": 866,
+    "end_ms": 1448
   },
   {
-    "word": "जैसे",
-    "start_ms": 1037,
-    "end_ms": 1414
+    "word": "को",
+    "start_ms": 1448,
+    "end_ms": 1623
   },
   {
-    "word": "तुम्हारे",
-    "start_ms": 1414,
-    "end_ms": 1987
+    "word": "दिशा",
+    "start_ms": 1623,
+    "end_ms": 1928
   },
   {
-    "word": "पास",
-    "start_ms": 1987,
-    "end_ms": 2254
+    "word": "देने,",
+    "start_ms": 1928,
+    "end_ms": 2314
   },
   {
-    "word": "एक",
-    "start_ms": 2254,
-    "end_ms": 2412
+    "word": "नियंत्रित",
+    "start_ms": 2314,
+    "end_ms": 2874
   },
   {
-    "word": "ऐसा",
-    "start_ms": 2412,
-    "end_ms": 2679
+    "word": "करने",
+    "start_ms": 2874,
+    "end_ms": 3195
   },
   {
-    "word": "दोस्त",
-    "start_ms": 2679,
-    "end_ms": 3001
+    "word": "और",
+    "start_ms": 3195,
+    "end_ms": 3340
   },
   {
-    "word": "है",
-    "start_ms": 3001,
-    "end_ms": 3189
+    "word": "सुरक्षित",
+    "start_ms": 3340,
+    "end_ms": 3799
   },
   {
-    "word": "जो",
-    "start_ms": 3189,
-    "end_ms": 3378
-  },
-  {
-    "word": "हर",
-    "start_ms": 3378,
-    "end_ms": 3535
-  },
-  {
-    "word": "काम",
-    "start_ms": 3535,
-    "end_ms": 3802
+    "word": "उड़ाने",
+    "start_ms": 3799,
+    "end_ms": 4294
   },
   {
     "word": "में",
-    "start_ms": 3802,
-    "end_ms": 4101
+    "start_ms": 4294,
+    "end_ms": 4570
   },
   {
-    "word": "मदद",
-    "start_ms": 4101,
-    "end_ms": 4337
+    "word": "बिजली",
+    "start_ms": 4570,
+    "end_ms": 4949
   },
   {
-    "word": "करता",
-    "start_ms": 4337,
-    "end_ms": 4682
+    "word": "की",
+    "start_ms": 4949,
+    "end_ms": 5123
+  },
+  {
+    "word": "अहम",
+    "start_ms": 5123,
+    "end_ms": 5342
+  },
+  {
+    "word": "भूमिका",
+    "start_ms": 5342,
+    "end_ms": 5822
   },
   {
     "word": "है।",
-    "start_ms": 4682,
-    "end_ms": 4949
+    "start_ms": 5822,
+    "end_ms": 6069
   }
 ]

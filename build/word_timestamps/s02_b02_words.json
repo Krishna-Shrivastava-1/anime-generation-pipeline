@@ -1,62 +1,62 @@
 [
   {
-    "word": "लाइट्स",
+    "word": "रात",
     "start_ms": 0,
-    "end_ms": 395
+    "end_ms": 241
   },
   {
-    "word": "ऑन,",
-    "start_ms": 395,
-    "end_ms": 588
+    "word": "में",
+    "start_ms": 241,
+    "end_ms": 512
   },
   {
-    "word": "पर्दे",
-    "start_ms": 588,
-    "end_ms": 906
+    "word": "पढ़ना",
+    "start_ms": 512,
+    "end_ms": 896
   },
   {
-    "word": "खुल",
-    "start_ms": 906,
-    "end_ms": 1123
+    "word": "हो,",
+    "start_ms": 896,
+    "end_ms": 1102
   },
   {
-    "word": "जाते",
-    "start_ms": 1123,
-    "end_ms": 1494
+    "word": "तो",
+    "start_ms": 1102,
+    "end_ms": 1273
   },
   {
-    "word": "और",
-    "start_ms": 1494,
-    "end_ms": 1649
+    "word": "मोमबत्ती",
+    "start_ms": 1273,
+    "end_ms": 1807
   },
   {
-    "word": "कॉफी",
-    "start_ms": 1649,
-    "end_ms": 1990
+    "word": "या",
+    "start_ms": 1807,
+    "end_ms": 1977
   },
   {
-    "word": "मशीन",
-    "start_ms": 1990,
-    "end_ms": 2331
+    "word": "तेल",
+    "start_ms": 1977,
+    "end_ms": 2219
   },
   {
-    "word": "तुम्हारी",
-    "start_ms": 2331,
-    "end_ms": 2896
+    "word": "का",
+    "start_ms": 2219,
+    "end_ms": 2390
   },
   {
-    "word": "कॉफी",
-    "start_ms": 2896,
-    "end_ms": 3237
+    "word": "दीया",
+    "start_ms": 2390,
+    "end_ms": 2732
   },
   {
-    "word": "बना",
-    "start_ms": 3237,
-    "end_ms": 3500
+    "word": "जलाना",
+    "start_ms": 2732,
+    "end_ms": 3144
   },
   {
-    "word": "देती।",
-    "start_ms": 3500,
-    "end_ms": 3950
+    "word": "पड़ता।",
+    "start_ms": 3144,
+    "end_ms": 3599
   }
 ]

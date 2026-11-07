@@ -1,286 +1,345 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "What If Electricity Was Never Invented?",
-    "project_id": "what_if_electricity_never_invented_001",
+    "title": "What If The World Forgot How To Fight?",
+    "project_id": "what_if_world_forgot_war_2026",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Minimalist hand-drawn stickman storytelling animation, vertical 9:16 composition. Warm off-white paper background, bold slightly imperfect black ink outlines, simple expressive stickman characters with round white faces, exactly two tiny solid-black dot eyes, no pupils, no irises, no highlights, no eye whites, no eyelashes, and no realistic eye details. Identical eye size, shape, and spacing in every image. Thin black stick limbs, simple curved mouths, limited earthy accent colors such as muted brown, orange, dark blue, and pale yellow. Hand-drawn environments with simple but recognizable objects, expressive body language, cinematic visual storytelling, varied camera angles, clear foreground and background separation, visually engaging compositions. Every beat is a distinct illustration matching the exact moment of narration. Keep recurring characters visually consistent.",
-    "negative_prompt": "Photorealism, 3D rendering, anime, detailed realistic human anatomy, complex facial features, pupils, irises, eye highlights, reflections in eyes, eye whites, eyelashes, changing eye shapes, inconsistent character designs, cluttered backgrounds, excessive text, captions, subtitles, logos, watermarks, blurry artwork, overly detailed textures, modern electric appliances, glowing screens, electric streetlights, or electrical infrastructure in a world where electricity never existed."
+    "art_style": "Minimalist hand-drawn 2D stickman animation in a clean indie webcomic style. Warm off-white paper background, bold slightly imperfect black ink outlines, simple expressive body language, limited earthy accent colors, and cinematic storytelling. Every human character must have a round white face with exactly two tiny simple solid-black dot eyes of identical size and spacing, no pupils, no irises, no eye whites, no highlights, no reflections, no eyelashes and no realistic eye details. Thin black stick limbs, simple curved mouths and clear readable poses. The recurring presenter wears a small red bow tie. Use many distinct illustrations, changing the camera angle, composition, character poses, locations and visual metaphors frequently. Each beat is a fresh image matching its narration, approximately every 2–3 seconds. Keep recurring character designs consistent. Depict conflict and war through non-graphic symbolic imagery, never gore. Vertical 9:16 composition.",
+    "negative_prompt": "Photorealism, 3D rendering, anime, realistic human anatomy, detailed facial features, pupils, irises, eye whites, eye highlights, reflections, eyelashes, inconsistent eye designs, graphic violence, blood, wounds, gore, corpses, realistic weapons being used, glorification of violence, hateful symbols, national stereotypes, political propaganda, text-heavy images, captions, speech bubbles, watermarks, logos, cluttered compositions, overly bright neon colors."
   },
   "assets": {
-    "main_character": {
+    "presenter": {
       "type": "character",
-      "label": "Curious young stickman narrator",
-      "visual_dna": "A simple young male stickman with a round white face, exactly two tiny solid-black dot eyes with identical spacing, a small curved black mouth, thin black stick arms and legs, a muted dark-blue shirt, black trousers, and simple white shoes. No hair, no pupils, no realistic facial features. Maintain the exact same appearance throughout."
+      "label": "Recurring stickman presenter",
+      "visual_dna": "A simple stickman with a round white face, exactly two tiny solid-black dot eyes, identical size and spacing in every appearance, a simple curved mouth, thin black stick limbs and a small red bow tie. No pupils, irises, eye whites, highlights or realistic eye details."
     },
-    "old_friend": {
+    "young_man": {
       "type": "character",
-      "label": "Stickman friend",
-      "visual_dna": "A simple stickman with a round white face, exactly two tiny solid-black dot eyes, a curved mouth, thin black limbs, a muted mustard-yellow shirt, dark trousers, and brown shoes. Identical simple facial style to the main character."
+      "label": "Ordinary young man",
+      "visual_dna": "A simple hand-drawn stickman with a round white face, exactly two tiny solid-black dot eyes, a simple curved mouth, thin black stick limbs, a dark blue shirt, brown trousers and simple black shoes. Consistent appearance in every scene."
     },
-    "historical_worker": {
+    "young_woman": {
       "type": "character",
-      "label": "Old-world worker",
-      "visual_dna": "A simple hand-drawn stickman with a round white face, exactly two tiny solid-black dot eyes, a curved mouth, thin black limbs, a brown work shirt, dark trousers, and a simple beige cap."
+      "label": "Ordinary young woman",
+      "visual_dna": "A simple hand-drawn stickman character with a round white face, exactly two tiny solid-black dot eyes, a simple curved mouth, thin black stick limbs, a mustard-yellow top and dark brown trousers. Consistent appearance in every scene."
     },
-    "historical_city": {
+    "shopkeeper": {
+      "type": "character",
+      "label": "Local shopkeeper",
+      "visual_dna": "A hand-drawn stickman with a round white face, exactly two tiny solid-black dot eyes, a simple curved mouth, thin black stick limbs, a cream shirt and brown waistcoat."
+    },
+    "teacher": {
+      "type": "character",
+      "label": "School teacher",
+      "visual_dna": "A hand-drawn stickman with a round white face, exactly two tiny solid-black dot eyes, a simple curved mouth, thin black stick limbs, a white shirt, dark trousers and simple round spectacles drawn outside the eyes without changing the dot-eye design."
+    },
+    "community": {
+      "type": "character",
+      "label": "Community members",
+      "visual_dna": "A group of diverse simple stickman characters with round white faces, exactly two tiny solid-black dot eyes each, simple curved mouths, thin black stick limbs and different muted earthy-colored clothes. No detailed facial features."
+    },
+    "leader": {
+      "type": "character",
+      "label": "Country leader",
+      "visual_dna": "A simple stickman leader with a round white face, exactly two tiny solid-black dot eyes, a simple curved mouth, thin black stick limbs, a dark formal suit and a small tie. No realistic facial details."
+    },
+    "soldier": {
+      "type": "character",
+      "label": "Military personnel",
+      "visual_dna": "A simple non-threatening stickman in a muted olive uniform and simple helmet, with a round white face and exactly two tiny solid-black dot eyes. Thin black stick limbs and a neutral expression. Depicted in humanitarian or peacekeeping contexts, never attacking anyone."
+    },
+    "family": {
+      "type": "character",
+      "label": "Ordinary family",
+      "visual_dna": "Three simple stickman characters: an adult in a dark blue shirt, another adult in a muted orange top and a child in a mustard-yellow shirt. All have round white faces, exactly two tiny solid-black dot eyes, simple curved mouths and thin black stick limbs."
+    },
+    "street_environment": {
       "type": "environment",
-      "label": "Pre-electricity city",
-      "visual_dna": "A hand-drawn historical town with brick buildings, narrow cobblestone streets, wooden shopfronts, horse-drawn carts, oil lamps, candles, chimneys, and muted brown and earthy colors. No electrical poles, cables, electric lights, or modern electronic devices."
+      "label": "Everyday neighborhood",
+      "visual_dna": "A hand-drawn neighborhood street with small houses, shops, sidewalks, trees, parked bicycles and a public square. Warm off-white paper and earthy accent colors."
     },
-    "old_house": {
+    "school_environment": {
       "type": "environment",
-      "label": "Candlelit home",
-      "visual_dna": "A modest historical home with wooden furniture, small windows, a fireplace, candles, oil lamps, a wooden dining table, and warm orange candlelight. No electric appliances or electronic screens."
+      "label": "School",
+      "visual_dna": "A simple hand-drawn school with classrooms, wooden desks, a playground, a blackboard, books and a courtyard."
     },
-    "workshop": {
+    "community_environment": {
       "type": "environment",
-      "label": "Steam-powered factory",
-      "visual_dna": "A historical industrial workshop with large mechanical gears, belts, steam engines, iron pipes, chimneys, wooden floors, and workers operating machinery. No electric motors, electric wiring, or modern automation."
+      "label": "Community meeting place",
+      "visual_dna": "A town community hall with simple chairs, a round discussion table, plants and a large open window. Warm, welcoming hand-drawn environment."
     },
-    "countryside": {
-      "type": "environment",
-      "label": "Rural countryside",
-      "visual_dna": "A hand-drawn rural landscape with green fields, wooden houses, dirt roads, wells, farm animals, windmills, and a distant village. No electrical infrastructure."
-    },
-    "steam_train": {
+    "world_map": {
       "type": "prop",
-      "label": "Steam locomotive",
-      "visual_dna": "A traditional black steam locomotive with a tall smokestack, large metal wheels, connecting rods, a coal tender, and white steam clouds. No electric components."
+      "label": "World map",
+      "visual_dna": "A simple hand-drawn world map on warm off-white paper with recognizable continent shapes, thin black outlines and no political labels."
     },
-    "oil_lamp": {
+    "peace_symbol": {
       "type": "prop",
-      "label": "Oil lamp",
-      "visual_dna": "A small traditional brass oil lamp with a glass chimney and a warm orange-yellow flame."
+      "label": "Peace symbol",
+      "visual_dna": "A simple hand-drawn white dove carrying a small olive branch, outlined in black with a muted green accent."
     },
-    "mechanical_clock": {
+    "broken_sword": {
       "type": "prop",
-      "label": "Mechanical clock",
-      "visual_dna": "A traditional wooden wall clock with visible mechanical gears, two hands, and a pendulum."
+      "label": "Symbolic broken sword",
+      "visual_dna": "A simple symbolic illustration of a broken metal sword resting harmlessly on the ground, with no blood, no person harmed and no violent action."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "historical_city",
+      "environment_ref": "street_environment",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "ज़रा सोचिए, अगर दुनिया में बिजली कभी आई ही नहीं होती, तो हमारी ज़िंदगी कैसी होती?",
-          "camera_type": "wide_establishing_shot",
+          "narration_text": "एक सुबह पूरी दुनिया उठती है... और इंसान लड़ना ही भूल चुका होता है।",
+          "camera_type": "dramatic_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A dramatic hand-drawn view of a historical town at night, completely dark except for scattered candle flames and oil lamps glowing inside wooden windows. A young male stickman with a round white face, exactly two tiny solid-black dot eyes, a muted dark-blue shirt, black trousers, and white shoes stands in the foreground looking at the dark town in disbelief. Bold imperfect black ink outlines, warm off-white paper texture, muted earthy colors, cinematic vertical 9:16 composition.",
-          "session_delta_prompt": "Establish the historical no-electricity world and keep the main character's dark-blue shirt, black trousers, white shoes, and identical dot eyes consistent."
+          "prompt_action": "A cinematic hand-drawn stickman illustration of a busy city street suddenly frozen in surprise. Groups of simple stickman people with round white faces and exactly two tiny solid-black dot eyes look confused at one another, while a symbolic broken sword lies harmlessly on the pavement. Buildings, trees and a cloudy morning sky in the background. Warm off-white paper, bold imperfect black ink outlines, earthy colors, vertical 9:16.",
+          "session_delta_prompt": "Establish the world where all humans have lost the ability and instinct to fight, while retaining their intelligence and ability to disagree."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "सबसे पहले, रात होते ही शहरों की रौनक गायब हो जाती।",
-          "camera_type": "high_angle_city_view",
+          "narration_text": "ना गुस्से में मारपीट... ना बदला... ना किसी को चोट पहुँचाने का ख्याल।",
+          "camera_type": "street_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A bird's-eye hand-drawn view of a historical town at night. Narrow streets are almost completely black, with only a few tiny orange oil lamps outside houses and shops. Buildings have dark windows, and the moon provides faint light. A few tiny stickman silhouettes walk carefully through the darkness. No electric streetlights, no illuminated signs, no electric cables. Minimalist hand-drawn black ink illustration, earthy colors, vertical 9:16."
+          "prompt_action": "Two ordinary hand-drawn stickmen on a neighborhood sidewalk, one wearing a dark blue shirt and brown trousers, the other wearing a mustard-yellow top and dark trousers. Both have round white faces with exactly two tiny solid-black dot eyes. One accidentally bumps into the other, but instead of aggression they step back and gesture apologetically. Simple expressive poses, warm off-white paper, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "The blue-shirt young man and mustard-top young woman should retain their exact clothing and dot-eye designs."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "सड़कों पर स्ट्रीट लाइट नहीं, घरों में बल्ब नहीं।",
-          "camera_type": "street_level_wide_shot",
+          "narration_text": "लेकिन क्या इसका मतलब ये होगा कि दुनिया में हर समस्या खत्म हो जाएगी?",
+          "camera_type": "presenter_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A dark historical street with empty wooden streetlamp posts nowhere to be seen, brick houses with dark windows, and one tiny oil lamp hanging outside a shop. A young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes points toward the pitch-black street. Minimalist hand-drawn stickman art, bold imperfect black outlines, off-white paper background, muted brown and orange accents, vertical 9:16."
+          "prompt_action": "The recurring hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes, thin black stick limbs and a small red bow tie stands beside a giant question mark. Behind the presenter, a split scene shows peaceful neighbors on one side and two people arguing over a limited resource on the other. No physical violence. Off-white paper, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "Keep the presenter identical, especially the two tiny black dot eyes and small red bow tie."
         },
         {
           "beat_id": "s01_b04",
-          "narration_text": "और आपका मोबाइल? वो तो पैदा ही नहीं होता!",
-          "camera_type": "comedic_close_up",
+          "narration_text": "क्योंकि लड़ाई भूलना और हर बात पर सहमत होना... दोनों अलग चीज़ें हैं।",
+          "camera_type": "split_screen",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A funny hand-drawn illustration of a young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes holding an empty hand in front of himself and staring at it in confusion. A crossed-out modern smartphone is drawn beside him as a simple conceptual symbol, not as an object existing in this world. Bold black ink outlines, warm off-white background, minimal earthy colors, expressive comedy, vertical 9:16."
-        },
-        {
-          "beat_id": "s01_b05",
-          "narration_text": "लेकिन असली कहानी इससे कहीं ज़्यादा दिलचस्प है।",
-          "camera_type": "dramatic_low_angle",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "The young male stickman narrator, round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, white shoes, stands dramatically in the center while the background splits into two hand-drawn worlds: a dark candlelit historical town on one side and a giant steam-powered industrial city on the other. He raises one finger as if revealing a surprising secret. Cinematic hand-drawn composition, bold black outlines, warm off-white paper, vertical 9:16."
+          "prompt_action": "A dynamic two-panel hand-drawn illustration. On the left, two stickmen with round white faces and exactly two tiny black dot eyes calmly disagree while pointing at different ideas on a paper. On the right, another pair of stickmen work together to solve the same disagreement by shaking hands. No violence. Warm off-white paper, bold black ink outlines, vertical 9:16.",
+          "session_delta_prompt": "Show that disagreement still exists even when violence is no longer possible."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "old_house",
+      "environment_ref": "street_environment",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "सुबह उठने के लिए अलार्म नहीं, आपको सूरज और मुर्गे पर भरोसा करना पड़ता।",
-          "camera_type": "bedroom_wide_shot",
+          "narration_text": "सबसे पहले बदलाव दिखेगा हमारी रोज़मर्रा की ज़िंदगी में।",
+          "camera_type": "overhead_city_view",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Inside a modest historical bedroom, the young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes is waking up on a simple wooden bed. Sunlight enters through a small window while a cartoon rooster stands outside crowing. A traditional mechanical clock sits on a wooden table. No electronic alarm clocks. Minimalist hand-drawn illustration, earthy colors, vertical 9:16."
+          "prompt_action": "An overhead hand-drawn view of a neighborhood intersection with small shops, bicycles, trees and pedestrians. Several simple stickman people with round white faces and exactly two tiny black dot eyes move peacefully through the street. The scene feels unusually relaxed, with no threatening gestures. Warm earthy colors, off-white paper, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "Keep all characters visually simple with identical two-dot eyes."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "रात में पढ़ना हो, तो मोमबत्ती या तेल का दीया जलाना पड़ता।",
-          "camera_type": "over_the_shoulder",
+          "narration_text": "मान लीजिए, सड़क पर किसी ने आपकी गाड़ी को टक्कर मार दी।",
+          "camera_type": "dynamic_side_view",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Over-the-shoulder view of the young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, and black trousers studying an open book at a wooden table. A small brass oil lamp with a glass chimney and warm orange flame illuminates the pages. Dark corners surround the tiny pool of light. Bold black hand-drawn outlines, off-white paper, muted brown and orange accents, vertical 9:16."
+          "prompt_action": "A small hand-drawn traffic incident on a city street. A young man stickman with a round white face, exactly two tiny black dot eyes, dark blue shirt and brown trousers stands beside his bicycle, which has lightly bumped into a parked scooter. Another stickman in a mustard-yellow top looks surprised. No injuries, no damage beyond a slightly tilted mirror, no aggression. Vertical 9:16, bold black outlines and warm off-white paper.",
+          "session_delta_prompt": "Keep the blue-shirt man and mustard-top character consistent."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "खाना फ्रिज में नहीं, बल्कि बर्फ, नमक और खास तरीकों से सुरक्षित रखा जाता।",
-          "camera_type": "kitchen_medium_shot",
+          "narration_text": "आज शायद गाली-गलौज या हाथापाई हो जाती... लेकिन इस दुनिया में ऐसा नहीं होगा।",
+          "camera_type": "close_up_reaction",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A historical kitchen with a wooden icebox containing large blocks of ice, vegetables, milk bottles, and food containers. The young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes opens the icebox with a surprised expression. Nearby are jars of pickled vegetables and salted food. No refrigerator or electric appliances. Minimalist hand-drawn style, vertical 9:16."
+          "prompt_action": "The same young man with a round white face, exactly two tiny black dot eyes, dark blue shirt and brown trousers pauses, takes a deep breath and gestures calmly toward the slightly damaged scooter. The other stickman with a mustard-yellow top listens. Their body language shows frustration without aggression. Hand-drawn black outlines, off-white paper, vertical 9:16.",
+          "session_delta_prompt": "Preserve the exact character clothing and simple dot-eye design."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "गर्मी में पंखा नहीं, बस हाथ वाला पंखा और खुली खिड़कियाँ।",
-          "camera_type": "side_profile",
+          "narration_text": "दोनों शायद पुलिस बुलाएँगे, सबूत दिखाएँगे और बात कानून से सुलझेगी।",
+          "camera_type": "medium_group_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Inside a warm historical home, the young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, and black trousers sits sweating slightly while waving a traditional folded hand fan. Open wooden windows reveal a sunny courtyard and trees. No electric fan or air conditioner. Simple hand-drawn black ink outlines, muted earthy palette, vertical 9:16."
+          "prompt_action": "Two simple stickman characters with round white faces and exactly two tiny black dot eyes stand beside a bicycle and scooter, calmly showing a small photograph of the incident to a friendly police officer in a simple blue uniform. No weapons or threatening gestures. The officer listens carefully and holds a small notebook. Warm off-white paper, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "Depict peaceful legal dispute resolution rather than physical retaliation."
         },
         {
           "beat_id": "s02_b05",
-          "narration_text": "और कपड़े धोने से लेकर पानी लाने तक, बहुत से काम हाथों से करने पड़ते।",
-          "camera_type": "dynamic_action_shot",
+          "narration_text": "घर में भाई-बहन का झगड़ा हो, तब भी मारपीट की जगह बातचीत करनी पड़ेगी।",
+          "camera_type": "interior_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A lively historical courtyard where the young male stickman with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes carries two heavy water buckets while another simple stickman washes clothes by hand in a wooden tub. A rope clothesline hangs overhead. No washing machine, electric pump, or modern plumbing. Hand-drawn black outlines, earthy colors, vertical 9:16."
+          "prompt_action": "Inside a simple family living room, two sibling stickmen with round white faces and exactly two tiny solid-black dot eyes sit on opposite sides of a sofa, both wanting the same game controller. Their parent sits between them and encourages them to take turns. Warm earthy home decor, simple hand-drawn outlines, vertical 9:16.",
+          "session_delta_prompt": "All family members maintain the same simple two-dot eye design."
+        },
+        {
+          "beat_id": "s02_b06",
+          "narration_text": "मतलब, गुस्सा तो रहेगा... लेकिन उसे हिंसा में बदलना इंसानों को याद ही नहीं होगा।",
+          "camera_type": "symbolic_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A symbolic hand-drawn close-up of a simple stickman with a round white face and exactly two tiny black dot eyes standing beside a storm cloud that gradually transforms into a small peaceful cloud with a dove. The character's hands relax from clenched fists into open palms. Warm off-white paper, black ink outlines, muted blue and green accents, vertical 9:16.",
+          "session_delta_prompt": "Use symbolic imagery to show anger being managed without violence."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "workshop",
+      "environment_ref": "community_environment",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "अब सोचिए, बिजली के बिना कारखाने कैसे चलते?",
-          "camera_type": "factory_establishing_shot",
+          "narration_text": "अब सोचिए, जब दो लोग नहीं लड़ सकते... तो मोहल्ले और शहर कैसे बदलेंगे?",
+          "camera_type": "wide_community_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A giant historical factory interior filled with huge iron gears, mechanical belts, thick pipes, a coal-fired steam engine, and tall brick chimneys. Workers in simple brown clothing operate heavy machines. The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes stands at the entrance looking amazed. No electric motors or wires. Hand-drawn industrial illustration, vertical 9:16."
+          "prompt_action": "A hand-drawn neighborhood community gathering in a small public square. Stickman neighbors with round white faces and exactly two tiny black dot eyes sit in a circle discussing a shared problem. Houses, trees and a small shop surround them. The atmosphere is cooperative but realistic, with some people raising hands to disagree. Off-white paper, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "Show cooperation without suggesting that every disagreement disappears."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "भाप के इंजन और कोयले से चलने वाली मशीनें बहुत बड़ा काम करतीं।",
-          "camera_type": "machine_close_up",
+          "narration_text": "पड़ोसी पानी, पार्किंग या ज़मीन को लेकर बहस तो करेंगे।",
+          "camera_type": "top_down_composition",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Close-up of a massive historical steam engine inside a factory, with a large moving piston, spinning flywheel, connected iron rods, thick steam clouds, and coal burning in a furnace. A simple stickman worker with a round white face, exactly two tiny solid-black dot eyes, beige cap, brown work shirt, and dark trousers operates a mechanical lever. Bold imperfect black outlines, warm industrial earthy palette, vertical 9:16."
+          "prompt_action": "An overhead hand-drawn scene of two neighboring stickman families with round white faces and exactly two tiny black dot eyes discussing a boundary line between their homes. A water tap and a parked bicycle are nearby. Both families point toward a simple paper plan while maintaining distance. No physical aggression. Warm off-white paper, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "Keep the conflict about ordinary limited resources and disagreements."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "लेकिन हर मशीन को चलाने के लिए भाप, ईंधन और मेहनत चाहिए होती।",
-          "camera_type": "low_angle_factory_action",
+          "narration_text": "लेकिन समाधान के लिए पंचायत, अदालत और बातचीत का सहारा लेना पड़ेगा।",
+          "camera_type": "interior_courtroom",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A historical factory worker with a round white face, exactly two tiny solid-black dot eyes, beige cap, brown shirt, and dark trousers pushes a heavy coal cart toward a giant furnace. Steam pipes and mechanical gears fill the background. The young male narrator stickman with dark-blue shirt, black trousers, white shoes, and identical dot eyes watches the exhausting process. No electric machines. Hand-drawn storytelling illustration, vertical 9:16."
+          "prompt_action": "A simple hand-drawn local mediation room. Two stickman neighbors with round white faces and exactly two tiny black dot eyes sit across a wooden table. A neutral mediator in a white shirt listens and examines a property map. Both sides have documents and open hands. Warm off-white paper, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "Use calm mediation and legal institutions as the alternative to fighting."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "इसलिए सामान बनाना महँगा होता और उत्पादन भी धीमा रहता।",
-          "camera_type": "wide_factory_view",
+          "narration_text": "स्कूलों में बच्चों को सिर्फ पढ़ाई नहीं, बल्कि मतभेद सुलझाना भी सिखाया जाएगा।",
+          "camera_type": "classroom_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Inside a small historical workshop, three stickman workers with round white faces and exactly two tiny solid-black dot eyes manually assemble wooden furniture and metal tools. A few finished products sit on a table while a long queue of unfinished items fills the workshop. The young male narrator in a dark-blue shirt, black trousers, and white shoes looks at the slow production with concern. Bold hand-drawn ink outlines, vertical 9:16."
+          "prompt_action": "A hand-drawn classroom scene with a teacher stickman who has a round white face, exactly two tiny black dot eyes, white shirt and dark trousers. Several students with matching simple dot eyes sit in groups, discussing a shared puzzle and listening to one another. A blackboard shows simple geometric shapes without readable text. Warm paper, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "Keep the teacher and students consistent with the simple stickman design."
         },
         {
           "beat_id": "s03_b05",
-          "narration_text": "और दुनिया में आज जितनी तेज़ औद्योगिक तरक्की दिखती है, शायद उतनी नहीं होती।",
-          "camera_type": "split_composition",
+          "narration_text": "लोग अपनी बात मनवाने के लिए ताकत नहीं, बल्कि तर्क और सबूत इस्तेमाल करेंगे।",
+          "camera_type": "dramatic_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A visual comparison in one hand-drawn image: on the left, a small historical workshop with a few workers manually making products; on the right, a much larger steam-powered factory with mechanical gears and smoke stacks but no electric machinery. The young male stickman narrator, round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, white shoes, stands between both sides pointing at the contrast. Earthy ink illustration, vertical 9:16."
+          "prompt_action": "A close-up hand-drawn illustration of two stickman characters with round white faces and exactly two tiny black dot eyes presenting different documents, charts and sketches across a table. One character points to evidence while the other carefully studies it. Their expressions are simple and thoughtful. Bold black outlines, warm off-white paper, vertical 9:16.",
+          "session_delta_prompt": "Emphasize persuasion through evidence rather than intimidation."
+        },
+        {
+          "beat_id": "s03_b06",
+          "narration_text": "लेकिन एक मुश्किल बाकी है... क्या हर इंसान ईमानदार भी हो जाएगा?",
+          "camera_type": "presenter_close_up",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "The recurring presenter stickman with a round white face, exactly two tiny black dot eyes, thin black limbs and red bow tie looks thoughtfully at a large balance scale. One side contains a stack of coins and the other a paper contract. Behind him, two ordinary stickmen quietly negotiate. Warm off-white paper, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "Maintain the presenter's exact dot-eye design and red bow tie."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "historical_city",
+      "environment_ref": "community_environment",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "सफर भी आज जैसा आसान नहीं होता।",
-          "camera_type": "street_wide_shot",
+          "narration_text": "अब आते हैं सबसे बड़े सवाल पर... अगर देश ही युद्ध करना भूल जाएँ तो?",
+          "camera_type": "dramatic_world_map",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A busy historical cobblestone street with horse-drawn carriages, people walking, merchants carrying goods, and wooden carts. The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes stands beside a carriage looking at the crowded road. No cars, electric traffic lights, or electric vehicles. Minimalist hand-drawn illustration, vertical 9:16."
+          "prompt_action": "A dramatic hand-drawn world map spread across a large table. Several simple stickman country leaders with round white faces and exactly two tiny black dot eyes stand around it. Their hands hover over the map as if facing a major decision. A symbolic broken sword rests beside the map. No flags, no national stereotypes, no readable labels. Warm off-white paper, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "Shift the story from personal violence to international conflict."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "लंबी दूरी के लिए भाप वाले जहाज़ और ट्रेनें इस्तेमाल होतीं।",
-          "camera_type": "railway_low_angle",
+          "narration_text": "ना सेनाएँ हमला करेंगी, ना मिसाइलें दागी जाएँगी, ना शहरों पर बम गिरेंगे।",
+          "camera_type": "symbolic_aerial_view",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A powerful black steam locomotive with a tall smokestack, large metal wheels, connecting rods, and a coal tender pulls wooden passenger carriages through a countryside railway station. Thick white steam rises into the sky. Several stickman passengers with simple white round faces and exactly two tiny black dot eyes wait on the platform. Hand-drawn bold ink lines, muted earthy colors, vertical 9:16."
+          "prompt_action": "A non-graphic symbolic hand-drawn aerial view of a peaceful city beneath a clear sky. In the distant sky, faint crossed-out silhouettes of missiles and military aircraft dissolve into harmless clouds, while people walk safely through parks and streets below. No explosions, no destruction, no national symbols. Bold black outlines, muted blue and green accents, vertical 9:16.",
+          "session_delta_prompt": "Represent the absence of large-scale attacks without depicting actual destruction."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "हवाई जहाज़ों की दुनिया भी शायद आज जैसी विकसित नहीं होती।",
-          "camera_type": "historical_aviation_view",
+          "narration_text": "सीमाओं पर सैनिक शायद लड़ने की जगह निगरानी और बचाव का काम करेंगे।",
+          "camera_type": "border_wide_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A historical aviation field with a simple early propeller airplane parked on a grassy runway. A few stickman mechanics with round white faces and exactly two tiny solid-black dot eyes inspect its wooden wings and propeller. The young male narrator in a dark-blue shirt, black trousers, and white shoes watches from the side. No modern jet aircraft or airport technology. Hand-drawn vintage illustration, vertical 9:16."
+          "prompt_action": "A peaceful hand-drawn border checkpoint in a mountainous landscape. Two military personnel stickmen with round white faces, exactly two tiny black dot eyes, muted olive uniforms and simple helmets calmly guide civilians and inspect a crossing. No weapons, no aggressive posture. A small medical tent and supply vehicle are visible nearby. Warm off-white paper, vertical 9:16.",
+          "session_delta_prompt": "Military characters should appear in humanitarian and protective roles."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "क्योंकि आधुनिक विमानों को दिशा देने, नियंत्रित करने और सुरक्षित उड़ाने में बिजली की अहम भूमिका है।",
-          "camera_type": "aircraft_cockpit_view",
+          "narration_text": "जो पैसा हथियारों और युद्ध में जाता, उसका बड़ा हिस्सा शिक्षा, अस्पताल और रिसर्च में लग सकता था।",
+          "camera_type": "dynamic_three_panel",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A conceptual hand-drawn comparison showing a vintage propeller airplane cockpit with simple mechanical gauges, levers, and analog instruments, beside a faint outline of a modern aircraft cockpit with digital displays crossed out as an unavailable technology. A simple stickman pilot with a round white face and exactly two tiny black dot eyes sits in the vintage cockpit. No electric screens in the historical airplane. Vertical 9:16, clean black ink illustration."
+          "prompt_action": "A three-panel hand-drawn illustration showing possible peaceful investments: a newly built school with happy stickman students, a hospital where a doctor cares for a patient, and a scientific laboratory where inventors examine a telescope and scientific models. All characters have round white faces and exactly two tiny solid-black dot eyes. No military equipment. Warm earthy palette, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "Present the benefits as possible uses of resources, not guaranteed outcomes."
         },
         {
           "beat_id": "s04_b05",
-          "narration_text": "और दुनिया के अलग-अलग हिस्सों से बात करना भी बहुत मुश्किल होता।",
-          "camera_type": "medium_storytelling_shot",
+          "narration_text": "शायद देशों के बीच मुकाबला युद्ध से नहीं, तकनीक, व्यापार और खेलों से होता।",
+          "camera_type": "global_montage",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Two simple stickmen with round white faces and exactly two tiny solid-black dot eyes stand on opposite sides of a hand-drawn world map. One wears a dark-blue shirt and black trousers, the other a mustard-yellow shirt and dark trousers. A paper letter travels between them along a dotted route, showing slow communication across long distances. No phones, computers, or digital networks. Off-white paper and bold black outlines, vertical 9:16."
+          "prompt_action": "A lively hand-drawn montage in one vertical frame showing three forms of international competition: scientists from different countries collaborating around a telescope, merchants exchanging goods at a shipping port, and stickman athletes racing on a track. All human faces are round white circles with exactly two tiny solid-black dot eyes. No flags or national stereotypes. Warm off-white paper, bold outlines, vertical 9:16.",
+          "session_delta_prompt": "Show healthy competition and cooperation between societies."
+        },
+        {
+          "beat_id": "s04_b06",
+          "narration_text": "लेकिन दुनिया से युद्ध खत्म होने का मतलब ये नहीं कि गरीबी और अन्याय भी खत्म हो जाएँगे।",
+          "camera_type": "contrastive_wide_shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "A thoughtful hand-drawn split composition. On one side, a peaceful city with no military conflict. On the other, a poor neighborhood where a family waits near an empty food basket while a large wealthy building stands in the background. Every person has a round white face with exactly two tiny black dot eyes. No violence. Muted earthy colors, off-white paper, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "Make clear that peace does not automatically solve inequality, poverty or injustice."
         }
       ]
     },
     {
       "scene_id": 5,
-      "environment_ref": "countryside",
+      "environment_ref": "world_map",
       "beats": [
         {
           "beat_id": "s05_b01",
-          "narration_text": "लेकिन एक बात और है, बिजली के बिना दुनिया पूरी तरह रुक भी नहीं जाती।",
-          "camera_type": "wide_countryside_reveal",
+          "narration_text": "और यहाँ एक बहुत बड़ा सवाल उठता है... अगर कोई देश दूसरों का शोषण करे तो?",
+          "camera_type": "world_map_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A beautiful hand-drawn countryside scene with green fields, windmills, water wheels, wooden houses, farmers, and animals under a bright morning sky. The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes looks around with a relieved smile. Warm off-white paper, earthy green and brown accents, vertical 9:16."
+          "prompt_action": "A close-up hand-drawn world map on a wooden conference table. Two simple stickman leaders with round white faces and exactly two tiny black dot eyes point toward a disputed region on the map. Other delegates watch carefully. No flags, no labels, no threatening gestures. Warm off-white paper, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "Show that international disputes can still exist even without warfare."
         },
         {
           "beat_id": "s05_b02",
-          "narration_text": "हवा से पवनचक्कियाँ चलतीं, पानी से चक्कियाँ और मशीनें।",
-          "camera_type": "dynamic_windmill_shot",
+          "narration_text": "लड़ाई न कर पाने पर भी कोई देश व्यापार रोक सकता है, दबाव बना सकता है या नियम तोड़ सकता है।",
+          "camera_type": "symbolic_trade_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A large traditional wooden windmill turning in a green countryside field while a nearby flowing river rotates a wooden water wheel connected to a grain mill. A farmer stickman with a round white face, exactly two tiny solid-black dot eyes, beige cap, and brown clothes watches the machinery work. No electric motors or wiring. Minimalist hand-drawn illustration with bold black outlines, vertical 9:16."
+          "prompt_action": "A hand-drawn international port with cargo ships, stacked shipping containers and merchants standing beside a closed trade gate. Two groups of stickmen with round white faces and exactly two tiny black dot eyes hold conflicting trade documents across a table. The scene suggests economic pressure and disagreement without violence. Warm off-white paper, earthy colors, vertical 9:16.",
+          "session_delta_prompt": "Use trade barriers and economic pressure as examples of non-military conflict."
         },
         {
           "beat_id": "s05_b03",
-          "narration_text": "लोग मोमबत्ती, तेल के दीये और प्राकृतिक रोशनी का इस्तेमाल करते।",
-          "camera_type": "warm_interior_close_up",
+          "narration_text": "इसलिए दुनिया को सिर्फ लड़ना भूलना नहीं, बल्कि न्याय और सहयोग सीखना भी पड़ेगा।",
+          "camera_type": "cooperation_medium_shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A cozy historical home interior illuminated by sunlight entering through a large wooden window and several small candles and brass oil lamps. The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, and black trousers sits with family members around a wooden table. No electric bulbs. Warm orange and golden light, simple hand-drawn ink style, vertical 9:16."
+          "prompt_action": "Several stickman delegates with round white faces and exactly two tiny solid-black dot eyes sit around a circular international negotiation table. They study shared documents, maps and proposals. A small white dove carrying an olive branch sits on the table. No national flags or political symbols. Warm off-white paper, bold black outlines, vertical 9:16.",
+          "session_delta_prompt": "Focus on fair agreements, cooperation and shared responsibility."
         },
         {
           "beat_id": "s05_b04",
-          "narration_text": "कुछ तकनीकें आगे बढ़तीं, लेकिन कंप्यूटर, इंटरनेट और आधुनिक डिजिटल दुनिया शायद होती ही नहीं।",
-          "camera_type": "conceptual_technology_comparison",
+          "narration_text": "क्योंकि शांति सिर्फ हथियार न चलाने से नहीं, एक-दूसरे के अधिकारों की इज़्ज़त करने से बनती है।",
+          "camera_type": "emotional_close_up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn conceptual image showing a traditional mechanical calculating machine with visible gears, a paper notebook, a mechanical typewriter, and a wooden filing cabinet. The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes points toward these mechanical tools. In the background, faint outlines of a computer, smartphone, and internet symbol are crossed out as unavailable technologies. No actual electronic screens. Vertical 9:16."
+          "prompt_action": "A close-up hand-drawn illustration of two ordinary stickmen with round white faces and exactly two tiny black dot eyes shaking hands across a small table. Behind them, other community members stand together holding a simple symbolic olive branch. Their body language conveys dignity and mutual respect. Warm off-white paper, black ink outlines, muted green accents, vertical 9:16.",
+          "session_delta_prompt": "Make the emotional focus mutual respect, not forced agreement."
         },
         {
           "beat_id": "s05_b05",
-          "narration_text": "अस्पतालों में भी कई आधुनिक मशीनें नहीं होतीं, इसलिए इलाज कहीं ज़्यादा कठिन हो सकता था।",
-          "camera_type": "hospital_wide_shot",
+          "narration_text": "शायद ऐसी दुनिया में इंसान की सबसे बड़ी ताकत उसकी समझदारी होती।",
+          "camera_type": "inspirational_low_angle",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A historical hospital ward with wooden beds, natural window light, simple medical instruments, glass medicine bottles, and doctors in old-fashioned clothing. A doctor stickman with a round white face, exactly two tiny solid-black dot eyes, and a white coat checks a patient manually while the young male narrator in a dark-blue shirt, black trousers, and white shoes watches with concern. No electric monitors, scanners, or electronic medical equipment. Hand-drawn illustration, vertical 9:16."
+          "prompt_action": "The recurring stickman presenter with a round white face, exactly two tiny solid-black dot eyes, thin black stick limbs and a small red bow tie stands on a small hill overlooking a peaceful town. Below, people cooperate in a school, a hospital, a marketplace and a public park. A white dove with an olive branch flies above. Warm golden sunlight, bold imperfect black outlines, vertical 9:16.",
+          "session_delta_prompt": "Keep the presenter identical and show a hopeful but realistic peaceful society."
         },
         {
           "beat_id": "s05_b06",
-          "narration_text": "और सबसे बड़ी बात, हमारी पूरी जीवनशैली आज से कई पीढ़ियाँ पीछे हो सकती थी।",
-          "camera_type": "dramatic_wide_shot",
+          "narration_text": "लेकिन सच बताओ... अगर इंसान लड़ना भूल जाए, तो क्या दुनिया सच में बेहतर बन जाएगी?",
+          "camera_type": "direct_to_camera",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A sweeping hand-drawn panoramic view of a historical town with horse carts, candlelit homes, steam-powered factories, windmills, and people doing everyday tasks manually. The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes stands on a small hill looking over the entire town. Cinematic warm sunset, bold black ink outlines, earthy colors, vertical 9:16."
-        },
-        {
-          "beat_id": "s05_b07",
-          "narration_text": "तो बताइए, क्या आप ऐसी दुनिया में एक दिन भी रह पाएँगे?",
-          "camera_type": "direct_to_camera_close_up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "The young male stickman narrator with a round white face, exactly two tiny solid-black dot eyes, dark-blue shirt, black trousers, and white shoes faces the viewer directly with one eyebrow-free simple curved mouth expression, one hand pointing toward the viewer and the other holding a small glowing oil lamp. Behind him is a softly illustrated candlelit historical town at dusk. Leave clean negative space around the character, no written words, bold hand-drawn black ink, warm off-white paper, vertical 9:16."
+          "prompt_action": "The recurring hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes, thin black stick limbs and small red bow tie looks directly at the viewer with a thoughtful expression. Behind the presenter, a dramatic split scene shows a peaceful community on one side and a tense international negotiation table on the other. A small question mark floats overhead. Warm off-white paper, bold black ink outlines, vertical 9:16.",
+          "session_delta_prompt": "End with the exact same presenter face, dot eyes and red bow tie. Leave uncluttered space around the character."
         }
       ]
     }

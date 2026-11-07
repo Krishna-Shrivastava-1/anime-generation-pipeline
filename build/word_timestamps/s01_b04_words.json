@@ -1,47 +1,67 @@
 [
   {
-    "word": "और",
+    "word": "क्योंकि",
     "start_ms": 0,
-    "end_ms": 155
+    "end_ms": 452
   },
   {
-    "word": "आपका",
-    "start_ms": 155,
-    "end_ms": 496
+    "word": "लड़ाई",
+    "start_ms": 452,
+    "end_ms": 839
   },
   {
-    "word": "मोबाइल?",
-    "start_ms": 496,
-    "end_ms": 1063
+    "word": "भूलना",
+    "start_ms": 839,
+    "end_ms": 1256
   },
   {
-    "word": "वो",
-    "start_ms": 1063,
-    "end_ms": 1250
+    "word": "और",
+    "start_ms": 1256,
+    "end_ms": 1399
   },
   {
-    "word": "तो",
-    "start_ms": 1250,
-    "end_ms": 1436
+    "word": "हर",
+    "start_ms": 1399,
+    "end_ms": 1543
   },
   {
-    "word": "पैदा",
-    "start_ms": 1436,
-    "end_ms": 1809
+    "word": "बात",
+    "start_ms": 1543,
+    "end_ms": 1787
   },
   {
-    "word": "ही",
-    "start_ms": 1809,
-    "end_ms": 1995
+    "word": "पर",
+    "start_ms": 1787,
+    "end_ms": 1930
   },
   {
-    "word": "नहीं",
-    "start_ms": 1995,
-    "end_ms": 2368
+    "word": "सहमत",
+    "start_ms": 1930,
+    "end_ms": 2217
   },
   {
-    "word": "होता!",
-    "start_ms": 2368,
-    "end_ms": 2780
+    "word": "होना…",
+    "start_ms": 2217,
+    "end_ms": 2598
+  },
+  {
+    "word": "दोनों",
+    "start_ms": 2598,
+    "end_ms": 3043
+  },
+  {
+    "word": "अलग",
+    "start_ms": 3043,
+    "end_ms": 3258
+  },
+  {
+    "word": "चीज़ें",
+    "start_ms": 3258,
+    "end_ms": 3775
+  },
+  {
+    "word": "हैं।",
+    "start_ms": 3775,
+    "end_ms": 4119
   }
 ]

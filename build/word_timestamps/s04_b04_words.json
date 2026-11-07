@@ -1,87 +1,92 @@
 [
   {
-    "word": "क्योंकि",
+    "word": "जो",
     "start_ms": 0,
-    "end_ms": 458
+    "end_ms": 186
   },
   {
-    "word": "आधुनिक",
-    "start_ms": 458,
-    "end_ms": 866
+    "word": "पैसा",
+    "start_ms": 186,
+    "end_ms": 558
   },
   {
-    "word": "विमानों",
-    "start_ms": 866,
-    "end_ms": 1448
-  },
-  {
-    "word": "को",
-    "start_ms": 1448,
-    "end_ms": 1623
-  },
-  {
-    "word": "दिशा",
-    "start_ms": 1623,
-    "end_ms": 1928
-  },
-  {
-    "word": "देने,",
-    "start_ms": 1928,
-    "end_ms": 2314
-  },
-  {
-    "word": "नियंत्रित",
-    "start_ms": 2314,
-    "end_ms": 2874
-  },
-  {
-    "word": "करने",
-    "start_ms": 2874,
-    "end_ms": 3195
+    "word": "हथियारों",
+    "start_ms": 558,
+    "end_ms": 1255
   },
   {
     "word": "और",
-    "start_ms": 3195,
-    "end_ms": 3340
+    "start_ms": 1255,
+    "end_ms": 1411
   },
   {
-    "word": "सुरक्षित",
-    "start_ms": 3340,
-    "end_ms": 3799
-  },
-  {
-    "word": "उड़ाने",
-    "start_ms": 3799,
-    "end_ms": 4294
+    "word": "युद्ध",
+    "start_ms": 1411,
+    "end_ms": 1682
   },
   {
     "word": "में",
-    "start_ms": 4294,
-    "end_ms": 4570
+    "start_ms": 1682,
+    "end_ms": 1977
   },
   {
-    "word": "बिजली",
-    "start_ms": 4570,
-    "end_ms": 4949
+    "word": "जाता,",
+    "start_ms": 1977,
+    "end_ms": 2387
   },
   {
-    "word": "की",
-    "start_ms": 4949,
-    "end_ms": 5123
+    "word": "उसका",
+    "start_ms": 2387,
+    "end_ms": 2729
   },
   {
-    "word": "अहम",
-    "start_ms": 5123,
-    "end_ms": 5342
+    "word": "बड़ा",
+    "start_ms": 2729,
+    "end_ms": 3070
   },
   {
-    "word": "भूमिका",
-    "start_ms": 5342,
-    "end_ms": 5822
+    "word": "हिस्सा",
+    "start_ms": 3070,
+    "end_ms": 3450
   },
   {
-    "word": "है।",
-    "start_ms": 5822,
-    "end_ms": 6069
+    "word": "शिक्षा,",
+    "start_ms": 3450,
+    "end_ms": 3868
+  },
+  {
+    "word": "अस्पताल",
+    "start_ms": 3868,
+    "end_ms": 4341
+  },
+  {
+    "word": "और",
+    "start_ms": 4341,
+    "end_ms": 4496
+  },
+  {
+    "word": "रिसर्च",
+    "start_ms": 4496,
+    "end_ms": 4845
+  },
+  {
+    "word": "में",
+    "start_ms": 4845,
+    "end_ms": 5140
+  },
+  {
+    "word": "लग",
+    "start_ms": 5140,
+    "end_ms": 5295
+  },
+  {
+    "word": "सकता",
+    "start_ms": 5295,
+    "end_ms": 5636
+  },
+  {
+    "word": "था।",
+    "start_ms": 5636,
+    "end_ms": 5899
   }
 ]

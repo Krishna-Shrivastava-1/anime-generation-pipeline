@@ -1,52 +1,67 @@
 [
   {
-    "word": "इसलिए",
+    "word": "स्कूलों",
     "start_ms": 0,
-    "end_ms": 395
+    "end_ms": 484
   },
   {
-    "word": "सामान",
-    "start_ms": 395,
-    "end_ms": 873
+    "word": "में",
+    "start_ms": 484,
+    "end_ms": 751
   },
   {
-    "word": "बनाना",
-    "start_ms": 873,
-    "end_ms": 1352
+    "word": "बच्चों",
+    "start_ms": 751,
+    "end_ms": 1137
   },
   {
-    "word": "महँगा",
-    "start_ms": 1352,
-    "end_ms": 1797
+    "word": "को",
+    "start_ms": 1137,
+    "end_ms": 1305
   },
   {
-    "word": "होता",
-    "start_ms": 1797,
-    "end_ms": 2193
+    "word": "सिर्फ",
+    "start_ms": 1305,
+    "end_ms": 1551
   },
   {
-    "word": "और",
-    "start_ms": 2193,
-    "end_ms": 2358
+    "word": "पढ़ाई",
+    "start_ms": 1551,
+    "end_ms": 1930
   },
   {
-    "word": "उत्पादन",
-    "start_ms": 2358,
-    "end_ms": 2861
+    "word": "नहीं,",
+    "start_ms": 1930,
+    "end_ms": 2302
+  },
+  {
+    "word": "बल्कि",
+    "start_ms": 2302,
+    "end_ms": 2548
+  },
+  {
+    "word": "मतभेद",
+    "start_ms": 2548,
+    "end_ms": 2927
+  },
+  {
+    "word": "सुलझाना",
+    "start_ms": 2927,
+    "end_ms": 3460
   },
   {
     "word": "भी",
-    "start_ms": 2861,
-    "end_ms": 3058
+    "start_ms": 3460,
+    "end_ms": 3629
   },
   {
-    "word": "धीमा",
-    "start_ms": 3058,
-    "end_ms": 3454
+    "word": "सिखाया",
+    "start_ms": 3629,
+    "end_ms": 4092
   },
   {
-    "word": "रहता।",
-    "start_ms": 3454,
-    "end_ms": 3900
+    "word": "जाएगा।",
+    "start_ms": 4092,
+    "end_ms": 4570
   }
 ]

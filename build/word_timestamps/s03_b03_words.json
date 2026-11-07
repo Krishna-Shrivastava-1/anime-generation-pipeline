@@ -2,66 +2,61 @@
   {
     "word": "लेकिन",
     "start_ms": 0,
-    "end_ms": 422
+    "end_ms": 410
   },
   {
-    "word": "हर",
-    "start_ms": 422,
-    "end_ms": 584
-  },
-  {
-    "word": "मशीन",
-    "start_ms": 584,
-    "end_ms": 942
-  },
-  {
-    "word": "को",
-    "start_ms": 942,
-    "end_ms": 1137
-  },
-  {
-    "word": "चलाने",
-    "start_ms": 1137,
-    "end_ms": 1608
+    "word": "समाधान",
+    "start_ms": 410,
+    "end_ms": 947
   },
   {
     "word": "के",
-    "start_ms": 1608,
-    "end_ms": 1803
+    "start_ms": 947,
+    "end_ms": 1137
   },
   {
     "word": "लिए",
-    "start_ms": 1803,
-    "end_ms": 2030
+    "start_ms": 1137,
+    "end_ms": 1358
   },
   {
-    "word": "भाप,",
-    "start_ms": 2030,
-    "end_ms": 2347
+    "word": "पंचायत,",
+    "start_ms": 1358,
+    "end_ms": 1935
   },
   {
-    "word": "ईंधन",
-    "start_ms": 2347,
-    "end_ms": 2705
+    "word": "अदालत",
+    "start_ms": 1935,
+    "end_ms": 2361
   },
   {
     "word": "और",
-    "start_ms": 2705,
-    "end_ms": 2867
+    "start_ms": 2361,
+    "end_ms": 2519
   },
   {
-    "word": "मेहनत",
-    "start_ms": 2867,
-    "end_ms": 3306
+    "word": "बातचीत",
+    "start_ms": 2519,
+    "end_ms": 3056
   },
   {
-    "word": "चाहिए",
-    "start_ms": 3306,
-    "end_ms": 3728
+    "word": "का",
+    "start_ms": 3056,
+    "end_ms": 3246
   },
   {
-    "word": "होती।",
-    "start_ms": 3728,
-    "end_ms": 4199
+    "word": "सहारा",
+    "start_ms": 3246,
+    "end_ms": 3704
+  },
+  {
+    "word": "लेना",
+    "start_ms": 3704,
+    "end_ms": 4083
+  },
+  {
+    "word": "पड़ेगा।",
+    "start_ms": 4083,
+    "end_ms": 4699
   }
 ]

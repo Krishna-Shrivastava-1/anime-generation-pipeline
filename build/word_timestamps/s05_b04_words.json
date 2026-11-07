@@ -1,77 +1,87 @@
 [
   {
-    "word": "कुछ",
+    "word": "क्योंकि",
     "start_ms": 0,
-    "end_ms": 208
+    "end_ms": 467
   },
   {
-    "word": "तकनीकें",
-    "start_ms": 208,
-    "end_ms": 818
+    "word": "शांति",
+    "start_ms": 467,
+    "end_ms": 883
   },
   {
-    "word": "आगे",
-    "start_ms": 818,
-    "end_ms": 1071
+    "word": "सिर्फ",
+    "start_ms": 883,
+    "end_ms": 1143
   },
   {
-    "word": "बढ़तीं,",
-    "start_ms": 1071,
-    "end_ms": 1614
+    "word": "हथियार",
+    "start_ms": 1143,
+    "end_ms": 1604
   },
   {
-    "word": "लेकिन",
-    "start_ms": 1614,
-    "end_ms": 2001
+    "word": "न",
+    "start_ms": 1604,
+    "end_ms": 1678
   },
   {
-    "word": "कंप्यूटर,",
-    "start_ms": 2001,
-    "end_ms": 2596
+    "word": "चलाने",
+    "start_ms": 1678,
+    "end_ms": 2109
   },
   {
-    "word": "इंटरनेट",
-    "start_ms": 2596,
-    "end_ms": 3176
+    "word": "से",
+    "start_ms": 2109,
+    "end_ms": 2287
   },
   {
-    "word": "और",
-    "start_ms": 3176,
-    "end_ms": 3325
+    "word": "नहीं,",
+    "start_ms": 2287,
+    "end_ms": 2681
   },
   {
-    "word": "आधुनिक",
-    "start_ms": 3325,
-    "end_ms": 3742
+    "word": "एक-दूसरे",
+    "start_ms": 2681,
+    "end_ms": 3297
   },
   {
-    "word": "डिजिटल",
-    "start_ms": 3742,
-    "end_ms": 4159
+    "word": "के",
+    "start_ms": 3297,
+    "end_ms": 3475
   },
   {
-    "word": "दुनिया",
-    "start_ms": 4159,
-    "end_ms": 4605
+    "word": "अधिकारों",
+    "start_ms": 3475,
+    "end_ms": 4144
   },
   {
-    "word": "शायद",
-    "start_ms": 4605,
-    "end_ms": 4932
+    "word": "की",
+    "start_ms": 4144,
+    "end_ms": 4322
   },
   {
-    "word": "होती",
-    "start_ms": 4932,
-    "end_ms": 5289
+    "word": "इज़्ज़त",
+    "start_ms": 4322,
+    "end_ms": 4745
   },
   {
-    "word": "ही",
-    "start_ms": 5289,
-    "end_ms": 5468
+    "word": "करने",
+    "start_ms": 4745,
+    "end_ms": 5072
   },
   {
-    "word": "नहीं।",
-    "start_ms": 5468,
-    "end_ms": 5899
+    "word": "से",
+    "start_ms": 5072,
+    "end_ms": 5250
+  },
+  {
+    "word": "बनती",
+    "start_ms": 5250,
+    "end_ms": 5577
+  },
+  {
+    "word": "है।",
+    "start_ms": 5577,
+    "end_ms": 5830
   }
 ]

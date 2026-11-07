@@ -1,57 +1,72 @@
 [
   {
-    "word": "लोग",
+    "word": "इसलिए",
     "start_ms": 0,
-    "end_ms": 251
+    "end_ms": 360
   },
   {
-    "word": "मोमबत्ती,",
-    "start_ms": 251,
-    "end_ms": 843
+    "word": "दुनिया",
+    "start_ms": 360,
+    "end_ms": 810
   },
   {
-    "word": "तेल",
-    "start_ms": 843,
-    "end_ms": 1094
+    "word": "को",
+    "start_ms": 810,
+    "end_ms": 991
   },
   {
-    "word": "के",
-    "start_ms": 1094,
-    "end_ms": 1272
+    "word": "सिर्फ",
+    "start_ms": 991,
+    "end_ms": 1253
   },
   {
-    "word": "दीये",
-    "start_ms": 1272,
-    "end_ms": 1627
+    "word": "लड़ना",
+    "start_ms": 1253,
+    "end_ms": 1659
+  },
+  {
+    "word": "भूलना",
+    "start_ms": 1659,
+    "end_ms": 2094
+  },
+  {
+    "word": "नहीं,",
+    "start_ms": 2094,
+    "end_ms": 2492
+  },
+  {
+    "word": "बल्कि",
+    "start_ms": 2492,
+    "end_ms": 2755
+  },
+  {
+    "word": "न्याय",
+    "start_ms": 2755,
+    "end_ms": 3063
   },
   {
     "word": "और",
-    "start_ms": 1627,
-    "end_ms": 1775
+    "start_ms": 3063,
+    "end_ms": 3213
   },
   {
-    "word": "प्राकृतिक",
-    "start_ms": 1775,
-    "end_ms": 2359
+    "word": "सहयोग",
+    "start_ms": 3213,
+    "end_ms": 3618
   },
   {
-    "word": "रोशनी",
-    "start_ms": 2359,
-    "end_ms": 2788
+    "word": "सीखना",
+    "start_ms": 3618,
+    "end_ms": 4054
   },
   {
-    "word": "का",
-    "start_ms": 2788,
-    "end_ms": 2965
+    "word": "भी",
+    "start_ms": 4054,
+    "end_ms": 4234
   },
   {
-    "word": "इस्तेमाल",
-    "start_ms": 2965,
-    "end_ms": 3520
-  },
-  {
-    "word": "करते।",
-    "start_ms": 3520,
-    "end_ms": 3920
+    "word": "पड़ेगा।",
+    "start_ms": 4234,
+    "end_ms": 4820
   }
 ]

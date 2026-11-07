@@ -1,62 +1,72 @@
 [
   {
-    "word": "और",
+    "word": "शायद",
     "start_ms": 0,
-    "end_ms": 154
+    "end_ms": 305
   },
   {
-    "word": "दुनिया",
-    "start_ms": 154,
-    "end_ms": 618
+    "word": "देशों",
+    "start_ms": 305,
+    "end_ms": 735
   },
   {
     "word": "के",
-    "start_ms": 618,
-    "end_ms": 804
+    "start_ms": 735,
+    "end_ms": 901
   },
   {
-    "word": "अलग-अलग",
-    "start_ms": 804,
-    "end_ms": 1306
+    "word": "बीच",
+    "start_ms": 901,
+    "end_ms": 1137
   },
   {
-    "word": "हिस्सों",
-    "start_ms": 1306,
-    "end_ms": 1793
+    "word": "मुकाबला",
+    "start_ms": 1137,
+    "end_ms": 1664
+  },
+  {
+    "word": "युद्ध",
+    "start_ms": 1664,
+    "end_ms": 1907
   },
   {
     "word": "से",
-    "start_ms": 1793,
-    "end_ms": 1979
+    "start_ms": 1907,
+    "end_ms": 2074
   },
   {
-    "word": "बात",
-    "start_ms": 1979,
-    "end_ms": 2242
+    "word": "नहीं,",
+    "start_ms": 2074,
+    "end_ms": 2441
   },
   {
-    "word": "करना",
-    "start_ms": 2242,
-    "end_ms": 2582
+    "word": "तकनीक,",
+    "start_ms": 2441,
+    "end_ms": 2851
   },
   {
-    "word": "भी",
-    "start_ms": 2582,
-    "end_ms": 2767
+    "word": "व्यापार",
+    "start_ms": 2851,
+    "end_ms": 3302
   },
   {
-    "word": "बहुत",
-    "start_ms": 2767,
-    "end_ms": 3061
+    "word": "और",
+    "start_ms": 3302,
+    "end_ms": 3440
   },
   {
-    "word": "मुश्किल",
-    "start_ms": 3061,
-    "end_ms": 3471
+    "word": "खेलों",
+    "start_ms": 3440,
+    "end_ms": 3871
+  },
+  {
+    "word": "से",
+    "start_ms": 3871,
+    "end_ms": 4037
   },
   {
     "word": "होता।",
-    "start_ms": 3471,
-    "end_ms": 3919
+    "start_ms": 4037,
+    "end_ms": 4439
   }
 ]

@@ -1,72 +1,47 @@
 [
   {
-    "word": "सुबह",
-    "start_ms": 0,
-    "end_ms": 289
+    "word": "सबसे",
+    "start_ms": 10,
+    "end_ms": 328
   },
   {
-    "word": "उठने",
-    "start_ms": 289,
-    "end_ms": 623
+    "word": "पहले",
+    "start_ms": 328,
+    "end_ms": 646
   },
   {
-    "word": "के",
-    "start_ms": 623,
-    "end_ms": 806
+    "word": "बदलाव",
+    "start_ms": 646,
+    "end_ms": 1037
   },
   {
-    "word": "लिए",
-    "start_ms": 806,
-    "end_ms": 1019
+    "word": "दिखेगा",
+    "start_ms": 1037,
+    "end_ms": 1514
   },
   {
-    "word": "अलार्म",
-    "start_ms": 1019,
-    "end_ms": 1407
+    "word": "हमारी",
+    "start_ms": 1514,
+    "end_ms": 1934
   },
   {
-    "word": "नहीं,",
-    "start_ms": 1407,
-    "end_ms": 1810
+    "word": "रोज़मर्रा",
+    "start_ms": 1934,
+    "end_ms": 2549
   },
   {
-    "word": "आपको",
-    "start_ms": 1810,
-    "end_ms": 2145
+    "word": "की",
+    "start_ms": 2549,
+    "end_ms": 2722
   },
   {
-    "word": "सूरज",
-    "start_ms": 2145,
-    "end_ms": 2480
+    "word": "ज़िंदगी",
+    "start_ms": 2722,
+    "end_ms": 3272
   },
   {
-    "word": "और",
-    "start_ms": 2480,
-    "end_ms": 2632
-  },
-  {
-    "word": "मुर्गे",
-    "start_ms": 2632,
-    "end_ms": 3004
-  },
-  {
-    "word": "पर",
-    "start_ms": 3004,
-    "end_ms": 3157
-  },
-  {
-    "word": "भरोसा",
-    "start_ms": 3157,
-    "end_ms": 3598
-  },
-  {
-    "word": "करना",
-    "start_ms": 3598,
-    "end_ms": 3933
-  },
-  {
-    "word": "पड़ता।",
-    "start_ms": 3933,
-    "end_ms": 4420
+    "word": "में।",
+    "start_ms": 3272,
+    "end_ms": 3620
   }
 ]

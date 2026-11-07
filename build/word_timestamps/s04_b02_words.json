@@ -1,57 +1,67 @@
 [
   {
-    "word": "लंबी",
+    "word": "ना",
     "start_ms": 0,
-    "end_ms": 334
+    "end_ms": 169
   },
   {
-    "word": "दूरी",
-    "start_ms": 334,
-    "end_ms": 668
+    "word": "सेनाएँ",
+    "start_ms": 169,
+    "end_ms": 648
   },
   {
-    "word": "के",
-    "start_ms": 668,
-    "end_ms": 835
+    "word": "हमला",
+    "start_ms": 648,
+    "end_ms": 958
   },
   {
-    "word": "लिए",
-    "start_ms": 835,
-    "end_ms": 1030
+    "word": "करेंगी,",
+    "start_ms": 958,
+    "end_ms": 1500
   },
   {
-    "word": "भाप",
-    "start_ms": 1030,
-    "end_ms": 1267
+    "word": "ना",
+    "start_ms": 1500,
+    "end_ms": 1669
   },
   {
-    "word": "वाले",
-    "start_ms": 1267,
-    "end_ms": 1601
+    "word": "मिसाइलें",
+    "start_ms": 1669,
+    "end_ms": 2303
   },
   {
-    "word": "जहाज़",
-    "start_ms": 1601,
-    "end_ms": 1977
+    "word": "दागी",
+    "start_ms": 2303,
+    "end_ms": 2642
   },
   {
-    "word": "और",
-    "start_ms": 1977,
-    "end_ms": 2116
+    "word": "जाएँगी,",
+    "start_ms": 2642,
+    "end_ms": 3156
   },
   {
-    "word": "ट्रेनें",
-    "start_ms": 2116,
-    "end_ms": 2596
+    "word": "ना",
+    "start_ms": 3156,
+    "end_ms": 3325
   },
   {
-    "word": "इस्तेमाल",
-    "start_ms": 2596,
-    "end_ms": 3118
+    "word": "शहरों",
+    "start_ms": 3325,
+    "end_ms": 3734
   },
   {
-    "word": "होतीं।",
-    "start_ms": 3118,
-    "end_ms": 3620
+    "word": "पर",
+    "start_ms": 3734,
+    "end_ms": 3874
+  },
+  {
+    "word": "बम",
+    "start_ms": 3874,
+    "end_ms": 4015
+  },
+  {
+    "word": "गिरेंगे।",
+    "start_ms": 4015,
+    "end_ms": 4649
   }
 ]

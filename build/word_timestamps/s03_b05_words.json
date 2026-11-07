@@ -1,72 +1,72 @@
 [
   {
-    "word": "और",
+    "word": "लोग",
     "start_ms": 0,
-    "end_ms": 146
+    "end_ms": 273
   },
   {
-    "word": "दुनिया",
-    "start_ms": 146,
-    "end_ms": 586
+    "word": "अपनी",
+    "start_ms": 273,
+    "end_ms": 627
   },
   {
-    "word": "में",
-    "start_ms": 586,
-    "end_ms": 864
+    "word": "बात",
+    "start_ms": 627,
+    "end_ms": 900
   },
   {
-    "word": "आज",
-    "start_ms": 864,
-    "end_ms": 1011
+    "word": "मनवाने",
+    "start_ms": 900,
+    "end_ms": 1447
   },
   {
-    "word": "जितनी",
-    "start_ms": 1011,
-    "end_ms": 1392
+    "word": "के",
+    "start_ms": 1447,
+    "end_ms": 1640
   },
   {
-    "word": "तेज़",
-    "start_ms": 1392,
-    "end_ms": 1715
+    "word": "लिए",
+    "start_ms": 1640,
+    "end_ms": 1865
   },
   {
-    "word": "औद्योगिक",
-    "start_ms": 1715,
-    "end_ms": 2220
+    "word": "ताकत",
+    "start_ms": 1865,
+    "end_ms": 2218
   },
   {
-    "word": "तरक्की",
-    "start_ms": 2220,
-    "end_ms": 2594
+    "word": "नहीं,",
+    "start_ms": 2218,
+    "end_ms": 2644
   },
   {
-    "word": "दिखती",
-    "start_ms": 2594,
-    "end_ms": 2975
+    "word": "बल्कि",
+    "start_ms": 2644,
+    "end_ms": 2926
   },
   {
-    "word": "है,",
-    "start_ms": 2975,
-    "end_ms": 3188
+    "word": "तर्क",
+    "start_ms": 2926,
+    "end_ms": 3143
   },
   {
-    "word": "शायद",
-    "start_ms": 3188,
-    "end_ms": 3510
+    "word": "और",
+    "start_ms": 3143,
+    "end_ms": 3304
   },
   {
-    "word": "उतनी",
-    "start_ms": 3510,
-    "end_ms": 3833
+    "word": "सबूत",
+    "start_ms": 3304,
+    "end_ms": 3657
   },
   {
-    "word": "नहीं",
-    "start_ms": 3833,
-    "end_ms": 4184
+    "word": "इस्तेमाल",
+    "start_ms": 3657,
+    "end_ms": 4260
   },
   {
-    "word": "होती।",
-    "start_ms": 4184,
-    "end_ms": 4609
+    "word": "करेंगे।",
+    "start_ms": 4260,
+    "end_ms": 4920
   }
 ]

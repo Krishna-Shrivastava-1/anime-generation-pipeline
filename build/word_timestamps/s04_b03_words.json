@@ -1,57 +1,67 @@
 [
   {
-    "word": "हवाई",
+    "word": "सीमाओं",
     "start_ms": 0,
-    "end_ms": 317
+    "end_ms": 539
   },
   {
-    "word": "जहाज़ों",
-    "start_ms": 317,
-    "end_ms": 910
+    "word": "पर",
+    "start_ms": 539,
+    "end_ms": 689
   },
   {
-    "word": "की",
-    "start_ms": 910,
-    "end_ms": 1083
-  },
-  {
-    "word": "दुनिया",
-    "start_ms": 1083,
-    "end_ms": 1517
-  },
-  {
-    "word": "भी",
-    "start_ms": 1517,
-    "end_ms": 1690
+    "word": "सैनिक",
+    "start_ms": 689,
+    "end_ms": 1079
   },
   {
     "word": "शायद",
-    "start_ms": 1690,
-    "end_ms": 2008
+    "start_ms": 1079,
+    "end_ms": 1409
   },
   {
-    "word": "आज",
-    "start_ms": 2008,
-    "end_ms": 2152
+    "word": "लड़ने",
+    "start_ms": 1409,
+    "end_ms": 1814
   },
   {
-    "word": "जैसी",
-    "start_ms": 2152,
-    "end_ms": 2499
+    "word": "की",
+    "start_ms": 1814,
+    "end_ms": 1994
   },
   {
-    "word": "विकसित",
-    "start_ms": 2499,
-    "end_ms": 2904
+    "word": "जगह",
+    "start_ms": 1994,
+    "end_ms": 2219
   },
   {
-    "word": "नहीं",
-    "start_ms": 2904,
-    "end_ms": 3250
+    "word": "निगरानी",
+    "start_ms": 2219,
+    "end_ms": 2789
   },
   {
-    "word": "होती।",
-    "start_ms": 3250,
-    "end_ms": 3670
+    "word": "और",
+    "start_ms": 2789,
+    "end_ms": 2939
+  },
+  {
+    "word": "बचाव",
+    "start_ms": 2939,
+    "end_ms": 3269
+  },
+  {
+    "word": "का",
+    "start_ms": 3269,
+    "end_ms": 3449
+  },
+  {
+    "word": "काम",
+    "start_ms": 3449,
+    "end_ms": 3704
+  },
+  {
+    "word": "करेंगे।",
+    "start_ms": 3704,
+    "end_ms": 4319
   }
 ]

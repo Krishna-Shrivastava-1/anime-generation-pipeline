@@ -1,67 +1,52 @@
 [
   {
-    "word": "भाप",
+    "word": "पड़ोसी",
     "start_ms": 0,
-    "end_ms": 273
+    "end_ms": 468
   },
   {
-    "word": "के",
-    "start_ms": 273,
-    "end_ms": 466
+    "word": "पानी,",
+    "start_ms": 468,
+    "end_ms": 833
   },
   {
-    "word": "इंजन",
-    "start_ms": 466,
-    "end_ms": 820
+    "word": "पार्किंग",
+    "start_ms": 833,
+    "end_ms": 1336
   },
   {
-    "word": "और",
-    "start_ms": 820,
-    "end_ms": 981
+    "word": "या",
+    "start_ms": 1336,
+    "end_ms": 1502
   },
   {
-    "word": "कोयले",
-    "start_ms": 981,
-    "end_ms": 1447
+    "word": "ज़मीन",
+    "start_ms": 1502,
+    "end_ms": 1874
   },
   {
-    "word": "से",
-    "start_ms": 1447,
-    "end_ms": 1640
+    "word": "को",
+    "start_ms": 1874,
+    "end_ms": 2039
   },
   {
-    "word": "चलने",
-    "start_ms": 1640,
-    "end_ms": 1994
+    "word": "लेकर",
+    "start_ms": 2039,
+    "end_ms": 2342
   },
   {
-    "word": "वाली",
-    "start_ms": 1994,
-    "end_ms": 2380
+    "word": "बहस",
+    "start_ms": 2342,
+    "end_ms": 2549
   },
   {
-    "word": "मशीनें",
-    "start_ms": 2380,
-    "end_ms": 2959
+    "word": "तो",
+    "start_ms": 2549,
+    "end_ms": 2714
   },
   {
-    "word": "बहुत",
-    "start_ms": 2959,
-    "end_ms": 3265
-  },
-  {
-    "word": "बड़ा",
-    "start_ms": 3265,
-    "end_ms": 3619
-  },
-  {
-    "word": "काम",
-    "start_ms": 3619,
-    "end_ms": 3893
-  },
-  {
-    "word": "करतीं।",
-    "start_ms": 3893,
-    "end_ms": 4439
+    "word": "करेंगे।",
+    "start_ms": 2714,
+    "end_ms": 3280
   }
 ]

@@ -1,77 +1,82 @@
 [
   {
-    "word": "और",
+    "word": "लेकिन",
     "start_ms": 0,
-    "end_ms": 147
+    "end_ms": 387
   },
   {
-    "word": "सबसे",
-    "start_ms": 147,
-    "end_ms": 471
+    "word": "सच",
+    "start_ms": 387,
+    "end_ms": 537
   },
   {
-    "word": "बड़ी",
-    "start_ms": 471,
-    "end_ms": 795
+    "word": "बताओ…",
+    "start_ms": 537,
+    "end_ms": 902
   },
   {
-    "word": "बात,",
-    "start_ms": 795,
-    "end_ms": 1082
+    "word": "अगर",
+    "start_ms": 902,
+    "end_ms": 1126
   },
   {
-    "word": "हमारी",
-    "start_ms": 1082,
-    "end_ms": 1509
+    "word": "इंसान",
+    "start_ms": 1126,
+    "end_ms": 1559
   },
   {
-    "word": "पूरी",
-    "start_ms": 1509,
-    "end_ms": 1863
+    "word": "लड़ना",
+    "start_ms": 1559,
+    "end_ms": 1962
   },
   {
-    "word": "जीवनशैली",
-    "start_ms": 1863,
-    "end_ms": 2540
+    "word": "भूल",
+    "start_ms": 1962,
+    "end_ms": 2216
   },
   {
-    "word": "आज",
-    "start_ms": 2540,
-    "end_ms": 2687
+    "word": "जाए,",
+    "start_ms": 2216,
+    "end_ms": 2506
   },
   {
-    "word": "से",
-    "start_ms": 2687,
-    "end_ms": 2864
+    "word": "तो",
+    "start_ms": 2506,
+    "end_ms": 2686
   },
   {
-    "word": "कई",
-    "start_ms": 2864,
-    "end_ms": 3012
+    "word": "क्या",
+    "start_ms": 2686,
+    "end_ms": 2917
   },
   {
-    "word": "पीढ़ियाँ",
-    "start_ms": 3012,
-    "end_ms": 3645
+    "word": "दुनिया",
+    "start_ms": 2917,
+    "end_ms": 3365
   },
   {
-    "word": "पीछे",
-    "start_ms": 3645,
-    "end_ms": 3998
+    "word": "सच",
+    "start_ms": 3365,
+    "end_ms": 3514
   },
   {
-    "word": "हो",
-    "start_ms": 3998,
-    "end_ms": 4175
+    "word": "में",
+    "start_ms": 3514,
+    "end_ms": 3797
   },
   {
-    "word": "सकती",
-    "start_ms": 4175,
-    "end_ms": 4499
+    "word": "बेहतर",
+    "start_ms": 3797,
+    "end_ms": 4200
   },
   {
-    "word": "थी।",
-    "start_ms": 4499,
-    "end_ms": 4750
+    "word": "बन",
+    "start_ms": 4200,
+    "end_ms": 4349
+  },
+  {
+    "word": "जाएगी?",
+    "start_ms": 4349,
+    "end_ms": 4820
   }
 ]

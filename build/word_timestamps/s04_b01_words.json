@@ -1,37 +1,77 @@
 [
   {
-    "word": "सफर",
+    "word": "अब",
     "start_ms": 0,
-    "end_ms": 249
+    "end_ms": 153
   },
   {
-    "word": "भी",
-    "start_ms": 249,
-    "end_ms": 448
+    "word": "आते",
+    "start_ms": 153,
+    "end_ms": 414
   },
   {
-    "word": "आज",
-    "start_ms": 448,
-    "end_ms": 614
+    "word": "हैं",
+    "start_ms": 414,
+    "end_ms": 705
   },
   {
-    "word": "जैसा",
-    "start_ms": 614,
-    "end_ms": 1013
+    "word": "सबसे",
+    "start_ms": 705,
+    "end_ms": 1042
   },
   {
-    "word": "आसान",
-    "start_ms": 1013,
-    "end_ms": 1379
+    "word": "बड़े",
+    "start_ms": 1042,
+    "end_ms": 1380
   },
   {
-    "word": "नहीं",
-    "start_ms": 1379,
-    "end_ms": 1778
+    "word": "सवाल",
+    "start_ms": 1380,
+    "end_ms": 1717
   },
   {
-    "word": "होता।",
-    "start_ms": 1778,
-    "end_ms": 2260
+    "word": "पर…",
+    "start_ms": 1717,
+    "end_ms": 1909
+  },
+  {
+    "word": "अगर",
+    "start_ms": 1909,
+    "end_ms": 2139
+  },
+  {
+    "word": "देश",
+    "start_ms": 2139,
+    "end_ms": 2399
+  },
+  {
+    "word": "ही",
+    "start_ms": 2399,
+    "end_ms": 2583
+  },
+  {
+    "word": "युद्ध",
+    "start_ms": 2583,
+    "end_ms": 2852
+  },
+  {
+    "word": "करना",
+    "start_ms": 2852,
+    "end_ms": 3189
+  },
+  {
+    "word": "भूल",
+    "start_ms": 3189,
+    "end_ms": 3450
+  },
+  {
+    "word": "जाएँ",
+    "start_ms": 3450,
+    "end_ms": 3787
+  },
+  {
+    "word": "तो?",
+    "start_ms": 3787,
+    "end_ms": 4010
   }
 ]

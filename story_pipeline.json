@@ -1,345 +1,246 @@
 {
   "$schema_version": "2.0.0",
   "project_meta": {
-    "title": "What If The World Forgot How To Fight?",
-    "project_id": "what_if_world_forgot_war_2026",
+    "title": "What To Do When an Aggressive Stranger Confronts You on the Road",
+    "project_id": "road_conflict_smart_response_001",
     "language": "hi-IN",
     "aspect_ratio": "9:16",
     "target_fps": 30
   },
   "global_style": {
-    "art_style": "Minimalist hand-drawn 2D stickman animation in a clean indie webcomic style. Warm off-white paper background, bold slightly imperfect black ink outlines, simple expressive body language, limited earthy accent colors, and cinematic storytelling. Every human character must have a round white face with exactly two tiny simple solid-black dot eyes of identical size and spacing, no pupils, no irises, no eye whites, no highlights, no reflections, no eyelashes and no realistic eye details. Thin black stick limbs, simple curved mouths and clear readable poses. The recurring presenter wears a small red bow tie. Use many distinct illustrations, changing the camera angle, composition, character poses, locations and visual metaphors frequently. Each beat is a fresh image matching its narration, approximately every 2–3 seconds. Keep recurring character designs consistent. Depict conflict and war through non-graphic symbolic imagery, never gore. Vertical 9:16 composition.",
-    "negative_prompt": "Photorealism, 3D rendering, anime, realistic human anatomy, detailed facial features, pupils, irises, eye whites, eye highlights, reflections, eyelashes, inconsistent eye designs, graphic violence, blood, wounds, gore, corpses, realistic weapons being used, glorification of violence, hateful symbols, national stereotypes, political propaganda, text-heavy images, captions, speech bubbles, watermarks, logos, cluttered compositions, overly bright neon colors."
+    "art_style": "Premium polished 2D editorial cartoon animation, featuring consistent full-body human cartoon characters with structured anatomy rather than thin line stick figures. Every character has a large rounded white head, a clearly defined solid torso, two proportionate arms, two proportionate legs, visible hands and shoes. Characters must maintain identical body proportions, head size, limb thickness, clothing and facial design across every image. Main character: young adult male with a rounded white head, exactly two tiny solid-black circular dot eyes, no nose, no mouth, short dark hair, cobalt-blue hoodie, charcoal trousers and white sneakers. Other human characters follow the same structured cartoon anatomy and identical simple facial system. Faces must never become realistic or detailed. Bold clean dark outlines, smooth solid color fills, subtle paper texture, cinematic lighting, rich but controlled colors, expressive body language through posture and gestures, professional visual storytelling, carefully composed vertical 9:16 frames. Characters must always be fully formed cartoon people, never single-line figures, wireframe bodies, floating heads, incomplete limbs or inconsistent stick figures. Keep the visual style consistent across every scene.",
+    "negative_prompt": "Thin single-line stick figures, wireframe people, inconsistent body proportions, changing character designs, missing limbs, floating hands, detached body parts, oversized or tiny heads, realistic human faces, detailed eyes, pupils, irises, eye highlights, eyelashes, extra eyes, different eye spacing, facial expressions drawn with detailed features, 3D rendering, photorealism, anime, messy sketches, washed-out colors, overly pale images, cluttered backgrounds, text, captions, logos, watermarks, gore, physical violence, weapons."
   },
   "assets": {
-    "presenter": {
+    "main_character": {
       "type": "character",
-      "label": "Recurring stickman presenter",
-      "visual_dna": "A simple stickman with a round white face, exactly two tiny solid-black dot eyes, identical size and spacing in every appearance, a simple curved mouth, thin black stick limbs and a small red bow tie. No pupils, irises, eye whites, highlights or realistic eye details."
+      "label": "Arjun - Main Character",
+      "visual_dna": "A young adult male cartoon character with a large rounded white head, exactly two tiny solid-black circular dot eyes with identical spacing, no nose and no mouth. Short neat dark hair. Fixed outfit: cobalt-blue hoodie, charcoal-black straight trousers and clean white sneakers. Clearly structured full-body anatomy with a solid torso, proportionate arms and legs, visible hands and shoes. Consistent head-to-body ratio, clothing and limb thickness in every appearance."
     },
-    "young_man": {
+    "aggressive_driver": {
       "type": "character",
-      "label": "Ordinary young man",
-      "visual_dna": "A simple hand-drawn stickman with a round white face, exactly two tiny solid-black dot eyes, a simple curved mouth, thin black stick limbs, a dark blue shirt, brown trousers and simple black shoes. Consistent appearance in every scene."
+      "label": "Aggressive SUV Driver",
+      "visual_dna": "A tall, broad-shouldered adult male cartoon character with a rounded white head, exactly two tiny solid-black circular dot eyes, no nose and no mouth. Short dark hair, dark maroon jacket, black trousers and dark brown shoes. Structured full-body cartoon anatomy with solid torso and proportionate limbs. Intimidating posture but no physical violence."
     },
-    "young_woman": {
+    "friend": {
       "type": "character",
-      "label": "Ordinary young woman",
-      "visual_dna": "A simple hand-drawn stickman character with a round white face, exactly two tiny solid-black dot eyes, a simple curved mouth, thin black stick limbs, a mustard-yellow top and dark brown trousers. Consistent appearance in every scene."
+      "label": "Arjun's Friend",
+      "visual_dna": "A young adult male cartoon character with a rounded white head, exactly two tiny solid-black circular dot eyes, no nose and no mouth. Short black hair, olive-green sweatshirt, dark blue jeans and grey sneakers. Structured full-body cartoon anatomy, consistent proportions and clothing."
     },
-    "shopkeeper": {
-      "type": "character",
-      "label": "Local shopkeeper",
-      "visual_dna": "A hand-drawn stickman with a round white face, exactly two tiny solid-black dot eyes, a simple curved mouth, thin black stick limbs, a cream shirt and brown waistcoat."
-    },
-    "teacher": {
-      "type": "character",
-      "label": "School teacher",
-      "visual_dna": "A hand-drawn stickman with a round white face, exactly two tiny solid-black dot eyes, a simple curved mouth, thin black stick limbs, a white shirt, dark trousers and simple round spectacles drawn outside the eyes without changing the dot-eye design."
-    },
-    "community": {
-      "type": "character",
-      "label": "Community members",
-      "visual_dna": "A group of diverse simple stickman characters with round white faces, exactly two tiny solid-black dot eyes each, simple curved mouths, thin black stick limbs and different muted earthy-colored clothes. No detailed facial features."
-    },
-    "leader": {
-      "type": "character",
-      "label": "Country leader",
-      "visual_dna": "A simple stickman leader with a round white face, exactly two tiny solid-black dot eyes, a simple curved mouth, thin black stick limbs, a dark formal suit and a small tie. No realistic facial details."
-    },
-    "soldier": {
-      "type": "character",
-      "label": "Military personnel",
-      "visual_dna": "A simple non-threatening stickman in a muted olive uniform and simple helmet, with a round white face and exactly two tiny solid-black dot eyes. Thin black stick limbs and a neutral expression. Depicted in humanitarian or peacekeeping contexts, never attacking anyone."
-    },
-    "family": {
-      "type": "character",
-      "label": "Ordinary family",
-      "visual_dna": "Three simple stickman characters: an adult in a dark blue shirt, another adult in a muted orange top and a child in a mustard-yellow shirt. All have round white faces, exactly two tiny solid-black dot eyes, simple curved mouths and thin black stick limbs."
-    },
-    "street_environment": {
+    "city_road": {
       "type": "environment",
-      "label": "Everyday neighborhood",
-      "visual_dna": "A hand-drawn neighborhood street with small houses, shops, sidewalks, trees, parked bicycles and a public square. Warm off-white paper and earthy accent colors."
+      "label": "Urban Road",
+      "visual_dna": "A realistic but stylized Indian urban road with clearly marked lanes, moving cars, motorcycles, roadside shops, streetlights and a few pedestrians. Warm late-afternoon lighting, clean cinematic 2D cartoon background."
     },
-    "school_environment": {
+    "car_interior": {
       "type": "environment",
-      "label": "School",
-      "visual_dna": "A simple hand-drawn school with classrooms, wooden desks, a playground, a blackboard, books and a courtyard."
+      "label": "Inside Arjun's Car",
+      "visual_dna": "Interior of a modest modern compact car, dark dashboard, steering wheel, front seats, side windows and rear-view mirror. Clean detailed 2D cartoon design with natural daylight."
     },
-    "community_environment": {
+    "public_fuel_station": {
       "type": "environment",
-      "label": "Community meeting place",
-      "visual_dna": "A town community hall with simple chairs, a round discussion table, plants and a large open window. Warm, welcoming hand-drawn environment."
-    },
-    "world_map": {
-      "type": "prop",
-      "label": "World map",
-      "visual_dna": "A simple hand-drawn world map on warm off-white paper with recognizable continent shapes, thin black outlines and no political labels."
-    },
-    "peace_symbol": {
-      "type": "prop",
-      "label": "Peace symbol",
-      "visual_dna": "A simple hand-drawn white dove carrying a small olive branch, outlined in black with a muted green accent."
-    },
-    "broken_sword": {
-      "type": "prop",
-      "label": "Symbolic broken sword",
-      "visual_dna": "A simple symbolic illustration of a broken metal sword resting harmlessly on the ground, with no blood, no person harmed and no violent action."
+      "label": "Busy Fuel Station",
+      "visual_dna": "A well-lit, busy urban fuel station with pumps, a small convenience shop, several parked vehicles and visible customers. Safe public environment with staff and CCTV cameras."
     }
   },
   "scenes": [
     {
       "scene_id": 1,
-      "environment_ref": "street_environment",
+      "environment_ref": "city_road",
       "beats": [
         {
           "beat_id": "s01_b01",
-          "narration_text": "एक सुबह पूरी दुनिया उठती है... और इंसान लड़ना ही भूल चुका होता है।",
-          "camera_type": "dramatic_wide_shot",
+          "narration_text": "सोचो, तुम अपनी कार से घर जा रहे हो और अचानक एक बड़ी एसयूवी तुम्हारा रास्ता काट देती है।",
+          "camera_type": "wide cinematic establishing shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A cinematic hand-drawn stickman illustration of a busy city street suddenly frozen in surprise. Groups of simple stickman people with round white faces and exactly two tiny solid-black dot eyes look confused at one another, while a symbolic broken sword lies harmlessly on the pavement. Buildings, trees and a cloudy morning sky in the background. Warm off-white paper, bold imperfect black ink outlines, earthy colors, vertical 9:16.",
-          "session_delta_prompt": "Establish the world where all humans have lost the ability and instinct to fight, while retaining their intelligence and ability to disagree."
+          "prompt_action": "Vertical 9:16 cinematic view of an Indian urban road in late afternoon. A compact blue car driven by Arjun, a fully formed cartoon man with a white rounded head, exactly two tiny black dot eyes, cobalt-blue hoodie, charcoal trousers and white sneakers, approaches an intersection. A large black SUV suddenly cuts across his lane. Show both complete vehicles, road markings, nearby traffic and roadside shops. Premium polished 2D cartoon style, bold clean outlines, rich colors.",
+          "session_delta_prompt": "Establish Arjun's exact clothing and structured full-body cartoon proportions. Keep his two tiny black dot eyes identical."
         },
         {
           "beat_id": "s01_b02",
-          "narration_text": "ना गुस्से में मारपीट... ना बदला... ना किसी को चोट पहुँचाने का ख्याल।",
-          "camera_type": "street_close_up",
+          "narration_text": "तुम ब्रेक लगाते हो। लेकिन वो आदमी बाहर निकलकर उल्टा तुम्हें ही धमकाने लगता है।",
+          "camera_type": "low-angle dramatic shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Two ordinary hand-drawn stickmen on a neighborhood sidewalk, one wearing a dark blue shirt and brown trousers, the other wearing a mustard-yellow top and dark trousers. Both have round white faces with exactly two tiny solid-black dot eyes. One accidentally bumps into the other, but instead of aggression they step back and gesture apologetically. Simple expressive poses, warm off-white paper, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "The blue-shirt young man and mustard-top young woman should retain their exact clothing and dot-eye designs."
+          "prompt_action": "A broad-shouldered adult male cartoon character wearing a maroon jacket, black trousers and brown shoes has stepped out of a large black SUV and stands beside its open door, aggressively pointing toward Arjun's compact blue car. Arjun remains visible inside his car. Both characters have rounded white heads and exactly two tiny black dot eyes. The SUV driver has a large intimidating stance. Urban traffic continues behind them. Premium polished 2D cartoon animation, dramatic late-afternoon light, vertical 9:16.",
+          "session_delta_prompt": "Keep the SUV driver broad-shouldered and in the same maroon jacket. Arjun remains in his blue hoodie."
         },
         {
           "beat_id": "s01_b03",
-          "narration_text": "लेकिन क्या इसका मतलब ये होगा कि दुनिया में हर समस्या खत्म हो जाएगी?",
-          "camera_type": "presenter_medium_shot",
+          "narration_text": "अब तुम्हारे पास दो रास्ते हैं। पहला, गुस्से में बाहर निकलकर उससे भिड़ जाना।",
+          "camera_type": "medium interior shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The recurring hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes, thin black stick limbs and a small red bow tie stands beside a giant question mark. Behind the presenter, a split scene shows peaceful neighbors on one side and two people arguing over a limited resource on the other. No physical violence. Off-white paper, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "Keep the presenter identical, especially the two tiny black dot eyes and small red bow tie."
+          "prompt_action": "Inside a compact blue car, Arjun in his cobalt-blue hoodie grips the steering wheel tightly with both hands. His shoulders are tense and his body leans forward as he looks toward the angry SUV driver outside. His full head, upper body, both arms and steering wheel are clearly visible. Rounded white face with exactly two tiny black dot eyes, no other facial details. Premium polished 2D cartoon, expressive body language, vertical 9:16.",
+          "session_delta_prompt": "Arjun's hoodie, head shape, eye design and body proportions remain unchanged."
         },
         {
           "beat_id": "s01_b04",
-          "narration_text": "क्योंकि लड़ाई भूलना और हर बात पर सहमत होना... दोनों अलग चीज़ें हैं।",
-          "camera_type": "split_screen",
+          "narration_text": "तुम चिल्लाते हो, बहस करते हो और साबित करने लगते हो कि तुम किसी से डरते नहीं।",
+          "camera_type": "dynamic street-level medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A dynamic two-panel hand-drawn illustration. On the left, two stickmen with round white faces and exactly two tiny black dot eyes calmly disagree while pointing at different ideas on a paper. On the right, another pair of stickmen work together to solve the same disagreement by shaking hands. No violence. Warm off-white paper, bold black ink outlines, vertical 9:16.",
-          "session_delta_prompt": "Show that disagreement still exists even when violence is no longer possible."
+          "prompt_action": "Arjun, wearing his cobalt-blue hoodie, charcoal trousers and white sneakers, stands beside his blue car and angrily gestures with both hands toward the broad-shouldered SUV driver in a maroon jacket. The SUV driver points back aggressively. Both are complete structured cartoon people with visible torsos, arms, legs and shoes, rounded white heads and exactly two tiny black dot eyes. Several passing vehicles slow down behind them. Premium polished 2D cartoon with dramatic composition.",
+          "session_delta_prompt": "Show the confrontation as escalating through posture and gestures only. No physical contact."
+        },
+        {
+          "beat_id": "s01_b05",
+          "narration_text": "लेकिन अब एक छोटी सी सड़क की गलती खतरनाक टकराव बन सकती है।",
+          "camera_type": "wide overhead shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "High-angle cinematic view of a busy Indian road. Arjun in his blue hoodie stands near his compact blue car facing the much larger maroon-jacketed SUV driver. Their vehicles obstruct part of the lane as other cars queue behind them. Pedestrians watch from a distance. Show the growing traffic disruption and tense atmosphere. All people have consistent rounded white heads, exactly two tiny black dot eyes and complete structured cartoon bodies. Premium polished 2D cartoon style.",
+          "session_delta_prompt": "Maintain the same two character designs and vehicles."
+        },
+        {
+          "beat_id": "s01_b06",
+          "narration_text": "दूसरा रास्ता है अपनी सुरक्षा को अपनी इज़्ज़त से भी ऊपर रखना।",
+          "camera_type": "close-up interior shot",
+          "action_mode": "new_camera_angle",
+          "prompt_action": "Inside his compact blue car, Arjun pauses, takes a controlled breath and relaxes his hands slightly on the steering wheel. His cobalt-blue hoodie and rounded white head with exactly two tiny black dot eyes are clearly visible. The aggressive man appears blurred outside the side window. Warm sunlight falls across the dashboard. Premium polished 2D cartoon, cinematic depth, vertical 9:16.",
+          "session_delta_prompt": "Arjun transitions from anger to deliberate calm without changing his character design."
         }
       ]
     },
     {
       "scene_id": 2,
-      "environment_ref": "street_environment",
+      "environment_ref": "car_interior",
       "beats": [
         {
           "beat_id": "s02_b01",
-          "narration_text": "सबसे पहले बदलाव दिखेगा हमारी रोज़मर्रा की ज़िंदगी में।",
-          "camera_type": "overhead_city_view",
+          "narration_text": "सबसे पहले, गाड़ी के अंदर रहो अगर वहाँ रहना सुरक्षित है। दरवाज़े लॉक रखो।",
+          "camera_type": "interior side-angle shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "An overhead hand-drawn view of a neighborhood intersection with small shops, bicycles, trees and pedestrians. Several simple stickman people with round white faces and exactly two tiny black dot eyes move peacefully through the street. The scene feels unusually relaxed, with no threatening gestures. Warm earthy colors, off-white paper, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "Keep all characters visually simple with identical two-dot eyes."
+          "prompt_action": "Arjun sits securely inside his compact blue car, wearing the same cobalt-blue hoodie. One hand is near the door lock and the other rests on the steering wheel. Show the closed car doors, windows and locked-door indicator clearly. The maroon-jacketed aggressive driver is visible outside at a safe distance. Arjun has a rounded white head with exactly two tiny black dot eyes and consistent structured cartoon anatomy. Premium polished 2D cartoon style.",
+          "session_delta_prompt": "The car doors remain closed. Arjun stays inside the vehicle."
         },
         {
           "beat_id": "s02_b02",
-          "narration_text": "मान लीजिए, सड़क पर किसी ने आपकी गाड़ी को टक्कर मार दी।",
-          "camera_type": "dynamic_side_view",
+          "narration_text": "खिड़की से बहस मत करो। धमकी का जवाब धमकी से मत दो।",
+          "camera_type": "close-up through side window",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A small hand-drawn traffic incident on a city street. A young man stickman with a round white face, exactly two tiny black dot eyes, dark blue shirt and brown trousers stands beside his bicycle, which has lightly bumped into a parked scooter. Another stickman in a mustard-yellow top looks surprised. No injuries, no damage beyond a slightly tilted mirror, no aggression. Vertical 9:16, bold black outlines and warm off-white paper.",
-          "session_delta_prompt": "Keep the blue-shirt man and mustard-top character consistent."
+          "prompt_action": "View from outside the closed side window of Arjun's compact blue car. Inside, Arjun in his cobalt-blue hoodie calmly keeps his hands visible and avoids arguing. Outside, the maroon-jacketed driver gestures angrily but does not touch the car. Show a clear glass barrier between them. Both characters retain rounded white heads and exactly two tiny black dot eyes. Premium polished 2D cartoon, cinematic reflections, vertical 9:16.",
+          "session_delta_prompt": "No threatening gestures from Arjun. Maintain physical distance."
         },
         {
           "beat_id": "s02_b03",
-          "narration_text": "आज शायद गाली-गलौज या हाथापाई हो जाती... लेकिन इस दुनिया में ऐसा नहीं होगा।",
-          "camera_type": "close_up_reaction",
+          "narration_text": "अगर रास्ता खुला है, तो सुरक्षित तरीके से वहाँ से निकलो।",
+          "camera_type": "wide tracking shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "The same young man with a round white face, exactly two tiny black dot eyes, dark blue shirt and brown trousers pauses, takes a deep breath and gestures calmly toward the slightly damaged scooter. The other stickman with a mustard-yellow top listens. Their body language shows frustration without aggression. Hand-drawn black outlines, off-white paper, vertical 9:16.",
-          "session_delta_prompt": "Preserve the exact character clothing and simple dot-eye design."
+          "prompt_action": "A compact blue car driven by Arjun carefully moves away from the confrontation along an open lane. The black SUV and its maroon-jacketed driver remain behind at a distance. Show normal traffic, clear road markings and a safe gap between vehicles. Arjun is visible through the windshield wearing his cobalt-blue hoodie. Premium polished 2D cartoon, smooth cinematic movement, vertical 9:16.",
+          "session_delta_prompt": "The blue car moves away calmly, without speeding or dangerous maneuvers."
         },
         {
           "beat_id": "s02_b04",
-          "narration_text": "दोनों शायद पुलिस बुलाएँगे, सबूत दिखाएँगे और बात कानून से सुलझेगी।",
-          "camera_type": "medium_group_shot",
+          "narration_text": "और अगर कोई पीछा कर रहा है, तो सीधे घर मत जाओ।",
+          "camera_type": "rear-view mirror close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Two simple stickman characters with round white faces and exactly two tiny black dot eyes stand beside a bicycle and scooter, calmly showing a small photograph of the incident to a friendly police officer in a simple blue uniform. No weapons or threatening gestures. The officer listens carefully and holds a small notebook. Warm off-white paper, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "Depict peaceful legal dispute resolution rather than physical retaliation."
+          "prompt_action": "Close cinematic view of the rear-view mirror inside Arjun's blue car. In the mirror, a black SUV driven by the maroon-jacketed aggressive man follows at a distance. Arjun's cobalt-blue sleeve and one hand on the steering wheel are visible in the foreground. The mirror, dashboard and road outside are clearly drawn. Premium polished 2D cartoon, suspenseful lighting, vertical 9:16.",
+          "session_delta_prompt": "The SUV is following from a distance. Do not depict a collision or dangerous chase."
         },
         {
           "beat_id": "s02_b05",
-          "narration_text": "घर में भाई-बहन का झगड़ा हो, तब भी मारपीट की जगह बातचीत करनी पड़ेगी।",
-          "camera_type": "interior_wide_shot",
+          "narration_text": "किसी भीड़भाड़ वाली जगह, पेट्रोल पंप या पुलिस सहायता केंद्र की तरफ जाओ।",
+          "camera_type": "wide establishing shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "Inside a simple family living room, two sibling stickmen with round white faces and exactly two tiny solid-black dot eyes sit on opposite sides of a sofa, both wanting the same game controller. Their parent sits between them and encourages them to take turns. Warm earthy home decor, simple hand-drawn outlines, vertical 9:16.",
-          "session_delta_prompt": "All family members maintain the same simple two-dot eye design."
+          "prompt_action": "Arjun's compact blue car enters a busy, brightly lit fuel station with multiple customers, staff members, fuel pumps and CCTV cameras. The black SUV remains farther back on the public road. Arjun is visible through his windshield wearing the same cobalt-blue hoodie. The environment feels populated and safe. Premium polished 2D cartoon, rich colors and cinematic vertical composition.",
+          "session_delta_prompt": "The fuel station is a public, populated place. Keep the SUV at a distance."
         },
         {
           "beat_id": "s02_b06",
-          "narration_text": "मतलब, गुस्सा तो रहेगा... लेकिन उसे हिंसा में बदलना इंसानों को याद ही नहीं होगा।",
-          "camera_type": "symbolic_close_up",
+          "narration_text": "क्योंकि तुम्हारा लक्ष्य उसे हराना नहीं, सुरक्षित जगह पहुँचना है।",
+          "camera_type": "medium full-body shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A symbolic hand-drawn close-up of a simple stickman with a round white face and exactly two tiny black dot eyes standing beside a storm cloud that gradually transforms into a small peaceful cloud with a dove. The character's hands relax from clenched fists into open palms. Warm off-white paper, black ink outlines, muted blue and green accents, vertical 9:16.",
-          "session_delta_prompt": "Use symbolic imagery to show anger being managed without violence."
+          "prompt_action": "Arjun stands beside his parked blue car inside the busy fuel station, speaking to a uniformed fuel station employee. Arjun wears his cobalt-blue hoodie, charcoal trousers and white sneakers. His complete structured cartoon body is visible, with rounded white head and exactly two tiny black dot eyes. Several customers and CCTV cameras are visible in the background. Premium polished 2D cartoon, reassuring atmosphere.",
+          "session_delta_prompt": "Arjun remains calm and seeks help from people in the public place."
         }
       ]
     },
     {
       "scene_id": 3,
-      "environment_ref": "community_environment",
+      "environment_ref": "public_fuel_station",
       "beats": [
         {
           "beat_id": "s03_b01",
-          "narration_text": "अब सोचिए, जब दो लोग नहीं लड़ सकते... तो मोहल्ले और शहर कैसे बदलेंगे?",
-          "camera_type": "wide_community_shot",
+          "narration_text": "अब किसी भरोसेमंद इंसान को कॉल करो और अपनी लोकेशन बताओ।",
+          "camera_type": "medium close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn neighborhood community gathering in a small public square. Stickman neighbors with round white faces and exactly two tiny black dot eyes sit in a circle discussing a shared problem. Houses, trees and a small shop surround them. The atmosphere is cooperative but realistic, with some people raising hands to disagree. Off-white paper, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "Show cooperation without suggesting that every disagreement disappears."
+          "prompt_action": "At the busy fuel station, Arjun in his cobalt-blue hoodie holds a smartphone to his ear and speaks calmly. His rounded white head, exactly two tiny black dot eyes and upper body are clearly visible. His blue car is parked behind him. Other customers and fuel station staff are present. Premium polished 2D cartoon, warm lighting, vertical 9:16.",
+          "session_delta_prompt": "Arjun is contacting a trusted person, not arguing with the aggressor."
         },
         {
           "beat_id": "s03_b02",
-          "narration_text": "पड़ोसी पानी, पार्किंग या ज़मीन को लेकर बहस तो करेंगे।",
-          "camera_type": "top_down_composition",
+          "narration_text": "अगर धमकी दी गई है, तो सुरक्षित दूरी से घटना की जानकारी और सबूत संभालकर रखो।",
+          "camera_type": "over-the-shoulder smartphone shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "An overhead hand-drawn scene of two neighboring stickman families with round white faces and exactly two tiny black dot eyes discussing a boundary line between their homes. A water tap and a parked bicycle are nearby. Both families point toward a simple paper plan while maintaining distance. No physical aggression. Warm off-white paper, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "Keep the conflict about ordinary limited resources and disagreements."
+          "prompt_action": "Over-the-shoulder view of Arjun holding his smartphone at the fuel station. The phone screen shows a generic camera recording interface without readable text. In the distant background, the black SUV is visible near the road. Arjun's cobalt-blue sleeve and rounded white head with exactly two tiny black dot eyes are partially visible. Premium polished 2D cartoon, crisp smartphone details, vertical 9:16.",
+          "session_delta_prompt": "Documentation is done only from a safe distance. Do not show Arjun approaching the SUV."
         },
         {
           "beat_id": "s03_b03",
-          "narration_text": "लेकिन समाधान के लिए पंचायत, अदालत और बातचीत का सहारा लेना पड़ेगा।",
-          "camera_type": "interior_courtroom",
+          "narration_text": "अगर खतरा बना हुआ है, तो पुलिस या आपातकालीन सहायता से संपर्क करो।",
+          "camera_type": "medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A simple hand-drawn local mediation room. Two stickman neighbors with round white faces and exactly two tiny black dot eyes sit across a wooden table. A neutral mediator in a white shirt listens and examines a property map. Both sides have documents and open hands. Warm off-white paper, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "Use calm mediation and legal institutions as the alternative to fighting."
+          "prompt_action": "Arjun stands beside a fuel station employee and calmly makes a phone call for official assistance. He wears his cobalt-blue hoodie, charcoal trousers and white sneakers. His complete structured cartoon body and exact two-dot-eye face design are visible. A public CCTV camera and several customers appear in the background. Premium polished 2D cartoon, confident and safe atmosphere.",
+          "session_delta_prompt": "The character seeks official assistance. No physical confrontation."
         },
         {
           "beat_id": "s03_b04",
-          "narration_text": "स्कूलों में बच्चों को सिर्फ पढ़ाई नहीं, बल्कि मतभेद सुलझाना भी सिखाया जाएगा।",
-          "camera_type": "classroom_wide_shot",
+          "narration_text": "याद रखो, किसी अनजान आदमी का अहंकार बचाना तुम्हारी ज़िम्मेदारी नहीं है।",
+          "camera_type": "cinematic wide shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn classroom scene with a teacher stickman who has a round white face, exactly two tiny black dot eyes, white shirt and dark trousers. Several students with matching simple dot eyes sit in groups, discussing a shared puzzle and listening to one another. A blackboard shows simple geometric shapes without readable text. Warm paper, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "Keep the teacher and students consistent with the simple stickman design."
-        },
-        {
-          "beat_id": "s03_b05",
-          "narration_text": "लोग अपनी बात मनवाने के लिए ताकत नहीं, बल्कि तर्क और सबूत इस्तेमाल करेंगे।",
-          "camera_type": "dramatic_close_up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A close-up hand-drawn illustration of two stickman characters with round white faces and exactly two tiny black dot eyes presenting different documents, charts and sketches across a table. One character points to evidence while the other carefully studies it. Their expressions are simple and thoughtful. Bold black outlines, warm off-white paper, vertical 9:16.",
-          "session_delta_prompt": "Emphasize persuasion through evidence rather than intimidation."
-        },
-        {
-          "beat_id": "s03_b06",
-          "narration_text": "लेकिन एक मुश्किल बाकी है... क्या हर इंसान ईमानदार भी हो जाएगा?",
-          "camera_type": "presenter_close_up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "The recurring presenter stickman with a round white face, exactly two tiny black dot eyes, thin black limbs and red bow tie looks thoughtfully at a large balance scale. One side contains a stack of coins and the other a paper contract. Behind him, two ordinary stickmen quietly negotiate. Warm off-white paper, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "Maintain the presenter's exact dot-eye design and red bow tie."
+          "prompt_action": "Arjun stands safely near the entrance of the busy fuel station, his compact blue car parked nearby. In the far background, the maroon-jacketed SUV driver stands beside his black vehicle, now visually separated from Arjun by distance and other people. Arjun's posture is relaxed and composed. Both characters have identical simple two-dot-eye facial design and complete structured cartoon bodies. Premium polished 2D cartoon, cinematic warm lighting.",
+          "session_delta_prompt": "Emphasize distance, calmness and safety rather than victory or humiliation."
         }
       ]
     },
     {
       "scene_id": 4,
-      "environment_ref": "community_environment",
+      "environment_ref": "city_road",
       "beats": [
         {
           "beat_id": "s04_b01",
-          "narration_text": "अब आते हैं सबसे बड़े सवाल पर... अगर देश ही युद्ध करना भूल जाएँ तो?",
-          "camera_type": "dramatic_world_map",
+          "narration_text": "अगली सुबह अरुण अपने दोस्त को पूरी घटना बताता है।",
+          "camera_type": "medium two-character shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A dramatic hand-drawn world map spread across a large table. Several simple stickman country leaders with round white faces and exactly two tiny black dot eyes stand around it. Their hands hover over the map as if facing a major decision. A symbolic broken sword rests beside the map. No flags, no national stereotypes, no readable labels. Warm off-white paper, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "Shift the story from personal violence to international conflict."
+          "prompt_action": "The next morning, Arjun wearing his cobalt-blue hoodie, charcoal trousers and white sneakers sits at a small outdoor cafe table with his friend wearing an olive-green sweatshirt, dark blue jeans and grey sneakers. Both are complete structured cartoon characters with rounded white heads and exactly two tiny solid-black dot eyes. Arjun explains the previous day's incident using calm hand gestures. Warm morning light, premium polished 2D cartoon, vertical 9:16.",
+          "session_delta_prompt": "Maintain exact character designs and outfits for both men."
         },
         {
           "beat_id": "s04_b02",
-          "narration_text": "ना सेनाएँ हमला करेंगी, ना मिसाइलें दागी जाएँगी, ना शहरों पर बम गिरेंगे।",
-          "camera_type": "symbolic_aerial_view",
+          "narration_text": "उसका दोस्त पूछता है, लेकिन अगर लोग तुम्हें डरपोक समझें तो?",
+          "camera_type": "medium close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A non-graphic symbolic hand-drawn aerial view of a peaceful city beneath a clear sky. In the distant sky, faint crossed-out silhouettes of missiles and military aircraft dissolve into harmless clouds, while people walk safely through parks and streets below. No explosions, no destruction, no national symbols. Bold black outlines, muted blue and green accents, vertical 9:16.",
-          "session_delta_prompt": "Represent the absence of large-scale attacks without depicting actual destruction."
+          "prompt_action": "Arjun's friend in an olive-green sweatshirt leans forward across the cafe table, raising one hand as if asking a serious question. Arjun in his cobalt-blue hoodie listens quietly. Both have rounded white heads, exactly two tiny black dot eyes and consistent complete cartoon anatomy. Cafe background softly blurred. Premium polished 2D cartoon, vertical 9:16.",
+          "session_delta_prompt": "Friend's outfit and facial design remain identical."
         },
         {
           "beat_id": "s04_b03",
-          "narration_text": "सीमाओं पर सैनिक शायद लड़ने की जगह निगरानी और बचाव का काम करेंगे।",
-          "camera_type": "border_wide_shot",
+          "narration_text": "अरुण मुस्कुराकर कहता है, डरपोक वो नहीं जो लड़ाई से बचता है।",
+          "camera_type": "close-up",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A peaceful hand-drawn border checkpoint in a mountainous landscape. Two military personnel stickmen with round white faces, exactly two tiny black dot eyes, muted olive uniforms and simple helmets calmly guide civilians and inspect a crossing. No weapons, no aggressive posture. A small medical tent and supply vehicle are visible nearby. Warm off-white paper, vertical 9:16.",
-          "session_delta_prompt": "Military characters should appear in humanitarian and protective roles."
+          "prompt_action": "Close cinematic view of Arjun in his cobalt-blue hoodie sitting at the cafe table. He raises one hand slightly while explaining his point with a composed posture. His rounded white head has exactly two tiny solid-black dot eyes, no nose and no mouth. His friend is softly visible across the table. Premium polished 2D cartoon, warm sunlight and clean outlines.",
+          "session_delta_prompt": "Arjun remains composed and confident, without changing his face or clothing."
         },
         {
           "beat_id": "s04_b04",
-          "narration_text": "जो पैसा हथियारों और युद्ध में जाता, उसका बड़ा हिस्सा शिक्षा, अस्पताल और रिसर्च में लग सकता था।",
-          "camera_type": "dynamic_three_panel",
+          "narration_text": "समझदार वो है जो जानता है कि कब जवाब देना है और कब वहाँ से निकल जाना है।",
+          "camera_type": "cinematic low-angle hero shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A three-panel hand-drawn illustration showing possible peaceful investments: a newly built school with happy stickman students, a hospital where a doctor cares for a patient, and a scientific laboratory where inventors examine a telescope and scientific models. All characters have round white faces and exactly two tiny solid-black dot eyes. No military equipment. Warm earthy palette, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "Present the benefits as possible uses of resources, not guaranteed outcomes."
+          "prompt_action": "Arjun walks confidently along a clean city sidewalk in morning sunlight, wearing his cobalt-blue hoodie, charcoal trousers and white sneakers. His entire body is visible with a solid torso, proportionate arms and legs, clearly drawn hands and shoes. His rounded white head has exactly two tiny solid-black dot eyes. Modern city buildings and pedestrians form a pleasant background. Premium polished 2D cartoon, cinematic composition, vertical 9:16.",
+          "session_delta_prompt": "Show confidence through upright posture, not aggression. Preserve exact character proportions."
         },
         {
           "beat_id": "s04_b05",
-          "narration_text": "शायद देशों के बीच मुकाबला युद्ध से नहीं, तकनीक, व्यापार और खेलों से होता।",
-          "camera_type": "global_montage",
+          "narration_text": "अगली बार कोई तुम्हें बेवजह उकसाए, तो याद रखना, तुम्हें हर बहस जीतने की ज़रूरत नहीं।",
+          "camera_type": "wide cinematic final shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A lively hand-drawn montage in one vertical frame showing three forms of international competition: scientists from different countries collaborating around a telescope, merchants exchanging goods at a shipping port, and stickman athletes racing on a track. All human faces are round white circles with exactly two tiny solid-black dot eyes. No flags or national stereotypes. Warm off-white paper, bold outlines, vertical 9:16.",
-          "session_delta_prompt": "Show healthy competition and cooperation between societies."
+          "prompt_action": "Arjun walks away from a tense roadside situation toward a bright, populated public area. He wears his cobalt-blue hoodie, charcoal trousers and white sneakers. His full structured cartoon body is visible. In the distant background, two other drivers calmly stand near their parked vehicles while traffic continues normally. Rounded white heads with exactly two tiny black dot eyes on all people. Premium polished 2D cartoon, uplifting cinematic sunlight, uncluttered vertical 9:16 composition.",
+          "session_delta_prompt": "Final image communicates smart self-control and personal safety."
         },
         {
           "beat_id": "s04_b06",
-          "narration_text": "लेकिन दुनिया से युद्ध खत्म होने का मतलब ये नहीं कि गरीबी और अन्याय भी खत्म हो जाएँगे।",
-          "camera_type": "contrastive_wide_shot",
+          "narration_text": "तुम्हारे हिसाब से ऐसी स्थिति में सबसे समझदारी वाला कदम क्या होगा?",
+          "camera_type": "front-facing medium shot",
           "action_mode": "new_camera_angle",
-          "prompt_action": "A thoughtful hand-drawn split composition. On one side, a peaceful city with no military conflict. On the other, a poor neighborhood where a family waits near an empty food basket while a large wealthy building stands in the background. Every person has a round white face with exactly two tiny black dot eyes. No violence. Muted earthy colors, off-white paper, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "Make clear that peace does not automatically solve inequality, poverty or injustice."
-        }
-      ]
-    },
-    {
-      "scene_id": 5,
-      "environment_ref": "world_map",
-      "beats": [
-        {
-          "beat_id": "s05_b01",
-          "narration_text": "और यहाँ एक बहुत बड़ा सवाल उठता है... अगर कोई देश दूसरों का शोषण करे तो?",
-          "camera_type": "world_map_close_up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A close-up hand-drawn world map on a wooden conference table. Two simple stickman leaders with round white faces and exactly two tiny black dot eyes point toward a disputed region on the map. Other delegates watch carefully. No flags, no labels, no threatening gestures. Warm off-white paper, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "Show that international disputes can still exist even without warfare."
-        },
-        {
-          "beat_id": "s05_b02",
-          "narration_text": "लड़ाई न कर पाने पर भी कोई देश व्यापार रोक सकता है, दबाव बना सकता है या नियम तोड़ सकता है।",
-          "camera_type": "symbolic_trade_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A hand-drawn international port with cargo ships, stacked shipping containers and merchants standing beside a closed trade gate. Two groups of stickmen with round white faces and exactly two tiny black dot eyes hold conflicting trade documents across a table. The scene suggests economic pressure and disagreement without violence. Warm off-white paper, earthy colors, vertical 9:16.",
-          "session_delta_prompt": "Use trade barriers and economic pressure as examples of non-military conflict."
-        },
-        {
-          "beat_id": "s05_b03",
-          "narration_text": "इसलिए दुनिया को सिर्फ लड़ना भूलना नहीं, बल्कि न्याय और सहयोग सीखना भी पड़ेगा।",
-          "camera_type": "cooperation_medium_shot",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "Several stickman delegates with round white faces and exactly two tiny solid-black dot eyes sit around a circular international negotiation table. They study shared documents, maps and proposals. A small white dove carrying an olive branch sits on the table. No national flags or political symbols. Warm off-white paper, bold black outlines, vertical 9:16.",
-          "session_delta_prompt": "Focus on fair agreements, cooperation and shared responsibility."
-        },
-        {
-          "beat_id": "s05_b04",
-          "narration_text": "क्योंकि शांति सिर्फ हथियार न चलाने से नहीं, एक-दूसरे के अधिकारों की इज़्ज़त करने से बनती है।",
-          "camera_type": "emotional_close_up",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "A close-up hand-drawn illustration of two ordinary stickmen with round white faces and exactly two tiny black dot eyes shaking hands across a small table. Behind them, other community members stand together holding a simple symbolic olive branch. Their body language conveys dignity and mutual respect. Warm off-white paper, black ink outlines, muted green accents, vertical 9:16.",
-          "session_delta_prompt": "Make the emotional focus mutual respect, not forced agreement."
-        },
-        {
-          "beat_id": "s05_b05",
-          "narration_text": "शायद ऐसी दुनिया में इंसान की सबसे बड़ी ताकत उसकी समझदारी होती।",
-          "camera_type": "inspirational_low_angle",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "The recurring stickman presenter with a round white face, exactly two tiny solid-black dot eyes, thin black stick limbs and a small red bow tie stands on a small hill overlooking a peaceful town. Below, people cooperate in a school, a hospital, a marketplace and a public park. A white dove with an olive branch flies above. Warm golden sunlight, bold imperfect black outlines, vertical 9:16.",
-          "session_delta_prompt": "Keep the presenter identical and show a hopeful but realistic peaceful society."
-        },
-        {
-          "beat_id": "s05_b06",
-          "narration_text": "लेकिन सच बताओ... अगर इंसान लड़ना भूल जाए, तो क्या दुनिया सच में बेहतर बन जाएगी?",
-          "camera_type": "direct_to_camera",
-          "action_mode": "new_camera_angle",
-          "prompt_action": "The recurring hand-drawn stickman presenter with a round white face, exactly two tiny solid-black dot eyes, thin black stick limbs and small red bow tie looks directly at the viewer with a thoughtful expression. Behind the presenter, a dramatic split scene shows a peaceful community on one side and a tense international negotiation table on the other. A small question mark floats overhead. Warm off-white paper, bold black ink outlines, vertical 9:16.",
-          "session_delta_prompt": "End with the exact same presenter face, dot eyes and red bow tie. Leave uncluttered space around the character."
+          "prompt_action": "Arjun stands facing the camera on a clean urban sidewalk, wearing his cobalt-blue hoodie, charcoal trousers and white sneakers. Show his complete structured cartoon body from head to shoes, with consistent proportions, rounded white head and exactly two tiny solid-black dot eyes. He raises one open hand in a friendly question gesture. Bright uncluttered city background, premium polished 2D cartoon, strong clean outlines, vertical 9:16.",
+          "session_delta_prompt": "Keep Arjun's exact established character design. End with a welcoming, thoughtful pose."
         }
       ]
     }

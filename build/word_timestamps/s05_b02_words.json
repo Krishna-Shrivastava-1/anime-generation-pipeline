@@ -1,47 +1,107 @@
 [
   {
-    "word": "हवा",
-    "start_ms": 10,
-    "end_ms": 254
+    "word": "लड़ाई",
+    "start_ms": 0,
+    "end_ms": 437
   },
   {
-    "word": "से",
-    "start_ms": 254,
-    "end_ms": 427
+    "word": "न",
+    "start_ms": 437,
+    "end_ms": 519
   },
   {
-    "word": "पवनचक्कियाँ",
-    "start_ms": 427,
-    "end_ms": 1139
+    "word": "कर",
+    "start_ms": 519,
+    "end_ms": 681
   },
   {
-    "word": "चलतीं,",
-    "start_ms": 1139,
-    "end_ms": 1592
+    "word": "पाने",
+    "start_ms": 681,
+    "end_ms": 1070
   },
   {
-    "word": "पानी",
-    "start_ms": 1592,
-    "end_ms": 1937
+    "word": "पर",
+    "start_ms": 1070,
+    "end_ms": 1232
   },
   {
-    "word": "से",
-    "start_ms": 1937,
-    "end_ms": 2110
+    "word": "भी",
+    "start_ms": 1232,
+    "end_ms": 1427
   },
   {
-    "word": "चक्कियाँ",
-    "start_ms": 2110,
-    "end_ms": 2606
+    "word": "कोई",
+    "start_ms": 1427,
+    "end_ms": 1703
   },
   {
-    "word": "और",
-    "start_ms": 2606,
-    "end_ms": 2750
+    "word": "देश",
+    "start_ms": 1703,
+    "end_ms": 1978
   },
   {
-    "word": "मशीनें।",
-    "start_ms": 2750,
-    "end_ms": 3340
+    "word": "व्यापार",
+    "start_ms": 1978,
+    "end_ms": 2505
+  },
+  {
+    "word": "रोक",
+    "start_ms": 2505,
+    "end_ms": 2781
+  },
+  {
+    "word": "सकता",
+    "start_ms": 2781,
+    "end_ms": 3138
+  },
+  {
+    "word": "है,",
+    "start_ms": 3138,
+    "end_ms": 3373
+  },
+  {
+    "word": "दबाव",
+    "start_ms": 3373,
+    "end_ms": 3730
+  },
+  {
+    "word": "बना",
+    "start_ms": 3730,
+    "end_ms": 4006
+  },
+  {
+    "word": "सकता",
+    "start_ms": 4006,
+    "end_ms": 4363
+  },
+  {
+    "word": "है",
+    "start_ms": 4363,
+    "end_ms": 4557
+  },
+  {
+    "word": "या",
+    "start_ms": 4557,
+    "end_ms": 4752
+  },
+  {
+    "word": "नियम",
+    "start_ms": 4752,
+    "end_ms": 5060
+  },
+  {
+    "word": "तोड़",
+    "start_ms": 5060,
+    "end_ms": 5417
+  },
+  {
+    "word": "सकता",
+    "start_ms": 5417,
+    "end_ms": 5774
+  },
+  {
+    "word": "है।",
+    "start_ms": 5774,
+    "end_ms": 6050
   }
 ]

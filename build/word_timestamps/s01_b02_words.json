@@ -1,57 +1,67 @@
 [
   {
-    "word": "सबसे",
+    "word": "ना",
     "start_ms": 0,
-    "end_ms": 319
+    "end_ms": 175
   },
   {
-    "word": "पहले,",
-    "start_ms": 319,
-    "end_ms": 674
+    "word": "गुस्से",
+    "start_ms": 175,
+    "end_ms": 534
   },
   {
-    "word": "रात",
-    "start_ms": 674,
-    "end_ms": 920
+    "word": "में",
+    "start_ms": 534,
+    "end_ms": 813
   },
   {
-    "word": "होते",
-    "start_ms": 920,
-    "end_ms": 1268
+    "word": "मारपीट…",
+    "start_ms": 813,
+    "end_ms": 1347
   },
   {
-    "word": "ही",
-    "start_ms": 1268,
-    "end_ms": 1442
+    "word": "ना",
+    "start_ms": 1347,
+    "end_ms": 1523
   },
   {
-    "word": "शहरों",
-    "start_ms": 1442,
-    "end_ms": 1863
+    "word": "बदला…",
+    "start_ms": 1523,
+    "end_ms": 1882
   },
   {
-    "word": "की",
-    "start_ms": 1863,
-    "end_ms": 2037
+    "word": "ना",
+    "start_ms": 1882,
+    "end_ms": 2058
   },
   {
-    "word": "रौनक",
-    "start_ms": 2037,
-    "end_ms": 2356
+    "word": "किसी",
+    "start_ms": 2058,
+    "end_ms": 2365
   },
   {
-    "word": "गायब",
-    "start_ms": 2356,
-    "end_ms": 2675
+    "word": "को",
+    "start_ms": 2365,
+    "end_ms": 2541
   },
   {
-    "word": "हो",
-    "start_ms": 2675,
-    "end_ms": 2849
+    "word": "चोट",
+    "start_ms": 2541,
+    "end_ms": 2790
   },
   {
-    "word": "जाती।",
-    "start_ms": 2849,
-    "end_ms": 3269
+    "word": "पहुँचाने",
+    "start_ms": 2790,
+    "end_ms": 3420
+  },
+  {
+    "word": "का",
+    "start_ms": 3420,
+    "end_ms": 3596
+  },
+  {
+    "word": "ख्याल।",
+    "start_ms": 3596,
+    "end_ms": 3969
   }
 ]

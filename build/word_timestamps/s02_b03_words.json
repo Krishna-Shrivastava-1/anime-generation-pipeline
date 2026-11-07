@@ -1,72 +1,72 @@
 [
   {
-    "word": "खाना",
+    "word": "आज",
     "start_ms": 0,
-    "end_ms": 378
+    "end_ms": 142
   },
   {
-    "word": "फ्रिज",
-    "start_ms": 378,
-    "end_ms": 654
+    "word": "शायद",
+    "start_ms": 142,
+    "end_ms": 457
+  },
+  {
+    "word": "गाली-गलौज",
+    "start_ms": 457,
+    "end_ms": 1149
+  },
+  {
+    "word": "या",
+    "start_ms": 1149,
+    "end_ms": 1321
+  },
+  {
+    "word": "हाथापाई",
+    "start_ms": 1321,
+    "end_ms": 1906
+  },
+  {
+    "word": "हो",
+    "start_ms": 1906,
+    "end_ms": 2077
+  },
+  {
+    "word": "जाती…",
+    "start_ms": 2077,
+    "end_ms": 2456
+  },
+  {
+    "word": "लेकिन",
+    "start_ms": 2456,
+    "end_ms": 2827
+  },
+  {
+    "word": "इस",
+    "start_ms": 2827,
+    "end_ms": 2970
+  },
+  {
+    "word": "दुनिया",
+    "start_ms": 2970,
+    "end_ms": 3398
   },
   {
     "word": "में",
-    "start_ms": 654,
-    "end_ms": 953
+    "start_ms": 3398,
+    "end_ms": 3670
   },
   {
-    "word": "नहीं,",
-    "start_ms": 953,
-    "end_ms": 1371
+    "word": "ऐसा",
+    "start_ms": 3670,
+    "end_ms": 3913
   },
   {
-    "word": "बल्कि",
-    "start_ms": 1371,
-    "end_ms": 1647
+    "word": "नहीं",
+    "start_ms": 3913,
+    "end_ms": 4255
   },
   {
-    "word": "बर्फ,",
-    "start_ms": 1647,
-    "end_ms": 1899
-  },
-  {
-    "word": "नमक",
-    "start_ms": 1899,
-    "end_ms": 2136
-  },
-  {
-    "word": "और",
-    "start_ms": 2136,
-    "end_ms": 2293
-  },
-  {
-    "word": "खास",
-    "start_ms": 2293,
-    "end_ms": 2561
-  },
-  {
-    "word": "तरीकों",
-    "start_ms": 2561,
-    "end_ms": 3129
-  },
-  {
-    "word": "से",
-    "start_ms": 3129,
-    "end_ms": 3318
-  },
-  {
-    "word": "सुरक्षित",
-    "start_ms": 3318,
-    "end_ms": 3814
-  },
-  {
-    "word": "रखा",
-    "start_ms": 3814,
-    "end_ms": 4082
-  },
-  {
-    "word": "जाता।",
-    "start_ms": 4082,
-    "end_ms": 4539
+    "word": "होगा।",
+    "start_ms": 4255,
+    "end_ms": 4670
   }
 ]

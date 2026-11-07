@@ -1,57 +1,57 @@
 [
   {
-    "word": "गर्मी",
+    "word": "दोनों",
     "start_ms": 0,
-    "end_ms": 303
+    "end_ms": 432
   },
   {
-    "word": "में",
-    "start_ms": 303,
-    "end_ms": 584
+    "word": "शायद",
+    "start_ms": 432,
+    "end_ms": 739
   },
   {
-    "word": "पंखा",
-    "start_ms": 584,
-    "end_ms": 939
+    "word": "पुलिस",
+    "start_ms": 739,
+    "end_ms": 1060
   },
   {
-    "word": "नहीं,",
-    "start_ms": 939,
-    "end_ms": 1331
+    "word": "बुलाएँगे,",
+    "start_ms": 1060,
+    "end_ms": 1694
   },
   {
-    "word": "बस",
-    "start_ms": 1331,
-    "end_ms": 1479
+    "word": "सबूत",
+    "start_ms": 1694,
+    "end_ms": 2001
   },
   {
-    "word": "हाथ",
-    "start_ms": 1479,
-    "end_ms": 1731
-  },
-  {
-    "word": "वाला",
-    "start_ms": 1731,
-    "end_ms": 2086
-  },
-  {
-    "word": "पंखा",
-    "start_ms": 2086,
-    "end_ms": 2441
+    "word": "दिखाएँगे",
+    "start_ms": 2001,
+    "end_ms": 2601
   },
   {
     "word": "और",
-    "start_ms": 2441,
-    "end_ms": 2589
+    "start_ms": 2601,
+    "end_ms": 2741
   },
   {
-    "word": "खुली",
-    "start_ms": 2589,
-    "end_ms": 2900
+    "word": "बात",
+    "start_ms": 2741,
+    "end_ms": 2978
   },
   {
-    "word": "खिड़कियाँ।",
-    "start_ms": 2900,
-    "end_ms": 3639
+    "word": "कानून",
+    "start_ms": 2978,
+    "end_ms": 3382
+  },
+  {
+    "word": "से",
+    "start_ms": 3382,
+    "end_ms": 3550
+  },
+  {
+    "word": "सुलझेगी।",
+    "start_ms": 3550,
+    "end_ms": 4149
   }
 ]

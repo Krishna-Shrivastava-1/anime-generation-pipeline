@@ -1,173 +1,137 @@
 {
-  "total_duration": 128.768,
+  "total_duration": 97.179,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 4.032,
-      "subtitle": "एक सुबह पूरी दुनिया उठती है... और इंसान लड़ना ही भूल चुका होता है।"
+      "duration_seconds": 5.867,
+      "subtitle": "सोचो, तुम अपनी कार से घर जा रहे हो और अचानक एक बड़ी एसयूवी तुम्हारा रास्ता काट देती है।"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 4.053,
-      "subtitle": "ना गुस्से में मारपीट... ना बदला... ना किसी को चोट पहुँचाने का ख्याल।"
+      "duration_seconds": 5.495,
+      "subtitle": "तुम ब्रेक लगाते हो। लेकिन वो आदमी बाहर निकलकर उल्टा तुम्हें ही धमकाने लगता है।"
     },
     {
       "beat_id": "s01_b03",
       "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 4.352,
-      "subtitle": "लेकिन क्या इसका मतलब ये होगा कि दुनिया में हर समस्या खत्म हो जाएगी?"
+      "duration_seconds": 4.769,
+      "subtitle": "अब तुम्हारे पास दो रास्ते हैं। पहला, गुस्से में बाहर निकलकर उससे भिड़ जाना।"
     },
     {
       "beat_id": "s01_b04",
       "audio_file": "build/audio/s01_b04.wav",
-      "duration_seconds": 4.203,
-      "subtitle": "क्योंकि लड़ाई भूलना और हर बात पर सहमत होना... दोनों अलग चीज़ें हैं।"
+      "duration_seconds": 4.907,
+      "subtitle": "तुम चिल्लाते हो, बहस करते हो और साबित करने लगते हो कि तुम किसी से डरते नहीं।"
+    },
+    {
+      "beat_id": "s01_b05",
+      "audio_file": "build/audio/s01_b05.wav",
+      "duration_seconds": 4.139,
+      "subtitle": "लेकिन अब एक छोटी सी सड़क की गलती खतरनाक टकराव बन सकती है।"
+    },
+    {
+      "beat_id": "s01_b06",
+      "audio_file": "build/audio/s01_b06.wav",
+      "duration_seconds": 3.947,
+      "subtitle": "दूसरा रास्ता है अपनी सुरक्षा को अपनी इज़्ज़त से भी ऊपर रखना।"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 3.733,
-      "subtitle": "सबसे पहले बदलाव दिखेगा हमारी रोज़मर्रा की ज़िंदगी में।"
+      "duration_seconds": 5.175,
+      "subtitle": "सबसे पहले, गाड़ी के अंदर रहो अगर वहाँ रहना सुरक्षित है। दरवाज़े लॉक रखो।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 3.477,
-      "subtitle": "मान लीजिए, सड़क पर किसी ने आपकी गाड़ी को टक्कर मार दी।"
+      "duration_seconds": 3.681,
+      "subtitle": "खिड़की से बहस मत करो। धमकी का जवाब धमकी से मत दो।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 4.757,
-      "subtitle": "आज शायद गाली-गलौज या हाथापाई हो जाती... लेकिन इस दुनिया में ऐसा नहीं होगा।"
+      "duration_seconds": 3.392,
+      "subtitle": "अगर रास्ता खुला है, तो सुरक्षित तरीके से वहाँ से निकलो।"
     },
     {
       "beat_id": "s02_b04",
       "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 4.245,
-      "subtitle": "दोनों शायद पुलिस बुलाएँगे, सबूत दिखाएँगे और बात कानून से सुलझेगी।"
+      "duration_seconds": 3.008,
+      "subtitle": "और अगर कोई पीछा कर रहा है, तो सीधे घर मत जाओ।"
     },
     {
       "beat_id": "s02_b05",
       "audio_file": "build/audio/s02_b05.wav",
-      "duration_seconds": 4.587,
-      "subtitle": "घर में भाई-बहन का झगड़ा हो, तब भी मारपीट की जगह बातचीत करनी पड़ेगी।"
+      "duration_seconds": 4.437,
+      "subtitle": "किसी भीड़भाड़ वाली जगह, पेट्रोल पंप या पुलिस सहायता केंद्र की तरफ जाओ।"
     },
     {
       "beat_id": "s02_b06",
       "audio_file": "build/audio/s02_b06.wav",
-      "duration_seconds": 5.056,
-      "subtitle": "मतलब, गुस्सा तो रहेगा... लेकिन उसे हिंसा में बदलना इंसानों को याद ही नहीं होगा।"
+      "duration_seconds": 3.84,
+      "subtitle": "क्योंकि तुम्हारा लक्ष्य उसे हराना नहीं, सुरक्षित जगह पहुँचना है।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 4.416,
-      "subtitle": "अब सोचिए, जब दो लोग नहीं लड़ सकते... तो मोहल्ले और शहर कैसे बदलेंगे?"
+      "duration_seconds": 3.904,
+      "subtitle": "अब किसी भरोसेमंद इंसान को कॉल करो और अपनी लोकेशन बताओ।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 3.371,
-      "subtitle": "पड़ोसी पानी, पार्किंग या ज़मीन को लेकर बहस तो करेंगे।"
+      "duration_seconds": 5.461,
+      "subtitle": "अगर धमकी दी गई है, तो सुरक्षित दूरी से घटना की जानकारी और सबूत संभालकर रखो।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 4.8,
-      "subtitle": "लेकिन समाधान के लिए पंचायत, अदालत और बातचीत का सहारा लेना पड़ेगा।"
+      "duration_seconds": 4.544,
+      "subtitle": "अगर खतरा बना हुआ है, तो पुलिस या आपातकालीन सहायता से संपर्क करो।"
     },
     {
       "beat_id": "s03_b04",
       "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 4.651,
-      "subtitle": "स्कूलों में बच्चों को सिर्फ पढ़ाई नहीं, बल्कि मतभेद सुलझाना भी सिखाया जाएगा।"
-    },
-    {
-      "beat_id": "s03_b05",
-      "audio_file": "build/audio/s03_b05.wav",
-      "duration_seconds": 5.013,
-      "subtitle": "लोग अपनी बात मनवाने के लिए ताकत नहीं, बल्कि तर्क और सबूत इस्तेमाल करेंगे।"
-    },
-    {
-      "beat_id": "s03_b06",
-      "audio_file": "build/audio/s03_b06.wav",
-      "duration_seconds": 3.819,
-      "subtitle": "लेकिन एक मुश्किल बाकी है... क्या हर इंसान ईमानदार भी हो जाएगा?"
+      "duration_seconds": 4.8,
+      "subtitle": "याद रखो, किसी अनजान आदमी का अहंकार बचाना तुम्हारी ज़िम्मेदारी नहीं है।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 4.075,
-      "subtitle": "अब आते हैं सबसे बड़े सवाल पर... अगर देश ही युद्ध करना भूल जाएँ तो?"
+      "duration_seconds": 3.2,
+      "subtitle": "अगली सुबह अरुण अपने दोस्त को पूरी घटना बताता है।"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 4.736,
-      "subtitle": "ना सेनाएँ हमला करेंगी, ना मिसाइलें दागी जाएँगी, ना शहरों पर बम गिरेंगे।"
+      "duration_seconds": 3.733,
+      "subtitle": "उसका दोस्त पूछता है, लेकिन अगर लोग तुम्हें डरपोक समझें तो?"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 4.416,
-      "subtitle": "सीमाओं पर सैनिक शायद लड़ने की जगह निगरानी और बचाव का काम करेंगे।"
+      "duration_seconds": 3.883,
+      "subtitle": "अरुण मुस्कुराकर कहता है, डरपोक वो नहीं जो लड़ाई से बचता है।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 5.973,
-      "subtitle": "जो पैसा हथियारों और युद्ध में जाता, उसका बड़ा हिस्सा शिक्षा, अस्पताल और रिसर्च में लग सकता था।"
+      "duration_seconds": 5.099,
+      "subtitle": "समझदार वो है जो जानता है कि कब जवाब देना है और कब वहाँ से निकल जाना है।"
     },
     {
       "beat_id": "s04_b05",
       "audio_file": "build/audio/s04_b05.wav",
-      "duration_seconds": 4.523,
-      "subtitle": "शायद देशों के बीच मुकाबला युद्ध से नहीं, तकनीक, व्यापार और खेलों से होता।"
+      "duration_seconds": 5.419,
+      "subtitle": "अगली बार कोई तुम्हें बेवजह उकसाए, तो याद रखना, तुम्हें हर बहस जीतने की ज़रूरत नहीं।"
     },
     {
       "beat_id": "s04_b06",
       "audio_file": "build/audio/s04_b06.wav",
-      "duration_seconds": 5.547,
-      "subtitle": "लेकिन दुनिया से युद्ध खत्म होने का मतलब ये नहीं कि गरीबी और अन्याय भी खत्म हो जाएँगे।"
-    },
-    {
-      "beat_id": "s05_b01",
-      "audio_file": "build/audio/s05_b01.wav",
-      "duration_seconds": 4.565,
-      "subtitle": "और यहाँ एक बहुत बड़ा सवाल उठता है... अगर कोई देश दूसरों का शोषण करे तो?"
-    },
-    {
-      "beat_id": "s05_b02",
-      "audio_file": "build/audio/s05_b02.wav",
-      "duration_seconds": 6.123,
-      "subtitle": "लड़ाई न कर पाने पर भी कोई देश व्यापार रोक सकता है, दबाव बना सकता है या नियम तोड़ सकता है।"
-    },
-    {
-      "beat_id": "s05_b03",
-      "audio_file": "build/audio/s05_b03.wav",
-      "duration_seconds": 4.907,
-      "subtitle": "इसलिए दुनिया को सिर्फ लड़ना भूलना नहीं, बल्कि न्याय और सहयोग सीखना भी पड़ेगा।"
-    },
-    {
-      "beat_id": "s05_b04",
-      "audio_file": "build/audio/s05_b04.wav",
-      "duration_seconds": 5.909,
-      "subtitle": "क्योंकि शांति सिर्फ हथियार न चलाने से नहीं, एक-दूसरे के अधिकारों की इज़्ज़त करने से बनती है।"
-    },
-    {
-      "beat_id": "s05_b05",
-      "audio_file": "build/audio/s05_b05.wav",
-      "duration_seconds": 4.416,
-      "subtitle": "शायद ऐसी दुनिया में इंसान की सबसे बड़ी ताकत उसकी समझदारी होती।"
-    },
-    {
-      "beat_id": "s05_b06",
-      "audio_file": "build/audio/s05_b06.wav",
-      "duration_seconds": 5.013,
-      "subtitle": "लेकिन सच बताओ... अगर इंसान लड़ना भूल जाए, तो क्या दुनिया सच में बेहतर बन जाएगी?"
+      "duration_seconds": 4.48,
+      "subtitle": "तुम्हारे हिसाब से ऐसी स्थिति में सबसे समझदारी वाला कदम क्या होगा?"
     }
   ]
 }

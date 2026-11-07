@@ -1,77 +1,82 @@
 [
   {
-    "word": "लेकिन",
+    "word": "और",
     "start_ms": 0,
-    "end_ms": 379
+    "end_ms": 154
+  },
+  {
+    "word": "यहाँ",
+    "start_ms": 154,
+    "end_ms": 493
   },
   {
     "word": "एक",
-    "start_ms": 379,
-    "end_ms": 525
+    "start_ms": 493,
+    "end_ms": 647
   },
   {
-    "word": "बात",
-    "start_ms": 525,
-    "end_ms": 773
+    "word": "बहुत",
+    "start_ms": 647,
+    "end_ms": 940
   },
   {
-    "word": "और",
-    "start_ms": 773,
-    "end_ms": 918
+    "word": "बड़ा",
+    "start_ms": 940,
+    "end_ms": 1279
   },
   {
-    "word": "है,",
-    "start_ms": 918,
-    "end_ms": 1130
+    "word": "सवाल",
+    "start_ms": 1279,
+    "end_ms": 1618
   },
   {
-    "word": "बिजली",
-    "start_ms": 1130,
-    "end_ms": 1509
+    "word": "उठता",
+    "start_ms": 1618,
+    "end_ms": 1957
   },
   {
-    "word": "के",
-    "start_ms": 1509,
-    "end_ms": 1684
+    "word": "है…",
+    "start_ms": 1957,
+    "end_ms": 2180
   },
   {
-    "word": "बिना",
-    "start_ms": 1684,
-    "end_ms": 1991
+    "word": "अगर",
+    "start_ms": 2180,
+    "end_ms": 2411
   },
   {
-    "word": "दुनिया",
-    "start_ms": 1991,
-    "end_ms": 2428
+    "word": "कोई",
+    "start_ms": 2411,
+    "end_ms": 2673
   },
   {
-    "word": "पूरी",
-    "start_ms": 2428,
-    "end_ms": 2778
+    "word": "देश",
+    "start_ms": 2673,
+    "end_ms": 2935
   },
   {
-    "word": "तरह",
-    "start_ms": 2778,
-    "end_ms": 2997
+    "word": "दूसरों",
+    "start_ms": 2935,
+    "end_ms": 3490
   },
   {
-    "word": "रुक",
-    "start_ms": 2997,
-    "end_ms": 3201
+    "word": "का",
+    "start_ms": 3490,
+    "end_ms": 3675
   },
   {
-    "word": "भी",
-    "start_ms": 3201,
-    "end_ms": 3376
+    "word": "शोषण",
+    "start_ms": 3675,
+    "end_ms": 4014
   },
   {
-    "word": "नहीं",
-    "start_ms": 3376,
-    "end_ms": 3726
+    "word": "करे",
+    "start_ms": 4014,
+    "end_ms": 4276
   },
   {
-    "word": "जाती।",
-    "start_ms": 3726,
-    "end_ms": 4149
+    "word": "तो?",
+    "start_ms": 4276,
+    "end_ms": 4500
   }
 ]

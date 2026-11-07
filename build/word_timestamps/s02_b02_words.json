@@ -1,62 +1,62 @@
 [
   {
-    "word": "रात",
+    "word": "मान",
     "start_ms": 0,
-    "end_ms": 241
+    "end_ms": 256
   },
   {
-    "word": "में",
-    "start_ms": 241,
-    "end_ms": 512
+    "word": "लीजिए,",
+    "start_ms": 256,
+    "end_ms": 686
   },
   {
-    "word": "पढ़ना",
-    "start_ms": 512,
-    "end_ms": 896
+    "word": "सड़क",
+    "start_ms": 686,
+    "end_ms": 988
   },
   {
-    "word": "हो,",
-    "start_ms": 896,
-    "end_ms": 1102
+    "word": "पर",
+    "start_ms": 988,
+    "end_ms": 1139
   },
   {
-    "word": "तो",
-    "start_ms": 1102,
-    "end_ms": 1273
+    "word": "किसी",
+    "start_ms": 1139,
+    "end_ms": 1456
   },
   {
-    "word": "मोमबत्ती",
-    "start_ms": 1273,
-    "end_ms": 1807
+    "word": "ने",
+    "start_ms": 1456,
+    "end_ms": 1637
   },
   {
-    "word": "या",
-    "start_ms": 1807,
-    "end_ms": 1977
+    "word": "आपकी",
+    "start_ms": 1637,
+    "end_ms": 1969
   },
   {
-    "word": "तेल",
-    "start_ms": 1977,
-    "end_ms": 2219
+    "word": "गाड़ी",
+    "start_ms": 1969,
+    "end_ms": 2406
   },
   {
-    "word": "का",
-    "start_ms": 2219,
-    "end_ms": 2390
+    "word": "को",
+    "start_ms": 2406,
+    "end_ms": 2587
   },
   {
-    "word": "दीया",
-    "start_ms": 2390,
-    "end_ms": 2732
+    "word": "टक्कर",
+    "start_ms": 2587,
+    "end_ms": 2866
   },
   {
-    "word": "जलाना",
-    "start_ms": 2732,
-    "end_ms": 3144
+    "word": "मार",
+    "start_ms": 2866,
+    "end_ms": 3123
   },
   {
-    "word": "पड़ता।",
-    "start_ms": 3144,
-    "end_ms": 3599
+    "word": "दी।",
+    "start_ms": 3123,
+    "end_ms": 3380
   }
 ]

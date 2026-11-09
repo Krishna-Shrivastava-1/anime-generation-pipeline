@@ -1,72 +1,57 @@
 [
   {
-    "word": "आज",
+    "word": "अगर",
     "start_ms": 0,
-    "end_ms": 142
+    "end_ms": 218
   },
   {
-    "word": "शायद",
-    "start_ms": 142,
-    "end_ms": 457
+    "word": "रास्ता",
+    "start_ms": 218,
+    "end_ms": 620
   },
   {
-    "word": "गाली-गलौज",
-    "start_ms": 457,
-    "end_ms": 1149
+    "word": "खुला",
+    "start_ms": 620,
+    "end_ms": 926
   },
   {
-    "word": "या",
-    "start_ms": 1149,
-    "end_ms": 1321
+    "word": "है,",
+    "start_ms": 926,
+    "end_ms": 1138
   },
   {
-    "word": "हाथापाई",
-    "start_ms": 1321,
-    "end_ms": 1906
+    "word": "तो",
+    "start_ms": 1138,
+    "end_ms": 1313
   },
   {
-    "word": "हो",
-    "start_ms": 1906,
-    "end_ms": 2077
+    "word": "सुरक्षित",
+    "start_ms": 1313,
+    "end_ms": 1773
   },
   {
-    "word": "जाती…",
-    "start_ms": 2077,
-    "end_ms": 2456
+    "word": "तरीके",
+    "start_ms": 1773,
+    "end_ms": 2196
   },
   {
-    "word": "लेकिन",
-    "start_ms": 2456,
-    "end_ms": 2827
+    "word": "से",
+    "start_ms": 2196,
+    "end_ms": 2371
   },
   {
-    "word": "इस",
-    "start_ms": 2827,
-    "end_ms": 2970
+    "word": "वहाँ",
+    "start_ms": 2371,
+    "end_ms": 2692
   },
   {
-    "word": "दुनिया",
-    "start_ms": 2970,
-    "end_ms": 3398
+    "word": "से",
+    "start_ms": 2692,
+    "end_ms": 2867
   },
   {
-    "word": "में",
-    "start_ms": 3398,
-    "end_ms": 3670
-  },
-  {
-    "word": "ऐसा",
-    "start_ms": 3670,
-    "end_ms": 3913
-  },
-  {
-    "word": "नहीं",
-    "start_ms": 3913,
-    "end_ms": 4255
-  },
-  {
-    "word": "होगा।",
-    "start_ms": 4255,
-    "end_ms": 4670
+    "word": "निकलो।",
+    "start_ms": 2867,
+    "end_ms": 3319
   }
 ]

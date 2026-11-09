@@ -1,67 +1,57 @@
 [
   {
-    "word": "ना",
+    "word": "उसका",
     "start_ms": 0,
-    "end_ms": 169
+    "end_ms": 328
   },
   {
-    "word": "सेनाएँ",
-    "start_ms": 169,
-    "end_ms": 648
+    "word": "दोस्त",
+    "start_ms": 328,
+    "end_ms": 634
   },
   {
-    "word": "हमला",
-    "start_ms": 648,
-    "end_ms": 958
+    "word": "पूछता",
+    "start_ms": 634,
+    "end_ms": 1066
   },
   {
-    "word": "करेंगी,",
-    "start_ms": 958,
-    "end_ms": 1500
+    "word": "है,",
+    "start_ms": 1066,
+    "end_ms": 1283
   },
   {
-    "word": "ना",
-    "start_ms": 1500,
-    "end_ms": 1669
+    "word": "लेकिन",
+    "start_ms": 1283,
+    "end_ms": 1670
   },
   {
-    "word": "मिसाइलें",
-    "start_ms": 1669,
-    "end_ms": 2303
+    "word": "अगर",
+    "start_ms": 1670,
+    "end_ms": 1894
   },
   {
-    "word": "दागी",
-    "start_ms": 2303,
-    "end_ms": 2642
+    "word": "लोग",
+    "start_ms": 1894,
+    "end_ms": 2148
   },
   {
-    "word": "जाएँगी,",
-    "start_ms": 2642,
-    "end_ms": 3156
+    "word": "तुम्हें",
+    "start_ms": 2148,
+    "end_ms": 2618
   },
   {
-    "word": "ना",
-    "start_ms": 3156,
-    "end_ms": 3325
+    "word": "डरपोक",
+    "start_ms": 2618,
+    "end_ms": 3021
   },
   {
-    "word": "शहरों",
-    "start_ms": 3325,
-    "end_ms": 3734
+    "word": "समझें",
+    "start_ms": 3021,
+    "end_ms": 3453
   },
   {
-    "word": "पर",
-    "start_ms": 3734,
-    "end_ms": 3874
-  },
-  {
-    "word": "बम",
-    "start_ms": 3874,
-    "end_ms": 4015
-  },
-  {
-    "word": "गिरेंगे।",
-    "start_ms": 4015,
-    "end_ms": 4649
+    "word": "तो?",
+    "start_ms": 3453,
+    "end_ms": 3669
   }
 ]

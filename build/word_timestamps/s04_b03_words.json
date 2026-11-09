@@ -1,67 +1,62 @@
 [
   {
-    "word": "सीमाओं",
+    "word": "अरुण",
     "start_ms": 0,
-    "end_ms": 539
+    "end_ms": 286
   },
   {
-    "word": "पर",
-    "start_ms": 539,
-    "end_ms": 689
+    "word": "मुस्कुराकर",
+    "start_ms": 286,
+    "end_ms": 942
   },
   {
-    "word": "सैनिक",
-    "start_ms": 689,
-    "end_ms": 1079
+    "word": "कहता",
+    "start_ms": 942,
+    "end_ms": 1274
   },
   {
-    "word": "शायद",
-    "start_ms": 1079,
-    "end_ms": 1409
+    "word": "है,",
+    "start_ms": 1274,
+    "end_ms": 1492
   },
   {
-    "word": "लड़ने",
-    "start_ms": 1409,
-    "end_ms": 1814
+    "word": "डरपोक",
+    "start_ms": 1492,
+    "end_ms": 1900
   },
   {
-    "word": "की",
-    "start_ms": 1814,
-    "end_ms": 1994
+    "word": "वो",
+    "start_ms": 1900,
+    "end_ms": 2080
   },
   {
-    "word": "जगह",
-    "start_ms": 1994,
-    "end_ms": 2219
+    "word": "नहीं",
+    "start_ms": 2080,
+    "end_ms": 2442
   },
   {
-    "word": "निगरानी",
-    "start_ms": 2219,
-    "end_ms": 2789
+    "word": "जो",
+    "start_ms": 2442,
+    "end_ms": 2623
   },
   {
-    "word": "और",
-    "start_ms": 2789,
-    "end_ms": 2939
+    "word": "लड़ाई",
+    "start_ms": 2623,
+    "end_ms": 3030
   },
   {
-    "word": "बचाव",
-    "start_ms": 2939,
-    "end_ms": 3269
+    "word": "से",
+    "start_ms": 3030,
+    "end_ms": 3211
   },
   {
-    "word": "का",
-    "start_ms": 3269,
-    "end_ms": 3449
+    "word": "बचता",
+    "start_ms": 3211,
+    "end_ms": 3543
   },
   {
-    "word": "काम",
-    "start_ms": 3449,
-    "end_ms": 3704
-  },
-  {
-    "word": "करेंगे।",
-    "start_ms": 3704,
-    "end_ms": 4319
+    "word": "है।",
+    "start_ms": 3543,
+    "end_ms": 3800
   }
 ]

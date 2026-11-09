@@ -1,72 +1,82 @@
 [
   {
-    "word": "शायद",
+    "word": "अगली",
     "start_ms": 0,
-    "end_ms": 305
+    "end_ms": 330
   },
   {
-    "word": "देशों",
-    "start_ms": 305,
-    "end_ms": 735
+    "word": "बार",
+    "start_ms": 330,
+    "end_ms": 586
   },
   {
-    "word": "के",
-    "start_ms": 735,
-    "end_ms": 901
+    "word": "कोई",
+    "start_ms": 586,
+    "end_ms": 841
   },
   {
-    "word": "बीच",
-    "start_ms": 901,
-    "end_ms": 1137
+    "word": "तुम्हें",
+    "start_ms": 841,
+    "end_ms": 1314
   },
   {
-    "word": "मुकाबला",
-    "start_ms": 1137,
-    "end_ms": 1664
+    "word": "बेवजह",
+    "start_ms": 1314,
+    "end_ms": 1720
   },
   {
-    "word": "युद्ध",
-    "start_ms": 1664,
-    "end_ms": 1907
+    "word": "उकसाए,",
+    "start_ms": 1720,
+    "end_ms": 2164
   },
   {
-    "word": "से",
-    "start_ms": 1907,
-    "end_ms": 2074
+    "word": "तो",
+    "start_ms": 2164,
+    "end_ms": 2344
   },
   {
-    "word": "नहीं,",
-    "start_ms": 2074,
-    "end_ms": 2441
+    "word": "याद",
+    "start_ms": 2344,
+    "end_ms": 2599
   },
   {
-    "word": "तकनीक,",
-    "start_ms": 2441,
-    "end_ms": 2851
+    "word": "रखना,",
+    "start_ms": 2599,
+    "end_ms": 2968
   },
   {
-    "word": "व्यापार",
-    "start_ms": 2851,
-    "end_ms": 3302
+    "word": "तुम्हें",
+    "start_ms": 2968,
+    "end_ms": 3441
   },
   {
-    "word": "और",
-    "start_ms": 3302,
-    "end_ms": 3440
+    "word": "हर",
+    "start_ms": 3441,
+    "end_ms": 3591
   },
   {
-    "word": "खेलों",
-    "start_ms": 3440,
-    "end_ms": 3871
+    "word": "बहस",
+    "start_ms": 3591,
+    "end_ms": 3817
   },
   {
-    "word": "से",
-    "start_ms": 3871,
-    "end_ms": 4037
+    "word": "जीतने",
+    "start_ms": 3817,
+    "end_ms": 4252
   },
   {
-    "word": "होता।",
-    "start_ms": 4037,
-    "end_ms": 4439
+    "word": "की",
+    "start_ms": 4252,
+    "end_ms": 4433
+  },
+  {
+    "word": "ज़रूरत",
+    "start_ms": 4433,
+    "end_ms": 4914
+  },
+  {
+    "word": "नहीं।",
+    "start_ms": 4914,
+    "end_ms": 5350
   }
 ]

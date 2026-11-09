@@ -1,52 +1,82 @@
 [
   {
-    "word": "पड़ोसी",
+    "word": "अगर",
     "start_ms": 0,
-    "end_ms": 468
+    "end_ms": 252
   },
   {
-    "word": "पानी,",
-    "start_ms": 468,
-    "end_ms": 833
+    "word": "धमकी",
+    "start_ms": 252,
+    "end_ms": 622
   },
   {
-    "word": "पार्किंग",
-    "start_ms": 833,
-    "end_ms": 1336
+    "word": "दी",
+    "start_ms": 622,
+    "end_ms": 824
   },
   {
-    "word": "या",
-    "start_ms": 1336,
-    "end_ms": 1502
+    "word": "गई",
+    "start_ms": 824,
+    "end_ms": 992
   },
   {
-    "word": "ज़मीन",
-    "start_ms": 1502,
-    "end_ms": 1874
-  },
-  {
-    "word": "को",
-    "start_ms": 1874,
-    "end_ms": 2039
-  },
-  {
-    "word": "लेकर",
-    "start_ms": 2039,
-    "end_ms": 2342
-  },
-  {
-    "word": "बहस",
-    "start_ms": 2342,
-    "end_ms": 2549
+    "word": "है,",
+    "start_ms": 992,
+    "end_ms": 1236
   },
   {
     "word": "तो",
-    "start_ms": 2549,
-    "end_ms": 2714
+    "start_ms": 1236,
+    "end_ms": 1438
   },
   {
-    "word": "करेंगे।",
-    "start_ms": 2714,
-    "end_ms": 3280
+    "word": "सुरक्षित",
+    "start_ms": 1438,
+    "end_ms": 1968
+  },
+  {
+    "word": "दूरी",
+    "start_ms": 1968,
+    "end_ms": 2371
+  },
+  {
+    "word": "से",
+    "start_ms": 2371,
+    "end_ms": 2573
+  },
+  {
+    "word": "घटना",
+    "start_ms": 2573,
+    "end_ms": 2943
+  },
+  {
+    "word": "की",
+    "start_ms": 2943,
+    "end_ms": 3145
+  },
+  {
+    "word": "जानकारी",
+    "start_ms": 3145,
+    "end_ms": 3835
+  },
+  {
+    "word": "और",
+    "start_ms": 3835,
+    "end_ms": 4003
+  },
+  {
+    "word": "सबूत",
+    "start_ms": 4003,
+    "end_ms": 4373
+  },
+  {
+    "word": "संभालकर",
+    "start_ms": 4373,
+    "end_ms": 5029
+  },
+  {
+    "word": "रखो।",
+    "start_ms": 5029,
+    "end_ms": 5399
   }
 ]

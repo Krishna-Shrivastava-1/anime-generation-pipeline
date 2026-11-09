@@ -1,77 +1,52 @@
 [
   {
-    "word": "मतलब,",
+    "word": "क्योंकि",
     "start_ms": 0,
-    "end_ms": 325
+    "end_ms": 460
   },
   {
-    "word": "गुस्सा",
-    "start_ms": 325,
-    "end_ms": 679
+    "word": "तुम्हारा",
+    "start_ms": 460,
+    "end_ms": 994
   },
   {
-    "word": "तो",
-    "start_ms": 679,
-    "end_ms": 852
-  },
-  {
-    "word": "रहेगा…",
-    "start_ms": 852,
-    "end_ms": 1308
-  },
-  {
-    "word": "लेकिन",
-    "start_ms": 1308,
-    "end_ms": 1684
+    "word": "लक्ष्य",
+    "start_ms": 994,
+    "end_ms": 1243
   },
   {
     "word": "उसे",
-    "start_ms": 1684,
-    "end_ms": 1929
+    "start_ms": 1243,
+    "end_ms": 1492
   },
   {
-    "word": "हिंसा",
-    "start_ms": 1929,
-    "end_ms": 2334
+    "word": "हराना",
+    "start_ms": 1492,
+    "end_ms": 1916
   },
   {
-    "word": "में",
-    "start_ms": 2334,
-    "end_ms": 2609
+    "word": "नहीं,",
+    "start_ms": 1916,
+    "end_ms": 2304
   },
   {
-    "word": "बदलना",
-    "start_ms": 2609,
-    "end_ms": 2999
+    "word": "सुरक्षित",
+    "start_ms": 2304,
+    "end_ms": 2765
   },
   {
-    "word": "इंसानों",
-    "start_ms": 2999,
-    "end_ms": 3621
+    "word": "जगह",
+    "start_ms": 2765,
+    "end_ms": 2984
   },
   {
-    "word": "को",
-    "start_ms": 3621,
-    "end_ms": 3794
+    "word": "पहुँचना",
+    "start_ms": 2984,
+    "end_ms": 3511
   },
   {
-    "word": "याद",
-    "start_ms": 3794,
-    "end_ms": 4040
-  },
-  {
-    "word": "ही",
-    "start_ms": 4040,
-    "end_ms": 4213
-  },
-  {
-    "word": "नहीं",
-    "start_ms": 4213,
-    "end_ms": 4560
-  },
-  {
-    "word": "होगा।",
-    "start_ms": 4560,
-    "end_ms": 4979
+    "word": "है।",
+    "start_ms": 3511,
+    "end_ms": 3760
   }
 ]

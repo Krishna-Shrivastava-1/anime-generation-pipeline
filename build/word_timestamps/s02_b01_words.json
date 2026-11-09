@@ -1,47 +1,72 @@
 [
   {
     "word": "सबसे",
-    "start_ms": 10,
-    "end_ms": 328
+    "start_ms": 0,
+    "end_ms": 364
   },
   {
-    "word": "पहले",
-    "start_ms": 328,
-    "end_ms": 646
+    "word": "पहले,",
+    "start_ms": 364,
+    "end_ms": 769
   },
   {
-    "word": "बदलाव",
-    "start_ms": 646,
-    "end_ms": 1037
+    "word": "गाड़ी",
+    "start_ms": 769,
+    "end_ms": 1249
   },
   {
-    "word": "दिखेगा",
-    "start_ms": 1037,
-    "end_ms": 1514
+    "word": "के",
+    "start_ms": 1249,
+    "end_ms": 1447
   },
   {
-    "word": "हमारी",
-    "start_ms": 1514,
-    "end_ms": 1934
+    "word": "अंदर",
+    "start_ms": 1447,
+    "end_ms": 1812
   },
   {
-    "word": "रोज़मर्रा",
-    "start_ms": 1934,
-    "end_ms": 2549
+    "word": "रहो",
+    "start_ms": 1812,
+    "end_ms": 2093
   },
   {
-    "word": "की",
-    "start_ms": 2549,
-    "end_ms": 2722
+    "word": "अगर",
+    "start_ms": 2093,
+    "end_ms": 2341
   },
   {
-    "word": "ज़िंदगी",
-    "start_ms": 2722,
-    "end_ms": 3272
+    "word": "वहाँ",
+    "start_ms": 2341,
+    "end_ms": 2705
   },
   {
-    "word": "में।",
-    "start_ms": 3272,
-    "end_ms": 3620
+    "word": "रहना",
+    "start_ms": 2705,
+    "end_ms": 3069
+  },
+  {
+    "word": "सुरक्षित",
+    "start_ms": 3069,
+    "end_ms": 3591
+  },
+  {
+    "word": "है।",
+    "start_ms": 3591,
+    "end_ms": 3872
+  },
+  {
+    "word": "दरवाज़े",
+    "start_ms": 3872,
+    "end_ms": 4517
+  },
+  {
+    "word": "लॉक",
+    "start_ms": 4517,
+    "end_ms": 4765
+  },
+  {
+    "word": "रखो।",
+    "start_ms": 4765,
+    "end_ms": 5130
   }
 ]

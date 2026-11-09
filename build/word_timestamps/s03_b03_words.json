@@ -1,62 +1,67 @@
 [
   {
-    "word": "लेकिन",
+    "word": "अगर",
     "start_ms": 0,
-    "end_ms": 410
+    "end_ms": 243
   },
   {
-    "word": "समाधान",
-    "start_ms": 410,
-    "end_ms": 947
+    "word": "खतरा",
+    "start_ms": 243,
+    "end_ms": 600
   },
   {
-    "word": "के",
-    "start_ms": 947,
-    "end_ms": 1137
+    "word": "बना",
+    "start_ms": 600,
+    "end_ms": 877
   },
   {
-    "word": "लिए",
-    "start_ms": 1137,
-    "end_ms": 1358
+    "word": "हुआ",
+    "start_ms": 877,
+    "end_ms": 1104
   },
   {
-    "word": "पंचायत,",
-    "start_ms": 1358,
-    "end_ms": 1935
+    "word": "है,",
+    "start_ms": 1104,
+    "end_ms": 1339
   },
   {
-    "word": "अदालत",
-    "start_ms": 1935,
-    "end_ms": 2361
+    "word": "तो",
+    "start_ms": 1339,
+    "end_ms": 1534
   },
   {
-    "word": "और",
-    "start_ms": 2361,
-    "end_ms": 2519
+    "word": "पुलिस",
+    "start_ms": 1534,
+    "end_ms": 1908
   },
   {
-    "word": "बातचीत",
-    "start_ms": 2519,
-    "end_ms": 3056
+    "word": "या",
+    "start_ms": 1908,
+    "end_ms": 2103
   },
   {
-    "word": "का",
-    "start_ms": 3056,
-    "end_ms": 3246
+    "word": "आपातकालीन",
+    "start_ms": 2103,
+    "end_ms": 2931
   },
   {
-    "word": "सहारा",
-    "start_ms": 3246,
-    "end_ms": 3704
+    "word": "सहायता",
+    "start_ms": 2931,
+    "end_ms": 3483
   },
   {
-    "word": "लेना",
-    "start_ms": 3704,
-    "end_ms": 4083
+    "word": "से",
+    "start_ms": 3483,
+    "end_ms": 3678
   },
   {
-    "word": "पड़ेगा।",
-    "start_ms": 4083,
-    "end_ms": 4699
+    "word": "संपर्क",
+    "start_ms": 3678,
+    "end_ms": 4092
+  },
+  {
+    "word": "करो।",
+    "start_ms": 4092,
+    "end_ms": 4449
   }
 ]

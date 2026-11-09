@@ -1,72 +1,97 @@
 [
   {
-    "word": "एक",
+    "word": "सोचो,",
     "start_ms": 0,
-    "end_ms": 142
+    "end_ms": 417
   },
   {
-    "word": "सुबह",
-    "start_ms": 142,
-    "end_ms": 414
+    "word": "तुम",
+    "start_ms": 417,
+    "end_ms": 638
   },
   {
-    "word": "पूरी",
-    "start_ms": 414,
-    "end_ms": 757
+    "word": "अपनी",
+    "start_ms": 638,
+    "end_ms": 984
   },
   {
-    "word": "दुनिया",
-    "start_ms": 757,
-    "end_ms": 1185
+    "word": "कार",
+    "start_ms": 984,
+    "end_ms": 1252
   },
   {
-    "word": "उठती",
-    "start_ms": 1185,
-    "end_ms": 1500
+    "word": "से",
+    "start_ms": 1252,
+    "end_ms": 1441
   },
   {
-    "word": "है…",
-    "start_ms": 1500,
-    "end_ms": 1707
+    "word": "घर",
+    "start_ms": 1441,
+    "end_ms": 1599
+  },
+  {
+    "word": "जा",
+    "start_ms": 1599,
+    "end_ms": 1788
+  },
+  {
+    "word": "रहे",
+    "start_ms": 1788,
+    "end_ms": 2056
+  },
+  {
+    "word": "हो",
+    "start_ms": 2056,
+    "end_ms": 2245
   },
   {
     "word": "और",
-    "start_ms": 1707,
-    "end_ms": 1850
+    "start_ms": 2245,
+    "end_ms": 2402
   },
   {
-    "word": "इंसान",
-    "start_ms": 1850,
-    "end_ms": 2264
+    "word": "अचानक",
+    "start_ms": 2402,
+    "end_ms": 2828
   },
   {
-    "word": "लड़ना",
-    "start_ms": 2264,
-    "end_ms": 2650
+    "word": "एक",
+    "start_ms": 2828,
+    "end_ms": 2985
   },
   {
-    "word": "ही",
-    "start_ms": 2650,
-    "end_ms": 2821
+    "word": "बड़ी",
+    "start_ms": 2985,
+    "end_ms": 3332
   },
   {
-    "word": "भूल",
-    "start_ms": 2821,
-    "end_ms": 3064
+    "word": "एसयूवी",
+    "start_ms": 3332,
+    "end_ms": 3867
   },
   {
-    "word": "चुका",
-    "start_ms": 3064,
-    "end_ms": 3364
+    "word": "तुम्हारा",
+    "start_ms": 3867,
+    "end_ms": 4442
   },
   {
-    "word": "होता",
-    "start_ms": 3364,
-    "end_ms": 3707
+    "word": "रास्ता",
+    "start_ms": 4442,
+    "end_ms": 4876
+  },
+  {
+    "word": "काट",
+    "start_ms": 4876,
+    "end_ms": 5144
+  },
+  {
+    "word": "देती",
+    "start_ms": 5144,
+    "end_ms": 5522
   },
   {
     "word": "है।",
-    "start_ms": 3707,
-    "end_ms": 3949
+    "start_ms": 5522,
+    "end_ms": 5789
   }
 ]

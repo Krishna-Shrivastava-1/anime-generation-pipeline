@@ -1,72 +1,67 @@
 [
   {
-    "word": "घर",
+    "word": "किसी",
     "start_ms": 0,
-    "end_ms": 152
+    "end_ms": 302
   },
   {
-    "word": "में",
-    "start_ms": 152,
-    "end_ms": 441
+    "word": "भीड़भाड़",
+    "start_ms": 302,
+    "end_ms": 937
   },
   {
-    "word": "भाई-बहन",
-    "start_ms": 441,
-    "end_ms": 966
+    "word": "वाली",
+    "start_ms": 937,
+    "end_ms": 1284
   },
   {
-    "word": "का",
-    "start_ms": 966,
-    "end_ms": 1149
+    "word": "जगह,",
+    "start_ms": 1284,
+    "end_ms": 1536
   },
   {
-    "word": "झगड़ा",
-    "start_ms": 1149,
-    "end_ms": 1560
+    "word": "पेट्रोल",
+    "start_ms": 1536,
+    "end_ms": 2005
   },
   {
-    "word": "हो,",
-    "start_ms": 1560,
-    "end_ms": 1780
+    "word": "पंप",
+    "start_ms": 2005,
+    "end_ms": 2250
   },
   {
-    "word": "तब",
-    "start_ms": 1780,
-    "end_ms": 1932
+    "word": "या",
+    "start_ms": 2250,
+    "end_ms": 2423
   },
   {
-    "word": "भी",
-    "start_ms": 1932,
-    "end_ms": 2115
+    "word": "पुलिस",
+    "start_ms": 2423,
+    "end_ms": 2755
   },
   {
-    "word": "मारपीट",
-    "start_ms": 2115,
-    "end_ms": 2633
+    "word": "सहायता",
+    "start_ms": 2755,
+    "end_ms": 3246
+  },
+  {
+    "word": "केंद्र",
+    "start_ms": 3246,
+    "end_ms": 3643
   },
   {
     "word": "की",
-    "start_ms": 2633,
-    "end_ms": 2815
+    "start_ms": 3643,
+    "end_ms": 3816
   },
   {
-    "word": "जगह",
-    "start_ms": 2815,
-    "end_ms": 3044
+    "word": "तरफ",
+    "start_ms": 3816,
+    "end_ms": 4032
   },
   {
-    "word": "बातचीत",
-    "start_ms": 3044,
-    "end_ms": 3561
-  },
-  {
-    "word": "करनी",
-    "start_ms": 3561,
-    "end_ms": 3896
-  },
-  {
-    "word": "पड़ेगी।",
-    "start_ms": 3896,
-    "end_ms": 4489
+    "word": "जाओ।",
+    "start_ms": 4032,
+    "end_ms": 4350
   }
 ]

@@ -2,41 +2,66 @@
   {
     "word": "लेकिन",
     "start_ms": 0,
-    "end_ms": 370
+    "end_ms": 433
   },
   {
-    "word": "असली",
-    "start_ms": 370,
-    "end_ms": 684
+    "word": "अब",
+    "start_ms": 433,
+    "end_ms": 600
   },
   {
-    "word": "कहानी",
-    "start_ms": 684,
-    "end_ms": 1097
+    "word": "एक",
+    "start_ms": 600,
+    "end_ms": 767
   },
   {
-    "word": "इससे",
-    "start_ms": 1097,
-    "end_ms": 1410
+    "word": "छोटी",
+    "start_ms": 767,
+    "end_ms": 1167
   },
   {
-    "word": "कहीं",
-    "start_ms": 1410,
-    "end_ms": 1752
+    "word": "सी",
+    "start_ms": 1167,
+    "end_ms": 1367
   },
   {
-    "word": "ज़्यादा",
-    "start_ms": 1752,
-    "end_ms": 2215
+    "word": "सड़क",
+    "start_ms": 1367,
+    "end_ms": 1701
   },
   {
-    "word": "दिलचस्प",
-    "start_ms": 2215,
-    "end_ms": 2607
+    "word": "की",
+    "start_ms": 1701,
+    "end_ms": 1901
+  },
+  {
+    "word": "गलती",
+    "start_ms": 1901,
+    "end_ms": 2268
+  },
+  {
+    "word": "खतरनाक",
+    "start_ms": 2268,
+    "end_ms": 2802
+  },
+  {
+    "word": "टकराव",
+    "start_ms": 2802,
+    "end_ms": 3252
+  },
+  {
+    "word": "बन",
+    "start_ms": 3252,
+    "end_ms": 3419
+  },
+  {
+    "word": "सकती",
+    "start_ms": 3419,
+    "end_ms": 3786
   },
   {
     "word": "है।",
-    "start_ms": 2607,
-    "end_ms": 2850
+    "start_ms": 3786,
+    "end_ms": 4069
   }
 ]

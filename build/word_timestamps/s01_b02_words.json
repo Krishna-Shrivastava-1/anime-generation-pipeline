@@ -1,67 +1,77 @@
 [
   {
-    "word": "ना",
+    "word": "तुम",
     "start_ms": 0,
-    "end_ms": 175
+    "end_ms": 230
   },
   {
-    "word": "गुस्से",
-    "start_ms": 175,
-    "end_ms": 534
+    "word": "ब्रेक",
+    "start_ms": 230,
+    "end_ms": 568
   },
   {
-    "word": "में",
-    "start_ms": 534,
-    "end_ms": 813
+    "word": "लगाते",
+    "start_ms": 568,
+    "end_ms": 1045
   },
   {
-    "word": "मारपीट…",
-    "start_ms": 813,
-    "end_ms": 1347
+    "word": "हो।",
+    "start_ms": 1045,
+    "end_ms": 1325
   },
   {
-    "word": "ना",
-    "start_ms": 1347,
-    "end_ms": 1523
+    "word": "लेकिन",
+    "start_ms": 1325,
+    "end_ms": 1753
   },
   {
-    "word": "बदला…",
-    "start_ms": 1523,
-    "end_ms": 1882
+    "word": "वो",
+    "start_ms": 1753,
+    "end_ms": 1951
   },
   {
-    "word": "ना",
-    "start_ms": 1882,
-    "end_ms": 2058
+    "word": "आदमी",
+    "start_ms": 1951,
+    "end_ms": 2313
   },
   {
-    "word": "किसी",
-    "start_ms": 2058,
-    "end_ms": 2365
+    "word": "बाहर",
+    "start_ms": 2313,
+    "end_ms": 2676
   },
   {
-    "word": "को",
-    "start_ms": 2365,
-    "end_ms": 2541
+    "word": "निकलकर",
+    "start_ms": 2676,
+    "end_ms": 3153
   },
   {
-    "word": "चोट",
-    "start_ms": 2541,
-    "end_ms": 2790
+    "word": "उल्टा",
+    "start_ms": 3153,
+    "end_ms": 3491
   },
   {
-    "word": "पहुँचाने",
-    "start_ms": 2790,
-    "end_ms": 3420
+    "word": "तुम्हें",
+    "start_ms": 3491,
+    "end_ms": 4010
   },
   {
-    "word": "का",
-    "start_ms": 3420,
-    "end_ms": 3596
+    "word": "ही",
+    "start_ms": 4010,
+    "end_ms": 4207
   },
   {
-    "word": "ख्याल।",
-    "start_ms": 3596,
-    "end_ms": 3969
+    "word": "धमकाने",
+    "start_ms": 4207,
+    "end_ms": 4767
+  },
+  {
+    "word": "लगता",
+    "start_ms": 4767,
+    "end_ms": 5130
+  },
+  {
+    "word": "है।",
+    "start_ms": 5130,
+    "end_ms": 5410
   }
 ]

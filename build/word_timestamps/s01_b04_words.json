@@ -1,67 +1,87 @@
 [
   {
-    "word": "क्योंकि",
+    "word": "तुम",
     "start_ms": 0,
-    "end_ms": 452
+    "end_ms": 215
   },
   {
-    "word": "लड़ाई",
-    "start_ms": 452,
-    "end_ms": 839
+    "word": "चिल्लाते",
+    "start_ms": 215,
+    "end_ms": 777
   },
   {
-    "word": "भूलना",
-    "start_ms": 839,
-    "end_ms": 1256
+    "word": "हो,",
+    "start_ms": 777,
+    "end_ms": 1000
+  },
+  {
+    "word": "बहस",
+    "start_ms": 1000,
+    "end_ms": 1231
+  },
+  {
+    "word": "करते",
+    "start_ms": 1231,
+    "end_ms": 1570
+  },
+  {
+    "word": "हो",
+    "start_ms": 1570,
+    "end_ms": 1755
   },
   {
     "word": "और",
-    "start_ms": 1256,
-    "end_ms": 1399
+    "start_ms": 1755,
+    "end_ms": 1909
   },
   {
-    "word": "हर",
-    "start_ms": 1399,
-    "end_ms": 1543
+    "word": "साबित",
+    "start_ms": 1909,
+    "end_ms": 2309
   },
   {
-    "word": "बात",
-    "start_ms": 1543,
-    "end_ms": 1787
+    "word": "करने",
+    "start_ms": 2309,
+    "end_ms": 2648
   },
   {
-    "word": "पर",
-    "start_ms": 1787,
-    "end_ms": 1930
+    "word": "लगते",
+    "start_ms": 2648,
+    "end_ms": 2987
   },
   {
-    "word": "सहमत",
-    "start_ms": 1930,
-    "end_ms": 2217
+    "word": "हो",
+    "start_ms": 2987,
+    "end_ms": 3172
   },
   {
-    "word": "होना…",
-    "start_ms": 2217,
-    "end_ms": 2598
+    "word": "कि",
+    "start_ms": 3172,
+    "end_ms": 3310
   },
   {
-    "word": "दोनों",
-    "start_ms": 2598,
-    "end_ms": 3043
+    "word": "तुम",
+    "start_ms": 3310,
+    "end_ms": 3526
   },
   {
-    "word": "अलग",
-    "start_ms": 3043,
-    "end_ms": 3258
+    "word": "किसी",
+    "start_ms": 3526,
+    "end_ms": 3849
   },
   {
-    "word": "चीज़ें",
-    "start_ms": 3258,
-    "end_ms": 3775
+    "word": "से",
+    "start_ms": 3849,
+    "end_ms": 4034
   },
   {
-    "word": "हैं।",
-    "start_ms": 3775,
-    "end_ms": 4119
+    "word": "डरते",
+    "start_ms": 4034,
+    "end_ms": 4373
+  },
+  {
+    "word": "नहीं।",
+    "start_ms": 4373,
+    "end_ms": 4819
   }
 ]

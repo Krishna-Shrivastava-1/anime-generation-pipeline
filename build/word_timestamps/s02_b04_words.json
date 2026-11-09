@@ -1,57 +1,62 @@
 [
   {
-    "word": "दोनों",
-    "start_ms": 0,
-    "end_ms": 432
-  },
-  {
-    "word": "शायद",
-    "start_ms": 432,
-    "end_ms": 739
-  },
-  {
-    "word": "पुलिस",
-    "start_ms": 739,
-    "end_ms": 1060
-  },
-  {
-    "word": "बुलाएँगे,",
-    "start_ms": 1060,
-    "end_ms": 1694
-  },
-  {
-    "word": "सबूत",
-    "start_ms": 1694,
-    "end_ms": 2001
-  },
-  {
-    "word": "दिखाएँगे",
-    "start_ms": 2001,
-    "end_ms": 2601
-  },
-  {
     "word": "और",
-    "start_ms": 2601,
-    "end_ms": 2741
+    "start_ms": 0,
+    "end_ms": 157
   },
   {
-    "word": "बात",
-    "start_ms": 2741,
-    "end_ms": 2978
+    "word": "अगर",
+    "start_ms": 157,
+    "end_ms": 393
   },
   {
-    "word": "कानून",
-    "start_ms": 2978,
-    "end_ms": 3382
+    "word": "कोई",
+    "start_ms": 393,
+    "end_ms": 661
   },
   {
-    "word": "से",
-    "start_ms": 3382,
-    "end_ms": 3550
+    "word": "पीछा",
+    "start_ms": 661,
+    "end_ms": 1038
   },
   {
-    "word": "सुलझेगी।",
-    "start_ms": 3550,
-    "end_ms": 4149
+    "word": "कर",
+    "start_ms": 1038,
+    "end_ms": 1196
+  },
+  {
+    "word": "रहा",
+    "start_ms": 1196,
+    "end_ms": 1463
+  },
+  {
+    "word": "है,",
+    "start_ms": 1463,
+    "end_ms": 1692
+  },
+  {
+    "word": "तो",
+    "start_ms": 1692,
+    "end_ms": 1881
+  },
+  {
+    "word": "सीधे",
+    "start_ms": 1881,
+    "end_ms": 2258
+  },
+  {
+    "word": "घर",
+    "start_ms": 2258,
+    "end_ms": 2416
+  },
+  {
+    "word": "मत",
+    "start_ms": 2416,
+    "end_ms": 2573
+  },
+  {
+    "word": "जाओ।",
+    "start_ms": 2573,
+    "end_ms": 2919
   }
 ]

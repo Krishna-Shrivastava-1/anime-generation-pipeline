@@ -1,62 +1,62 @@
 [
   {
-    "word": "मान",
+    "word": "खिड़की",
     "start_ms": 0,
-    "end_ms": 256
+    "end_ms": 540
   },
   {
-    "word": "लीजिए,",
-    "start_ms": 256,
-    "end_ms": 686
+    "word": "से",
+    "start_ms": 540,
+    "end_ms": 749
   },
   {
-    "word": "सड़क",
-    "start_ms": 686,
-    "end_ms": 988
+    "word": "बहस",
+    "start_ms": 749,
+    "end_ms": 1011
   },
   {
-    "word": "पर",
-    "start_ms": 988,
-    "end_ms": 1139
+    "word": "मत",
+    "start_ms": 1011,
+    "end_ms": 1185
   },
   {
-    "word": "किसी",
-    "start_ms": 1139,
-    "end_ms": 1456
+    "word": "करो।",
+    "start_ms": 1185,
+    "end_ms": 1569
   },
   {
-    "word": "ने",
-    "start_ms": 1456,
-    "end_ms": 1637
+    "word": "धमकी",
+    "start_ms": 1569,
+    "end_ms": 1953
   },
   {
-    "word": "आपकी",
-    "start_ms": 1637,
-    "end_ms": 1969
+    "word": "का",
+    "start_ms": 1953,
+    "end_ms": 2162
   },
   {
-    "word": "गाड़ी",
-    "start_ms": 1969,
-    "end_ms": 2406
+    "word": "जवाब",
+    "start_ms": 2162,
+    "end_ms": 2546
   },
   {
-    "word": "को",
-    "start_ms": 2406,
-    "end_ms": 2587
+    "word": "धमकी",
+    "start_ms": 2546,
+    "end_ms": 2929
   },
   {
-    "word": "टक्कर",
-    "start_ms": 2587,
-    "end_ms": 2866
+    "word": "से",
+    "start_ms": 2929,
+    "end_ms": 3139
   },
   {
-    "word": "मार",
-    "start_ms": 2866,
-    "end_ms": 3123
+    "word": "मत",
+    "start_ms": 3139,
+    "end_ms": 3313
   },
   {
-    "word": "दी।",
-    "start_ms": 3123,
-    "end_ms": 3380
+    "word": "दो।",
+    "start_ms": 3313,
+    "end_ms": 3610
   }
 ]

@@ -1,67 +1,62 @@
 [
   {
-    "word": "स्कूलों",
+    "word": "याद",
     "start_ms": 0,
-    "end_ms": 484
+    "end_ms": 256
   },
   {
-    "word": "में",
-    "start_ms": 484,
-    "end_ms": 751
+    "word": "रखो,",
+    "start_ms": 256,
+    "end_ms": 550
   },
   {
-    "word": "बच्चों",
-    "start_ms": 751,
-    "end_ms": 1137
+    "word": "किसी",
+    "start_ms": 550,
+    "end_ms": 866
   },
   {
-    "word": "को",
-    "start_ms": 1137,
-    "end_ms": 1305
+    "word": "अनजान",
+    "start_ms": 866,
+    "end_ms": 1273
   },
   {
-    "word": "सिर्फ",
-    "start_ms": 1305,
-    "end_ms": 1551
+    "word": "आदमी",
+    "start_ms": 1273,
+    "end_ms": 1605
   },
   {
-    "word": "पढ़ाई",
-    "start_ms": 1551,
-    "end_ms": 1930
+    "word": "का",
+    "start_ms": 1605,
+    "end_ms": 1786
   },
   {
-    "word": "नहीं,",
-    "start_ms": 1930,
-    "end_ms": 2302
+    "word": "अहंकार",
+    "start_ms": 1786,
+    "end_ms": 2298
   },
   {
-    "word": "बल्कि",
-    "start_ms": 2302,
-    "end_ms": 2548
+    "word": "बचाना",
+    "start_ms": 2298,
+    "end_ms": 2735
   },
   {
-    "word": "मतभेद",
-    "start_ms": 2548,
-    "end_ms": 2927
+    "word": "तुम्हारी",
+    "start_ms": 2735,
+    "end_ms": 3285
   },
   {
-    "word": "सुलझाना",
-    "start_ms": 2927,
-    "end_ms": 3460
-  },
-  {
-    "word": "भी",
-    "start_ms": 3460,
-    "end_ms": 3629
-  },
-  {
-    "word": "सिखाया",
-    "start_ms": 3629,
+    "word": "ज़िम्मेदारी",
+    "start_ms": 3285,
     "end_ms": 4092
   },
   {
-    "word": "जाएगा।",
+    "word": "नहीं",
     "start_ms": 4092,
-    "end_ms": 4570
+    "end_ms": 4453
+  },
+  {
+    "word": "है।",
+    "start_ms": 4453,
+    "end_ms": 4710
   }
 ]

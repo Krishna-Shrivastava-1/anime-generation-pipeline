@@ -1,92 +1,62 @@
 [
   {
-    "word": "लेकिन",
+    "word": "तुम्हारे",
     "start_ms": 0,
-    "end_ms": 409
+    "end_ms": 584
   },
   {
-    "word": "दुनिया",
-    "start_ms": 409,
-    "end_ms": 881
+    "word": "हिसाब",
+    "start_ms": 584,
+    "end_ms": 1001
   },
   {
     "word": "से",
-    "start_ms": 881,
-    "end_ms": 1070
+    "start_ms": 1001,
+    "end_ms": 1193
   },
   {
-    "word": "युद्ध",
-    "start_ms": 1070,
-    "end_ms": 1346
+    "word": "ऐसी",
+    "start_ms": 1193,
+    "end_ms": 1466
   },
   {
-    "word": "खत्म",
-    "start_ms": 1346,
-    "end_ms": 1559
+    "word": "स्थिति",
+    "start_ms": 1466,
+    "end_ms": 1810
   },
   {
-    "word": "होने",
-    "start_ms": 1559,
-    "end_ms": 1936
+    "word": "में",
+    "start_ms": 1810,
+    "end_ms": 2114
   },
   {
-    "word": "का",
-    "start_ms": 1936,
-    "end_ms": 2125
+    "word": "सबसे",
+    "start_ms": 2114,
+    "end_ms": 2467
   },
   {
-    "word": "मतलब",
-    "start_ms": 2125,
-    "end_ms": 2440
+    "word": "समझदारी",
+    "start_ms": 2467,
+    "end_ms": 3092
   },
   {
-    "word": "ये",
-    "start_ms": 2440,
-    "end_ms": 2629
+    "word": "वाला",
+    "start_ms": 3092,
+    "end_ms": 3476
   },
   {
-    "word": "नहीं",
-    "start_ms": 2629,
-    "end_ms": 3007
+    "word": "कदम",
+    "start_ms": 3476,
+    "end_ms": 3717
   },
   {
-    "word": "कि",
-    "start_ms": 3007,
-    "end_ms": 3149
+    "word": "क्या",
+    "start_ms": 3717,
+    "end_ms": 3965
   },
   {
-    "word": "गरीबी",
-    "start_ms": 3149,
-    "end_ms": 3606
-  },
-  {
-    "word": "और",
-    "start_ms": 3606,
-    "end_ms": 3763
-  },
-  {
-    "word": "अन्याय",
-    "start_ms": 3763,
-    "end_ms": 4165
-  },
-  {
-    "word": "भी",
-    "start_ms": 4165,
-    "end_ms": 4354
-  },
-  {
-    "word": "खत्म",
-    "start_ms": 4354,
-    "end_ms": 4566
-  },
-  {
-    "word": "हो",
-    "start_ms": 4566,
-    "end_ms": 4755
-  },
-  {
-    "word": "जाएँगे।",
-    "start_ms": 4755,
-    "end_ms": 5369
+    "word": "होगा?",
+    "start_ms": 3965,
+    "end_ms": 4390
   }
 ]

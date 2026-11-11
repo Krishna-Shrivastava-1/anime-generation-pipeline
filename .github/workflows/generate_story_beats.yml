@@ -75,13 +75,13 @@ jobs:
 
           HEADED = os.environ.get("HEADED") == "true"
           MAX_ATTEMPTS = 4
-          MAX_ROUNDS = 3
-          PART_SECONDS = 210
-          PART_CHARS = 3200
+          MAX_ROUNDS = 2
+          PART_SECONDS = 120        # Keeps prompt well below Duck.ai's ~4000 char input limit
+          PART_CHARS = 1600         # Hard cap so messages never get blocked
           MAX_WAIT = 240
           CLIP_PAD = 0.15
           MIN_CLIP = 2.5
-          MAX_CLIP = 6.0
+          MAX_CLIP = 6.0            # YouTube Fair-Use: clips capped strictly to 6 seconds
           WORDS_PER_SEC = 2.4
           FIT_LIMIT = 1.35
           DEBUG_DIR = Path("debug")
@@ -241,21 +241,29 @@ jobs:
               box = get_prompt_box(page)
               box.wait_for(state="visible", timeout=30000)
               box.click()
+              box.fill("")
+              page.wait_for_timeout(200)
               box.fill(text)
-              page.wait_for_timeout(700)
+              page.wait_for_timeout(600)
+
               sent = False
               for method in range(3):
                   try:
                       if method == 0:
-                          box.press("Enter")
+                          send_btn = page.locator(
+                              "button[type='submit']:not([disabled]), button[aria-label*='Send' i]:not([disabled])"
+                          ).first
+                          if send_btn.count() > 0 and send_btn.is_visible():
+                              send_btn.click(timeout=2500)
+                          else:
+                              box.press("Enter")
                       elif method == 1:
-                          page.locator(
-                              "button[type='submit'], button[aria-label*='Send' i], button[aria-label*='submit' i]"
-                          ).first.click(timeout=3000)
+                          box.press("Enter")
                       else:
                           box.press("Control+Enter")
                   except Exception:
                       pass
+
                   page.wait_for_timeout(1500)
                   try:
                       left = box.input_value()
@@ -264,8 +272,9 @@ jobs:
                   if len(left.strip()) < 20:
                       sent = True
                       break
+
               if not sent:
-                  raise RuntimeError("Message was pasted but never sent (input box still full).")
+                  raise RuntimeError(f"Message ({len(text)} chars) was pasted but never sent (input box still full).")
               page.wait_for_timeout(1000)
               dismiss_modals(page)
 
@@ -403,66 +412,45 @@ jobs:
               chunks.append((cur_first, len(segs)))
           if len(chunks) > 1:
               lf, ll = chunks[-1]
-              if segs[ll - 1]["end"] - segs[lf - 1]["start"] < 35:
+              if segs[ll - 1]["end"] - segs[lf - 1]["start"] < 30:
                   chunks[-2] = (chunks[-2][0], ll)
                   chunks.pop()
           log(f"{len(segs)} transcript lines, {TOTAL_DUR:.0f}s -> {len(chunks)} parts, ONE recap chat")
 
+          # Concise YouTube recap instructions (kept under 600 chars to avoid Duck.ai limit)
           SETUP = (
-              "You are a professional YouTube Movie/Series Recap Narrator (like popular Hindi 'Movie Explained' channels).\n"
-              "Your goal is to narrate the ESSENTIAL PLOT in Hindi (Devanagari script only), giving viewers a captivating, coherent story.\n\n"
-              "CRITICAL RULES:\n"
-              "1. DO NOT DUB OR TRANSLATE: Never translate raw dialogues line by line. Do not narrate small talk, greetings, or filler. Summarize what happens, characters' motives, emotional shifts, and key plot events.\n"
-              "2. SEAMLESS SCENE BRIDGING & CONTEXT: When the scene or location changes, ALWAYS provide a bridging sentence explaining the context BEFORE describing the dialogue. "
-              "For example: 'इसके बाद डिटेक्टिव क्लोई मर्डर के मुख्य गवाह से पूछताछ करने के लिए लक्स नाइटक्लब पहुंचती है, जहाँ उसकी मुलाक़ात क्लब के रहस्यमयी मालिक लूसीफर से होती है।'\n"
-              "3. THIRD-PERSON NARRATOR TONE: Speak like an engaging story narrator explaining the episode ('कहानी की शुरुआत में...', 'आगे हम देखते हैं कि...', 'क्लोई को शक होता है कि...').\n"
-              "4. FAIR-USE SHORT CLIPS ONLY: For each plot beat, select ONLY ONE SHORT key visual moment (from_id to to_id). Each clip MUST be 3 to 6 seconds long in real time. Short clips protect the video from copyright strikes.\n"
-              "5. CONCISE HIGH-VALUE BEATS: For each part, produce 3 to 5 high-impact beats covering the core developments. Total recap duration for the whole episode should be around 20% to 25% of the video.\n"
-              "6. NARRATION LENGTH: 1 to 2 crisp, natural Hindi sentences in Devanagari. Do NOT use double quotes inside narration.\n"
-              "7. Exact output format: Marker RECAPSTART-<tag>, raw JSON object, then RECAPEND-<tag>.\n\n"
-              "JSON shape:\n"
-              '{"characters":[{"name":"<Name>","hindi_name":"<Devanagari>","role":"<Role in Hindi>"}],'
-              '"beats":[{"from_id":<number>,"to_id":<number>,"narration":"<Hindi recap with scene context>"}]}'
+              "You are a Hindi YouTube Movie Recap Narrator (Hindi Explained style).\n"
+              "RULES:\n"
+              "1. NEVER dub dialogues. Summarize the key plot in natural Hindi (Devanagari).\n"
+              "2. BRIDGE SCENES: Explain scene transitions and context (e.g. who goes where and why, introducing characters) before describing dialogues.\n"
+              "3. SHORT FAIR-USE CLIPS: Pick 1 key moment per beat (3-6 seconds only). Avoid long blocks.\n"
+              "4. Keep 2-4 major beats per part so total recap is ~20% of movie length.\n"
+              "5. JSON shape: {\"characters\":[{\"name\":\"X\",\"hindi_name\":\"एक्स\",\"role\":\"Role\"}],\"beats\":[{\"from_id\":1,\"to_id\":2,\"narration\":\"Hindi narration\"}]}\n"
           )
 
 
           def reply_format(tag):
-              return ("Reply format: the marker RECAPSTART-" + tag + " alone on its own line, then ONE raw JSON object, "
-                      "then the marker RECAPEND-" + tag + " alone on its own line. No markdown fences, no commentary.")
+              return ("Reply format: marker RECAPSTART-" + tag + " on its line, raw JSON, marker RECAPEND-" + tag + " on its line.")
 
 
           def part_message(ci, cursor, first, last, kind, tag, with_text):
               t0 = segs[cursor - 1]["start"]
               t1 = segs[last - 1]["end"]
-              dur = t1 - t0
-              target_time = max(20, int(0.20 * dur))
-              max_target = max(35, int(0.28 * dur))
-
-              if kind == "new_part":
-                  head = (f"PART {ci + 1} of {len(chunks)} ({t0:.0f}s to {t1:.0f}s, lines #{first} to #{last}).\n"
-                          f"Summarize the KEY STORY TURNING POINTS of this scene in YouTube recap style.\n"
-                          f"- Build narrative bridges: explain where characters are, who they are meeting, and why.\n"
-                          f"- Skip filler dialogues and banter.\n"
-                          f"- Total clip duration for all beats combined in this part must be about {target_time}s to {max_target}s.\n"
-                          f"- Each individual beat clip must be short (3 to 6 seconds).")
-              else:
-                  head = (f"Continue PART {ci + 1} from line #{cursor} to #{last}.\n"
-                          f"Provide only the remaining key story beats (with character introductions/location bridges). "
-                          f"Keep it brief and engaging. Do not repeat earlier beats.")
-              msg = head + "\n" + reply_format(tag)
+              head = (f"PART {ci + 1}/{len(chunks)} ({t0:.0f}s-{t1:.0f}s, lines #{first}-#{last}).\n"
+                      f"Give 2 to 4 key story beats in Hindi YouTube recap style with scene context bridges. "
+                      f"Keep clips short (3 to 6 seconds each).\n" + reply_format(tag))
               if with_text:
-                  msg += "\nTRANSCRIPT:\n" + "\n".join(fmt_line(segs[i - 1]) for i in range(cursor, last + 1))
-              return msg
+                  head += "\nTRANSCRIPT:\n" + "\n".join(fmt_line(segs[i - 1]) for i in range(cursor, last + 1))
+              return head
 
 
           def story_summary(beats, characters):
               if not beats:
                   return ""
-              names = ", ".join(f"{c.get('name', '')} ({c.get('hindi_name', '')})" for c in characters)
-              recent = " ".join(b["narration"] for b in beats[-8:])
-              recent = recent[-1200:]
-              return (f"\n[STORY CONTEXT SO FAR]:\nKnown characters: {names}\n"
-                      f"Previous events: {recent}\nEnsure the upcoming scene connects smoothly with this context.\n")
+              names = ", ".join(f"{c.get('name', '')} ({c.get('hindi_name', '')})" for c in characters[:5])
+              recent = " ".join(b["narration"] for b in beats[-4:])
+              recent = recent[-500:]
+              return f"\nContext so far: Characters ({names}). Earlier: {recent}\n"
 
 
           def score(b):
@@ -519,11 +507,12 @@ jobs:
 
 
           def build_output(beats, characters, parts_info):
+              clip_sum = sum(b["clip_sec"] for b in beats)
               return {
                   "movie_title": transcript_data.get("movie_title", "movie"),
                   "duration": TOTAL_DUR,
-                  "recap_duration_seconds": round(sum(b["clip_sec"] for b in beats), 1),
-                  "recap_percentage": f"{round((sum(b['clip_sec'] for b in beats) / TOTAL_DUR) * 100, 1)}%",
+                  "recap_duration_seconds": round(clip_sum, 1),
+                  "recap_percentage": f"{round((clip_sum / TOTAL_DUR) * 100, 1)}%",
                   "characters": characters,
                   "total_beats": len(beats),
                   "parts": parts_info,
@@ -546,9 +535,8 @@ jobs:
               for b in bad:
                   max_words = max(5, int(b["clip_sec"] * WORDS_PER_SEC * 1.05))
                   lines.append(f"from_id={b['source_segment_ids'][0]} | clip {b['clip_sec']}s | max {max_words} words | current: {b['narration']}")
-              msg = ("These narrations are too long for quick YouTube voiceover. Rewrite each one to be more punchy and concise "
-                     "(same story meaning, Hindi Devanagari, no double quotes, strictly within max words). "
-                     'Reply in this JSON format only: {"fixes":[{"from_id":<number>,"narration":"<crisp Hindi narration>"}]}\n'
+              msg = ("Make these Hindi narrations shorter to fit YouTube clips (Devanagari only, no quotes):\n"
+                     '{"fixes":[{"from_id":<number>,"narration":"<shorter narration>"}]}\n'
                      + reply_format(tag) + "\n" + "\n".join(lines))
               log(f"Requesting {len(bad)} shorter voiceovers in part {ci + 1}")
               submit_prompt(page, msg)
@@ -634,7 +622,8 @@ jobs:
                           log(f"Could not complete part {ci + 1}. Saving partial results.")
                           sys.exit(1)
 
-                      if len(part_beats) >= 3 or prev_to >= last - 5:
+                      # 2 to 4 major story beats per scene are sufficient for a YouTube recap
+                      if len(part_beats) >= 2 or prev_to >= last - 5:
                           break
                       cursor = prev_to + 1
 
@@ -664,7 +653,7 @@ jobs:
           write_json("story_beats.json", all_beats, characters, parts_info)
           total_recap_dur = sum(b["clip_sec"] for b in all_beats)
           log(f"SUCCESS: story_beats.json produced with {len(all_beats)} beats.")
-          log(f"Total Video: {TOTAL_DUR:.0f}s | Recap Clips: {total_recap_dur:.0f}s")
+          log(f"Total Video: {TOTAL_DUR:.0f}s | Recap Clips: {total_recap_dur:.0f}s ({round((total_recap_dur/TOTAL_DUR)*100)}%)")
           PY
           if [ "$HEADED" = "true" ]; then
             xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py

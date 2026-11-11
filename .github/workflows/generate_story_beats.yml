@@ -145,19 +145,35 @@ jobs:
               page.wait_for_timeout(500)
               box.press("Enter")
 
-          # --- CHAT EXTRACTION & COMPLETION TRACKER ---
-          def wait_for_chat_response(page, state, max_wait=180):
-              log("Waiting for Duck.ai to finish writing JSON response...")
+          def copy_from_ui(page):
+              """Tries clicking Duck.ai's native Copy button to read pure text from clipboard."""
+              try:
+                  copy_btns = page.locator("button[aria-label*='copy' i], button[title*='copy' i], button:has-text('Copy')")
+                  count = copy_btns.count()
+                  if count > 0:
+                      btn = copy_btns.nth(count - 1)
+                      if btn.is_visible():
+                          btn.click(timeout=2000)
+                          page.wait_for_timeout(400)
+                          clipboard_text = page.evaluate("navigator.clipboard.readText()")
+                          if clipboard_text and "{" in clipboard_text:
+                              return clipboard_text
+              except Exception:
+                  pass
+              return ""
+
+          def wait_for_chat_response(page, state, max_wait=200):
+              log("Waiting for Duck.ai to finish generating JSON...")
               start = time.time()
-              last_text = ""
+              last_len = 0
               stable_ticks = 0
 
-              page.wait_for_timeout(4000)
+              page.wait_for_timeout(5000)
 
               while time.time() - start < max_wait:
                   click_continue(page)
 
-                  # 1. Check if generation is still running (Stop button is visible)
+                  # 1. Check if "Stop" button is present
                   is_generating = False
                   try:
                       stop_btn = page.locator("button:has-text('Stop'), button[aria-label*='Stop' i], button[title*='Stop' i]")
@@ -166,51 +182,56 @@ jobs:
                   except Exception:
                       pass
 
-                  # 2. Extract ONLY the Assistant response containing JSON
-                  extracted = page.evaluate("""() => {
-                      const codeBlocks = document.querySelectorAll('pre code, pre');
-                      for (let i = codeBlocks.length - 1; i >= 0; i--) {
-                          const t = codeBlocks[i].innerText;
-                          if (t.includes('beats') || t.includes('start_sec')) return t;
-                      }
+                  # 2. Extract full page text to track growth
+                  body_text = page.evaluate("() => document.body.innerText || ''")
+                  current_len = len(body_text)
 
-                      const turns = document.querySelectorAll('[data-testid*="conversation-turn"], [data-testid*="message"], article');
-                      for (let i = turns.length - 1; i >= 0; i--) {
-                          const t = turns[i].innerText;
-                          if (t.includes("You said") && !t.includes("beats")) continue;
-                          if (t.includes("beats") || (t.includes("{") && t.includes("start_sec"))) {
-                              return t;
-                          }
-                      }
-                      return '';
-                  }""").strip()
-
-                  cleaned = re.sub(r"^Duck\.ai(?:\s+said)?\s*", "", extracted, flags=re.I).strip()
-
-                  if cleaned and cleaned == last_text:
+                  if current_len == last_len and current_len > 100:
                       stable_ticks += 1
                   else:
                       stable_ticks = 0
-                      last_text = cleaned
+                      last_len = current_len
 
-                  has_json_envelope = "{" in cleaned and "}" in cleaned
+                  if stable_ticks % 5 == 0 and current_len > 0:
+                      log(f"   [Progress] Page text: {current_len} chars | Still generating: {is_generating}")
 
-                  # Must be complete: Stop button gone + valid { ... } + stable text
-                  if not is_generating and has_json_envelope and stable_ticks >= 3 and (state["chat_done"] or stable_ticks >= 7):
-                      log(f"Response complete! Captured {len(cleaned)} chars of JSON.")
-                      return cleaned
+                  # 3. When generation stops and content has settled
+                  if not is_generating and stable_ticks >= 3:
+                      # Try Method A: Copy button (most accurate, zero DOM formatting artifacts)
+                      clip_content = copy_from_ui(page)
+                      if clip_content and "{" in clip_content and "}" in clip_content:
+                          log(f"Extracted {len(clip_content)} chars via Duck.ai Copy button.")
+                          return clip_content
 
-                  if stable_ticks % 6 == 0 and len(cleaned) > 0:
-                      log(f"   [Streaming progress] {len(cleaned)} chars received... still generating: {is_generating}")
+                      # Try Method B: Code blocks
+                      code_content = page.evaluate("""() => {
+                          const blocks = document.querySelectorAll('pre code, pre');
+                          if (blocks.length > 0) return blocks[blocks.length - 1].innerText;
+                          return '';
+                      }""")
+                      if code_content and "{" in code_content and "}" in code_content:
+                          log(f"Extracted {len(code_content)} chars from pre/code block.")
+                          return code_content
 
-                  page.wait_for_timeout(900)
+                      # Try Method C: Extract JSON envelope from body text
+                      # Find the last occurrence of '{' and '}' after the user's prompt
+                      matches = list(re.finditer(r"\{\s*\"(?:characters|beats)\"[\s\S]*\}", body_text))
+                      if matches:
+                          chosen = matches[-1].group(0)
+                          log(f"Extracted {len(chosen)} chars from page body.")
+                          return chosen
 
-              return last_text
+                  page.wait_for_timeout(1000)
+
+              log("Reached max wait timeout. Falling back to body extract.")
+              body_text = page.evaluate("() => document.body.innerText || ''")
+              match = re.search(r"\{\s*\"(?:characters|beats)\"[\s\S]*\}", body_text)
+              return match.group(0) if match else ""
 
           def extract_clean_json(raw_text: str) -> dict:
               clean = re.sub(r"^```(?:json)?", "", raw_text.strip(), flags=re.MULTILINE)
               clean = re.sub(r"```$", "", clean.strip(), flags=re.MULTILINE)
-              match = re.search(r"\{.*\}", clean, re.DOTALL)
+              match = re.search(r"\{[\s\S]*\}", clean)
               if not match:
                   raise ValueError(f"No JSON found in response:\n{raw_text[:300]}")
               return json.loads(match.group(0))
@@ -227,7 +248,7 @@ jobs:
           if not segments:
               raise ValueError("transcript.json is empty!")
 
-          # Group into ~11,000 character chunks (comfortably below 16,000 limit)
+          # Group into ~11,000 character chunks
           chunks = []
           curr_chunk = []
           curr_len = 0
@@ -261,7 +282,7 @@ jobs:
              - Clear, conversational Hindi (Devanagari script only).
              - Use the real character names spoken in the dialogue (e.g. क्लोई, लेफ्टिनेंट, लूसिफर). NEVER say 'कोई व्यक्ति' or 'एक आदमी'.
              - Tell the story naturally: explain who says what, what problem they discuss, and what decision is made.
-          4. OUTPUT FORMAT: Respond ONLY with a valid, raw JSON object (no markdown, no extra commentary).
+          4. OUTPUT FORMAT: Respond ONLY with a valid, raw JSON object (no markdown fences, no extra commentary).
 
           JSON FORMAT:
           {
@@ -374,7 +395,7 @@ jobs:
                                   if "chatID=" in page.url: break
                                   page.wait_for_timeout(1200)
 
-                          raw_reply = wait_for_chat_response(page, state, max_wait=180)
+                          raw_reply = wait_for_chat_response(page, state, max_wait=200)
 
                           parsed = extract_clean_json(raw_reply)
                           if "characters" in parsed and not characters_list:

@@ -1,4 +1,4 @@
-name: Generate and Download Duck.ai Story Frames
+name: Generate and Download Duck.ai Story Beats
 
 on:
   workflow_dispatch:
@@ -142,12 +142,10 @@ jobs:
               box = get_prompt_box(page)
               box.wait_for(state="visible", timeout=30000)
               
-              # Set value cleanly
               box.click()
               box.fill(text)
               page.wait_for_timeout(400)
 
-              # Duck.ai uses an SVG / button adjacent to or below textarea for sending
               send_btn = page.locator("button[type='submit'], button[aria-label*='Send' i], button[aria-label*='submit' i]").first
               if send_btn.count() > 0 and send_btn.is_visible():
                   send_btn.click()
@@ -169,8 +167,8 @@ jobs:
               while time.time() - start < max_wait:
                   dismiss_modals(page)
 
-                  # 1. Check for Duck.ai error alerts
-                  err_locator = page.locator("[role='alert'], .error-message, text='Something went wrong'")
+                  # 1. Check for Duck.ai error alerts (using valid Playwright chaining)
+                  err_locator = page.locator("[role='alert'], .error-message").or_(page.get_by_text("Something went wrong"))
                   if err_locator.count() > 0 and err_locator.first.is_visible():
                       raise RuntimeError(f"Duck.ai Error displayed: {err_locator.first.inner_text()}")
 

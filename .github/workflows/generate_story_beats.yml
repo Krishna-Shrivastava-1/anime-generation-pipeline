@@ -14,28 +14,26 @@ permissions:
 
 jobs:
   generate-story-beats:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 90
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Fix DNS & Install Tor
+      - name: Install Tor & Xvfb
         timeout-minutes: 5
         run: |
-          sudo sed -i 's/azure.archive.ubuntu.com/archive.ubuntu.com/g' /etc/apt/sources.list || true
-          echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
-          sudo apt-get update -y
-          sudo apt-get install -y tor netcat-openbsd xvfb
+          for i in 1 2 3; do sudo apt-get update -y && break || sleep 4; done
+          sudo apt-get install -y --no-install-recommends tor netcat-openbsd xvfb
           sudo service tor start
           for i in {1..30}; do
             if nc -z 127.0.0.1 9050; then echo "Tor ready"; break; fi
@@ -50,7 +48,7 @@ jobs:
           pip install curl_cffi playwright requests
           playwright install --with-deps chromium
 
-      - name: Verify connection (curl_cffi, Chrome TLS impersonation)
+      - name: Verify Tor connection (curl_cffi Chrome TLS)
         timeout-minutes: 3
         run: |
           python - <<'PY'
@@ -94,7 +92,6 @@ jobs:
           import os, re, sys, json, subprocess, time
           from pathlib import Path
           from playwright.sync_api import sync_playwright
-          from curl_cffi import requests
 
           HEADED = os.environ.get("HEADED") == "true"
           MAX_ATTEMPTS = 2
@@ -157,7 +154,6 @@ jobs:
                   "textarea[placeholder*='message' i], textarea").first
 
           def human_paste_prompt(page, box, text):
-              """Pastes prompt via clipboard to simulate natural human behavior without bot delay."""
               box.click()
               page.wait_for_timeout(400)
               page.evaluate("t => navigator.clipboard.writeText(t)", text)
@@ -172,13 +168,12 @@ jobs:
               last_text = ""
               stable_ticks = 0
 
-              # Give generation 4 seconds to start before polling
               page.wait_for_timeout(4000)
 
               while time.time() - start < max_wait:
                   click_continue(page)
 
-                  # 1. Check if "Stop" / "Stop generating" button is present
+                  # 1. Check if "Stop" button is active
                   is_generating = False
                   try:
                       stop_btn = page.locator("button:has-text('Stop'), button[aria-label*='Stop' i], button[title*='Stop' i]")
@@ -189,14 +184,12 @@ jobs:
 
                   # 2. Extract ONLY the Assistant response containing JSON
                   extracted = page.evaluate("""() => {
-                      // Priority 1: Check code blocks
                       const codeBlocks = document.querySelectorAll('pre code, pre');
                       for (let i = codeBlocks.length - 1; i >= 0; i--) {
                           const t = codeBlocks[i].innerText;
                           if (t.includes('beats') || t.includes('start_sec')) return t;
                       }
 
-                      // Priority 2: Check conversation turns for Assistant reply
                       const turns = document.querySelectorAll('[data-testid*="conversation-turn"], [data-testid*="message"], article');
                       for (let i = turns.length - 1; i >= 0; i--) {
                           const t = turns[i].innerText;
@@ -208,29 +201,22 @@ jobs:
                       return '';
                   }""").strip()
 
-                  # Clean off any 'Duck.ai said' header
                   cleaned = re.sub(r"^Duck\.ai(?:\s+said)?\s*", "", extracted, flags=re.I).strip()
 
-                  # Track stability of the assistant's output
                   if cleaned and cleaned == last_text:
                       stable_ticks += 1
                   else:
                       stable_ticks = 0
                       last_text = cleaned
 
-                  # Must have opening and closing braces for a valid JSON object
                   has_json_envelope = "{" in cleaned and "}" in cleaned
 
-                  # Completion conditions:
-                  # - Not generating anymore (Stop button gone)
-                  # - Contains a complete JSON envelope ({ ... })
-                  # - Text has remained unchanged for 4 consecutive polls (~3.5 seconds)
-                  # - Network request finished or stable for 8 ticks
+                  # Only finish when stop button is gone, braces are closed, and text is settled
                   if not is_generating and has_json_envelope and stable_ticks >= 4 and (state["chat_done"] or stable_ticks >= 8):
                       log(f"Generation complete! Captured {len(cleaned)} characters of valid JSON.")
                       return cleaned
 
-                  if stable_ticks % 5 == 0 and len(cleaned) > 0:
+                  if stable_ticks % 6 == 0 and len(cleaned) > 0:
                       log(f"   [Streaming progress] {len(cleaned)} chars received... still generating: {is_generating}")
 
                   page.wait_for_timeout(900)

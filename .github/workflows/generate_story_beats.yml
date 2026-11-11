@@ -68,24 +68,21 @@ jobs:
           HEADED: ${{ inputs.headed }}
         run: |
           mkdir -p debug
-
           cat > generate_story.py <<'PY'
-          import os, re, sys, json, base64, subprocess, time
+          import os, re, sys, json, subprocess, time
           from pathlib import Path
           from playwright.sync_api import sync_playwright
-          from curl_cffi import requests
 
           HEADED = os.environ.get("HEADED") == "true"
-          MAX_ATTEMPTS = 2
-
-          DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+          MAX_ATTEMPTS = 3
+          DEBUG_DIR = Path("debug")
+          DEBUG_DIR.mkdir(parents=True, exist_ok=True)
           RUN_LOG = DEBUG_DIR / "run.log"
-
-          TOR_PROXY = "socks5h://127.0.0.1:9050"
           BROWSER_PROXY = "socks5://127.0.0.1:9050"
 
           CONTINUE_LABELS = re.compile(
-              r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I)
+              r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I
+          )
 
           def log(msg):
               line = f"[{time.strftime('%H:%M:%S')}] {msg}"
@@ -95,11 +92,11 @@ jobs:
 
           def snap(page, name):
               try:
-                  page.screenshot(path=str(DEBUG_DIR / f"{name}.png"), full_page=True, timeout=15000)
+                  page.screenshot(path=str(DEBUG_DIR / f"{name}.png"), full_page=True, timeout=10000)
                   (DEBUG_DIR / f"{name}.html").write_text(page.content(), encoding="utf-8")
-                  log(f"snapshot {name} | url={page.url}")
+                  log(f"Snapshot saved: {name}")
               except Exception as e:
-                  log(f"snapshot failed: {e}")
+                  log(f"Snapshot failed: {e}")
 
           def new_tor_circuit():
               log("Restarting Tor for a new exit IP...")
@@ -108,182 +105,167 @@ jobs:
                   if subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0:
                       break
                   time.sleep(2)
-              time.sleep(3)
+              time.sleep(2)
 
-          def click_continue(page):
+          def dismiss_modals(page):
+              """Dismiss any Duck.ai agreement, terms, or landing modals."""
               clicked_any = False
               for _ in range(3):
-                  clicked = False
                   try:
                       buttons = page.get_by_role("button", name=CONTINUE_LABELS)
-                      for i in range(buttons.count()):
+                      count = buttons.count()
+                      clicked = False
+                      for i in range(count):
                           btn = buttons.nth(i)
                           if btn.is_visible():
-                              log(f"Clicking button: {(btn.inner_text() or '').strip()!r}")
-                              btn.click(timeout=3000)
-                              page.wait_for_timeout(1000)
+                              txt = (btn.inner_text() or "").strip()
+                              log(f"Clicking modal button: {txt!r}")
+                              btn.click(timeout=2500)
+                              page.wait_for_timeout(800)
                               clicked = clicked_any = True
                               break
+                      if not clicked:
+                          break
                   except Exception:
-                      pass
-                  if not clicked:
                       break
               return clicked_any
 
           def get_prompt_box(page):
               return page.locator(
                   "textarea[name='user-prompt'], textarea[placeholder*='ask' i], "
-                  "textarea[placeholder*='message' i], textarea").first
+                  "textarea[placeholder*='message' i], textarea"
+              ).first
 
-          def human_paste_prompt(page, box, text):
-              """Pastes prompt via clipboard to simulate natural human behavior without bot delay."""
+          def submit_prompt(page, text):
+              """Ensures prompt is injected and the actual send button is clicked."""
+              dismiss_modals(page)
+              box = get_prompt_box(page)
+              box.wait_for(state="visible", timeout=30000)
+              
+              # Set value cleanly
               box.click()
+              box.fill(text)
               page.wait_for_timeout(400)
-              page.evaluate("t => navigator.clipboard.writeText(t)", text)
-              page.wait_for_timeout(200)
-              page.keyboard.press("Control+v")
-              page.wait_for_timeout(500)
-              box.press("Enter")
 
-          def copy_from_ui(page):
-              """Tries clicking Duck.ai's native Copy button to read pure text from clipboard."""
-              try:
-                  copy_btns = page.locator("button[aria-label*='copy' i], button[title*='copy' i], button:has-text('Copy')")
-                  count = copy_btns.count()
-                  if count > 0:
-                      btn = copy_btns.nth(count - 1)
-                      if btn.is_visible():
-                          btn.click(timeout=2000)
-                          page.wait_for_timeout(400)
-                          clipboard_text = page.evaluate("navigator.clipboard.readText()")
-                          if clipboard_text and "{" in clipboard_text:
-                              return clipboard_text
-              except Exception:
-                  pass
-              return ""
+              # Duck.ai uses an SVG / button adjacent to or below textarea for sending
+              send_btn = page.locator("button[type='submit'], button[aria-label*='Send' i], button[aria-label*='submit' i]").first
+              if send_btn.count() > 0 and send_btn.is_visible():
+                  send_btn.click()
+              else:
+                  box.press("Enter")
+              
+              page.wait_for_timeout(1000)
+              dismiss_modals(page)
 
-          def wait_for_chat_response(page, state, max_wait=200):
-              log("Waiting for Duck.ai to finish generating JSON...")
+          def wait_for_duck_response(page, max_wait=120):
+              """Smart generation detector with 15s fail-fast and zero-latency stop triggers."""
+              log("Waiting for response stream...")
               start = time.time()
-              last_len = 0
+              has_started = False
+              last_text = ""
               stable_ticks = 0
-
-              page.wait_for_timeout(5000)
+              initial_len = len(page.evaluate("() => document.body.innerText || ''"))
 
               while time.time() - start < max_wait:
-                  click_continue(page)
+                  dismiss_modals(page)
 
-                  # 1. Check if "Stop" button is present
-                  is_generating = False
-                  try:
-                      stop_btn = page.locator("button:has-text('Stop'), button[aria-label*='Stop' i], button[title*='Stop' i]")
-                      if stop_btn.count() > 0 and stop_btn.first.is_visible():
-                          is_generating = True
-                  except Exception:
-                      pass
+                  # 1. Check for Duck.ai error alerts
+                  err_locator = page.locator("[role='alert'], .error-message, text='Something went wrong'")
+                  if err_locator.count() > 0 and err_locator.first.is_visible():
+                      raise RuntimeError(f"Duck.ai Error displayed: {err_locator.first.inner_text()}")
 
-                  # 2. Extract full page text to track growth
+                  # 2. Check if generating
+                  stop_btn = page.locator("button:has-text('Stop'), button[aria-label*='Stop' i]")
+                  is_generating = (stop_btn.count() > 0 and stop_btn.first.is_visible())
+
                   body_text = page.evaluate("() => document.body.innerText || ''")
                   current_len = len(body_text)
 
-                  if current_len == last_len and current_len > 100:
-                      stable_ticks += 1
-                  else:
-                      stable_ticks = 0
-                      last_len = current_len
+                  # 3. Detect start of generation
+                  if is_generating or (current_len - initial_len) > 200:
+                      if not has_started:
+                          log("-> Generation confirmed active.")
+                          has_started = True
 
-                  if stable_ticks % 5 == 0 and current_len > 0:
-                      log(f"   [Progress] Page text: {current_len} chars | Still generating: {is_generating}")
+                  # 4. Fail-Fast: If nothing starts in 15 seconds, exit early and retry
+                  if not has_started and (time.time() - start) > 15:
+                      raise TimeoutError("Prompt never started generating (terms blocked or submit missed).")
 
-                  # 3. When generation stops and content has settled
-                  if not is_generating and stable_ticks >= 3:
-                      # Try Method A: Copy button (most accurate, zero DOM formatting artifacts)
-                      clip_content = copy_from_ui(page)
-                      if clip_content and "{" in clip_content and "}" in clip_content:
-                          log(f"Extracted {len(clip_content)} chars via Duck.ai Copy button.")
-                          return clip_content
+                  # 5. Track stream completion
+                  if has_started:
+                      if body_text == last_text:
+                          stable_ticks += 1
+                      else:
+                          stable_ticks = 0
+                          last_text = body_text
 
-                      # Try Method B: Code blocks
-                      code_content = page.evaluate("""() => {
-                          const blocks = document.querySelectorAll('pre code, pre');
-                          if (blocks.length > 0) return blocks[blocks.length - 1].innerText;
-                          return '';
-                      }""")
-                      if code_content and "{" in code_content and "}" in code_content:
-                          log(f"Extracted {len(code_content)} chars from pre/code block.")
-                          return code_content
+                      # Done if Stop button disappeared AND text settled for 2 consecutive cycles
+                      if not is_generating and stable_ticks >= 2:
+                          log(f"[+] Finished generating in {int(time.time() - start)}s.")
+                          
+                          # Extract code block if markdown format
+                          code_content = page.evaluate("""() => {
+                              const blocks = document.querySelectorAll('pre code, pre');
+                              if (blocks.length > 0) return blocks[blocks.length - 1].innerText;
+                              return '';
+                          }""")
+                          if code_content and "{" in code_content and "}" in code_content:
+                              return code_content
 
-                      # Try Method C: Extract JSON envelope from body text
-                      # Find the last occurrence of '{' and '}' after the user's prompt
-                      matches = list(re.finditer(r"\{\s*\"(?:characters|beats)\"[\s\S]*\}", body_text))
-                      if matches:
-                          chosen = matches[-1].group(0)
-                          log(f"Extracted {len(chosen)} chars from page body.")
-                          return chosen
+                          # Extract raw JSON from innerText
+                          matches = list(re.finditer(r"\{\s*\"(?:characters|beats)\"[\s\S]*\}", body_text))
+                          if matches:
+                              return matches[-1].group(0)
+
+                          return body_text
 
                   page.wait_for_timeout(1000)
 
-              log("Reached max wait timeout. Falling back to body extract.")
-              body_text = page.evaluate("() => document.body.innerText || ''")
-              match = re.search(r"\{\s*\"(?:characters|beats)\"[\s\S]*\}", body_text)
-              return match.group(0) if match else ""
+              raise TimeoutError("Duck.ai stream timed out.")
 
           def extract_clean_json(raw_text: str) -> dict:
               clean = re.sub(r"^```(?:json)?", "", raw_text.strip(), flags=re.MULTILINE)
               clean = re.sub(r"```$", "", clean.strip(), flags=re.MULTILINE)
               match = re.search(r"\{[\s\S]*\}", clean)
               if not match:
-                  raise ValueError(f"No JSON found in response:\n{raw_text[:300]}")
+                  raise ValueError(f"No valid JSON found in response:\n{raw_text[:250]}")
               return json.loads(match.group(0))
 
-          # Load transcript from root
+          # Load transcript.json
           t_file = Path("transcript.json")
           if not t_file.exists():
               raise FileNotFoundError("Missing transcript.json in repository root!")
-
           with open(t_file, "r", encoding="utf-8") as f:
               transcript_data = json.load(f)
-
           segments = transcript_data.get("segments", [])
           if not segments:
               raise ValueError("transcript.json is empty!")
 
-          # Group into ~11,000 character chunks
+          # Group into ~5,500 char chunks to avoid context overfill
           chunks = []
           curr_chunk = []
           curr_len = 0
-
           for s in segments:
               line = f"[{s['start']:.2f}s - {s['end']:.2f}s] {s['text']}"
               curr_chunk.append(line)
               curr_len += len(line) + 1
-
-              if curr_len >= 11000:
+              if curr_len >= 5500:
                   chunks.append("\n".join(curr_chunk))
                   curr_chunk = []
                   curr_len = 0
-
           if curr_chunk:
               chunks.append("\n".join(curr_chunk))
-
           log(f"Prepared {len(chunks)} chronological transcript chunks.")
 
           PART_1_PROMPT = """You are a movie recap writer. Convert this transcript into a flowing, synchronized recap in pure Hindi (Devanagari script only).
-
-          STRICT GROUND-TRUTH & VISUAL CUT RULES:
-          1. ZERO HALLUCINATION (NO WEB SEARCH): Rely ONLY on the transcript text. Never invent motives, facts, or actions not in the dialogue.
-          2. STRICT 1-TO-1 VISUAL CUT SYNC (NO SKIPPING):
-             - Do NOT summarize 5 minutes into 1 general sentence.
-             - Break the dialogue into consecutive small exchanges (each 4 to 15 seconds long).
-             - 1 Spoken Hindi sentence = 1 exact video segment from the transcript.
-             - `start_sec`: Exact start time of the first line in this exchange.
-             - `end_sec`: Exact end time of the last line in this exchange.
-          3. SENSEFUL HINDI STORYTELLING:
-             - Clear, conversational Hindi (Devanagari script only).
-             - Use the real character names spoken in the dialogue (e.g. क्लोई, लेफ्टिनेंट, लूसिफर). NEVER say 'कोई व्यक्ति' or 'एक आदमी'.
-             - Tell the story naturally: explain who says what, what problem they discuss, and what decision is made.
-          4. OUTPUT FORMAT: Respond ONLY with a valid, raw JSON object (no markdown fences, no extra commentary).
-
+          STRICT RULES:
+          1. Rely ONLY on the transcript. Do NOT hallucinate.
+          2. STRICT 1-TO-1 VISUAL CUT SYNC:
+             - 1 Spoken Hindi sentence = 1 exact dialogue exchange (4-15 seconds).
+             - start_sec: Exact start time of the first line.
+             - end_sec: Exact end time of the last line.
+          3. Clear, conversational Hindi (Devanagari only). Use real spoken character names.
+          4. Respond ONLY with valid, raw JSON (no conversational text, no markdown).
           JSON FORMAT:
           {
             "characters": [
@@ -294,27 +276,17 @@ jobs:
                 "beat_id": "B0001",
                 "start_sec": 0.72,
                 "end_sec": 13.68,
-                "narration": "डिटेक्टिव क्लोई अपने सीनियर को अंदर बुलाती है और पूछती है कि क्या वो केस से जुड़ी नई जानकारी देखना चाहते हैं।"
-              },
-              {
-                "beat_id": "B0002",
-                "start_sec": 13.68,
-                "end_sec": 24.30,
-                "narration": "लेफ्टिनेंट पुष्टि करता है कि यह केस उसी का है, लेकिन चेतावनी देता है कि यह आसान केस है इसलिए ज़्यादा समय बर्बाद न करे।"
+                "narration": "डिटेक्टिव क्लोई अपने सीनियर को अंदर बुलाती है और नई जानकारी बताती है।"
               }
             ]
           }
-
-          TRANSCRIPT PART 1:
+          TRANSCRIPT:
           """
 
-          PART_N_PROMPT = """Continuing seamlessly in this SAME conversation, summarize the NEXT PART of the transcript.
+          PART_N_PROMPT = """Continuing the SAME recap, process the NEXT PART.
           Rules:
-          - Maintain 1-to-1 visual synchronization (1 sentence = 1 real dialogue clip window).
-          - Do not skip scenes. Walk through the dialogue in order.
-          - Pure Devanagari Hindi. Use names established earlier.
-          - Exact start_sec and end_sec matching the lines.
-          - Return RAW JSON ONLY matching schema:
+          - Pure Devanagari Hindi. 1-to-1 dialogue synchronization.
+          - Return RAW JSON ONLY:
           {
             "beats": [
               {
@@ -325,13 +297,11 @@ jobs:
               }
             ]
           }
-
           NEXT TRANSCRIPT PART:
           """
 
           all_beats = []
           characters_list = []
-
           browser = None
           context = None
           page = None
@@ -348,67 +318,40 @@ jobs:
               )
               context = browser.new_context(
                   viewport={"width": 1440, "height": 1000},
-                  user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
-                  permissions=["clipboard-read", "clipboard-write"]
+                  user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
               )
               context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
               page = context.new_page()
 
           with sync_playwright() as p:
               start_fresh_browser(p)
-
               for idx, chunk_content in enumerate(chunks):
                   log(f"\n==================== PROCESSING PART {idx + 1}/{len(chunks)} ====================")
                   part_done = False
-
                   for attempt in range(1, MAX_ATTEMPTS + 1):
-                      state = {"submitted": False, "chat_done": False}
-
-                      def on_request_finished(req):
-                          try:
-                              if req.method == "POST" and "/duckchat/v1/chat" in req.url:
-                                  state["chat_done"] = True
-                          except Exception: pass
-                      page.on("requestfinished", on_request_finished)
-
                       try:
                           is_in_chat = bool(page and "chatID=" in page.url)
-
                           if not is_in_chat:
-                              log("Opening https://duck.ai/chat ...")
-                              page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
-                              page.wait_for_timeout(3000)
-                              click_continue(page)
-
-                          box = get_prompt_box(page)
-                          box.wait_for(state="visible", timeout=40000)
+                              log("Navigating to https://duck.ai/chat ...")
+                              page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=60000)
+                              page.wait_for_timeout(2000)
+                              dismiss_modals(page)
 
                           prompt = (PART_1_PROMPT if idx == 0 else PART_N_PROMPT) + chunk_content
-                          log(f"Entering prompt: {prompt[:90]}...")
-                          human_paste_prompt(page, box, prompt)
-                          state["submitted"] = True
+                          log(f"Entering prompt (Attempt {attempt})...")
+                          submit_prompt(page, prompt)
 
-                          if not is_in_chat:
-                              dl = time.time() + 50
-                              while time.time() < dl:
-                                  click_continue(page)
-                                  if "chatID=" in page.url: break
-                                  page.wait_for_timeout(1200)
-
-                          raw_reply = wait_for_chat_response(page, state, max_wait=200)
-
+                          raw_reply = wait_for_duck_response(page, max_wait=120)
                           parsed = extract_clean_json(raw_reply)
+
                           if "characters" in parsed and not characters_list:
                               characters_list = parsed["characters"]
-
                           new_beats = parsed.get("beats", [])
                           log(f"[+] Successfully extracted {len(new_beats)} beats from Part {idx + 1}")
                           all_beats.extend(new_beats)
-
                           part_done = True
-                          page.wait_for_timeout(2500)
+                          page.wait_for_timeout(1500)
                           break
-
                       except Exception as err:
                           log(f"Attempt {attempt} failed on Part {idx + 1}: {err}")
                           snap(page, f"err_p{idx+1}_a{attempt}")
@@ -416,13 +359,13 @@ jobs:
                           start_fresh_browser(p)
 
                   if not part_done:
-                      log(f"Could not complete Part {idx + 1}. Stopping execution.")
-                      break
+                      log(f"Could not complete Part {idx + 1}. Aborting run.")
+                      sys.exit(1)
 
               if browser:
                   browser.close()
 
-          # Re-index beats sequentially
+          # Format and save final beats
           final_beats = []
           for i, b in enumerate(all_beats):
               s = float(b.get("start_sec", 0.0))
@@ -444,7 +387,6 @@ jobs:
                   "total_beats": len(final_beats),
                   "beats": final_beats
               }, f, indent=2, ensure_ascii=False)
-
           log(f"SUCCESS: SAVED {out_file} with {len(final_beats)} beats")
           PY
 

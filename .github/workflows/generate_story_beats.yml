@@ -32,7 +32,6 @@ jobs:
       - name: Fix DNS & Install Tor
         timeout-minutes: 5
         run: |
-          # Fix Azure Ubuntu DNS resolving failures
           sudo sed -i 's/azure.archive.ubuntu.com/archive.ubuntu.com/g' /etc/apt/sources.list || true
           echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
           sudo apt-get update -y
@@ -167,35 +166,76 @@ jobs:
               page.wait_for_timeout(500)
               box.press("Enter")
 
-          def wait_for_chat_response(page, state, max_wait=120):
-              log("Waiting for Duck.ai text stream to complete...")
+          def wait_for_chat_response(page, state, max_wait=200):
+              log("Waiting for Duck.ai to finish generating full JSON (can take 40-70s)...")
               start = time.time()
               last_text = ""
-              stable = 0
+              stable_ticks = 0
+
+              # Give generation 4 seconds to start before polling
+              page.wait_for_timeout(4000)
 
               while time.time() - start < max_wait:
                   click_continue(page)
 
-                  # Grab content from message code block or bubble
+                  # 1. Check if "Stop" / "Stop generating" button is present
+                  is_generating = False
+                  try:
+                      stop_btn = page.locator("button:has-text('Stop'), button[aria-label*='Stop' i], button[title*='Stop' i]")
+                      if stop_btn.count() > 0 and stop_btn.first.is_visible():
+                          is_generating = True
+                  except Exception:
+                      pass
+
+                  # 2. Extract ONLY the Assistant response containing JSON
                   extracted = page.evaluate("""() => {
+                      // Priority 1: Check code blocks
                       const codeBlocks = document.querySelectorAll('pre code, pre');
-                      if (codeBlocks.length > 0) return codeBlocks[codeBlocks.length - 1].innerText;
-                      const bubbles = document.querySelectorAll('article, [data-testid*="message"], div[class*="message"]');
-                      if (bubbles.length > 0) return bubbles[bubbles.length - 1].innerText;
+                      for (let i = codeBlocks.length - 1; i >= 0; i--) {
+                          const t = codeBlocks[i].innerText;
+                          if (t.includes('beats') || t.includes('start_sec')) return t;
+                      }
+
+                      // Priority 2: Check conversation turns for Assistant reply
+                      const turns = document.querySelectorAll('[data-testid*="conversation-turn"], [data-testid*="message"], article');
+                      for (let i = turns.length - 1; i >= 0; i--) {
+                          const t = turns[i].innerText;
+                          if (t.includes("You said") && !t.includes("beats")) continue;
+                          if (t.includes("beats") || (t.includes("{") && t.includes("start_sec"))) {
+                              return t;
+                          }
+                      }
                       return '';
                   }""").strip()
 
-                  if extracted and extracted == last_text:
-                      stable += 1
-                      # Text is stable and the POST /duckchat/v1/chat request finished
-                      if stable >= 4 and (state["chat_done"] or stable >= 10):
-                          return extracted
+                  # Clean off any 'Duck.ai said' header
+                  cleaned = re.sub(r"^Duck\.ai(?:\s+said)?\s*", "", extracted, flags=re.I).strip()
+
+                  # Track stability of the assistant's output
+                  if cleaned and cleaned == last_text:
+                      stable_ticks += 1
                   else:
-                      stable = 0
-                      last_text = extracted
+                      stable_ticks = 0
+                      last_text = cleaned
 
-                  page.wait_for_timeout(800)
+                  # Must have opening and closing braces for a valid JSON object
+                  has_json_envelope = "{" in cleaned and "}" in cleaned
 
+                  # Completion conditions:
+                  # - Not generating anymore (Stop button gone)
+                  # - Contains a complete JSON envelope ({ ... })
+                  # - Text has remained unchanged for 4 consecutive polls (~3.5 seconds)
+                  # - Network request finished or stable for 8 ticks
+                  if not is_generating and has_json_envelope and stable_ticks >= 4 and (state["chat_done"] or stable_ticks >= 8):
+                      log(f"Generation complete! Captured {len(cleaned)} characters of valid JSON.")
+                      return cleaned
+
+                  if stable_ticks % 5 == 0 and len(cleaned) > 0:
+                      log(f"   [Streaming progress] {len(cleaned)} chars received... still generating: {is_generating}")
+
+                  page.wait_for_timeout(900)
+
+              log("Reached max wait timeout. Returning captured output.")
               return last_text
 
           def extract_clean_json(raw_text: str) -> dict:
@@ -362,7 +402,7 @@ jobs:
                                   if "chatID=" in page.url: break
                                   page.wait_for_timeout(1200)
 
-                          raw_reply = wait_for_chat_response(page, state, max_wait=140)
+                          raw_reply = wait_for_chat_response(page, state, max_wait=200)
 
                           parsed = extract_clean_json(raw_reply)
                           if "characters" in parsed and not characters_list:

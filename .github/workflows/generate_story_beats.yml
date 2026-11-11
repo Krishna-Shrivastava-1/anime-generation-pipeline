@@ -29,7 +29,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Tor
+      - name: Install Tor & Dependencies
         timeout-minutes: 4
         run: |
           sudo apt-get update
@@ -48,7 +48,7 @@ jobs:
           pip install curl_cffi playwright pillow requests
           playwright install --with-deps chromium
 
-      - name: Verify connection (curl_cffi, Chrome TLS impersonation)
+      - name: Verify Tor connection
         timeout-minutes: 3
         run: |
           python - <<'PY'
@@ -75,35 +75,31 @@ jobs:
 
           HEADED = os.environ.get("HEADED") == "true"
           MAX_ATTEMPTS = 4
-          # Divide the entire episode into 6 narrative acts (approx 175s each)
           PART_SECONDS = 175
           PART_CHARS = 1700
           MAX_WAIT = 240
           CLIP_PAD = 0.15
           MIN_CLIP = 2.5
-          MAX_CLIP = 5.0            # Strict 5s max clip for fair use
+          MAX_CLIP = 5.0            # Strict 5s max clip for fair use & fast assembly
           WORDS_PER_SEC = 2.4
-          FIT_LIMIT = 1.35
           DEBUG_DIR = Path("debug")
           DEBUG_DIR.mkdir(parents=True, exist_ok=True)
           RUN_LOG = DEBUG_DIR / "run.log"
           BROWSER_PROXY = "socks5://127.0.0.1:9050"
           UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
           MODAL_LABELS = re.compile(
-              r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I
+              r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done|dismiss)$", re.I
           )
-          ERR_RE = re.compile(r"something went wrong|too many requests|rate limit|try again|reached", re.I)
+          ERR_RE = re.compile(r"something went wrong|too many requests|rate limit|try again|reached your daily limit", re.I)
 
           state = {"browser": None, "context": None, "page": None}
           chat = {"primed": False}
-
 
           def log(msg):
               line = f"[{time.strftime('%H:%M:%S')}] {msg}"
               print(line, flush=True)
               with open(RUN_LOG, "a", encoding="utf-8") as f:
                   f.write(line + "\n")
-
 
           def scroll_to_bottom(page):
               try:
@@ -116,28 +112,24 @@ jobs:
               except Exception:
                   pass
 
-
           def snap(page, name):
               try:
                   scroll_to_bottom(page)
                   page.wait_for_timeout(500)
                   page.screenshot(path=str(DEBUG_DIR / f"{name}.png"), full_page=False, timeout=10000)
                   (DEBUG_DIR / f"{name}.html").write_text(page.content(), encoding="utf-8")
-                  (DEBUG_DIR / f"{name}.txt").write_text(page.inner_text("body", timeout=5000), encoding="utf-8")
                   log(f"Snapshot saved: {name}")
               except Exception as e:
                   log(f"Snapshot failed: {e}")
 
-
           def new_tor_circuit():
-              log("Restarting Tor for a new exit IP...")
+              log("Restarting Tor for a new circuit...")
               subprocess.run(["sudo", "timeout", "60", "service", "tor", "restart"], check=False)
               for _ in range(30):
                   if subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0:
                       break
                   time.sleep(2)
               time.sleep(2)
-
 
           def start_browser(p):
               for key in ("context", "browser"):
@@ -153,7 +145,6 @@ jobs:
                   proxy={"server": BROWSER_PROXY},
                   args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"],
               )
-
 
           def dismiss_modals(page):
               clicked_any = False
@@ -175,7 +166,6 @@ jobs:
                       break
               return clicked_any
 
-
           def open_chat():
               if state["context"]:
                   try:
@@ -188,18 +178,15 @@ jobs:
               ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
               pg = ctx.new_page()
               state["context"], state["page"] = ctx, pg
-              log("Opening a new chat at https://duck.ai/chat ...")
+              log("Opening chat at https://duck.ai/chat ...")
               pg.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=60000)
               pg.wait_for_timeout(2500)
               dismiss_modals(pg)
               return pg
 
-
-          def check_and_click_continue_generating(page):
+          def check_and_click_continue(page):
               try:
-                  btn = page.locator(
-                      "button:has-text('Continue generating'), button:has-text('Continue response')"
-                  ).first
+                  btn = page.locator("button:has-text('Continue generating'), button:has-text('Continue response')").first
                   if btn.count() > 0 and btn.is_visible():
                       log("Clicking 'Continue generating'...")
                       btn.click(timeout=2000)
@@ -207,19 +194,17 @@ jobs:
               except Exception:
                   pass
 
-
           def check_error(page):
               try:
-                  alerts = page.locator("[role='alert']")
+                  alerts = page.locator("[role='alert'], div:has-text('daily limit')")
                   for i in range(min(alerts.count(), 3)):
                       txt = alerts.nth(i).inner_text(timeout=1000)
                       if ERR_RE.search(txt):
-                          raise RuntimeError(f"Duck.ai error displayed: {txt.strip()[:200]}")
+                          raise RuntimeError(f"Duck.ai error: {txt.strip()[:200]}")
               except RuntimeError:
                   raise
               except Exception:
                   pass
-
 
           def is_generating(page):
               try:
@@ -228,39 +213,31 @@ jobs:
               except Exception:
                   return False
 
-
           def get_prompt_box(page):
               return page.locator(
-                  "textarea[name='user-prompt'], textarea[placeholder*='ask' i], "
-                  "textarea[placeholder*='message' i], textarea"
+                  "textarea[name='user-prompt'], textarea[placeholder*='ask' i], textarea[placeholder*='message' i], textarea"
               ).first
-
 
           def submit_prompt(page, text):
               dismiss_modals(page)
               box = get_prompt_box(page)
               box.wait_for(state="visible", timeout=30000)
               box.click()
-              box.fill("")
+              page.keyboard.press("Control+A")
+              page.keyboard.press("Backspace")
               page.wait_for_timeout(200)
               box.fill(text)
+              box.dispatch_event("input")
               page.wait_for_timeout(600)
 
               sent = False
               for method in range(3):
                   try:
-                      if method == 0:
-                          send_btn = page.locator(
-                              "button[type='submit']:not([disabled]), button[aria-label*='Send' i]:not([disabled])"
-                          ).first
-                          if send_btn.count() > 0 and send_btn.is_visible():
-                              send_btn.click(timeout=2500)
-                          else:
-                              box.press("Enter")
-                      elif method == 1:
-                          box.press("Enter")
+                      send_btn = page.locator("button[type='submit']:not([disabled]), button[aria-label*='Send' i]:not([disabled])").first
+                      if send_btn.count() > 0 and send_btn.is_visible():
+                          send_btn.click(timeout=2500)
                       else:
-                          box.press("Control+Enter")
+                          box.press("Enter")
                   except Exception:
                       pass
 
@@ -274,25 +251,32 @@ jobs:
                       break
 
               if not sent:
-                  raise RuntimeError(f"Message ({len(text)} chars) was not sent (input box still full).")
+                  raise RuntimeError(f"Message ({len(text)} chars) was not sent.")
               page.wait_for_timeout(1000)
               dismiss_modals(page)
 
-
           def extract_payload(body, tag):
-              start_re = re.compile(r"RECAPSTART-" + re.escape(tag) + r"(?![A-Za-z0-9])")
-              end_re = re.compile(r"RECAPEND-" + re.escape(tag) + r"(?![A-Za-z0-9])")
-              for m in reversed(list(start_re.finditer(body))):
-                  tail = body[m.end():]
-                  mm = re.match(r"[\s`]*(?:json)?[\s`]*(\{)", tail, re.I)
-                  if mm:
-                      tail = tail[mm.start(1):]
-                      e = end_re.search(tail)
-                      if e:
-                          return tail[:e.start()], True
-                      return tail, False
-              return None, False
+              start_m = f"RECAPSTART-{tag}"
+              end_m = f"RECAPEND-{tag}"
 
+              idx = body.rfind(start_m)
+              if idx != -1:
+                  tail = body[idx + len(start_m):]
+                  brace = tail.find("{")
+                  if brace != -1:
+                      tail = tail[brace:]
+                      e = tail.find(end_m)
+                      if e != -1:
+                          return tail[:e].strip(), True
+                      return tail.strip(), False
+
+              # Fallback: find any JSON containing "beats"
+              if '"beats"' in body:
+                  idx = body.rfind('{"')
+                  if idx != -1:
+                      return body[idx:].strip(), False
+
+              return None, False
 
           def wait_for_payload(page, tag, max_wait=MAX_WAIT):
               log(f"Waiting for reply [{tag}] ...")
@@ -300,7 +284,7 @@ jobs:
               last_len, stable = -1, 0
               while time.time() - t0 < max_wait:
                   dismiss_modals(page)
-                  check_and_click_continue_generating(page)
+                  check_and_click_continue(page)
                   check_error(page)
                   scroll_to_bottom(page)
                   try:
@@ -310,35 +294,19 @@ jobs:
                   gen = is_generating(page)
                   text, finished = extract_payload(body, tag)
                   if finished:
-                      page.wait_for_timeout(1500)
-                      try:
-                          body = page.inner_text("body", timeout=5000)
-                      except Exception:
-                          pass
-                      text, _ = extract_payload(body, tag)
-                      log(f"[+] Complete reply captured ({len(text)} chars) in {int(time.time() - t0)}s")
+                      log(f"[+] Complete reply captured in {int(time.time() - t0)}s")
                       return text, True
                   stable = stable + 1 if len(body) == last_len else 0
                   last_len = len(body)
                   elapsed = time.time() - t0
-                  if not gen and stable >= 6:
+                  if not gen and stable >= 5:
                       if text is not None:
-                          log(f"[!] Reply ended without RECAPEND ({len(text)} chars) - salvaging beats")
+                          log(f"[!] Reply ended without closing tag - salvaging")
                           return text, False
-                      if elapsed > 30:
-                          raise TimeoutError("No reply with expected RECAPSTART marker.")
+                      if elapsed > 25:
+                          raise TimeoutError("No reply with expected marker.")
                   page.wait_for_timeout(1000)
-              scroll_to_bottom(page)
-              try:
-                  body = page.inner_text("body", timeout=5000)
-              except Exception:
-                  body = ""
-              text, _ = extract_payload(body, tag)
-              if text:
-                  log("[!] Hit max wait; salvaging")
-                  return text, False
               raise TimeoutError("Duck.ai reply timed out.")
-
 
           def salvage_list(clean, key):
               m = re.search(r'"' + key + r'"\s*:\s*\[', clean)
@@ -353,35 +321,42 @@ jobs:
                       break
                   try:
                       obj, j = dec.raw_decode(clean, i)
+                      out.append(obj)
+                      i = j
                   except Exception:
                       break
-                  out.append(obj)
-                  i = j
               return out
 
-
           def parse_payload(text):
+              if not text:
+                  return {}
               clean = re.sub(r"```(?:json)?", "", text).strip()
               try:
-                  obj, _ = json.JSONDecoder().raw_decode(clean)
+                  obj = json.loads(clean)
                   if isinstance(obj, dict):
                       return obj
               except Exception:
                   pass
+              s = clean.find("{")
+              e = clean.rfind("}")
+              if s != -1 and e != -1 and e > s:
+                  try:
+                      obj = json.loads(clean[s:e+1])
+                      if isinstance(obj, dict):
+                          return obj
+                  except Exception:
+                      pass
               return {
                   "characters": salvage_list(clean, "characters"),
                   "beats": salvage_list(clean, "beats"),
-                  "fixes": salvage_list(clean, "fixes"),
               }
 
-
           def valid_hindi(t):
-              if len(t) < 15 or "Hindi" in t or "<" in t or ">" in t:
+              if not t or len(t.strip()) < 8:
                   return False
+              t = re.sub(r"^(?:narration|hindi|voiceover)\s*:\s*", "", t, flags=re.I)
               dev = len(re.findall(r"[\u0900-\u097F]", t))
-              letters = len(re.findall(r"[A-Za-z\u0900-\u097F]", t))
-              return letters > 0 and dev / letters >= 0.8
-
+              return dev >= 8  # Robust check that allows English names (Lucifer, LAPD, etc.)
 
           t_file = Path("transcript.json")
           if not t_file.exists():
@@ -397,12 +372,9 @@ jobs:
               s["text"] = str(s["text"]).strip()
           TOTAL_DUR = float(transcript_data.get("duration") or segs[-1]["end"])
 
-
           def fmt_line(s):
               return f"#{s['_id']} [{s['start']:.0f}-{s['end']:.0f}] {s['text']}"
 
-
-          # Divide into ~6 large scene acts
           chunks, cur_first, cur_chars = [], 1, 0
           for s in segs:
               cur_chars += len(fmt_line(s)) + 1
@@ -416,45 +388,36 @@ jobs:
               if segs[ll - 1]["end"] - segs[lf - 1]["start"] < 40:
                   chunks[-2] = (chunks[-2][0], ll)
                   chunks.pop()
-          log(f"{len(segs)} lines, {TOTAL_DUR:.0f}s -> {len(chunks)} major acts (Target ~{len(chunks)*2} total beats, ~2.5 mins)")
+          log(f"{len(segs)} lines -> {len(chunks)} Acts. Target: ~{len(chunks)*2} total beats.")
 
-          # STRICT HIGH-LEVEL YOUTUBE RECAP INSTRUCTIONS (Anti-dialogue-dubbing)
           SETUP = (
-              "You are a YouTube Movie Recap Narrator (Hindi Explained style).\n"
-              "GOAL: Condense this 17-minute episode into a FAST 2.5-MINUTE RECAP (around 12 beats total for the entire episode).\n"
+              "You are an expert YouTube Movie Recap Narrator in Hindi.\n"
+              "GOAL: Condense this episode into a high-speed ~2.5 minute recap (only 2 beats per scene act).\n"
               "RULES:\n"
-              "1. NEVER DUB DIALOGUES: Do NOT narrate question-by-question or dialogue-by-dialogue. Summarize the WHOLE SCENE outcome in 1-2 broad sentences.\n"
-              "2. NARRATIVE BRIDGING: Always explain location and context first ('डिटेक्टिव क्लोई मर्डर की जांच करने लक्स क्लब पहुंचती है...').\n"
-              "3. STRICT LIMIT: Output EXACTLY 2 beats for this entire section. Ignore minor dialogue exchanges.\n"
-              "4. SHORT CLIPS: Each beat must pick only ONE 3-5 second clip (from_id to to_id).\n"
-              "5. JSON shape: {\"characters\":[...],\"beats\":[{\"from_id\":1,\"to_id\":2,\"narration\":\"Hindi recap\"}]}\n"
+              "1. NEVER DUB DIALOGUES: Summarize the scene action & revelation in 1-2 fluent Hindi sentences.\n"
+              "2. STRICT LIMIT: Output EXACTLY 2 beats in JSON.\n"
+              "3. Format:\n"
+              "RECAPSTART-{tag}\n"
+              "{\n"
+              "  \"characters\": [{\"name\": \"Lucifer\", \"hindi_name\": \"लुसिफ़र\"}],\n"
+              "  \"beats\": [\n"
+              "    {\"from_id\": 1, \"to_id\": 5, \"narration\": \"हिंदी में कहानी का मुख्य मोड़...\"},\n"
+              "    {\"from_id\": 6, \"to_id\": 10, \"narration\": \"दूसरा मुख्य मोड़...\"}\n"
+              "  ]\n"
+              "}\n"
+              "RECAPEND-{tag}\n"
           )
 
-
-          def reply_format(tag):
-              return ("Reply format: marker RECAPSTART-" + tag + " on its line, raw JSON, marker RECAPEND-" + tag + " on its line.")
-
-
-          def part_message(ci, first, last, tag, with_text):
+          def part_message(ci, first, last, tag):
               t0 = segs[first - 1]["start"]
               t1 = segs[last - 1]["end"]
-              head = (f"ACT {ci + 1} of {len(chunks)} ({t0:.0f}s to {t1:.0f}s).\n"
-                      f"Summarize this ENTIRE scene in EXACTLY 2 high-level story beats.\n"
-                      f"Do NOT break down dialogues. Tell what happens in the scene and the big revelation.\n"
-                      f"Output EXACTLY 2 beats in JSON.\n" + reply_format(tag))
-              if with_text:
-                  head += "\nTRANSCRIPT:\n" + "\n".join(fmt_line(segs[i - 1]) for i in range(first, last + 1))
+              head = (
+                  f"ACT {ci + 1} of {len(chunks)} ({t0:.0f}s to {t1:.0f}s, lines #{first}-#{last}).\n"
+                  f"Summarize this ENTIRE scene in EXACTLY 2 high-level story beats.\n"
+                  f"Format: marker RECAPSTART-{tag} on its line, raw JSON, marker RECAPEND-{tag} on its line.\n\n"
+                  f"TRANSCRIPT:\n" + "\n".join(fmt_line(segs[i - 1]) for i in range(first, last + 1))
+              )
               return head
-
-
-          def story_summary(beats, characters):
-              if not beats:
-                  return ""
-              names = ", ".join(f"{c.get('name', '')} ({c.get('hindi_name', '')})" for c in characters[:4])
-              recent = " ".join(b["narration"] for b in beats[-3:])
-              recent = recent[-400:]
-              return f"\nContext so far: Characters ({names}). Earlier: {recent}\n"
-
 
           def score(b):
               w = len(b["narration"].split())
@@ -464,25 +427,25 @@ jobs:
               b["clip_sec"] = round(clip, 1)
               b["fit"] = round((w / WORDS_PER_SEC) / max(clip, 0.1), 2)
 
-
           def integrate(parsed, prev_to, prev_clip_end, first, last, part_no):
               accepted = []
-              # Limit to top 2 beats maximum per act
               candidate_beats = parsed.get("beats", [])[:2]
 
               for b in candidate_beats:
                   try:
-                      f, t = int(b["from_id"]), int(b["to_id"])
+                      f = int(b.get("from_id", first))
+                      t = int(b.get("to_id", last))
                   except Exception:
-                      continue
-                  nar = str(b.get("narration", "")).strip().replace('"', "'")
-                  t = min(t, last)
-                  if f < first or f > last or f > t:
-                      continue
+                      f, t = first, last
+
+                  # Clamp to current act range
+                  f = max(first, min(f, last))
+                  t = max(f, min(t, last))
                   if f <= prev_to:
-                      f = prev_to + 1
-                      if f > t:
-                          continue
+                      f = min(prev_to + 1, last)
+                      t = max(f, t)
+
+                  nar = str(b.get("narration", "")).strip().replace('"', "'")
                   if not valid_hindi(nar):
                       continue
 
@@ -491,13 +454,10 @@ jobs:
 
                   cs = max(raw_start - CLIP_PAD, prev_clip_end)
                   cs = max(cs, 0.0)
-                  ce = raw_end + CLIP_PAD
-
-                  # Strict YouTube Fair-Use clamp: 3 to 5 seconds
-                  if ce - cs > MAX_CLIP:
-                      ce = cs + MAX_CLIP
-                  if ce - cs < MIN_CLIP:
-                      ce = min(TOTAL_DUR, cs + MIN_CLIP)
+                  # Fair Use: strictly clamp clip duration to 3 - 5 seconds
+                  ce = cs + min(MAX_CLIP, max(MIN_CLIP, raw_end - raw_start + (2 * CLIP_PAD)))
+                  if ce > TOTAL_DUR:
+                      ce = TOTAL_DUR
 
                   beat = {
                       "part": part_no,
@@ -511,10 +471,9 @@ jobs:
                   prev_to, prev_clip_end = t, ce
               return accepted
 
-
-          def build_output(beats, characters, parts_info):
+          def write_json(name, beats, characters, parts_info):
               clip_sum = sum(b["clip_sec"] for b in beats)
-              return {
+              data = {
                   "movie_title": transcript_data.get("movie_title", "movie"),
                   "duration": TOTAL_DUR,
                   "recap_duration_seconds": round(clip_sum, 1),
@@ -524,13 +483,7 @@ jobs:
                   "parts": parts_info,
                   "beats": [dict({"beat_id": f"B{i + 1:04d}"}, **b) for i, b in enumerate(beats)],
               }
-
-
-          def write_json(name, beats, characters, parts_info):
-              Path(name).write_text(
-                  json.dumps(build_output(beats, characters, parts_info), indent=2, ensure_ascii=False), encoding="utf-8"
-              )
-
+              Path(name).write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
 
           all_beats, characters, parts_info = [], [], []
 
@@ -552,18 +505,18 @@ jobs:
                               open_chat()
                               new_chat = True
                           page = state["page"]
-                          msg = part_message(ci, first, last, tag, with_text=True)
+                          msg = part_message(ci, first, last, tag)
                           if new_chat:
-                              msg = SETUP + story_summary(all_beats, characters) + "\n" + msg
+                              msg = SETUP.replace("{tag}", tag) + "\n" + msg
 
-                          log(f"Sending [{tag}] attempt {attempt} ({len(msg)} chars, new chat: {new_chat})")
+                          log(f"Sending [{tag}] attempt {attempt} (new chat: {new_chat})")
                           submit_prompt(page, msg)
                           text, finished = wait_for_payload(page, tag)
                           parsed = parse_payload(text)
 
                           accepted = integrate(parsed, prev_to, prev_clip_end, first, last, ci + 1)
                           if not accepted:
-                              raise ValueError("No usable beats returned")
+                              raise ValueError("No usable Hindi beats in reply")
 
                           chat["primed"] = True
                           known = {str(c.get("name", "")).lower() for c in characters}
@@ -576,17 +529,17 @@ jobs:
                           prev_to = all_beats[-1]["source_segment_ids"][1]
                           prev_clip_end = all_beats[-1]["target_window"]["end"]
 
-                          clip_total = sum(b["clip_sec"] for b in accepted)
                           parts_info.append({
                               "act": ci + 1,
                               "start": round(segs[first - 1]["start"], 2),
                               "end": round(segs[last - 1]["end"], 2),
                               "beats": len(accepted),
-                              "clip_seconds": round(clip_total, 1),
+                              "clip_seconds": round(sum(b["clip_sec"] for b in accepted), 1),
                           })
 
-                          write_json("debug/story_beats.partial.json", all_beats, characters, parts_info)
-                          log(f"[+] Act {ci + 1} Done: Added {len(accepted)} high-level beats (Total so far: {len(all_beats)})")
+                          # Instantly save progress to disk after every successful act
+                          write_json("story_beats.json", all_beats, characters, parts_info)
+                          log(f"[+] Act {ci + 1} Done: Added {len(accepted)} beats. Total so far: {len(all_beats)}")
                           ok = True
                           break
                       except Exception as err:
@@ -598,22 +551,15 @@ jobs:
                           chat["primed"] = False
 
                   if not ok:
-                      log(f"Failed to generate Act {ci + 1}. Saving partial results.")
-                      sys.exit(1)
+                      log(f"Act {ci + 1} could not be generated. Continuing with partial story.")
 
               if state["browser"]:
                   state["browser"].close()
 
           write_json("story_beats.json", all_beats, characters, parts_info)
-          total_recap_dur = sum(b["clip_sec"] for b in all_beats)
-          est_voiceover_time = sum(b["narration_sec_est"] for b in all_beats)
-          log(f"\n=======================================================")
-          log(f"SUCCESS: Generated {len(all_beats)} beats TOTAL (Expected: ~10-14).")
-          log(f"Original Video: {TOTAL_DUR:.0f}s (~{TOTAL_DUR/60:.1f} mins)")
-          log(f"Total Video Clips: {total_recap_dur:.0f}s (~{total_recap_dur/60:.1f} mins)")
-          log(f"Estimated Voiceover Runtime: {est_voiceover_time:.0f}s (~{est_voiceover_time/60:.1f} mins)")
-          log(f"=======================================================")
+          log(f"\nFINISHED: Saved {len(all_beats)} beats to story_beats.json")
           PY
+
           if [ "$HEADED" = "true" ]; then
             xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py
           else
@@ -627,21 +573,21 @@ jobs:
           pkill -9 -f Xvfb || true
 
       - name: Commit and push story_beats.json
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [ ! -f story_beats.json ]; then
-            echo "story_beats.json not produced."
-            exit 1
+          if [ -f story_beats.json ]; then
+            git add -f story_beats.json
+            if ! git diff --cached --quiet; then
+              git commit -m "Add concise 2.5-min YouTube-style Hindi story_beats.json [skip ci]"
+              git pull --rebase origin main
+              git push origin HEAD:main
+              echo "Successfully pushed new story_beats.json"
+            else
+              echo "No changes in story_beats.json to commit."
+            fi
           fi
-          git add -f story_beats.json
-          if git diff --cached --quiet; then
-            echo "No new story beats to commit."
-            exit 0
-          fi
-          git commit -m "Add concise 2.5-min YouTube-style Hindi story_beats.json [skip ci]"
-          git pull --rebase origin main
-          git push origin HEAD:main
 
       - name: Upload debug files
         if: always()

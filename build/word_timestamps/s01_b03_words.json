@@ -1,72 +1,52 @@
 [
   {
-    "word": "अब",
+    "word": "लेकिन",
     "start_ms": 0,
-    "end_ms": 147
+    "end_ms": 351
   },
   {
-    "word": "तुम्हारे",
-    "start_ms": 147,
-    "end_ms": 687
+    "word": "एक…",
+    "start_ms": 351,
+    "end_ms": 520
   },
   {
-    "word": "पास",
-    "start_ms": 687,
-    "end_ms": 938
+    "word": "दो…",
+    "start_ms": 520,
+    "end_ms": 717
   },
   {
-    "word": "दो",
-    "start_ms": 938,
-    "end_ms": 1115
+    "word": "तीन…",
+    "start_ms": 717,
+    "end_ms": 980
   },
   {
-    "word": "रास्ते",
-    "start_ms": 1115,
-    "end_ms": 1522
+    "word": "और",
+    "start_ms": 980,
+    "end_ms": 1116
   },
   {
-    "word": "हैं।",
-    "start_ms": 1522,
-    "end_ms": 1876
+    "word": "पाँच",
+    "start_ms": 1116,
+    "end_ms": 1413
   },
   {
-    "word": "पहला,",
-    "start_ms": 1876,
-    "end_ms": 2238
-  },
-  {
-    "word": "गुस्से",
-    "start_ms": 2238,
-    "end_ms": 2601
+    "word": "सेकंड",
+    "start_ms": 1413,
+    "end_ms": 1806
   },
   {
     "word": "में",
-    "start_ms": 2601,
-    "end_ms": 2881
+    "start_ms": 1806,
+    "end_ms": 2063
   },
   {
-    "word": "बाहर",
-    "start_ms": 2881,
-    "end_ms": 3206
+    "word": "सब",
+    "start_ms": 2063,
+    "end_ms": 2198
   },
   {
-    "word": "निकलकर",
-    "start_ms": 3206,
-    "end_ms": 3635
-  },
-  {
-    "word": "उससे",
-    "start_ms": 3635,
-    "end_ms": 3960
-  },
-  {
-    "word": "भिड़",
-    "start_ms": 3960,
-    "end_ms": 4241
-  },
-  {
-    "word": "जाना।",
-    "start_ms": 4241,
-    "end_ms": 4669
+    "word": "गायब!",
+    "start_ms": 2198,
+    "end_ms": 2530
   }
 ]

@@ -1,67 +1,57 @@
 [
   {
-    "word": "किसी",
+    "word": "लेकिन",
     "start_ms": 0,
-    "end_ms": 302
+    "end_ms": 442
   },
   {
-    "word": "भीड़भाड़",
-    "start_ms": 302,
-    "end_ms": 937
+    "word": "इसका",
+    "start_ms": 442,
+    "end_ms": 816
   },
   {
-    "word": "वाली",
-    "start_ms": 937,
-    "end_ms": 1284
+    "word": "मतलब",
+    "start_ms": 816,
+    "end_ms": 1156
   },
   {
-    "word": "जगह,",
-    "start_ms": 1284,
-    "end_ms": 1536
+    "word": "ये",
+    "start_ms": 1156,
+    "end_ms": 1361
   },
   {
-    "word": "पेट्रोल",
-    "start_ms": 1536,
-    "end_ms": 2005
+    "word": "नहीं",
+    "start_ms": 1361,
+    "end_ms": 1769
   },
   {
-    "word": "पंप",
-    "start_ms": 2005,
-    "end_ms": 2250
+    "word": "कि",
+    "start_ms": 1769,
+    "end_ms": 1922
   },
   {
-    "word": "या",
-    "start_ms": 2250,
-    "end_ms": 2423
+    "word": "हर",
+    "start_ms": 1922,
+    "end_ms": 2092
   },
   {
-    "word": "पुलिस",
-    "start_ms": 2423,
-    "end_ms": 2755
+    "word": "फसल",
+    "start_ms": 2092,
+    "end_ms": 2347
   },
   {
-    "word": "सहायता",
-    "start_ms": 2755,
-    "end_ms": 3246
+    "word": "खत्म",
+    "start_ms": 2347,
+    "end_ms": 2577
   },
   {
-    "word": "केंद्र",
-    "start_ms": 3246,
-    "end_ms": 3643
+    "word": "हो",
+    "start_ms": 2577,
+    "end_ms": 2781
   },
   {
-    "word": "की",
-    "start_ms": 3643,
-    "end_ms": 3816
-  },
-  {
-    "word": "तरफ",
-    "start_ms": 3816,
-    "end_ms": 4032
-  },
-  {
-    "word": "जाओ।",
-    "start_ms": 4032,
-    "end_ms": 4350
+    "word": "जाएगी।",
+    "start_ms": 2781,
+    "end_ms": 3360
   }
 ]

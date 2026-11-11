@@ -1,72 +1,67 @@
 [
   {
-    "word": "सबसे",
+    "word": "क्योंकि",
     "start_ms": 0,
-    "end_ms": 364
+    "end_ms": 431
   },
   {
-    "word": "पहले,",
-    "start_ms": 364,
-    "end_ms": 769
+    "word": "बहुत",
+    "start_ms": 431,
+    "end_ms": 692
   },
   {
-    "word": "गाड़ी",
-    "start_ms": 769,
-    "end_ms": 1249
+    "word": "सारे",
+    "start_ms": 692,
+    "end_ms": 1021
+  },
+  {
+    "word": "पौधों",
+    "start_ms": 1021,
+    "end_ms": 1446
+  },
+  {
+    "word": "को",
+    "start_ms": 1446,
+    "end_ms": 1610
+  },
+  {
+    "word": "फल",
+    "start_ms": 1610,
+    "end_ms": 1747
+  },
+  {
+    "word": "बनाने",
+    "start_ms": 1747,
+    "end_ms": 2145
   },
   {
     "word": "के",
-    "start_ms": 1249,
-    "end_ms": 1447
+    "start_ms": 2145,
+    "end_ms": 2309
   },
   {
-    "word": "अंदर",
-    "start_ms": 1447,
-    "end_ms": 1812
+    "word": "लिए",
+    "start_ms": 2309,
+    "end_ms": 2501
   },
   {
-    "word": "रहो",
-    "start_ms": 1812,
-    "end_ms": 2093
+    "word": "कीड़ों",
+    "start_ms": 2501,
+    "end_ms": 2994
   },
   {
-    "word": "अगर",
-    "start_ms": 2093,
-    "end_ms": 2341
+    "word": "की",
+    "start_ms": 2994,
+    "end_ms": 3159
   },
   {
-    "word": "वहाँ",
-    "start_ms": 2341,
-    "end_ms": 2705
+    "word": "मदद",
+    "start_ms": 3159,
+    "end_ms": 3365
   },
   {
-    "word": "रहना",
-    "start_ms": 2705,
-    "end_ms": 3069
-  },
-  {
-    "word": "सुरक्षित",
-    "start_ms": 3069,
-    "end_ms": 3591
-  },
-  {
-    "word": "है।",
-    "start_ms": 3591,
-    "end_ms": 3872
-  },
-  {
-    "word": "दरवाज़े",
-    "start_ms": 3872,
-    "end_ms": 4517
-  },
-  {
-    "word": "लॉक",
-    "start_ms": 4517,
-    "end_ms": 4765
-  },
-  {
-    "word": "रखो।",
-    "start_ms": 4765,
-    "end_ms": 5130
+    "word": "चाहिए।",
+    "start_ms": 3365,
+    "end_ms": 3789
   }
 ]

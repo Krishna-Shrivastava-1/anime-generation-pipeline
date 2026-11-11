@@ -1,87 +1,57 @@
 [
   {
-    "word": "क्योंकि",
+    "word": "ये",
     "start_ms": 0,
-    "end_ms": 467
+    "end_ms": 172
   },
   {
-    "word": "शांति",
-    "start_ms": 467,
-    "end_ms": 883
+    "word": "खेती,",
+    "start_ms": 172,
+    "end_ms": 554
   },
   {
-    "word": "सिर्फ",
-    "start_ms": 883,
-    "end_ms": 1143
+    "word": "जंगल",
+    "start_ms": 554,
+    "end_ms": 871
   },
   {
-    "word": "हथियार",
-    "start_ms": 1143,
-    "end_ms": 1604
+    "word": "और",
+    "start_ms": 871,
+    "end_ms": 1015
   },
   {
-    "word": "न",
-    "start_ms": 1604,
-    "end_ms": 1678
-  },
-  {
-    "word": "चलाने",
-    "start_ms": 1678,
-    "end_ms": 2109
-  },
-  {
-    "word": "से",
-    "start_ms": 2109,
-    "end_ms": 2287
-  },
-  {
-    "word": "नहीं,",
-    "start_ms": 2287,
-    "end_ms": 2681
-  },
-  {
-    "word": "एक-दूसरे",
-    "start_ms": 2681,
-    "end_ms": 3297
-  },
-  {
-    "word": "के",
-    "start_ms": 3297,
-    "end_ms": 3475
-  },
-  {
-    "word": "अधिकारों",
-    "start_ms": 3475,
-    "end_ms": 4144
+    "word": "खाने",
+    "start_ms": 1015,
+    "end_ms": 1361
   },
   {
     "word": "की",
-    "start_ms": 4144,
-    "end_ms": 4322
+    "start_ms": 1361,
+    "end_ms": 1534
   },
   {
-    "word": "इज़्ज़त",
-    "start_ms": 4322,
-    "end_ms": 4745
+    "word": "पूरी",
+    "start_ms": 1534,
+    "end_ms": 1880
   },
   {
-    "word": "करने",
-    "start_ms": 4745,
-    "end_ms": 5072
+    "word": "व्यवस्था",
+    "start_ms": 1880,
+    "end_ms": 2298
   },
   {
-    "word": "से",
-    "start_ms": 5072,
-    "end_ms": 5250
+    "word": "का",
+    "start_ms": 2298,
+    "end_ms": 2471
   },
   {
-    "word": "बनती",
-    "start_ms": 5250,
-    "end_ms": 5577
+    "word": "हिस्सा",
+    "start_ms": 2471,
+    "end_ms": 2824
   },
   {
-    "word": "है।",
-    "start_ms": 5577,
-    "end_ms": 5830
+    "word": "हैं।",
+    "start_ms": 2824,
+    "end_ms": 3170
   }
 ]

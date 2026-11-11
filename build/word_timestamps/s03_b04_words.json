@@ -1,62 +1,52 @@
 [
   {
-    "word": "याद",
+    "word": "मेंढक",
     "start_ms": 0,
-    "end_ms": 256
+    "end_ms": 429
   },
   {
-    "word": "रखो,",
-    "start_ms": 256,
-    "end_ms": 550
+    "word": "और",
+    "start_ms": 429,
+    "end_ms": 577
   },
   {
-    "word": "किसी",
-    "start_ms": 550,
-    "end_ms": 866
-  },
-  {
-    "word": "अनजान",
-    "start_ms": 866,
+    "word": "छिपकलियों",
+    "start_ms": 577,
     "end_ms": 1273
   },
   {
-    "word": "आदमी",
+    "word": "के",
     "start_ms": 1273,
-    "end_ms": 1605
+    "end_ms": 1450
   },
   {
-    "word": "का",
-    "start_ms": 1605,
-    "end_ms": 1786
+    "word": "लिए",
+    "start_ms": 1450,
+    "end_ms": 1658
   },
   {
-    "word": "अहंकार",
-    "start_ms": 1786,
-    "end_ms": 2298
+    "word": "भी",
+    "start_ms": 1658,
+    "end_ms": 1835
   },
   {
-    "word": "बचाना",
-    "start_ms": 2298,
-    "end_ms": 2735
+    "word": "खाना",
+    "start_ms": 1835,
+    "end_ms": 2190
   },
   {
-    "word": "तुम्हारी",
-    "start_ms": 2735,
-    "end_ms": 3285
+    "word": "कम",
+    "start_ms": 2190,
+    "end_ms": 2339
   },
   {
-    "word": "ज़िम्मेदारी",
-    "start_ms": 3285,
-    "end_ms": 4092
+    "word": "हो",
+    "start_ms": 2339,
+    "end_ms": 2516
   },
   {
-    "word": "नहीं",
-    "start_ms": 4092,
-    "end_ms": 4453
-  },
-  {
-    "word": "है।",
-    "start_ms": 4453,
-    "end_ms": 4710
+    "word": "जाएगा।",
+    "start_ms": 2516,
+    "end_ms": 3020
   }
 ]

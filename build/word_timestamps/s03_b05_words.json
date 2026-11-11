@@ -1,72 +1,57 @@
 [
   {
-    "word": "लोग",
+    "word": "फिर",
     "start_ms": 0,
-    "end_ms": 273
+    "end_ms": 198
   },
   {
-    "word": "अपनी",
-    "start_ms": 273,
-    "end_ms": 627
+    "word": "असर",
+    "start_ms": 198,
+    "end_ms": 411
   },
   {
-    "word": "बात",
-    "start_ms": 627,
-    "end_ms": 900
+    "word": "उन",
+    "start_ms": 411,
+    "end_ms": 553
   },
   {
-    "word": "मनवाने",
-    "start_ms": 900,
+    "word": "जानवरों",
+    "start_ms": 553,
+    "end_ms": 1135
+  },
+  {
+    "word": "तक",
+    "start_ms": 1135,
+    "end_ms": 1277
+  },
+  {
+    "word": "भी",
+    "start_ms": 1277,
     "end_ms": 1447
   },
   {
-    "word": "के",
+    "word": "पहुँचेगा",
     "start_ms": 1447,
-    "end_ms": 1640
+    "end_ms": 2058
   },
   {
-    "word": "लिए",
-    "start_ms": 1640,
-    "end_ms": 1865
+    "word": "जो",
+    "start_ms": 2058,
+    "end_ms": 2228
   },
   {
-    "word": "ताकत",
-    "start_ms": 1865,
-    "end_ms": 2218
+    "word": "इन्हें",
+    "start_ms": 2228,
+    "end_ms": 2618
   },
   {
-    "word": "नहीं,",
-    "start_ms": 2218,
-    "end_ms": 2644
+    "word": "खाते",
+    "start_ms": 2618,
+    "end_ms": 2959
   },
   {
-    "word": "बल्कि",
-    "start_ms": 2644,
-    "end_ms": 2926
-  },
-  {
-    "word": "तर्क",
-    "start_ms": 2926,
-    "end_ms": 3143
-  },
-  {
-    "word": "और",
-    "start_ms": 3143,
-    "end_ms": 3304
-  },
-  {
-    "word": "सबूत",
-    "start_ms": 3304,
-    "end_ms": 3657
-  },
-  {
-    "word": "इस्तेमाल",
-    "start_ms": 3657,
-    "end_ms": 4260
-  },
-  {
-    "word": "करेंगे।",
-    "start_ms": 4260,
-    "end_ms": 4920
+    "word": "हैं।",
+    "start_ms": 2959,
+    "end_ms": 3300
   }
 ]

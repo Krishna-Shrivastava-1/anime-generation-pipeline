@@ -1,92 +1,57 @@
 [
   {
-    "word": "समझदार",
+    "word": "लेकिन",
     "start_ms": 0,
-    "end_ms": 535
+    "end_ms": 387
   },
   {
-    "word": "वो",
-    "start_ms": 535,
-    "end_ms": 736
+    "word": "इतने",
+    "start_ms": 387,
+    "end_ms": 715
   },
   {
-    "word": "है",
-    "start_ms": 736,
-    "end_ms": 937
+    "word": "सारे",
+    "start_ms": 715,
+    "end_ms": 1073
   },
   {
-    "word": "जो",
-    "start_ms": 937,
-    "end_ms": 1137
+    "word": "पौधों",
+    "start_ms": 1073,
+    "end_ms": 1536
   },
   {
-    "word": "जानता",
-    "start_ms": 1137,
-    "end_ms": 1623
+    "word": "के",
+    "start_ms": 1536,
+    "end_ms": 1715
   },
   {
-    "word": "है",
-    "start_ms": 1623,
-    "end_ms": 1823
+    "word": "लिए",
+    "start_ms": 1715,
+    "end_ms": 1924
   },
   {
-    "word": "कि",
-    "start_ms": 1823,
-    "end_ms": 1974
+    "word": "ये",
+    "start_ms": 1924,
+    "end_ms": 2103
   },
   {
-    "word": "कब",
-    "start_ms": 1974,
-    "end_ms": 2141
+    "word": "करना",
+    "start_ms": 2103,
+    "end_ms": 2431
   },
   {
-    "word": "जवाब",
-    "start_ms": 2141,
-    "end_ms": 2510
+    "word": "आसान",
+    "start_ms": 2431,
+    "end_ms": 2759
   },
   {
-    "word": "देना",
-    "start_ms": 2510,
-    "end_ms": 2911
+    "word": "नहीं",
+    "start_ms": 2759,
+    "end_ms": 3117
   },
   {
-    "word": "है",
-    "start_ms": 2911,
-    "end_ms": 3112
-  },
-  {
-    "word": "और",
-    "start_ms": 3112,
-    "end_ms": 3279
-  },
-  {
-    "word": "कब",
-    "start_ms": 3279,
-    "end_ms": 3447
-  },
-  {
-    "word": "वहाँ",
-    "start_ms": 3447,
-    "end_ms": 3815
-  },
-  {
-    "word": "से",
-    "start_ms": 3815,
-    "end_ms": 4015
-  },
-  {
-    "word": "निकल",
-    "start_ms": 4015,
-    "end_ms": 4333
-  },
-  {
-    "word": "जाना",
-    "start_ms": 4333,
-    "end_ms": 4735
-  },
-  {
-    "word": "है।",
-    "start_ms": 4735,
-    "end_ms": 5020
+    "word": "होगा।",
+    "start_ms": 3117,
+    "end_ms": 3550
   }
 ]

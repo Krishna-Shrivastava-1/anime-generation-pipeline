@@ -1,57 +1,47 @@
 [
   {
-    "word": "उसका",
+    "word": "कई",
     "start_ms": 0,
-    "end_ms": 328
+    "end_ms": 144
   },
   {
-    "word": "दोस्त",
-    "start_ms": 328,
-    "end_ms": 634
+    "word": "फलों",
+    "start_ms": 144,
+    "end_ms": 489
   },
   {
-    "word": "पूछता",
-    "start_ms": 634,
-    "end_ms": 1066
+    "word": "और",
+    "start_ms": 489,
+    "end_ms": 633
   },
   {
-    "word": "है,",
-    "start_ms": 1066,
-    "end_ms": 1283
+    "word": "सब्ज़ियों",
+    "start_ms": 633,
+    "end_ms": 1231
   },
   {
-    "word": "लेकिन",
-    "start_ms": 1283,
-    "end_ms": 1670
+    "word": "की",
+    "start_ms": 1231,
+    "end_ms": 1404
   },
   {
-    "word": "अगर",
-    "start_ms": 1670,
-    "end_ms": 1894
+    "word": "पैदावार",
+    "start_ms": 1404,
+    "end_ms": 1994
   },
   {
-    "word": "लोग",
-    "start_ms": 1894,
-    "end_ms": 2148
+    "word": "घट",
+    "start_ms": 1994,
+    "end_ms": 2138
   },
   {
-    "word": "तुम्हें",
-    "start_ms": 2148,
-    "end_ms": 2618
+    "word": "सकती",
+    "start_ms": 2138,
+    "end_ms": 2455
   },
   {
-    "word": "डरपोक",
-    "start_ms": 2618,
-    "end_ms": 3021
-  },
-  {
-    "word": "समझें",
-    "start_ms": 3021,
-    "end_ms": 3453
-  },
-  {
-    "word": "तो?",
-    "start_ms": 3453,
-    "end_ms": 3669
+    "word": "है।",
+    "start_ms": 2455,
+    "end_ms": 2700
   }
 ]

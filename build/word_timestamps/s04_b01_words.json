@@ -1,52 +1,57 @@
 [
   {
-    "word": "अगली",
+    "word": "अब",
     "start_ms": 0,
-    "end_ms": 332
+    "end_ms": 152
   },
   {
-    "word": "सुबह",
-    "start_ms": 332,
-    "end_ms": 619
+    "word": "सोचो,",
+    "start_ms": 152,
+    "end_ms": 557
   },
   {
-    "word": "अरुण",
-    "start_ms": 619,
-    "end_ms": 906
+    "word": "इसका",
+    "start_ms": 557,
+    "end_ms": 892
   },
   {
-    "word": "अपने",
-    "start_ms": 906,
-    "end_ms": 1238
+    "word": "असर",
+    "start_ms": 892,
+    "end_ms": 1121
   },
   {
-    "word": "दोस्त",
-    "start_ms": 1238,
-    "end_ms": 1548
+    "word": "किसान",
+    "start_ms": 1121,
+    "end_ms": 1518
   },
   {
-    "word": "को",
-    "start_ms": 1548,
-    "end_ms": 1729
+    "word": "की",
+    "start_ms": 1518,
+    "end_ms": 1701
   },
   {
-    "word": "पूरी",
-    "start_ms": 1729,
-    "end_ms": 2092
+    "word": "ज़िंदगी",
+    "start_ms": 1701,
+    "end_ms": 2282
   },
   {
-    "word": "घटना",
-    "start_ms": 2092,
-    "end_ms": 2424
+    "word": "पर",
+    "start_ms": 2282,
+    "end_ms": 2434
   },
   {
-    "word": "बताता",
-    "start_ms": 2424,
-    "end_ms": 2863
+    "word": "कितना",
+    "start_ms": 2434,
+    "end_ms": 2831
   },
   {
-    "word": "है।",
-    "start_ms": 2863,
-    "end_ms": 3120
+    "word": "बड़ा",
+    "start_ms": 2831,
+    "end_ms": 3167
+  },
+  {
+    "word": "होगा।",
+    "start_ms": 3167,
+    "end_ms": 3610
   }
 ]

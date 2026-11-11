@@ -2,81 +2,81 @@
   {
     "word": "और",
     "start_ms": 0,
-    "end_ms": 154
+    "end_ms": 153
   },
   {
-    "word": "यहाँ",
-    "start_ms": 154,
-    "end_ms": 493
+    "word": "सबसे",
+    "start_ms": 153,
+    "end_ms": 490
   },
   {
-    "word": "एक",
-    "start_ms": 493,
-    "end_ms": 647
+    "word": "डरावनी",
+    "start_ms": 490,
+    "end_ms": 1010
   },
   {
-    "word": "बहुत",
-    "start_ms": 647,
-    "end_ms": 940
+    "word": "बात",
+    "start_ms": 1010,
+    "end_ms": 1271
   },
   {
-    "word": "बड़ा",
-    "start_ms": 940,
-    "end_ms": 1279
+    "word": "ये",
+    "start_ms": 1271,
+    "end_ms": 1454
   },
   {
-    "word": "सवाल",
-    "start_ms": 1279,
-    "end_ms": 1618
+    "word": "है",
+    "start_ms": 1454,
+    "end_ms": 1638
   },
   {
-    "word": "उठता",
-    "start_ms": 1618,
-    "end_ms": 1957
+    "word": "कि",
+    "start_ms": 1638,
+    "end_ms": 1776
   },
   {
-    "word": "है…",
-    "start_ms": 1957,
-    "end_ms": 2180
+    "word": "हमें",
+    "start_ms": 1776,
+    "end_ms": 2144
   },
   {
-    "word": "अगर",
-    "start_ms": 2180,
-    "end_ms": 2411
+    "word": "इसका",
+    "start_ms": 2144,
+    "end_ms": 2480
   },
   {
-    "word": "कोई",
-    "start_ms": 2411,
-    "end_ms": 2673
+    "word": "पूरा",
+    "start_ms": 2480,
+    "end_ms": 2848
   },
   {
-    "word": "देश",
-    "start_ms": 2673,
-    "end_ms": 2935
+    "word": "असर",
+    "start_ms": 2848,
+    "end_ms": 3078
   },
   {
-    "word": "दूसरों",
-    "start_ms": 2935,
-    "end_ms": 3490
+    "word": "तुरंत",
+    "start_ms": 3078,
+    "end_ms": 3476
   },
   {
-    "word": "का",
-    "start_ms": 3490,
-    "end_ms": 3675
+    "word": "दिखाई",
+    "start_ms": 3476,
+    "end_ms": 3874
   },
   {
-    "word": "शोषण",
-    "start_ms": 3675,
-    "end_ms": 4014
+    "word": "भी",
+    "start_ms": 3874,
+    "end_ms": 4058
   },
   {
-    "word": "करे",
-    "start_ms": 4014,
-    "end_ms": 4276
+    "word": "नहीं",
+    "start_ms": 4058,
+    "end_ms": 4425
   },
   {
-    "word": "तो?",
-    "start_ms": 4276,
-    "end_ms": 4500
+    "word": "देगा।",
+    "start_ms": 4425,
+    "end_ms": 4869
   }
 ]

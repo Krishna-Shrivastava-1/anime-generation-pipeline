@@ -1,62 +1,47 @@
 [
   {
-    "word": "तुम्हारे",
+    "word": "कुछ",
     "start_ms": 0,
-    "end_ms": 584
+    "end_ms": 188
   },
   {
-    "word": "हिसाब",
-    "start_ms": 584,
-    "end_ms": 1001
+    "word": "खाने",
+    "start_ms": 188,
+    "end_ms": 512
   },
   {
-    "word": "से",
-    "start_ms": 1001,
-    "end_ms": 1193
+    "word": "की",
+    "start_ms": 512,
+    "end_ms": 674
   },
   {
-    "word": "ऐसी",
-    "start_ms": 1193,
-    "end_ms": 1466
+    "word": "चीज़ें",
+    "start_ms": 674,
+    "end_ms": 1160
   },
   {
-    "word": "स्थिति",
-    "start_ms": 1466,
-    "end_ms": 1810
+    "word": "महँगी",
+    "start_ms": 1160,
+    "end_ms": 1525
   },
   {
-    "word": "में",
-    "start_ms": 1810,
-    "end_ms": 2114
+    "word": "भी",
+    "start_ms": 1525,
+    "end_ms": 1687
   },
   {
-    "word": "सबसे",
-    "start_ms": 2114,
-    "end_ms": 2467
+    "word": "हो",
+    "start_ms": 1687,
+    "end_ms": 1849
   },
   {
-    "word": "समझदारी",
-    "start_ms": 2467,
-    "end_ms": 3092
+    "word": "सकती",
+    "start_ms": 1849,
+    "end_ms": 2146
   },
   {
-    "word": "वाला",
-    "start_ms": 3092,
-    "end_ms": 3476
-  },
-  {
-    "word": "कदम",
-    "start_ms": 3476,
-    "end_ms": 3717
-  },
-  {
-    "word": "क्या",
-    "start_ms": 3717,
-    "end_ms": 3965
-  },
-  {
-    "word": "होगा?",
-    "start_ms": 3965,
-    "end_ms": 4390
+    "word": "हैं।",
+    "start_ms": 2146,
+    "end_ms": 2469
   }
 ]

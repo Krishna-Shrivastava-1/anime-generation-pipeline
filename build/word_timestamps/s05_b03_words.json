@@ -1,72 +1,47 @@
 [
   {
-    "word": "इसलिए",
+    "word": "क्योंकि",
     "start_ms": 0,
-    "end_ms": 360
+    "end_ms": 412
   },
   {
-    "word": "दुनिया",
-    "start_ms": 360,
-    "end_ms": 810
-  },
-  {
-    "word": "को",
-    "start_ms": 810,
-    "end_ms": 991
+    "word": "कीड़े",
+    "start_ms": 412,
+    "end_ms": 792
   },
   {
     "word": "सिर्फ",
-    "start_ms": 991,
-    "end_ms": 1253
+    "start_ms": 792,
+    "end_ms": 1021
   },
   {
-    "word": "लड़ना",
-    "start_ms": 1253,
-    "end_ms": 1659
+    "word": "परेशान",
+    "start_ms": 1021,
+    "end_ms": 1466
   },
   {
-    "word": "भूलना",
-    "start_ms": 1659,
-    "end_ms": 2094
+    "word": "करने",
+    "start_ms": 1466,
+    "end_ms": 1754
   },
   {
-    "word": "नहीं,",
-    "start_ms": 2094,
-    "end_ms": 2492
+    "word": "वाले",
+    "start_ms": 1754,
+    "end_ms": 2068
   },
   {
-    "word": "बल्कि",
-    "start_ms": 2492,
-    "end_ms": 2755
+    "word": "जीव",
+    "start_ms": 2068,
+    "end_ms": 2291
   },
   {
-    "word": "न्याय",
-    "start_ms": 2755,
-    "end_ms": 3063
+    "word": "नहीं",
+    "start_ms": 2291,
+    "end_ms": 2605
   },
   {
-    "word": "और",
-    "start_ms": 3063,
-    "end_ms": 3213
-  },
-  {
-    "word": "सहयोग",
-    "start_ms": 3213,
-    "end_ms": 3618
-  },
-  {
-    "word": "सीखना",
-    "start_ms": 3618,
-    "end_ms": 4054
-  },
-  {
-    "word": "भी",
-    "start_ms": 4054,
-    "end_ms": 4234
-  },
-  {
-    "word": "पड़ेगा।",
-    "start_ms": 4234,
-    "end_ms": 4820
+    "word": "हैं।",
+    "start_ms": 2605,
+    "end_ms": 2920
   }
 ]

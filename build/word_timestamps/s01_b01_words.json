@@ -2,96 +2,91 @@
   {
     "word": "सोचो,",
     "start_ms": 0,
-    "end_ms": 417
+    "end_ms": 371
   },
   {
-    "word": "तुम",
-    "start_ms": 417,
-    "end_ms": 638
+    "word": "अगर",
+    "start_ms": 371,
+    "end_ms": 582
   },
   {
-    "word": "अपनी",
-    "start_ms": 638,
-    "end_ms": 984
+    "word": "अगले",
+    "start_ms": 582,
+    "end_ms": 891
   },
   {
-    "word": "कार",
-    "start_ms": 984,
-    "end_ms": 1252
+    "word": "पाँच",
+    "start_ms": 891,
+    "end_ms": 1199
   },
   {
-    "word": "से",
-    "start_ms": 1252,
-    "end_ms": 1441
+    "word": "सेकंड",
+    "start_ms": 1199,
+    "end_ms": 1606
   },
   {
-    "word": "घर",
-    "start_ms": 1441,
-    "end_ms": 1599
+    "word": "में",
+    "start_ms": 1606,
+    "end_ms": 1873
   },
   {
-    "word": "जा",
-    "start_ms": 1599,
-    "end_ms": 1788
+    "word": "धरती",
+    "start_ms": 1873,
+    "end_ms": 2181
   },
   {
-    "word": "रहे",
-    "start_ms": 1788,
-    "end_ms": 2056
+    "word": "के",
+    "start_ms": 2181,
+    "end_ms": 2350
+  },
+  {
+    "word": "सारे",
+    "start_ms": 2350,
+    "end_ms": 2687
+  },
+  {
+    "word": "कीड़े",
+    "start_ms": 2687,
+    "end_ms": 3094
+  },
+  {
+    "word": "गायब",
+    "start_ms": 3094,
+    "end_ms": 3402
   },
   {
     "word": "हो",
-    "start_ms": 2056,
-    "end_ms": 2245
+    "start_ms": 3402,
+    "end_ms": 3571
   },
   {
-    "word": "और",
-    "start_ms": 2245,
-    "end_ms": 2402
+    "word": "जाएँ,",
+    "start_ms": 3571,
+    "end_ms": 3914
   },
   {
-    "word": "अचानक",
-    "start_ms": 2402,
-    "end_ms": 2828
+    "word": "तो",
+    "start_ms": 3914,
+    "end_ms": 4083
   },
   {
-    "word": "एक",
-    "start_ms": 2828,
-    "end_ms": 2985
+    "word": "क्या",
+    "start_ms": 4083,
+    "end_ms": 4300
   },
   {
-    "word": "बड़ी",
-    "start_ms": 2985,
-    "end_ms": 3332
+    "word": "इंसान",
+    "start_ms": 4300,
+    "end_ms": 4707
   },
   {
-    "word": "एसयूवी",
-    "start_ms": 3332,
-    "end_ms": 3867
+    "word": "बच",
+    "start_ms": 4707,
+    "end_ms": 4847
   },
   {
-    "word": "तुम्हारा",
-    "start_ms": 3867,
-    "end_ms": 4442
-  },
-  {
-    "word": "रास्ता",
-    "start_ms": 4442,
-    "end_ms": 4876
-  },
-  {
-    "word": "काट",
-    "start_ms": 4876,
-    "end_ms": 5144
-  },
-  {
-    "word": "देती",
-    "start_ms": 5144,
-    "end_ms": 5522
-  },
-  {
-    "word": "है।",
-    "start_ms": 5522,
-    "end_ms": 5789
+    "word": "पाएगा?",
+    "start_ms": 4847,
+    "end_ms": 5289
   }
 ]

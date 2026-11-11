@@ -1,137 +1,221 @@
 {
-  "total_duration": 97.179,
+  "total_duration": 129.825,
   "beats": [
     {
       "beat_id": "s01_b01",
       "audio_file": "build/audio/s01_b01.wav",
-      "duration_seconds": 5.867,
-      "subtitle": "सोचो, तुम अपनी कार से घर जा रहे हो और अचानक एक बड़ी एसयूवी तुम्हारा रास्ता काट देती है।"
+      "duration_seconds": 5.355,
+      "subtitle": "सोचो, अगर अगले पाँच सेकंड में धरती के सारे कीड़े गायब हो जाएँ, तो क्या इंसान बच पाएगा?"
     },
     {
       "beat_id": "s01_b02",
       "audio_file": "build/audio/s01_b02.wav",
-      "duration_seconds": 5.495,
-      "subtitle": "तुम ब्रेक लगाते हो। लेकिन वो आदमी बाहर निकलकर उल्टा तुम्हें ही धमकाने लगता है।"
+      "duration_seconds": 2.347,
+      "subtitle": "पहले तो लगेगा कि कुछ खास नहीं हुआ।"
     },
     {
       "beat_id": "s01_b03",
       "audio_file": "build/audio/s01_b03.wav",
-      "duration_seconds": 4.769,
-      "subtitle": "अब तुम्हारे पास दो रास्ते हैं। पहला, गुस्से में बाहर निकलकर उससे भिड़ जाना।"
+      "duration_seconds": 2.645,
+      "subtitle": "लेकिन एक... दो... तीन... और पाँच सेकंड में सब गायब!"
     },
     {
       "beat_id": "s01_b04",
       "audio_file": "build/audio/s01_b04.wav",
-      "duration_seconds": 4.907,
-      "subtitle": "तुम चिल्लाते हो, बहस करते हो और साबित करने लगते हो कि तुम किसी से डरते नहीं।"
+      "duration_seconds": 3.575,
+      "subtitle": "बगीचा अचानक शांत हो गया। न भिनभिनाहट, न तितलियाँ।"
     },
     {
       "beat_id": "s01_b05",
       "audio_file": "build/audio/s01_b05.wav",
-      "duration_seconds": 4.139,
-      "subtitle": "लेकिन अब एक छोटी सी सड़क की गलती खतरनाक टकराव बन सकती है।"
-    },
-    {
-      "beat_id": "s01_b06",
-      "audio_file": "build/audio/s01_b06.wav",
-      "duration_seconds": 3.947,
-      "subtitle": "दूसरा रास्ता है अपनी सुरक्षा को अपनी इज़्ज़त से भी ऊपर रखना।"
+      "duration_seconds": 2.709,
+      "subtitle": "लेकिन असली मुसीबत तो अब शुरू होने वाली थी।"
     },
     {
       "beat_id": "s02_b01",
       "audio_file": "build/audio/s02_b01.wav",
-      "duration_seconds": 5.175,
-      "subtitle": "सबसे पहले, गाड़ी के अंदर रहो अगर वहाँ रहना सुरक्षित है। दरवाज़े लॉक रखो।"
+      "duration_seconds": 3.861,
+      "subtitle": "क्योंकि बहुत सारे पौधों को फल बनाने के लिए कीड़ों की मदद चाहिए।"
     },
     {
       "beat_id": "s02_b02",
       "audio_file": "build/audio/s02_b02.wav",
-      "duration_seconds": 3.681,
-      "subtitle": "खिड़की से बहस मत करो। धमकी का जवाब धमकी से मत दो।"
+      "duration_seconds": 4.139,
+      "subtitle": "मधुमक्खियाँ और तितलियाँ एक फूल से दूसरे फूल तक पराग पहुँचाती हैं।"
     },
     {
       "beat_id": "s02_b03",
       "audio_file": "build/audio/s02_b03.wav",
-      "duration_seconds": 3.392,
-      "subtitle": "अगर रास्ता खुला है, तो सुरक्षित तरीके से वहाँ से निकलो।"
+      "duration_seconds": 3.029,
+      "subtitle": "उनके बिना कई फूलों का फल बनना मुश्किल हो जाएगा।"
     },
     {
       "beat_id": "s02_b04",
       "audio_file": "build/audio/s02_b04.wav",
-      "duration_seconds": 3.008,
-      "subtitle": "और अगर कोई पीछा कर रहा है, तो सीधे घर मत जाओ।"
+      "duration_seconds": 3.669,
+      "subtitle": "सेब, बादाम और कई दूसरी फसलों पर इसका असर पड़ सकता है।"
     },
     {
       "beat_id": "s02_b05",
       "audio_file": "build/audio/s02_b05.wav",
-      "duration_seconds": 4.437,
-      "subtitle": "किसी भीड़भाड़ वाली जगह, पेट्रोल पंप या पुलिस सहायता केंद्र की तरफ जाओ।"
+      "duration_seconds": 3.435,
+      "subtitle": "लेकिन इसका मतलब ये नहीं कि हर फसल खत्म हो जाएगी।"
     },
     {
       "beat_id": "s02_b06",
       "audio_file": "build/audio/s02_b06.wav",
-      "duration_seconds": 3.84,
-      "subtitle": "क्योंकि तुम्हारा लक्ष्य उसे हराना नहीं, सुरक्षित जगह पहुँचना है।"
+      "duration_seconds": 3.221,
+      "subtitle": "गेहूँ जैसी कई फसलें हवा से ही परागित हो जाती हैं।"
+    },
+    {
+      "beat_id": "s02_b07",
+      "audio_file": "build/audio/s02_b07.wav",
+      "duration_seconds": 4.224,
+      "subtitle": "यानी कुछ खाना बचेगा, लेकिन हमारी खाने की दुनिया बदलने लगेगी।"
     },
     {
       "beat_id": "s03_b01",
       "audio_file": "build/audio/s03_b01.wav",
-      "duration_seconds": 3.904,
-      "subtitle": "अब किसी भरोसेमंद इंसान को कॉल करो और अपनी लोकेशन बताओ।"
+      "duration_seconds": 3.072,
+      "subtitle": "और सबसे बड़ा झटका सिर्फ इंसानों को नहीं लगेगा।"
     },
     {
       "beat_id": "s03_b02",
       "audio_file": "build/audio/s03_b02.wav",
-      "duration_seconds": 5.461,
-      "subtitle": "अगर धमकी दी गई है, तो सुरक्षित दूरी से घटना की जानकारी और सबूत संभालकर रखो।"
+      "duration_seconds": 2.475,
+      "subtitle": "कई पक्षियों का खाना ही छोटे कीड़े होते हैं।"
     },
     {
       "beat_id": "s03_b03",
       "audio_file": "build/audio/s03_b03.wav",
-      "duration_seconds": 4.544,
-      "subtitle": "अगर खतरा बना हुआ है, तो पुलिस या आपातकालीन सहायता से संपर्क करो।"
+      "duration_seconds": 3.051,
+      "subtitle": "अब उसे खाना ढूँढने के लिए और दूर जाना पड़ेगा।"
     },
     {
       "beat_id": "s03_b04",
       "audio_file": "build/audio/s03_b04.wav",
-      "duration_seconds": 4.8,
-      "subtitle": "याद रखो, किसी अनजान आदमी का अहंकार बचाना तुम्हारी ज़िम्मेदारी नहीं है।"
+      "duration_seconds": 3.115,
+      "subtitle": "मेंढक और छिपकलियों के लिए भी खाना कम हो जाएगा।"
+    },
+    {
+      "beat_id": "s03_b05",
+      "audio_file": "build/audio/s03_b05.wav",
+      "duration_seconds": 3.392,
+      "subtitle": "फिर असर उन जानवरों तक भी पहुँचेगा जो इन्हें खाते हैं।"
+    },
+    {
+      "beat_id": "s03_b06",
+      "audio_file": "build/audio/s03_b06.wav",
+      "duration_seconds": 3.861,
+      "subtitle": "यानी एक छोटा सा बदलाव पूरे जंगल की ज़िंदगी हिला सकता है।"
+    },
+    {
+      "beat_id": "s03_b07",
+      "audio_file": "build/audio/s03_b07.wav",
+      "duration_seconds": 3.029,
+      "subtitle": "और एक और काम है जो ये छोटे जीव चुपचाप करते हैं।"
+    },
+    {
+      "beat_id": "s03_b08",
+      "audio_file": "build/audio/s03_b08.wav",
+      "duration_seconds": 3.947,
+      "subtitle": "गिरे हुए पत्तों और मरे पौधों को तोड़कर मिट्टी तक पोषण पहुँचाना।"
+    },
+    {
+      "beat_id": "s03_b09",
+      "audio_file": "build/audio/s03_b09.wav",
+      "duration_seconds": 4.181,
+      "subtitle": "कीड़ों के बिना ये प्रक्रिया धीमी और अलग हो सकती है, लेकिन रुकेगी नहीं।"
     },
     {
       "beat_id": "s04_b01",
       "audio_file": "build/audio/s04_b01.wav",
-      "duration_seconds": 3.2,
-      "subtitle": "अगली सुबह अरुण अपने दोस्त को पूरी घटना बताता है।"
+      "duration_seconds": 3.691,
+      "subtitle": "अब सोचो, इसका असर किसान की ज़िंदगी पर कितना बड़ा होगा।"
     },
     {
       "beat_id": "s04_b02",
       "audio_file": "build/audio/s04_b02.wav",
-      "duration_seconds": 3.733,
-      "subtitle": "उसका दोस्त पूछता है, लेकिन अगर लोग तुम्हें डरपोक समझें तो?"
+      "duration_seconds": 2.773,
+      "subtitle": "कई फलों और सब्ज़ियों की पैदावार घट सकती है।"
     },
     {
       "beat_id": "s04_b03",
       "audio_file": "build/audio/s04_b03.wav",
-      "duration_seconds": 3.883,
-      "subtitle": "अरुण मुस्कुराकर कहता है, डरपोक वो नहीं जो लड़ाई से बचता है।"
+      "duration_seconds": 3.797,
+      "subtitle": "कुछ किसान हाथों से भी पराग पहुँचाने की कोशिश कर सकते हैं।"
     },
     {
       "beat_id": "s04_b04",
       "audio_file": "build/audio/s04_b04.wav",
-      "duration_seconds": 5.099,
-      "subtitle": "समझदार वो है जो जानता है कि कब जवाब देना है और कब वहाँ से निकल जाना है।"
+      "duration_seconds": 3.648,
+      "subtitle": "लेकिन इतने सारे पौधों के लिए ये करना आसान नहीं होगा।"
     },
     {
       "beat_id": "s04_b05",
       "audio_file": "build/audio/s04_b05.wav",
-      "duration_seconds": 5.419,
-      "subtitle": "अगली बार कोई तुम्हें बेवजह उकसाए, तो याद रखना, तुम्हें हर बहस जीतने की ज़रूरत नहीं।"
+      "duration_seconds": 3.072,
+      "subtitle": "धीरे-धीरे बाज़ार में भी कुछ चीज़ें कम दिखने लगेंगी।"
     },
     {
       "beat_id": "s04_b06",
       "audio_file": "build/audio/s04_b06.wav",
-      "duration_seconds": 4.48,
-      "subtitle": "तुम्हारे हिसाब से ऐसी स्थिति में सबसे समझदारी वाला कदम क्या होगा?"
+      "duration_seconds": 2.539,
+      "subtitle": "कुछ खाने की चीज़ें महँगी भी हो सकती हैं।"
+    },
+    {
+      "beat_id": "s04_b07",
+      "audio_file": "build/audio/s04_b07.wav",
+      "duration_seconds": 5.376,
+      "subtitle": "हालाँकि कुछ नुकसान भी कम होंगे, जैसे कई फसल खाने वाले कीट भी गायब हो जाएँगे।"
+    },
+    {
+      "beat_id": "s04_b08",
+      "audio_file": "build/audio/s04_b08.wav",
+      "duration_seconds": 4.203,
+      "subtitle": "लेकिन फायदा कुछ जगह होगा, और नुकसान कई पूरे पारिस्थितिक तंत्रों में।"
+    },
+    {
+      "beat_id": "s05_b01",
+      "audio_file": "build/audio/s05_b01.wav",
+      "duration_seconds": 4.949,
+      "subtitle": "और सबसे डरावनी बात ये है कि हमें इसका पूरा असर तुरंत दिखाई भी नहीं देगा।"
+    },
+    {
+      "beat_id": "s05_b02",
+      "audio_file": "build/audio/s05_b02.wav",
+      "duration_seconds": 2.795,
+      "subtitle": "कुछ असर मौसमों और सालों के साथ सामने आएँगे।"
+    },
+    {
+      "beat_id": "s05_b03",
+      "audio_file": "build/audio/s05_b03.wav",
+      "duration_seconds": 3.008,
+      "subtitle": "क्योंकि कीड़े सिर्फ परेशान करने वाले जीव नहीं हैं।"
+    },
+    {
+      "beat_id": "s05_b04",
+      "audio_file": "build/audio/s05_b04.wav",
+      "duration_seconds": 3.243,
+      "subtitle": "ये खेती, जंगल और खाने की पूरी व्यवस्था का हिस्सा हैं।"
+    },
+    {
+      "beat_id": "s05_b05",
+      "audio_file": "build/audio/s05_b05.wav",
+      "duration_seconds": 4.139,
+      "subtitle": "तो अगली बार कोई छोटी सी मधुमक्खी दिखे, उसे सिर्फ भगाना मत।"
+    },
+    {
+      "beat_id": "s05_b06",
+      "audio_file": "build/audio/s05_b06.wav",
+      "duration_seconds": 5.739,
+      "subtitle": "क्योंकि जिस छोटे जीव को हम नज़रअंदाज़ करते हैं, वही हमारी दुनिया को चलाने में मदद करता है।"
+    },
+    {
+      "beat_id": "s05_b07",
+      "audio_file": "build/audio/s05_b07.wav",
+      "duration_seconds": 4.523,
+      "subtitle": "लेकिन सोचो, अगर अगले पाँच सेकंड में ये सारे कीड़े सच में गायब हो जाएँ तो?"
     }
   ]
 }

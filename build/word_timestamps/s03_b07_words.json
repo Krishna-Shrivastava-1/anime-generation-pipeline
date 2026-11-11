@@ -1,0 +1,62 @@
+[
+  {
+    "word": "और",
+    "start_ms": 0,
+    "end_ms": 146
+  },
+  {
+    "word": "एक",
+    "start_ms": 146,
+    "end_ms": 293
+  },
+  {
+    "word": "और",
+    "start_ms": 293,
+    "end_ms": 440
+  },
+  {
+    "word": "काम",
+    "start_ms": 440,
+    "end_ms": 689
+  },
+  {
+    "word": "है",
+    "start_ms": 689,
+    "end_ms": 865
+  },
+  {
+    "word": "जो",
+    "start_ms": 865,
+    "end_ms": 1042
+  },
+  {
+    "word": "ये",
+    "start_ms": 1042,
+    "end_ms": 1218
+  },
+  {
+    "word": "छोटे",
+    "start_ms": 1218,
+    "end_ms": 1570
+  },
+  {
+    "word": "जीव",
+    "start_ms": 1570,
+    "end_ms": 1819
+  },
+  {
+    "word": "चुपचाप",
+    "start_ms": 1819,
+    "end_ms": 2274
+  },
+  {
+    "word": "करते",
+    "start_ms": 2274,
+    "end_ms": 2597
+  },
+  {
+    "word": "हैं।",
+    "start_ms": 2597,
+    "end_ms": 2949
+  }
+]

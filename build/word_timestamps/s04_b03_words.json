@@ -1,62 +1,62 @@
 [
   {
-    "word": "अरुण",
+    "word": "कुछ",
     "start_ms": 0,
-    "end_ms": 286
+    "end_ms": 205
   },
   {
-    "word": "मुस्कुराकर",
-    "start_ms": 286,
-    "end_ms": 942
+    "word": "किसान",
+    "start_ms": 205,
+    "end_ms": 587
   },
   {
-    "word": "कहता",
-    "start_ms": 942,
-    "end_ms": 1274
-  },
-  {
-    "word": "है,",
-    "start_ms": 1274,
-    "end_ms": 1492
-  },
-  {
-    "word": "डरपोक",
-    "start_ms": 1492,
-    "end_ms": 1900
-  },
-  {
-    "word": "वो",
-    "start_ms": 1900,
-    "end_ms": 2080
-  },
-  {
-    "word": "नहीं",
-    "start_ms": 2080,
-    "end_ms": 2442
-  },
-  {
-    "word": "जो",
-    "start_ms": 2442,
-    "end_ms": 2623
-  },
-  {
-    "word": "लड़ाई",
-    "start_ms": 2623,
-    "end_ms": 3030
+    "word": "हाथों",
+    "start_ms": 587,
+    "end_ms": 1042
   },
   {
     "word": "से",
-    "start_ms": 3030,
-    "end_ms": 3211
+    "start_ms": 1042,
+    "end_ms": 1218
   },
   {
-    "word": "बचता",
-    "start_ms": 3211,
-    "end_ms": 3543
+    "word": "भी",
+    "start_ms": 1218,
+    "end_ms": 1395
   },
   {
-    "word": "है।",
-    "start_ms": 3543,
-    "end_ms": 3800
+    "word": "पराग",
+    "start_ms": 1395,
+    "end_ms": 1718
+  },
+  {
+    "word": "पहुँचाने",
+    "start_ms": 1718,
+    "end_ms": 2349
+  },
+  {
+    "word": "की",
+    "start_ms": 2349,
+    "end_ms": 2525
+  },
+  {
+    "word": "कोशिश",
+    "start_ms": 2525,
+    "end_ms": 2907
+  },
+  {
+    "word": "कर",
+    "start_ms": 2907,
+    "end_ms": 3054
+  },
+  {
+    "word": "सकते",
+    "start_ms": 3054,
+    "end_ms": 3377
+  },
+  {
+    "word": "हैं।",
+    "start_ms": 3377,
+    "end_ms": 3729
   }
 ]

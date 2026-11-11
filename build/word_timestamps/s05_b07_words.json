@@ -1,62 +1,82 @@
 [
   {
-    "word": "तो",
+    "word": "लेकिन",
     "start_ms": 0,
-    "end_ms": 167
+    "end_ms": 357
   },
   {
-    "word": "बताइए,",
-    "start_ms": 167,
-    "end_ms": 579
+    "word": "सोचो,",
+    "start_ms": 357,
+    "end_ms": 721
   },
   {
-    "word": "क्या",
-    "start_ms": 579,
-    "end_ms": 796
+    "word": "अगर",
+    "start_ms": 721,
+    "end_ms": 927
   },
   {
-    "word": "आप",
-    "start_ms": 796,
-    "end_ms": 935
+    "word": "अगले",
+    "start_ms": 927,
+    "end_ms": 1229
   },
   {
-    "word": "ऐसी",
-    "start_ms": 935,
-    "end_ms": 1173
+    "word": "पाँच",
+    "start_ms": 1229,
+    "end_ms": 1531
   },
   {
-    "word": "दुनिया",
-    "start_ms": 1173,
-    "end_ms": 1592
+    "word": "सेकंड",
+    "start_ms": 1531,
+    "end_ms": 1929
   },
   {
     "word": "में",
-    "start_ms": 1592,
-    "end_ms": 1857
+    "start_ms": 1929,
+    "end_ms": 2190
   },
   {
-    "word": "एक",
-    "start_ms": 1857,
-    "end_ms": 1997
+    "word": "ये",
+    "start_ms": 2190,
+    "end_ms": 2355
   },
   {
-    "word": "दिन",
-    "start_ms": 1997,
-    "end_ms": 2192
+    "word": "सारे",
+    "start_ms": 2355,
+    "end_ms": 2685
   },
   {
-    "word": "भी",
-    "start_ms": 2192,
-    "end_ms": 2360
+    "word": "कीड़े",
+    "start_ms": 2685,
+    "end_ms": 3083
   },
   {
-    "word": "रह",
-    "start_ms": 2360,
-    "end_ms": 2500
+    "word": "सच",
+    "start_ms": 3083,
+    "end_ms": 3220
   },
   {
-    "word": "पाएँगे?",
-    "start_ms": 2500,
-    "end_ms": 3010
+    "word": "में",
+    "start_ms": 3220,
+    "end_ms": 3481
+  },
+  {
+    "word": "गायब",
+    "start_ms": 3481,
+    "end_ms": 3783
+  },
+  {
+    "word": "हो",
+    "start_ms": 3783,
+    "end_ms": 3948
+  },
+  {
+    "word": "जाएँ",
+    "start_ms": 3948,
+    "end_ms": 4250
+  },
+  {
+    "word": "तो?",
+    "start_ms": 4250,
+    "end_ms": 4449
   }
 ]

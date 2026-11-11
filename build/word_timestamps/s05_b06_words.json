@@ -1,82 +1,92 @@
 [
   {
-    "word": "लेकिन",
+    "word": "क्योंकि",
     "start_ms": 0,
-    "end_ms": 387
+    "end_ms": 451
   },
   {
-    "word": "सच",
-    "start_ms": 387,
-    "end_ms": 537
+    "word": "जिस",
+    "start_ms": 451,
+    "end_ms": 651
   },
   {
-    "word": "बताओ…",
-    "start_ms": 537,
-    "end_ms": 902
+    "word": "छोटे",
+    "start_ms": 651,
+    "end_ms": 995
   },
   {
-    "word": "अगर",
-    "start_ms": 902,
-    "end_ms": 1126
+    "word": "जीव",
+    "start_ms": 995,
+    "end_ms": 1238
   },
   {
-    "word": "इंसान",
-    "start_ms": 1126,
-    "end_ms": 1559
+    "word": "को",
+    "start_ms": 1238,
+    "end_ms": 1410
   },
   {
-    "word": "लड़ना",
-    "start_ms": 1559,
-    "end_ms": 1962
+    "word": "हम",
+    "start_ms": 1410,
+    "end_ms": 1553
   },
   {
-    "word": "भूल",
-    "start_ms": 1962,
-    "end_ms": 2216
+    "word": "नज़रअंदाज़",
+    "start_ms": 1553,
+    "end_ms": 2326
   },
   {
-    "word": "जाए,",
-    "start_ms": 2216,
-    "end_ms": 2506
+    "word": "करते",
+    "start_ms": 2326,
+    "end_ms": 2641
   },
   {
-    "word": "तो",
-    "start_ms": 2506,
-    "end_ms": 2686
+    "word": "हैं,",
+    "start_ms": 2641,
+    "end_ms": 2949
   },
   {
-    "word": "क्या",
-    "start_ms": 2686,
-    "end_ms": 2917
+    "word": "वही",
+    "start_ms": 2949,
+    "end_ms": 3192
+  },
+  {
+    "word": "हमारी",
+    "start_ms": 3192,
+    "end_ms": 3608
   },
   {
     "word": "दुनिया",
-    "start_ms": 2917,
-    "end_ms": 3365
+    "start_ms": 3608,
+    "end_ms": 4037
   },
   {
-    "word": "सच",
-    "start_ms": 3365,
-    "end_ms": 3514
+    "word": "को",
+    "start_ms": 4037,
+    "end_ms": 4209
+  },
+  {
+    "word": "चलाने",
+    "start_ms": 4209,
+    "end_ms": 4624
   },
   {
     "word": "में",
-    "start_ms": 3514,
-    "end_ms": 3797
+    "start_ms": 4624,
+    "end_ms": 4896
   },
   {
-    "word": "बेहतर",
-    "start_ms": 3797,
-    "end_ms": 4200
+    "word": "मदद",
+    "start_ms": 4896,
+    "end_ms": 5111
   },
   {
-    "word": "बन",
-    "start_ms": 4200,
-    "end_ms": 4349
+    "word": "करता",
+    "start_ms": 5111,
+    "end_ms": 5426
   },
   {
-    "word": "जाएगी?",
-    "start_ms": 4349,
-    "end_ms": 4820
+    "word": "है।",
+    "start_ms": 5426,
+    "end_ms": 5670
   }
 ]

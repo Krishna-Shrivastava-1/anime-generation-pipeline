@@ -1,107 +1,47 @@
 [
   {
-    "word": "लड़ाई",
+    "word": "कुछ",
     "start_ms": 0,
-    "end_ms": 437
+    "end_ms": 194
   },
   {
-    "word": "न",
-    "start_ms": 437,
-    "end_ms": 519
+    "word": "असर",
+    "start_ms": 194,
+    "end_ms": 402
   },
   {
-    "word": "कर",
-    "start_ms": 519,
-    "end_ms": 681
+    "word": "मौसमों",
+    "start_ms": 402,
+    "end_ms": 902
   },
   {
-    "word": "पाने",
-    "start_ms": 681,
-    "end_ms": 1070
+    "word": "और",
+    "start_ms": 902,
+    "end_ms": 1040
   },
   {
-    "word": "पर",
-    "start_ms": 1070,
-    "end_ms": 1232
+    "word": "सालों",
+    "start_ms": 1040,
+    "end_ms": 1471
   },
   {
-    "word": "भी",
-    "start_ms": 1232,
-    "end_ms": 1427
+    "word": "के",
+    "start_ms": 1471,
+    "end_ms": 1637
   },
   {
-    "word": "कोई",
-    "start_ms": 1427,
-    "end_ms": 1703
+    "word": "साथ",
+    "start_ms": 1637,
+    "end_ms": 1873
   },
   {
-    "word": "देश",
-    "start_ms": 1703,
-    "end_ms": 1978
+    "word": "सामने",
+    "start_ms": 1873,
+    "end_ms": 2275
   },
   {
-    "word": "व्यापार",
-    "start_ms": 1978,
-    "end_ms": 2505
-  },
-  {
-    "word": "रोक",
-    "start_ms": 2505,
-    "end_ms": 2781
-  },
-  {
-    "word": "सकता",
-    "start_ms": 2781,
-    "end_ms": 3138
-  },
-  {
-    "word": "है,",
-    "start_ms": 3138,
-    "end_ms": 3373
-  },
-  {
-    "word": "दबाव",
-    "start_ms": 3373,
-    "end_ms": 3730
-  },
-  {
-    "word": "बना",
-    "start_ms": 3730,
-    "end_ms": 4006
-  },
-  {
-    "word": "सकता",
-    "start_ms": 4006,
-    "end_ms": 4363
-  },
-  {
-    "word": "है",
-    "start_ms": 4363,
-    "end_ms": 4557
-  },
-  {
-    "word": "या",
-    "start_ms": 4557,
-    "end_ms": 4752
-  },
-  {
-    "word": "नियम",
-    "start_ms": 4752,
-    "end_ms": 5060
-  },
-  {
-    "word": "तोड़",
-    "start_ms": 5060,
-    "end_ms": 5417
-  },
-  {
-    "word": "सकता",
-    "start_ms": 5417,
-    "end_ms": 5774
-  },
-  {
-    "word": "है।",
-    "start_ms": 5774,
-    "end_ms": 6050
+    "word": "आएँगे।",
+    "start_ms": 2275,
+    "end_ms": 2720
   }
 ]

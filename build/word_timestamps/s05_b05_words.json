@@ -1,62 +1,62 @@
 [
   {
-    "word": "शायद",
+    "word": "तो",
     "start_ms": 0,
-    "end_ms": 335
+    "end_ms": 198
   },
   {
-    "word": "ऐसी",
-    "start_ms": 335,
-    "end_ms": 593
+    "word": "अगली",
+    "start_ms": 198,
+    "end_ms": 561
   },
   {
-    "word": "दुनिया",
-    "start_ms": 593,
-    "end_ms": 1050
+    "word": "बार",
+    "start_ms": 561,
+    "end_ms": 841
   },
   {
-    "word": "में",
-    "start_ms": 1050,
-    "end_ms": 1340
+    "word": "कोई",
+    "start_ms": 841,
+    "end_ms": 1122
   },
   {
-    "word": "इंसान",
-    "start_ms": 1340,
-    "end_ms": 1781
+    "word": "छोटी",
+    "start_ms": 1122,
+    "end_ms": 1518
   },
   {
-    "word": "की",
-    "start_ms": 1781,
-    "end_ms": 1964
+    "word": "सी",
+    "start_ms": 1518,
+    "end_ms": 1716
   },
   {
-    "word": "सबसे",
-    "start_ms": 1964,
-    "end_ms": 2299
+    "word": "मधुमक्खी",
+    "start_ms": 1716,
+    "end_ms": 2286
   },
   {
-    "word": "बड़ी",
-    "start_ms": 2299,
-    "end_ms": 2634
+    "word": "दिखे,",
+    "start_ms": 2286,
+    "end_ms": 2674
   },
   {
-    "word": "ताकत",
-    "start_ms": 2634,
-    "end_ms": 2969
+    "word": "उसे",
+    "start_ms": 2674,
+    "end_ms": 2954
   },
   {
-    "word": "उसकी",
-    "start_ms": 2969,
-    "end_ms": 3304
+    "word": "सिर्फ",
+    "start_ms": 2954,
+    "end_ms": 3243
   },
   {
-    "word": "समझदारी",
-    "start_ms": 3304,
-    "end_ms": 3898
+    "word": "भगाना",
+    "start_ms": 3243,
+    "end_ms": 3722
   },
   {
-    "word": "होती।",
-    "start_ms": 3898,
-    "end_ms": 4339
+    "word": "मत।",
+    "start_ms": 3722,
+    "end_ms": 3970
   }
 ]

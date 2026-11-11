@@ -1,0 +1,2808 @@
+{
+  "movie_title": "movie",
+  "duration": 1039.86,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.72,
+      "end": 2.72,
+      "text": "Please come in, sir."
+    },
+    {
+      "id": 2,
+      "start": 2.72,
+      "end": 13.68,
+      "text": "Do you want to know what I have found out?"
+    },
+    {
+      "id": 3,
+      "start": 13.68,
+      "end": 18.89,
+      "text": "Lieutenant told me that this is my case."
+    },
+    {
+      "id": 4,
+      "start": 18.89,
+      "end": 21.3,
+      "text": "Yes, Chloe, this is your case."
+    },
+    {
+      "id": 5,
+      "start": 21.3,
+      "end": 24.3,
+      "text": "But don't waste too much time. This is an easy case."
+    },
+    {
+      "id": 6,
+      "start": 24.3,
+      "end": 25.3,
+      "text": "And this is your blood."
+    },
+    {
+      "id": 7,
+      "start": 25.3,
+      "end": 27.3,
+      "text": "This is the small, heavy drug dealer."
+    },
+    {
+      "id": 8,
+      "start": 27.3,
+      "end": 31.3,
+      "text": "I got this from his pocket and this packet was in Darlala's purse."
+    },
+    {
+      "id": 9,
+      "start": 31.3,
+      "end": 33.3,
+      "text": "So, it's Darlala's case."
+    },
+    {
+      "id": 10,
+      "start": 33.3,
+      "end": 35.3,
+      "text": "Darlala must have not paid the drugs."
+    },
+    {
+      "id": 11,
+      "start": 35.3,
+      "end": 37.3,
+      "text": "His songs are still going on."
+    },
+    {
+      "id": 12,
+      "start": 37.3,
+      "end": 39.3,
+      "text": "And how do you know this?"
+    },
+    {
+      "id": 13,
+      "start": 39.3,
+      "end": 40.75,
+      "text": "Look at his car."
+    },
+    {
+      "id": 14,
+      "start": 40.75,
+      "end": 42.75,
+      "text": "Look at his watch."
+    },
+    {
+      "id": 15,
+      "start": 42.75,
+      "end": 43.75,
+      "text": "It doesn't look cheap."
+    },
+    {
+      "id": 16,
+      "start": 43.75,
+      "end": 45.75,
+      "text": "Maybe it's fake."
+    },
+    {
+      "id": 17,
+      "start": 45.75,
+      "end": 49.87,
+      "text": "Look, everyone's eyes are on this case, Chloe."
+    },
+    {
+      "id": 18,
+      "start": 49.87,
+      "end": 52.26,
+      "text": "I won't waste time."
+    },
+    {
+      "id": 19,
+      "start": 52.26,
+      "end": 54.26,
+      "text": "I'll ask for the Fasker Palmetto case."
+    },
+    {
+      "id": 20,
+      "start": 54.26,
+      "end": 57.26,
+      "text": "I've asked for this case because of Palmetto Street."
+    },
+    {
+      "id": 21,
+      "start": 57.26,
+      "end": 61.15,
+      "text": "Anyway, let it go. Is there any witness?"
+    },
+    {
+      "id": 22,
+      "start": 61.15,
+      "end": 64.24,
+      "text": "Lucifer Morningstar."
+    },
+    {
+      "id": 23,
+      "start": 64.24,
+      "end": 67.24,
+      "text": "Lucifer Morningstar."
+    },
+    {
+      "id": 24,
+      "start": 67.24,
+      "end": 70.24,
+      "text": "Is this your real name?"
+    },
+    {
+      "id": 25,
+      "start": 70.24,
+      "end": 72.24,
+      "text": "I'm not a gardener."
+    },
+    {
+      "id": 26,
+      "start": 72.24,
+      "end": 75.82,
+      "text": "You know what? I think we've met somewhere before."
+    },
+    {
+      "id": 27,
+      "start": 75.82,
+      "end": 78.46,
+      "text": "Right here, five minutes ago."
+    },
+    {
+      "id": 28,
+      "start": 78.46,
+      "end": 80.46,
+      "text": "And I'll ask you a question."
+    },
+    {
+      "id": 29,
+      "start": 80.46,
+      "end": 82.46,
+      "text": "What was your relationship with the victim?"
+    },
+    {
+      "id": 30,
+      "start": 82.46,
+      "end": 84.46,
+      "text": "She used to work here for a few years."
+    },
+    {
+      "id": 31,
+      "start": 84.46,
+      "end": 87.46,
+      "text": "And I used to play her songs sometimes."
+    },
+    {
+      "id": 32,
+      "start": 87.46,
+      "end": 90.46,
+      "text": "Then she became a big star and someone decided to kill her."
+    },
+    {
+      "id": 33,
+      "start": 90.46,
+      "end": 92.46,
+      "text": "Do you know the shooter?"
+    },
+    {
+      "id": 34,
+      "start": 92.46,
+      "end": 95.46,
+      "text": "No. But before she died, she told me an interesting thing."
+    },
+    {
+      "id": 35,
+      "start": 95.46,
+      "end": 97.46,
+      "text": "She told me the reason for the murder."
+    },
+    {
+      "id": 36,
+      "start": 97.46,
+      "end": 100.84,
+      "text": "Yes. She likes to play the thief police."
+    },
+    {
+      "id": 37,
+      "start": 101.84,
+      "end": 103.84,
+      "text": "No. I like to play the detective."
+    },
+    {
+      "id": 38,
+      "start": 103.84,
+      "end": 105.84,
+      "text": "What do you like?"
+    },
+    {
+      "id": 39,
+      "start": 105.84,
+      "end": 107.84,
+      "text": "You talked to a dead person."
+    },
+    {
+      "id": 40,
+      "start": 107.84,
+      "end": 109.84,
+      "text": "No. She didn't die completely."
+    },
+    {
+      "id": 41,
+      "start": 109.84,
+      "end": 112.38,
+      "text": "Her soul didn't go beyond that."
+    },
+    {
+      "id": 42,
+      "start": 112.38,
+      "end": 113.38,
+      "text": "Okay."
+    },
+    {
+      "id": 43,
+      "start": 113.38,
+      "end": 115.38,
+      "text": "Tell me the reason for the murder."
+    },
+    {
+      "id": 44,
+      "start": 115.38,
+      "end": 117.38,
+      "text": "It's a matter of money."
+    },
+    {
+      "id": 45,
+      "start": 117.38,
+      "end": 119.99,
+      "text": "You don't get the greed for money."
+    },
+    {
+      "id": 46,
+      "start": 119.99,
+      "end": 121.99,
+      "text": "Yes. Absolutely."
+    },
+    {
+      "id": 47,
+      "start": 121.99,
+      "end": 124.99,
+      "text": "And what are you doing here? From London?"
+    },
+    {
+      "id": 48,
+      "start": 124.99,
+      "end": 127.99,
+      "text": "She also said that I just pressed the trigger."
+    },
+    {
+      "id": 49,
+      "start": 127.99,
+      "end": 129.99,
+      "text": "Isn't it interesting?"
+    },
+    {
+      "id": 50,
+      "start": 129.99,
+      "end": 131.99,
+      "text": "Jaila was shot by a drug dealer."
+    },
+    {
+      "id": 51,
+      "start": 131.99,
+      "end": 134.99,
+      "text": "And it seems Jaila had a bad reputation."
+    },
+    {
+      "id": 52,
+      "start": 134.99,
+      "end": 136.99,
+      "text": "It's not rocket science."
+    },
+    {
+      "id": 53,
+      "start": 136.99,
+      "end": 138.99,
+      "text": "She must have been involved in something."
+    },
+    {
+      "id": 54,
+      "start": 138.99,
+      "end": 141.99,
+      "text": "She killed Jaila and God killed her to clean it up."
+    },
+    {
+      "id": 55,
+      "start": 141.99,
+      "end": 143.99,
+      "text": "This is not your world, detective."
+    },
+    {
+      "id": 56,
+      "start": 143.99,
+      "end": 148.25,
+      "text": "Had it been so, would the LAPT have solved the case?"
+    },
+    {
+      "id": 57,
+      "start": 148.25,
+      "end": 150.25,
+      "text": "I have a question."
+    },
+    {
+      "id": 58,
+      "start": 150.25,
+      "end": 154.5,
+      "text": "How is it possible that she died because of the bullets?"
+    },
+    {
+      "id": 59,
+      "start": 154.5,
+      "end": 156.5,
+      "text": "But she hasn't come to you yet."
+    },
+    {
+      "id": 60,
+      "start": 156.5,
+      "end": 157.5,
+      "text": "Immortality."
+    },
+    {
+      "id": 61,
+      "start": 157.5,
+      "end": 159.5,
+      "text": "Immortality? Why not?"
+    },
+    {
+      "id": 62,
+      "start": 159.5,
+      "end": 161.5,
+      "text": "No. I'll have to write this in the report."
+    },
+    {
+      "id": 63,
+      "start": 161.5,
+      "end": 163.5,
+      "text": "I shouldn't forget it anywhere."
+    },
+    {
+      "id": 64,
+      "start": 163.5,
+      "end": 166.98,
+      "text": "What else do you do other than forgetting the law of darkness?"
+    },
+    {
+      "id": 65,
+      "start": 166.98,
+      "end": 167.98,
+      "text": "Excuse me?"
+    },
+    {
+      "id": 66,
+      "start": 167.98,
+      "end": 170.98,
+      "text": "Will you find the murderer? Will you punish him?"
+    },
+    {
+      "id": 67,
+      "start": 170.98,
+      "end": 172.98,
+      "text": "Is this case necessary for you?"
+    },
+    {
+      "id": 68,
+      "start": 172.98,
+      "end": 173.98,
+      "text": "Because it is for me."
+    },
+    {
+      "id": 69,
+      "start": 173.98,
+      "end": 175.98,
+      "text": "Your tongue is very bad."
+    },
+    {
+      "id": 70,
+      "start": 175.98,
+      "end": 177.98,
+      "text": "Not just my tongue."
+    },
+    {
+      "id": 71,
+      "start": 177.98,
+      "end": 178.98,
+      "text": "Absolutely."
+    },
+    {
+      "id": 72,
+      "start": 178.98,
+      "end": 181.98,
+      "text": "Do you believe that we didn't find him earlier?"
+    },
+    {
+      "id": 73,
+      "start": 181.98,
+      "end": 183.98,
+      "text": "Why do I feel that we spent the night together?"
+    },
+    {
+      "id": 74,
+      "start": 183.98,
+      "end": 187.58,
+      "text": "You talk a lot."
+    },
+    {
+      "id": 75,
+      "start": 187.58,
+      "end": 188.58,
+      "text": "Detective, wait."
+    },
+    {
+      "id": 76,
+      "start": 188.58,
+      "end": 190.58,
+      "text": "We should find the real murderer with our own teeth."
+    },
+    {
+      "id": 77,
+      "start": 190.58,
+      "end": 204.3,
+      "text": "Yes, we will."
+    },
+    {
+      "id": 78,
+      "start": 204.3,
+      "end": 205.3,
+      "text": "Yes, detective."
+    },
+    {
+      "id": 79,
+      "start": 205.3,
+      "end": 208.3,
+      "text": "We will find the murderer in the beautiful and innocent bond."
+    },
+    {
+      "id": 80,
+      "start": 208.3,
+      "end": 212.3,
+      "text": "If anyone has any objection to this sacred relation, then speak now."
+    },
+    {
+      "id": 81,
+      "start": 212.3,
+      "end": 213.3,
+      "text": "Excuse me?"
+    },
+    {
+      "id": 82,
+      "start": 213.3,
+      "end": 214.3,
+      "text": "Yes, I have an objection."
+    },
+    {
+      "id": 83,
+      "start": 214.3,
+      "end": 218.3,
+      "text": "It's amazing that you didn't notice that this young bride"
+    },
+    {
+      "id": 84,
+      "start": 218.3,
+      "end": 221.3,
+      "text": "is beautiful and beautiful at the end of her life."
+    },
+    {
+      "id": 85,
+      "start": 221.3,
+      "end": 224.3,
+      "text": "Whereas this drama is like a dirty dirty shop."
+    },
+    {
+      "id": 86,
+      "start": 224.3,
+      "end": 226.3,
+      "text": "What do you mean? Is this marriage or destruction?"
+    },
+    {
+      "id": 87,
+      "start": 226.3,
+      "end": 229.99,
+      "text": "What do you say, friend?"
+    },
+    {
+      "id": 88,
+      "start": 229.99,
+      "end": 231.99,
+      "text": "Nothing will happen to her, Padri."
+    },
+    {
+      "id": 89,
+      "start": 231.99,
+      "end": 233.99,
+      "text": "Hello, Captain."
+    },
+    {
+      "id": 90,
+      "start": 233.99,
+      "end": 236.99,
+      "text": "Jimmy Barnes, do you recognize me?"
+    },
+    {
+      "id": 91,
+      "start": 236.99,
+      "end": 238.99,
+      "text": "Hey, this is a private function."
+    },
+    {
+      "id": 92,
+      "start": 238.99,
+      "end": 239.99,
+      "text": "How did you come inside?"
+    },
+    {
+      "id": 93,
+      "start": 239.99,
+      "end": 240.99,
+      "text": "Yes, I am a private person."
+    },
+    {
+      "id": 94,
+      "start": 240.99,
+      "end": 242.99,
+      "text": "But I am outside the producer's office."
+    },
+    {
+      "id": 95,
+      "start": 242.99,
+      "end": 245.66,
+      "text": "Don't you recognize me?"
+    },
+    {
+      "id": 96,
+      "start": 245.66,
+      "end": 247.66,
+      "text": "You can't forget even if you want to."
+    },
+    {
+      "id": 97,
+      "start": 247.66,
+      "end": 248.66,
+      "text": "What do you want?"
+    },
+    {
+      "id": 98,
+      "start": 248.66,
+      "end": 249.66,
+      "text": "I am busy right now."
+    },
+    {
+      "id": 99,
+      "start": 249.66,
+      "end": 252.66,
+      "text": "Yes, but I can't believe that you are getting married"
+    },
+    {
+      "id": 100,
+      "start": 252.66,
+      "end": 254.66,
+      "text": "the next day after your ex-fiance, a big star,"
+    },
+    {
+      "id": 101,
+      "start": 254.66,
+      "end": 256.66,
+      "text": "who has been killed without mercy."
+    },
+    {
+      "id": 102,
+      "start": 256.66,
+      "end": 258.66,
+      "text": "Yes, I am very sad to hear that."
+    },
+    {
+      "id": 103,
+      "start": 258.66,
+      "end": 260.66,
+      "text": "But she had ruined my marriage once."
+    },
+    {
+      "id": 104,
+      "start": 260.66,
+      "end": 262.66,
+      "text": "I won't let that happen again."
+    },
+    {
+      "id": 105,
+      "start": 262.66,
+      "end": 264.66,
+      "text": "You didn't get the chance to get married twice."
+    },
+    {
+      "id": 106,
+      "start": 264.66,
+      "end": 265.66,
+      "text": "What?"
+    },
+    {
+      "id": 107,
+      "start": 265.66,
+      "end": 267.66,
+      "text": "You had gone to convince her at night."
+    },
+    {
+      "id": 108,
+      "start": 267.66,
+      "end": 269.66,
+      "text": "If I had convinced her, I would have killed her."
+    },
+    {
+      "id": 109,
+      "start": 269.66,
+      "end": 270.66,
+      "text": "That wouldn't have happened."
+    },
+    {
+      "id": 110,
+      "start": 270.66,
+      "end": 271.66,
+      "text": "So come on."
+    },
+    {
+      "id": 111,
+      "start": 271.66,
+      "end": 273.66,
+      "text": "What do you say, Jimmy?"
+    },
+    {
+      "id": 112,
+      "start": 273.66,
+      "end": 275.66,
+      "text": "Did you kill her?"
+    },
+    {
+      "id": 113,
+      "start": 275.66,
+      "end": 277.66,
+      "text": "Look, stop staring at me like that."
+    },
+    {
+      "id": 114,
+      "start": 277.66,
+      "end": 279.66,
+      "text": "I am not going to come to your mind games."
+    },
+    {
+      "id": 115,
+      "start": 279.66,
+      "end": 280.66,
+      "text": "No, not at all."
+    },
+    {
+      "id": 116,
+      "start": 280.66,
+      "end": 282.66,
+      "text": "Yes, I was angry because I was humiliated"
+    },
+    {
+      "id": 117,
+      "start": 282.66,
+      "end": 284.66,
+      "text": "by her confession."
+    },
+    {
+      "id": 118,
+      "start": 284.66,
+      "end": 286.66,
+      "text": "But my lottery is now on."
+    },
+    {
+      "id": 119,
+      "start": 286.66,
+      "end": 287.66,
+      "text": "That's what I am seeing."
+    },
+    {
+      "id": 120,
+      "start": 287.66,
+      "end": 288.66,
+      "text": "I am very impressed."
+    },
+    {
+      "id": 121,
+      "start": 288.66,
+      "end": 290.66,
+      "text": "Just play with your mind games for a while."
+    },
+    {
+      "id": 122,
+      "start": 290.66,
+      "end": 291.66,
+      "text": "That rapper?"
+    },
+    {
+      "id": 123,
+      "start": 291.66,
+      "end": 292.66,
+      "text": "Don't make me do that."
+    },
+    {
+      "id": 124,
+      "start": 292.66,
+      "end": 294.66,
+      "text": "Jalaila left me for that idiot."
+    },
+    {
+      "id": 125,
+      "start": 294.66,
+      "end": 295.66,
+      "text": "He used to fight every time."
+    },
+    {
+      "id": 126,
+      "start": 295.66,
+      "end": 296.66,
+      "text": "He used to beat Jalaila."
+    },
+    {
+      "id": 127,
+      "start": 296.66,
+      "end": 297.66,
+      "text": "He used to shoot at the gun."
+    },
+    {
+      "id": 128,
+      "start": 297.66,
+      "end": 298.66,
+      "text": "He keeps fooling around."
+    },
+    {
+      "id": 129,
+      "start": 298.66,
+      "end": 299.66,
+      "text": "24 hours."
+    },
+    {
+      "id": 130,
+      "start": 299.66,
+      "end": 301.66,
+      "text": "He is the real killer."
+    },
+    {
+      "id": 131,
+      "start": 301.66,
+      "end": 303.92,
+      "text": "I see."
+    },
+    {
+      "id": 132,
+      "start": 303.92,
+      "end": 305.3,
+      "text": "Sorry."
+    },
+    {
+      "id": 133,
+      "start": 305.3,
+      "end": 307.3,
+      "text": "I have not introduced myself to you."
+    },
+    {
+      "id": 134,
+      "start": 307.3,
+      "end": 310.3,
+      "text": "My name is Lucifer Morningstar."
+    },
+    {
+      "id": 135,
+      "start": 310.3,
+      "end": 313.58,
+      "text": "I don't want to have sex with him."
+    },
+    {
+      "id": 136,
+      "start": 313.58,
+      "end": 317.18,
+      "text": "Oh my God."
+    },
+    {
+      "id": 137,
+      "start": 317.18,
+      "end": 318.18,
+      "text": "I am sorry."
+    },
+    {
+      "id": 138,
+      "start": 318.18,
+      "end": 320.18,
+      "text": "I don't believe it."
+    },
+    {
+      "id": 139,
+      "start": 320.18,
+      "end": 321.18,
+      "text": "I said that."
+    },
+    {
+      "id": 140,
+      "start": 321.18,
+      "end": 322.18,
+      "text": "No, it's okay."
+    },
+    {
+      "id": 141,
+      "start": 322.18,
+      "end": 323.18,
+      "text": "We all know that."
+    },
+    {
+      "id": 142,
+      "start": 323.18,
+      "end": 325.18,
+      "text": "You are not getting married because of this trash."
+    },
+    {
+      "id": 143,
+      "start": 325.18,
+      "end": 326.18,
+      "text": "Because you love him."
+    },
+    {
+      "id": 144,
+      "start": 326.18,
+      "end": 327.18,
+      "text": "How can I do that?"
+    },
+    {
+      "id": 145,
+      "start": 327.18,
+      "end": 328.18,
+      "text": "No."
+    },
+    {
+      "id": 146,
+      "start": 328.18,
+      "end": 329.18,
+      "text": "That's good."
+    },
+    {
+      "id": 147,
+      "start": 329.18,
+      "end": 330.18,
+      "text": "Now I should go."
+    },
+    {
+      "id": 148,
+      "start": 330.18,
+      "end": 331.18,
+      "text": "Oh."
+    },
+    {
+      "id": 149,
+      "start": 331.18,
+      "end": 333.43,
+      "text": "Congratulations on your wedding."
+    },
+    {
+      "id": 150,
+      "start": 333.43,
+      "end": 334.43,
+      "text": "Enjoy."
+    },
+    {
+      "id": 151,
+      "start": 352.36,
+      "end": 353.36,
+      "text": "Good afternoon, sir."
+    },
+    {
+      "id": 152,
+      "start": 353.36,
+      "end": 355.36,
+      "text": "I have come to meet your boss for a while."
+    },
+    {
+      "id": 153,
+      "start": 355.36,
+      "end": 357.36,
+      "text": "Is he at home?"
+    },
+    {
+      "id": 154,
+      "start": 357.36,
+      "end": 358.36,
+      "text": "I am sorry, sir."
+    },
+    {
+      "id": 155,
+      "start": 358.36,
+      "end": 359.36,
+      "text": "He is making a joke."
+    },
+    {
+      "id": 156,
+      "start": 359.36,
+      "end": 360.36,
+      "text": "He can't meet him."
+    },
+    {
+      "id": 157,
+      "start": 360.36,
+      "end": 361.36,
+      "text": "I see."
+    },
+    {
+      "id": 158,
+      "start": 361.36,
+      "end": 362.36,
+      "text": "I have drugs for him."
+    },
+    {
+      "id": 159,
+      "start": 364.0,
+      "end": 365.0,
+      "text": "Bring the right medicine for him."
+    },
+    {
+      "id": 160,
+      "start": 376.74,
+      "end": 377.74,
+      "text": "What is this?"
+    },
+    {
+      "id": 161,
+      "start": 377.74,
+      "end": 380.74,
+      "text": "You will not listen to this dirty and useless music."
+    },
+    {
+      "id": 162,
+      "start": 380.74,
+      "end": 382.74,
+      "text": "Hello, this is Jockey."
+    },
+    {
+      "id": 163,
+      "start": 382.74,
+      "end": 383.74,
+      "text": "Thank you."
+    },
+    {
+      "id": 164,
+      "start": 383.74,
+      "end": 385.74,
+      "text": "Who is this guy?"
+    },
+    {
+      "id": 165,
+      "start": 385.74,
+      "end": 387.74,
+      "text": "He has brought drugs for you, sir."
+    },
+    {
+      "id": 166,
+      "start": 387.74,
+      "end": 391.03,
+      "text": "My name is Lucifer Morningstar."
+    },
+    {
+      "id": 167,
+      "start": 391.03,
+      "end": 393.03,
+      "text": "Lucifer Morningstar."
+    },
+    {
+      "id": 168,
+      "start": 394.29,
+      "end": 396.29,
+      "text": "This is Dhasu's name for hip-hop."
+    },
+    {
+      "id": 169,
+      "start": 396.29,
+      "end": 398.29,
+      "text": "You are insulting me."
+    },
+    {
+      "id": 170,
+      "start": 398.29,
+      "end": 399.29,
+      "text": "Why?"
+    },
+    {
+      "id": 171,
+      "start": 399.29,
+      "end": 400.29,
+      "text": "Don't you like hip-hop?"
+    },
+    {
+      "id": 172,
+      "start": 400.29,
+      "end": 402.29,
+      "text": "No, my music tastes good."
+    },
+    {
+      "id": 173,
+      "start": 402.29,
+      "end": 404.74,
+      "text": "Now you are insulting me."
+    },
+    {
+      "id": 174,
+      "start": 404.74,
+      "end": 408.88,
+      "text": "Do you have any problem with black people?"
+    },
+    {
+      "id": 175,
+      "start": 408.88,
+      "end": 409.88,
+      "text": "No, not at all."
+    },
+    {
+      "id": 176,
+      "start": 409.88,
+      "end": 411.88,
+      "text": "I just hate your music."
+    },
+    {
+      "id": 177,
+      "start": 411.88,
+      "end": 414.88,
+      "text": "I hate the music you make of your music."
+    },
+    {
+      "id": 178,
+      "start": 414.88,
+      "end": 416.88,
+      "text": "Not the music of other black people."
+    },
+    {
+      "id": 179,
+      "start": 416.88,
+      "end": 419.88,
+      "text": "It means it is impossible to play devil music without blues."
+    },
+    {
+      "id": 180,
+      "start": 419.88,
+      "end": 421.88,
+      "text": "You don't even come to your industry."
+    },
+    {
+      "id": 181,
+      "start": 421.88,
+      "end": 423.88,
+      "text": "Do you understand what I am saying?"
+    },
+    {
+      "id": 182,
+      "start": 423.88,
+      "end": 425.88,
+      "text": "Yes, I understand it very well."
+    },
+    {
+      "id": 183,
+      "start": 425.88,
+      "end": 426.88,
+      "text": "Good."
+    },
+    {
+      "id": 184,
+      "start": 426.88,
+      "end": 432.14,
+      "text": "You are very fond of dying."
+    },
+    {
+      "id": 185,
+      "start": 432.14,
+      "end": 434.14,
+      "text": "Don't miss the bullets. I am immortal."
+    },
+    {
+      "id": 186,
+      "start": 434.14,
+      "end": 436.5,
+      "text": "What do you know about Delilah?"
+    },
+    {
+      "id": 187,
+      "start": 436.5,
+      "end": 438.5,
+      "text": "You don't watch the news."
+    },
+    {
+      "id": 188,
+      "start": 438.5,
+      "end": 447.47,
+      "text": "You have already died."
+    },
+    {
+      "id": 189,
+      "start": 447.47,
+      "end": 449.95,
+      "text": "Shoot him!"
+    },
+    {
+      "id": 190,
+      "start": 449.95,
+      "end": 450.95,
+      "text": "I didn't kill him."
+    },
+    {
+      "id": 191,
+      "start": 450.95,
+      "end": 451.95,
+      "text": "Why do you believe in him?"
+    },
+    {
+      "id": 192,
+      "start": 451.95,
+      "end": 452.95,
+      "text": "Because I love him."
+    },
+    {
+      "id": 193,
+      "start": 452.95,
+      "end": 454.95,
+      "text": "Sometimes people take life in love."
+    },
+    {
+      "id": 194,
+      "start": 454.95,
+      "end": 456.95,
+      "text": "There is no logic in the matter of love."
+    },
+    {
+      "id": 195,
+      "start": 456.95,
+      "end": 457.95,
+      "text": "People say that."
+    },
+    {
+      "id": 196,
+      "start": 457.95,
+      "end": 458.95,
+      "text": "No, it's not like that."
+    },
+    {
+      "id": 197,
+      "start": 458.95,
+      "end": 460.95,
+      "text": "He was mad."
+    },
+    {
+      "id": 198,
+      "start": 460.95,
+      "end": 461.95,
+      "text": "What is the new thing in it?"
+    },
+    {
+      "id": 199,
+      "start": 461.95,
+      "end": 463.95,
+      "text": "It means you will raise your hand on him."
+    },
+    {
+      "id": 200,
+      "start": 463.95,
+      "end": 464.95,
+      "text": "Our witch was doing the right thing."
+    },
+    {
+      "id": 201,
+      "start": 464.95,
+      "end": 466.95,
+      "text": "He was just hitting him once."
+    },
+    {
+      "id": 202,
+      "start": 466.95,
+      "end": 468.95,
+      "text": "Because he had an affair with someone else."
+    },
+    {
+      "id": 203,
+      "start": 475.68,
+      "end": 478.68,
+      "text": "Acha, with whom?"
+    },
+    {
+      "id": 204,
+      "start": 478.68,
+      "end": 479.68,
+      "text": "I don't know."
+    },
+    {
+      "id": 205,
+      "start": 479.68,
+      "end": 480.68,
+      "text": "He didn't tell me."
+    },
+    {
+      "id": 206,
+      "start": 480.68,
+      "end": 482.68,
+      "text": "He kept his name as Raaz."
+    },
+    {
+      "id": 207,
+      "start": 482.68,
+      "end": 484.68,
+      "text": "He was a married man."
+    },
+    {
+      "id": 208,
+      "start": 484.68,
+      "end": 485.68,
+      "text": "Is there any friend who knows Raaz?"
+    },
+    {
+      "id": 209,
+      "start": 485.68,
+      "end": 487.68,
+      "text": "He didn't trust anyone."
+    },
+    {
+      "id": 210,
+      "start": 487.68,
+      "end": 489.68,
+      "text": "His therapist."
+    },
+    {
+      "id": 211,
+      "start": 489.68,
+      "end": 491.68,
+      "text": "His therapist must know Raaz."
+    },
+    {
+      "id": 212,
+      "start": 491.68,
+      "end": 493.68,
+      "text": "His name is Dr. Linda."
+    },
+    {
+      "id": 213,
+      "start": 493.68,
+      "end": 494.68,
+      "text": "In Beverly Hills."
+    },
+    {
+      "id": 214,
+      "start": 494.68,
+      "end": 496.68,
+      "text": "He used to go to meet her five times a week."
+    },
+    {
+      "id": 215,
+      "start": 496.68,
+      "end": 498.68,
+      "text": "That too in the name of someone else."
+    },
+    {
+      "id": 216,
+      "start": 498.68,
+      "end": 500.68,
+      "text": "Oh, that's it."
+    },
+    {
+      "id": 217,
+      "start": 500.68,
+      "end": 501.68,
+      "text": "Okay."
+    },
+    {
+      "id": 218,
+      "start": 501.68,
+      "end": 502.68,
+      "text": "Thank you."
+    },
+    {
+      "id": 219,
+      "start": 502.68,
+      "end": 503.68,
+      "text": "For giving me time."
+    },
+    {
+      "id": 220,
+      "start": 504.68,
+      "end": 507.68,
+      "text": "LAPD, everyone throw your guns on the ground."
+    },
+    {
+      "id": 221,
+      "start": 507.68,
+      "end": 508.68,
+      "text": "Both of you, raise your hands."
+    },
+    {
+      "id": 222,
+      "start": 508.68,
+      "end": 511.68,
+      "text": "Detective, welcome to the party."
+    },
+    {
+      "id": 223,
+      "start": 511.68,
+      "end": 513.68,
+      "text": "Put everyone's guns in the bucket."
+    },
+    {
+      "id": 224,
+      "start": 513.68,
+      "end": 514.68,
+      "text": "Hurry up."
+    },
+    {
+      "id": 225,
+      "start": 514.68,
+      "end": 516.68,
+      "text": "I am giving your intelligence that you have reached here."
+    },
+    {
+      "id": 226,
+      "start": 516.68,
+      "end": 518.68,
+      "text": "I checked the phone record of the murderer."
+    },
+    {
+      "id": 227,
+      "start": 518.68,
+      "end": 520.68,
+      "text": "He called the last call to Vile."
+    },
+    {
+      "id": 228,
+      "start": 520.68,
+      "end": 521.68,
+      "text": "Oh, shit."
+    },
+    {
+      "id": 229,
+      "start": 521.68,
+      "end": 524.68,
+      "text": "The interesting thing is how did you make this connection on your own?"
+    },
+    {
+      "id": 230,
+      "start": 524.68,
+      "end": 526.68,
+      "text": "My network is strong."
+    },
+    {
+      "id": 231,
+      "start": 526.68,
+      "end": 529.38,
+      "text": "Tell me about Delilah."
+    },
+    {
+      "id": 232,
+      "start": 529.38,
+      "end": 530.38,
+      "text": "I have asked before, detective."
+    },
+    {
+      "id": 233,
+      "start": 530.38,
+      "end": 533.38,
+      "text": "And why did you call the shooter two days ago?"
+    },
+    {
+      "id": 234,
+      "start": 533.38,
+      "end": 534.38,
+      "text": "Yes."
+    },
+    {
+      "id": 235,
+      "start": 534.38,
+      "end": 536.38,
+      "text": "Okay, I called Eddie because he is my dealer."
+    },
+    {
+      "id": 236,
+      "start": 536.38,
+      "end": 538.38,
+      "text": "I had met him with Delilah."
+    },
+    {
+      "id": 237,
+      "start": 538.38,
+      "end": 539.38,
+      "text": "So what?"
+    },
+    {
+      "id": 238,
+      "start": 539.38,
+      "end": 540.38,
+      "text": "Do I become a murderer?"
+    },
+    {
+      "id": 239,
+      "start": 540.38,
+      "end": 541.38,
+      "text": "No."
+    },
+    {
+      "id": 240,
+      "start": 541.38,
+      "end": 543.38,
+      "text": "But you do become a suspect."
+    },
+    {
+      "id": 241,
+      "start": 543.38,
+      "end": 545.38,
+      "text": "You mean the one who called Eddie is a suspect?"
+    },
+    {
+      "id": 242,
+      "start": 545.38,
+      "end": 546.38,
+      "text": "Are you kidding me?"
+    },
+    {
+      "id": 243,
+      "start": 546.38,
+      "end": 548.38,
+      "text": "There is no one in Hollywood who doesn't call him."
+    },
+    {
+      "id": 244,
+      "start": 548.38,
+      "end": 550.38,
+      "text": "So you go and catch everyone."
+    },
+    {
+      "id": 245,
+      "start": 550.38,
+      "end": 551.74,
+      "text": "Wait a minute."
+    },
+    {
+      "id": 246,
+      "start": 551.74,
+      "end": 553.74,
+      "text": "You are the actress of the film, right?"
+    },
+    {
+      "id": 247,
+      "start": 553.74,
+      "end": 554.74,
+      "text": "What did you say? Which film?"
+    },
+    {
+      "id": 248,
+      "start": 554.74,
+      "end": 555.74,
+      "text": "She used to act in the film."
+    },
+    {
+      "id": 249,
+      "start": 555.74,
+      "end": 556.74,
+      "text": "Right?"
+    },
+    {
+      "id": 250,
+      "start": 556.74,
+      "end": 557.74,
+      "text": "Yes."
+    },
+    {
+      "id": 251,
+      "start": 557.74,
+      "end": 558.74,
+      "text": "I don't remember the name of that film."
+    },
+    {
+      "id": 252,
+      "start": 558.74,
+      "end": 559.74,
+      "text": "Oh, yes."
+    },
+    {
+      "id": 253,
+      "start": 559.74,
+      "end": 561.74,
+      "text": "Hot Top High School."
+    },
+    {
+      "id": 254,
+      "start": 561.74,
+      "end": 562.74,
+      "text": "I have seen you there."
+    },
+    {
+      "id": 255,
+      "start": 562.74,
+      "end": 563.74,
+      "text": "Yes."
+    },
+    {
+      "id": 256,
+      "start": 563.74,
+      "end": 564.74,
+      "text": "You can only ask me questions."
+    },
+    {
+      "id": 257,
+      "start": 564.74,
+      "end": 565.74,
+      "text": "Okay."
+    },
+    {
+      "id": 258,
+      "start": 565.74,
+      "end": 566.74,
+      "text": "That film is a famous nude scene."
+    },
+    {
+      "id": 259,
+      "start": 566.74,
+      "end": 567.74,
+      "text": "She was going out of the hot top."
+    },
+    {
+      "id": 260,
+      "start": 567.74,
+      "end": 569.74,
+      "text": "She was looking like a heroine in that film."
+    },
+    {
+      "id": 261,
+      "start": 569.74,
+      "end": 570.74,
+      "text": "Thanks."
+    },
+    {
+      "id": 262,
+      "start": 570.74,
+      "end": 571.74,
+      "text": "My heart is broken."
+    },
+    {
+      "id": 263,
+      "start": 571.74,
+      "end": 572.74,
+      "text": "That nude scene touched my heart."
+    },
+    {
+      "id": 264,
+      "start": 572.74,
+      "end": 575.74,
+      "text": "If you say one more word, I will shoot you all."
+    },
+    {
+      "id": 265,
+      "start": 575.74,
+      "end": 577.74,
+      "text": "I want to talk to you at this time."
+    },
+    {
+      "id": 266,
+      "start": 577.74,
+      "end": 579.74,
+      "text": "Detective, this time will be ruined."
+    },
+    {
+      "id": 267,
+      "start": 579.74,
+      "end": 583.41,
+      "text": "If you had given me the threat of life, I would have killed you."
+    },
+    {
+      "id": 268,
+      "start": 583.41,
+      "end": 584.41,
+      "text": "What did you say?"
+    },
+    {
+      "id": 269,
+      "start": 584.41,
+      "end": 585.41,
+      "text": "Yes."
+    },
+    {
+      "id": 270,
+      "start": 585.41,
+      "end": 586.41,
+      "text": "Isn't this illegal?"
+    },
+    {
+      "id": 271,
+      "start": 586.41,
+      "end": 587.41,
+      "text": "Yes."
+    },
+    {
+      "id": 272,
+      "start": 587.41,
+      "end": 588.41,
+      "text": "It is illegal."
+    },
+    {
+      "id": 273,
+      "start": 588.41,
+      "end": 589.41,
+      "text": "You stay there."
+    },
+    {
+      "id": 274,
+      "start": 589.41,
+      "end": 590.41,
+      "text": "And you come with me."
+    },
+    {
+      "id": 275,
+      "start": 590.41,
+      "end": 591.41,
+      "text": "What?"
+    },
+    {
+      "id": 276,
+      "start": 591.41,
+      "end": 592.41,
+      "text": "Oh."
+    },
+    {
+      "id": 277,
+      "start": 592.41,
+      "end": 593.41,
+      "text": "Role play."
+    },
+    {
+      "id": 278,
+      "start": 593.41,
+      "end": 595.41,
+      "text": "Now you will listen to me."
+    },
+    {
+      "id": 279,
+      "start": 595.41,
+      "end": 598.41,
+      "text": "But I don't understand why you have arrested me."
+    },
+    {
+      "id": 280,
+      "start": 598.41,
+      "end": 601.41,
+      "text": "Because you are interfering in the police investigation."
+    },
+    {
+      "id": 281,
+      "start": 601.41,
+      "end": 604.41,
+      "text": "You have broken so many laws and don't like your face."
+    },
+    {
+      "id": 282,
+      "start": 604.41,
+      "end": 606.41,
+      "text": "By the way, these handcuffs can't tie me up."
+    },
+    {
+      "id": 283,
+      "start": 606.41,
+      "end": 609.84,
+      "text": "Really?"
+    },
+    {
+      "id": 284,
+      "start": 609.84,
+      "end": 610.84,
+      "text": "How did you do this?"
+    },
+    {
+      "id": 285,
+      "start": 610.84,
+      "end": 611.84,
+      "text": "Come on."
+    },
+    {
+      "id": 286,
+      "start": 611.84,
+      "end": 613.84,
+      "text": "We should not waste time and solve this case."
+    },
+    {
+      "id": 287,
+      "start": 613.84,
+      "end": 615.84,
+      "text": "And we should punish the killer."
+    },
+    {
+      "id": 288,
+      "start": 615.84,
+      "end": 616.84,
+      "text": "We?"
+    },
+    {
+      "id": 289,
+      "start": 616.84,
+      "end": 617.84,
+      "text": "You are crazy."
+    },
+    {
+      "id": 290,
+      "start": 617.84,
+      "end": 618.84,
+      "text": "Just sit in the car quietly."
+    },
+    {
+      "id": 291,
+      "start": 618.84,
+      "end": 619.84,
+      "text": "No."
+    },
+    {
+      "id": 292,
+      "start": 619.84,
+      "end": 620.84,
+      "text": "This is boring."
+    },
+    {
+      "id": 293,
+      "start": 620.84,
+      "end": 621.84,
+      "text": "And this is meaningless."
+    },
+    {
+      "id": 294,
+      "start": 621.84,
+      "end": 622.84,
+      "text": "I will help you."
+    },
+    {
+      "id": 295,
+      "start": 622.84,
+      "end": 623.84,
+      "text": "It will be fun."
+    },
+    {
+      "id": 296,
+      "start": 623.84,
+      "end": 625.84,
+      "text": "What can you help me?"
+    },
+    {
+      "id": 297,
+      "start": 625.84,
+      "end": 626.84,
+      "text": "I have a special talent."
+    },
+    {
+      "id": 298,
+      "start": 626.84,
+      "end": 627.84,
+      "text": "I can talk to people."
+    },
+    {
+      "id": 299,
+      "start": 627.84,
+      "end": 628.84,
+      "text": "I can see them."
+    },
+    {
+      "id": 300,
+      "start": 628.84,
+      "end": 630.84,
+      "text": "I can't see the rest."
+    },
+    {
+      "id": 301,
+      "start": 630.84,
+      "end": 632.84,
+      "text": "Are you blind?"
+    },
+    {
+      "id": 302,
+      "start": 632.84,
+      "end": 633.84,
+      "text": "No."
+    },
+    {
+      "id": 303,
+      "start": 633.84,
+      "end": 634.84,
+      "text": "I can't read people's mind."
+    },
+    {
+      "id": 304,
+      "start": 634.84,
+      "end": 635.84,
+      "text": "I am not a magician."
+    },
+    {
+      "id": 305,
+      "start": 635.84,
+      "end": 636.84,
+      "text": "People just talk to me."
+    },
+    {
+      "id": 306,
+      "start": 636.84,
+      "end": 637.84,
+      "text": "Hmm."
+    },
+    {
+      "id": 307,
+      "start": 637.84,
+      "end": 638.84,
+      "text": "This is the secret."
+    },
+    {
+      "id": 308,
+      "start": 638.84,
+      "end": 639.84,
+      "text": "Accept your sin."
+    },
+    {
+      "id": 309,
+      "start": 639.84,
+      "end": 640.84,
+      "text": "No."
+    },
+    {
+      "id": 310,
+      "start": 640.84,
+      "end": 641.84,
+      "text": "I don't accept my sin."
+    },
+    {
+      "id": 311,
+      "start": 641.84,
+      "end": 643.84,
+      "text": "People accept their sin."
+    },
+    {
+      "id": 312,
+      "start": 643.84,
+      "end": 647.84,
+      "text": "I can make people's wishes come true."
+    },
+    {
+      "id": 313,
+      "start": 647.84,
+      "end": 653.84,
+      "text": "The easier the person is, the more fun it is to know their heart's wishes."
+    },
+    {
+      "id": 314,
+      "start": 653.84,
+      "end": 655.84,
+      "text": "But you are responsible for your sins."
+    },
+    {
+      "id": 315,
+      "start": 655.84,
+      "end": 657.84,
+      "text": "Are you?"
+    },
+    {
+      "id": 316,
+      "start": 657.84,
+      "end": 659.84,
+      "text": "I understood."
+    },
+    {
+      "id": 317,
+      "start": 659.84,
+      "end": 660.84,
+      "text": "I understood."
+    },
+    {
+      "id": 318,
+      "start": 660.84,
+      "end": 662.84,
+      "text": "This is the name and the drama of being a loser."
+    },
+    {
+      "id": 319,
+      "start": 662.84,
+      "end": 664.84,
+      "text": "And your wish is your superpower."
+    },
+    {
+      "id": 320,
+      "start": 664.84,
+      "end": 665.84,
+      "text": "Actually, this is God's gift."
+    },
+    {
+      "id": 321,
+      "start": 665.84,
+      "end": 667.16,
+      "text": "Okay."
+    },
+    {
+      "id": 322,
+      "start": 667.16,
+      "end": 668.16,
+      "text": "Okay."
+    },
+    {
+      "id": 323,
+      "start": 668.16,
+      "end": 671.16,
+      "text": "Now tell me this, detective."
+    },
+    {
+      "id": 324,
+      "start": 671.16,
+      "end": 676.02,
+      "text": "What do you want the most in your life?"
+    },
+    {
+      "id": 325,
+      "start": 676.02,
+      "end": 685.38,
+      "text": "Okay, so this is your magic."
+    },
+    {
+      "id": 326,
+      "start": 685.38,
+      "end": 692.8,
+      "text": "Maybe when I was a kid, I always wanted to be a police officer like my daddy."
+    },
+    {
+      "id": 327,
+      "start": 692.8,
+      "end": 695.8,
+      "text": "So that I can help people one day."
+    },
+    {
+      "id": 328,
+      "start": 695.8,
+      "end": 706.31,
+      "text": "And people take me seriously when I tell them to sit quietly in the car."
+    },
+    {
+      "id": 329,
+      "start": 706.31,
+      "end": 708.31,
+      "text": "Is it possible that you are a magician?"
+    },
+    {
+      "id": 330,
+      "start": 708.31,
+      "end": 709.31,
+      "text": "Inside the car."
+    },
+    {
+      "id": 331,
+      "start": 709.31,
+      "end": 710.31,
+      "text": "No."
+    },
+    {
+      "id": 332,
+      "start": 710.31,
+      "end": 711.31,
+      "text": "Wait a minute."
+    },
+    {
+      "id": 333,
+      "start": 711.31,
+      "end": 712.31,
+      "text": "I know what you don't know."
+    },
+    {
+      "id": 334,
+      "start": 712.31,
+      "end": 713.31,
+      "text": "Okay."
+    },
+    {
+      "id": 335,
+      "start": 713.31,
+      "end": 714.31,
+      "text": "What is that?"
+    },
+    {
+      "id": 336,
+      "start": 714.31,
+      "end": 716.31,
+      "text": "Then I will tell you when you will put me in this case."
+    },
+    {
+      "id": 337,
+      "start": 716.31,
+      "end": 717.31,
+      "text": "Come on."
+    },
+    {
+      "id": 338,
+      "start": 717.31,
+      "end": 719.31,
+      "text": "I had reached here myself for two while."
+    },
+    {
+      "id": 339,
+      "start": 719.31,
+      "end": 721.31,
+      "text": "What do you mean by this case?"
+    },
+    {
+      "id": 340,
+      "start": 721.31,
+      "end": 722.31,
+      "text": "And by delineation?"
+    },
+    {
+      "id": 341,
+      "start": 722.31,
+      "end": 725.98,
+      "text": "I mean..."
+    },
+    {
+      "id": 342,
+      "start": 725.98,
+      "end": 726.98,
+      "text": "I mean..."
+    },
+    {
+      "id": 343,
+      "start": 726.98,
+      "end": 731.62,
+      "text": "If I had not helped her in her career, she would have been alive today."
+    },
+    {
+      "id": 344,
+      "start": 731.62,
+      "end": 732.62,
+      "text": "Okay."
+    },
+    {
+      "id": 345,
+      "start": 732.62,
+      "end": 733.62,
+      "text": "Okay."
+    },
+    {
+      "id": 346,
+      "start": 733.62,
+      "end": 734.62,
+      "text": "Fine."
+    },
+    {
+      "id": 347,
+      "start": 734.62,
+      "end": 738.62,
+      "text": "But if your clue didn't work out, then this is not going to happen again."
+    },
+    {
+      "id": 348,
+      "start": 738.62,
+      "end": 739.62,
+      "text": "Are you sure?"
+    },
+    {
+      "id": 349,
+      "start": 739.62,
+      "end": 746.12,
+      "text": "Yes."
+    },
+    {
+      "id": 350,
+      "start": 746.12,
+      "end": 747.12,
+      "text": "There is a therapist in Beverly Hills."
+    },
+    {
+      "id": 351,
+      "start": 747.12,
+      "end": 748.12,
+      "text": "Her name is Linda."
+    },
+    {
+      "id": 352,
+      "start": 748.12,
+      "end": 749.12,
+      "text": "Was her client Dalala?"
+    },
+    {
+      "id": 353,
+      "start": 749.12,
+      "end": 750.12,
+      "text": "No, no."
+    },
+    {
+      "id": 354,
+      "start": 750.12,
+      "end": 751.12,
+      "text": "Actually, she used to go by another name."
+    },
+    {
+      "id": 355,
+      "start": 751.12,
+      "end": 752.12,
+      "text": "Which I know."
+    },
+    {
+      "id": 356,
+      "start": 752.12,
+      "end": 753.12,
+      "text": "I am very talented."
+    },
+    {
+      "id": 357,
+      "start": 753.12,
+      "end": 755.6,
+      "text": "Penny Lane."
+    },
+    {
+      "id": 358,
+      "start": 755.6,
+      "end": 757.6,
+      "text": "Dalala probably went by Penny Lane's name."
+    },
+    {
+      "id": 359,
+      "start": 757.6,
+      "end": 761.54,
+      "text": "Thanks."
+    },
+    {
+      "id": 360,
+      "start": 761.54,
+      "end": 762.54,
+      "text": "Don't be so happy."
+    },
+    {
+      "id": 361,
+      "start": 762.54,
+      "end": 764.54,
+      "text": "The case hasn't been solved yet."
+    },
+    {
+      "id": 362,
+      "start": 764.54,
+      "end": 765.54,
+      "text": "No."
+    },
+    {
+      "id": 363,
+      "start": 765.54,
+      "end": 767.54,
+      "text": "I was just thinking that I knew you earlier."
+    },
+    {
+      "id": 364,
+      "start": 767.54,
+      "end": 768.54,
+      "text": "Okay."
+    },
+    {
+      "id": 365,
+      "start": 768.54,
+      "end": 769.54,
+      "text": "Okay."
+    },
+    {
+      "id": 366,
+      "start": 769.54,
+      "end": 770.54,
+      "text": "You have seen me as a naked."
+    },
+    {
+      "id": 367,
+      "start": 770.54,
+      "end": 771.54,
+      "text": "It's fun, isn't it?"
+    },
+    {
+      "id": 368,
+      "start": 771.54,
+      "end": 772.54,
+      "text": "Are you a kid?"
+    },
+    {
+      "id": 369,
+      "start": 772.54,
+      "end": 776.22,
+      "text": "Oh, it seems that your heroine friends haven't gone yet."
+    },
+    {
+      "id": 370,
+      "start": 776.22,
+      "end": 779.22,
+      "text": "Actually, this is the life that I want to forget."
+    },
+    {
+      "id": 371,
+      "start": 779.22,
+      "end": 780.22,
+      "text": "I see."
+    },
+    {
+      "id": 372,
+      "start": 780.22,
+      "end": 784.22,
+      "text": "A beautiful police officer is trying to make her identity in the world of men."
+    },
+    {
+      "id": 373,
+      "start": 784.22,
+      "end": 785.22,
+      "text": "Yes."
+    },
+    {
+      "id": 374,
+      "start": 785.22,
+      "end": 786.22,
+      "text": "That's right."
+    },
+    {
+      "id": 375,
+      "start": 786.22,
+      "end": 788.22,
+      "text": "They are afraid of you."
+    },
+    {
+      "id": 376,
+      "start": 788.22,
+      "end": 790.22,
+      "text": "Obviously, you are smart and know your job."
+    },
+    {
+      "id": 377,
+      "start": 790.22,
+      "end": 791.22,
+      "text": "Shoot them."
+    },
+    {
+      "id": 378,
+      "start": 791.22,
+      "end": 792.22,
+      "text": "Trust yourself."
+    },
+    {
+      "id": 379,
+      "start": 792.22,
+      "end": 797.03,
+      "text": "Detective Decker."
+    },
+    {
+      "id": 380,
+      "start": 797.03,
+      "end": 798.03,
+      "text": "Okay."
+    },
+    {
+      "id": 381,
+      "start": 798.03,
+      "end": 799.03,
+      "text": "Send me a message."
+    },
+    {
+      "id": 382,
+      "start": 799.03,
+      "end": 800.51,
+      "text": "Thanks."
+    },
+    {
+      "id": 383,
+      "start": 800.51,
+      "end": 802.98,
+      "text": "What did he say?"
+    },
+    {
+      "id": 384,
+      "start": 802.98,
+      "end": 804.98,
+      "text": "Your words have been proven true."
+    },
+    {
+      "id": 385,
+      "start": 804.98,
+      "end": 806.98,
+      "text": "There is a client named Penny Lane Beverly Hills doctor Linda."
+    },
+    {
+      "id": 386,
+      "start": 806.98,
+      "end": 807.98,
+      "text": "That's great."
+    },
+    {
+      "id": 387,
+      "start": 807.98,
+      "end": 809.98,
+      "text": "So, you have made a partnership."
+    },
+    {
+      "id": 388,
+      "start": 809.98,
+      "end": 811.94,
+      "text": "Oh."
+    },
+    {
+      "id": 389,
+      "start": 811.94,
+      "end": 812.94,
+      "text": "You have big fans."
+    },
+    {
+      "id": 390,
+      "start": 812.94,
+      "end": 813.94,
+      "text": "Please stop your mouth."
+    },
+    {
+      "id": 391,
+      "start": 813.94,
+      "end": 815.81,
+      "text": "Hello."
+    },
+    {
+      "id": 392,
+      "start": 815.81,
+      "end": 816.81,
+      "text": "What are you saying?"
+    },
+    {
+      "id": 393,
+      "start": 816.81,
+      "end": 818.29,
+      "text": "Are you okay?"
+    },
+    {
+      "id": 394,
+      "start": 818.29,
+      "end": 819.29,
+      "text": "Oh."
+    },
+    {
+      "id": 395,
+      "start": 819.29,
+      "end": 820.29,
+      "text": "Yes."
+    },
+    {
+      "id": 396,
+      "start": 820.29,
+      "end": 822.12,
+      "text": "Why would he be there?"
+    },
+    {
+      "id": 397,
+      "start": 822.12,
+      "end": 823.12,
+      "text": "Thanks."
+    },
+    {
+      "id": 398,
+      "start": 823.12,
+      "end": 824.12,
+      "text": "We have to stay in one place."
+    },
+    {
+      "id": 399,
+      "start": 824.12,
+      "end": 825.12,
+      "text": "What?"
+    },
+    {
+      "id": 400,
+      "start": 825.12,
+      "end": 826.12,
+      "text": "What is the need for that?"
+    },
+    {
+      "id": 401,
+      "start": 826.12,
+      "end": 827.12,
+      "text": "My daughter is in a fight."
+    },
+    {
+      "id": 402,
+      "start": 827.12,
+      "end": 828.12,
+      "text": "We have to go."
+    },
+    {
+      "id": 403,
+      "start": 828.12,
+      "end": 829.12,
+      "text": "Can't she manage herself?"
+    },
+    {
+      "id": 404,
+      "start": 829.12,
+      "end": 830.12,
+      "text": "It's been seven years."
+    },
+    {
+      "id": 405,
+      "start": 830.12,
+      "end": 832.12,
+      "text": "I'm not here to work for your house."
+    },
+    {
+      "id": 406,
+      "start": 832.12,
+      "end": 834.38,
+      "text": "I'm here to solve the case."
+    },
+    {
+      "id": 407,
+      "start": 834.38,
+      "end": 846.83,
+      "text": "Really?"
+    },
+    {
+      "id": 408,
+      "start": 846.83,
+      "end": 847.83,
+      "text": "Okay."
+    },
+    {
+      "id": 409,
+      "start": 847.83,
+      "end": 848.83,
+      "text": "We have to stay here."
+    },
+    {
+      "id": 410,
+      "start": 848.83,
+      "end": 849.83,
+      "text": "You are very shocked."
+    },
+    {
+      "id": 411,
+      "start": 849.83,
+      "end": 851.83,
+      "text": "I hate children."
+    },
+    {
+      "id": 412,
+      "start": 852.83,
+      "end": 854.83,
+      "text": "We are going to catch the ones who beat us."
+    },
+    {
+      "id": 413,
+      "start": 854.83,
+      "end": 855.83,
+      "text": "Cool."
+    },
+    {
+      "id": 414,
+      "start": 865.66,
+      "end": 889.1,
+      "text": "I don't allow to drink cigarettes in the night."
+    },
+    {
+      "id": 415,
+      "start": 891.34,
+      "end": 892.34,
+      "text": "Okay."
+    },
+    {
+      "id": 416,
+      "start": 892.34,
+      "end": 893.34,
+      "text": "Don't tell anyone about it."
+    },
+    {
+      "id": 417,
+      "start": 893.34,
+      "end": 896.34,
+      "text": "My mom is a police officer."
+    },
+    {
+      "id": 418,
+      "start": 896.34,
+      "end": 897.86,
+      "text": "She'll arrest you."
+    },
+    {
+      "id": 419,
+      "start": 897.86,
+      "end": 898.86,
+      "text": "Oh."
+    },
+    {
+      "id": 420,
+      "start": 899.86,
+      "end": 900.86,
+      "text": "I do know your mom."
+    },
+    {
+      "id": 421,
+      "start": 900.86,
+      "end": 902.86,
+      "text": "What was your name?"
+    },
+    {
+      "id": 422,
+      "start": 902.86,
+      "end": 906.78,
+      "text": "Lucifer."
+    },
+    {
+      "id": 423,
+      "start": 906.78,
+      "end": 907.78,
+      "text": "You're right."
+    },
+    {
+      "id": 424,
+      "start": 907.78,
+      "end": 911.78,
+      "text": "My name is Beatrice and everyone calls me in love."
+    },
+    {
+      "id": 425,
+      "start": 911.78,
+      "end": 913.58,
+      "text": "This is the name of the shopkeeper."
+    },
+    {
+      "id": 426,
+      "start": 913.66,
+      "end": 914.78,
+      "text": "The shopkeeper?"
+    },
+    {
+      "id": 427,
+      "start": 914.86,
+      "end": 915.94,
+      "text": "Ask your mom."
+    },
+    {
+      "id": 428,
+      "start": 916.95,
+      "end": 919.75,
+      "text": "So, whom did you beat up?"
+    },
+    {
+      "id": 429,
+      "start": 920.31,
+      "end": 921.79,
+      "text": "The girl was watching me."
+    },
+    {
+      "id": 430,
+      "start": 922.69,
+      "end": 924.09,
+      "text": "She was harassing me."
+    },
+    {
+      "id": 431,
+      "start": 924.17,
+      "end": 927.81,
+      "text": "She was making a fake account and making fun of me."
+    },
+    {
+      "id": 432,
+      "start": 928.29,
+      "end": 932.45,
+      "text": "So, I beat her up at the place where she was ashamed."
+    },
+    {
+      "id": 433,
+      "start": 934.32,
+      "end": 936.0,
+      "text": "Oh, I got it."
+    },
+    {
+      "id": 434,
+      "start": 936.08,
+      "end": 937.16,
+      "text": "You did it right."
+    },
+    {
+      "id": 435,
+      "start": 938.68,
+      "end": 940.32,
+      "text": "You did it very well."
+    },
+    {
+      "id": 436,
+      "start": 943.51,
+      "end": 945.19,
+      "text": "Hello, Ms. Puli."
+    },
+    {
+      "id": 437,
+      "start": 946.42,
+      "end": 947.78,
+      "text": "Do you know there's a story in Hell"
+    },
+    {
+      "id": 438,
+      "start": 947.86,
+      "end": 949.54,
+      "text": "which is made especially for you?"
+    },
+    {
+      "id": 439,
+      "start": 949.62,
+      "end": 951.42,
+      "text": "So, have fun."
+    },
+    {
+      "id": 440,
+      "start": 959.06,
+      "end": 960.1,
+      "text": "What did you do?"
+    },
+    {
+      "id": 441,
+      "start": 960.93,
+      "end": 964.41,
+      "text": "Oh, it seems someone is regretting their actions."
+    },
+    {
+      "id": 442,
+      "start": 974.58,
+      "end": 975.38,
+      "text": "Hi, sweetheart."
+    },
+    {
+      "id": 443,
+      "start": 975.46,
+      "end": 976.66,
+      "text": "You came very early."
+    },
+    {
+      "id": 444,
+      "start": 977.02,
+      "end": 978.22,
+      "text": "Oh, please. Don't hit me."
+    },
+    {
+      "id": 445,
+      "start": 978.3,
+      "end": 979.38,
+      "text": "I was solving the case."
+    },
+    {
+      "id": 446,
+      "start": 979.46,
+      "end": 981.34,
+      "text": "Oh, come on. I have the case."
+    },
+    {
+      "id": 447,
+      "start": 981.42,
+      "end": 983.5,
+      "text": "The one you wanted to steal from me."
+    },
+    {
+      "id": 448,
+      "start": 983.58,
+      "end": 985.46,
+      "text": "The one you solved before the investigation?"
+    },
+    {
+      "id": 449,
+      "start": 985.54,
+      "end": 987.22,
+      "text": "No, I'm wrong. You tell me."
+    },
+    {
+      "id": 450,
+      "start": 987.3,
+      "end": 989.66,
+      "text": "I don't do it on my own. It's a high-profile case."
+    },
+    {
+      "id": 451,
+      "start": 989.74,
+      "end": 991.78,
+      "text": "And that's why it's important to show the smartness in this case."
+    },
+    {
+      "id": 452,
+      "start": 991.82,
+      "end": 993.9,
+      "text": "She's smart, but you're the one who's the one."
+    },
+    {
+      "id": 453,
+      "start": 994.42,
+      "end": 996.9,
+      "text": "Otherwise, you wouldn't argue in front of her like this."
+    },
+    {
+      "id": 454,
+      "start": 996.98,
+      "end": 997.98,
+      "text": "Don't be ashamed."
+    },
+    {
+      "id": 455,
+      "start": 999.21,
+      "end": 1001.21,
+      "text": "I don't know if you're laughing or shooting."
+    },
+    {
+      "id": 456,
+      "start": 1001.57,
+      "end": 1002.81,
+      "text": "Why are you getting stuck?"
+    },
+    {
+      "id": 457,
+      "start": 1002.89,
+      "end": 1004.61,
+      "text": "Isn't this so funny, daddy?"
+    },
+    {
+      "id": 458,
+      "start": 1005.55,
+      "end": 1008.39,
+      "text": "Hey, will you drop her to mom and let us go?"
+    },
+    {
+      "id": 459,
+      "start": 1008.47,
+      "end": 1010.95,
+      "text": "Thank you. Go with your dad. We'll meet in the evening."
+    },
+    {
+      "id": 460,
+      "start": 1011.03,
+      "end": 1012.95,
+      "text": "Wow! I love you so much."
+    },
+    {
+      "id": 461,
+      "start": 1013.03,
+      "end": 1014.71,
+      "text": "You did a great job. I'm proud of you."
+    },
+    {
+      "id": 462,
+      "start": 1014.79,
+      "end": 1015.95,
+      "text": "Thanks, mommy."
+    },
+    {
+      "id": 463,
+      "start": 1016.35,
+      "end": 1017.67,
+      "text": "What's the deal?"
+    },
+    {
+      "id": 464,
+      "start": 1021.6,
+      "end": 1022.76,
+      "text": "Daddy, will you tell me?"
+    },
+    {
+      "id": 465,
+      "start": 1027.58,
+      "end": 1029.74,
+      "text": "I liked meeting her on the way."
+    },
+    {
+      "id": 466,
+      "start": 1032.78,
+      "end": 1033.98,
+      "text": "Did you like her?"
+    },
+    {
+      "id": 467,
+      "start": 1034.7,
+      "end": 1036.58,
+      "text": "Why not? I'm Charming."
+    }
+  ]
+}

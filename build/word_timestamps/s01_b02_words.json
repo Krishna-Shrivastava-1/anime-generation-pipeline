@@ -1,77 +1,42 @@
 [
   {
-    "word": "तुम",
+    "word": "पहले",
     "start_ms": 0,
-    "end_ms": 230
+    "end_ms": 342
   },
   {
-    "word": "ब्रेक",
-    "start_ms": 230,
-    "end_ms": 568
+    "word": "तो",
+    "start_ms": 342,
+    "end_ms": 528
   },
   {
-    "word": "लगाते",
-    "start_ms": 568,
-    "end_ms": 1045
+    "word": "लगेगा",
+    "start_ms": 528,
+    "end_ms": 979
   },
   {
-    "word": "हो।",
-    "start_ms": 1045,
-    "end_ms": 1325
+    "word": "कि",
+    "start_ms": 979,
+    "end_ms": 1119
   },
   {
-    "word": "लेकिन",
-    "start_ms": 1325,
-    "end_ms": 1753
+    "word": "कुछ",
+    "start_ms": 1119,
+    "end_ms": 1337
   },
   {
-    "word": "वो",
-    "start_ms": 1753,
-    "end_ms": 1951
+    "word": "खास",
+    "start_ms": 1337,
+    "end_ms": 1601
   },
   {
-    "word": "आदमी",
-    "start_ms": 1951,
-    "end_ms": 2313
+    "word": "नहीं",
+    "start_ms": 1601,
+    "end_ms": 1974
   },
   {
-    "word": "बाहर",
-    "start_ms": 2313,
-    "end_ms": 2676
-  },
-  {
-    "word": "निकलकर",
-    "start_ms": 2676,
-    "end_ms": 3153
-  },
-  {
-    "word": "उल्टा",
-    "start_ms": 3153,
-    "end_ms": 3491
-  },
-  {
-    "word": "तुम्हें",
-    "start_ms": 3491,
-    "end_ms": 4010
-  },
-  {
-    "word": "ही",
-    "start_ms": 4010,
-    "end_ms": 4207
-  },
-  {
-    "word": "धमकाने",
-    "start_ms": 4207,
-    "end_ms": 4767
-  },
-  {
-    "word": "लगता",
-    "start_ms": 4767,
-    "end_ms": 5130
-  },
-  {
-    "word": "है।",
-    "start_ms": 5130,
-    "end_ms": 5410
+    "word": "हुआ।",
+    "start_ms": 1974,
+    "end_ms": 2270
   }
 ]

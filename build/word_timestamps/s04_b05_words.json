@@ -1,82 +1,47 @@
 [
   {
-    "word": "अगली",
+    "word": "धीरे-धीरे",
     "start_ms": 0,
-    "end_ms": 330
+    "end_ms": 622
   },
   {
-    "word": "बार",
-    "start_ms": 330,
-    "end_ms": 586
+    "word": "बाज़ार",
+    "start_ms": 622,
+    "end_ms": 1041
   },
   {
-    "word": "कोई",
-    "start_ms": 586,
-    "end_ms": 841
+    "word": "में",
+    "start_ms": 1041,
+    "end_ms": 1276
   },
   {
-    "word": "तुम्हें",
-    "start_ms": 841,
-    "end_ms": 1314
+    "word": "भी",
+    "start_ms": 1276,
+    "end_ms": 1424
   },
   {
-    "word": "बेवजह",
-    "start_ms": 1314,
-    "end_ms": 1720
+    "word": "कुछ",
+    "start_ms": 1424,
+    "end_ms": 1596
   },
   {
-    "word": "उकसाए,",
-    "start_ms": 1720,
-    "end_ms": 2164
+    "word": "चीज़ें",
+    "start_ms": 1596,
+    "end_ms": 2040
   },
   {
-    "word": "तो",
-    "start_ms": 2164,
-    "end_ms": 2344
+    "word": "कम",
+    "start_ms": 2040,
+    "end_ms": 2163
   },
   {
-    "word": "याद",
-    "start_ms": 2344,
-    "end_ms": 2599
+    "word": "दिखने",
+    "start_ms": 2163,
+    "end_ms": 2484
   },
   {
-    "word": "रखना,",
-    "start_ms": 2599,
-    "end_ms": 2968
-  },
-  {
-    "word": "तुम्हें",
-    "start_ms": 2968,
-    "end_ms": 3441
-  },
-  {
-    "word": "हर",
-    "start_ms": 3441,
-    "end_ms": 3591
-  },
-  {
-    "word": "बहस",
-    "start_ms": 3591,
-    "end_ms": 3817
-  },
-  {
-    "word": "जीतने",
-    "start_ms": 3817,
-    "end_ms": 4252
-  },
-  {
-    "word": "की",
-    "start_ms": 4252,
-    "end_ms": 4433
-  },
-  {
-    "word": "ज़रूरत",
-    "start_ms": 4433,
-    "end_ms": 4914
-  },
-  {
-    "word": "नहीं।",
-    "start_ms": 4914,
-    "end_ms": 5350
+    "word": "लगेंगी।",
+    "start_ms": 2484,
+    "end_ms": 2989
   }
 ]

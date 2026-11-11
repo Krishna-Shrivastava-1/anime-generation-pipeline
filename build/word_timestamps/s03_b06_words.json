@@ -1,62 +1,62 @@
 [
   {
-    "word": "लेकिन",
+    "word": "यानी",
     "start_ms": 0,
-    "end_ms": 385
+    "end_ms": 360
   },
   {
     "word": "एक",
-    "start_ms": 385,
-    "end_ms": 534
+    "start_ms": 360,
+    "end_ms": 510
   },
   {
-    "word": "मुश्किल",
-    "start_ms": 534,
-    "end_ms": 927
+    "word": "छोटा",
+    "start_ms": 510,
+    "end_ms": 871
   },
   {
-    "word": "बाकी",
-    "start_ms": 927,
-    "end_ms": 1283
+    "word": "सा",
+    "start_ms": 871,
+    "end_ms": 1051
   },
   {
-    "word": "है…",
-    "start_ms": 1283,
-    "end_ms": 1498
+    "word": "बदलाव",
+    "start_ms": 1051,
+    "end_ms": 1456
   },
   {
-    "word": "क्या",
-    "start_ms": 1498,
-    "end_ms": 1728
+    "word": "पूरे",
+    "start_ms": 1456,
+    "end_ms": 1817
   },
   {
-    "word": "हर",
-    "start_ms": 1728,
-    "end_ms": 1877
+    "word": "जंगल",
+    "start_ms": 1817,
+    "end_ms": 2147
   },
   {
-    "word": "इंसान",
-    "start_ms": 1877,
-    "end_ms": 2307
+    "word": "की",
+    "start_ms": 2147,
+    "end_ms": 2328
   },
   {
-    "word": "ईमानदार",
-    "start_ms": 2307,
-    "end_ms": 2886
+    "word": "ज़िंदगी",
+    "start_ms": 2328,
+    "end_ms": 2898
   },
   {
-    "word": "भी",
-    "start_ms": 2886,
-    "end_ms": 3064
+    "word": "हिला",
+    "start_ms": 2898,
+    "end_ms": 3214
   },
   {
-    "word": "हो",
-    "start_ms": 3064,
-    "end_ms": 3242
+    "word": "सकता",
+    "start_ms": 3214,
+    "end_ms": 3544
   },
   {
-    "word": "जाएगा?",
-    "start_ms": 3242,
-    "end_ms": 3710
+    "word": "है।",
+    "start_ms": 3544,
+    "end_ms": 3800
   }
 ]

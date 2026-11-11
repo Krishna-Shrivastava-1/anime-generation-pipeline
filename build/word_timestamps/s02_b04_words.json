@@ -1,62 +1,62 @@
 [
   {
+    "word": "सेब,",
+    "start_ms": 10,
+    "end_ms": 317
+  },
+  {
+    "word": "बादाम",
+    "start_ms": 317,
+    "end_ms": 775
+  },
+  {
     "word": "और",
-    "start_ms": 0,
-    "end_ms": 157
+    "start_ms": 775,
+    "end_ms": 933
   },
   {
-    "word": "अगर",
-    "start_ms": 157,
-    "end_ms": 393
+    "word": "कई",
+    "start_ms": 933,
+    "end_ms": 1090
   },
   {
-    "word": "कोई",
-    "start_ms": 393,
-    "end_ms": 661
+    "word": "दूसरी",
+    "start_ms": 1090,
+    "end_ms": 1548
   },
   {
-    "word": "पीछा",
-    "start_ms": 661,
-    "end_ms": 1038
+    "word": "फसलों",
+    "start_ms": 1548,
+    "end_ms": 2006
   },
   {
-    "word": "कर",
-    "start_ms": 1038,
-    "end_ms": 1196
+    "word": "पर",
+    "start_ms": 2006,
+    "end_ms": 2164
   },
   {
-    "word": "रहा",
-    "start_ms": 1196,
-    "end_ms": 1463
+    "word": "इसका",
+    "start_ms": 2164,
+    "end_ms": 2511
   },
   {
-    "word": "है,",
-    "start_ms": 1463,
-    "end_ms": 1692
+    "word": "असर",
+    "start_ms": 2511,
+    "end_ms": 2747
   },
   {
-    "word": "तो",
-    "start_ms": 1692,
-    "end_ms": 1881
+    "word": "पड़",
+    "start_ms": 2747,
+    "end_ms": 2984
   },
   {
-    "word": "सीधे",
-    "start_ms": 1881,
-    "end_ms": 2258
+    "word": "सकता",
+    "start_ms": 2984,
+    "end_ms": 3331
   },
   {
-    "word": "घर",
-    "start_ms": 2258,
-    "end_ms": 2416
-  },
-  {
-    "word": "मत",
-    "start_ms": 2416,
-    "end_ms": 2573
-  },
-  {
-    "word": "जाओ।",
-    "start_ms": 2573,
-    "end_ms": 2919
+    "word": "है।",
+    "start_ms": 3331,
+    "end_ms": 3600
   }
 ]

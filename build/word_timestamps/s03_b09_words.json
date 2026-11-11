@@ -1,0 +1,72 @@
+[
+  {
+    "word": "कीड़ों",
+    "start_ms": 0,
+    "end_ms": 491
+  },
+  {
+    "word": "के",
+    "start_ms": 491,
+    "end_ms": 655
+  },
+  {
+    "word": "बिना",
+    "start_ms": 655,
+    "end_ms": 942
+  },
+  {
+    "word": "ये",
+    "start_ms": 942,
+    "end_ms": 1106
+  },
+  {
+    "word": "प्रक्रिया",
+    "start_ms": 1106,
+    "end_ms": 1556
+  },
+  {
+    "word": "धीमी",
+    "start_ms": 1556,
+    "end_ms": 1884
+  },
+  {
+    "word": "और",
+    "start_ms": 1884,
+    "end_ms": 2021
+  },
+  {
+    "word": "अलग",
+    "start_ms": 2021,
+    "end_ms": 2225
+  },
+  {
+    "word": "हो",
+    "start_ms": 2225,
+    "end_ms": 2389
+  },
+  {
+    "word": "सकती",
+    "start_ms": 2389,
+    "end_ms": 2690
+  },
+  {
+    "word": "है,",
+    "start_ms": 2690,
+    "end_ms": 2888
+  },
+  {
+    "word": "लेकिन",
+    "start_ms": 2888,
+    "end_ms": 3243
+  },
+  {
+    "word": "रुकेगी",
+    "start_ms": 3243,
+    "end_ms": 3693
+  },
+  {
+    "word": "नहीं।",
+    "start_ms": 3693,
+    "end_ms": 4090
+  }
+]

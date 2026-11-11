@@ -1,57 +1,52 @@
 [
   {
-    "word": "अगर",
+    "word": "उनके",
     "start_ms": 0,
-    "end_ms": 218
+    "end_ms": 323
   },
   {
-    "word": "रास्ता",
-    "start_ms": 218,
-    "end_ms": 620
+    "word": "बिना",
+    "start_ms": 323,
+    "end_ms": 632
   },
   {
-    "word": "खुला",
-    "start_ms": 620,
-    "end_ms": 926
+    "word": "कई",
+    "start_ms": 632,
+    "end_ms": 779
   },
   {
-    "word": "है,",
-    "start_ms": 926,
-    "end_ms": 1138
+    "word": "फूलों",
+    "start_ms": 779,
+    "end_ms": 1235
   },
   {
-    "word": "तो",
-    "start_ms": 1138,
-    "end_ms": 1313
+    "word": "का",
+    "start_ms": 1235,
+    "end_ms": 1412
   },
   {
-    "word": "सुरक्षित",
-    "start_ms": 1313,
-    "end_ms": 1773
+    "word": "फल",
+    "start_ms": 1412,
+    "end_ms": 1559
   },
   {
-    "word": "तरीके",
-    "start_ms": 1773,
-    "end_ms": 2196
+    "word": "बनना",
+    "start_ms": 1559,
+    "end_ms": 1883
   },
   {
-    "word": "से",
-    "start_ms": 2196,
-    "end_ms": 2371
+    "word": "मुश्किल",
+    "start_ms": 1883,
+    "end_ms": 2273
   },
   {
-    "word": "वहाँ",
-    "start_ms": 2371,
-    "end_ms": 2692
+    "word": "हो",
+    "start_ms": 2273,
+    "end_ms": 2449
   },
   {
-    "word": "से",
-    "start_ms": 2692,
-    "end_ms": 2867
-  },
-  {
-    "word": "निकलो।",
-    "start_ms": 2867,
-    "end_ms": 3319
+    "word": "जाएगा।",
+    "start_ms": 2449,
+    "end_ms": 2950
   }
 ]

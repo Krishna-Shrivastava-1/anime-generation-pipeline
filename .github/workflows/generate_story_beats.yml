@@ -1,0 +1,382 @@
+name: Generate Synced Hindi Story Beats via Duck.ai
+
+on:
+  workflow_dispatch:
+    inputs:
+      movie_title:
+        description: "Movie / Episode identifier"
+        required: false
+        default: "movie"
+      headed:
+        description: "Run under Xvfb (less detectable by Cloudflare)"
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  generate-beats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Tor & Virtual Framebuffer
+        timeout-minutes: 4
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tor netcat-openbsd xvfb
+          sudo service tor start
+          for i in {1..30}; do
+            if nc -z 127.0.0.1 9050; then echo "Tor SOCKS5 is ready"; break; fi
+            sleep 2
+          done
+          nc -z 127.0.0.1 9050
+
+      - name: Install Python Dependencies
+        timeout-minutes: 6
+        run: |
+          python -m pip install --upgrade pip
+          pip install curl_cffi playwright requests
+          playwright install --with-deps chromium
+
+      - name: Verify Tor Connection (curl_cffi Chrome TLS Impersonation)
+        timeout-minutes: 3
+        run: |
+          python - <<'PY'
+          from curl_cffi import requests
+          p = "socks5h://127.0.0.1:9050"
+          r = requests.get(
+              "https://check.torproject.org/api/ip",
+              proxies={"http": p, "https": p},
+              impersonate="chrome",
+              timeout=60
+          )
+          r.raise_for_status()
+          data = r.json()
+          print("[+] Tor Connection Verified:", data)
+          if not data.get("IsTor"):
+              raise RuntimeError("Traffic is not routing through Tor.")
+          PY
+
+      - name: Ensure Transcript File Exists
+        run: |
+          if [ ! -f "transcript.json" ] && [ ! -f "work/movie/transcript.json" ]; then
+            echo "[!] No transcript.json found at root! Creating fallback sample..."
+            cat << 'EOF' > transcript.json
+          {
+            "movie_title": "movie",
+            "duration": 1039.86,
+            "segments": [
+              { "id": 1, "start": 0.72, "end": 2.72, "text": "Please come in, sir." },
+              { "id": 2, "start": 2.72, "end": 13.68, "text": "Do you want to know what I have found out?" },
+              { "id": 3, "start": 13.68, "end": 18.89, "text": "Lieutenant told me that this is my case." },
+              { "id": 4, "start": 18.89, "end": 21.30, "text": "Yes, Chloe, this is your case." },
+              { "id": 5, "start": 21.30, "end": 24.30, "text": "But don't waste too much time. This is an easy case." }
+            ]
+          }
+          EOF
+          fi
+
+      - name: Run Ground-Truth Hindi Story Generator
+        timeout-minutes: 75
+        env:
+          HEADED: ${{ inputs.headed }}
+          MOVIE_TITLE: ${{ inputs.movie_title }}
+        run: |
+          mkdir -p debug
+
+          cat > run_duck_beats.py <<'PY'
+          import os, re, sys, json, time
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          HEADED = os.environ.get("HEADED") == "true"
+          MOVIE_TITLE = os.environ.get("MOVIE_TITLE", "movie")
+          TOR_PROXY = "socks5://127.0.0.1:9050"
+          DEBUG_DIR = Path("debug")
+          DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+
+          CONTINUE_LABELS = re.compile(
+              r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I
+          )
+
+          def log(msg):
+              print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
+
+          def click_continue(page):
+              for _ in range(3):
+                  try:
+                      buttons = page.get_by_role("button", name=CONTINUE_LABELS)
+                      for i in range(buttons.count()):
+                          btn = buttons.nth(i)
+                          if btn.is_visible():
+                              btn.click(timeout=3000)
+                              page.wait_for_timeout(1000)
+                              return True
+                  except Exception:
+                      pass
+              return False
+
+          def get_prompt_box(page):
+              return page.locator(
+                  "textarea[name='user-prompt'], textarea[placeholder*='ask' i], "
+                  "textarea[placeholder*='message' i], textarea"
+              ).first
+
+          def human_paste_prompt(page, box, text):
+              box.click()
+              page.wait_for_timeout(300)
+              page.evaluate("t => navigator.clipboard.writeText(t)", text)
+              page.wait_for_timeout(200)
+              page.keyboard.press("Control+v")
+              page.wait_for_timeout(400)
+              box.press("Enter")
+
+          def wait_for_response(page, timeout=180):
+              log("Waiting for Duck.ai response stream to finish...")
+              start = time.time()
+              last_text = ""
+              stable_ticks = 0
+
+              while time.time() - start < timeout:
+                  click_continue(page)
+
+                  extracted = page.evaluate("""() => {
+                      const codeBlocks = document.querySelectorAll('pre code, pre');
+                      if (codeBlocks.length > 0) return codeBlocks[codeBlocks.length - 1].innerText;
+                      const bubbles = document.querySelectorAll('article, [data-testid*="message"], div[class*="message"]');
+                      if (bubbles.length > 0) return bubbles[bubbles.length - 1].innerText;
+                      return '';
+                  }""").strip()
+
+                  if extracted and extracted == last_text:
+                      stable_ticks += 1
+                      if stable_ticks >= 4:
+                          return extracted
+                  else:
+                      stable_ticks = 0
+                      last_text = extracted
+
+                  page.wait_for_timeout(900)
+
+              return last_text
+
+          def extract_clean_json(raw_text: str) -> dict:
+              clean = re.sub(r"^```(?:json)?", "", raw_text.strip(), flags=re.MULTILINE)
+              clean = re.sub(r"```$", "", clean.strip(), flags=re.MULTILINE)
+              match = re.search(r"\{.*\}", clean, re.DOTALL)
+              if not match:
+                  raise ValueError(f"Could not find valid JSON object in output:\n{raw_text[:300]}")
+              return json.loads(match.group(0))
+
+          # Load transcript file directly from repository root
+          t_file = Path("transcript.json")
+          if not t_file.exists():
+              t_file = Path("work") / MOVIE_TITLE / "transcript.json"
+
+          with open(t_file, "r", encoding="utf-8") as f:
+              t_data = json.load(f)
+
+          segments = t_data.get("segments", [])
+          if not segments:
+              raise ValueError("transcript.json has no segments!")
+
+          log(f"Loaded {len(segments)} transcript segments from {t_file}.")
+
+          # Group into ~12,000 character chunks (comfortably under the 16,000 max paste limit)
+          chunks = []
+          curr = []
+          curr_len = 0
+
+          for s in segments:
+              line = f"[{s['start']:.2f}s - {s['end']:.2f}s] {s['text']}"
+              curr.append(line)
+              curr_len += len(line) + 1
+
+              if curr_len >= 11000:
+                  chunks.append("\n".join(curr))
+                  curr = []
+                  curr_len = 0
+
+          if curr:
+              chunks.append("\n".join(curr))
+
+          log(f"Formatted transcript into {len(chunks)} chronological parts.")
+
+          PART_1_SYSTEM_PROMPT = """You are a professional movie recap writer. 
+          Your job is to convert raw transcript dialogue into a flowing, scene-by-scene recap in pure Hindi (Devanagari script only).
+
+          STRICT GROUND-TRUTH & VISUAL SYNC RULES:
+          1. ZERO HALLUCINATION (NO WEB SEARCHING):
+             - Base every single sentence 100% on the transcript text provided.
+             - Never invent unmentioned actions, motives, or fake events.
+          2. STRICT 1-TO-1 VISUAL MAPPING (NO SKIPPING):
+             - Do NOT summarize 5 minutes into 1 general sentence.
+             - Break the dialogue into consecutive small exchanges (each between 4 to 15 seconds).
+             - 1 Spoken Hindi sentence = 1 exact video segment from the transcript.
+             - `start_sec`: Exact start time of the first line in this exchange.
+             - `end_sec`: Exact end time of the last line in this exchange.
+          3. SENSEFUL HINDI STORYTELLING:
+             - Write in clear, natural Hindi (Devanagari script only).
+             - Use real names that appear in the dialogue (e.g. क्लोई, लेफ्टिनेंट, लूसिफर). NEVER say 'कोई व्यक्ति' or 'एक आदमी'.
+             - Tell the story naturally: explain who says what, what problem they discuss, and what decision is made.
+          4. OUTPUT FORMAT:
+             - Return ONLY a raw JSON object. Do not add markdown fences or commentary.
+
+          JSON SCHEMA:
+          {
+            "characters": [
+              {"name": "Chloe", "hindi_name": "डिटेक्टिव क्लोई", "role": "जासूस"}
+            ],
+            "beats": [
+              {
+                "beat_id": "B0001",
+                "start_sec": 0.72,
+                "end_sec": 13.68,
+                "narration": "डिटेक्टिव क्लोई अपने सीनियर को अंदर बुलाती है और पूछती है कि क्या वो केस से जुड़ी नई जानकारी देखना चाहते हैं।"
+              },
+              {
+                "beat_id": "B0002",
+                "start_sec": 13.68,
+                "end_sec": 24.30,
+                "narration": "लेफ्टिनेंट पुष्टि करता है कि यह केस उसी का है, लेकिन चेतावनी देता है कि यह आसान केस है इसलिए ज़्यादा समय बर्बाद न करे।"
+              }
+            ]
+          }
+
+          TRANSCRIPT PART 1:
+          """
+
+          PART_N_SYSTEM_PROMPT = """Continuing seamlessly in this SAME conversation, summarize this NEXT PART of the transcript.
+
+          RULES:
+          - Maintain 1-to-1 visual synchronization (1 sentence = 1 real dialogue clip window).
+          - Do not skip scenes. Walk through the dialogue in order.
+          - Pure Devanagari Hindi. Use character names established earlier.
+          - Exact start_sec and end_sec matching the lines.
+          - Return RAW JSON ONLY matching this schema:
+          {
+            "beats": [
+              {
+                "beat_id": "B0000",
+                "start_sec": 0.0,
+                "end_sec": 0.0,
+                "narration": "हिंदी में अगला सीन..."
+              }
+            ]
+          }
+
+          NEXT TRANSCRIPT PART:
+          """
+
+          all_beats = []
+          characters_list = []
+
+          with sync_playwright() as p:
+              log("Starting browser session with Tor...")
+              browser = p.chromium.launch(
+                  headless=not HEADED,
+                  proxy={"server": TOR_PROXY},
+                  args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"]
+              )
+              context = browser.new_context(
+                  viewport={"width": 1440, "height": 1000},
+                  user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+                  permissions=["clipboard-read", "clipboard-write"]
+              )
+              context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+              page = context.new_page()
+
+              log("Opening https://duck.ai/chat ...")
+              page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
+              page.wait_for_timeout(3000)
+              click_continue(page)
+
+              for idx, chunk_content in enumerate(chunks):
+                  log(f"\n==================== PROCESSING PART {idx + 1}/{len(chunks)} ====================")
+                  box = get_prompt_box(page)
+                  box.wait_for(state="visible", timeout=45000)
+
+                  prompt = (PART_1_SYSTEM_PROMPT if idx == 0 else PART_N_SYSTEM_PROMPT) + chunk_content
+
+                  log(f"Pasting chunk ({len(chunk_content)} characters) into chat...")
+                  human_paste_prompt(page, box, prompt)
+                  page.wait_for_timeout(2000)
+
+                  raw_reply = wait_for_response(page, timeout=160)
+
+                  try:
+                      parsed = extract_clean_json(raw_reply)
+                      if "characters" in parsed and not characters_list:
+                          characters_list = parsed["characters"]
+
+                      new_beats = parsed.get("beats", [])
+                      log(f"[+] Successfully extracted {len(new_beats)} tightly-synced beats from Part {idx + 1}")
+                      all_beats.extend(new_beats)
+                  except Exception as e:
+                      log(f"[!] Warning on Part {idx + 1}: {e}")
+                      log(f"Raw reply snippet: {raw_reply[:350]}")
+
+                  page.wait_for_timeout(2500)
+
+              browser.close()
+
+          # Re-index beat IDs consecutively
+          final_beats = []
+          for i, b in enumerate(all_beats):
+              s = float(b.get("start_sec", 0.0))
+              e = float(b.get("end_sec", s + 4.0))
+              final_beats.append({
+                  "beat_id": f"B{i+1:04d}",
+                  "target_window": {
+                      "start": round(s, 2),
+                      "end": round(e, 2)
+                  },
+                  "narration": b.get("narration", "").strip()
+              })
+
+          output_payload = {
+              "movie_title": MOVIE_TITLE,
+              "characters": characters_list,
+              "total_beats": len(final_beats),
+              "beats": final_beats
+          }
+
+          out_file = Path("story_beats.json")
+          with open(out_file, "w", encoding="utf-8") as f:
+              json.dump(output_payload, f, indent=2, ensure_ascii=False)
+
+          log(f"\n[+] COMPLETED: Generated {len(final_beats)} perfectly synced beats saved to: {out_file.resolve()}")
+          PY
+
+          if [ "$HEADED" = "true" ]; then
+            xvfb-run -a --server-args="-screen 0 1440x1000x24" python run_duck_beats.py
+          else
+            python run_duck_beats.py
+          fi
+
+      - name: Commit and Push story_beats.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f story_beats.json
+          if git diff --cached --quiet; then
+            echo "No changes in story_beats.json to commit."
+            exit 0
+          fi
+          git commit -m "Add ground-truth synchronized Hindi story_beats.json [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main

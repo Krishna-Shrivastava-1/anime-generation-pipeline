@@ -1,82 +1,47 @@
 [
   {
-    "word": "अगर",
+    "word": "कई",
     "start_ms": 0,
-    "end_ms": 252
+    "end_ms": 122
   },
   {
-    "word": "धमकी",
-    "start_ms": 252,
-    "end_ms": 622
+    "word": "पक्षियों",
+    "start_ms": 122,
+    "end_ms": 568
   },
   {
-    "word": "दी",
-    "start_ms": 622,
-    "end_ms": 824
+    "word": "का",
+    "start_ms": 568,
+    "end_ms": 715
   },
   {
-    "word": "गई",
-    "start_ms": 824,
-    "end_ms": 992
+    "word": "खाना",
+    "start_ms": 715,
+    "end_ms": 1008
   },
   {
-    "word": "है,",
-    "start_ms": 992,
-    "end_ms": 1236
+    "word": "ही",
+    "start_ms": 1008,
+    "end_ms": 1155
   },
   {
-    "word": "तो",
-    "start_ms": 1236,
-    "end_ms": 1438
+    "word": "छोटे",
+    "start_ms": 1155,
+    "end_ms": 1448
   },
   {
-    "word": "सुरक्षित",
-    "start_ms": 1438,
-    "end_ms": 1968
+    "word": "कीड़े",
+    "start_ms": 1448,
+    "end_ms": 1803
   },
   {
-    "word": "दूरी",
-    "start_ms": 1968,
-    "end_ms": 2371
+    "word": "होते",
+    "start_ms": 1803,
+    "end_ms": 2096
   },
   {
-    "word": "से",
-    "start_ms": 2371,
-    "end_ms": 2573
-  },
-  {
-    "word": "घटना",
-    "start_ms": 2573,
-    "end_ms": 2943
-  },
-  {
-    "word": "की",
-    "start_ms": 2943,
-    "end_ms": 3145
-  },
-  {
-    "word": "जानकारी",
-    "start_ms": 3145,
-    "end_ms": 3835
-  },
-  {
-    "word": "और",
-    "start_ms": 3835,
-    "end_ms": 4003
-  },
-  {
-    "word": "सबूत",
-    "start_ms": 4003,
-    "end_ms": 4373
-  },
-  {
-    "word": "संभालकर",
-    "start_ms": 4373,
-    "end_ms": 5029
-  },
-  {
-    "word": "रखो।",
-    "start_ms": 5029,
-    "end_ms": 5399
+    "word": "हैं।",
+    "start_ms": 2096,
+    "end_ms": 2389
   }
 ]

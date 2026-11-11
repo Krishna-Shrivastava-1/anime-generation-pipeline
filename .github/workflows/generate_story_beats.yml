@@ -74,15 +74,28 @@ jobs:
           from playwright.sync_api import sync_playwright
 
           HEADED = os.environ.get("HEADED") == "true"
-          MAX_ATTEMPTS = 3
+          MAX_ATTEMPTS = 4          # retries per message (each retry = new Tor IP + new chat, re-primed with story so far)
+          MAX_ROUNDS = 6            # "continue" messages allowed inside one part
+          PART_SECONDS = 150        # each part = about 2.5 minutes of the real movie
+          PART_CHARS = 2600         # keep each pasted message small
+          MAX_WAIT = 240
+          CLIP_PAD = 0.25           # seconds added before/after the dialogue so clips do not cut words
+          MIN_CLIP = 1.5
+          WORDS_PER_SEC = 2.3       # spoken Hindi speed used to check narration fits its clip
+          FIT_LIMIT = 1.5           # narration longer than 1.5x its clip gets a rewrite request
           DEBUG_DIR = Path("debug")
           DEBUG_DIR.mkdir(parents=True, exist_ok=True)
           RUN_LOG = DEBUG_DIR / "run.log"
           BROWSER_PROXY = "socks5://127.0.0.1:9050"
-
+          UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
           MODAL_LABELS = re.compile(
               r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I
           )
+          ERR_RE = re.compile(r"something went wrong|too many requests|rate limit|try again|reached", re.I)
+
+          state = {"browser": None, "context": None, "page": None}
+          chat = {"primed": False}
+
 
           def log(msg):
               line = f"[{time.strftime('%H:%M:%S')}] {msg}"
@@ -90,13 +103,31 @@ jobs:
               with open(RUN_LOG, "a", encoding="utf-8") as f:
                   f.write(line + "\n")
 
+
+          def scroll_to_bottom(page):
+              """Scroll the page AND every inner scroll container to the bottom (Duck.ai chat scrolls inside a div)."""
+              try:
+                  page.evaluate("""() => {
+                      window.scrollTo(0, document.body.scrollHeight);
+                      for (const el of document.querySelectorAll('*')) {
+                          if (el.scrollHeight > el.clientHeight + 20) { el.scrollTop = el.scrollHeight; }
+                      }
+                  }""")
+              except Exception:
+                  pass
+
+
           def snap(page, name):
               try:
-                  page.screenshot(path=str(DEBUG_DIR / f"{name}.png"), full_page=True, timeout=10000)
+                  scroll_to_bottom(page)
+                  page.wait_for_timeout(500)
+                  page.screenshot(path=str(DEBUG_DIR / f"{name}.png"), full_page=False, timeout=10000)
                   (DEBUG_DIR / f"{name}.html").write_text(page.content(), encoding="utf-8")
+                  (DEBUG_DIR / f"{name}.txt").write_text(page.inner_text("body", timeout=5000), encoding="utf-8")
                   log(f"Snapshot saved: {name}")
               except Exception as e:
                   log(f"Snapshot failed: {e}")
+
 
           def new_tor_circuit():
               log("Restarting Tor for a new exit IP...")
@@ -107,41 +138,98 @@ jobs:
                   time.sleep(2)
               time.sleep(2)
 
+
+          # ---------------------------------------------------------------- browser
+          def start_browser(p):
+              for key in ("context", "browser"):
+                  if state[key]:
+                      try:
+                          state[key].close()
+                      except Exception:
+                          pass
+                  state[key] = None
+              state["page"] = None
+              state["browser"] = p.chromium.launch(
+                  headless=not HEADED,
+                  proxy={"server": BROWSER_PROXY},
+                  args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"],
+              )
+
+
           def dismiss_modals(page):
-              """Dismiss any Duck.ai agreement, terms, or landing modals."""
               clicked_any = False
               for _ in range(3):
+                  clicked = False
                   try:
                       buttons = page.get_by_role("button", name=MODAL_LABELS)
-                      count = buttons.count()
-                      clicked = False
-                      for i in range(count):
+                      for i in range(buttons.count()):
                           btn = buttons.nth(i)
                           if btn.is_visible():
-                              txt = (btn.inner_text() or "").strip()
-                              log(f"Clicking modal button: {txt!r}")
+                              log(f"Clicking modal button: {(btn.inner_text() or '').strip()!r}")
                               btn.click(timeout=2500)
                               page.wait_for_timeout(800)
                               clicked = clicked_any = True
                               break
-                      if not clicked:
-                          break
                   except Exception:
+                      break
+                  if not clicked:
                       break
               return clicked_any
 
+
+          def open_chat():
+              """Start ONE new Duck.ai chat. It is then reused for every part of the movie."""
+              if state["context"]:
+                  try:
+                      state["context"].close()
+                  except Exception:
+                      pass
+              ctx = state["browser"].new_context(
+                  viewport={"width": 1440, "height": 1000}, user_agent=UA, locale="en-US"
+              )
+              ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
+              pg = ctx.new_page()
+              state["context"], state["page"] = ctx, pg
+              log("Opening a new chat at https://duck.ai/chat ...")
+              pg.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=60000)
+              pg.wait_for_timeout(2500)
+              dismiss_modals(pg)
+              return pg
+
+
           def check_and_click_continue_generating(page):
-              """If Duck.ai cuts off mid-answer with 'Continue generating', click it."""
               try:
-                  cont_btn = page.locator("button:has-text('Continue generating'), button:has-text('Continue response')").first
-                  if cont_btn.count() > 0 and cont_btn.is_visible():
-                      log("Duck.ai paused generation. Clicking 'Continue generating'...")
-                      cont_btn.click(timeout=2000)
+                  btn = page.locator(
+                      "button:has-text('Continue generating'), button:has-text('Continue response')"
+                  ).first
+                  if btn.count() > 0 and btn.is_visible():
+                      log("Clicking 'Continue generating'...")
+                      btn.click(timeout=2000)
                       page.wait_for_timeout(1000)
-                      return True
               except Exception:
                   pass
-              return False
+
+
+          def check_error(page):
+              try:
+                  alerts = page.locator("[role='alert']")
+                  for i in range(min(alerts.count(), 3)):
+                      txt = alerts.nth(i).inner_text(timeout=1000)
+                      if ERR_RE.search(txt):
+                          raise RuntimeError(f"Duck.ai error displayed: {txt.strip()[:200]}")
+              except RuntimeError:
+                  raise
+              except Exception:
+                  pass
+
+
+          def is_generating(page):
+              try:
+                  b = page.locator("button[aria-label*='Stop' i], button:has-text('Stop')")
+                  return b.count() > 0 and b.first.is_visible()
+              except Exception:
+                  return False
+
 
           def get_prompt_box(page):
               return page.locator(
@@ -149,293 +237,437 @@ jobs:
                   "textarea[placeholder*='message' i], textarea"
               ).first
 
+
           def submit_prompt(page, text):
-              """Ensures prompt is injected and the actual send button is clicked."""
+              """Paste the message, then PROVE it was sent (the input box must empty out)."""
               dismiss_modals(page)
               box = get_prompt_box(page)
               box.wait_for(state="visible", timeout=30000)
-              
               box.click()
               box.fill(text)
-              page.wait_for_timeout(400)
-
-              send_btn = page.locator("button[type='submit'], button[aria-label*='Send' i], button[aria-label*='submit' i]").first
-              if send_btn.count() > 0 and send_btn.is_visible():
-                  send_btn.click()
-              else:
-                  box.press("Enter")
-              
+              page.wait_for_timeout(700)
+              sent = False
+              for method in range(3):
+                  try:
+                      if method == 0:
+                          box.press("Enter")
+                      elif method == 1:
+                          page.locator(
+                              "button[type='submit'], button[aria-label*='Send' i], button[aria-label*='submit' i]"
+                          ).first.click(timeout=3000)
+                      else:
+                          box.press("Control+Enter")
+                  except Exception:
+                      pass
+                  page.wait_for_timeout(1500)
+                  try:
+                      left = box.input_value()
+                  except Exception:
+                      left = ""
+                  if len(left.strip()) < 20:
+                      sent = True
+                      break
+              if not sent:
+                  raise RuntimeError("Message was pasted but never sent (input box still full).")
               page.wait_for_timeout(1000)
               dismiss_modals(page)
 
-          def get_last_assistant_text(page):
-              """Extracts text strictly from the LAST ASSISTANT message bubble, ignoring prompt bubbles."""
-              return page.evaluate("""() => {
-                  // Strategy 1: Select Duck.ai assistant bubbles
-                  const assistantBubbles = document.querySelectorAll(
-                      '[data-testid*="assistant"], [class*="message-assistant"], [class*="chat-message"]:not([class*="user"])'
-                  );
-                  if (assistantBubbles.length > 0) {
-                      const lastBubble = assistantBubbles[assistantBubbles.length - 1];
-                      // If there is a code block inside, prefer its text
-                      const code = lastBubble.querySelector('pre code, pre');
-                      return code ? code.innerText : lastBubble.innerText;
-                  }
-                  
-                  // Strategy 2: Pre / Code tags
-                  const codeTags = document.querySelectorAll('pre code, pre');
-                  if (codeTags.length > 0) {
-                      return codeTags[codeTags.length - 1].innerText;
-                  }
 
-                  // Strategy 3: General message divs (exclude prompt textarea)
-                  const allMessages = document.querySelectorAll('div[class*="message"]');
-                  if (allMessages.length > 1) {
-                      return allMessages[allMessages.length - 1].innerText;
-                  }
-                  return '';
-              }""")
+          # ------------------------------------------------- reading the reply
+          # Every reply is wrapped by the model in RECAPSTART-<tag> ... RECAPEND-<tag>.
+          # The tag is unique per message, so an old reply can never be mistaken for the new one.
+          # We read the page's full text (not just what is visible on screen) and keep scrolling down.
+          def extract_payload(body, tag):
+              start_re = re.compile(r"RECAPSTART-" + re.escape(tag) + r"(?![A-Za-z0-9])")
+              end_re = re.compile(r"RECAPEND-" + re.escape(tag) + r"(?![A-Za-z0-9])")
+              for m in reversed(list(start_re.finditer(body))):
+                  tail = body[m.end():]
+                  mm = re.match(r"[\s`]*(?:json)?[\s`]*(\{)", tail, re.I)
+                  if mm:
+                      tail = tail[mm.start(1):]
+                      e = end_re.search(tail)
+                      if e:
+                          return tail[:e.start()], True
+                      return tail, False
+              return None, False
 
-          def wait_for_duck_response(page, max_wait=140):
-              """Waits for assistant response to stream and complete."""
-              log("Waiting for response stream...")
-              start = time.time()
-              has_started = False
-              last_text = ""
-              stable_ticks = 0
 
-              while time.time() - start < max_wait:
+          def wait_for_payload(page, tag, max_wait=MAX_WAIT):
+              log(f"Waiting for reply [{tag}] ...")
+              t0 = time.time()
+              last_len, stable = -1, 0
+              while time.time() - t0 < max_wait:
                   dismiss_modals(page)
                   check_and_click_continue_generating(page)
-
-                  # 1. Check for Duck.ai error alerts
-                  err_locator = page.locator("[role='alert'], .error-message").or_(page.get_by_text("Something went wrong"))
-                  if err_locator.count() > 0 and err_locator.first.is_visible():
-                      raise RuntimeError(f"Duck.ai Error displayed: {err_locator.first.inner_text()}")
-
-                  # 2. Check if Stop Generating is visible
-                  stop_btn = page.locator("button:has-text('Stop'), button[aria-label*='Stop' i]")
-                  is_generating = (stop_btn.count() > 0 and stop_btn.first.is_visible())
-
-                  # 3. Read ONLY assistant text
-                  assistant_text = get_last_assistant_text(page)
-                  curr_len = len(assistant_text)
-
-                  if is_generating or curr_len > 80:
-                      if not has_started:
-                          log("-> Generation confirmed active.")
-                          has_started = True
-
-                  # Fail-Fast: If nothing starts in 15 seconds, exit early and retry
-                  if not has_started and (time.time() - start) > 15:
-                      raise TimeoutError("Prompt never started generating.")
-
-                  if has_started:
-                      if assistant_text == last_text and curr_len > 0:
-                          stable_ticks += 1
-                      else:
-                          stable_ticks = 0
-                          last_text = assistant_text
-
-                      # Done if Stop button is gone AND text has stayed stable for 3 checks
-                      if not is_generating and stable_ticks >= 3:
-                          log(f"[+] Finished generating in {int(time.time() - start)}s ({curr_len} chars).")
-                          return assistant_text
-
+                  check_error(page)
+                  scroll_to_bottom(page)
+                  try:
+                      body = page.inner_text("body", timeout=5000)
+                  except Exception:
+                      body = ""
+                  gen = is_generating(page)
+                  text, finished = extract_payload(body, tag)
+                  if finished:
+                      page.wait_for_timeout(1500)
+                      try:
+                          body = page.inner_text("body", timeout=5000)
+                      except Exception:
+                          pass
+                      text, _ = extract_payload(body, tag)
+                      log(f"[+] Complete reply captured ({len(text)} chars) in {int(time.time() - t0)}s")
+                      return text, True
+                  stable = stable + 1 if len(body) == last_len else 0
+                  last_len = len(body)
+                  elapsed = time.time() - t0
+                  if not gen and stable >= 6:
+                      if text is not None:
+                          log(f"[!] Reply ended without RECAPEND ({len(text)} chars) - salvaging complete beats")
+                          return text, False
+                      if elapsed > 30:
+                          raise TimeoutError("No reply with the expected RECAPSTART marker appeared.")
                   page.wait_for_timeout(1000)
-
-              raise TimeoutError("Duck.ai stream timed out.")
-
-          def extract_clean_json(raw_text: str) -> dict:
-              """Extracts JSON object from text safely."""
-              clean = re.sub(r"^```(?:json)?", "", raw_text.strip(), flags=re.MULTILINE)
-              clean = re.sub(r"```$", "", clean.strip(), flags=re.MULTILINE)
-
-              start_idx = clean.find('{')
-              if start_idx == -1:
-                  raise ValueError(f"No JSON object found in response:\n{raw_text[:250]}")
-
-              decoder = json.JSONDecoder()
+              scroll_to_bottom(page)
               try:
-                  obj, _ = decoder.raw_decode(clean[start_idx:])
-                  return obj
+                  body = page.inner_text("body", timeout=5000)
               except Exception:
-                  match = re.search(r"\{\s*\"(?:characters|beats)\"[\s\S]*\}", clean)
-                  if match:
-                      return json.loads(match.group(0))
-                  raise ValueError(f"Failed to parse valid JSON from text:\n{clean[start_idx:start_idx+350]}")
+                  body = ""
+              text, _ = extract_payload(body, tag)
+              if text:
+                  log("[!] Hit max wait; salvaging what we have")
+                  return text, False
+              raise TimeoutError("Duck.ai reply timed out.")
 
-          # Load transcript.json
+
+          def salvage_list(clean, key):
+              """Pull every COMPLETE object out of a (possibly cut-off) JSON array."""
+              m = re.search(r'"' + key + r'"\s*:\s*\[', clean)
+              if not m:
+                  return []
+              dec = json.JSONDecoder()
+              i, out = m.end(), []
+              while i < len(clean):
+                  while i < len(clean) and clean[i] in " \t\r\n,":
+                      i += 1
+                  if i >= len(clean) or clean[i] != "{":
+                      break
+                  try:
+                      obj, j = dec.raw_decode(clean, i)
+                  except Exception:
+                      break
+                  out.append(obj)
+                  i = j
+              return out
+
+
+          def parse_payload(text):
+              clean = re.sub(r"```(?:json)?", "", text).strip()
+              try:
+                  obj, _ = json.JSONDecoder().raw_decode(clean)
+                  if isinstance(obj, dict):
+                      return obj
+              except Exception:
+                  pass
+              return {
+                  "characters": salvage_list(clean, "characters"),
+                  "beats": salvage_list(clean, "beats"),
+                  "fixes": salvage_list(clean, "fixes"),
+              }
+
+
+          def valid_hindi(t):
+              if len(t) < 15 or "Hindi" in t or "<" in t or ">" in t:
+                  return False
+              dev = len(re.findall(r"[\u0900-\u097F]", t))
+              letters = len(re.findall(r"[A-Za-z\u0900-\u097F]", t))
+              return letters > 0 and dev / letters >= 0.8
+
+
+          # ---------------------------------------------------------- transcript
           t_file = Path("transcript.json")
           if not t_file.exists():
               raise FileNotFoundError("Missing transcript.json in repository root!")
-          with open(t_file, "r", encoding="utf-8") as f:
-              transcript_data = json.load(f)
-          segments = transcript_data.get("segments", [])
-          if not segments:
+          transcript_data = json.loads(t_file.read_text(encoding="utf-8"))
+          segs = transcript_data.get("segments", [])
+          if not segs:
               raise ValueError("transcript.json is empty!")
+          for i, s in enumerate(segs):
+              s["_id"] = i + 1
+              s["start"] = float(s["start"])
+              s["end"] = float(s["end"])
+              s["text"] = str(s["text"]).strip()
+          TOTAL_DUR = float(transcript_data.get("duration") or segs[-1]["end"])
 
-          # Group into ~4,500 char chunks to give model room to narrate every line
-          chunks = []
-          curr_chunk = []
-          curr_len = 0
-          for s in segments:
-              line = f"[{s['start']:.2f}s - {s['end']:.2f}s] {s['text']}"
-              curr_chunk.append(line)
-              curr_len += len(line) + 1
-              if curr_len >= 4500:
-                  chunks.append("\n".join(curr_chunk))
-                  curr_chunk = []
-                  curr_len = 0
-          if curr_chunk:
-              chunks.append("\n".join(curr_chunk))
-          log(f"Prepared {len(chunks)} chronological transcript chunks.")
 
-          # Prompts using neutral dummy placeholders to prevent copying
-          PART_1_PROMPT = """You are a movie recap writer. Convert this entire transcript chunk into a flowing, synchronized movie recap in pure Hindi (Devanagari script only).
+          def fmt_line(s):
+              return f"#{s['_id']} [{s['start']:.2f}-{s['end']:.2f}] {s['text']}"
 
-          CRITICAL INSTRUCTIONS:
-          1. Rely ONLY on the transcript dialogue. ZERO hallucination.
-          2. YOU MUST COVER THE ENTIRE CHUNK from the first line to the last line. Do NOT summarize or omit parts.
-          3. STRICT 1-TO-1 VISUAL CUT SYNC:
-             - Group dialogue into small sequential scenes (4-15 seconds each).
-             - 1 Spoken Hindi sentence = 1 exact dialogue scene.
-             - start_sec: Exact start time of the first line in that scene.
-             - end_sec: Exact end time of the last line in that scene.
-          4. Conversational Hindi (Devanagari only). Identify and use the actual character names spoken in the dialogue.
-          5. OUTPUT ONLY A RAW JSON OBJECT (no chat commentary, no markdown text):
 
-          {
-            "characters": [
-              {"name": "SpeakerA", "hindi_name": "व्यक्ति १", "role": "भूमिका"}
-            ],
-            "beats": [
-              {
-                "beat_id": "B0001",
-                "start_sec": 0.0,
-                "end_sec": 5.5,
-                "narration": "हिंदी में दृश्य का विवरण..."
-              }
-            ]
-          }
+          chunks, cur_first, cur_chars = [], 1, 0
+          for s in segs:
+              cur_chars += len(fmt_line(s)) + 1
+              if s["end"] - segs[cur_first - 1]["start"] >= PART_SECONDS or cur_chars >= PART_CHARS:
+                  chunks.append((cur_first, s["_id"]))
+                  cur_first, cur_chars = s["_id"] + 1, 0
+          if cur_first <= len(segs):
+              chunks.append((cur_first, len(segs)))
+          if len(chunks) > 1:
+              lf, ll = chunks[-1]
+              if segs[ll - 1]["end"] - segs[lf - 1]["start"] < 30:
+                  chunks[-2] = (chunks[-2][0], ll)
+                  chunks.pop()
+          log(f"{len(segs)} transcript lines, {TOTAL_DUR:.0f}s -> {len(chunks)} parts, ONE chat")
 
-          TRANSCRIPT:
+          SETUP = """You are a movie recap writer. I will send a movie transcript in several PARTS inside this ONE chat. Remember the whole story across parts (characters, relationships, what happened earlier) so the recap flows as one continuous story.
+          Transcript lines look like: #12 [13.68-18.89] text   (#id, then start-end seconds in the real video).
+          For each part, tell its story in Hindi (Devanagari script only) as a list of BEATS. One beat = one narration + the exact transcript lines (from_id to to_id) of the video clip that shows what you are narrating. I will cut the clips out of the real movie using those ids.
+
+          RULES:
+          1. Use ONLY what is said in the transcript. No invention.
+          2. Tell the story of the WHOLE part in chronological order, from its first line to its last line, so a viewer who never saw the movie clearly understands what happens and why. Skip only filler. Never narrate just the first half.
+          3. Every clip must match its narration: the clip IS the moment you are talking about. Clips can be very short (even 2 seconds) or longer (up to about 25 seconds). Never use one long clip to cover several different events - use several beats instead.
+          4. Beats must be in chronological order and clips must not overlap.
+          5. Narration is spoken at about 2.3 Hindi words per second, so it must fit its clip: number of words is about 2 x clip seconds. Together, the clips of a part must stay clearly shorter than the real duration of that part (a target is given each time).
+          6. Narration: 1-2 natural, conversational Hindi sentences, Devanagari only, using the real character names (written in Devanagari). Do NOT use double-quote characters inside narration.
+          7. Every reply must be exactly: the marker line I give you, ONE raw JSON object, the end marker line. No markdown fences, no commentary.
+
+          JSON shape (replace every placeholder with real values):
+          {"characters":[{"name":"<name as in dialogue>","hindi_name":"<Devanagari>","role":"<short Hindi role>"}],"beats":[{"from_id":<number>,"to_id":<number>,"narration":"<Hindi narration>"}]}
+          In your first reply fill "characters" with the main people (up to 8). Afterwards use [] unless a new named character appears.
           """
 
-          PART_N_PROMPT = """Continuing the recap for the NEXT sequential transcript chunk.
-          Rules:
-          - Cover EVERY part of this transcript chunk sequentially from start to finish.
-          - Pure Devanagari Hindi. 1-to-1 dialogue synchronization with exact start_sec and end_sec.
-          - Return RAW JSON ONLY (no markdown fences, no conversational text):
-          {
-            "beats": [
-              {
-                "beat_id": "B0000",
-                "start_sec": 0.0,
-                "end_sec": 0.0,
-                "narration": "अगले सीन का विवरण..."
+
+          def reply_format(tag):
+              return ("Reply format: the marker RECAPSTART-" + tag + " alone on its own line, then ONE raw JSON object, "
+                      "then the marker RECAPEND-" + tag + " alone on its own line. No markdown fences, no commentary.")
+
+
+          def part_message(ci, cursor, first, last, kind, tag, with_text):
+              t1 = segs[last - 1]["end"]
+              if kind == "new_part":
+                  t0 = segs[first - 1]["start"]
+                  dur = t1 - t0
+                  head = (f"PART {ci + 1} of {len(chunks)}. Real video time {t0:.0f}s to {t1:.0f}s ({dur:.0f}s long), "
+                          f"lines #{first} to #{last}.\nTell the whole story of this part in order. Total clip time of all your beats "
+                          f"for this part: about {0.4 * dur:.0f} to {0.75 * dur:.0f} seconds, never more than {0.9 * dur:.0f}.")
+              else:
+                  t0 = segs[cursor - 1]["start"]
+                  dur = t1 - t0
+                  head = (f"Continue PART {ci + 1}. Your beats so far stop before line #{cursor}. Now cover lines #{cursor} to #{last} "
+                          f"(video time {t0:.0f}s to {t1:.0f}s) in order, same rules, same JSON format, with \"characters\": []. "
+                          f"Do not repeat earlier beats. Total clip time for this stretch: about {0.4 * dur:.0f} to {0.75 * dur:.0f} seconds.")
+              msg = head + "\n" + reply_format(tag)
+              if with_text:
+                  msg += "\nTRANSCRIPT:\n" + "\n".join(fmt_line(segs[i - 1]) for i in range(cursor, last + 1))
+              return msg
+
+
+          def story_summary(beats, characters):
+              """Used only if the chat had to be restarted: gives the new chat the story so far."""
+              if not beats:
+                  return ""
+              names = ", ".join(f"{c.get('name', '')} ({c.get('hindi_name', '')})" for c in characters)
+              recent = " ".join(b["narration"] for b in beats[-15:])
+              recent = recent[-1800:]
+              return ("\nThis chat was restarted. Known characters: " + names +
+                      "\nStory so far (your earlier recap, Hindi): " + recent + "\n")
+
+
+          def score(b):
+              w = len(b["narration"].split())
+              clip = b["target_window"]["end"] - b["target_window"]["start"]
+              b["narration_words"] = w
+              b["narration_sec_est"] = round(w / WORDS_PER_SEC, 1)
+              b["clip_sec"] = round(clip, 1)
+              b["fit"] = round((w / WORDS_PER_SEC) / max(clip, 0.1), 2)
+
+
+          def integrate(parsed, prev_to, prev_clip_end, first, last, part_no):
+              """Turn model beats into clips with exact transcript timestamps. Order is enforced, timing comes from transcript.json."""
+              accepted = []
+              for b in parsed.get("beats", []):
+                  try:
+                      f, t = int(b["from_id"]), int(b["to_id"])
+                  except Exception:
+                      continue
+                  nar = str(b.get("narration", "")).strip().replace('"', "'")
+                  t = min(t, last)
+                  if f < first or f > last or f > t:
+                      continue
+                  if f <= prev_to:
+                      f = prev_to + 1
+                      if f > t:
+                          continue
+                  if not valid_hindi(nar):
+                      log(f"Beat #{f}-#{t} skipped (not proper Hindi / placeholder).")
+                      continue
+                  cs = min(max(segs[f - 1]["start"] - CLIP_PAD, prev_clip_end), segs[f - 1]["start"])
+                  cs = max(cs, 0.0)
+                  ce = min(TOTAL_DUR, segs[t - 1]["end"] + CLIP_PAD)
+                  if ce - cs < MIN_CLIP:
+                      ce = min(TOTAL_DUR, cs + MIN_CLIP)
+                  beat = {
+                      "part": part_no,
+                      "source_segment_ids": [f, t],
+                      "target_window": {"start": round(cs, 2), "end": round(ce, 2)},
+                      "narration": nar,
+                      "source_text": " ".join(segs[i - 1]["text"] for i in range(f, t + 1)),
+                  }
+                  score(beat)
+                  accepted.append(beat)
+                  prev_to, prev_clip_end = t, ce
+              return accepted
+
+
+          def build_output(beats, characters, parts_info):
+              return {
+                  "movie_title": transcript_data.get("movie_title", "movie"),
+                  "duration": TOTAL_DUR,
+                  "characters": characters,
+                  "total_beats": len(beats),
+                  "recap_clip_seconds": round(sum(b["clip_sec"] for b in beats), 1),
+                  "parts": parts_info,
+                  "beats": [dict({"beat_id": f"B{i + 1:04d}"}, **b) for i, b in enumerate(beats)],
               }
-            ]
-          }
 
-          NEXT TRANSCRIPT PART:
-          """
 
-          all_beats = []
-          characters_list = []
-          browser = None
-          context = None
-          page = None
-
-          def start_fresh_browser(playwright_runner):
-              global browser, context, page
-              if browser:
-                  try: browser.close()
-                  except Exception: pass
-              browser = playwright_runner.chromium.launch(
-                  headless=not HEADED,
-                  proxy={"server": BROWSER_PROXY},
-                  args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"]
+          def write_json(name, beats, characters, parts_info):
+              Path(name).write_text(
+                  json.dumps(build_output(beats, characters, parts_info), indent=2, ensure_ascii=False), encoding="utf-8"
               )
-              context = browser.new_context(
-                  viewport={"width": 1440, "height": 1000},
-                  user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
-              )
-              context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
-              page = context.new_page()
+
+
+          def repair_long_narrations(page, ci, part_beats):
+              """Ask (in the same chat) for shorter narration where it cannot be spoken inside its clip."""
+              bad = [b for b in part_beats if b["fit"] > FIT_LIMIT]
+              if not bad:
+                  return
+              tag = f"P{ci + 1}X"
+              lines = []
+              for b in bad:
+                  max_words = max(4, int(b["clip_sec"] * WORDS_PER_SEC * 1.15))
+                  lines.append(f"from_id={b['source_segment_ids'][0]} | clip {b['clip_sec']}s | max {max_words} words | current: {b['narration']}")
+              msg = ("These narrations are too long to be spoken inside their clips. Rewrite each one SHORTER (same meaning, Hindi Devanagari, "
+                     "no double-quote characters, stay within the max words). Reply with this JSON shape only: "
+                     '{"fixes":[{"from_id":<number>,"narration":"<shorter Hindi narration>"}]}\n'
+                     + reply_format(tag) + "\n" + "\n".join(lines))
+              log(f"Asking for {len(bad)} shorter narrations in part {ci + 1}")
+              submit_prompt(page, msg)
+              text, _ = wait_for_payload(page, tag)
+              fixes = parse_payload(text).get("fixes", [])
+              by_id = {b["source_segment_ids"][0]: b for b in bad}
+              applied = 0
+              for fx in fixes:
+                  try:
+                      b = by_id.get(int(fx["from_id"]))
+                  except Exception:
+                      continue
+                  nar = str(fx.get("narration", "")).strip().replace('"', "'")
+                  if not b or not valid_hindi(nar):
+                      continue
+                  old_fit, old_nar = b["fit"], b["narration"]
+                  b["narration"] = nar
+                  score(b)
+                  if b["fit"] < old_fit:
+                      applied += 1
+                  else:
+                      b["narration"] = old_nar
+                      score(b)
+              log(f"Applied {applied}/{len(bad)} shorter narrations")
+
+
+          # ---------------------------------------------------------------- main
+          all_beats, characters, parts_info = [], [], []
 
           with sync_playwright() as p:
-              start_fresh_browser(p)
-              for idx, chunk_content in enumerate(chunks):
-                  log(f"\n==================== PROCESSING PART {idx + 1}/{len(chunks)} ====================")
-                  part_done = False
-                  for attempt in range(1, MAX_ATTEMPTS + 1):
-                      try:
-                          is_in_chat = bool(page and "chatID=" in page.url)
-                          if not is_in_chat:
-                              log("Navigating to https://duck.ai/chat ...")
-                              page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=60000)
-                              page.wait_for_timeout(2000)
-                              dismiss_modals(page)
-
-                          prompt = (PART_1_PROMPT if idx == 0 else PART_N_PROMPT) + chunk_content
-                          log(f"Entering prompt (Attempt {attempt})...")
-                          submit_prompt(page, prompt)
-
-                          raw_reply = wait_for_duck_response(page, max_wait=140)
-                          parsed = extract_clean_json(raw_reply)
-
-                          if "characters" in parsed and not characters_list:
-                              characters_list = parsed["characters"]
-                          new_beats = parsed.get("beats", [])
-                          
-                          # Verification: Ensure it's not the dummy placeholder
-                          if new_beats and new_beats[0].get("narration") in ["हिंदी में दृश्य का विवरण...", "अगले सीन का विवरण..."]:
-                              raise ValueError("Model regurgitated template placeholder!")
-
-                          log(f"[+] Successfully extracted {len(new_beats)} beats from Part {idx + 1}")
-                          all_beats.extend(new_beats)
-                          part_done = True
-                          page.wait_for_timeout(1500)
+              start_browser(p)
+              for ci, (first, last) in enumerate(chunks):
+                  part_dur = segs[last - 1]["end"] - segs[first - 1]["start"]
+                  log(f"\n===== PART {ci + 1}/{len(chunks)} (lines #{first}-#{last}, {part_dur:.0f}s) =====")
+                  part_beats, cursor, prev_to, rounds = [], first, first - 1, 0
+                  while True:
+                      rounds += 1
+                      if rounds > MAX_ROUNDS:
+                          log("Max continue rounds reached for this part; moving on with what we have.")
                           break
-                      except Exception as err:
-                          log(f"Attempt {attempt} failed on Part {idx + 1}: {err}")
-                          snap(page, f"err_p{idx+1}_a{attempt}")
-                          new_tor_circuit()
-                          start_fresh_browser(p)
+                      kind = "new_part" if rounds == 1 else "continue"
+                      tag = f"P{ci + 1}R{rounds}"
+                      ok = False
+                      for attempt in range(1, MAX_ATTEMPTS + 1):
+                          try:
+                              new_chat = False
+                              if not chat["primed"] or state["page"] is None:
+                                  open_chat()
+                                  new_chat = True
+                              page = state["page"]
+                              msg = part_message(ci, cursor, first, last, kind, tag, with_text=(kind == "new_part" or new_chat))
+                              if new_chat:
+                                  msg = SETUP + story_summary(all_beats + part_beats, characters) + "\n" + msg
+                              log(f"Sending [{tag}] attempt {attempt} ({len(msg)} chars, new chat: {new_chat})")
+                              submit_prompt(page, msg)
+                              text, finished = wait_for_payload(page, tag)
+                              parsed = parse_payload(text)
+                              prev_list = part_beats or all_beats
+                              prev_clip_end = prev_list[-1]["target_window"]["end"] if prev_list else 0.0
+                              accepted = integrate(parsed, prev_to, prev_clip_end, first, last, ci + 1)
+                              if not accepted:
+                                  raise ValueError("No usable beats in the reply")
+                              chat["primed"] = True
+                              known = {str(c.get("name", "")).lower() for c in characters}
+                              for c in parsed.get("characters", []):
+                                  if isinstance(c, dict) and str(c.get("name", "")).lower() not in known:
+                                      characters.append(c)
+                                      known.add(str(c.get("name", "")).lower())
+                              part_beats.extend(accepted)
+                              prev_to = part_beats[-1]["source_segment_ids"][1]
+                              write_json("debug/story_beats.partial.json", all_beats + part_beats, characters, parts_info)
+                              log(f"[+] +{len(accepted)} beats; part now covers up to line #{prev_to} of #{last}")
+                              ok = True
+                              break
+                          except Exception as err:
+                              log(f"Attempt {attempt} failed: {err}")
+                              if state["page"]:
+                                  snap(state["page"], f"err_{tag}_a{attempt}")
+                              new_tor_circuit()
+                              start_browser(p)
+                              chat["primed"] = False
+                      if not ok:
+                          log(f"Could not complete part {ci + 1}. Partial result saved in debug/. Aborting.")
+                          sys.exit(1)
+                      remaining = segs[last - 1]["end"] - segs[prev_to - 1]["end"]
+                      if remaining <= max(10.0, 0.12 * part_dur):
+                          break
+                      cursor = prev_to + 1
+                      log(f"Part not fully covered yet ({remaining:.0f}s left) -> asking the model to continue")
 
-                  if not part_done:
-                      log(f"Could not complete Part {idx + 1}. Aborting run.")
-                      sys.exit(1)
+                  try:
+                      repair_long_narrations(state["page"], ci, part_beats)
+                  except Exception as err:
+                      log(f"Narration repair skipped: {err}")
+                      chat["primed"] = False
 
-              if browser:
-                  browser.close()
+                  clip_total = sum(b["clip_sec"] for b in part_beats)
+                  parts_info.append({
+                      "part": ci + 1,
+                      "source_start": round(segs[first - 1]["start"], 2),
+                      "source_end": round(segs[last - 1]["end"], 2),
+                      "source_seconds": round(part_dur, 1),
+                      "recap_clip_seconds": round(clip_total, 1),
+                      "ratio": round(clip_total / part_dur, 2),
+                      "beats": len(part_beats),
+                  })
+                  log(f"Part {ci + 1}: {len(part_beats)} beats, {clip_total:.0f}s of clips for {part_dur:.0f}s of movie")
+                  all_beats.extend(part_beats)
+                  write_json("debug/story_beats.partial.json", all_beats, characters, parts_info)
 
-          # Re-index beats sequentially
-          final_beats = []
-          for i, b in enumerate(all_beats):
-              s = float(b.get("start_sec", 0.0))
-              e = float(b.get("end_sec", s + 4.0))
-              final_beats.append({
-                  "beat_id": f"B{i+1:04d}",
-                  "target_window": {
-                      "start": round(s, 2),
-                      "end": round(e, 2)
-                  },
-                  "narration": b.get("narration", "").strip()
-              })
+              if state["browser"]:
+                  state["browser"].close()
 
-          out_file = Path("story_beats.json")
-          with open(out_file, "w", encoding="utf-8") as f:
-              json.dump({
-                  "movie_title": transcript_data.get("movie_title", "movie"),
-                  "characters": characters_list,
-                  "total_beats": len(final_beats),
-                  "beats": final_beats
-              }, f, indent=2, ensure_ascii=False)
-          log(f"SUCCESS: SAVED {out_file} with {len(final_beats)} beats")
+          write_json("story_beats.json", all_beats, characters, parts_info)
+          too_long = [b["beat_id"] if "beat_id" in b else b["source_segment_ids"] for b in all_beats if b["fit"] > FIT_LIMIT]
+          log(f"SUCCESS: story_beats.json with {len(all_beats)} beats across {len(chunks)} parts in one chat")
+          if too_long:
+              log(f"WARNING: {len(too_long)} beats still have narration longer than their clip")
           PY
-
           if [ "$HEADED" = "true" ]; then
             xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py
           else
@@ -452,12 +684,16 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ ! -f story_beats.json ]; then
+            echo "story_beats.json not produced."
+            exit 1
+          fi
           git add -f story_beats.json
           if git diff --cached --quiet; then
             echo "No new story beats to commit."
             exit 0
           fi
-          git commit -m "Add ground-truth synchronized Hindi story_beats.json [skip ci]"
+          git commit -m "Add synchronized Hindi story_beats.json [skip ci]"
           git pull --rebase origin main
           git push origin HEAD:main
 

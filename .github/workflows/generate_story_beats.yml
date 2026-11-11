@@ -19,13 +19,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
@@ -75,14 +75,14 @@ jobs:
 
           HEADED = os.environ.get("HEADED") == "true"
           MAX_ATTEMPTS = 4
-          MAX_ROUNDS = 3            # recaps are punchy, 2-3 focused passes per part are plenty
-          PART_SECONDS = 210        # larger chunk (3.5 mins) gives full scene context to the AI
+          MAX_ROUNDS = 3
+          PART_SECONDS = 210
           PART_CHARS = 3200
           MAX_WAIT = 240
           CLIP_PAD = 0.15
           MIN_CLIP = 2.5
-          MAX_CLIP = 6.0            # STRICT YouTube Fair-Use: clips stay under 6s to avoid Content ID match
-          WORDS_PER_SEC = 2.4       # natural fast-paced Hindi recap voiceover speed
+          MAX_CLIP = 6.0
+          WORDS_PER_SEC = 2.4
           FIT_LIMIT = 1.35
           DEBUG_DIR = Path("debug")
           DEBUG_DIR.mkdir(parents=True, exist_ok=True)
@@ -139,7 +139,6 @@ jobs:
               time.sleep(2)
 
 
-          # ---------------------------------------------------------------- browser
           def start_browser(p):
               for key in ("context", "browser"):
                   if state[key]:
@@ -271,7 +270,6 @@ jobs:
               dismiss_modals(page)
 
 
-          # ------------------------------------------------- reading the reply
           def extract_payload(body, tag):
               start_re = re.compile(r"RECAPSTART-" + re.escape(tag) + r"(?![A-Za-z0-9])")
               end_re = re.compile(r"RECAPEND-" + re.escape(tag) + r"(?![A-Za-z0-9])")
@@ -376,7 +374,6 @@ jobs:
               return letters > 0 and dev / letters >= 0.8
 
 
-          # ---------------------------------------------------------- transcript
           t_file = Path("transcript.json")
           if not t_file.exists():
               raise FileNotFoundError("Missing transcript.json in repository root!")
@@ -411,25 +408,22 @@ jobs:
                   chunks.pop()
           log(f"{len(segs)} transcript lines, {TOTAL_DUR:.0f}s -> {len(chunks)} parts, ONE recap chat")
 
-          # NEW PROFESSIONAL YOUTUBE MOVIE RECAP SYSTEM PROMPT
-          SETUP = """You are a professional YouTube Movie/Series Recap Narrator (like popular Hindi 'Movie Explained' channels).
-Your goal is to narrate the ESSENTIAL PLOT in Hindi (Devanagari script only), giving viewers a captivating, coherent story.
-
-CRITICAL RULES:
-1. DO NOT DUB OR TRANSLATE: Never translate raw dialogues line by line. Do not narrate small talk, greetings, or filler. Summarize what happens, characters' motives, emotional shifts, and key plot events.
-2. SEAMLESS SCENE BRIDGING & CONTEXT: When the scene or location changes, ALWAYS provide a bridging sentence explaining the context BEFORE describing the dialogue.
-   - Example of WRONG (Sudden jump): "लूसीफर क्लोई से पूछता है कि वह क्या चाहती है।"
-   - Example of RIGHT (Narrative bridge): "इसके बाद डिटेक्टिव क्लोई मर्डर के मुख्य गवाह से पूछताछ करने के लिए 'लक्स' नाइटक्लब पहुंचती है, जहाँ उसकी मुलाक़ात क्लब के रहस्यमयी मालिक लूसीफर से होती है।"
-3. THIRD-PERSON NARRATOR TONE: Speak like an engaging story narrator explaining the episode ("कहानी की शुरुआत में...", "आगे हम देखते हैं कि...", "क्लोई को शक होता है कि...").
-4. FAIR-USE SHORT CLIPS ONLY: For each plot beat, select ONLY ONE SHORT key visual moment (from_id to to_id). Each clip MUST be 3 to 6 seconds long in real time. Never select long dialogue blocks. Short clips protect the video from copyright strikes.
-5. CONCISE HIGH-VALUE BEATS: For each part, produce 3 to 6 high-impact beats covering the core developments. Total clip duration for the entire episode must be only 20% to 25% of the movie's duration (e.g., around 3 to 4 minutes total for a 17-minute video).
-6. NARRATION LENGTH: 1 to 2 crisp, natural Hindi sentences in Devanagari. No double quotes inside narration.
-7. Exact output format: Marker RECAPSTART-<tag>, raw JSON object, then RECAPEND-<tag>.
-
-JSON shape:
-{"characters":[{"name":"<English Name>","hindi_name":"<Devanagari Name>","role":"<Brief role/context in Hindi>"}],"beats":[{"from_id":<number>,"to_id":<number>,"narration":"<Engaging Hindi recap narration with scene context>"}]}
-In your first reply list the key characters. In subsequent replies, use [] unless an important new character is introduced.
-"""
+          SETUP = (
+              "You are a professional YouTube Movie/Series Recap Narrator (like popular Hindi 'Movie Explained' channels).\n"
+              "Your goal is to narrate the ESSENTIAL PLOT in Hindi (Devanagari script only), giving viewers a captivating, coherent story.\n\n"
+              "CRITICAL RULES:\n"
+              "1. DO NOT DUB OR TRANSLATE: Never translate raw dialogues line by line. Do not narrate small talk, greetings, or filler. Summarize what happens, characters' motives, emotional shifts, and key plot events.\n"
+              "2. SEAMLESS SCENE BRIDGING & CONTEXT: When the scene or location changes, ALWAYS provide a bridging sentence explaining the context BEFORE describing the dialogue. "
+              "For example: 'इसके बाद डिटेक्टिव क्लोई मर्डर के मुख्य गवाह से पूछताछ करने के लिए लक्स नाइटक्लब पहुंचती है, जहाँ उसकी मुलाक़ात क्लब के रहस्यमयी मालिक लूसीफर से होती है।'\n"
+              "3. THIRD-PERSON NARRATOR TONE: Speak like an engaging story narrator explaining the episode ('कहानी की शुरुआत में...', 'आगे हम देखते हैं कि...', 'क्लोई को शक होता है कि...').\n"
+              "4. FAIR-USE SHORT CLIPS ONLY: For each plot beat, select ONLY ONE SHORT key visual moment (from_id to to_id). Each clip MUST be 3 to 6 seconds long in real time. Short clips protect the video from copyright strikes.\n"
+              "5. CONCISE HIGH-VALUE BEATS: For each part, produce 3 to 5 high-impact beats covering the core developments. Total recap duration for the whole episode should be around 20% to 25% of the video.\n"
+              "6. NARRATION LENGTH: 1 to 2 crisp, natural Hindi sentences in Devanagari. Do NOT use double quotes inside narration.\n"
+              "7. Exact output format: Marker RECAPSTART-<tag>, raw JSON object, then RECAPEND-<tag>.\n\n"
+              "JSON shape:\n"
+              '{"characters":[{"name":"<Name>","hindi_name":"<Devanagari>","role":"<Role in Hindi>"}],'
+              '"beats":[{"from_id":<number>,"to_id":<number>,"narration":"<Hindi recap with scene context>"}]}'
+          )
 
 
           def reply_format(tag):
@@ -481,7 +475,6 @@ In your first reply list the key characters. In subsequent replies, use [] unles
 
 
           def integrate(parsed, prev_to, prev_clip_end, first, last, part_no):
-              """Turn model beats into YouTube Fair-Use clips (capped at MAX_CLIP seconds)."""
               accepted = []
               for b in parsed.get("beats", []):
                   try:
@@ -503,7 +496,6 @@ In your first reply list the key characters. In subsequent replies, use [] unles
                   raw_start = segs[f - 1]["start"]
                   raw_end = segs[t - 1]["end"]
 
-                  # Enforce YouTube Fair-Use duration (3 to 6 seconds max per clip cut)
                   cs = max(raw_start - CLIP_PAD, prev_clip_end)
                   cs = max(cs, 0.0)
                   ce = raw_end + CLIP_PAD
@@ -583,7 +575,6 @@ In your first reply list the key characters. In subsequent replies, use [] unles
               log(f"Applied {applied}/{len(bad)} tighter narrations")
 
 
-          # ---------------------------------------------------------------- main
           all_beats, characters, parts_info = [], [], []
 
           with sync_playwright() as p:
@@ -643,8 +634,6 @@ In your first reply list the key characters. In subsequent replies, use [] unles
                           log(f"Could not complete part {ci + 1}. Saving partial results.")
                           sys.exit(1)
 
-                      # Recaps do NOT need to cover 100% of dialogue lines!
-                      # If we already have 3-5 solid beats or reached the end of the major event in this part, move on.
                       if len(part_beats) >= 3 or prev_to >= last - 5:
                           break
                       cursor = prev_to + 1
@@ -665,7 +654,7 @@ In your first reply list the key characters. In subsequent replies, use [] unles
                       "ratio": round(clip_total / part_dur, 2),
                       "beats": len(part_beats),
                   })
-                  log(f"Part {ci + 1} Done: {len(part_beats)} beats, {clip_total:.0f}s clips for {part_dur:.0f}s video ({round(clip_total/part_dur*100)}%)")
+                  log(f"Part {ci + 1} Done: {len(part_beats)} beats, {clip_total:.0f}s clips for {part_dur:.0f}s video")
                   all_beats.extend(part_beats)
                   write_json("debug/story_beats.partial.json", all_beats, characters, parts_info)
 
@@ -675,7 +664,7 @@ In your first reply list the key characters. In subsequent replies, use [] unles
           write_json("story_beats.json", all_beats, characters, parts_info)
           total_recap_dur = sum(b["clip_sec"] for b in all_beats)
           log(f"SUCCESS: story_beats.json produced with {len(all_beats)} beats.")
-          log(f"Total Video: {TOTAL_DUR:.0f}s (~{TOTAL_DUR/60:.1f}m) | Recap Clips: {total_recap_dur:.0f}s (~{total_recap_dur/60:.1f}m, {round(total_recap_dur/TOTAL_DUR*100)}%)")
+          log(f"Total Video: {TOTAL_DUR:.0f}s | Recap Clips: {total_recap_dur:.0f}s")
           PY
           if [ "$HEADED" = "true" ]; then
             xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py

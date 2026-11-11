@@ -75,13 +75,13 @@ jobs:
 
           HEADED = os.environ.get("HEADED") == "true"
           MAX_ATTEMPTS = 4
-          MAX_ROUNDS = 2
-          PART_SECONDS = 120        # Keeps prompt well below Duck.ai's ~4000 char input limit
-          PART_CHARS = 1600         # Hard cap so messages never get blocked
+          # Divide the entire episode into 6 narrative acts (approx 175s each)
+          PART_SECONDS = 175
+          PART_CHARS = 1700
           MAX_WAIT = 240
           CLIP_PAD = 0.15
           MIN_CLIP = 2.5
-          MAX_CLIP = 6.0            # YouTube Fair-Use: clips capped strictly to 6 seconds
+          MAX_CLIP = 5.0            # Strict 5s max clip for fair use
           WORDS_PER_SEC = 2.4
           FIT_LIMIT = 1.35
           DEBUG_DIR = Path("debug")
@@ -274,7 +274,7 @@ jobs:
                       break
 
               if not sent:
-                  raise RuntimeError(f"Message ({len(text)} chars) was pasted but never sent (input box still full).")
+                  raise RuntimeError(f"Message ({len(text)} chars) was not sent (input box still full).")
               page.wait_for_timeout(1000)
               dismiss_modals(page)
 
@@ -323,10 +323,10 @@ jobs:
                   elapsed = time.time() - t0
                   if not gen and stable >= 6:
                       if text is not None:
-                          log(f"[!] Reply ended without RECAPEND ({len(text)} chars) - salvaging complete beats")
+                          log(f"[!] Reply ended without RECAPEND ({len(text)} chars) - salvaging beats")
                           return text, False
                       if elapsed > 30:
-                          raise TimeoutError("No reply with the expected RECAPSTART marker appeared.")
+                          raise TimeoutError("No reply with expected RECAPSTART marker.")
                   page.wait_for_timeout(1000)
               scroll_to_bottom(page)
               try:
@@ -335,7 +335,7 @@ jobs:
                   body = ""
               text, _ = extract_payload(body, tag)
               if text:
-                  log("[!] Hit max wait; salvaging what we have")
+                  log("[!] Hit max wait; salvaging")
                   return text, False
               raise TimeoutError("Duck.ai reply timed out.")
 
@@ -399,9 +399,10 @@ jobs:
 
 
           def fmt_line(s):
-              return f"#{s['_id']} [{s['start']:.2f}-{s['end']:.2f}] {s['text']}"
+              return f"#{s['_id']} [{s['start']:.0f}-{s['end']:.0f}] {s['text']}"
 
 
+          # Divide into ~6 large scene acts
           chunks, cur_first, cur_chars = [], 1, 0
           for s in segs:
               cur_chars += len(fmt_line(s)) + 1
@@ -412,20 +413,21 @@ jobs:
               chunks.append((cur_first, len(segs)))
           if len(chunks) > 1:
               lf, ll = chunks[-1]
-              if segs[ll - 1]["end"] - segs[lf - 1]["start"] < 30:
+              if segs[ll - 1]["end"] - segs[lf - 1]["start"] < 40:
                   chunks[-2] = (chunks[-2][0], ll)
                   chunks.pop()
-          log(f"{len(segs)} transcript lines, {TOTAL_DUR:.0f}s -> {len(chunks)} parts, ONE recap chat")
+          log(f"{len(segs)} lines, {TOTAL_DUR:.0f}s -> {len(chunks)} major acts (Target ~{len(chunks)*2} total beats, ~2.5 mins)")
 
-          # Concise YouTube recap instructions (kept under 600 chars to avoid Duck.ai limit)
+          # STRICT HIGH-LEVEL YOUTUBE RECAP INSTRUCTIONS (Anti-dialogue-dubbing)
           SETUP = (
-              "You are a Hindi YouTube Movie Recap Narrator (Hindi Explained style).\n"
+              "You are a YouTube Movie Recap Narrator (Hindi Explained style).\n"
+              "GOAL: Condense this 17-minute episode into a FAST 2.5-MINUTE RECAP (around 12 beats total for the entire episode).\n"
               "RULES:\n"
-              "1. NEVER dub dialogues. Summarize the key plot in natural Hindi (Devanagari).\n"
-              "2. BRIDGE SCENES: Explain scene transitions and context (e.g. who goes where and why, introducing characters) before describing dialogues.\n"
-              "3. SHORT FAIR-USE CLIPS: Pick 1 key moment per beat (3-6 seconds only). Avoid long blocks.\n"
-              "4. Keep 2-4 major beats per part so total recap is ~20% of movie length.\n"
-              "5. JSON shape: {\"characters\":[{\"name\":\"X\",\"hindi_name\":\"एक्स\",\"role\":\"Role\"}],\"beats\":[{\"from_id\":1,\"to_id\":2,\"narration\":\"Hindi narration\"}]}\n"
+              "1. NEVER DUB DIALOGUES: Do NOT narrate question-by-question or dialogue-by-dialogue. Summarize the WHOLE SCENE outcome in 1-2 broad sentences.\n"
+              "2. NARRATIVE BRIDGING: Always explain location and context first ('डिटेक्टिव क्लोई मर्डर की जांच करने लक्स क्लब पहुंचती है...').\n"
+              "3. STRICT LIMIT: Output EXACTLY 2 beats for this entire section. Ignore minor dialogue exchanges.\n"
+              "4. SHORT CLIPS: Each beat must pick only ONE 3-5 second clip (from_id to to_id).\n"
+              "5. JSON shape: {\"characters\":[...],\"beats\":[{\"from_id\":1,\"to_id\":2,\"narration\":\"Hindi recap\"}]}\n"
           )
 
 
@@ -433,23 +435,24 @@ jobs:
               return ("Reply format: marker RECAPSTART-" + tag + " on its line, raw JSON, marker RECAPEND-" + tag + " on its line.")
 
 
-          def part_message(ci, cursor, first, last, kind, tag, with_text):
-              t0 = segs[cursor - 1]["start"]
+          def part_message(ci, first, last, tag, with_text):
+              t0 = segs[first - 1]["start"]
               t1 = segs[last - 1]["end"]
-              head = (f"PART {ci + 1}/{len(chunks)} ({t0:.0f}s-{t1:.0f}s, lines #{first}-#{last}).\n"
-                      f"Give 2 to 4 key story beats in Hindi YouTube recap style with scene context bridges. "
-                      f"Keep clips short (3 to 6 seconds each).\n" + reply_format(tag))
+              head = (f"ACT {ci + 1} of {len(chunks)} ({t0:.0f}s to {t1:.0f}s).\n"
+                      f"Summarize this ENTIRE scene in EXACTLY 2 high-level story beats.\n"
+                      f"Do NOT break down dialogues. Tell what happens in the scene and the big revelation.\n"
+                      f"Output EXACTLY 2 beats in JSON.\n" + reply_format(tag))
               if with_text:
-                  head += "\nTRANSCRIPT:\n" + "\n".join(fmt_line(segs[i - 1]) for i in range(cursor, last + 1))
+                  head += "\nTRANSCRIPT:\n" + "\n".join(fmt_line(segs[i - 1]) for i in range(first, last + 1))
               return head
 
 
           def story_summary(beats, characters):
               if not beats:
                   return ""
-              names = ", ".join(f"{c.get('name', '')} ({c.get('hindi_name', '')})" for c in characters[:5])
-              recent = " ".join(b["narration"] for b in beats[-4:])
-              recent = recent[-500:]
+              names = ", ".join(f"{c.get('name', '')} ({c.get('hindi_name', '')})" for c in characters[:4])
+              recent = " ".join(b["narration"] for b in beats[-3:])
+              recent = recent[-400:]
               return f"\nContext so far: Characters ({names}). Earlier: {recent}\n"
 
 
@@ -464,7 +467,10 @@ jobs:
 
           def integrate(parsed, prev_to, prev_clip_end, first, last, part_no):
               accepted = []
-              for b in parsed.get("beats", []):
+              # Limit to top 2 beats maximum per act
+              candidate_beats = parsed.get("beats", [])[:2]
+
+              for b in candidate_beats:
                   try:
                       f, t = int(b["from_id"]), int(b["to_id"])
                   except Exception:
@@ -478,7 +484,6 @@ jobs:
                       if f > t:
                           continue
                   if not valid_hindi(nar):
-                      log(f"Beat #{f}-#{t} skipped (not valid Hindi narrative).")
                       continue
 
                   raw_start = segs[f - 1]["start"]
@@ -488,6 +493,7 @@ jobs:
                   cs = max(cs, 0.0)
                   ce = raw_end + CLIP_PAD
 
+                  # Strict YouTube Fair-Use clamp: 3 to 5 seconds
                   if ce - cs > MAX_CLIP:
                       ce = cs + MAX_CLIP
                   if ce - cs < MIN_CLIP:
@@ -513,8 +519,8 @@ jobs:
                   "duration": TOTAL_DUR,
                   "recap_duration_seconds": round(clip_sum, 1),
                   "recap_percentage": f"{round((clip_sum / TOTAL_DUR) * 100, 1)}%",
-                  "characters": characters,
                   "total_beats": len(beats),
+                  "characters": characters,
                   "parts": parts_info,
                   "beats": [dict({"beat_id": f"B{i + 1:04d}"}, **b) for i, b in enumerate(beats)],
               }
@@ -526,134 +532,87 @@ jobs:
               )
 
 
-          def repair_long_narrations(page, ci, part_beats):
-              bad = [b for b in part_beats if b["fit"] > FIT_LIMIT]
-              if not bad:
-                  return
-              tag = f"P{ci + 1}X"
-              lines = []
-              for b in bad:
-                  max_words = max(5, int(b["clip_sec"] * WORDS_PER_SEC * 1.05))
-                  lines.append(f"from_id={b['source_segment_ids'][0]} | clip {b['clip_sec']}s | max {max_words} words | current: {b['narration']}")
-              msg = ("Make these Hindi narrations shorter to fit YouTube clips (Devanagari only, no quotes):\n"
-                     '{"fixes":[{"from_id":<number>,"narration":"<shorter narration>"}]}\n'
-                     + reply_format(tag) + "\n" + "\n".join(lines))
-              log(f"Requesting {len(bad)} shorter voiceovers in part {ci + 1}")
-              submit_prompt(page, msg)
-              text, _ = wait_for_payload(page, tag)
-              fixes = parse_payload(text).get("fixes", [])
-              by_id = {b["source_segment_ids"][0]: b for b in bad}
-              applied = 0
-              for fx in fixes:
-                  try:
-                      b = by_id.get(int(fx["from_id"]))
-                  except Exception:
-                      continue
-                  nar = str(fx.get("narration", "")).strip().replace('"', "'")
-                  if not b or not valid_hindi(nar):
-                      continue
-                  old_fit, old_nar = b["fit"], b["narration"]
-                  b["narration"] = nar
-                  score(b)
-                  if b["fit"] < old_fit:
-                      applied += 1
-                  else:
-                      b["narration"] = old_nar
-                      score(b)
-              log(f"Applied {applied}/{len(bad)} tighter narrations")
-
-
           all_beats, characters, parts_info = [], [], []
 
           with sync_playwright() as p:
               start_browser(p)
+              prev_to = 0
+              prev_clip_end = 0.0
+
               for ci, (first, last) in enumerate(chunks):
                   part_dur = segs[last - 1]["end"] - segs[first - 1]["start"]
-                  log(f"\n===== PART {ci + 1}/{len(chunks)} (lines #{first}-#{last}, {part_dur:.0f}s) =====")
-                  part_beats, cursor, prev_to, rounds = [], first, first - 1, 0
+                  log(f"\n===== ACT {ci + 1}/{len(chunks)} (lines #{first}-#{last}, {part_dur:.0f}s) =====")
+                  tag = f"ACT{ci + 1}"
+                  ok = False
 
-                  while True:
-                      rounds += 1
-                      if rounds > MAX_ROUNDS:
+                  for attempt in range(1, MAX_ATTEMPTS + 1):
+                      try:
+                          new_chat = False
+                          if not chat["primed"] or state["page"] is None:
+                              open_chat()
+                              new_chat = True
+                          page = state["page"]
+                          msg = part_message(ci, first, last, tag, with_text=True)
+                          if new_chat:
+                              msg = SETUP + story_summary(all_beats, characters) + "\n" + msg
+
+                          log(f"Sending [{tag}] attempt {attempt} ({len(msg)} chars, new chat: {new_chat})")
+                          submit_prompt(page, msg)
+                          text, finished = wait_for_payload(page, tag)
+                          parsed = parse_payload(text)
+
+                          accepted = integrate(parsed, prev_to, prev_clip_end, first, last, ci + 1)
+                          if not accepted:
+                              raise ValueError("No usable beats returned")
+
+                          chat["primed"] = True
+                          known = {str(c.get("name", "")).lower() for c in characters}
+                          for c in parsed.get("characters", []):
+                              if isinstance(c, dict) and str(c.get("name", "")).lower() not in known:
+                                  characters.append(c)
+                                  known.add(str(c.get("name", "")).lower())
+
+                          all_beats.extend(accepted)
+                          prev_to = all_beats[-1]["source_segment_ids"][1]
+                          prev_clip_end = all_beats[-1]["target_window"]["end"]
+
+                          clip_total = sum(b["clip_sec"] for b in accepted)
+                          parts_info.append({
+                              "act": ci + 1,
+                              "start": round(segs[first - 1]["start"], 2),
+                              "end": round(segs[last - 1]["end"], 2),
+                              "beats": len(accepted),
+                              "clip_seconds": round(clip_total, 1),
+                          })
+
+                          write_json("debug/story_beats.partial.json", all_beats, characters, parts_info)
+                          log(f"[+] Act {ci + 1} Done: Added {len(accepted)} high-level beats (Total so far: {len(all_beats)})")
+                          ok = True
                           break
-                      kind = "new_part" if rounds == 1 else "continue"
-                      tag = f"P{ci + 1}R{rounds}"
-                      ok = False
-                      for attempt in range(1, MAX_ATTEMPTS + 1):
-                          try:
-                              new_chat = False
-                              if not chat["primed"] or state["page"] is None:
-                                  open_chat()
-                                  new_chat = True
-                              page = state["page"]
-                              msg = part_message(ci, cursor, first, last, kind, tag, with_text=(kind == "new_part" or new_chat))
-                              if new_chat:
-                                  msg = SETUP + story_summary(all_beats + part_beats, characters) + "\n" + msg
-                              log(f"Sending [{tag}] attempt {attempt} ({len(msg)} chars, new chat: {new_chat})")
-                              submit_prompt(page, msg)
-                              text, finished = wait_for_payload(page, tag)
-                              parsed = parse_payload(text)
-                              prev_list = part_beats or all_beats
-                              prev_clip_end = prev_list[-1]["target_window"]["end"] if prev_list else 0.0
-                              accepted = integrate(parsed, prev_to, prev_clip_end, first, last, ci + 1)
-                              if not accepted:
-                                  raise ValueError("No usable beats returned")
-                              chat["primed"] = True
-                              known = {str(c.get("name", "")).lower() for c in characters}
-                              for c in parsed.get("characters", []):
-                                  if isinstance(c, dict) and str(c.get("name", "")).lower() not in known:
-                                      characters.append(c)
-                                      known.add(str(c.get("name", "")).lower())
-                              part_beats.extend(accepted)
-                              prev_to = part_beats[-1]["source_segment_ids"][1]
-                              write_json("debug/story_beats.partial.json", all_beats + part_beats, characters, parts_info)
-                              log(f"[+] +{len(accepted)} beats; covered up to line #{prev_to} of #{last}")
-                              ok = True
-                              break
-                          except Exception as err:
-                              log(f"Attempt {attempt} failed: {err}")
-                              if state["page"]:
-                                  snap(state["page"], f"err_{tag}_a{attempt}")
-                              new_tor_circuit()
-                              start_browser(p)
-                              chat["primed"] = False
+                      except Exception as err:
+                          log(f"Attempt {attempt} failed: {err}")
+                          if state["page"]:
+                              snap(state["page"], f"err_{tag}_a{attempt}")
+                          new_tor_circuit()
+                          start_browser(p)
+                          chat["primed"] = False
 
-                      if not ok:
-                          log(f"Could not complete part {ci + 1}. Saving partial results.")
-                          sys.exit(1)
-
-                      # 2 to 4 major story beats per scene are sufficient for a YouTube recap
-                      if len(part_beats) >= 2 or prev_to >= last - 5:
-                          break
-                      cursor = prev_to + 1
-
-                  try:
-                      repair_long_narrations(state["page"], ci, part_beats)
-                  except Exception as err:
-                      log(f"Narration adjustment skipped: {err}")
-                      chat["primed"] = False
-
-                  clip_total = sum(b["clip_sec"] for b in part_beats)
-                  parts_info.append({
-                      "part": ci + 1,
-                      "source_start": round(segs[first - 1]["start"], 2),
-                      "source_end": round(segs[last - 1]["end"], 2),
-                      "source_seconds": round(part_dur, 1),
-                      "recap_clip_seconds": round(clip_total, 1),
-                      "ratio": round(clip_total / part_dur, 2),
-                      "beats": len(part_beats),
-                  })
-                  log(f"Part {ci + 1} Done: {len(part_beats)} beats, {clip_total:.0f}s clips for {part_dur:.0f}s video")
-                  all_beats.extend(part_beats)
-                  write_json("debug/story_beats.partial.json", all_beats, characters, parts_info)
+                  if not ok:
+                      log(f"Failed to generate Act {ci + 1}. Saving partial results.")
+                      sys.exit(1)
 
               if state["browser"]:
                   state["browser"].close()
 
           write_json("story_beats.json", all_beats, characters, parts_info)
           total_recap_dur = sum(b["clip_sec"] for b in all_beats)
-          log(f"SUCCESS: story_beats.json produced with {len(all_beats)} beats.")
-          log(f"Total Video: {TOTAL_DUR:.0f}s | Recap Clips: {total_recap_dur:.0f}s ({round((total_recap_dur/TOTAL_DUR)*100)}%)")
+          est_voiceover_time = sum(b["narration_sec_est"] for b in all_beats)
+          log(f"\n=======================================================")
+          log(f"SUCCESS: Generated {len(all_beats)} beats TOTAL (Expected: ~10-14).")
+          log(f"Original Video: {TOTAL_DUR:.0f}s (~{TOTAL_DUR/60:.1f} mins)")
+          log(f"Total Video Clips: {total_recap_dur:.0f}s (~{total_recap_dur/60:.1f} mins)")
+          log(f"Estimated Voiceover Runtime: {est_voiceover_time:.0f}s (~{est_voiceover_time/60:.1f} mins)")
+          log(f"=======================================================")
           PY
           if [ "$HEADED" = "true" ]; then
             xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py
@@ -680,7 +639,7 @@ jobs:
             echo "No new story beats to commit."
             exit 0
           fi
-          git commit -m "Add synchronized YouTube-style Hindi story_beats.json [skip ci]"
+          git commit -m "Add concise 2.5-min YouTube-style Hindi story_beats.json [skip ci]"
           git pull --rebase origin main
           git push origin HEAD:main
 

@@ -1,45 +1,1169 @@
 {
   "movie_title": "movie",
+  "duration": 1039.86,
   "characters": [
     {
       "name": "Chloe",
-      "hindi_name": "डिटेक्टिव क्लोई",
-      "role": "जासूस"
+      "hindi_name": "क्लोई",
+      "role": "मामले की जाँच कर रही जासूस"
+    },
+    {
+      "name": "Lucifer Morningstar",
+      "hindi_name": "लूसिफ़र मॉर्निंगस्टार",
+      "role": "गवाह और क्लब का मालिक"
+    },
+    {
+      "name": "Jaila",
+      "hindi_name": "जायला",
+      "role": "मारी गई गायिका"
+    },
+    {
+      "name": "Darlala",
+      "hindi_name": "दारलाला",
+      "role": "जिसके पर्स में ड्रग्स का पैकेट मिला"
+    },
+    {
+      "name": "Dr. Linda",
+      "hindi_name": "डॉ. लिंडा",
+      "role": "जायला की थेरेपिस्ट"
+    },
+    {
+      "name": "Eddie",
+      "hindi_name": "एडी",
+      "role": "डेलिलाह का परिचित और ड्रग डीलर"
+    },
+    {
+      "name": "Vile",
+      "hindi_name": "वाइल",
+      "role": "हत्यारे के फ़ोन रिकॉर्ड में आख़िरी कॉल पाने वाला"
+    },
+    {
+      "name": "Penny Lane",
+      "hindi_name": "पेनी लेन",
+      "role": "डेलिलाह द्वारा इस्तेमाल किया गया नाम"
+    },
+    {
+      "name": "Beatrice",
+      "hindi_name": "बीट्रिस",
+      "role": "लूसिफ़र से मिलने वाली लड़की"
+    },
+    {
+      "name": "Ms. Puli",
+      "hindi_name": "मिस पुली",
+      "role": "लूसिफ़र द्वारा संबोधित महिला"
     }
   ],
-  "total_beats": 4,
+  "total_beats": 57,
+  "recap_clip_seconds": 863.4,
+  "parts": [
+    {
+      "part": 1,
+      "source_start": 0.72,
+      "source_end": 134.99,
+      "source_seconds": 134.3,
+      "recap_clip_seconds": 113.0,
+      "ratio": 0.84,
+      "beats": 7
+    },
+    {
+      "part": 2,
+      "source_start": 134.99,
+      "source_end": 254.66,
+      "source_seconds": 119.7,
+      "recap_clip_seconds": 115.2,
+      "ratio": 0.96,
+      "beats": 7
+    },
+    {
+      "part": 3,
+      "source_start": 254.66,
+      "source_end": 362.36,
+      "source_seconds": 107.7,
+      "recap_clip_seconds": 88.8,
+      "ratio": 0.82,
+      "beats": 5
+    },
+    {
+      "part": 4,
+      "source_start": 364.0,
+      "source_end": 493.68,
+      "source_seconds": 129.7,
+      "recap_clip_seconds": 112.3,
+      "ratio": 0.87,
+      "beats": 7
+    },
+    {
+      "part": 5,
+      "source_start": 493.68,
+      "source_end": 579.74,
+      "source_seconds": 86.1,
+      "recap_clip_seconds": 69.6,
+      "ratio": 0.81,
+      "beats": 5
+    },
+    {
+      "part": 6,
+      "source_start": 579.74,
+      "source_end": 685.38,
+      "source_seconds": 105.6,
+      "recap_clip_seconds": 88.7,
+      "ratio": 0.84,
+      "beats": 8
+    },
+    {
+      "part": 7,
+      "source_start": 685.38,
+      "source_end": 799.03,
+      "source_seconds": 113.6,
+      "recap_clip_seconds": 94.3,
+      "ratio": 0.83,
+      "beats": 7
+    },
+    {
+      "part": 8,
+      "source_start": 799.03,
+      "source_end": 949.54,
+      "source_seconds": 150.5,
+      "recap_clip_seconds": 116.7,
+      "ratio": 0.78,
+      "beats": 6
+    },
+    {
+      "part": 9,
+      "source_start": 949.62,
+      "source_end": 1036.58,
+      "source_seconds": 87.0,
+      "recap_clip_seconds": 64.8,
+      "ratio": 0.75,
+      "beats": 5
+    }
+  ],
   "beats": [
     {
       "beat_id": "B0001",
+      "part": 1,
+      "source_segment_ids": [
+        3,
+        5
+      ],
       "target_window": {
-        "start": 0.72,
-        "end": 13.68
+        "start": 13.43,
+        "end": 24.55
       },
-      "narration": "डिटेक्टिव क्लोई अपने सीनियर को अंदर बुलाती है और नई जानकारी बताती है।"
+      "narration": "लेफ्टिनेंट ने क्लोई को बताया कि यह मामला उसी का है, लेकिन उसे ज़्यादा वक्त न लगाने की हिदायत दी, क्योंकि मामला आसान लग रहा था।",
+      "source_text": "Lieutenant told me that this is my case. Yes, Chloe, this is your case. But don't waste too much time. This is an easy case.",
+      "narration_words": 26,
+      "narration_sec_est": 11.3,
+      "clip_sec": 11.1,
+      "fit": 1.02
     },
     {
       "beat_id": "B0002",
+      "part": 1,
+      "source_segment_ids": [
+        6,
+        10
+      ],
       "target_window": {
-        "start": 0.72,
-        "end": 13.68
+        "start": 24.3,
+        "end": 35.55
       },
-      "narration": "डिटेक्टिव क्लोई अपने सीनियर को अंदर बुलाती है और नई जानकारी बताती है।"
+      "narration": "क्लोई बताती है कि खून और ड्रग्स के पैकेट मिले हैं—एक पैकेट छोटे, भारी-भरकम ड्रग डीलर की जेब में और दूसरा दारलाला के पर्स में। उसे शक है कि दारलाला ने ड्रग्स के पैसे नहीं चुकाए।",
+      "source_text": "And this is your blood. This is the small, heavy drug dealer. I got this from his pocket and this packet was in Darlala's purse. So, it's Darlala's case. Darlala must have not paid the drugs.",
+      "narration_words": 36,
+      "narration_sec_est": 15.7,
+      "clip_sec": 11.2,
+      "fit": 1.39
     },
     {
       "beat_id": "B0003",
+      "part": 1,
+      "source_segment_ids": [
+        17,
+        20
+      ],
       "target_window": {
-        "start": 0.72,
-        "end": 13.68
+        "start": 45.5,
+        "end": 57.51
       },
-      "narration": "डिटेक्टिव क्लोई अपने सीनियर को अंदर बुलाती है और नई जानकारी बताती है।"
+      "narration": "लेफ्टिनेंट याद दिलाता है कि सबकी नज़र इस मामले पर है। क्लोई कहती है कि वह वक्त बर्बाद नहीं करेगी और फ़ास्कर पाल्मेटो स्ट्रीट वाला मामला माँगेगी।",
+      "source_text": "Look, everyone's eyes are on this case, Chloe. I won't waste time. I'll ask for the Fasker Palmetto case. I've asked for this case because of Palmetto Street.",
+      "narration_words": 27,
+      "narration_sec_est": 11.7,
+      "clip_sec": 12.0,
+      "fit": 0.98
     },
     {
       "beat_id": "B0004",
+      "part": 1,
+      "source_segment_ids": [
+        21,
+        27
+      ],
       "target_window": {
-        "start": 0.72,
-        "end": 13.68
+        "start": 57.26,
+        "end": 78.71
       },
-      "narration": "डिटेक्टिव क्लोई अपने सीनियर को अंदर बुलाती है और नई जानकारी बताती है।"
+      "narration": "गवाह का नाम लूसिफ़र मॉर्निंगस्टार सुनकर क्लोई पूछती है कि क्या यह उसका असली नाम है। वह कहता है कि वह माली नहीं है, और बताता है कि वे पाँच मिनट पहले यहीं मिले थे।",
+      "source_text": "Anyway, let it go. Is there any witness? Lucifer Morningstar. Lucifer Morningstar. Is this your real name? I'm not a gardener. You know what? I think we've met somewhere before. Right here, five minutes ago.",
+      "narration_words": 35,
+      "narration_sec_est": 15.2,
+      "clip_sec": 21.4,
+      "fit": 0.71
+    },
+    {
+      "beat_id": "B0005",
+      "part": 1,
+      "source_segment_ids": [
+        28,
+        35
+      ],
+      "target_window": {
+        "start": 78.46,
+        "end": 97.71
+      },
+      "narration": "क्लोई पूछती है कि लूसिफ़र का जायला से क्या रिश्ता था। वह बताता है कि जायला यहाँ कई साल काम करती थी, फिर बड़ी स्टार बनी और किसी ने उसे मार डाला; शूटर को वह नहीं जानता, लेकिन मरने से पहले जायला ने उसे हत्या की वजह बताई थी।",
+      "source_text": "And I'll ask you a question. What was your relationship with the victim? She used to work here for a few years. And I used to play her songs sometimes. Then she became a big star and someone decided to kill her. Do you know the shooter? No. But before she died, she told me an interesting thing. She told me the reason for the murder.",
+      "narration_words": 49,
+      "narration_sec_est": 21.3,
+      "clip_sec": 19.2,
+      "fit": 1.11
+    },
+    {
+      "beat_id": "B0006",
+      "part": 1,
+      "source_segment_ids": [
+        36,
+        42
+      ],
+      "target_window": {
+        "start": 97.46,
+        "end": 113.63
+      },
+      "narration": "लूसिफ़र मज़ाक में कहता है कि क्लोई पुलिसवाली का खेल खेलती है, मगर क्लोई खुद को जासूस बताती है। उसके यह कहने पर कि वह मरे हुए से बात कर चुका है, लूसिफ़र समझाता है कि जायला पूरी तरह नहीं मरी थी और उसकी आत्मा आगे नहीं गई थी।",
+      "source_text": "Yes. She likes to play the thief police. No. I like to play the detective. What do you like? You talked to a dead person. No. She didn't die completely. Her soul didn't go beyond that. Okay.",
+      "narration_words": 49,
+      "narration_sec_est": 21.3,
+      "clip_sec": 16.2,
+      "fit": 1.32
+    },
+    {
+      "beat_id": "B0007",
+      "part": 1,
+      "source_segment_ids": [
+        43,
+        51
+      ],
+      "target_window": {
+        "start": 113.38,
+        "end": 135.24
+      },
+      "narration": "हत्या की वजह पूछने पर लूसिफ़र कहता है कि मामला पैसों का है और जायला में पैसे का लालच था। फिर वह बताता है कि जायला ने कहा था कि उसने बस ट्रिगर दबाया; अब क्लोई के मुताबिक जायला को एक ड्रग डीलर ने गोली मारी थी, और उसकी बदनामी भी थी।",
+      "source_text": "Tell me the reason for the murder. It's a matter of money. You don't get the greed for money. Yes. Absolutely. And what are you doing here? From London? She also said that I just pressed the trigger. Isn't it interesting? Jaila was shot by a drug dealer. And it seems Jaila had a bad reputation.",
+      "narration_words": 52,
+      "narration_sec_est": 22.6,
+      "clip_sec": 21.9,
+      "fit": 1.03
+    },
+    {
+      "beat_id": "B0008",
+      "part": 2,
+      "source_segment_ids": [
+        52,
+        56
+      ],
+      "target_window": {
+        "start": 134.99,
+        "end": 148.5
+      },
+      "narration": "लूसिफ़र कहता है कि जायला किसी गड़बड़ में थी, उसने उसे मारा और भगवान ने उसे भी मार दिया। क्लोई इसे अपनी दुनिया से बाहर बताती है, तो वह पूछता है कि एलएपीडी ने मामला क्यों नहीं सुलझाया।",
+      "source_text": "It's not rocket science. She must have been involved in something. She killed Jaila and God killed her to clean it up. This is not your world, detective. Had it been so, would the LAPT have solved the case?",
+      "narration_words": 38,
+      "narration_sec_est": 16.5,
+      "clip_sec": 13.5,
+      "fit": 1.22
+    },
+    {
+      "beat_id": "B0009",
+      "part": 2,
+      "source_segment_ids": [
+        57,
+        64
+      ],
+      "target_window": {
+        "start": 148.25,
+        "end": 167.23
+      },
+      "narration": "क्लोई पूछती है कि गोलियों से जायला की मौत कैसे हुई, जबकि वह अभी तक लूसिफ़र के पास नहीं आई। लूसिफ़र अपनी अमरता का ज़िक्र करता है; क्लोई कहती है कि उसे यह बात रिपोर्ट में लिखनी होगी, फिर वह अँधेरे के नियमों को भूलने पर उसे चिढ़ाता है।",
+      "source_text": "I have a question. How is it possible that she died because of the bullets? But she hasn't come to you yet. Immortality. Immortality? Why not? No. I'll have to write this in the report. I shouldn't forget it anywhere. What else do you do other than forgetting the law of darkness?",
+      "narration_words": 49,
+      "narration_sec_est": 21.3,
+      "clip_sec": 19.0,
+      "fit": 1.12
+    },
+    {
+      "beat_id": "B0010",
+      "part": 2,
+      "source_segment_ids": [
+        66,
+        72
+      ],
+      "target_window": {
+        "start": 167.73,
+        "end": 182.23
+      },
+      "narration": "लूसिफ़र पूछता है कि क्लोई हत्यारे को ढूँढ़कर सज़ा देगी या नहीं, और मामला उसके लिए क्यों ज़रूरी है। नोकझोंक के बाद वह पूछता है कि क्या वे हत्यारे को पहले नहीं ढूँढ़ पाए।",
+      "source_text": "Will you find the murderer? Will you punish him? Is this case necessary for you? Because it is for me. Your tongue is very bad. Not just my tongue. Absolutely. Do you believe that we didn't find him earlier?",
+      "narration_words": 34,
+      "narration_sec_est": 14.8,
+      "clip_sec": 14.5,
+      "fit": 1.02
+    },
+    {
+      "beat_id": "B0011",
+      "part": 2,
+      "source_segment_ids": [
+        75,
+        77
+      ],
+      "target_window": {
+        "start": 187.33,
+        "end": 204.55
+      },
+      "narration": "क्लोई आगे बढ़ती है, तो लूसिफ़र उसे रोककर कहता है कि उन्हें अपने दम पर असली हत्यारे को ढूँढ़ना चाहिए। क्लोई हामी भरती है।",
+      "source_text": "Detective, wait. We should find the real murderer with our own teeth. Yes, we will.",
+      "narration_words": 24,
+      "narration_sec_est": 10.4,
+      "clip_sec": 17.2,
+      "fit": 0.61
+    },
+    {
+      "beat_id": "B0012",
+      "part": 2,
+      "source_segment_ids": [
+        78,
+        80
+      ],
+      "target_window": {
+        "start": 204.3,
+        "end": 212.55
+      },
+      "narration": "लूसिफ़र इस साझेदारी को सुंदर और मासूम रिश्ता बताकर शादी की रस्म जैसा मज़ाक करता है और पूछता है कि किसी को ऐतराज़ हो तो अभी बोल दे।",
+      "source_text": "Yes, detective. We will find the murderer in the beautiful and innocent bond. If anyone has any objection to this sacred relation, then speak now.",
+      "narration_words": 28,
+      "narration_sec_est": 12.2,
+      "clip_sec": 8.2,
+      "fit": 1.48
+    },
+    {
+      "beat_id": "B0013",
+      "part": 2,
+      "source_segment_ids": [
+        81,
+        88
+      ],
+      "target_window": {
+        "start": 212.3,
+        "end": 232.24
+      },
+      "narration": "किसी के ऐतराज़ जताने पर लूसिफ़र एक दुल्हन और उसके होने वाले जीवनसाथी का मज़ाक उड़ाता है, जबकि क्लोई पूछती है कि यह शादी है या तबाही। फिर वह दोस्त से पूछता है कि वह क्या कहता है, और जवाब मिलता है कि उसे कुछ नहीं होगा, पादरी।",
+      "source_text": "Excuse me? Yes, I have an objection. It's amazing that you didn't notice that this young bride is beautiful and beautiful at the end of her life. Whereas this drama is like a dirty dirty shop. What do you mean? Is this marriage or destruction? What do you say, friend? Nothing will happen to her, Padri.",
+      "narration_words": 48,
+      "narration_sec_est": 20.9,
+      "clip_sec": 19.9,
+      "fit": 1.05
+    },
+    {
+      "beat_id": "B0014",
+      "part": 2,
+      "source_segment_ids": [
+        89,
+        100
+      ],
+      "target_window": {
+        "start": 231.99,
+        "end": 254.91
+      },
+      "narration": "एक निजी समारोह में लूसिफ़र कैप्टन को जिमी बार्न्स कहकर पहचानने की चुनौती देता है। जिमी उसे निजी कार्यक्रम में घुसने पर टोकता है, लेकिन लूसिफ़र कहता है कि वह निर्माता के दफ़्तर के बाहर का निजी व्यक्ति है; फिर जिमी पूछता है कि उसे क्या चाहिए। लूसिफ़र कहता है कि वह व्यस्त है, मगर उसे यक़ीन नहीं होता कि जिमी अपनी पूर्व मंगेतर, बड़ी स्टार, के अगले ही दिन शादी कर रहा है।",
+      "source_text": "Hello, Captain. Jimmy Barnes, do you recognize me? Hey, this is a private function. How did you come inside? Yes, I am a private person. But I am outside the producer's office. Don't you recognize me? You can't forget even if you want to. What do you want? I am busy right now. Yes, but I can't believe that you are getting married the next day after your ex-fiance, a big star,",
+      "narration_words": 74,
+      "narration_sec_est": 32.2,
+      "clip_sec": 22.9,
+      "fit": 1.4
+    },
+    {
+      "beat_id": "B0015",
+      "part": 3,
+      "source_segment_ids": [
+        101,
+        108
+      ],
+      "target_window": {
+        "start": 254.66,
+        "end": 269.91
+      },
+      "narration": "जिमी कहता है कि जायला की मौत पर उसे दुख है, लेकिन वह फिर उसकी शादी नहीं बिगाड़ने देगा। क्लोई याद दिलाती है कि वह रात में जायला को मनाने गया था; जिमी कहता है कि न मना पाने पर वह उसे मार देता।",
+      "source_text": "who has been killed without mercy. Yes, I am very sad to hear that. But she had ruined my marriage once. I won't let that happen again. You didn't get the chance to get married twice. What? You had gone to convince her at night. If I had convinced her, I would have killed her.",
+      "narration_words": 44,
+      "narration_sec_est": 19.1,
+      "clip_sec": 15.3,
+      "fit": 1.25
+    },
+    {
+      "beat_id": "B0016",
+      "part": 3,
+      "source_segment_ids": [
+        110,
+        118
+      ],
+      "target_window": {
+        "start": 270.41,
+        "end": 286.91
+      },
+      "narration": "लूसिफ़र जिमी से सीधा पूछता है कि क्या उसने जायला को मारा। जिमी कहता है कि वह उसके दिमागी खेल में नहीं फँसेगा, पर मानता है कि जायला के कबूलनामे से वह अपमानित और गुस्से में था।",
+      "source_text": "So come on. What do you say, Jimmy? Did you kill her? Look, stop staring at me like that. I am not going to come to your mind games. No, not at all. Yes, I was angry because I was humiliated by her confession. But my lottery is now on.",
+      "narration_words": 37,
+      "narration_sec_est": 16.1,
+      "clip_sec": 16.5,
+      "fit": 0.97
+    },
+    {
+      "beat_id": "B0017",
+      "part": 3,
+      "source_segment_ids": [
+        121,
+        130
+      ],
+      "target_window": {
+        "start": 288.41,
+        "end": 301.91
+      },
+      "narration": "लूसिफ़र जिमी से दिमागी खेल जारी रखता है। जिमी बताता है कि जायला उसे छोड़कर एक रैपर के पास गई थी, जो उससे लड़ता और उसे पीटता था; फिर वह उसी रैपर को असली हत्यारा ठहराता है।",
+      "source_text": "Just play with your mind games for a while. That rapper? Don't make me do that. Jalaila left me for that idiot. He used to fight every time. He used to beat Jalaila. He used to shoot at the gun. He keeps fooling around. 24 hours. He is the real killer.",
+      "narration_words": 37,
+      "narration_sec_est": 16.1,
+      "clip_sec": 13.5,
+      "fit": 1.19
+    },
+    {
+      "beat_id": "B0018",
+      "part": 3,
+      "source_segment_ids": [
+        131,
+        150
+      ],
+      "target_window": {
+        "start": 301.66,
+        "end": 334.68
+      },
+      "narration": "लूसिफ़र अपना परिचय देता है, मगर कहता है कि उसे उस आदमी के साथ सोने की इच्छा नहीं। दुल्हन इस बात पर हैरान होती है; लूसिफ़र उसे भरोसा दिलाता है कि वह इस बेकार वजह से शादी नहीं कर रही, क्योंकि वह उससे प्यार करती है। फिर वह विदा लेकर शादी की बधाई देता है।",
+      "source_text": "I see. Sorry. I have not introduced myself to you. My name is Lucifer Morningstar. I don't want to have sex with him. Oh my God. I am sorry. I don't believe it. I said that. No, it's okay. We all know that. You are not getting married because of this trash. Because you love him. How can I do that? No. That's good. Now I should go. Oh. Congratulations on your wedding. Enjoy.",
+      "narration_words": 55,
+      "narration_sec_est": 23.9,
+      "clip_sec": 33.0,
+      "fit": 0.72
+    },
+    {
+      "beat_id": "B0019",
+      "part": 3,
+      "source_segment_ids": [
+        151,
+        158
+      ],
+      "target_window": {
+        "start": 352.11,
+        "end": 362.61
+      },
+      "narration": "लूसिफ़र एक घर पहुँचकर नौकर से बॉस के बारे में पूछता है। नौकर कहता है कि बॉस नहीं मिल सकते; लूसिफ़र जवाब देता है कि उसके पास उनके लिए ड्रग्स हैं।",
+      "source_text": "Good afternoon, sir. I have come to meet your boss for a while. Is he at home? I am sorry, sir. He is making a joke. He can't meet him. I see. I have drugs for him.",
+      "narration_words": 31,
+      "narration_sec_est": 13.5,
+      "clip_sec": 10.5,
+      "fit": 1.28
+    },
+    {
+      "beat_id": "B0020",
+      "part": 4,
+      "source_segment_ids": [
+        160,
+        163
+      ],
+      "target_window": {
+        "start": 376.49,
+        "end": 383.99
+      },
+      "narration": "एक आदमी संगीत पर ऐतराज़ जताता है। तभी जॉकी का अभिवादन सुनाई देता है और लूसिफ़र का परिचय कराया जाता है।",
+      "source_text": "What is this? You will not listen to this dirty and useless music. Hello, this is Jockey. Thank you.",
+      "narration_words": 21,
+      "narration_sec_est": 9.1,
+      "clip_sec": 7.5,
+      "fit": 1.22
+    },
+    {
+      "beat_id": "B0021",
+      "part": 4,
+      "source_segment_ids": [
+        164,
+        168
+      ],
+      "target_window": {
+        "start": 383.74,
+        "end": 396.54
+      },
+      "narration": "मेज़बान पूछता है कि लूसिफ़र कौन है। उसे बताया जाता है कि वह ड्रग्स लाया है; लूसिफ़र अपना नाम बताता है, जिसे सुनकर मेज़बान दोहराता है।",
+      "source_text": "Who is this guy? He has brought drugs for you, sir. My name is Lucifer Morningstar. Lucifer Morningstar. This is Dhasu's name for hip-hop.",
+      "narration_words": 26,
+      "narration_sec_est": 11.3,
+      "clip_sec": 12.8,
+      "fit": 0.88
+    },
+    {
+      "beat_id": "B0022",
+      "part": 4,
+      "source_segment_ids": [
+        169,
+        174
+      ],
+      "target_window": {
+        "start": 396.29,
+        "end": 409.13
+      },
+      "narration": "हिप-हॉप के अपमान पर लूसिफ़र से पूछा जाता है कि क्या उसे अश्वेत लोगों से समस्या है। वह साफ़ करता है कि उसे सिर्फ़ उस आदमी का संगीत पसंद नहीं।",
+      "source_text": "You are insulting me. Why? Don't you like hip-hop? No, my music tastes good. Now you are insulting me. Do you have any problem with black people?",
+      "narration_words": 30,
+      "narration_sec_est": 13.0,
+      "clip_sec": 12.8,
+      "fit": 1.02
+    },
+    {
+      "beat_id": "B0023",
+      "part": 4,
+      "source_segment_ids": [
+        175,
+        183
+      ],
+      "target_window": {
+        "start": 408.88,
+        "end": 427.13
+      },
+      "narration": "लूसिफ़र कहता है कि उसे दूसरे अश्वेत कलाकारों के संगीत से दिक्कत नहीं, फिर ब्लूज़ के बिना संगीत और उस आदमी के उद्योग में न आने पर तंज़ करता है। सामने वाला कहता है कि वह समझ गया।",
+      "source_text": "No, not at all. I just hate your music. I hate the music you make of your music. Not the music of other black people. It means it is impossible to play devil music without blues. You don't even come to your industry. Do you understand what I am saying? Yes, I understand it very well. Good.",
+      "narration_words": 38,
+      "narration_sec_est": 16.5,
+      "clip_sec": 18.2,
+      "fit": 0.91
+    },
+    {
+      "beat_id": "B0024",
+      "part": 4,
+      "source_segment_ids": [
+        184,
+        188
+      ],
+      "target_window": {
+        "start": 426.88,
+        "end": 447.72
+      },
+      "narration": "लूसिफ़र मौत को लेकर छेड़ता है और कहता है कि वह अमर है। फिर वह डेलिलाह के बारे में पूछता है; जवाब में कहा जाता है कि उसे खबर देखनी चाहिए, क्योंकि वह पहले ही मर चुका है।",
+      "source_text": "You are very fond of dying. Don't miss the bullets. I am immortal. What do you know about Delilah? You don't watch the news. You have already died.",
+      "narration_words": 38,
+      "narration_sec_est": 16.5,
+      "clip_sec": 20.8,
+      "fit": 0.79
+    },
+    {
+      "beat_id": "B0025",
+      "part": 4,
+      "source_segment_ids": [
+        189,
+        202
+      ],
+      "target_window": {
+        "start": 447.47,
+        "end": 469.2
+      },
+      "narration": "कोई गोली चलाने का आदेश देता है, मगर वक्ता कहता है कि उसने उसे नहीं मारा, क्योंकि वह उससे प्यार करता है। बातचीत में कहा जाता है कि प्यार का कोई तर्क नहीं, वह गुस्से में था और उसने दूसरी औरत से संबंध होने पर उसे मारा था।",
+      "source_text": "Shoot him! I didn't kill him. Why do you believe in him? Because I love him. Sometimes people take life in love. There is no logic in the matter of love. People say that. No, it's not like that. He was mad. What is the new thing in it? It means you will raise your hand on him. Our witch was doing the right thing. He was just hitting him once. Because he had an affair with someone else.",
+      "narration_words": 48,
+      "narration_sec_est": 20.9,
+      "clip_sec": 21.7,
+      "fit": 0.96
+    },
+    {
+      "beat_id": "B0026",
+      "part": 4,
+      "source_segment_ids": [
+        203,
+        212
+      ],
+      "target_window": {
+        "start": 475.43,
+        "end": 493.93
+      },
+      "narration": "पूछने पर कि वह दूसरी औरत कौन थी, जवाब आता है कि नाम पता नहीं और वह उसे राज़ कहता था। वह शादीशुदा था और किसी पर भरोसा नहीं करता था; आखिरकार उसकी थेरेपिस्ट डॉ. लिंडा का नाम सामने आता है।",
+      "source_text": "Acha, with whom? I don't know. He didn't tell me. He kept his name as Raaz. He was a married man. Is there any friend who knows Raaz? He didn't trust anyone. His therapist. His therapist must know Raaz. His name is Dr. Linda.",
+      "narration_words": 41,
+      "narration_sec_est": 17.8,
+      "clip_sec": 18.5,
+      "fit": 0.96
+    },
+    {
+      "beat_id": "B0027",
+      "part": 5,
+      "source_segment_ids": [
+        213,
+        216
+      ],
+      "target_window": {
+        "start": 493.68,
+        "end": 500.93
+      },
+      "narration": "डॉ. लिंडा बेवर्ली हिल्स में रहती है। जायला का परिचित उससे हफ़्ते में पाँच बार नकली नाम से मिलता था।",
+      "source_text": "In Beverly Hills. He used to go to meet her five times a week. That too in the name of someone else. Oh, that's it.",
+      "narration_words": 20,
+      "narration_sec_est": 8.7,
+      "clip_sec": 7.2,
+      "fit": 1.2
+    },
+    {
+      "beat_id": "B0028",
+      "part": 5,
+      "source_segment_ids": [
+        220,
+        227
+      ],
+      "target_window": {
+        "start": 504.43,
+        "end": 520.93
+      },
+      "narration": "क्लोई पहुँचकर सबको बंदूकें नीचे रखने और हाथ उठाने का आदेश देती है। लूसिफ़र उसका स्वागत करता है; क्लोई बताती है कि हत्यारे के फ़ोन रिकॉर्ड में आख़िरी कॉल वाइल को की गई थी।",
+      "source_text": "LAPD, everyone throw your guns on the ground. Both of you, raise your hands. Detective, welcome to the party. Put everyone's guns in the bucket. Hurry up. I am giving your intelligence that you have reached here. I checked the phone record of the murderer. He called the last call to Vile.",
+      "narration_words": 34,
+      "narration_sec_est": 14.8,
+      "clip_sec": 16.5,
+      "fit": 0.9
+    },
+    {
+      "beat_id": "B0029",
+      "part": 5,
+      "source_segment_ids": [
+        231,
+        240
+      ],
+      "target_window": {
+        "start": 526.43,
+        "end": 543.63
+      },
+      "narration": "क्लोई डेलिलाह के बारे में पूछती है और जानना चाहती है कि उसने दो दिन पहले शूटर को क्यों फ़ोन किया। वह मानता है कि उसने एडी को फ़ोन किया था, क्योंकि वह उसका ड्रग डीलर है और उसकी डेलिलाह से मुलाक़ात हुई थी। क्लोई कहती है कि इससे वह संदिग्ध बनता है।",
+      "source_text": "Tell me about Delilah. I have asked before, detective. And why did you call the shooter two days ago? Yes. Okay, I called Eddie because he is my dealer. I had met him with Delilah. So what? Do I become a murderer? No. But you do become a suspect.",
+      "narration_words": 53,
+      "narration_sec_est": 23.0,
+      "clip_sec": 17.2,
+      "fit": 1.34
+    },
+    {
+      "beat_id": "B0030",
+      "part": 5,
+      "source_segment_ids": [
+        246,
+        260
+      ],
+      "target_window": {
+        "start": 551.49,
+        "end": 569.99
+      },
+      "narration": "क्लोई एक औरत को फ़िल्म की अभिनेत्री के रूप में पहचानती है। वह हॉट टॉप हाई स्कूल का नाम याद करती है और उस फ़िल्म के नग्न दृश्य का ज़िक्र करती है; अभिनेत्री कहती है कि अब उससे सिर्फ़ सवाल पूछे जाएँ।",
+      "source_text": "You are the actress of the film, right? What did you say? Which film? She used to act in the film. Right? Yes. I don't remember the name of that film. Oh, yes. Hot Top High School. I have seen you there. Yes. You can only ask me questions. Okay. That film is a famous nude scene. She was going out of the hot top. She was looking like a heroine in that film.",
+      "narration_words": 42,
+      "narration_sec_est": 18.3,
+      "clip_sec": 18.5,
+      "fit": 0.99
+    },
+    {
+      "beat_id": "B0031",
+      "part": 5,
+      "source_segment_ids": [
+        261,
+        266
+      ],
+      "target_window": {
+        "start": 569.74,
+        "end": 579.99
+      },
+      "narration": "लूसिफ़र कहता है कि दृश्य ने उसका दिल छू लिया। क्लोई सबको गोली मारने की धमकी देती है; वह बात करना चाहता है, पर वह कहती है कि वक्त ठीक नहीं।",
+      "source_text": "Thanks. My heart is broken. That nude scene touched my heart. If you say one more word, I will shoot you all. I want to talk to you at this time. Detective, this time will be ruined.",
+      "narration_words": 31,
+      "narration_sec_est": 13.5,
+      "clip_sec": 10.2,
+      "fit": 1.31
+    },
+    {
+      "beat_id": "B0032",
+      "part": 6,
+      "source_segment_ids": [
+        267,
+        274
+      ],
+      "target_window": {
+        "start": 579.74,
+        "end": 590.66
+      },
+      "narration": "लूसिफ़र कहता है कि क्लोई की धमकी पर वह उसे मार देता। क्लोई मानती है कि उसे गिरफ़्तार करना गैरकानूनी है, फिर लूसिफ़र को साथ चलने कहती है।",
+      "source_text": "If you had given me the threat of life, I would have killed you. What did you say? Yes. Isn't this illegal? Yes. It is illegal. You stay there. And you come with me.",
+      "narration_words": 28,
+      "narration_sec_est": 12.2,
+      "clip_sec": 10.9,
+      "fit": 1.11
+    },
+    {
+      "beat_id": "B0033",
+      "part": 6,
+      "source_segment_ids": [
+        278,
+        281
+      ],
+      "target_window": {
+        "start": 593.16,
+        "end": 604.66
+      },
+      "narration": "क्लोई लूसिफ़र को बताती है कि उसे जाँच में दखल देने और कई कानून तोड़ने के कारण गिरफ़्तार किया है।",
+      "source_text": "Now you will listen to me. But I don't understand why you have arrested me. Because you are interfering in the police investigation. You have broken so many laws and don't like your face.",
+      "narration_words": 20,
+      "narration_sec_est": 8.7,
+      "clip_sec": 11.5,
+      "fit": 0.76
+    },
+    {
+      "beat_id": "B0034",
+      "part": 6,
+      "source_segment_ids": [
+        286,
+        290
+      ],
+      "target_window": {
+        "start": 611.59,
+        "end": 619.09
+      },
+      "narration": "लूसिफ़र कहता है कि उन्हें मामला सुलझाकर हत्यारे को सज़ा देनी चाहिए। क्लोई उसे चुपचाप कार में बैठने को कहती है।",
+      "source_text": "We should not waste time and solve this case. And we should punish the killer. We? You are crazy. Just sit in the car quietly.",
+      "narration_words": 21,
+      "narration_sec_est": 9.1,
+      "clip_sec": 7.5,
+      "fit": 1.22
+    },
+    {
+      "beat_id": "B0035",
+      "part": 6,
+      "source_segment_ids": [
+        291,
+        300
+      ],
+      "target_window": {
+        "start": 618.84,
+        "end": 631.09
+      },
+      "narration": "लूसिफ़र कार में बैठने से मना करता है और मदद की पेशकश करता है। वह कहता है कि लोगों से बात करना उसकी खास काबिलियत है।",
+      "source_text": "No. This is boring. And this is meaningless. I will help you. It will be fun. What can you help me? I have a special talent. I can talk to people. I can see them. I can't see the rest.",
+      "narration_words": 26,
+      "narration_sec_est": 11.3,
+      "clip_sec": 12.2,
+      "fit": 0.92
+    },
+    {
+      "beat_id": "B0036",
+      "part": 6,
+      "source_segment_ids": [
+        301,
+        305
+      ],
+      "target_window": {
+        "start": 630.84,
+        "end": 637.09
+      },
+      "narration": "क्लोई पूछती है कि क्या वह अंधा है। लूसिफ़र कहता है कि वह मन नहीं पढ़ता—लोग खुद उससे बातें करते हैं।",
+      "source_text": "Are you blind? No. I can't read people's mind. I am not a magician. People just talk to me.",
+      "narration_words": 21,
+      "narration_sec_est": 9.1,
+      "clip_sec": 6.2,
+      "fit": 1.46
+    },
+    {
+      "beat_id": "B0037",
+      "part": 6,
+      "source_segment_ids": [
+        312,
+        315
+      ],
+      "target_window": {
+        "start": 643.59,
+        "end": 658.09
+      },
+      "narration": "लूसिफ़र कहता है कि वह लोगों की इच्छाएँ पूरी कर सकता है और उनके दिल की चाह जानने में मज़ा आता है। क्लोई उसे उसके कर्मों के लिए ज़िम्मेदार ठहराती है।",
+      "source_text": "I can make people's wishes come true. The easier the person is, the more fun it is to know their heart's wishes. But you are responsible for your sins. Are you?",
+      "narration_words": 31,
+      "narration_sec_est": 13.5,
+      "clip_sec": 14.5,
+      "fit": 0.93
+    },
+    {
+      "beat_id": "B0038",
+      "part": 6,
+      "source_segment_ids": [
+        316,
+        320
+      ],
+      "target_window": {
+        "start": 657.84,
+        "end": 666.09
+      },
+      "narration": "क्लोई उसकी बात को हारने वाले का नाटक कहती है और उसकी इच्छा को ताकत बताती है। लूसिफ़र कहता है कि यह ईश्वर का दिया तोहफ़ा है।",
+      "source_text": "I understood. I understood. This is the name and the drama of being a loser. And your wish is your superpower. Actually, this is God's gift.",
+      "narration_words": 27,
+      "narration_sec_est": 11.7,
+      "clip_sec": 8.2,
+      "fit": 1.42
+    },
+    {
+      "beat_id": "B0039",
+      "part": 6,
+      "source_segment_ids": [
+        323,
+        325
+      ],
+      "target_window": {
+        "start": 667.91,
+        "end": 685.63
+      },
+      "narration": "लूसिफ़र क्लोई से पूछता है कि वह ज़िंदगी में सबसे ज़्यादा क्या चाहती है। क्लोई कहती है कि यही उसका जादू है।",
+      "source_text": "Now tell me this, detective. What do you want the most in your life? Okay, so this is your magic.",
+      "narration_words": 22,
+      "narration_sec_est": 9.6,
+      "clip_sec": 17.7,
+      "fit": 0.54
+    },
+    {
+      "beat_id": "B0040",
+      "part": 7,
+      "source_segment_ids": [
+        326,
+        327
+      ],
+      "target_window": {
+        "start": 685.38,
+        "end": 696.05
+      },
+      "narration": "क्लोई बताती है कि बचपन से वह अपने पिता जैसी पुलिस अफ़सर बनना चाहती थी, ताकि लोगों की मदद कर सके।",
+      "source_text": "Maybe when I was a kid, I always wanted to be a police officer like my daddy. So that I can help people one day.",
+      "narration_words": 21,
+      "narration_sec_est": 9.1,
+      "clip_sec": 10.7,
+      "fit": 0.86
+    },
+    {
+      "beat_id": "B0041",
+      "part": 7,
+      "source_segment_ids": [
+        329,
+        336
+      ],
+      "target_window": {
+        "start": 706.06,
+        "end": 716.56
+      },
+      "narration": "लूसिफ़र पूछता है कि क्या क्लोई जादूगर है। फिर कहता है कि उसे एक ऐसी बात पता है जो क्लोई नहीं जानती, लेकिन वह बताएगा तभी जब उसे मामले में शामिल किया जाएगा।",
+      "source_text": "Is it possible that you are a magician? Inside the car. No. Wait a minute. I know what you don't know. Okay. What is that? Then I will tell you when you will put me in this case.",
+      "narration_words": 33,
+      "narration_sec_est": 14.3,
+      "clip_sec": 10.5,
+      "fit": 1.37
+    },
+    {
+      "beat_id": "B0042",
+      "part": 7,
+      "source_segment_ids": [
+        338,
+        343
+      ],
+      "target_window": {
+        "start": 717.06,
+        "end": 731.87
+      },
+      "narration": "लूसिफ़र कहता है कि वह खुद इस मामले में आया था। फिर मानता है कि अगर उसने जायला के करियर में मदद न की होती, तो शायद वह आज ज़िंदा होती।",
+      "source_text": "I had reached here myself for two while. What do you mean by this case? And by delineation? I mean... I mean... If I had not helped her in her career, she would have been alive today.",
+      "narration_words": 31,
+      "narration_sec_est": 13.5,
+      "clip_sec": 14.8,
+      "fit": 0.91
+    },
+    {
+      "beat_id": "B0043",
+      "part": 7,
+      "source_segment_ids": [
+        347,
+        347
+      ],
+      "target_window": {
+        "start": 734.37,
+        "end": 738.87
+      },
+      "narration": "सुराग न चला, तो क्लोई लूसिफ़र को दोबारा मौका नहीं देगी।",
+      "source_text": "But if your clue didn't work out, then this is not going to happen again.",
+      "narration_words": 11,
+      "narration_sec_est": 4.8,
+      "clip_sec": 4.5,
+      "fit": 1.06
+    },
+    {
+      "beat_id": "B0044",
+      "part": 7,
+      "source_segment_ids": [
+        350,
+        359
+      ],
+      "target_window": {
+        "start": 745.87,
+        "end": 761.79
+      },
+      "narration": "लूसिफ़र बेवर्ली हिल्स की थेरेपिस्ट लिंडा का ज़िक्र करता है। डेलिलाह दूसरे नाम से वहाँ जाती थी; लूसिफ़र बताता है कि वह नाम पेनी लेन था।",
+      "source_text": "There is a therapist in Beverly Hills. Her name is Linda. Was her client Dalala? No, no. Actually, she used to go by another name. Which I know. I am very talented. Penny Lane. Dalala probably went by Penny Lane's name. Thanks.",
+      "narration_words": 26,
+      "narration_sec_est": 11.3,
+      "clip_sec": 15.9,
+      "fit": 0.71
+    },
+    {
+      "beat_id": "B0045",
+      "part": 7,
+      "source_segment_ids": [
+        360,
+        368
+      ],
+      "target_window": {
+        "start": 761.54,
+        "end": 772.79
+      },
+      "narration": "क्लोई कहती है कि मामला अभी सुलझा नहीं। लूसिफ़र कहता है कि उसे लगा था वे पहले मिल चुके हैं, और चिढ़ाता है कि क्लोई ने उसे नग्न देखा था।",
+      "source_text": "Don't be so happy. The case hasn't been solved yet. No. I was just thinking that I knew you earlier. Okay. Okay. You have seen me as a naked. It's fun, isn't it? Are you a kid?",
+      "narration_words": 30,
+      "narration_sec_est": 13.0,
+      "clip_sec": 11.2,
+      "fit": 1.16
+    },
+    {
+      "beat_id": "B0046",
+      "part": 7,
+      "source_segment_ids": [
+        369,
+        381
+      ],
+      "target_window": {
+        "start": 772.54,
+        "end": 799.28
+      },
+      "narration": "क्लोई कहती है कि वह अपनी ज़िंदगी का वह हिस्सा भूलना चाहती है। लूसिफ़र उसकी तारीफ़ करता है—वह पुरुषों की दुनिया में अपनी पहचान बना रही है, होशियार है और अपना काम जानती है। फिर उसे खुद पर भरोसा रखने को कहकर, डिटेक्टिव डेकर कहता है कि उसे संदेश भेजे।",
+      "source_text": "Oh, it seems that your heroine friends haven't gone yet. Actually, this is the life that I want to forget. I see. A beautiful police officer is trying to make her identity in the world of men. Yes. That's right. They are afraid of you. Obviously, you are smart and know your job. Shoot them. Trust yourself. Detective Decker. Okay. Send me a message.",
+      "narration_words": 50,
+      "narration_sec_est": 21.7,
+      "clip_sec": 26.7,
+      "fit": 0.81
+    },
+    {
+      "beat_id": "B0047",
+      "part": 8,
+      "source_segment_ids": [
+        382,
+        390
+      ],
+      "target_window": {
+        "start": 799.03,
+        "end": 814.19
+      },
+      "narration": "लूसिफ़र की बात सही निकलती है: बेवर्ली हिल्स की डॉक्टर लिंडा के पास पेनी लेन नाम की क्लाइंट है। क्लोई और लूसिफ़र की साझेदारी पर बात होती है, और कोई लूसिफ़र को चुप रहने को कहता है।",
+      "source_text": "Thanks. What did he say? Your words have been proven true. There is a client named Penny Lane Beverly Hills doctor Linda. That's great. So, you have made a partnership. Oh. You have big fans. Please stop your mouth.",
+      "narration_words": 37,
+      "narration_sec_est": 16.1,
+      "clip_sec": 15.2,
+      "fit": 1.06
+    },
+    {
+      "beat_id": "B0048",
+      "part": 8,
+      "source_segment_ids": [
+        398,
+        406
+      ],
+      "target_window": {
+        "start": 822.87,
+        "end": 834.63
+      },
+      "narration": "लूसिफ़र को कहीं रुकना पड़ता है, क्योंकि किसी की बेटी झगड़े में है। क्लोई कहती है कि वह घर संभालने नहीं, मामला सुलझाने आई है।",
+      "source_text": "We have to stay in one place. What? What is the need for that? My daughter is in a fight. We have to go. Can't she manage herself? It's been seven years. I'm not here to work for your house. I'm here to solve the case.",
+      "narration_words": 25,
+      "narration_sec_est": 10.9,
+      "clip_sec": 11.8,
+      "fit": 0.92
+    },
+    {
+      "beat_id": "B0049",
+      "part": 8,
+      "source_segment_ids": [
+        409,
+        413
+      ],
+      "target_window": {
+        "start": 847.58,
+        "end": 856.08
+      },
+      "narration": "लूसिफ़र बच्चों से नफ़रत करने की बात कहता है। फिर वे उन लोगों को पकड़ने की बात करते हैं जिन्होंने उन्हें पीटा।",
+      "source_text": "We have to stay here. You are very shocked. I hate children. We are going to catch the ones who beat us. Cool.",
+      "narration_words": 22,
+      "narration_sec_est": 9.6,
+      "clip_sec": 8.5,
+      "fit": 1.13
+    },
+    {
+      "beat_id": "B0050",
+      "part": 8,
+      "source_segment_ids": [
+        414,
+        427
+      ],
+      "target_window": {
+        "start": 865.41,
+        "end": 916.19
+      },
+      "narration": "लूसिफ़र रात में शराब और सिगरेट की मनाही की बात करता है। लड़की उसे बताती है कि उसकी माँ पुलिस अफ़सर है और उसे गिरफ़्तार कर सकती है। लूसिफ़र कहता है कि वह उसकी माँ को जानता है; लड़की अपना नाम बीट्रिस बताती है और कहती है कि दुकानवाले से पूछो।",
+      "source_text": "I don't allow to drink cigarettes in the night. Okay. Don't tell anyone about it. My mom is a police officer. She'll arrest you. Oh. I do know your mom. What was your name? Lucifer. You're right. My name is Beatrice and everyone calls me in love. This is the name of the shopkeeper. The shopkeeper? Ask your mom.",
+      "narration_words": 51,
+      "narration_sec_est": 22.2,
+      "clip_sec": 50.8,
+      "fit": 0.44
+    },
+    {
+      "beat_id": "B0051",
+      "part": 8,
+      "source_segment_ids": [
+        428,
+        435
+      ],
+      "target_window": {
+        "start": 916.7,
+        "end": 940.57
+      },
+      "narration": "लूसिफ़र पूछता है कि उसने किसे पीटा। बीट्रिस बताती है कि एक लड़की उसे देखती और परेशान करती थी, नकली अकाउंट बनाकर उसका मज़ाक उड़ाती थी; इसलिए उसने उसे पीटा। लूसिफ़र उसके काम को सही ठहराता है।",
+      "source_text": "So, whom did you beat up? The girl was watching me. She was harassing me. She was making a fake account and making fun of me. So, I beat her up at the place where she was ashamed. Oh, I got it. You did it right. You did it very well.",
+      "narration_words": 37,
+      "narration_sec_est": 16.1,
+      "clip_sec": 23.9,
+      "fit": 0.67
+    },
+    {
+      "beat_id": "B0052",
+      "part": 8,
+      "source_segment_ids": [
+        436,
+        438
+      ],
+      "target_window": {
+        "start": 943.26,
+        "end": 949.79
+      },
+      "narration": "लूसिफ़र मिस पुली को पुकारकर कहता है कि नर्क में उनके लिए ख़ास कहानी है।",
+      "source_text": "Hello, Ms. Puli. Do you know there's a story in Hell which is made especially for you?",
+      "narration_words": 15,
+      "narration_sec_est": 6.5,
+      "clip_sec": 6.5,
+      "fit": 1.0
+    },
+    {
+      "beat_id": "B0053",
+      "part": 9,
+      "source_segment_ids": [
+        441,
+        441
+      ],
+      "target_window": {
+        "start": 960.68,
+        "end": 964.66
+      },
+      "narration": "लूसिफ़र कहता है कि कोई अपने किए पर पछता रहा है।",
+      "source_text": "Oh, it seems someone is regretting their actions.",
+      "narration_words": 11,
+      "narration_sec_est": 4.8,
+      "clip_sec": 4.0,
+      "fit": 1.2
+    },
+    {
+      "beat_id": "B0054",
+      "part": 9,
+      "source_segment_ids": [
+        442,
+        453
+      ],
+      "target_window": {
+        "start": 974.33,
+        "end": 997.15
+      },
+      "narration": "लूसिफ़र का स्वागत होता है, लेकिन सामने वाला उसे मारने से बचने की विनती करता है और कहता है कि वह मामला सुलझा रहा था। क्लोई बताती है कि मामला उसी के पास था; वह कहती है कि यह हाई-प्रोफ़ाइल केस है और अपनी समझदारी दिखाना ज़रूरी है।",
+      "source_text": "Hi, sweetheart. You came very early. Oh, please. Don't hit me. I was solving the case. Oh, come on. I have the case. The one you wanted to steal from me. The one you solved before the investigation? No, I'm wrong. You tell me. I don't do it on my own. It's a high-profile case. And that's why it's important to show the smartness in this case. She's smart, but you're the one who's the one. Otherwise, you wouldn't argue in front of her like this.",
+      "narration_words": 48,
+      "narration_sec_est": 20.9,
+      "clip_sec": 22.8,
+      "fit": 0.91
+    },
+    {
+      "beat_id": "B0055",
+      "part": 9,
+      "source_segment_ids": [
+        455,
+        459
+      ],
+      "target_window": {
+        "start": 998.96,
+        "end": 1011.2
+      },
+      "narration": "बातचीत और हँसी के बीच बच्ची अपने पिता को डैडी कहती है। उससे उसे माँ के पास छोड़ने को कहा जाता है; क्लोई उसे शाम को मिलने का वादा करके विदा करती है।",
+      "source_text": "I don't know if you're laughing or shooting. Why are you getting stuck? Isn't this so funny, daddy? Hey, will you drop her to mom and let us go? Thank you. Go with your dad. We'll meet in the evening.",
+      "narration_words": 33,
+      "narration_sec_est": 14.3,
+      "clip_sec": 12.2,
+      "fit": 1.17
+    },
+    {
+      "beat_id": "B0056",
+      "part": 9,
+      "source_segment_ids": [
+        460,
+        462
+      ],
+      "target_window": {
+        "start": 1011.03,
+        "end": 1016.2
+      },
+      "narration": "बच्ची माँ से प्यार जताती है; माँ उसकी तारीफ़ कर गर्व जताती है।",
+      "source_text": "Wow! I love you so much. You did a great job. I'm proud of you. Thanks, mommy.",
+      "narration_words": 13,
+      "narration_sec_est": 5.7,
+      "clip_sec": 5.2,
+      "fit": 1.09
+    },
+    {
+      "beat_id": "B0057",
+      "part": 9,
+      "source_segment_ids": [
+        463,
+        467
+      ],
+      "target_window": {
+        "start": 1016.2,
+        "end": 1036.83
+      },
+      "narration": "बच्ची अपने पिता से पूछती है कि क्या वह बताएगा। वह कहता है कि रास्ते में उस लड़की से मिलना अच्छा लगा। पूछने पर कि क्या वह उसे पसंद करता है, जवाब देता है कि वह आकर्षक है।",
+      "source_text": "What's the deal? Daddy, will you tell me? I liked meeting her on the way. Did you like her? Why not? I'm Charming.",
+      "narration_words": 38,
+      "narration_sec_est": 16.5,
+      "clip_sec": 20.6,
+      "fit": 0.8
     }
   ]
 }

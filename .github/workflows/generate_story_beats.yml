@@ -168,88 +168,98 @@ jobs:
               page.wait_for_timeout(1000)
               dismiss_modals(page)
 
-          def wait_for_duck_response(page, max_wait=120):
-              """Smart stream detector that handles mid-stream Continue clicks and extracts full text."""
+          def get_last_assistant_text(page):
+              """Extracts text strictly from the LAST ASSISTANT message bubble, ignoring prompt bubbles."""
+              return page.evaluate("""() => {
+                  // Strategy 1: Select Duck.ai assistant bubbles
+                  const assistantBubbles = document.querySelectorAll(
+                      '[data-testid*="assistant"], [class*="message-assistant"], [class*="chat-message"]:not([class*="user"])'
+                  );
+                  if (assistantBubbles.length > 0) {
+                      const lastBubble = assistantBubbles[assistantBubbles.length - 1];
+                      // If there is a code block inside, prefer its text
+                      const code = lastBubble.querySelector('pre code, pre');
+                      return code ? code.innerText : lastBubble.innerText;
+                  }
+                  
+                  // Strategy 2: Pre / Code tags
+                  const codeTags = document.querySelectorAll('pre code, pre');
+                  if (codeTags.length > 0) {
+                      return codeTags[codeTags.length - 1].innerText;
+                  }
+
+                  // Strategy 3: General message divs (exclude prompt textarea)
+                  const allMessages = document.querySelectorAll('div[class*="message"]');
+                  if (allMessages.length > 1) {
+                      return allMessages[allMessages.length - 1].innerText;
+                  }
+                  return '';
+              }""")
+
+          def wait_for_duck_response(page, max_wait=140):
+              """Waits for assistant response to stream and complete."""
               log("Waiting for response stream...")
               start = time.time()
               has_started = False
               last_text = ""
               stable_ticks = 0
-              initial_len = len(page.evaluate("() => document.body.innerText || ''"))
 
               while time.time() - start < max_wait:
                   dismiss_modals(page)
-                  
-                  # Check if Duck.ai asks to "Continue generating"
-                  if check_and_click_continue_generating(page):
-                      stable_ticks = 0
+                  check_and_click_continue_generating(page)
 
                   # 1. Check for Duck.ai error alerts
                   err_locator = page.locator("[role='alert'], .error-message").or_(page.get_by_text("Something went wrong"))
                   if err_locator.count() > 0 and err_locator.first.is_visible():
                       raise RuntimeError(f"Duck.ai Error displayed: {err_locator.first.inner_text()}")
 
-                  # 2. Check if generating
+                  # 2. Check if Stop Generating is visible
                   stop_btn = page.locator("button:has-text('Stop'), button[aria-label*='Stop' i]")
                   is_generating = (stop_btn.count() > 0 and stop_btn.first.is_visible())
 
-                  body_text = page.evaluate("() => document.body.innerText || ''")
-                  current_len = len(body_text)
+                  # 3. Read ONLY assistant text
+                  assistant_text = get_last_assistant_text(page)
+                  curr_len = len(assistant_text)
 
-                  # 3. Detect start of generation
-                  if is_generating or (current_len - initial_len) > 200:
+                  if is_generating or curr_len > 80:
                       if not has_started:
                           log("-> Generation confirmed active.")
                           has_started = True
 
-                  # 4. Fail-Fast: If nothing starts in 15 seconds, exit early and retry
+                  # Fail-Fast: If nothing starts in 15 seconds, exit early and retry
                   if not has_started and (time.time() - start) > 15:
-                      raise TimeoutError("Prompt never started generating (terms blocked or submit missed).")
+                      raise TimeoutError("Prompt never started generating.")
 
-                  # 5. Track stream completion
                   if has_started:
-                      if body_text == last_text:
+                      if assistant_text == last_text and curr_len > 0:
                           stable_ticks += 1
                       else:
                           stable_ticks = 0
-                          last_text = body_text
+                          last_text = assistant_text
 
-                      # Done if Stop button disappeared AND text settled for 2 consecutive cycles
-                      if not is_generating and stable_ticks >= 2:
-                          log(f"[+] Finished generating in {int(time.time() - start)}s.")
-                          
-                          # Try extracting code block content first
-                          code_content = page.evaluate("""() => {
-                              const blocks = document.querySelectorAll('pre code, pre');
-                              if (blocks.length > 0) return blocks[blocks.length - 1].innerText;
-                              return '';
-                          }""")
-                          if code_content and "{" in code_content:
-                              return code_content
-
-                          return body_text
+                      # Done if Stop button is gone AND text has stayed stable for 3 checks
+                      if not is_generating and stable_ticks >= 3:
+                          log(f"[+] Finished generating in {int(time.time() - start)}s ({curr_len} chars).")
+                          return assistant_text
 
                   page.wait_for_timeout(1000)
 
               raise TimeoutError("Duck.ai stream timed out.")
 
           def extract_clean_json(raw_text: str) -> dict:
-              """Robust JSON parser that extracts valid JSON objects even with extra preamble or trailing text."""
+              """Extracts JSON object from text safely."""
               clean = re.sub(r"^```(?:json)?", "", raw_text.strip(), flags=re.MULTILINE)
               clean = re.sub(r"```$", "", clean.strip(), flags=re.MULTILINE)
 
-              # Find start index of JSON
               start_idx = clean.find('{')
               if start_idx == -1:
                   raise ValueError(f"No JSON object found in response:\n{raw_text[:250]}")
 
-              # Use raw_decode to parse only the valid JSON structure and safely ignore trailing chatter
               decoder = json.JSONDecoder()
               try:
-                  obj, end_idx = decoder.raw_decode(clean[start_idx:])
+                  obj, _ = decoder.raw_decode(clean[start_idx:])
                   return obj
               except Exception:
-                  # Fallback regex search for { "characters" / "beats" ... }
                   match = re.search(r"\{\s*\"(?:characters|beats)\"[\s\S]*\}", clean)
                   if match:
                       return json.loads(match.group(0))
@@ -265,7 +275,7 @@ jobs:
           if not segments:
               raise ValueError("transcript.json is empty!")
 
-          # Group into ~5,500 char chunks to avoid context overfill
+          # Group into ~4,500 char chunks to give model room to narrate every line
           chunks = []
           curr_chunk = []
           curr_len = 0
@@ -273,7 +283,7 @@ jobs:
               line = f"[{s['start']:.2f}s - {s['end']:.2f}s] {s['text']}"
               curr_chunk.append(line)
               curr_len += len(line) + 1
-              if curr_len >= 5500:
+              if curr_len >= 4500:
                   chunks.append("\n".join(curr_chunk))
                   curr_chunk = []
                   curr_len = 0
@@ -281,46 +291,53 @@ jobs:
               chunks.append("\n".join(curr_chunk))
           log(f"Prepared {len(chunks)} chronological transcript chunks.")
 
-          PART_1_PROMPT = """You are a movie recap writer. Convert this transcript into a flowing, synchronized recap in pure Hindi (Devanagari script only).
-          STRICT RULES:
-          1. Rely ONLY on the transcript. Do NOT hallucinate.
-          2. STRICT 1-TO-1 VISUAL CUT SYNC:
-             - 1 Spoken Hindi sentence = 1 exact dialogue exchange (4-15 seconds).
-             - start_sec: Exact start time of the first line.
-             - end_sec: Exact end time of the last line.
-          3. Clear, conversational Hindi (Devanagari only). Use real spoken character names.
-          4. Respond ONLY with valid, raw JSON (no conversational text, no markdown fences).
-          JSON FORMAT:
+          # Prompts using neutral dummy placeholders to prevent copying
+          PART_1_PROMPT = """You are a movie recap writer. Convert this entire transcript chunk into a flowing, synchronized movie recap in pure Hindi (Devanagari script only).
+
+          CRITICAL INSTRUCTIONS:
+          1. Rely ONLY on the transcript dialogue. ZERO hallucination.
+          2. YOU MUST COVER THE ENTIRE CHUNK from the first line to the last line. Do NOT summarize or omit parts.
+          3. STRICT 1-TO-1 VISUAL CUT SYNC:
+             - Group dialogue into small sequential scenes (4-15 seconds each).
+             - 1 Spoken Hindi sentence = 1 exact dialogue scene.
+             - start_sec: Exact start time of the first line in that scene.
+             - end_sec: Exact end time of the last line in that scene.
+          4. Conversational Hindi (Devanagari only). Identify and use the actual character names spoken in the dialogue.
+          5. OUTPUT ONLY A RAW JSON OBJECT (no chat commentary, no markdown text):
+
           {
             "characters": [
-              {"name": "Chloe", "hindi_name": "डिटेक्टिव क्लोई", "role": "जासूस"}
+              {"name": "SpeakerA", "hindi_name": "व्यक्ति १", "role": "भूमिका"}
             ],
             "beats": [
               {
                 "beat_id": "B0001",
-                "start_sec": 0.72,
-                "end_sec": 13.68,
-                "narration": "डिटेक्टिव क्लोई अपने सीनियर को अंदर बुलाती है और नई जानकारी बताती है।"
+                "start_sec": 0.0,
+                "end_sec": 5.5,
+                "narration": "हिंदी में दृश्य का विवरण..."
               }
             ]
           }
+
           TRANSCRIPT:
           """
 
-          PART_N_PROMPT = """Continuing the SAME recap, process the NEXT PART.
+          PART_N_PROMPT = """Continuing the recap for the NEXT sequential transcript chunk.
           Rules:
-          - Pure Devanagari Hindi. 1-to-1 dialogue synchronization.
-          - Return RAW JSON ONLY:
+          - Cover EVERY part of this transcript chunk sequentially from start to finish.
+          - Pure Devanagari Hindi. 1-to-1 dialogue synchronization with exact start_sec and end_sec.
+          - Return RAW JSON ONLY (no markdown fences, no conversational text):
           {
             "beats": [
               {
                 "beat_id": "B0000",
                 "start_sec": 0.0,
                 "end_sec": 0.0,
-                "narration": "हिंदी में अगला सीन..."
+                "narration": "अगले सीन का विवरण..."
               }
             ]
           }
+
           NEXT TRANSCRIPT PART:
           """
 
@@ -365,12 +382,17 @@ jobs:
                           log(f"Entering prompt (Attempt {attempt})...")
                           submit_prompt(page, prompt)
 
-                          raw_reply = wait_for_duck_response(page, max_wait=120)
+                          raw_reply = wait_for_duck_response(page, max_wait=140)
                           parsed = extract_clean_json(raw_reply)
 
                           if "characters" in parsed and not characters_list:
                               characters_list = parsed["characters"]
                           new_beats = parsed.get("beats", [])
+                          
+                          # Verification: Ensure it's not the dummy placeholder
+                          if new_beats and new_beats[0].get("narration") in ["हिंदी में दृश्य का विवरण...", "अगले सीन का विवरण..."]:
+                              raise ValueError("Model regurgitated template placeholder!")
+
                           log(f"[+] Successfully extracted {len(new_beats)} beats from Part {idx + 1}")
                           all_beats.extend(new_beats)
                           part_done = True
@@ -389,7 +411,7 @@ jobs:
               if browser:
                   browser.close()
 
-          # Format and save final beats
+          # Re-index beats sequentially
           final_beats = []
           for i, b in enumerate(all_beats):
               s = float(b.get("start_sec", 0.0))

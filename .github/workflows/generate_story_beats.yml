@@ -1,4 +1,4 @@
-name: Generate and Download Duck.ai Story Beats
+name: Generate and Download Duck.ai Story Frames
 
 on:
   workflow_dispatch:
@@ -80,7 +80,7 @@ jobs:
           RUN_LOG = DEBUG_DIR / "run.log"
           BROWSER_PROXY = "socks5://127.0.0.1:9050"
 
-          CONTINUE_LABELS = re.compile(
+          MODAL_LABELS = re.compile(
               r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I
           )
 
@@ -112,7 +112,7 @@ jobs:
               clicked_any = False
               for _ in range(3):
                   try:
-                      buttons = page.get_by_role("button", name=CONTINUE_LABELS)
+                      buttons = page.get_by_role("button", name=MODAL_LABELS)
                       count = buttons.count()
                       clicked = False
                       for i in range(count):
@@ -129,6 +129,19 @@ jobs:
                   except Exception:
                       break
               return clicked_any
+
+          def check_and_click_continue_generating(page):
+              """If Duck.ai cuts off mid-answer with 'Continue generating', click it."""
+              try:
+                  cont_btn = page.locator("button:has-text('Continue generating'), button:has-text('Continue response')").first
+                  if cont_btn.count() > 0 and cont_btn.is_visible():
+                      log("Duck.ai paused generation. Clicking 'Continue generating'...")
+                      cont_btn.click(timeout=2000)
+                      page.wait_for_timeout(1000)
+                      return True
+              except Exception:
+                  pass
+              return False
 
           def get_prompt_box(page):
               return page.locator(
@@ -156,7 +169,7 @@ jobs:
               dismiss_modals(page)
 
           def wait_for_duck_response(page, max_wait=120):
-              """Smart generation detector with 15s fail-fast and zero-latency stop triggers."""
+              """Smart stream detector that handles mid-stream Continue clicks and extracts full text."""
               log("Waiting for response stream...")
               start = time.time()
               has_started = False
@@ -166,8 +179,12 @@ jobs:
 
               while time.time() - start < max_wait:
                   dismiss_modals(page)
+                  
+                  # Check if Duck.ai asks to "Continue generating"
+                  if check_and_click_continue_generating(page):
+                      stable_ticks = 0
 
-                  # 1. Check for Duck.ai error alerts (using valid Playwright chaining)
+                  # 1. Check for Duck.ai error alerts
                   err_locator = page.locator("[role='alert'], .error-message").or_(page.get_by_text("Something went wrong"))
                   if err_locator.count() > 0 and err_locator.first.is_visible():
                       raise RuntimeError(f"Duck.ai Error displayed: {err_locator.first.inner_text()}")
@@ -201,19 +218,14 @@ jobs:
                       if not is_generating and stable_ticks >= 2:
                           log(f"[+] Finished generating in {int(time.time() - start)}s.")
                           
-                          # Extract code block if markdown format
+                          # Try extracting code block content first
                           code_content = page.evaluate("""() => {
                               const blocks = document.querySelectorAll('pre code, pre');
                               if (blocks.length > 0) return blocks[blocks.length - 1].innerText;
                               return '';
                           }""")
-                          if code_content and "{" in code_content and "}" in code_content:
+                          if code_content and "{" in code_content:
                               return code_content
-
-                          # Extract raw JSON from innerText
-                          matches = list(re.finditer(r"\{\s*\"(?:characters|beats)\"[\s\S]*\}", body_text))
-                          if matches:
-                              return matches[-1].group(0)
 
                           return body_text
 
@@ -222,12 +234,26 @@ jobs:
               raise TimeoutError("Duck.ai stream timed out.")
 
           def extract_clean_json(raw_text: str) -> dict:
+              """Robust JSON parser that extracts valid JSON objects even with extra preamble or trailing text."""
               clean = re.sub(r"^```(?:json)?", "", raw_text.strip(), flags=re.MULTILINE)
               clean = re.sub(r"```$", "", clean.strip(), flags=re.MULTILINE)
-              match = re.search(r"\{[\s\S]*\}", clean)
-              if not match:
-                  raise ValueError(f"No valid JSON found in response:\n{raw_text[:250]}")
-              return json.loads(match.group(0))
+
+              # Find start index of JSON
+              start_idx = clean.find('{')
+              if start_idx == -1:
+                  raise ValueError(f"No JSON object found in response:\n{raw_text[:250]}")
+
+              # Use raw_decode to parse only the valid JSON structure and safely ignore trailing chatter
+              decoder = json.JSONDecoder()
+              try:
+                  obj, end_idx = decoder.raw_decode(clean[start_idx:])
+                  return obj
+              except Exception:
+                  # Fallback regex search for { "characters" / "beats" ... }
+                  match = re.search(r"\{\s*\"(?:characters|beats)\"[\s\S]*\}", clean)
+                  if match:
+                      return json.loads(match.group(0))
+                  raise ValueError(f"Failed to parse valid JSON from text:\n{clean[start_idx:start_idx+350]}")
 
           # Load transcript.json
           t_file = Path("transcript.json")
@@ -263,7 +289,7 @@ jobs:
              - start_sec: Exact start time of the first line.
              - end_sec: Exact end time of the last line.
           3. Clear, conversational Hindi (Devanagari only). Use real spoken character names.
-          4. Respond ONLY with valid, raw JSON (no conversational text, no markdown).
+          4. Respond ONLY with valid, raw JSON (no conversational text, no markdown fences).
           JSON FORMAT:
           {
             "characters": [

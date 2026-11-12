@@ -3,6 +3,11 @@ name: Generate Hindi YouTube Movie Recap
 on:
   workflow_dispatch:
     inputs:
+      reset_state:
+        description: "Clear old corrupted cache and regenerate fresh"
+        required: true
+        type: boolean
+        default: true
       headed:
         description: "Run non-headless Chrome under Xvfb (less detectable)"
         required: true
@@ -15,7 +20,7 @@ on:
         options:
           - "probe"
           - "full"
-        default: "probe"
+        default: "full"
       target_minutes:
         description: "Target recap duration in minutes (e.g. 12)"
         required: true
@@ -66,7 +71,7 @@ jobs:
         timeout-minutes: 6
         run: |
           python -m pip install --upgrade pip
-          pip install curl_cffi playwright pillow requests
+          pip install curl_cffi playwright pillow requests ftfy
           playwright install --with-deps chromium
 
       - name: Verify connection (curl_cffi, Chrome TLS impersonation)
@@ -88,6 +93,7 @@ jobs:
         env:
           HEADED: ${{ inputs.headed }}
           RUN_MODE: ${{ inputs.mode }}
+          RESET_STATE: ${{ inputs.reset_state }}
           TARGET_MINUTES: ${{ inputs.target_minutes }}
           INPUT_HINTS: ${{ inputs.hints }}
           TEXT_WAIT_SECONDS: "180"
@@ -97,6 +103,7 @@ jobs:
           import os, re, sys, json, base64, subprocess, time, math
           from pathlib import Path
           from playwright.sync_api import sync_playwright
+          import ftfy
 
           if sys.platform != "win32":
               sys.stdout.reconfigure(encoding="utf-8")
@@ -104,10 +111,12 @@ jobs:
 
           HEADED = os.environ.get("HEADED") == "true"
           RUN_MODE = os.environ.get("RUN_MODE", "probe").strip().lower()
+          RESET_STATE = os.environ.get("RESET_STATE", "false").strip().lower() == "true"
           TARGET_MINUTES = float(os.environ.get("TARGET_MINUTES", "12"))
           INPUT_HINTS = os.environ.get("INPUT_HINTS", "").strip()
           TEXT_WAIT = int(os.environ.get("TEXT_WAIT_SECONDS", "180"))
-          MAX_CLIP_DURATION = 3.0  # HARD LIMIT: Visual clips will NEVER exceed 3.0 seconds
+          MAX_CLIP_DURATION = 3.0  # HARD LIMIT: Visual clips strictly <= 3.0s
+          MAX_WORDS_PER_BEAT = 8   # HARD LIMIT: Speech pacing (~2.5 words/sec)
           MAX_ATTEMPTS = 2
 
           DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
@@ -118,6 +127,11 @@ jobs:
           TOR_PROXY = "socks5h://127.0.0.1:9050"
           BROWSER_PROXY = "socks5://127.0.0.1:9050"
 
+          # Wipe corrupted cache if reset_state is set
+          if RESET_STATE and STATE_FILE.exists():
+              STATE_FILE.unlink()
+              print("[INIT] Old pipeline_state.json removed for clean regeneration.", flush=True)
+
           CONTINUE_LABELS = re.compile(
               r"^(agree and continue|agree & continue|continue|i agree|accept|accept all|get started|got it|next|done|turn on|not now|no thanks|dismiss)$", re.I)
 
@@ -127,19 +141,50 @@ jobs:
               with open(RUN_LOG, "a", encoding="utf-8") as f:
                   f.write(line + "\n")
 
-          def fix_mojibake(val):
-              """Repairs any UTF-8 strings accidentally misinterpreted as Latin-1/ISO-8859-1."""
-              if isinstance(val, str):
+          # CP1252 byte reconstructor for UTF-8 mis-decoded strings
+          CP1252_MAP = {
+              '\u20ac': 0x80, '\u201a': 0x82, '\u0192': 0x83, '\u201e': 0x84, '\u2026': 0x85,
+              '\u2020': 0x86, '\u2021': 0x87, '\u02c6': 0x88, '\u2030': 0x89, '\u0160': 0x8a,
+              '\u2039': 0x8b, '\u0152': 0x8c, '\u017d': 0x8e, '\u2018': 0x91, '\u2019': 0x92,
+              '\u201c': 0x93, '\u201d': 0x94, '\u2022': 0x95, '\u2013': 0x96, '\u2014': 0x97,
+              '\u02dc': 0x98, '\u2122': 0x99, '\u0161': 0x9a, '\u203a': 0x9b, '\u0153': 0x9c,
+              '\u017e': 0x9e, '\u0178': 0x9f,
+          }
+
+          def fix_mojibake_str(s: str) -> str:
+              if not isinstance(s, str) or not s:
+                  return s
+              try:
+                  s = ftfy.fix_text(s)
+              except Exception:
+                  pass
+
+              if any(m in s for m in ["à¤", "à¥", "â€™", "â€”", "Ã", "Â"]):
                   try:
-                      if any(x in val for x in ["à¤", "à¥", "à¦", "à§", "â€™", "â€”", "Ã"]):
-                          return val.encode("latin-1").decode("utf-8")
+                      return s.encode("cp1252").decode("utf-8")
                   except Exception:
-                      pass
-                  return val
+                      try:
+                          raw_bytes = bytearray()
+                          for ch in s:
+                              if ch in CP1252_MAP:
+                                  raw_bytes.append(CP1252_MAP[ch])
+                              elif ord(ch) < 256:
+                                  raw_bytes.append(ord(ch))
+                              else:
+                                  raw_bytes.extend(ch.encode("utf-8"))
+                          return raw_bytes.decode("utf-8", errors="replace")
+                      except Exception:
+                          pass
+              return s
+
+          def deep_repair(val):
+              """Recursively repairs Mojibake across strings, dicts, and lists."""
+              if isinstance(val, str):
+                  return fix_mojibake_str(val)
               elif isinstance(val, list):
-                  return [fix_mojibake(item) for item in val]
+                  return [deep_repair(item) for item in val]
               elif isinstance(val, dict):
-                  return {k: fix_mojibake(v) for k, v in val.items()}
+                  return {k: deep_repair(v) for k, v in val.items()}
               return val
 
           def snap(page, name):
@@ -185,35 +230,17 @@ jobs:
                   "textarea[placeholder*='message' i], textarea").first
 
           def human_paste_prompt(page, box, text):
-              """Directly fills textarea to avoid X11 clipboard UTF-8 corruption."""
+              """Fills textarea natively to avoid X11 clipboard UTF-8 corruption."""
               box.click()
               page.wait_for_timeout(300)
               box.fill("")
               box.fill(text)
-              page.wait_for_timeout(400)
+              page.wait_for_timeout(500)
               send_btn = page.locator("button[type='submit'], button[aria-label*='Send' i]")
               if send_btn.count() > 0 and send_btn.first.is_visible() and send_btn.first.is_enabled():
                   send_btn.first.click()
               else:
                   box.press("Enter")
-
-          def parse_sse_text(raw_sse: str) -> str:
-              chunks = []
-              for line in raw_sse.splitlines():
-                  line = line.strip()
-                  if not line.startswith("data:"):
-                      continue
-                  payload = line[5:].strip()
-                  if not payload or payload == "[DONE]":
-                      continue
-                  try:
-                      data = json.loads(payload)
-                      chunk = data.get("message", "")
-                      if chunk:
-                          chunks.append(chunk)
-                  except Exception:
-                      continue
-              return "".join(chunks)
 
           def strip_markdown(text: str) -> str:
               text = text.strip()
@@ -226,7 +253,7 @@ jobs:
                   return None
               cleaned = strip_markdown(text)
               try:
-                  return fix_mojibake(json.loads(cleaned))
+                  return deep_repair(json.loads(cleaned))
               except Exception:
                   pass
 
@@ -263,12 +290,16 @@ jobs:
                           if depth == 0:
                               try:
                                   raw_obj = json.loads(cleaned[start_idx : idx + 1])
-                                  return fix_mojibake(raw_obj)
+                                  return deep_repair(raw_obj)
                               except Exception:
                                   break
               return None
 
           def wait_for_text_generation(page, baseline_msgs_count, state, max_wait=TEXT_WAIT):
+              """
+              Extracts text directly from the browser's DOM (native UTF-16 Unicode)
+              to avoid Playwright's SSE Latin-1 decoding bug.
+              """
               log("Waiting for text generation to complete...")
               start = time.time()
               last_text = ""
@@ -276,12 +307,6 @@ jobs:
 
               while time.time() - start < max_wait:
                   click_continue(page)
-
-                  if state["chat_done"] and state["raw_stream"]:
-                      parsed_sse = parse_sse_text("".join(state["raw_stream"]))
-                      if parsed_sse.strip():
-                          log(f"Captured text via completed network SSE stream ({len(parsed_sse)} chars).")
-                          return fix_mojibake(parsed_sse)
 
                   stop_btn = page.locator("button[aria-label*='Stop' i], button:has-text('Stop generating'), button:has-text('Stop')")
                   is_generating = False
@@ -295,7 +320,10 @@ jobs:
                           () => {
                               const articles = document.querySelectorAll('article, [data-testid="chat-message"]');
                               if (!articles || articles.length === 0) return '';
-                              return (articles[articles.length - 1].innerText || '').trim();
+                              const last = articles[articles.length - 1];
+                              const code = last.querySelector('pre code, code');
+                              if (code) return (code.innerText || '').trim();
+                              return (last.innerText || '').trim();
                           }
                       """)
                       if cur_text and cur_text == last_text and not is_generating:
@@ -306,18 +334,15 @@ jobs:
 
                       if stable_ticks >= 3 and len(last_text) > 10:
                           log(f"Captured text via DOM stability ({len(last_text)} chars).")
-                          return fix_mojibake(last_text)
+                          return deep_repair(last_text)
                   except Exception:
                       pass
 
                   page.wait_for_timeout(2000)
 
-              if state["raw_stream"]:
-                  return fix_mojibake(parse_sse_text("".join(state["raw_stream"])))
-              return fix_mojibake(last_text)
+              return deep_repair(last_text)
 
           def build_timeline_chunks(transcript_path="transcript.json", max_chars=1800):
-              """Uses 1800 chars (~45-60s) chunks so AI generates granular second-by-second cuts."""
               with open(transcript_path, "r", encoding="utf-8") as f:
                   data = json.load(f)
 
@@ -349,65 +374,64 @@ jobs:
 
               return movie_title, chunks
 
-          def enforce_micro_beats(raw_beats, max_duration=MAX_CLIP_DURATION, max_words_per_cut=8):
+          def enforce_micro_beats(raw_beats, max_duration=MAX_CLIP_DURATION, max_words=MAX_WORDS_PER_BEAT):
               """
-              Deterministic splitter: Enforces that NO clip exceeds max_duration (3.0s).
-              Splits long scenes and distributes narration into snappy, synced micro-cuts.
+              Slices any long scene into rapid 2.0s - 3.0s micro-cuts with 6-8 words.
+              Guarantees strict audio-visual synchronization.
               """
               refined = []
               for b in raw_beats:
-                  narr = fix_mojibake(b.get("narration", "")).strip()
+                  narr = deep_repair(b.get("narration", "")).strip()
                   narr = re.sub(r"[a-zA-Z]", "", narr).strip()
                   if not narr:
                       continue
 
-                  st = round(float(b.get("start_sec", 0.0)), 2)
-                  en = round(float(b.get("end_sec", st + 3.0)), 2)
+                  st = round(float(b.get("start_sec") or b.get("target_window", {}).get("start", 0.0)), 2)
+                  en = round(float(b.get("end_sec") or b.get("target_window", {}).get("end", st + 3.0)), 2)
                   if en <= st:
                       en = round(st + 3.0, 2)
 
                   words = narr.split()
-                  total_words = len(words)
-                  dur = en - st
+                  dur = round(en - st, 2)
 
-                  # If beat already satisfies <= 3.0s and <= 8 words, keep as is
-                  if dur <= max_duration and total_words <= max_words_per_cut:
+                  # Already satisfies recap editing rules
+                  if dur <= max_duration and len(words) <= max_words:
                       refined.append({
                           "narration": narr,
                           "start_sec": st,
                           "end_sec": en,
-                          "word_count": total_words
+                          "word_count": len(words)
                       })
                       continue
 
-                  # Otherwise, chop this window into snappy 2.0s - 3.0s micro-cuts
+                  # Otherwise, chop into <= 3.0s micro-cuts
                   splits_by_time = math.ceil(dur / max_duration)
-                  splits_by_words = math.ceil(total_words / max_words_per_cut)
+                  splits_by_words = math.ceil(len(words) / max_words)
                   num_splits = max(int(splits_by_time), int(splits_by_words), 1)
 
                   step_time = round(dur / num_splits, 2)
                   if step_time > max_duration:
                       step_time = max_duration
 
-                  step_words = max(1, math.ceil(total_words / num_splits))
+                  words_per_split = max(1, math.ceil(len(words) / num_splits))
 
-                  cur_time = st
+                  cur_t = st
                   for i in range(num_splits):
-                      sub_words = words[i * step_words : (i + 1) * step_words]
-                      if not sub_words:
+                      chunk_words = words[i * words_per_split : (i + 1) * words_per_split]
+                      if not chunk_words:
                           break
-                      sub_narr = " ".join(sub_words)
-                      sub_st = round(cur_time, 2)
-                      sub_en = round(min(en, cur_time + step_time), 2)
+                      chunk_narr = " ".join(chunk_words)
+                      sub_st = round(cur_t, 2)
+                      sub_en = round(min(en, cur_t + step_time), 2)
                       if sub_en - sub_st < 1.5:
                           sub_en = round(sub_st + min(max_duration, 2.5), 2)
-                      cur_time = sub_en
+                      cur_t = sub_en
 
                       refined.append({
-                          "narration": sub_narr,
+                          "narration": chunk_narr,
                           "start_sec": sub_st,
                           "end_sec": sub_en,
-                          "word_count": len(sub_words)
+                          "word_count": len(chunk_words)
                       })
               return refined
 
@@ -448,31 +472,17 @@ jobs:
                   box.wait_for(state="visible", timeout=40000)
 
                   probe_prompt = 'Reply with exactly this JSON and nothing else: {"ok": true, "hindi": "नमस्ते"}'
-                  state = {"submitted": False, "raw_stream": [], "chat_done": False}
-
-                  def on_resp(resp):
-                      if "/duckchat/v1/chat" in resp.url and resp.request.method == "POST":
-                          try:
-                              body = resp.body().decode("utf-8", errors="replace")
-                              state["raw_stream"].append(body)
-                          except Exception: pass
-                  page.on("response", on_resp)
-
-                  def on_req_finish(req):
-                      if "/duckchat/v1/chat" in req.url and req.method == "POST":
-                          state["chat_done"] = True
-                  page.on("requestfinished", on_req_finish)
+                  state = {"submitted": False, "chat_done": False}
 
                   human_paste_prompt(page, box, probe_prompt)
                   state["submitted"] = True
 
                   result_text = wait_for_text_generation(page, 0, state, max_wait=45)
                   parsed = parse_first_balanced_json(result_text)
-                  log(f"Probe Result Raw: {result_text!r}")
                   log(f"Probe Parsed JSON: {parsed}")
 
-                  if parsed and parsed.get("ok") is True:
-                      log("Probe SUCCESS! UTF-8 and connection validated.")
+                  if parsed and parsed.get("ok") is True and parsed.get("hindi") == "नमस्ते":
+                      log("Probe SUCCESS! Pristine Hindi Unicode verified.")
                       sys.exit(0)
                   else:
                       log("Probe FAILED validation.")
@@ -489,7 +499,10 @@ jobs:
                       with open(STATE_FILE, "r", encoding="utf-8") as sf:
                           loaded = json.load(sf)
                           if isinstance(loaded, dict):
-                              pipeline_state = fix_mojibake(loaded)
+                              pipeline_state = deep_repair(loaded)
+                              # Retroactively slice old beats to <= 3.0s
+                              if pipeline_state.get("beats"):
+                                  pipeline_state["beats"] = enforce_micro_beats(pipeline_state["beats"])
                   except Exception: pass
 
               running_story_summary = "Beginning of the movie."
@@ -506,40 +519,25 @@ jobs:
                   chunk_done = False
 
                   for attempt in range(1, MAX_ATTEMPTS + 1):
-                      state = {"submitted": False, "raw_stream": [], "chat_done": False}
-
-                      def on_response(resp):
-                          try:
-                              if state["submitted"] and "/duckchat/v1/chat" in resp.url and resp.request.method == "POST":
-                                  body = resp.body().decode("utf-8", errors="replace")
-                                  state["raw_stream"].append(body)
-                          except Exception: pass
-                      page.on("response", on_response)
-
-                      def on_request_finished(req):
-                          try:
-                              if req.method == "POST" and "/duckchat/v1/chat" in req.url:
-                                  state["chat_done"] = True
-                          except Exception: pass
-                      page.on("requestfinished", on_request_finished)
+                      state = {"submitted": False, "chat_done": False}
 
                       try:
                           is_in_chat = bool(page and "chatID=" in page.url)
-
                           chunk_text = "\n".join(chunk_lines)
+
                           final_prompt = (
-                              f"You are a professional Hindi YouTube movie-recap writer.\n"
+                              f"You are a professional Hindi YouTube movie-recap narrator and editor.\n"
                               f"Movie: {movie_title}.\n"
-                              f"Context so far:\n{running_story_summary}\n\n"
+                              f"Previous Story Context:\n{running_story_summary}\n\n"
                               f"Current Movie Segments:\n{chunk_text}\n\n"
-                              "STRICT RULES (CRITICAL FOR VIDEO EDITING & FAIR USE):\n"
-                              "1. MAXIMUM 3.0 SECONDS CLIP LENGTH: Every visual cut MUST be 2.0 to 3.0 seconds maximum (end_sec - start_sec <= 3.0). DO NOT output 10 or 30-second clips.\n"
-                              "2. SNAPPY NARRATION: For every 3-second cut, write strictly 6 to 8 Hindi words (Devanagari script only, no Latin letters). It must be fast-paced, describing what is visible right now on screen.\n"
-                              "3. NO PARAGRAPH DUMPING: Break every scene down into sequential, continuous 3-second micro-beats.\n"
-                              "4. Output strictly valid JSON format matching this schema:\n"
-                              '{"summary": "Short 2 sentence plot update", '
-                              '"characters": [{"name": "EnglishName", "hindi_name": "हिंदी", "who": "विवरण"}], '
-                              '"beats": [{"narration": "यहाँ सिर्फ छह से आठ शब्द होंगे।", "start_sec": 0.0, "end_sec": 3.0}]}'
+                              "RULES (CRITICAL FOR VIDEO EDITING & FAIR USE):\n"
+                              "1. 100% PURE HINDI (DEVANAGARI SCRIPT ONLY): Every character and narration MUST be Devanagari Hindi (क्लो, हत्या, जांच). Strictly NO Latin characters in narration.\n"
+                              "2. MAXIMUM 3.0 SECONDS CLIP DURATION: Every beat MUST represent a clip of MAXIMUM 3.0 seconds (end_sec - start_sec <= 3.0). Never combine 15 or 30 seconds into one beat.\n"
+                              "3. 6 TO 8 WORDS PER BEAT: Because each visual cut is 2.5 to 3.0 seconds, each beat's narration MUST be strictly 6 to 8 words so TTS voice matches the video cut shot-for-shot.\n"
+                              "4. Output strictly valid JSON matching this schema:\n"
+                              '{"summary": "2 वाक्य में सारांश", '
+                              '"characters": [{"name": "Chloe", "hindi_name": "क्लो", "who": "जासूस"}], '
+                              '"beats": [{"narration": "क्लो जांच के लिए कमरे में आती है।", "start_sec": 0.72, "end_sec": 3.42}]}'
                           )
 
                           if not is_in_chat:
@@ -578,17 +576,15 @@ jobs:
                               if isinstance(ch, dict) and ch.get("name"):
                                   pipeline_state["characters"][ch["name"]] = ch
 
-                          # Split long AI responses into strictly <= 3.0s micro-cuts
+                          # Enforce the strict <= 3.0s micro-cuts on the AI output
                           sanitized_beats = enforce_micro_beats(parsed.get("beats", []))
 
                           for b in sanitized_beats:
-                              narr = b["narration"]
                               st_s = b["start_sec"]
                               en_s = b["end_sec"]
-
                               beat_obj = {
                                   "beat_id": f"B{beat_counter:04d}",
-                                  "narration": narr,
+                                  "narration": b["narration"],
                                   "target_window": {"start": st_s, "end": en_s},
                                   "portion": {"start": st_s, "end": en_s},
                                   "duration": round(en_s - st_s, 2),
@@ -620,21 +616,28 @@ jobs:
                       log(f"Could not complete {chunk_id}. Stopping execution.")
                       break
 
-              total_words = sum(b["word_count"] for b in all_beats)
+              # Re-index all beats sequentially from B0001
+              reindexed_beats = []
+              for idx, b in enumerate(all_beats, 1):
+                  b_copy = dict(b)
+                  b_copy["beat_id"] = f"B{idx:04d}"
+                  reindexed_beats.append(b_copy)
+
+              total_words = sum(b["word_count"] for b in reindexed_beats)
               final_output = {
                   "movie_title": movie_title,
                   "target_minutes": TARGET_MINUTES,
                   "characters": list(pipeline_state.get("characters", {}).values()),
                   "synopsis": running_story_summary,
-                  "total_beats": len(all_beats),
+                  "total_beats": len(reindexed_beats),
                   "total_words": total_words,
-                  "beats": all_beats
+                  "beats": reindexed_beats
               }
 
               Path("story_beats.json").write_text(
                   json.dumps(final_output, ensure_ascii=False, indent=2), encoding="utf-8"
               )
-              log(f"ALL CHUNKS COMPLETE: Wrote story_beats.json with {len(all_beats)} beats ({total_words} words).")
+              log(f"ALL CHUNKS COMPLETE: Wrote story_beats.json with {len(reindexed_beats)} beats ({total_words} words).")
 
               if browser:
                   browser.close()

@@ -239,7 +239,6 @@ jobs:
               return None
 
           def wait_for_text_generation(page, baseline_msgs_count, state, max_wait=TEXT_WAIT):
-              """Waits for DuckDuckGo to finish streaming text response."""
               log("Waiting for text generation to complete...")
               start = time.time()
               last_text = ""
@@ -248,14 +247,12 @@ jobs:
               while time.time() - start < max_wait:
                   click_continue(page)
 
-                  # Capture via raw SSE if stream completed
                   if state["chat_done"] and state["raw_stream"]:
                       parsed_sse = parse_sse_text("".join(state["raw_stream"]))
                       if parsed_sse.strip():
                           log(f"Captured text via completed network SSE stream ({len(parsed_sse)} chars).")
                           return parsed_sse
 
-                  # Check if DuckDuckGo is still generating
                   stop_btn = page.locator("button[aria-label*='Stop' i], button:has-text('Stop generating'), button:has-text('Stop')")
                   is_generating = False
                   try:
@@ -263,7 +260,6 @@ jobs:
                   except Exception:
                       pass
 
-                  # Inspect latest assistant bubble in DOM
                   try:
                       cur_text = page.evaluate("""
                           () => {
@@ -278,7 +274,6 @@ jobs:
                           stable_ticks = 0
                       last_text = cur_text
 
-                      # Text has stopped changing and stop button is gone
                       if stable_ticks >= 3 and len(last_text) > 10:
                           log(f"Captured text via DOM stability ({len(last_text)} chars).")
                           return last_text
@@ -287,12 +282,10 @@ jobs:
 
                   page.wait_for_timeout(2000)
 
-              # Fallback: return best known text or parse whatever stream chunks arrived
               if state["raw_stream"]:
                   return parse_sse_text("".join(state["raw_stream"]))
               return last_text
 
-          # --- Story Pipeline Pre-processing ---
           def build_timeline_chunks(transcript_path="transcript.json", max_chars=4000):
               with open(transcript_path, "r", encoding="utf-8") as f:
                   data = json.load(f)
@@ -325,7 +318,6 @@ jobs:
 
               return movie_title, chunks
 
-          # Browser runner identical to your working workflow
           browser = None
           context = None
           page = None
@@ -402,7 +394,11 @@ jobs:
               if STATE_FILE.exists():
                   try:
                       with open(STATE_FILE, "r", encoding="utf-8") as sf:
-                          pipeline_state = json.load(sf)
+                          loaded = json.load(sf)
+                          if isinstance(loaded, dict):
+                              pipeline_state["completed_chunks"] = loaded.get("completed_chunks", [])
+                              pipeline_state["beats"] = loaded.get("beats", [])
+                              pipeline_state["characters"] = loaded.get("characters", {})
                   except Exception: pass
 
               running_story_summary = "Beginning of the movie."
@@ -411,7 +407,7 @@ jobs:
 
               for c_idx, chunk_lines in enumerate(chunks):
                   chunk_id = f"chunk_{c_idx+1}"
-                  if chunk_id in pipeline_state["completed_chunks"]:
+                  if chunk_id in pipeline_state.get("completed_chunks", []):
                       log(f"Chunk {chunk_id} already generated. Skipping.")
                       continue
 
@@ -474,7 +470,6 @@ jobs:
                                   if "chatID=" in page.url: break
                                   page.wait_for_timeout(1200)
 
-                          # Wait for text stream to finish
                           result_raw = wait_for_text_generation(page, 0, state, max_wait=TEXT_WAIT)
                           parsed = parse_first_balanced_json(result_raw)
 
@@ -482,6 +477,9 @@ jobs:
                               raise RuntimeError(f"Invalid or empty JSON response for {chunk_id}: {result_raw[:200]!r}")
 
                           running_story_summary = parsed.get("summary", running_story_summary)
+
+                          if "characters" not in pipeline_state:
+                              pipeline_state["characters"] = {}
 
                           for ch in parsed.get("characters", []):
                               if isinstance(ch, dict) and ch.get("name"):
@@ -503,8 +501,11 @@ jobs:
                               all_beats.append(beat_obj)
                               beat_counter += 1
 
+                          if "completed_chunks" not in pipeline_state:
+                              pipeline_state["completed_chunks"] = []
                           pipeline_state["completed_chunks"].append(chunk_id)
                           pipeline_state["beats"] = all_beats
+
                           with open(STATE_FILE, "w", encoding="utf-8") as sf:
                               json.dump(pipeline_state, sf, indent=2, ensure_ascii=False)
 
@@ -523,7 +524,6 @@ jobs:
                       log(f"Could not complete {chunk_id}. Stopping execution.")
                       break
 
-              # Write final story_beats.json
               total_words = sum(b["word_count"] for b in all_beats)
               final_output = {
                   "movie_title": movie_title,

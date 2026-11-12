@@ -216,7 +216,9 @@ jobs:
                   self.context = None
                   self.page = None
                   self.finished_requests = set()
+                  self.finished_urls = set()
                   self.failed_requests = set()
+                  self.failed_urls = set()
                   self.success_count = 0
                   self.last_http_status = None
                   self.last_raw_body = ""
@@ -244,13 +246,23 @@ jobs:
                   self.context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
                   self.page = self.context.new_page()
                   self.finished_requests = set()
+                  self.finished_urls = set()
                   self.failed_requests = set()
+                  self.failed_urls = set()
 
                   def on_req_finished(req):
                       self.finished_requests.add(req)
+                      try:
+                          self.finished_urls.add(req.url)
+                      except Exception:
+                          pass
 
                   def on_req_failed(req):
                       self.failed_requests.add(req)
+                      try:
+                          self.failed_urls.add(req.url)
+                      except Exception:
+                          pass
 
                   self.page.on("requestfinished", on_req_finished)
                   self.page.on("requestfailed", on_req_failed)
@@ -288,58 +300,40 @@ jobs:
                   self._init_browser()
                   self.success_count = 0
 
-              def dismiss_consent_dialog(self):
-                  """Actively detects and clicks onboarding modal buttons such as 'Agree and continue'."""
-                  log("Checking for consent dialog / onboarding popup...")
-                  for _ in range(8):
-                      clicked = False
-                      button_candidates = [
-                          self.page.locator("button:has-text('Agree and continue')"),
-                          self.page.locator("button:has-text('Agree & continue')"),
-                          self.page.locator("button:has-text('Agree')"),
-                          self.page.locator("button:has-text('Continue')"),
-                          self.page.locator("button:has-text('Get started')"),
-                          self.page.locator("button:has-text('Got it')"),
-                          self.page.locator("button:has-text('Accept')"),
-                          self.page.get_by_role("button", name=re.compile(r"agree|continue|accept|get started|got it", re.I)),
-                          self.page.locator("[role='dialog'] button"),
-                      ]
+              def dismiss_consent_dialog(self) -> bool:
+                  """Detects and clicks any consent, onboarding, or post-response modal popup."""
+                  clicked_any = False
+                  button_candidates = [
+                      self.page.locator("button:has-text('Agree and continue')"),
+                      self.page.locator("button:has-text('Agree & continue')"),
+                      self.page.locator("button:has-text('Continue')"),
+                      self.page.locator("button:has-text('Agree')"),
+                      self.page.locator("button:has-text('Get started')"),
+                      self.page.locator("button:has-text('Got it')"),
+                      self.page.locator("button:has-text('Accept')"),
+                      self.page.get_by_role("button", name=re.compile(r"agree|continue|accept|get started|got it", re.I)),
+                      self.page.locator("[role='dialog'] button"),
+                  ]
 
-                      for locator in button_candidates:
-                          try:
-                              count = locator.count()
-                              for i in range(count):
-                                  btn = locator.nth(i)
-                                  if btn.is_visible():
-                                      txt = (btn.inner_text() or "").strip()
-                                      log(f"Found consent button ({txt!r}). Clicking now...")
-                                      btn.scroll_into_view_if_needed()
-                                      btn.click(timeout=3000, force=True)
-                                      self.page.wait_for_timeout(1000)
-                                      clicked = True
-                                      break
-                          except Exception:
-                              pass
-                          if clicked:
-                              break
-
-                      dialog = self.page.locator("[role='dialog'], [aria-modal='true']")
-                      is_dialog_up = False
+                  for locator in button_candidates:
                       try:
-                          if dialog.count() > 0 and dialog.first.is_visible():
-                              is_dialog_up = True
+                          count = locator.count()
+                          for i in range(count):
+                              btn = locator.nth(i)
+                              if btn.is_visible():
+                                  txt = (btn.inner_text() or "").strip()
+                                  log(f"Found consent/onboarding button ({txt!r}). Clicking now...")
+                                  btn.scroll_into_view_if_needed()
+                                  btn.click(timeout=2500, force=True)
+                                  self.page.wait_for_timeout(800)
+                                  clicked_any = True
+                                  break
                       except Exception:
                           pass
-
-                      if clicked and not is_dialog_up:
-                          log("Consent popup successfully dismissed.")
-                          return True
-
-                      if not is_dialog_up and not clicked:
+                      if clicked_any:
                           break
 
-                      self.page.wait_for_timeout(800)
-                  return False
+                  return clicked_any
 
               def get_prompt_box(self):
                   return self.page.locator(
@@ -409,6 +403,26 @@ jobs:
                       return obj_str
                   return ""
 
+              def is_req_finished(self, req) -> bool:
+                  if req in self.finished_requests:
+                      return True
+                  try:
+                      if req.url in self.finished_urls:
+                          return True
+                  except Exception:
+                      pass
+                  return False
+
+              def is_req_failed(self, req) -> bool:
+                  if req in self.failed_requests:
+                      return True
+                  try:
+                      if req.url in self.failed_urls:
+                          return True
+                  except Exception:
+                      pass
+                  return False
+
               def query(self, prompt: str, label: str = "query") -> str:
                   if len(prompt) > 12000:
                       log(f"Warning: Prompt length {len(prompt)} exceeds 12000 chars, truncating.")
@@ -430,15 +444,18 @@ jobs:
               def _execute_single_query(self, prompt: str, label: str, attempt: int) -> str:
                   log("Navigating to https://duck.ai/chat ...")
                   self.page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
-                  self.page.wait_for_timeout(3000)
+                  self.page.wait_for_timeout(2500)
 
-                  # Dismiss onboarding consent popup before touching inputs
-                  self.dismiss_consent_dialog()
+                  # Dismiss any initial modal popup
+                  for _ in range(4):
+                      if not self.dismiss_consent_dialog():
+                          break
+                      self.page.wait_for_timeout(600)
 
                   box = self.get_prompt_box()
                   box.wait_for(state="visible", timeout=30000)
 
-                  # Double-check consent popup in case it appeared late
+                  # Dismiss modal if it appeared after prompt box mounted
                   self.dismiss_consent_dialog()
 
                   box.click(timeout=5000, force=True)
@@ -460,7 +477,6 @@ jobs:
                       captured_response = resp_info.value
                   except Exception as e:
                       log(f"Enter did not trigger chat response ({e}). Attempting send button click...")
-                      # Re-check dialog before clicking send button
                       self.dismiss_consent_dialog()
                       try:
                           send_btn = self.page.locator(
@@ -498,11 +514,25 @@ jobs:
 
                   req = captured_response.request
                   poll_start = time.time()
+                  last_log_time = poll_start
+
                   while time.time() - poll_start < 240:
-                      if req in self.failed_requests:
+                      if self.is_req_failed(req):
                           raise RuntimeError("Chat request failed unexpectedly during streaming.")
-                      if req in self.finished_requests:
+
+                      # Continuously dismiss any secondary modal dialogs that pop up during or after streaming
+                      self.dismiss_consent_dialog()
+
+                      if self.is_req_finished(req):
+                          log(f"Chat request stream finished in {time.time() - poll_start:.1f}s.")
                           break
+
+                      # Keep-alive log every 5 seconds so action logs never appear frozen
+                      now = time.time()
+                      if now - last_log_time >= 5.0:
+                          log(f"Waiting for SSE stream completion... ({now - poll_start:.0f}s elapsed)")
+                          last_log_time = now
+
                       time.sleep(0.5)
 
                   raw_text = ""
@@ -806,7 +836,7 @@ jobs:
 
               (DEBUG_DIR / "whole_story.checkpoint.json").write_text(
                   json.dumps(parsed, ensure_ascii=False, indent=2), encoding="utf-8"
-              )
+                  )
               log("Step 2 Complete: Synopsis and character list acquired.")
               return parsed
 

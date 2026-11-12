@@ -115,8 +115,11 @@ jobs:
           TARGET_MINUTES = float(os.environ.get("TARGET_MINUTES", "12"))
           INPUT_HINTS = os.environ.get("INPUT_HINTS", "").strip()
           TEXT_WAIT = int(os.environ.get("TEXT_WAIT_SECONDS", "180"))
-          MAX_CLIP_DURATION = 3.0  # Visual clips strictly <= 3.0s
-          MAX_WORDS_PER_BEAT = 8   # Speech pacing for 3.0s cut
+          
+          # Natural recap pacing: 2.5s to 3.5s per visual cut (6 to 10 words)
+          MIN_CLIP_DURATION = 2.5
+          MAX_CLIP_DURATION = 3.5
+          MAX_WORDS_PER_BEAT = 10
           MAX_ATTEMPTS = 2
 
           DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
@@ -204,24 +207,19 @@ jobs:
                   "textarea[placeholder*='message' i], textarea").first
 
           def click_ask_button(page):
-              """Specifically targets the 'Ask' or 'Send' button on Duck.ai."""
-              # 1. Primary: Match button whose visible text is 'Ask'
+              """Targets the 'Ask' or 'Send' button on Duck.ai."""
               ask_btn = page.get_by_role("button", name=re.compile(r"^\s*ask\s*$", re.I))
               if ask_btn.count() > 0 and ask_btn.first.is_visible():
-                  log("Found 'Ask' button via get_by_role. Clicking...")
                   ask_btn.first.click(timeout=3000)
                   return True
 
-              # 2. Text search for 'Ask'
               btn_text = page.locator("button:has-text('Ask')")
               for i in range(btn_text.count()):
                   b = btn_text.nth(i)
                   if b.is_visible() and b.is_enabled():
-                      log("Found button with text 'Ask'. Clicking...")
                       b.click(timeout=3000)
                       return True
 
-              # 3. JavaScript evaluation fallback targeting the enabled Ask/Submit button
               js_click = page.evaluate("""() => {
                   const buttons = Array.from(document.querySelectorAll('button'));
                   const ask = buttons.find(b => !b.disabled && (b.innerText || '').trim().toLowerCase() === 'ask');
@@ -232,31 +230,25 @@ jobs:
                   if (sub) { sub.click(); return 'submit_clicked'; }
                   return null;
               }""")
-              log(f"JS button click result: {js_click}")
               return bool(js_click)
 
           def submit_prompt(page, box, text, context):
               """Types prompt via native Chrome CDP and clicks the 'Ask' button."""
-              log("Focusing prompt box...")
+              log("Focusing prompt box and typing via CDP...")
               box.click()
               page.wait_for_timeout(200)
-
-              # Clear existing text
               box.fill("")
               page.wait_for_timeout(100)
 
-              # Type via Chrome DevTools Protocol to trigger React events natively
               try:
                   cdp = context.new_cdp_session(page)
                   cdp.send("Input.insertText", {"text": text})
                   cdp.detach()
               except Exception as e:
-                  log(f"CDP typing fallback: {e}")
+                  log(f"CDP fallback: {e}")
                   box.fill(text)
 
-              page.wait_for_timeout(500)
-
-              # Dispatch input & change events
+              page.wait_for_timeout(400)
               try:
                   page.evaluate("""(el) => {
                       el.dispatchEvent(new Event('input', { bubbles: true }));
@@ -266,8 +258,6 @@ jobs:
                   pass
 
               page.wait_for_timeout(300)
-
-              # Click the Ask button
               clicked = click_ask_button(page)
               if not clicked:
                   box.press("Enter")
@@ -345,7 +335,6 @@ jobs:
               return None
 
           def wait_for_text_generation(page, state, max_wait=TEXT_WAIT):
-              """Waits for generation, auto-scrolls, and extracts text upon completion."""
               log("Waiting for text generation to complete...")
               start = time.time()
               last_text = ""
@@ -355,7 +344,6 @@ jobs:
                   if state.get("rate_limited"):
                       raise RuntimeError("Duck.ai returned HTTP 418 (Tor IP blocked).")
 
-                  # Auto-scroll page to keep output active in DOM
                   try:
                       page.evaluate("""() => {
                           window.scrollTo(0, document.body.scrollHeight);
@@ -365,14 +353,12 @@ jobs:
                   except Exception:
                       pass
 
-                  # 1. Primary: SSE Network Stream Finished
                   if state.get("chat_done") and state.get("raw_stream"):
                       parsed_sse = parse_sse_text("".join(state["raw_stream"]))
                       if parsed_sse.strip():
                           log(f"Captured text via completed network SSE stream ({len(parsed_sse)} chars).")
                           return deep_repair(parsed_sse)
 
-                  # 2. Secondary: DOM Stability & Stop Button
                   stop_btn = page.locator("button:has-text('Stop generating'), button:has-text('Stop'), button[aria-label*='Stop' i]")
                   is_generating = False
                   try:
@@ -415,7 +401,6 @@ jobs:
                       return deep_repair(parsed_sse)
               if last_text:
                   return deep_repair(last_text)
-
               return ""
 
           def build_timeline_chunks(transcript_path="transcript.json", max_chars=2200):
@@ -450,8 +435,11 @@ jobs:
 
               return movie_title, chunks
 
-          def enforce_micro_beats(raw_beats, max_duration=MAX_CLIP_DURATION, max_words=MAX_WORDS_PER_BEAT):
-              """Enforces that individual clips stay <= 3.0s and preserves jump cuts between scenes."""
+          def enforce_micro_beats(raw_beats, min_duration=MIN_CLIP_DURATION, max_duration=MAX_CLIP_DURATION, max_words=MAX_WORDS_PER_BEAT):
+              """
+              Enforces complete, natural sentences per beat.
+              NEVER cuts a single sentence in half into 1.5s fragments.
+              """
               refined = []
               for b in raw_beats:
                   narr = deep_repair(b.get("narration", "")).strip()
@@ -464,24 +452,48 @@ jobs:
                   if en <= st:
                       en = round(st + 3.0, 2)
 
-                  words = narr.split()
                   dur = round(en - st, 2)
+                  words = narr.split()
 
-                  if dur <= max_duration and len(words) <= max_words:
+                  # If already a complete, concise sentence (<= 10 words, <= 3.8s), NEVER SPLIT IT!
+                  if dur <= max_duration + 0.3 and len(words) <= max_words:
+                      if dur < min_duration:
+                          en = round(st + min_duration, 2)
+                          dur = min_duration
                       refined.append({
                           "narration": narr,
                           "start_sec": st,
                           "end_sec": en,
+                          "duration": dur,
                           "word_count": len(words)
                       })
                       continue
 
-                  # Subdivide if the model provided a long window
-                  splits_by_time = math.ceil(dur / max_duration)
-                  splits_by_words = math.ceil(len(words) / max_words)
-                  num_splits = max(int(splits_by_time), int(splits_by_words), 1)
+                  # If the model wrote multiple sentences in one beat, split ONLY by punctuation
+                  sentences = [s.strip() for s in re.split(r"[।?!|\n]+", narr) if s.strip()]
+                  if len(sentences) > 1:
+                      time_per_s = round(dur / len(sentences), 2)
+                      cur_t = st
+                      for s in sentences:
+                          s_words = s.split()
+                          s_dur = max(min_duration, min(max_duration, time_per_s))
+                          sub_st = round(cur_t, 2)
+                          sub_en = round(cur_t + s_dur, 2)
+                          cur_t = sub_en
+                          # Ensure proper Hindi sentence ending punctuation
+                          clean_s = s if s.endswith("।") else s + "।"
+                          refined.append({
+                              "narration": clean_s,
+                              "start_sec": sub_st,
+                              "end_sec": sub_en,
+                              "duration": round(sub_en - sub_st, 2),
+                              "word_count": len(s_words)
+                          })
+                      continue
 
-                  step_time = min(max_duration, round(dur / num_splits, 2))
+                  # Fallback for an unusually long single run-on sentence (> 10 words)
+                  num_splits = max(int(math.ceil(dur / max_duration)), int(math.ceil(len(words) / 8)), 1)
+                  step_time = min(max_duration, max(min_duration, round(dur / num_splits, 2)))
                   words_per_split = max(1, math.ceil(len(words) / num_splits))
 
                   cur_t = st
@@ -491,15 +503,13 @@ jobs:
                           break
                       chunk_narr = " ".join(chunk_words)
                       sub_st = round(cur_t, 2)
-                      sub_en = round(min(en, cur_t + step_time), 2)
-                      if sub_en - sub_st < 1.5:
-                          sub_en = round(sub_st + min(max_duration, 2.5), 2)
+                      sub_en = round(cur_t + step_time, 2)
                       cur_t = sub_en
-
                       refined.append({
                           "narration": chunk_narr,
                           "start_sec": sub_st,
                           "end_sec": sub_en,
+                          "duration": round(sub_en - sub_st, 2),
                           "word_count": len(chunk_words)
                       })
               return refined
@@ -563,7 +573,7 @@ jobs:
                   log(f"Probe Parsed JSON: {parsed}")
 
                   if parsed and parsed.get("ok") is True and parsed.get("hindi") == "नमस्ते":
-                      log("Probe SUCCESS! Pure Hindi Unicode and 'Ask' button verified.")
+                      log("Probe SUCCESS! Pure Hindi Unicode and Ask button verified.")
                       sys.exit(0)
                   else:
                       log("Probe FAILED validation.")
@@ -623,21 +633,33 @@ jobs:
                           chunk_text = "\n".join(chunk_lines)
 
                           final_prompt = (
-                              f"You are a professional Hindi YouTube movie-recap narrator and editor.\n"
+                              f"You are an elite YouTube Hindi Movie Recap Narrator and Video Editor.\n"
                               f"Movie: {movie_title}.\n"
-                              f"Previous Story Context:\n{running_story_summary}\n\n"
-                              f"Current Movie Segments:\n{chunk_text}\n\n"
-                              "CRITICAL EDITING & RECAP RULES:\n"
-                              "1. JUMP CUTS & NO FILLER: Do NOT transcribe line-by-line. Identify the main plot events and SKIP all boring dialogue, silence, and filler. Jump across timestamps to where the key action occurs.\n"
-                              "2. PURE HINDI (DEVANAGARI SCRIPT ONLY): Narration must be 100% Devanagari Hindi (क्लो, हत्या, सबूत). Strictly NO English words or Latin letters in narration.\n"
-                              "3. MAXIMUM 3.0 SECONDS CLIP LENGTH: Every beat MUST represent a short visual cut between 2.0s and 3.0s maximum (end_sec - start_sec <= 3.0s).\n"
-                              "4. STRICT AUDIO-VISUAL SYNC: Write strictly 6 to 8 Hindi words per beat, describing what is shown on screen at that exact 3-second timestamp.\n"
+                              f"Story Context So Far:\n{running_story_summary}\n\n"
+                              f"Current Movie Transcript Segments:\n{chunk_text}\n\n"
+                              "CRITICAL STORYTELLING & RECAP RULES:\n"
+                              "1. SEAMLESS SCENE BRIDGES (NEVER TELEPORT!):\n"
+                              "   - In movies, scenes change location (e.g. Police Station -> Nightclub/Bar).\n"
+                              "   - NEVER suddenly introduce a new character (e.g. Lucifer) without explaining the transition.\n"
+                              "   - When Chloe leaves the station or arrives at a new place, EXPLAIN: Where did she go? Who is she interrogating? Why?\n"
+                              "   - Example: 'गवाह की तलाश में क्लो सीधे लूसिफ़र के नाइटक्लब पहुँचती है, जहाँ पहली बार दोनों की मुलाकात होती है।'\n"
+                              "2. COMPLETE HINDI SENTENCES (NO FRAGMENTATION):\n"
+                              "   - Every single beat MUST be a complete, grammatically sound Hindi sentence (6 to 10 words, Devanagari script only).\n"
+                              "   - Never cut a sentence in half.\n"
+                              "3. UNIFY CHARACTER NAMES (AVOID TRANSCRIPT TYPOS):\n"
+                              "   - Whisper phonetic typos: 'Darlala', 'Jaila', 'Jalaila', 'Delilah' are ALL the same murdered singer: 'डेलाइला'.\n"
+                              "   - 'Beatrice' and 'Trixie' are the same little girl: 'ट्रिक्सी'.\n"
+                              "   - Do NOT create duplicate characters.\n"
+                              "4. JUMP CUTS & NO FILLER:\n"
+                              "   - Skip dead dialogue, silent walking, and repetitive small talk. Jump timestamps to high-impact moments.\n"
+                              "   - Each beat must be between 2.5s and 3.5s (end_sec - start_sec = 2.5 to 3.5s).\n"
                               "5. OUTPUT FORMAT (Strictly valid JSON):\n"
-                              '{"summary": "2 वाक्य में इस दृश्य का सारांश", '
-                              '"characters": [{"name": "Chloe", "hindi_name": "क्लो", "who": "जासूस"}], '
+                              '{"summary": "2 वाक्य में इस दृश्य का स्पष्ट सारांश", '
+                              '"characters": [{"name": "Lucifer", "hindi_name": "लूसिफ़र", "who": "नाइटक्लब मालिक और मुख्य गवाह"}], '
                               '"beats": ['
-                              '  {"narration": "क्लो जांच के लिए कमरे में आती है।", "start_sec": 0.72, "end_sec": 3.42},'
-                              '  {"narration": "उसे एक छोटे सौदागर से नशीला पैकेट मिलता है।", "start_sec": 24.30, "end_sec": 27.10}'
+                              '  {"narration": "क्लो मर्डर केस की छानबीन शुरू करती है।", "start_sec": 0.72, "end_sec": 3.42},'
+                              '  {"narration": "गवाह की तलाश में वह लूसिफ़र के नाइटक्लब पहुँचती है।", "start_sec": 57.26, "end_sec": 60.50},'
+                              '  {"narration": "यहाँ लूसिफ़र बेबाक अंदाज़ में अपना परिचय देता है।", "start_sec": 61.15, "end_sec": 64.15}'
                               ']}'
                           )
 
@@ -652,7 +674,6 @@ jobs:
                           log(f"Entering and submitting prompt for {chunk_id}...")
                           submit_prompt(page, box, final_prompt, context)
 
-                          # Fast-Fail Check: Verify Duck.ai actively began the session
                           confirmed = False
                           for tick in range(1, 11):
                               page.wait_for_timeout(1000)
@@ -665,13 +686,12 @@ jobs:
                                   confirmed = True
                                   log("Session confirmed! 'Stop generating' button visible.")
                                   break
-                              log(f"Waiting for chat to start (tick {tick}/10)... re-clicking Ask.")
                               click_ask_button(page)
                               box.press("Enter")
 
                           if not confirmed:
                               snap(page, f"submit_failed_{chunk_id}")
-                              raise RuntimeError(f"Prompt failed to submit for {chunk_id}! 'Ask' button was not processed by Duck.ai.")
+                              raise RuntimeError(f"Prompt failed to submit for {chunk_id}! Ask button not triggered.")
 
                           result_raw = wait_for_text_generation(page, state, max_wait=TEXT_WAIT)
                           parsed = parse_first_balanced_json(result_raw)
@@ -698,7 +718,7 @@ jobs:
                                   "narration": b["narration"],
                                   "target_window": {"start": st_s, "end": en_s},
                                   "portion": {"start": st_s, "end": en_s},
-                                  "duration": round(en_s - st_s, 2),
+                                  "duration": b["duration"],
                                   "word_count": b["word_count"]
                               }
                               all_beats.append(beat_obj)
@@ -712,7 +732,7 @@ jobs:
                           with open(STATE_FILE, "w", encoding="utf-8") as sf:
                               json.dump(pipeline_state, sf, indent=2, ensure_ascii=False)
 
-                          log(f"SUCCESS: Completed {chunk_id} with {len(sanitized_beats)} micro-beats (all <= 3.0s).")
+                          log(f"SUCCESS: Completed {chunk_id} with {len(sanitized_beats)} micro-beats.")
                           chunk_done = True
                           page.wait_for_timeout(2500)
                           break

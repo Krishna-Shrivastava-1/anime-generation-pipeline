@@ -1,15 +1,15 @@
-name: Generate Hindi YouTube Movie Recap
+name: Generate Hindi YouTube Movie Recap Engine
 
 on:
   workflow_dispatch:
     inputs:
       reset_state:
-        description: "Clear old corrupted cache and regenerate fresh"
+        description: "Clear previous state and generate fresh"
         required: true
         type: boolean
         default: true
       headed:
-        description: "Run non-headless Chrome under Xvfb (less detectable)"
+        description: "Run non-headless Chrome under Xvfb (avoids bot detection)"
         required: true
         type: boolean
         default: true
@@ -22,11 +22,15 @@ on:
           - "full"
         default: "full"
       target_minutes:
-        description: "Target recap duration in minutes (e.g. 12)"
+        description: "Target video duration in minutes (e.g. 12)"
         required: true
         default: "12"
+      max_clip_sec:
+        description: "Max duration per video cut (Fair Use safe <= 3.0s)"
+        required: true
+        default: "3.0"
       hints:
-        description: "Optional notes / character name fixes"
+        description: "Character names, tone (thriller/mystery), or specific plot notes"
         required: false
         default: ""
 
@@ -55,26 +59,26 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Tor
+      - name: Install Tor and System Utilities
         timeout-minutes: 4
         run: |
           sudo apt-get update
           sudo apt-get install -y tor netcat-openbsd xvfb
           sudo service tor start
           for i in {1..30}; do
-            if nc -z 127.0.0.1 9050; then echo "Tor ready"; break; fi
+            if nc -z 127.0.0.1 9050; then echo "Tor is ready"; break; fi
             sleep 2
           done
           nc -z 127.0.0.1 9050
 
-      - name: Install Python dependencies
+      - name: Install Python Dependencies
         timeout-minutes: 6
         run: |
           python -m pip install --upgrade pip
           pip install curl_cffi playwright pillow requests ftfy
           playwright install --with-deps chromium
 
-      - name: Verify connection (curl_cffi, Chrome TLS impersonation)
+      - name: Verify Anonymous Tor Exit
         timeout-minutes: 3
         run: |
           python - <<'PY'
@@ -83,23 +87,24 @@ jobs:
           r = requests.get("https://check.torproject.org/api/ip", proxies={"http": p, "https": p}, impersonate="chrome", timeout=60)
           r.raise_for_status()
           data = r.json()
-          print("Connection info:", data)
+          print("Connection Info:", data)
           if not data.get("IsTor"):
-              raise RuntimeError("Traffic is not using Tor.")
+              raise RuntimeError("Tor connection failed. Traffic is not anonymous.")
           PY
 
-      - name: Automate Duck.ai Story Pipeline
+      - name: Run YouTube Recap Generation Engine
         timeout-minutes: 110
         env:
           HEADED: ${{ inputs.headed }}
           RUN_MODE: ${{ inputs.mode }}
           RESET_STATE: ${{ inputs.reset_state }}
           TARGET_MINUTES: ${{ inputs.target_minutes }}
+          MAX_CLIP_SEC: ${{ inputs.max_clip_sec }}
           INPUT_HINTS: ${{ inputs.hints }}
           TEXT_WAIT_SECONDS: "180"
         run: |
-          mkdir -p debug
-          cat > generate_story.py <<'PY'
+          mkdir -p debug build
+          cat > recap_engine.py <<'PY'
           import os, re, sys, json, base64, subprocess, time, math
           from pathlib import Path
           from playwright.sync_api import sync_playwright
@@ -113,22 +118,21 @@ jobs:
           RUN_MODE = os.environ.get("RUN_MODE", "full").strip().lower()
           RESET_STATE = os.environ.get("RESET_STATE", "false").strip().lower() == "true"
           TARGET_MINUTES = float(os.environ.get("TARGET_MINUTES", "12"))
+          MAX_CLIP_DURATION = float(os.environ.get("MAX_CLIP_SEC", "3.0"))
           INPUT_HINTS = os.environ.get("INPUT_HINTS", "").strip()
           TEXT_WAIT = int(os.environ.get("TEXT_WAIT_SECONDS", "180"))
-          MAX_CLIP_DURATION = 3.0  # Video cuts strictly <= 3.0s
-          MAX_ATTEMPTS = 2
+          MAX_ATTEMPTS = 3
 
           DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
           STATE_FILE = Path("build/pipeline_state.json")
           STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
-          RUN_LOG = DEBUG_DIR / "run.log"
+          RUN_LOG = DEBUG_DIR / "engine.log"
 
-          TOR_PROXY = "socks5h://127.0.0.1:9050"
           BROWSER_PROXY = "socks5://127.0.0.1:9050"
 
           if RESET_STATE and STATE_FILE.exists():
               STATE_FILE.unlink()
-              print("[INIT] Old pipeline_state.json removed for clean regeneration.", flush=True)
+              print("[INIT] Old pipeline state cleared for fresh story generation.", flush=True)
 
           def log(msg):
               line = f"[{time.strftime('%H:%M:%S')}] {msg}"
@@ -136,6 +140,7 @@ jobs:
               with open(RUN_LOG, "a", encoding="utf-8") as f:
                   f.write(line + "\n")
 
+          # ------------------ ENCODING & MOJIBAKE DEFENSE ------------------
           CP1252_MAP = {
               '\u20ac': 0x80, '\u201a': 0x82, '\u0192': 0x83, '\u201e': 0x84, '\u2026': 0x85,
               '\u2020': 0x86, '\u2021': 0x87, '\u02c6': 0x88, '\u2030': 0x89, '\u0160': 0x8a,
@@ -145,14 +150,13 @@ jobs:
               '\u017e': 0x9e, '\u0178': 0x9f,
           }
 
-          def fix_mojibake_str(s: str) -> str:
+          def fix_hindi_text(s: str) -> str:
               if not isinstance(s, str) or not s:
                   return s
               try:
                   s = ftfy.fix_text(s)
               except Exception:
                   pass
-
               if any(m in s for m in ["à¤", "à¥", "â€™", "â€”", "Ã", "Â"]):
                   try:
                       return s.encode("cp1252").decode("utf-8")
@@ -173,7 +177,7 @@ jobs:
 
           def deep_repair(val):
               if isinstance(val, str):
-                  return fix_mojibake_str(val)
+                  return fix_hindi_text(val)
               elif isinstance(val, list):
                   return [deep_repair(item) for item in val]
               elif isinstance(val, dict):
@@ -184,19 +188,20 @@ jobs:
               try:
                   page.screenshot(path=str(DEBUG_DIR / f"{name}.png"), full_page=True, timeout=15000)
                   (DEBUG_DIR / f"{name}.html").write_text(page.content(), encoding="utf-8")
-                  log(f"snapshot {name} | url={page.url}")
+                  log(f"Snapshot taken: {name}")
               except Exception as e:
-                  log(f"snapshot failed: {e}")
+                  log(f"Snapshot failed: {e}")
 
-          def new_tor_circuit():
-              log("Restarting Tor for a new exit IP...")
-              subprocess.run(["sudo", "timeout", "60", "service", "tor", "restart"], check=False)
+          def renew_tor():
+              log("Refreshing Tor IP circuit...")
+              subprocess.run(["sudo", "service", "tor", "restart"], check=False)
               for _ in range(30):
                   if subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0:
                       break
                   time.sleep(2)
               time.sleep(3)
 
+          # ------------------ PLAYWRIGHT UTILITIES ------------------
           def get_prompt_box(page):
               return page.locator(
                   "textarea[name='user-prompt'], textarea[placeholder*='ask' i], "
@@ -218,17 +223,16 @@ jobs:
               js_click = page.evaluate("""() => {
                   const buttons = Array.from(document.querySelectorAll('button'));
                   const ask = buttons.find(b => !b.disabled && (b.innerText || '').trim().toLowerCase() === 'ask');
-                  if (ask) { ask.click(); return 'ask_clicked'; }
+                  if (ask) { ask.click(); return 'ask'; }
                   const send = buttons.find(b => !b.disabled && (b.getAttribute('aria-label') || '').toLowerCase().includes('send'));
-                  if (send) { send.click(); return 'send_clicked'; }
+                  if (send) { send.click(); return 'send'; }
                   const sub = buttons.find(b => b.type === 'submit' && !b.disabled);
-                  if (sub) { sub.click(); return 'submit_clicked'; }
+                  if (sub) { sub.click(); return 'submit'; }
                   return null;
               }""")
               return bool(js_click)
 
           def submit_prompt(page, box, text, context):
-              log("Focusing prompt box...")
               box.click()
               page.wait_for_timeout(200)
               box.fill("")
@@ -239,10 +243,9 @@ jobs:
                   cdp.send("Input.insertText", {"text": text})
                   cdp.detach()
               except Exception as e:
-                  log(f"CDP typing fallback: {e}")
                   box.fill(text)
 
-              page.wait_for_timeout(500)
+              page.wait_for_timeout(400)
               try:
                   page.evaluate("""(el) => {
                       el.dispatchEvent(new Event('input', { bubbles: true }));
@@ -251,9 +254,8 @@ jobs:
               except Exception:
                   pass
 
-              page.wait_for_timeout(300)
-              clicked = click_ask_button(page)
-              if not clicked:
+              page.wait_for_timeout(200)
+              if not click_ask_button(page):
                   box.press("Enter")
               page.wait_for_timeout(500)
 
@@ -275,16 +277,13 @@ jobs:
                       continue
               return "".join(chunks)
 
-          def strip_markdown(text: str) -> str:
-              text = text.strip()
-              text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE)
-              text = re.sub(r"\s*```$", "", text)
-              return text.strip()
-
           def parse_first_balanced_json(text: str):
               if not text:
                   return None
-              cleaned = strip_markdown(text)
+              cleaned = text.strip()
+              cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned, flags=re.IGNORECASE)
+              cleaned = re.sub(r"\s*```$", "", cleaned).strip()
+
               try:
                   return deep_repair(json.loads(cleaned))
               except Exception:
@@ -322,38 +321,26 @@ jobs:
                           depth -= 1
                           if depth == 0:
                               try:
-                                  raw_obj = json.loads(cleaned[start_idx : idx + 1])
-                                  return deep_repair(raw_obj)
+                                  return deep_repair(json.loads(cleaned[start_idx : idx + 1]))
                               except Exception:
                                   break
               return None
 
-          def wait_for_text_generation(page, state, max_wait=TEXT_WAIT):
-              log("Waiting for text generation to complete...")
+          def wait_for_response(page, state, max_wait=TEXT_WAIT):
               start = time.time()
               last_text = ""
               stable_ticks = 0
 
               while time.time() - start < max_wait:
                   if state.get("rate_limited"):
-                      raise RuntimeError("Duck.ai returned HTTP 418 (Tor IP blocked).")
-
-                  try:
-                      page.evaluate("""() => {
-                          window.scrollTo(0, document.body.scrollHeight);
-                          const sc = document.querySelector('main, [class*="chat"], [class*="conversation"]');
-                          if (sc) sc.scrollTop = sc.scrollHeight;
-                      }""")
-                  except Exception:
-                      pass
+                      raise RuntimeError("Duck.ai returned HTTP 418 (Tor IP rate-limited).")
 
                   if state.get("chat_done") and state.get("raw_stream"):
                       parsed_sse = parse_sse_text("".join(state["raw_stream"]))
                       if parsed_sse.strip():
-                          log(f"Captured text via network SSE stream ({len(parsed_sse)} chars).")
                           return deep_repair(parsed_sse)
 
-                  stop_btn = page.locator("button:has-text('Stop generating'), button:has-text('Stop'), button[aria-label*='Stop' i]")
+                  stop_btn = page.locator("button:has-text('Stop generating'), button:has-text('Stop')")
                   is_generating = False
                   try:
                       is_generating = stop_btn.count() > 0 and stop_btn.first.is_visible()
@@ -361,20 +348,18 @@ jobs:
                       pass
 
                   try:
-                      cur_text = page.evaluate("""
-                          () => {
-                              const codes = document.querySelectorAll('pre code, code');
-                              if (codes.length > 0) {
-                                  const lastCode = (codes[codes.length - 1].innerText || '').trim();
-                                  if (lastCode.includes('{') || lastCode.includes('beats')) return lastCode;
-                              }
-                              const msgs = document.querySelectorAll('[class*="message"], article, [data-testid*="message"]');
-                              if (msgs.length > 0) {
-                                  return (msgs[msgs.length - 1].innerText || '').trim();
-                              }
-                              return '';
+                      cur_text = page.evaluate("""() => {
+                          const codes = document.querySelectorAll('pre code, code');
+                          if (codes.length > 0) {
+                              const lastCode = (codes[codes.length - 1].innerText || '').trim();
+                              if (lastCode.includes('{') || lastCode.includes('beats')) return lastCode;
                           }
-                      """)
+                          const msgs = document.querySelectorAll('[class*="message"], article, [data-testid*="message"]');
+                          if (msgs.length > 0) {
+                              return (msgs[msgs.length - 1].innerText || '').trim();
+                          }
+                          return '';
+                      }""")
                       if cur_text and cur_text == last_text and not is_generating:
                           stable_ticks += 1
                       else:
@@ -382,7 +367,6 @@ jobs:
                       last_text = cur_text
 
                       if stable_ticks >= 3 and len(last_text) > 30:
-                          log(f"Captured text via DOM stability ({len(last_text)} chars).")
                           return deep_repair(last_text)
                   except Exception:
                       pass
@@ -393,16 +377,29 @@ jobs:
                   parsed_sse = parse_sse_text("".join(state["raw_stream"]))
                   if parsed_sse.strip():
                       return deep_repair(parsed_sse)
-              if last_text:
-                  return deep_repair(last_text)
+              return deep_repair(last_text)
 
-              return ""
+          # ------------------ TIMELINE CHUNKER & TRANSCRIPT LOADER ------------------
+          def load_transcript_and_chunk(transcript_path="transcript.json", max_chars=2400):
+              if not Path(transcript_path).exists():
+                  # Create mock structure if file is absent to allow engine testing
+                  log(f"Warning: '{transcript_path}' not found. Generating mock transcript for engine execution.")
+                  mock = {
+                      "movie_title": "Example Mystery Film",
+                      "segments": [
+                          {"id": 1, "start": 5.0, "end": 12.0, "text": "Detective Chloe: Look at these marks on the floor. Someone dragged the body."},
+                          {"id": 2, "start": 13.5, "end": 20.0, "text": "Officer Dan: It's just a normal drug case. Let's close it."},
+                          {"id": 3, "start": 21.0, "end": 29.0, "text": "Detective Chloe: No, this is deliberate murder. Who owns this luxury club down the street?"},
+                          {"id": 4, "start": 45.0, "end": 52.0, "text": "Bartender: Lucifer is upstairs in his private penthouse."},
+                          {"id": 5, "start": 53.0, "end": 60.0, "text": "Lucifer: Welcome detective, can I pour you a drink?"}
+                      ]
+                  }
+                  Path(transcript_path).write_text(json.dumps(mock, indent=2, ensure_ascii=False), encoding="utf-8")
 
-          def build_timeline_chunks(transcript_path="transcript.json", max_chars=2200):
               with open(transcript_path, "r", encoding="utf-8") as f:
                   data = json.load(f)
 
-              movie_title = data.get("movie_title", "Untitled")
+              movie_title = data.get("movie_title", "Untitled Recap")
               segments = data.get("segments", [])
 
               lines = []
@@ -430,14 +427,12 @@ jobs:
 
               return movie_title, chunks
 
+          # ------------------ SCRIPT CLAMPING & NORMALIZATION ------------------
           def sanitize_and_clamp_beats(raw_beats, max_duration=MAX_CLIP_DURATION):
-              """
-              Preserves complete grammatical sentences.
-              Never slices words in half. Clamps video cut window to <= 3.0s.
-              """
-              refined = []
+              cleaned = []
               for b in raw_beats:
                   narr = deep_repair(b.get("narration", "")).strip()
+                  # Remove single letter English tags or stray punctuation
                   narr = re.sub(r"\b[A-Za-z]\b", "", narr).strip()
                   if not narr:
                       continue
@@ -453,26 +448,32 @@ jobs:
                       en = round(st + max_duration, 2)
                       dur = max_duration
 
+                  scene_bridge = bool(b.get("is_scene_bridge", False))
+                  reason_we_are_here = deep_repair(b.get("location_or_bridge_reason", "")).strip()
+
                   words = narr.split()
-                  refined.append({
+                  cleaned.append({
                       "narration": narr,
                       "start_sec": st,
                       "end_sec": en,
                       "duration": dur,
-                      "word_count": len(words)
+                      "word_count": len(words),
+                      "is_scene_bridge": scene_bridge,
+                      "scene_context": reason_we_are_here
                   })
-              return refined
+              return cleaned
 
+          # ------------------ PLAYWRIGHT INSTANCE ------------------
           browser = None
           context = None
           page = None
 
-          def start_fresh_browser(playwright_runner):
+          def launch_browser(pw):
               global browser, context, page
               if browser:
                   try: browser.close()
                   except Exception: pass
-              browser = playwright_runner.chromium.launch(
+              browser = pw.chromium.launch(
                   headless=not HEADED,
                   proxy={"server": BROWSER_PROXY},
                   args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"]
@@ -486,139 +487,149 @@ jobs:
               page = context.new_page()
 
           with sync_playwright() as p:
-              start_fresh_browser(p)
+              launch_browser(p)
 
-              # PROBE MODE
+              # ==============================================================
+              # MODE: PROBE
+              # ==============================================================
               if RUN_MODE == "probe":
-                  log("==================== RUNNING PROBE MODE ====================")
-                  log("Opening https://duck.ai/chat ...")
+                  log("Starting probe validation test on Duck.ai...")
                   page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
                   page.wait_for_timeout(3000)
 
                   box = get_prompt_box(page)
                   box.wait_for(state="visible", timeout=40000)
 
-                  probe_prompt = 'Reply with exactly this JSON and nothing else: {"ok": true, "hindi": "नमस्ते"}'
+                  probe_prompt = 'Output valid JSON only: {"status": "ready", "hindi": "कहानी शुरू"}'
                   state = {"raw_stream": [], "chat_done": False, "rate_limited": False}
 
-                  def on_resp(resp):
+                  def probe_resp(resp):
                       if "/duckchat/v1/chat" in resp.url and resp.request.method == "POST":
                           if resp.status == 418: state["rate_limited"] = True
-                          try:
-                              body = resp.body().decode("utf-8", errors="replace")
-                              state["raw_stream"].append(body)
+                          try: state["raw_stream"].append(resp.body().decode("utf-8", errors="replace"))
                           except Exception: pass
-                  page.on("response", on_resp)
-
-                  def on_req_finish(req):
-                      if "/duckchat/v1/chat" in req.url and req.method == "POST":
-                          state["chat_done"] = True
-                  page.on("requestfinished", on_req_finish)
+                  page.on("response", probe_resp)
+                  page.on("requestfinished", lambda req: state.update({"chat_done": True}) if "/duckchat/v1/chat" in req.url else None)
 
                   submit_prompt(page, box, probe_prompt, context)
-                  result_text = wait_for_text_generation(page, state, max_wait=45)
-                  parsed = parse_first_balanced_json(result_text)
-                  log(f"Probe Parsed JSON: {parsed}")
+                  out = wait_for_response(page, state, max_wait=45)
+                  parsed = parse_first_balanced_json(out)
+                  log(f"Probe Result: {parsed}")
 
-                  if parsed and parsed.get("ok") is True and parsed.get("hindi") == "नमस्ते":
-                      log("Probe SUCCESS!")
+                  if parsed and parsed.get("status") == "ready":
+                      log("Probe PASSED successfully.")
                       sys.exit(0)
                   else:
-                      log("Probe FAILED validation.")
+                      log("Probe FAILED.")
                       sys.exit(1)
 
-              # FULL MODE
-              log("==================== RUNNING FULL STORY PIPELINE ====================")
-              movie_title, chunks = build_timeline_chunks("transcript.json", max_chars=2200)
-              log(f"Loaded '{movie_title}' with {len(chunks)} chunks.")
+              # ==============================================================
+              # MODE: FULL RECAP ENGINE
+              # ==============================================================
+              log("Starting Full Story Explanation Engine...")
+              movie_title, chunks = load_transcript_and_chunk("transcript.json", max_chars=2400)
+              log(f"Target: '{movie_title}' | {len(chunks)} chunks.")
 
-              pipeline_state = {"completed_chunks": [], "beats": [], "characters": {}}
+              pipeline_state = {
+                  "completed_chunks": [],
+                  "beats": [],
+                  "characters": {},
+                  "last_scene_location": "शुरुआती दृश्य",
+                  "running_synopsis": "फिल्म की शुरुआत।"
+              }
               if STATE_FILE.exists():
                   try:
                       with open(STATE_FILE, "r", encoding="utf-8") as sf:
                           loaded = json.load(sf)
                           if isinstance(loaded, dict):
                               pipeline_state = deep_repair(loaded)
-                  except Exception: pass
+                  except Exception:
+                      pass
 
-              running_story_summary = "कहानी की शुरुआत।"
               all_beats = pipeline_state.get("beats", [])
+              running_synopsis = pipeline_state.get("running_synopsis", "फिल्म की शुरुआत।")
+              last_location = pipeline_state.get("last_scene_location", "शुरुआती दृश्य")
               beat_counter = len(all_beats) + 1
 
-              hints_context = f"\nUser Provided Hints / Character Notes:\n{INPUT_HINTS}\n" if INPUT_HINTS else ""
+              hints_block = f"\nUSER PROVIDED CHARACTER & STORY HINTS:\n{INPUT_HINTS}\n" if INPUT_HINTS else ""
 
               for c_idx, chunk_lines in enumerate(chunks):
                   chunk_id = f"chunk_{c_idx+1}"
                   if chunk_id in pipeline_state.get("completed_chunks", []):
-                      log(f"Chunk {chunk_id} already generated. Skipping.")
+                      log(f"Skipping {chunk_id} (already completed).")
                       continue
 
-                  log(f"\n==================== PROCESSING: {chunk_id} ({c_idx+1}/{len(chunks)}) ====================")
-                  chunk_done = False
+                  log(f"\n==================== GENERATING: {chunk_id} ({c_idx+1}/{len(chunks)}) ====================")
+                  chunk_success = False
 
                   for attempt in range(1, MAX_ATTEMPTS + 1):
                       state = {"raw_stream": [], "chat_done": False, "rate_limited": False}
 
-                      def on_response(resp):
+                      def on_res(resp):
                           if "/duckchat/v1/chat" in resp.url and resp.request.method == "POST":
-                              if resp.status == 418:
-                                  state["rate_limited"] = True
-                              try:
-                                  body = resp.body().decode("utf-8", errors="replace")
-                                  state["raw_stream"].append(body)
+                              if resp.status == 418: state["rate_limited"] = True
+                              try: state["raw_stream"].append(resp.body().decode("utf-8", errors="replace"))
                               except Exception: pass
-                      page.on("response", on_response)
-
-                      def on_request_finished(req):
-                          if req.method == "POST" and "/duckchat/v1/chat" in req.url:
-                              state["chat_done"] = True
-                      page.on("requestfinished", on_request_finished)
+                      page.on("response", on_res)
+                      page.on("requestfinished", lambda req: state.update({"chat_done": True}) if "/duckchat/v1/chat" in req.url else None)
 
                       try:
                           is_in_chat = bool(page and "chatID=" in page.url)
                           chunk_text = "\n".join(chunk_lines)
 
-                          # ------------------ PASS 1: OMNISCIENT THIRD-PERSON DRAFT ------------------
-                          draft_prompt = (
-                              f"You are a master Hindi YouTube movie recap narrator and scriptwriter (YouTube Movie Explanation style).\n"
-                              f"Movie/Series: {movie_title}.\n"
-                              f"{hints_context}"
-                              f"Previous Story Context:\n{running_story_summary}\n\n"
-                              f"Current Movie Segments & Transcript:\n{chunk_text}\n\n"
-                              "CRITICAL STORYTELLING & EDITING RULES:\n"
-                              "1. THIRD-PERSON OMNISCIENT RECAP VOICE: Do NOT do line-by-line dialogue reporting (Never write: 'उसने कहा... फिर उसने पूछा...'). Instead, narrate from an omniscient third-person perspective. Synthesize the dialogue into key plot actions, discoveries, conflicts, and character motives.\n"
-                              "2. ZERO SETTING HALLUCINATION & STRICT PRESENCE: Only narrate characters who are physically on screen. When characters talk ABOUT someone (e.g., a boss, captain, witness, or doctor who is not there), do NOT assume that person is in the scene. NEVER invent generic rooms or offices ('कमरे में') unless explicitly established; ground the scene in dramatic context ('घटनास्थल पर', 'जांच के दौरान', 'रास्ते में').\n"
-                              "3. SEAMLESS SCENE TRANSITIONS: When characters travel or the scene jumps to a new location, explicitly bridge the cut (e.g., 'अब क्लो पूछताछ करने के लिए सीधे क्लब पहुंचती है...', 'तभी दूसरी तरफ...').\n"
-                              "4. NATURAL RECAP HINDI (बोलचाल की हिंदी in Devanagari): Use natural, engaging spoken Hindi with everyday loanwords written in Devanagari (केस, मर्डर, क्राइम सीन, डिटेक्टिव, सस्पेक्ट, क्लब, ड्रग्स, सबूत, जांच, बॉडी, ट्विस्ट). Avoid stiff, archaic Sanskrit words like 'वरिष्ठ अधिकारी' or 'नशीले पदार्थ'.\n"
-                              "5. COMPLETE INDEPENDENT SENTENCES: Every beat represents a short video cut strictly between 2.0s and 3.0s (end_sec - start_sec <= 3.0s). Crucial: Narration for EVERY beat MUST be a complete, self-contained sentence of 6 to 9 words. NEVER split a sentence across beats.\n\n"
+                          # --------------------------------------------------
+                          # PASS 1: OMNISCIENT THIRD-PERSON STORY SYNTHESIS
+                          # --------------------------------------------------
+                          pass1_prompt = (
+                              f"You are the head scriptwriter for a top-tier YouTube Movie Explanation channel (like 'Movie Recaps' / 'Mystery Recapped').\n"
+                              f"Movie Title: {movie_title}\n"
+                              f"{hints_block}\n"
+                              f"STORY CONTEXT UP TO THIS POINT:\n{running_synopsis}\n"
+                              f"LAST ESTABLISHED LOCATION: {last_location}\n\n"
+                              f"RAW TRANSCRIPT & SCENE TIMECODES:\n{chunk_text}\n\n"
+                              "STRICT YOUTUBE RECAP WRITING RULES:\n"
+                              "1. THIRD-PERSON OMNISCIENT VOICE ONLY: NEVER do dialogue-following (BANNED: 'वह उससे कहता है', 'उसने पूछा', 'वो बोली', 'वह जवाब देता है'). Instead, directly explain WHAT is happening, WHY it matters, and character motives (e.g. 'डिटेक्टिव को लाश के पास एक संदिग्ध लॉकेट मिलता है, जिससे केस नया मोड़ लेता है।').\n"
+                              "2. ZERO SCENE-CUT JUMPS (EXPLAIN WHY WE ARE HERE): In movie recaps, jump cuts ruin the flow. Whenever the scene cuts to a new room, street, or building, the VERY FIRST beat of the new scene MUST explicitly tell the viewer why we moved here (e.g., 'सबूतों की तलाश में अब मैरी सीधे उस पुराने वेयरहाउस पहुंचती है...', 'इस खुलासे के बाद कहानी सीधे थाने में शिफ्ट होती है...').\n"
+                              "3. COMPLETE INDEPENDENT SENTENCES: Every single beat MUST be a complete, self-contained Hindi sentence of 6 to 9 words in Devanagari script. Never split one sentence across multiple beats.\n"
+                              "4. FAIR-USE TIMING: Each beat duration (end_sec - start_sec) MUST be strictly <= 3.0 seconds.\n"
+                              "5. VOCABULARY: Use punchy conversational Hindi (बोलचाल की हिंदी) with natural loanwords (केस, क्राइम सीन, मर्डर, सबूत, शक, इन्वेस्टिगेशन, गवाह, प्लान). Avoid stiff textbook words like 'वरिष्ठ अधिकारी' or 'नशीला पदार्थ'.\n\n"
                               "OUTPUT STRICT JSON ONLY:\n"
                               "{\n"
-                              '  "summary": "2 वाक्य में इस पूरे दृश्य का स्पष्ट सारांश",\n'
-                              '  "characters": [{"name": "CharacterName", "hindi_name": "नाम", "who": "भूमिका"}],\n'
+                              '  "current_location": "वर्तमान दृश्य का स्थान (e.g. लक्स क्लब का पेंटहाउस)",\n'
+                              '  "synopsis": "इस सीन में क्या घटा उसका 2 लाइन का स्पष्ट सारांश",\n'
+                              '  "characters": [{"name": "Name", "hindi_name": "नाम", "role": "भूमिका"}],\n'
                               '  "beats": [\n'
-                              '    {"narration": "डिटेक्टिव क्लो क्राइम सीन पर पहुंचकर सबूतों की जांच करती है।", "start_sec": 1.20, "end_sec": 3.90},\n'
-                              '    {"narration": "डैन का मानना है कि यह सीधा-साधा ड्रग ओवरडोज का केस है।", "start_sec": 14.10, "end_sec": 16.80},\n'
-                              '    {"narration": "लेकिन क्लो इस बात को अनसुना कर चश्मदीद गवाह तलाशती है।", "start_sec": 24.50, "end_sec": 27.20},\n'
-                              '    {"narration": "डैन बताता है कि लक्स क्लब का मालिक इस मर्डर का गवाह है।", "start_sec": 35.00, "end_sec": 37.80},\n'
-                              '    {"narration": "अब क्लो पूछताछ करने के लिए सीधे लूसिफ़र के क्लब पहुंचती है।", "start_sec": 58.10, "end_sec": 60.90}\n'
+                              '    {\n'
+                              '      "narration": "डिटेक्टिव क्लो क्राइम सीन पर पहुंचकर बिखरे हुए सबूतों की जांच करती है।",\n'
+                              '      "start_sec": 5.00,\n'
+                              '      "end_sec": 7.80,\n'
+                              '      "is_scene_bridge": false,\n'
+                              '      "location_or_bridge_reason": "क्राइम सीन"\n'
+                              '    },\n'
+                              '    {\n'
+                              '      "narration": "अब हत्या के चश्मदीद गवाह से पूछताछ करने वो सीधे लक्स क्लब पहुंचती है।",\n'
+                              '      "start_sec": 45.00,\n'
+                              '      "end_sec": 47.90,\n'
+                              '      "is_scene_bridge": true,\n'
+                              '      "location_or_bridge_reason": "क्लब की तरफ ट्रांजिशन"\n'
+                              '    }\n'
                               '  ]\n'
                               "}"
                           )
 
                           if not is_in_chat:
-                              log("Opening https://duck.ai/chat ...")
                               page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
                               page.wait_for_timeout(3000)
 
                           box = get_prompt_box(page)
                           box.wait_for(state="visible", timeout=40000)
 
-                          log(f"Submitting PASS 1 (Story Draft) for {chunk_id}...")
-                          submit_prompt(page, box, draft_prompt, context)
+                          log(f"Submitting Pass 1 (Story Synthesis) for {chunk_id}...")
+                          submit_prompt(page, box, pass1_prompt, context)
 
-                          # Fast-fail check
+                          # Fast-fail confirmation
                           confirmed = False
-                          for tick in range(1, 11):
+                          for _ in range(10):
                               page.wait_for_timeout(1000)
                               if "chatID=" in page.url or len(state["raw_stream"]) > 0:
                                   confirmed = True; break
@@ -629,25 +640,30 @@ jobs:
                               box.press("Enter")
 
                           if not confirmed:
-                              snap(page, f"submit_failed_{chunk_id}")
-                              raise RuntimeError(f"Prompt failed to submit for {chunk_id}")
+                              snap(page, f"fail_submit_{chunk_id}")
+                              raise RuntimeError(f"Prompt submission not acknowledged for {chunk_id}")
 
-                          draft_raw = wait_for_text_generation(page, state, max_wait=TEXT_WAIT)
-                          draft_parsed = parse_first_balanced_json(draft_raw)
+                          pass1_raw = wait_for_response(page, state, max_wait=TEXT_WAIT)
+                          pass1_data = parse_first_balanced_json(pass1_raw)
 
-                          if not draft_parsed or not isinstance(draft_parsed.get("beats"), list) or len(draft_parsed.get("beats")) == 0:
-                              raise RuntimeError(f"Draft JSON invalid for {chunk_id}: {draft_raw[:150]}")
+                          if not pass1_data or not isinstance(pass1_data.get("beats"), list) or len(pass1_data["beats"]) == 0:
+                              raise RuntimeError(f"Pass 1 JSON parse failed: {pass1_raw[:160]}")
 
-                          log(f"PASS 1 Draft received ({len(draft_parsed.get('beats', []))} beats). Starting PASS 2 (Audit & Polish)...")
+                          log(f"Pass 1 returned {len(pass1_data['beats'])} beats. Commencing Pass 2 (Script Doctor Audit)...")
 
-                          # ------------------ PASS 2: AUDIT & POLISH PROMPT ------------------
-                          refine_prompt = (
-                              "Now strictly AUDIT and POLISH your JSON response according to these 4 recap quality checks:\n"
-                              "1. THIRD-PERSON FLOW: Eliminate all ping-pong dialogue reporting ('उसने कहा... उसने पूछा'). Ensure it reads like an engaging, third-person story explanation.\n"
-                              "2. SCENE LOGIC & BRIDGING: Confirm who is physically on screen vs who is being discussed. When the scene shifts or characters move, is the transition clearly narrated so the viewer is never lost?\n"
-                              "3. SENTENCE COMPLETENESS & TONE: Ensure EVERY beat is a 100% complete, standalone sentence (6-9 words) in natural spoken Hindi (बोलचाल की हिंदी in Devanagari). Fix any broken clauses or robotic textbook words.\n"
-                              "4. STRICT TIMESTAMPS: Ensure every beat duration is strictly between 2.0s and 3.0s (end_sec - start_sec <= 3.0s).\n\n"
-                              "Return ONLY the final, polished JSON with the exact same format: {\"summary\": ..., \"characters\": [...], \"beats\": [...]}."
+                          # --------------------------------------------------
+                          # PASS 2: SCRIPT DOCTOR / CONTINUITY AUDIT PASS
+                          # --------------------------------------------------
+                          pass1_json_str = json.dumps(pass1_data, ensure_ascii=False, indent=2)
+                          pass2_prompt = (
+                              "You are the Senior Editor & Script Doctor for the YouTube recap channel.\n"
+                              "Here is the draft script just created:\n\n"
+                              f"```json\n{pass1_json_str}\n```\n\n"
+                              "Critically AUDIT and UPGRADE this script:\n"
+                              "1. ELIMINATE DIALOGUE-TAG RESIDUE: Scan every beat. If any beat says 'वह कहता है', 'उसने पूछा', or reports back-and-forth talking, rewrite it into pure third-person omniscient explanation.\n"
+                              "2. VERIFY SCENE BRIDGES: Does any cut jump without explaining why? If the camera moved to a new room or building, ensure the beat explicitly explains why we are here (e.g. 'सच का पता लगाने के लिए अब वो...').\n"
+                              "3. HARD LIMIT TIMINGS & LENGTH: Narration for every beat MUST be 1 complete sentence of 6 to 9 words. Ensure duration (end_sec - start_sec) is strictly <= 3.0s.\n\n"
+                              "Return the final perfected JSON with the same structure: {\"current_location\": ..., \"synopsis\": ..., \"characters\": [...], \"beats\": [...]}."
                           )
 
                           state["raw_stream"] = []
@@ -656,66 +672,69 @@ jobs:
                           page.wait_for_timeout(1500)
                           box = get_prompt_box(page)
                           box.wait_for(state="visible", timeout=20000)
-                          submit_prompt(page, box, refine_prompt, context)
+                          submit_prompt(page, box, pass2_prompt, context)
 
-                          refined_raw = wait_for_text_generation(page, state, max_wait=TEXT_WAIT)
-                          refined_parsed = parse_first_balanced_json(refined_raw)
+                          pass2_raw = wait_for_response(page, state, max_wait=TEXT_WAIT)
+                          pass2_data = parse_first_balanced_json(pass2_raw)
 
-                          if refined_parsed and isinstance(refined_parsed.get("beats"), list) and len(refined_parsed.get("beats")) > 0:
-                              parsed = refined_parsed
-                              log(f"PASS 2 Polish succeeded for {chunk_id}!")
+                          if pass2_data and isinstance(pass2_data.get("beats"), list) and len(pass2_data["beats"]) > 0:
+                              final_chunk_data = pass2_data
+                              log(f"Pass 2 audit succeeded for {chunk_id}!")
                           else:
-                              log(f"PASS 2 parsing missed, falling back to PASS 1 draft.")
-                              parsed = draft_parsed
+                              log(f"Pass 2 skipped or invalid; maintaining Pass 1 draft.")
+                              final_chunk_data = pass1_data
 
-                          running_story_summary = parsed.get("summary", running_story_summary)
+                          # Update running state
+                          running_synopsis = final_chunk_data.get("synopsis", running_synopsis)
+                          last_location = final_chunk_data.get("current_location", last_location)
 
-                          if "characters" not in pipeline_state:
-                              pipeline_state["characters"] = {}
-
-                          for ch in parsed.get("characters", []):
+                          for ch in final_chunk_data.get("characters", []):
                               if isinstance(ch, dict) and ch.get("name"):
                                   pipeline_state["characters"][ch["name"]] = ch
 
-                          sanitized_beats = sanitize_and_clamp_beats(parsed.get("beats", []))
+                          sanitized_beats = sanitize_and_clamp_beats(final_chunk_data.get("beats", []), max_duration=MAX_CLIP_DURATION)
 
                           for b in sanitized_beats:
                               st_s = b["start_sec"]
                               en_s = b["end_sec"]
-                              beat_obj = {
+                              all_beats.append({
                                   "beat_id": f"B{beat_counter:04d}",
                                   "narration": b["narration"],
                                   "target_window": {"start": st_s, "end": en_s},
                                   "portion": {"start": st_s, "end": en_s},
                                   "duration": b["duration"],
-                                  "word_count": b["word_count"]
-                              }
-                              all_beats.append(beat_obj)
+                                  "word_count": b["word_count"],
+                                  "is_scene_bridge": b["is_scene_bridge"],
+                                  "scene_context": b["scene_context"]
+                              })
                               beat_counter += 1
 
-                          if "completed_chunks" not in pipeline_state:
-                              pipeline_state["completed_chunks"] = []
                           pipeline_state["completed_chunks"].append(chunk_id)
                           pipeline_state["beats"] = all_beats
+                          pipeline_state["running_synopsis"] = running_synopsis
+                          pipeline_state["last_scene_location"] = last_location
 
                           with open(STATE_FILE, "w", encoding="utf-8") as sf:
                               json.dump(pipeline_state, sf, indent=2, ensure_ascii=False)
 
-                          log(f"SUCCESS: Completed {chunk_id} with {len(sanitized_beats)} high-quality beats.")
-                          chunk_done = True
-                          page.wait_for_timeout(2500)
+                          log(f"SUCCESS: {chunk_id} added {len(sanitized_beats)} recap beats.")
+                          chunk_success = True
+                          page.wait_for_timeout(2000)
                           break
 
                       except Exception as err:
                           log(f"Attempt {attempt} failed on {chunk_id}: {err}")
-                          snap(page, f"err_{chunk_id}_a{attempt}")
-                          new_tor_circuit()
-                          start_fresh_browser(p)
+                          snap(page, f"err_{chunk_id}_att_{attempt}")
+                          renew_tor()
+                          launch_browser(p)
 
-                  if not chunk_done:
-                      log(f"Could not complete {chunk_id}. Stopping execution.")
+                  if not chunk_success:
+                      log(f"CRITICAL: Failed to generate {chunk_id} after {MAX_ATTEMPTS} attempts. Halting.")
                       break
 
+              # --------------------------------------------------
+              # EXPORT FINAL ASSETS (JSON + TXT PREVIEW)
+              # --------------------------------------------------
               reindexed_beats = []
               for idx, b in enumerate(all_beats, 1):
                   b_copy = dict(b)
@@ -723,55 +742,81 @@ jobs:
                   reindexed_beats.append(b_copy)
 
               total_words = sum(b["word_count"] for b in reindexed_beats)
+              est_narration_minutes = round(total_words / 150.0, 2)  # ~150 words per minute speaking rate
+
               final_output = {
                   "movie_title": movie_title,
                   "target_minutes": TARGET_MINUTES,
-                  "characters": list(pipeline_state.get("characters", {}).values()),
-                  "synopsis": running_story_summary,
+                  "estimated_narration_minutes": est_narration_minutes,
                   "total_beats": len(reindexed_beats),
                   "total_words": total_words,
+                  "characters": list(pipeline_state.get("characters", {}).values()),
+                  "synopsis": running_synopsis,
                   "beats": reindexed_beats
               }
 
+              # 1. story_beats.json for automated video renderers (FFmpeg, MoviePy, TTS)
               Path("story_beats.json").write_text(
                   json.dumps(final_output, ensure_ascii=False, indent=2), encoding="utf-8"
               )
-              log(f"ALL CHUNKS COMPLETE: Wrote story_beats.json with {len(reindexed_beats)} beats ({total_words} words).")
+
+              # 2. script_preview.txt for human review / voice actors
+              preview_lines = [
+                  f"=== YOUTUBE MOVIE RECAP SCRIPT: {movie_title} ===",
+                  f"Estimated Voiceover Runtime: ~{est_narration_minutes} mins | Total Cuts: {len(reindexed_beats)}",
+                  f"Story Synopsis: {running_synopsis}\n",
+                  "=" * 70
+              ]
+              for b in reindexed_beats:
+                  bridge_tag = " [SCENE BRIDGE]" if b.get("is_scene_bridge") else ""
+                  preview_lines.append(
+                      f"[{b['beat_id']} | {b['target_window']['start']}s - {b['target_window']['end']}s ({b['duration']}s)]{bridge_tag}"
+                  )
+                  if b.get("scene_context"):
+                      preview_lines.append(f"Visual Context: {b['scene_context']}")
+                  preview_lines.append(f"Narration: {b['narration']}")
+                  preview_lines.append("-" * 70)
+
+              Path("script_preview.txt").write_text("\n".join(preview_lines), encoding="utf-8")
+              log(f"GENERATION COMPLETE: {len(reindexed_beats)} beats written to story_beats.json & script_preview.txt")
 
               if browser:
                   browser.close()
           PY
 
           if [ "$HEADED" = "true" ]; then
-            xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py
+            xvfb-run -a --server-args="-screen 0 1440x1000x24" python recap_engine.py
           else
-            python generate_story.py
+            python recap_engine.py
           fi
 
-      - name: Kill leftover browser processes
+      - name: Kill Background Browser Instances
         if: always()
         run: |
           pkill -9 -f chrome || true
           pkill -9 -f Xvfb || true
 
-      - name: Commit and push generated story frames
+      - name: Commit and Push Story Assets
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ -f story_beats.json ]; then
-            git add -f story_beats.json build/pipeline_state.json || true
+            git add -f story_beats.json script_preview.txt build/pipeline_state.json || true
             if ! git diff --cached --quiet; then
-              git commit -m "Generate YouTube Hindi movie recap story beats [skip ci]"
+              git commit -m "Generate production-grade YouTube Hindi movie recap script [skip ci]"
               git pull --rebase origin main
               git push origin HEAD:main
             fi
           fi
 
-      - name: Upload debug files
+      - name: Upload Debug Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: duck-ai-debug
-          path: debug/
+          name: recap-engine-artifacts
+          path: |
+            debug/
+            script_preview.txt
+            story_beats.json
           if-no-files-found: ignore

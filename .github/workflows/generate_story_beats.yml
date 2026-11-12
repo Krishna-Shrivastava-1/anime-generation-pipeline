@@ -110,13 +110,13 @@ jobs:
               sys.stderr.reconfigure(encoding="utf-8")
 
           HEADED = os.environ.get("HEADED") == "true"
-          RUN_MODE = os.environ.get("RUN_MODE", "probe").strip().lower()
+          RUN_MODE = os.environ.get("RUN_MODE", "full").strip().lower()
           RESET_STATE = os.environ.get("RESET_STATE", "false").strip().lower() == "true"
           TARGET_MINUTES = float(os.environ.get("TARGET_MINUTES", "12"))
           INPUT_HINTS = os.environ.get("INPUT_HINTS", "").strip()
           TEXT_WAIT = int(os.environ.get("TEXT_WAIT_SECONDS", "180"))
-          MAX_CLIP_DURATION = 3.0  # HARD LIMIT: Visual clips strictly <= 3.0s
-          MAX_WORDS_PER_BEAT = 8   # HARD LIMIT: Speech pacing (~2.5 words/sec)
+          MAX_CLIP_DURATION = 3.0  # Clips will NEVER exceed 3.0 seconds
+          MAX_WORDS_PER_BEAT = 8   # Speech pacing for 3.0s cut
           MAX_ATTEMPTS = 2
 
           DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
@@ -127,13 +127,12 @@ jobs:
           TOR_PROXY = "socks5h://127.0.0.1:9050"
           BROWSER_PROXY = "socks5://127.0.0.1:9050"
 
-          # Wipe corrupted cache if reset_state is set
           if RESET_STATE and STATE_FILE.exists():
               STATE_FILE.unlink()
               print("[INIT] Old pipeline_state.json removed for clean regeneration.", flush=True)
 
           CONTINUE_LABELS = re.compile(
-              r"^(agree and continue|agree & continue|continue|i agree|accept|accept all|get started|got it|next|done|turn on|not now|no thanks|dismiss)$", re.I)
+              r"^(agree and continue|agree & continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I)
 
           def log(msg):
               line = f"[{time.strftime('%H:%M:%S')}] {msg}"
@@ -141,7 +140,6 @@ jobs:
               with open(RUN_LOG, "a", encoding="utf-8") as f:
                   f.write(line + "\n")
 
-          # CP1252 byte reconstructor for UTF-8 mis-decoded strings
           CP1252_MAP = {
               '\u20ac': 0x80, '\u201a': 0x82, '\u0192': 0x83, '\u201e': 0x84, '\u2026': 0x85,
               '\u2020': 0x86, '\u2021': 0x87, '\u02c6': 0x88, '\u2030': 0x89, '\u0160': 0x8a,
@@ -178,7 +176,6 @@ jobs:
               return s
 
           def deep_repair(val):
-              """Recursively repairs Mojibake across strings, dicts, and lists."""
               if isinstance(val, str):
                   return fix_mojibake_str(val)
               elif isinstance(val, list):
@@ -205,24 +202,21 @@ jobs:
               time.sleep(3)
 
           def click_continue(page):
-              clicked_any = False
-              for _ in range(3):
-                  clicked = False
+              """Clicks initial modal terms buttons on page load only."""
+              for _ in range(2):
                   try:
                       buttons = page.get_by_role("button", name=CONTINUE_LABELS)
                       for i in range(buttons.count()):
                           btn = buttons.nth(i)
-                          if btn.is_visible():
-                              log(f"Clicking button: {(btn.inner_text() or '').strip()!r}")
+                          txt = (btn.inner_text() or "").strip()
+                          if btn.is_visible() and len(txt) > 0:
+                              log(f"Dismissing modal button: {txt!r}")
                               btn.click(timeout=3000)
                               page.wait_for_timeout(1000)
-                              clicked = clicked_any = True
-                              break
+                              return True
                   except Exception:
                       pass
-                  if not clicked:
-                      break
-              return clicked_any
+              return False
 
           def get_prompt_box(page):
               return page.locator(
@@ -230,17 +224,32 @@ jobs:
                   "textarea[placeholder*='message' i], textarea").first
 
           def human_paste_prompt(page, box, text):
-              """Fills textarea natively to avoid X11 clipboard UTF-8 corruption."""
               box.click()
-              page.wait_for_timeout(300)
-              box.fill("")
-              box.fill(text)
+              page.wait_for_timeout(400)
+              page.evaluate("t => navigator.clipboard.writeText(t)", text)
+              page.wait_for_timeout(200)
+              page.keyboard.press("Control+v")
               page.wait_for_timeout(500)
-              send_btn = page.locator("button[type='submit'], button[aria-label*='Send' i]")
-              if send_btn.count() > 0 and send_btn.first.is_visible() and send_btn.first.is_enabled():
-                  send_btn.first.click()
-              else:
-                  box.press("Enter")
+              box.press("Enter")
+              page.wait_for_timeout(500)
+
+          def parse_sse_text(raw_sse: str) -> str:
+              chunks = []
+              for line in raw_sse.splitlines():
+                  line = line.strip()
+                  if not line.startswith("data:"):
+                      continue
+                  payload = line[5:].strip()
+                  if not payload or payload == "[DONE]":
+                      continue
+                  try:
+                      data = json.loads(payload)
+                      chunk = data.get("message", "")
+                      if chunk:
+                          chunks.append(chunk)
+                  except Exception:
+                      continue
+              return "".join(chunks)
 
           def strip_markdown(text: str) -> str:
               text = text.strip()
@@ -295,10 +304,10 @@ jobs:
                                   break
               return None
 
-          def wait_for_text_generation(page, baseline_msgs_count, state, max_wait=TEXT_WAIT):
+          def wait_for_text_generation(page, state, max_wait=TEXT_WAIT):
               """
-              Extracts text directly from the browser's DOM (native UTF-16 Unicode)
-              to avoid Playwright's SSE Latin-1 decoding bug.
+              Captures Duck.ai response via SSE stream + DOM inspection.
+              Scrolls the page and terminates immediately when completion is confirmed.
               """
               log("Waiting for text generation to complete...")
               start = time.time()
@@ -306,9 +315,28 @@ jobs:
               stable_ticks = 0
 
               while time.time() - start < max_wait:
-                  click_continue(page)
+                  if state.get("rate_limited"):
+                      raise RuntimeError("Duck.ai returned HTTP 418 (Tor exit IP rate-limited).")
 
-                  stop_btn = page.locator("button[aria-label*='Stop' i], button:has-text('Stop generating'), button:has-text('Stop')")
+                  # Scroll page to bottom so latest tokens remain mounted in DOM
+                  try:
+                      page.evaluate("""() => {
+                          window.scrollTo(0, document.body.scrollHeight);
+                          const sc = document.querySelector('main, [class*="chat"], [class*="conversation"]');
+                          if (sc) sc.scrollTop = sc.scrollHeight;
+                      }""")
+                  except Exception:
+                      pass
+
+                  # 1. Primary Check: Completed SSE Stream
+                  if state.get("chat_done") and state.get("raw_stream"):
+                      parsed_sse = parse_sse_text("".join(state["raw_stream"]))
+                      if parsed_sse.strip():
+                          log(f"Captured text via completed network SSE stream ({len(parsed_sse)} chars).")
+                          return deep_repair(parsed_sse)
+
+                  # 2. Secondary Check: DOM Stability & 'Stop generating' button
+                  stop_btn = page.locator("button:has-text('Stop generating'), button:has-text('Stop'), button[aria-label*='Stop' i]")
                   is_generating = False
                   try:
                       is_generating = stop_btn.count() > 0 and stop_btn.first.is_visible()
@@ -318,12 +346,16 @@ jobs:
                   try:
                       cur_text = page.evaluate("""
                           () => {
-                              const articles = document.querySelectorAll('article, [data-testid="chat-message"]');
-                              if (!articles || articles.length === 0) return '';
-                              const last = articles[articles.length - 1];
-                              const code = last.querySelector('pre code, code');
-                              if (code) return (code.innerText || '').trim();
-                              return (last.innerText || '').trim();
+                              const codes = document.querySelectorAll('pre code, code');
+                              if (codes.length > 0) {
+                                  const lastCode = (codes[codes.length - 1].innerText || '').trim();
+                                  if (lastCode.includes('{') || lastCode.includes('beats')) return lastCode;
+                              }
+                              const msgs = document.querySelectorAll('[class*="message"], article, [data-testid*="message"]');
+                              if (msgs.length > 0) {
+                                  return (msgs[msgs.length - 1].innerText || '').trim();
+                              }
+                              return '';
                           }
                       """)
                       if cur_text and cur_text == last_text and not is_generating:
@@ -332,7 +364,7 @@ jobs:
                           stable_ticks = 0
                       last_text = cur_text
 
-                      if stable_ticks >= 3 and len(last_text) > 10:
+                      if stable_ticks >= 4 and len(last_text) > 30:
                           log(f"Captured text via DOM stability ({len(last_text)} chars).")
                           return deep_repair(last_text)
                   except Exception:
@@ -340,7 +372,14 @@ jobs:
 
                   page.wait_for_timeout(2000)
 
-              return deep_repair(last_text)
+              if state.get("raw_stream"):
+                  parsed_sse = parse_sse_text("".join(state["raw_stream"]))
+                  if parsed_sse.strip():
+                      return deep_repair(parsed_sse)
+              if last_text:
+                  return deep_repair(last_text)
+
+              return ""
 
           def build_timeline_chunks(transcript_path="transcript.json", max_chars=1800):
               with open(transcript_path, "r", encoding="utf-8") as f:
@@ -375,10 +414,6 @@ jobs:
               return movie_title, chunks
 
           def enforce_micro_beats(raw_beats, max_duration=MAX_CLIP_DURATION, max_words=MAX_WORDS_PER_BEAT):
-              """
-              Slices any long scene into rapid 2.0s - 3.0s micro-cuts with 6-8 words.
-              Guarantees strict audio-visual synchronization.
-              """
               refined = []
               for b in raw_beats:
                   narr = deep_repair(b.get("narration", "")).strip()
@@ -394,7 +429,6 @@ jobs:
                   words = narr.split()
                   dur = round(en - st, 2)
 
-                  # Already satisfies recap editing rules
                   if dur <= max_duration and len(words) <= max_words:
                       refined.append({
                           "narration": narr,
@@ -404,7 +438,6 @@ jobs:
                       })
                       continue
 
-                  # Otherwise, chop into <= 3.0s micro-cuts
                   splits_by_time = math.ceil(dur / max_duration)
                   splits_by_words = math.ceil(len(words) / max_words)
                   num_splits = max(int(splits_by_time), int(splits_by_words), 1)
@@ -472,17 +505,31 @@ jobs:
                   box.wait_for(state="visible", timeout=40000)
 
                   probe_prompt = 'Reply with exactly this JSON and nothing else: {"ok": true, "hindi": "नमस्ते"}'
-                  state = {"submitted": False, "chat_done": False}
+                  state = {"submitted": False, "raw_stream": [], "chat_done": False, "rate_limited": False}
+
+                  def on_resp(resp):
+                      if "/duckchat/v1/chat" in resp.url and resp.request.method == "POST":
+                          if resp.status == 418: state["rate_limited"] = True
+                          try:
+                              body = resp.body().decode("utf-8", errors="replace")
+                              state["raw_stream"].append(body)
+                          except Exception: pass
+                  page.on("response", on_resp)
+
+                  def on_req_finish(req):
+                      if "/duckchat/v1/chat" in req.url and req.method == "POST":
+                          state["chat_done"] = True
+                  page.on("requestfinished", on_req_finish)
 
                   human_paste_prompt(page, box, probe_prompt)
                   state["submitted"] = True
 
-                  result_text = wait_for_text_generation(page, 0, state, max_wait=45)
+                  result_text = wait_for_text_generation(page, state, max_wait=45)
                   parsed = parse_first_balanced_json(result_text)
                   log(f"Probe Parsed JSON: {parsed}")
 
                   if parsed and parsed.get("ok") is True and parsed.get("hindi") == "नमस्ते":
-                      log("Probe SUCCESS! Pristine Hindi Unicode verified.")
+                      log("Probe SUCCESS! Pure Hindi Unicode verified.")
                       sys.exit(0)
                   else:
                       log("Probe FAILED validation.")
@@ -500,7 +547,6 @@ jobs:
                           loaded = json.load(sf)
                           if isinstance(loaded, dict):
                               pipeline_state = deep_repair(loaded)
-                              # Retroactively slice old beats to <= 3.0s
                               if pipeline_state.get("beats"):
                                   pipeline_state["beats"] = enforce_micro_beats(pipeline_state["beats"])
                   except Exception: pass
@@ -519,7 +565,24 @@ jobs:
                   chunk_done = False
 
                   for attempt in range(1, MAX_ATTEMPTS + 1):
-                      state = {"submitted": False, "chat_done": False}
+                      state = {"submitted": False, "raw_stream": [], "chat_done": False, "rate_limited": False}
+
+                      def on_response(resp):
+                          if "/duckchat/v1/chat" in resp.url and resp.request.method == "POST":
+                              log(f"Chat HTTP response status: {resp.status}")
+                              if resp.status == 418:
+                                  state["rate_limited"] = True
+                              try:
+                                  body = resp.body().decode("utf-8", errors="replace")
+                                  state["raw_stream"].append(body)
+                              except Exception: pass
+                      page.on("response", on_response)
+
+                      def on_request_finished(req):
+                          if req.method == "POST" and "/duckchat/v1/chat" in req.url:
+                              state["chat_done"] = True
+                              log("Chat stream complete (DONE).")
+                      page.on("requestfinished", on_request_finished)
 
                       try:
                           is_in_chat = bool(page and "chatID=" in page.url)
@@ -548,20 +611,19 @@ jobs:
 
                           box = get_prompt_box(page)
                           box.wait_for(state="visible", timeout=40000)
-                          click_continue(page)
 
                           log(f"Entering prompt for {chunk_id}...")
                           human_paste_prompt(page, box, final_prompt)
                           state["submitted"] = True
 
                           if not is_in_chat:
-                              dl = time.time() + 50
+                              dl = time.time() + 15
                               while time.time() < dl:
-                                  click_continue(page)
-                                  if "chatID=" in page.url: break
-                                  page.wait_for_timeout(1200)
+                                  if "chatID=" in page.url or state["raw_stream"]:
+                                      break
+                                  page.wait_for_timeout(1000)
 
-                          result_raw = wait_for_text_generation(page, 0, state, max_wait=TEXT_WAIT)
+                          result_raw = wait_for_text_generation(page, state, max_wait=TEXT_WAIT)
                           parsed = parse_first_balanced_json(result_raw)
 
                           if not parsed or not isinstance(parsed.get("beats"), list) or len(parsed.get("beats")) == 0:
@@ -576,7 +638,6 @@ jobs:
                               if isinstance(ch, dict) and ch.get("name"):
                                   pipeline_state["characters"][ch["name"]] = ch
 
-                          # Enforce the strict <= 3.0s micro-cuts on the AI output
                           sanitized_beats = enforce_micro_beats(parsed.get("beats", []))
 
                           for b in sanitized_beats:
@@ -616,7 +677,6 @@ jobs:
                       log(f"Could not complete {chunk_id}. Stopping execution.")
                       break
 
-              # Re-index all beats sequentially from B0001
               reindexed_beats = []
               for idx, b in enumerate(all_beats, 1):
                   b_copy = dict(b)

@@ -7,53 +7,2090 @@
     "chunk_5",
     "chunk_6",
     "chunk_7",
-    "chunk_8"
+    "chunk_8",
+    "chunk_9",
+    "chunk_10",
+    "chunk_11",
+    "chunk_12",
+    "chunk_13"
   ],
   "beats": [
     {
       "beat_id": "B0001",
-      "narration": "लूसिफ़र एक अजीब दुकान में प्रवेश करता है, जहाँ बेआत्रिस खुद को प्यार की कहानी बताती है।",
+      "narration": "क्लो कमरे में अपनी जांच शुरू करती है।",
       "target_window": {
-        "start": 907.78,
-        "end": 913.45
+        "start": 0.72,
+        "end": 2.72
       },
       "portion": {
-        "start": 907.78,
-        "end": 913.45
+        "start": 0.72,
+        "end": 2.72
       },
-      "duration": 5.67,
-      "word_count": 17
+      "duration": 2.0,
+      "word_count": 8
     },
     {
       "beat_id": "B0002",
-      "narration": "डैन और क्लो के बीच त्वरित सवाल‑जवाब शुरू होता है, जिसमें शॉपकेपर की पहचान और उसकी माँ का उल्लेख है।",
+      "narration": "वरिष्ठ अधिकारी यह मामला क्लो को सौंपता है।",
       "target_window": {
-        "start": 920.31,
-        "end": 926.98
+        "start": 13.68,
+        "end": 16.38
       },
       "portion": {
-        "start": 920.31,
-        "end": 926.98
+        "start": 13.68,
+        "end": 16.38
       },
-      "duration": 6.67,
-      "word_count": 20
+      "duration": 2.7,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0003",
+      "narration": "अधिकारी इसे आसान मामला बताकर",
+      "target_window": {
+        "start": 21.3,
+        "end": 22.8
+      },
+      "portion": {
+        "start": 21.3,
+        "end": 22.8
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0004",
+      "narration": "जल्दी निपटाने को कहता है।",
+      "target_window": {
+        "start": 22.8,
+        "end": 24.3
+      },
+      "portion": {
+        "start": 22.8,
+        "end": 24.3
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0005",
+      "narration": "क्लो मृतका के पास मिले",
+      "target_window": {
+        "start": 24.3,
+        "end": 25.8
+      },
+      "portion": {
+        "start": 24.3,
+        "end": 25.8
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0006",
+      "narration": "नशीले पदार्थ दिखाती है।",
+      "target_window": {
+        "start": 25.8,
+        "end": 27.3
+      },
+      "portion": {
+        "start": 25.8,
+        "end": 27.3
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0007",
+      "narration": "एक पैकेट सौदागर की जेब से बरामद हुआ।",
+      "target_window": {
+        "start": 27.3,
+        "end": 30.3
+      },
+      "portion": {
+        "start": 27.3,
+        "end": 30.3
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0008",
+      "narration": "क्लो के मुताबिक, गायिका ने नशीले",
+      "target_window": {
+        "start": 30.3,
+        "end": 31.8
+      },
+      "portion": {
+        "start": 30.3,
+        "end": 31.8
+      },
+      "duration": 1.5,
+      "word_count": 6
+    },
+    {
+      "beat_id": "B0009",
+      "narration": "पदार्थों का भुगतान नहीं किया।",
+      "target_window": {
+        "start": 31.8,
+        "end": 34.3
+      },
+      "portion": {
+        "start": 31.8,
+        "end": 34.3
+      },
+      "duration": 2.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0010",
+      "narration": "लूसिफ़र मॉर्निंगस्टार हत्या का अहम",
+      "target_window": {
+        "start": 61.15,
+        "end": 62.65
+      },
+      "portion": {
+        "start": 61.15,
+        "end": 62.65
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0011",
+      "narration": "गवाह बनकर सामने आता है।",
+      "target_window": {
+        "start": 62.65,
+        "end": 64.15
+      },
+      "portion": {
+        "start": 62.65,
+        "end": 64.15
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0012",
+      "narration": "लूसिफ़र बताता है कि मृतका",
+      "target_window": {
+        "start": 82.46,
+        "end": 83.96
+      },
+      "portion": {
+        "start": 82.46,
+        "end": 83.96
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0013",
+      "narration": "पहले यहाँ काम करती थी।",
+      "target_window": {
+        "start": 83.96,
+        "end": 85.46
+      },
+      "portion": {
+        "start": 83.96,
+        "end": 85.46
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0014",
+      "narration": "मृतका मशहूर हुई, फिर किसी",
+      "target_window": {
+        "start": 87.46,
+        "end": 88.96
+      },
+      "portion": {
+        "start": 87.46,
+        "end": 88.96
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0015",
+      "narration": "ने उसकी हत्या कर दी।",
+      "target_window": {
+        "start": 88.96,
+        "end": 90.46
+      },
+      "portion": {
+        "start": 88.96,
+        "end": 90.46
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0016",
+      "narration": "मरने से पहले उसने लूसिफ़र",
+      "target_window": {
+        "start": 92.46,
+        "end": 93.96
+      },
+      "portion": {
+        "start": 92.46,
+        "end": 93.96
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0017",
+      "narration": "को हत्या की वजह बताई।",
+      "target_window": {
+        "start": 93.96,
+        "end": 95.46
+      },
+      "portion": {
+        "start": 93.96,
+        "end": 95.46
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0018",
+      "narration": "लूसिफ़र आत्मा से हुई बातचीत",
+      "target_window": {
+        "start": 103.84,
+        "end": 105.34
+      },
+      "portion": {
+        "start": 103.84,
+        "end": 105.34
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0019",
+      "narration": "का दावा करता है।",
+      "target_window": {
+        "start": 105.34,
+        "end": 106.84
+      },
+      "portion": {
+        "start": 105.34,
+        "end": 106.84
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0020",
+      "narration": "वह कहता है कि मृतका",
+      "target_window": {
+        "start": 107.84,
+        "end": 109.34
+      },
+      "portion": {
+        "start": 107.84,
+        "end": 109.34
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0021",
+      "narration": "की आत्मा यहीं ठहरी थी।",
+      "target_window": {
+        "start": 109.34,
+        "end": 110.84
+      },
+      "portion": {
+        "start": 109.34,
+        "end": 110.84
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0022",
+      "narration": "हत्या की वजह पैसों का लालच बताता है।",
+      "target_window": {
+        "start": 113.38,
+        "end": 116.38
+      },
+      "portion": {
+        "start": 113.38,
+        "end": 116.38
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0023",
+      "narration": "वह कहती है, उसने केवल गोली चलाई।",
+      "target_window": {
+        "start": 124.99,
+        "end": 127.99
+      },
+      "portion": {
+        "start": 124.99,
+        "end": 127.99
+      },
+      "duration": 3.0,
+      "word_count": 7
+    },
+    {
+      "beat_id": "B0024",
+      "narration": "क्लो हत्या को नशीले पदार्थों",
+      "target_window": {
+        "start": 129.99,
+        "end": 131.49
+      },
+      "portion": {
+        "start": 129.99,
+        "end": 131.49
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0025",
+      "narration": "के सौदागर से जोड़ती है।",
+      "target_window": {
+        "start": 131.49,
+        "end": 132.99
+      },
+      "portion": {
+        "start": 131.49,
+        "end": 132.99
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0026",
+      "narration": "लूसिफ़र क्लो से कहता है,",
+      "target_window": {
+        "start": 141.99,
+        "end": 143.49
+      },
+      "portion": {
+        "start": 141.99,
+        "end": 143.49
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0027",
+      "narration": "यह उसकी दुनिया नहीं।",
+      "target_window": {
+        "start": 143.49,
+        "end": 144.99
+      },
+      "portion": {
+        "start": 143.49,
+        "end": 144.99
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0028",
+      "narration": "क्लो पूछती है कि गोली लगने",
+      "target_window": {
+        "start": 150.25,
+        "end": 151.75
+      },
+      "portion": {
+        "start": 150.25,
+        "end": 151.75
+      },
+      "duration": 1.5,
+      "word_count": 6
+    },
+    {
+      "beat_id": "B0029",
+      "narration": "पर वह क्यों नहीं मरी।",
+      "target_window": {
+        "start": 151.75,
+        "end": 153.25
+      },
+      "portion": {
+        "start": 151.75,
+        "end": 153.25
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0030",
+      "narration": "लूसिफ़र अपनी अमरता को सहजता से स्वीकारता है।",
+      "target_window": {
+        "start": 154.5,
+        "end": 157.5
+      },
+      "portion": {
+        "start": 154.5,
+        "end": 157.5
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0031",
+      "narration": "क्लो उसकी अमरता को रिपोर्ट",
+      "target_window": {
+        "start": 157.5,
+        "end": 159.0
+      },
+      "portion": {
+        "start": 157.5,
+        "end": 159.0
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0032",
+      "narration": "में दर्ज करने लगती है।",
+      "target_window": {
+        "start": 159.0,
+        "end": 160.5
+      },
+      "portion": {
+        "start": 159.0,
+        "end": 160.5
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0033",
+      "narration": "लूसिफ़र पूछता है, क्या क्लो",
+      "target_window": {
+        "start": 167.98,
+        "end": 169.48
+      },
+      "portion": {
+        "start": 167.98,
+        "end": 169.48
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0034",
+      "narration": "हत्यारे को सज़ा दिलाएगी।",
+      "target_window": {
+        "start": 169.48,
+        "end": 170.98
+      },
+      "portion": {
+        "start": 169.48,
+        "end": 170.98
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0035",
+      "narration": "लूसिफ़र पूछता है, वे पहले क्यों नहीं मिले।",
+      "target_window": {
+        "start": 177.98,
+        "end": 180.98
+      },
+      "portion": {
+        "start": 177.98,
+        "end": 180.98
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0036",
+      "narration": "दोनों हत्यारे को साथ खोजने",
+      "target_window": {
+        "start": 187.58,
+        "end": 189.08
+      },
+      "portion": {
+        "start": 187.58,
+        "end": 189.08
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0037",
+      "narration": "पर सहमत होते हैं।",
+      "target_window": {
+        "start": 189.08,
+        "end": 190.58
+      },
+      "portion": {
+        "start": 189.08,
+        "end": 190.58
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0038",
+      "narration": "लूसिफ़र समारोह में जिमी बार्न्स",
+      "target_window": {
+        "start": 233.99,
+        "end": 235.49
+      },
+      "portion": {
+        "start": 233.99,
+        "end": 235.49
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0039",
+      "narration": "को पहचानकर पुकारता है।",
+      "target_window": {
+        "start": 235.49,
+        "end": 236.99
+      },
+      "portion": {
+        "start": 235.49,
+        "end": 236.99
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0040",
+      "narration": "जिमी पूछता है, लूसिफ़र निजी",
+      "target_window": {
+        "start": 236.99,
+        "end": 238.49
+      },
+      "portion": {
+        "start": 236.99,
+        "end": 238.49
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0041",
+      "narration": "समारोह में कैसे पहुँचा।",
+      "target_window": {
+        "start": 238.49,
+        "end": 239.99
+      },
+      "portion": {
+        "start": 238.49,
+        "end": 239.99
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0042",
+      "narration": "लूसिफ़र उसकी मृत पूर्व मंगेतर",
+      "target_window": {
+        "start": 249.66,
+        "end": 251.16
+      },
+      "portion": {
+        "start": 249.66,
+        "end": 251.16
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0043",
+      "narration": "का जिक्र करता है।",
+      "target_window": {
+        "start": 251.16,
+        "end": 252.66
+      },
+      "portion": {
+        "start": 251.16,
+        "end": 252.66
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0044",
+      "narration": "मशहूर पूर्व मंगेतर की हत्या हो चुकी थी।",
+      "target_window": {
+        "start": 252.66,
+        "end": 255.66
+      },
+      "portion": {
+        "start": 252.66,
+        "end": 255.66
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0045",
+      "narration": "जिमी कहता है, उसे उसकी",
+      "target_window": {
+        "start": 256.66,
+        "end": 258.16
+      },
+      "portion": {
+        "start": 256.66,
+        "end": 258.16
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0046",
+      "narration": "मौत का दुख है।",
+      "target_window": {
+        "start": 258.16,
+        "end": 259.66
+      },
+      "portion": {
+        "start": 258.16,
+        "end": 259.66
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0047",
+      "narration": "जिमी मृतका पर अपनी शादी",
+      "target_window": {
+        "start": 258.66,
+        "end": 260.16
+      },
+      "portion": {
+        "start": 258.66,
+        "end": 260.16
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0048",
+      "narration": "बिगाड़ने का आरोप लगाता है।",
+      "target_window": {
+        "start": 260.16,
+        "end": 261.66
+      },
+      "portion": {
+        "start": 260.16,
+        "end": 261.66
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0049",
+      "narration": "लूसिफ़र जिमी से पूछता है",
+      "target_window": {
+        "start": 271.66,
+        "end": 273.16
+      },
+      "portion": {
+        "start": 271.66,
+        "end": 273.16
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0050",
+      "narration": "कि क्या उसने हत्या की।",
+      "target_window": {
+        "start": 273.16,
+        "end": 274.66
+      },
+      "portion": {
+        "start": 273.16,
+        "end": 274.66
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0051",
+      "narration": "जिमी अपने अपमान और गुस्से",
+      "target_window": {
+        "start": 280.66,
+        "end": 282.16
+      },
+      "portion": {
+        "start": 280.66,
+        "end": 282.16
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0052",
+      "narration": "की बात स्वीकारता है।",
+      "target_window": {
+        "start": 282.16,
+        "end": 283.66
+      },
+      "portion": {
+        "start": 282.16,
+        "end": 283.66
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0053",
+      "narration": "जिमी कहता है, रैपर मृतका को मारता-पीटता था।",
+      "target_window": {
+        "start": 294.66,
+        "end": 297.66
+      },
+      "portion": {
+        "start": 294.66,
+        "end": 297.66
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0054",
+      "narration": "वह रैपर को असली हत्यारा बताता है।",
+      "target_window": {
+        "start": 298.66,
+        "end": 301.66
+      },
+      "portion": {
+        "start": 298.66,
+        "end": 301.66
+      },
+      "duration": 3.0,
+      "word_count": 7
+    },
+    {
+      "beat_id": "B0055",
+      "narration": "वहाँ मौजूद लोग कहते हैं,",
+      "target_window": {
+        "start": 323.18,
+        "end": 324.68
+      },
+      "portion": {
+        "start": 323.18,
+        "end": 324.68
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0056",
+      "narration": "वह उससे प्रेम करती है।",
+      "target_window": {
+        "start": 324.68,
+        "end": 326.18
+      },
+      "portion": {
+        "start": 324.68,
+        "end": 326.18
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0057",
+      "narration": "लूसिफ़र बधाई देकर शादी समारोह",
+      "target_window": {
+        "start": 330.18,
+        "end": 331.68
+      },
+      "portion": {
+        "start": 330.18,
+        "end": 331.68
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0058",
+      "narration": "से विदा लेता है।",
+      "target_window": {
+        "start": 331.68,
+        "end": 333.18
+      },
+      "portion": {
+        "start": 331.68,
+        "end": 333.18
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0059",
+      "narration": "लूसिफ़र नशीला माल लेकर एक घर पहुँचता है।",
+      "target_window": {
+        "start": 358.36,
+        "end": 361.36
+      },
+      "portion": {
+        "start": 358.36,
+        "end": 361.36
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0060",
+      "narration": "दरबान उसे मालिक से मिलने से रोकता है।",
+      "target_window": {
+        "start": 357.36,
+        "end": 360.36
+      },
+      "portion": {
+        "start": 357.36,
+        "end": 360.36
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0061",
+      "narration": "लूसिफ़र बताता है, उसके पास मालिक",
+      "target_window": {
+        "start": 360.36,
+        "end": 361.86
+      },
+      "portion": {
+        "start": 360.36,
+        "end": 361.86
+      },
+      "duration": 1.5,
+      "word_count": 6
+    },
+    {
+      "beat_id": "B0062",
+      "narration": "के लिए नशीला माल है।",
+      "target_window": {
+        "start": 361.86,
+        "end": 363.36
+      },
+      "portion": {
+        "start": 361.86,
+        "end": 363.36
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0063",
+      "narration": "नौकर उसे अंदर ले जाकर",
+      "target_window": {
+        "start": 383.74,
+        "end": 385.24
+      },
+      "portion": {
+        "start": 383.74,
+        "end": 385.24
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0064",
+      "narration": "मालिक से मिलवाता है।",
+      "target_window": {
+        "start": 385.24,
+        "end": 386.74
+      },
+      "portion": {
+        "start": 385.24,
+        "end": 386.74
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0065",
+      "narration": "लूसिफ़र अपना नाम बताकर रैपर",
+      "target_window": {
+        "start": 387.74,
+        "end": 389.24
+      },
+      "portion": {
+        "start": 387.74,
+        "end": 389.24
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0066",
+      "narration": "से बातचीत शुरू करता है।",
+      "target_window": {
+        "start": 389.24,
+        "end": 390.74
+      },
+      "portion": {
+        "start": 389.24,
+        "end": 390.74
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0067",
+      "narration": "लूसिफ़र खुद को अमर बताकर गोली",
+      "target_window": {
+        "start": 432.14,
+        "end": 434.64
+      },
+      "portion": {
+        "start": 432.14,
+        "end": 434.64
+      },
+      "duration": 2.5,
+      "word_count": 6
+    },
+    {
+      "beat_id": "B0068",
+      "narration": "चलाने की चुनौती देता है।",
+      "target_window": {
+        "start": 434.64,
+        "end": 437.14
+      },
+      "portion": {
+        "start": 434.64,
+        "end": 437.14
+      },
+      "duration": 2.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0069",
+      "narration": "लूसिफ़र रैपर से डिलाइला के",
+      "target_window": {
+        "start": 434.14,
+        "end": 435.64
+      },
+      "portion": {
+        "start": 434.14,
+        "end": 435.64
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0070",
+      "narration": "बारे में पूछता है।",
+      "target_window": {
+        "start": 435.64,
+        "end": 437.14
+      },
+      "portion": {
+        "start": 435.64,
+        "end": 437.14
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0071",
+      "narration": "कोई लूसिफ़र पर गोली चलाने",
+      "target_window": {
+        "start": 447.47,
+        "end": 449.97
+      },
+      "portion": {
+        "start": 447.47,
+        "end": 449.97
+      },
+      "duration": 2.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0072",
+      "narration": "का आदेश देता है।",
+      "target_window": {
+        "start": 449.97,
+        "end": 452.47
+      },
+      "portion": {
+        "start": 449.97,
+        "end": 452.47
+      },
+      "duration": 2.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0073",
+      "narration": "एक महिला कहती है कि",
+      "target_window": {
+        "start": 449.95,
+        "end": 451.45
+      },
+      "portion": {
+        "start": 449.95,
+        "end": 451.45
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0074",
+      "narration": "वह उससे प्रेम करती है।",
+      "target_window": {
+        "start": 451.45,
+        "end": 452.95
+      },
+      "portion": {
+        "start": 451.45,
+        "end": 452.95
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0075",
+      "narration": "बातचीत में प्रेमी की हिंसा",
+      "target_window": {
+        "start": 460.95,
+        "end": 462.45
+      },
+      "portion": {
+        "start": 460.95,
+        "end": 462.45
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0076",
+      "narration": "और बेवफ़ाई सामने आती है।",
+      "target_window": {
+        "start": 462.45,
+        "end": 463.95
+      },
+      "portion": {
+        "start": 462.45,
+        "end": 463.95
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0077",
+      "narration": "डिलाइला का प्रेमी अपना गुप्त प्रेम-संबंध छिपाता था।",
+      "target_window": {
+        "start": 478.68,
+        "end": 481.68
+      },
+      "portion": {
+        "start": 478.68,
+        "end": 481.68
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0078",
+      "narration": "उसकी चिकित्सक डॉक्टर लिंडा इस",
+      "target_window": {
+        "start": 487.68,
+        "end": 489.18
+      },
+      "portion": {
+        "start": 487.68,
+        "end": 489.18
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0079",
+      "narration": "राज़ को जान सकती है।",
+      "target_window": {
+        "start": 489.18,
+        "end": 490.68
+      },
+      "portion": {
+        "start": 489.18,
+        "end": 490.68
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0080",
+      "narration": "वह बेवर्ली हिल्स में डॉक्टर",
+      "target_window": {
+        "start": 491.68,
+        "end": 493.18
+      },
+      "portion": {
+        "start": 491.68,
+        "end": 493.18
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0081",
+      "narration": "लिंडा से अक्सर मिलता था।",
+      "target_window": {
+        "start": 493.18,
+        "end": 494.68
+      },
+      "portion": {
+        "start": 493.18,
+        "end": 494.68
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0082",
+      "narration": "क्लो पार्टी में सबको हथियार डालने कहती है।",
+      "target_window": {
+        "start": 504.68,
+        "end": 507.68
+      },
+      "portion": {
+        "start": 504.68,
+        "end": 507.68
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0083",
+      "narration": "पुलिस पार्टी में मौजूद लोगों",
+      "target_window": {
+        "start": 511.68,
+        "end": 514.18
+      },
+      "portion": {
+        "start": 511.68,
+        "end": 514.18
+      },
+      "duration": 2.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0084",
+      "narration": "के हथियार जमा करती है।",
+      "target_window": {
+        "start": 514.18,
+        "end": 516.68
+      },
+      "portion": {
+        "start": 514.18,
+        "end": 516.68
+      },
+      "duration": 2.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0085",
+      "narration": "हत्यारे की आखिरी कॉल जाँच",
+      "target_window": {
+        "start": 516.68,
+        "end": 518.18
+      },
+      "portion": {
+        "start": 516.68,
+        "end": 518.18
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0086",
+      "narration": "को वेल तक पहुँचाती है।",
+      "target_window": {
+        "start": 518.18,
+        "end": 519.68
+      },
+      "portion": {
+        "start": 518.18,
+        "end": 519.68
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0087",
+      "narration": "जासूस रैपर से डिलाइला के",
+      "target_window": {
+        "start": 526.68,
+        "end": 529.18
+      },
+      "portion": {
+        "start": 526.68,
+        "end": 529.18
+      },
+      "duration": 2.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0088",
+      "narration": "बारे में सवाल करती है।",
+      "target_window": {
+        "start": 529.18,
+        "end": 531.68
+      },
+      "portion": {
+        "start": 529.18,
+        "end": 531.68
+      },
+      "duration": 2.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0089",
+      "narration": "रैपर मानता है कि एडी उसका",
+      "target_window": {
+        "start": 533.38,
+        "end": 534.88
+      },
+      "portion": {
+        "start": 533.38,
+        "end": 534.88
+      },
+      "duration": 1.5,
+      "word_count": 6
+    },
+    {
+      "beat_id": "B0090",
+      "narration": "नशीले पदार्थों का सौदागर है।",
+      "target_window": {
+        "start": 534.88,
+        "end": 536.38
+      },
+      "portion": {
+        "start": 534.88,
+        "end": 536.38
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0091",
+      "narration": "वह बताता है कि एडी से",
+      "target_window": {
+        "start": 535.38,
+        "end": 536.88
+      },
+      "portion": {
+        "start": 535.38,
+        "end": 536.88
+      },
+      "duration": 1.5,
+      "word_count": 6
+    },
+    {
+      "beat_id": "B0092",
+      "narration": "डिलाइला के साथ मिला था।",
+      "target_window": {
+        "start": 536.88,
+        "end": 538.38
+      },
+      "portion": {
+        "start": 536.88,
+        "end": 538.38
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0093",
+      "narration": "क्लो लूसिफ़र को साथ चलने",
+      "target_window": {
+        "start": 588.41,
+        "end": 589.91
+      },
+      "portion": {
+        "start": 588.41,
+        "end": 589.91
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0094",
+      "narration": "का आदेश देती है।",
+      "target_window": {
+        "start": 589.91,
+        "end": 591.41
+      },
+      "portion": {
+        "start": 589.91,
+        "end": 591.41
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0095",
+      "narration": "लूसिफ़र भूमिका निभाकर क्लो को",
+      "target_window": {
+        "start": 591.41,
+        "end": 592.91
+      },
+      "portion": {
+        "start": 591.41,
+        "end": 592.91
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0096",
+      "narration": "अपने साथ ले जाता है।",
+      "target_window": {
+        "start": 592.91,
+        "end": 594.41
+      },
+      "portion": {
+        "start": 592.91,
+        "end": 594.41
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0097",
+      "narration": "क्लो उसे पुलिस जाँच में दखल",
+      "target_window": {
+        "start": 598.41,
+        "end": 599.91
+      },
+      "portion": {
+        "start": 598.41,
+        "end": 599.91
+      },
+      "duration": 1.5,
+      "word_count": 6
+    },
+    {
+      "beat_id": "B0098",
+      "narration": "देने पर गिरफ्तार करती है।",
+      "target_window": {
+        "start": 599.91,
+        "end": 601.41
+      },
+      "portion": {
+        "start": 599.91,
+        "end": 601.41
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0099",
+      "narration": "लूसिफ़र कहता है, हथकड़ी उसे रोक नहीं सकती।",
+      "target_window": {
+        "start": 604.41,
+        "end": 606.41
+      },
+      "portion": {
+        "start": 604.41,
+        "end": 606.41
+      },
+      "duration": 2.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0100",
+      "narration": "लूसिफ़र आसानी से हथकड़ी से",
+      "target_window": {
+        "start": 606.41,
+        "end": 607.91
+      },
+      "portion": {
+        "start": 606.41,
+        "end": 607.91
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0101",
+      "narration": "हाथ छुड़ा लेता है।",
+      "target_window": {
+        "start": 607.91,
+        "end": 609.41
+      },
+      "portion": {
+        "start": 607.91,
+        "end": 609.41
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0102",
+      "narration": "वह क्लो को हत्यारा ढूँढ़ने में",
+      "target_window": {
+        "start": 619.84,
+        "end": 621.34
+      },
+      "portion": {
+        "start": 619.84,
+        "end": 621.34
+      },
+      "duration": 1.5,
+      "word_count": 6
+    },
+    {
+      "beat_id": "B0103",
+      "narration": "मदद देने की पेशकश करता है।",
+      "target_window": {
+        "start": 621.34,
+        "end": 622.84
+      },
+      "portion": {
+        "start": 621.34,
+        "end": 622.84
+      },
+      "duration": 1.5,
+      "word_count": 6
+    },
+    {
+      "beat_id": "B0104",
+      "narration": "लूसिफ़र क्लो की मदद करने",
+      "target_window": {
+        "start": 621.84,
+        "end": 623.34
+      },
+      "portion": {
+        "start": 621.84,
+        "end": 623.34
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0105",
+      "narration": "का वादा करता है।",
+      "target_window": {
+        "start": 623.34,
+        "end": 624.84
+      },
+      "portion": {
+        "start": 623.34,
+        "end": 624.84
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0106",
+      "narration": "लोगों से बात करना उसकी खास प्रतिभा है।",
+      "target_window": {
+        "start": 625.84,
+        "end": 628.84
+      },
+      "portion": {
+        "start": 625.84,
+        "end": 628.84
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0107",
+      "narration": "वह लोगों की इच्छाएँ जानने",
+      "target_window": {
+        "start": 643.84,
+        "end": 645.34
+      },
+      "portion": {
+        "start": 643.84,
+        "end": 645.34
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0108",
+      "narration": "का दावा करता है।",
+      "target_window": {
+        "start": 645.34,
+        "end": 646.84
+      },
+      "portion": {
+        "start": 645.34,
+        "end": 646.84
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0109",
+      "narration": "लूसिफ़र क्लो से उसकी सबसे",
+      "target_window": {
+        "start": 668.16,
+        "end": 669.66
+      },
+      "portion": {
+        "start": 668.16,
+        "end": 669.66
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0110",
+      "narration": "बड़ी चाह पूछता है।",
+      "target_window": {
+        "start": 669.66,
+        "end": 671.16
+      },
+      "portion": {
+        "start": 669.66,
+        "end": 671.16
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0111",
+      "narration": "बचपन में क्लो अपने पिता",
+      "target_window": {
+        "start": 685.38,
+        "end": 686.88
+      },
+      "portion": {
+        "start": 685.38,
+        "end": 686.88
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0112",
+      "narration": "जैसी पुलिसवाली बनना चाहती थी।",
+      "target_window": {
+        "start": 686.88,
+        "end": 688.38
+      },
+      "portion": {
+        "start": 686.88,
+        "end": 688.38
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0113",
+      "narration": "वह पुलिस बनकर लोगों की",
+      "target_window": {
+        "start": 692.8,
+        "end": 694.3
+      },
+      "portion": {
+        "start": 692.8,
+        "end": 694.3
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0114",
+      "narration": "मदद करना चाहती थी।",
+      "target_window": {
+        "start": 694.3,
+        "end": 695.8
+      },
+      "portion": {
+        "start": 694.3,
+        "end": 695.8
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0115",
+      "narration": "लूसिफ़र मानता है, उसने डिलाइला का करियर बनाया।",
+      "target_window": {
+        "start": 726.98,
+        "end": 729.98
+      },
+      "portion": {
+        "start": 726.98,
+        "end": 729.98
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0116",
+      "narration": "क्लो उसे जाँच में शामिल",
+      "target_window": {
+        "start": 734.62,
+        "end": 736.12
+      },
+      "portion": {
+        "start": 734.62,
+        "end": 736.12
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0117",
+      "narration": "करने की हामी भरती है।",
+      "target_window": {
+        "start": 736.12,
+        "end": 737.62
+      },
+      "portion": {
+        "start": 736.12,
+        "end": 737.62
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0118",
+      "narration": "डॉक्टर लिंडा बेवर्ली हिल्स में",
+      "target_window": {
+        "start": 746.12,
+        "end": 747.62
+      },
+      "portion": {
+        "start": 746.12,
+        "end": 747.62
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0119",
+      "narration": "मरीजों से मिलती हैं।",
+      "target_window": {
+        "start": 747.62,
+        "end": 749.12
+      },
+      "portion": {
+        "start": 747.62,
+        "end": 749.12
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0120",
+      "narration": "डिलाइला शायद पेनी लेन नाम",
+      "target_window": {
+        "start": 753.12,
+        "end": 754.62
+      },
+      "portion": {
+        "start": 753.12,
+        "end": 754.62
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0121",
+      "narration": "से वहाँ जाती थी।",
+      "target_window": {
+        "start": 754.62,
+        "end": 756.12
+      },
+      "portion": {
+        "start": 754.62,
+        "end": 756.12
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0122",
+      "narration": "लूसिफ़र क्लो की काबिलियत पर भरोसा जताता है।",
+      "target_window": {
+        "start": 786.98,
+        "end": 789.98
+      },
+      "portion": {
+        "start": 786.98,
+        "end": 789.98
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0123",
+      "narration": "जाँच में पेनी लेन की",
+      "target_window": {
+        "start": 802.98,
+        "end": 804.48
+      },
+      "portion": {
+        "start": 802.98,
+        "end": 804.48
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0124",
+      "narration": "पहचान की पुष्टि होती है।",
+      "target_window": {
+        "start": 804.48,
+        "end": 805.98
+      },
+      "portion": {
+        "start": 804.48,
+        "end": 805.98
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0125",
+      "narration": "डॉक्टर लिंडा के पास पेनी",
+      "target_window": {
+        "start": 804.98,
+        "end": 806.48
+      },
+      "portion": {
+        "start": 804.98,
+        "end": 806.48
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0126",
+      "narration": "लेन नाम की मरीज है।",
+      "target_window": {
+        "start": 806.48,
+        "end": 807.98
+      },
+      "portion": {
+        "start": 806.48,
+        "end": 807.98
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0127",
+      "narration": "क्लो को अपनी बेटी के",
+      "target_window": {
+        "start": 824.12,
+        "end": 825.62
+      },
+      "portion": {
+        "start": 824.12,
+        "end": 825.62
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0128",
+      "narration": "झगड़े की खबर मिलती है।",
+      "target_window": {
+        "start": 825.62,
+        "end": 827.12
+      },
+      "portion": {
+        "start": 825.62,
+        "end": 827.12
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0129",
+      "narration": "बेटी के लिए क्लो जाँच छोड़कर",
+      "target_window": {
+        "start": 827.12,
+        "end": 828.62
+      },
+      "portion": {
+        "start": 827.12,
+        "end": 828.62
+      },
+      "duration": 1.5,
+      "word_count": 6
+    },
+    {
+      "beat_id": "B0130",
+      "narration": "जाने की तैयारी करती है।",
+      "target_window": {
+        "start": 828.62,
+        "end": 830.12
+      },
+      "portion": {
+        "start": 828.62,
+        "end": 830.12
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0131",
+      "narration": "लूसिफ़र क्लो की बेटी बीट्रिस",
+      "target_window": {
+        "start": 899.86,
+        "end": 901.36
+      },
+      "portion": {
+        "start": 899.86,
+        "end": 901.36
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0132",
+      "narration": "से बात करता है।",
+      "target_window": {
+        "start": 901.36,
+        "end": 902.86
+      },
+      "portion": {
+        "start": 901.36,
+        "end": 902.86
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0133",
+      "narration": "बीट्रिस बताती है, एक लड़की नकली",
+      "target_window": {
+        "start": 924.17,
+        "end": 925.67
+      },
+      "portion": {
+        "start": 924.17,
+        "end": 925.67
+      },
+      "duration": 1.5,
+      "word_count": 6
+    },
+    {
+      "beat_id": "B0134",
+      "narration": "खाते से मज़ाक उड़ाती थी।",
+      "target_window": {
+        "start": 925.67,
+        "end": 927.17
+      },
+      "portion": {
+        "start": 925.67,
+        "end": 927.17
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0135",
+      "narration": "गुस्से में बीट्रिस ने उस लड़की को पीटा।",
+      "target_window": {
+        "start": 928.29,
+        "end": 931.29
+      },
+      "portion": {
+        "start": 928.29,
+        "end": 931.29
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0136",
+      "narration": "लूसिफ़र लड़की को उसके कर्मों",
+      "target_window": {
+        "start": 947.86,
+        "end": 949.36
+      },
+      "portion": {
+        "start": 947.86,
+        "end": 949.36
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0137",
+      "narration": "का डर दिखाता है।",
+      "target_window": {
+        "start": 949.36,
+        "end": 950.86
+      },
+      "portion": {
+        "start": 949.36,
+        "end": 950.86
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0138",
+      "narration": "क्लो लौटती है और लूसिफ़र",
+      "target_window": {
+        "start": 974.58,
+        "end": 976.08
+      },
+      "portion": {
+        "start": 974.58,
+        "end": 976.08
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0139",
+      "narration": "को वहाँ पाती है।",
+      "target_window": {
+        "start": 976.08,
+        "end": 977.58
+      },
+      "portion": {
+        "start": 976.08,
+        "end": 977.58
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0140",
+      "narration": "लूसिफ़र क्लो की काबिलियत की तारीफ़ करता है।",
+      "target_window": {
+        "start": 989.74,
+        "end": 992.74
+      },
+      "portion": {
+        "start": 989.74,
+        "end": 992.74
+      },
+      "duration": 3.0,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0141",
+      "narration": "क्लो बेटी को पिता के साथ भेजती है।",
+      "target_window": {
+        "start": 1005.55,
+        "end": 1008.39
+      },
+      "portion": {
+        "start": 1005.55,
+        "end": 1008.39
+      },
+      "duration": 2.84,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0142",
+      "narration": "क्लो बेटी को प्यार से विदा करती है।",
+      "target_window": {
+        "start": 1008.47,
+        "end": 1011.03
+      },
+      "portion": {
+        "start": 1008.47,
+        "end": 1011.03
+      },
+      "duration": 2.56,
+      "word_count": 8
+    },
+    {
+      "beat_id": "B0143",
+      "narration": "लूसिफ़र रास्ते में मिली महिला",
+      "target_window": {
+        "start": 1027.58,
+        "end": 1029.08
+      },
+      "portion": {
+        "start": 1027.58,
+        "end": 1029.08
+      },
+      "duration": 1.5,
+      "word_count": 5
+    },
+    {
+      "beat_id": "B0144",
+      "narration": "को पसंद करता है।",
+      "target_window": {
+        "start": 1029.08,
+        "end": 1030.58
+      },
+      "portion": {
+        "start": 1029.08,
+        "end": 1030.58
+      },
+      "duration": 1.5,
+      "word_count": 4
+    },
+    {
+      "beat_id": "B0145",
+      "narration": "वह अपने आकर्षक स्वभाव पर गर्व जताता है।",
+      "target_window": {
+        "start": 1032.78,
+        "end": 1035.78
+      },
+      "portion": {
+        "start": 1032.78,
+        "end": 1035.78
+      },
+      "duration": 3.0,
+      "word_count": 8
     }
   ],
-  "characters": [
-    {
+  "characters": {
+    "Chloe": {
+      "name": "Chloe",
+      "hindi_name": "क्लो",
+      "who": "जासूस"
+    },
+    "Lucifer Morningstar": {
       "name": "Lucifer Morningstar",
       "hindi_name": "लूसिफ़र मॉर्निंगस्टार",
-      "role": "नरक के मालिक और निजी जासूस"
+      "who": "जासूस का सहयोगी"
     },
-    {
-      "name": "Chloe Decker",
-      "hindi_name": "डिटेक्टिव क्लो डीकर",
-      "role": "लॉस एंजेलिस डिपार्टमेंट ऑफ़ पुलिस की प्रमुख जासूस"
+    "Darlala": {
+      "name": "Darlala",
+      "hindi_name": "डार्लाला",
+      "who": "मृत गायिका"
     },
-    {
-      "name": "Dan Espinoza",
-      "hindi_name": "डिटेक्टिव डैन एस्पिनोज़ा",
-      "role": "क्लो का पूर्व पति और सहयोगी जासूस"
+    "Jimmy Barnes": {
+      "name": "Jimmy Barnes",
+      "hindi_name": "जिमी बार्न्स",
+      "who": "दूल्हा"
+    },
+    "Jockey": {
+      "name": "Jockey",
+      "hindi_name": "जॉकी",
+      "who": "रैपर"
+    },
+    "Dr. Linda": {
+      "name": "Dr. Linda",
+      "hindi_name": "डॉक्टर लिंडा",
+      "who": "चिकित्सक"
+    },
+    "Eddie": {
+      "name": "Eddie",
+      "hindi_name": "एडी",
+      "who": "नशीले पदार्थों का सौदागर"
+    },
+    "Delilah": {
+      "name": "Delilah",
+      "hindi_name": "डिलाइला",
+      "who": "मृत गायिका"
+    },
+    "Beatrice": {
+      "name": "Beatrice",
+      "hindi_name": "बीट्रिस",
+      "who": "क्लो की बेटी"
     }
-  ]
+  }
 }

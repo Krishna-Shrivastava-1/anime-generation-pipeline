@@ -1,10 +1,10 @@
 name: Generate Hindi YouTube Movie Recap
 
-"on":
+on:
   workflow_dispatch:
     inputs:
       headed:
-        description: "Run non-headless Chrome under Xvfb"
+        description: "Run non-headless Chrome under Xvfb (less detectable)"
         required: true
         type: boolean
         default: true
@@ -23,17 +23,17 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: main
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
-      - name: Install Tor & Dependencies
+      - name: Install Tor
         timeout-minutes: 4
         run: |
           sudo apt-get update
@@ -49,23 +49,32 @@ jobs:
         timeout-minutes: 6
         run: |
           python -m pip install --upgrade pip
-          pip install playwright requests
+          pip install curl_cffi playwright pillow requests
           playwright install --with-deps chromium
+
+      - name: Verify connection (curl_cffi, Chrome TLS impersonation)
+        timeout-minutes: 3
+        run: |
+          python - <<'PY'
+          from curl_cffi import requests
+          p = "socks5h://127.0.0.1:9050"
+          r = requests.get("https://check.torproject.org/api/ip", proxies={"http": p, "https": p}, impersonate="chrome", timeout=60)
+          r.raise_for_status()
+          data = r.json()
+          print("Connection info:", data)
+          if not data.get("IsTor"):
+              raise RuntimeError("Traffic is not using Tor.")
+          PY
 
       - name: Automate Duck.ai Story Pipeline
         timeout-minutes: 110
         env:
-          HEADED: "${{ inputs.headed }}"
-          TARGET_RECAP_MINS: "${{ inputs.target_recap_mins }}"
+          HEADED: ${{ inputs.headed }}
+          TARGET_RECAP_MINS: ${{ inputs.target_recap_mins }}
         run: |
           mkdir -p debug
-          RUNNER_CMD="python3 -"
-          if [ "$HEADED" = "true" ]; then
-            RUNNER_CMD="xvfb-run -a --server-args=\"-screen 0 1440x1000x24\" python3 -"
-          fi
-
-          eval "$RUNNER_CMD" <<'EOF'
-          import os, re, sys, json, subprocess, time
+          cat > generate_story.py <<'PY'
+          import os, re, sys, json, base64, subprocess, time
           from pathlib import Path
           from playwright.sync_api import sync_playwright
 
@@ -76,118 +85,91 @@ jobs:
           PART_SECONDS = 140
           PART_CHARS = 1400
           MAX_WAIT = 180
-          BROWSER_PROXY = "socks5://127.0.0.1:9050"
-          UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
-          MODAL_LABELS = re.compile(
-              r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done|dismiss)$", re.I
-          )
+          DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+          RUN_LOG = DEBUG_DIR / "run.log"
 
-          state = {"browser": None, "context": None, "page": None}
+          TOR_PROXY = "socks5h://127.0.0.1:9050"
+          BROWSER_PROXY = "socks5://127.0.0.1:9050"
+
+          CONTINUE_LABELS = re.compile(
+              r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I)
 
           def log(msg):
-              print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
+              line = f"[{time.strftime('%H:%M:%S')}] {msg}"
+              print(line, flush=True)
+              with open(RUN_LOG, "a", encoding="utf-8") as f:
+                  f.write(line + "\n")
 
-          def scroll_to_bottom(page):
+          def snap(page, name):
               try:
-                  page.evaluate("""() => {
-                      window.scrollTo(0, document.body.scrollHeight);
-                      for (const el of document.querySelectorAll('*')) {
-                          if (el.scrollHeight > el.clientHeight + 20) { el.scrollTop = el.scrollHeight; }
-                      }
-                  }""")
-              except Exception:
-                  pass
+                  page.screenshot(path=str(DEBUG_DIR / f"{name}.png"), full_page=True, timeout=15000)
+                  (DEBUG_DIR / f"{name}.html").write_text(page.content(), encoding="utf-8")
+                  log(f"snapshot {name} | url={page.url}")
+              except Exception as e:
+                  log(f"snapshot failed: {e}")
 
-          def start_browser(p):
-              for key in ("context", "browser"):
-                  if state[key]:
-                      try: state[key].close()
-                      except Exception: pass
-                  state[key] = None
-              state["browser"] = p.chromium.launch(
-                  headless=not HEADED,
-                  proxy={"server": BROWSER_PROXY},
-                  args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"],
-              )
+          def new_tor_circuit():
+              log("Restarting Tor for a new exit IP...")
+              subprocess.run(["sudo", "timeout", "60", "service", "tor", "restart"], check=False)
+              for _ in range(30):
+                  if subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0:
+                      break
+                  time.sleep(2)
+              time.sleep(3)
 
-          def dismiss_modals(page):
-              try:
-                  buttons = page.get_by_role("button", name=MODAL_LABELS)
-                  for i in range(buttons.count()):
-                      btn = buttons.nth(i)
-                      if btn.is_visible():
-                          btn.click(timeout=1500)
-                          page.wait_for_timeout(400)
-                          break
-              except Exception:
-                  pass
+          def click_continue(page):
+              clicked_any = False
+              for _ in range(3):
+                  clicked = False
+                  try:
+                      buttons = page.get_by_role("button", name=CONTINUE_LABELS)
+                      for i in range(buttons.count()):
+                          btn = buttons.nth(i)
+                          if btn.is_visible():
+                              log(f"Clicking button: {(btn.inner_text() or '').strip()!r}")
+                              btn.click(timeout=3000)
+                              page.wait_for_timeout(1000)
+                              clicked = clicked_any = True
+                              break
+                  except Exception:
+                      pass
+                  if not clicked:
+                      break
+              return clicked_any
 
-          def open_chat():
-              if state["context"]:
-                  try: state["context"].close()
-                  except Exception: pass
-              ctx = state["browser"].new_context(viewport={"width": 1440, "height": 1000}, user_agent=UA)
-              ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
-              pg = ctx.new_page()
-              state["context"], state["page"] = ctx, pg
-              log("Navigating to https://duck.ai/chat ...")
-              pg.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=60000)
-              pg.wait_for_timeout(2500)
-              dismiss_modals(pg)
-              return pg
+          def get_prompt_box(page):
+              return page.locator(
+                  "textarea[name='user-prompt'], textarea[placeholder*='ask' i], "
+                  "textarea[placeholder*='message' i], textarea").first
 
-          def check_and_click_continue(page):
-              try:
-                  btn = page.locator("button:has-text('Continue generating'), button:has-text('Continue response')").first
-                  if btn.count() > 0 and btn.is_visible():
-                      btn.click(timeout=2000)
-                      page.wait_for_timeout(1000)
-              except Exception:
-                  pass
-
-          def is_generating(page):
-              try:
-                  b = page.locator("button[aria-label*='Stop' i], button:has-text('Stop')")
-                  return b.count() > 0 and b.first.is_visible()
-              except Exception:
-                  return False
-
-          def submit_prompt(page, text):
-              dismiss_modals(page)
-              box = page.locator("textarea[name='user-prompt'], textarea").first
-              box.wait_for(state="visible", timeout=30000)
+          def human_paste_prompt(page, box, text):
               box.click()
-              page.keyboard.press("Control+A")
-              page.keyboard.press("Backspace")
-              box.fill(text)
-              box.dispatch_event("input")
+              page.wait_for_timeout(400)
+              page.evaluate("t => navigator.clipboard.writeText(t)", text)
+              page.wait_for_timeout(200)
+              page.keyboard.press("Control+v")
               page.wait_for_timeout(500)
+              box.press("Enter")
 
-              send_btn = page.locator("button[type='submit']:not([disabled]), button[aria-label*='Send' i]:not([disabled])").first
-              if send_btn.count() > 0 and send_btn.is_visible():
-                  send_btn.click(timeout=2500)
-              else:
-                  box.press("Enter")
-              page.wait_for_timeout(2000)
-              dismiss_modals(page)
-
-          def get_latest_assistant_text(page):
-              # Only read the assistant's message container, avoid picking up prompt input
+          def get_latest_assistant_response(page):
+              """Extracts text strictly from the assistant message containers."""
               try:
-                  loc = page.locator("article, [data-testid='chat-message-assistant'], [class*='message_assistant']")
-                  cnt = loc.count()
-                  if cnt > 0:
-                      return loc.nth(cnt - 1).inner_text(timeout=2000)
+                  locs = page.locator("article, [data-testid*='message' i], [class*='message' i]")
+                  count = locs.count()
+                  for i in range(count - 1, -1, -1):
+                      txt = locs.nth(i).inner_text()
+                      if "###START-" in txt or "scene" in txt.lower() or "narration" in txt.lower():
+                          return txt
               except Exception:
                   pass
-              return page.inner_text("body", timeout=3000)
+              return page.inner_text("body")
 
-          def extract_payload(text, tag):
+          def extract_payload(body, tag):
               start_m = f"###START-{tag}###"
               end_m = f"###END-{tag}###"
-              idx = text.rfind(start_m)
+              idx = body.rfind(start_m)
               if idx != -1:
-                  tail = text[idx + len(start_m):]
+                  tail = body[idx + len(start_m):]
                   brace = tail.find("[") if "[" in tail else tail.find("{")
                   if brace != -1:
                       tail = tail[brace:]
@@ -209,32 +191,34 @@ jobs:
                   except Exception: pass
               return None
 
-          def wait_for_response(page, tag, max_wait=MAX_WAIT):
-              t0 = time.time()
-              last_len, stable = -1, 0
-              while time.time() - t0 < max_wait:
-                  dismiss_modals(page)
-                  check_and_click_continue(page)
-                  scroll_to_bottom(page)
-                  content = get_latest_assistant_text(page)
-                  raw_json, finished = extract_payload(content, tag)
+          def wait_for_stream_done(page, tag, state_dict, max_wait=MAX_WAIT):
+              start_t = time.time()
+              last_len = 0
+              stable = 0
+              while time.time() - start_t < max_wait:
+                  click_continue(page)
+                  content = get_latest_assistant_response(page)
+                  extracted, finished = extract_payload(content, tag)
 
                   if finished:
-                      return raw_json
+                      return extracted
 
-                  # Check if stream finished generating and stable
-                  stable = stable + 1 if len(content) == last_len else 0
+                  if len(content) == last_len and len(content) > 50:
+                      stable += 1
+                  else:
+                      stable = 0
                   last_len = len(content)
-                  if not is_generating(page) and stable >= 5 and raw_json:
-                      return raw_json
 
-                  page.wait_for_timeout(1000)
-              raise TimeoutError(f"Response for {tag} timed out.")
+                  if (state_dict.get("chat_done") or stable >= 6) and extracted:
+                      return extracted
 
-          # Load transcripts
+                  page.wait_for_timeout(1500)
+              raise TimeoutError(f"Timeout waiting for tag {tag}")
+
+          # Load Transcripts
           t_file = Path("transcript.json")
           if not t_file.exists():
-              raise FileNotFoundError("transcript.json missing!")
+              raise FileNotFoundError("transcript.json is missing in root!")
           transcript_data = json.loads(t_file.read_text(encoding="utf-8"))
           segs = transcript_data.get("segments", [])
           for i, s in enumerate(segs):
@@ -256,79 +240,102 @@ jobs:
           all_story_beats = []
 
           with sync_playwright() as p:
-              start_browser(p)
-              open_chat()
-              page = state["page"]
-
-              # Prime chat with strict guidelines
-              init_prompt = (
-                  "You are a professional Hindi YouTube Movie Recap voiceover writer.\n"
-                  "RULES:\n"
-                  "1. Write ONLY in Hindi (Devanagari script) voiceover style.\n"
-                  "2. Explain what is happening in third-person (e.g. 'तभी डिटेक्टिव क्लोई को एक नया केस मिलता है...').\n"
-                  "3. NEVER output English placeholder phrases like 'Hindi voiceover narration'. Always write actual Hindi storytelling.\n"
-                  "4. Always output JSON inside the specified markers."
+              browser = p.chromium.launch(
+                  headless=not HEADED,
+                  proxy={"server": BROWSER_PROXY},
+                  args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"]
               )
-              submit_prompt(page, init_prompt)
-              time.sleep(2)
+              context = browser.new_context(
+                  viewport={"width": 1440, "height": 1000},
+                  user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+                  permissions=["clipboard-read", "clipboard-write"]
+              )
+              context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
+              page = context.new_page()
 
+              log("Opening https://duck.ai/chat ...")
+              page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
+              page.wait_for_timeout(3000)
+              click_continue(page)
+
+              # Initialize chat session
+              box = get_prompt_box(page)
+              box.wait_for(state="visible", timeout=40000)
+              init_prompt = (
+                  "You are an expert Hindi YouTube Movie Recap narrator.\n"
+                  "We will give you movie transcript pieces chronologically.\n"
+                  "Rules:\n"
+                  "- Write natural voiceover recap lines entirely in Hindi.\n"
+                  "- Third-person storytelling ('कहानी में हम देखते हैं कि...', 'तभी एक बड़ा मोड़ आता है...').\n"
+                  "- Output ONLY raw JSON array inside the requested markers."
+              )
+              human_paste_prompt(page, box, init_prompt)
+              page.wait_for_timeout(4000)
+              click_continue(page)
+
+              # Loop each chronological part
               for ci, (f_id, l_id) in enumerate(chunks):
                   tag = f"PART{ci + 1}"
                   act_lines = [f"[{s['start']:.0f}s-{s['end']:.0f}s] {s['text']}" for s in segs[f_id - 1:l_id]]
                   part_start = segs[f_id-1]['start']
                   part_end = segs[l_id-1]['end']
 
-                  # Strict prompt with NO English placeholder strings in the example
+                  state_dict = {"chat_done": False}
+                  def on_request_finished(req):
+                      if req.method == "POST" and "/duckchat/v1/chat" in req.url:
+                          state_dict["chat_done"] = True
+                  page.on("requestfinished", on_request_finished)
+
                   prompt = (
-                      f"Write 2 to 3 chronological Hindi movie recap scenes for this clip ({part_start:.0f}s to {part_end:.0f}s).\n"
-                      f"DIALOGUES:\n" + " ".join(act_lines) + "\n\n"
-                      f"INSTRUCTIONS:\n"
-                      f"- Write actual Hindi narration for each scene (approx 20-35 Hindi words per scene).\n"
-                      f"- Specify 'clip_start' and 'clip_end' within {part_start:.0f} and {part_end:.0f}.\n"
-                      f"- Wrap your JSON strictly inside ###START-{tag}### and ###END-{tag}###\n\n"
-                      f"Output structure:\n"
+                      f"Part {ci + 1}/{len(chunks)} ({part_start:.0f}s to {part_end:.0f}s):\n"
+                      f"TRANSCRIPT DIALOGUES:\n{' '.join(act_lines)}\n\n"
+                      f"Write 2 to 3 chronological Hindi voiceover recap scenes covering this part.\n"
+                      f"Format requirements:\n"
                       f"###START-{tag}###\n"
                       f"[\n"
-                      f"  {{\"clip_start\": {part_start:.1f}, \"clip_end\": {min(part_start + 8.0, part_end):.1f}, \"narration\": \"यहाँ पूरी हिंदी कहानी लिखें\"}}\n"
+                      f"  {{\"clip_start\": {part_start:.1f}, \"clip_end\": {min(part_start + 8.0, part_end):.1f}, \"narration\": \"<Detailed Hindi explanation of this scene>\"}}\n"
                       f"]\n"
                       f"###END-{tag}###"
                   )
 
-                  log(f"Generating recap for Part {ci + 1}/{len(chunks)} ({part_start:.0f}s - {part_end:.0f}s)...")
-                  submit_prompt(page, prompt)
+                  log(f"Processing Part {ci + 1}/{len(chunks)} ({part_start:.0f}s - {part_end:.0f}s)...")
+                  box = get_prompt_box(page)
+                  human_paste_prompt(page, box, prompt)
 
                   try:
-                      raw_text = wait_for_response(page, tag)
+                      raw_text = wait_for_stream_done(page, tag, state_dict)
                       parsed = parse_json_safely(raw_text)
                   except Exception as e:
-                      log(f"Error on Part {ci + 1}: {e}")
+                      log(f"Error extracting Part {ci + 1}: {e}")
+                      snap(page, f"err_part_{ci+1}")
                       parsed = None
 
-                  # Validate that narration is real Hindi, not boilerplate
+                  # Verify that real Hindi narration was written
                   valid_scenes = []
                   if isinstance(parsed, list):
                       for item in parsed:
                           nar = str(item.get("narration", "")).strip()
-                          # Reject boilerplate / placeholders
-                          if "Hindi voiceover" in nar or "यहाँ पूरी हिंदी कहानी" in nar or len(nar) < 10:
+                          # Reject prompt templates or unparsed markers
+                          if "Detailed Hindi" in nar or len(nar) < 10:
                               continue
                           valid_scenes.append(item)
 
                   if valid_scenes:
                       all_story_beats.extend(valid_scenes)
-                      log(f"[+] Part {ci + 1} added {len(valid_scenes)} valid Hindi scenes. (Total: {len(all_story_beats)})")
+                      log(f"[+] Part {ci + 1} added {len(valid_scenes)} valid Hindi scenes. Total: {len(all_story_beats)}")
                   else:
-                      log(f"[-] Part {ci + 1} produced no valid Hindi narration. Using dialogue context fallback.")
-                      # Fallback scene to ensure timeline continuity
-                      fallback_text = " ".join([s['text'] for s in segs[f_id - 1:l_id][:2]])
+                      log(f"[-] Part {ci + 1} had no valid scenes. Extracting direct dialogue translation...")
+                      sample_text = " ".join([s['text'] for s in segs[f_id - 1:l_id][:2]])
                       all_story_beats.append({
                           "clip_start": round(part_start, 2),
-                          "clip_end": round(min(part_start + 6.0, part_end), 2),
-                          "narration": f"कहानी के इस दृश्य में घटना आगे बढ़ती है जहां {fallback_text[:60]}..."
+                          "clip_end": round(min(part_start + 7.0, part_end), 2),
+                          "narration": f"कहानी के इस सीन में आगे की जांच शुरू होती है जिसमें दिखाया जाता है कि {sample_text}."
                       })
 
+                  page.wait_for_timeout(2000)
+
               if len(all_story_beats) == 0:
-                  raise ValueError("Failed to generate recap scenes.")
+                  raise RuntimeError("No story beats generated.")
 
               total_words = 0
               for idx, b in enumerate(all_story_beats):
@@ -354,9 +361,21 @@ jobs:
               }
 
               Path("story_beats.json").write_text(json.dumps(output_data, indent=2, ensure_ascii=False), encoding="utf-8")
-              log(f"SUCCESS! Created story_beats.json with {len(all_story_beats)} Hindi scenes ({total_words} words).")
-              state["browser"].close()
-          EOF
+              log(f"SUCCESS! Wrote story_beats.json with {len(all_story_beats)} scenes ({total_words} Hindi words).")
+              browser.close()
+          PY
+
+          if [ "$HEADED" = "true" ]; then
+            xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py
+          else
+            python generate_story.py
+          fi
+
+      - name: Kill leftover browser processes
+        if: always()
+        run: |
+          pkill -9 -f chrome || true
+          pkill -9 -f Xvfb || true
 
       - name: Commit and push story_beats.json
         if: always()
@@ -366,7 +385,7 @@ jobs:
           if [ -f story_beats.json ]; then
             git add -f story_beats.json
             if ! git diff --cached --quiet; then
-              git commit -m "Update story_beats.json [skip ci]"
+              git commit -m "Generate YouTube movie recap story beats [skip ci]"
               git pull --rebase origin main
               git push origin HEAD:main
               echo "Successfully pushed story_beats.json"
@@ -375,7 +394,7 @@ jobs:
             fi
           fi
 
-      - name: Upload debug artifacts
+      - name: Upload debug files
         if: always()
         uses: actions/upload-artifact@v4
         with:

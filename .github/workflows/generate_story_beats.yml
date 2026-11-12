@@ -389,14 +389,13 @@ jobs:
                               raise
 
               def _execute_single_query(self, prompt: str, label: str) -> str:
-                  # Maintain chat context: only navigate to /chat on initial query
                   current_url = self.page.url
                   is_in_active_session = "chatID=" in current_url
 
                   if not is_in_active_session:
                       log("Starting new chat conversation at https://duck.ai/chat ...")
                       self.page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
-                      self.page.wait_for_timeout(3000)
+                      self.page.wait_for_timeout(2500)
                       self.dismiss_consent_dialog()
 
                   box = self.get_prompt_box()
@@ -407,29 +406,14 @@ jobs:
                   self.human_paste_prompt(box, prompt)
                   self.page.wait_for_timeout(300)
 
-                  req_finished_flag = [False]
-                  req_failed_flag = [False]
-
-                  def on_req_finished(req):
-                      if req.method == "POST" and "/duckchat/v1/chat" in req.url:
-                          req_finished_flag[0] = True
-
-                  def on_req_failed(req):
-                      if req.method == "POST" and "/duckchat/v1/chat" in req.url:
-                          req_failed_flag[0] = True
-
-                  self.page.on("requestfinished", on_req_finished)
-                  self.page.on("requestfailed", on_req_failed)
-
                   def is_chat_post(resp):
                       return resp.request.method == "POST" and "/duckchat/v1/chat" in resp.url
 
-                  # Setup the response listener BEFORE hitting Enter
+                  captured_response = None
                   try:
                       with self.page.expect_response(is_chat_post, timeout=25000) as resp_info:
                           box.press("Enter")
-                          # Click send button if enter was not registered
-                          self.page.wait_for_timeout(800)
+                          self.page.wait_for_timeout(600)
                           try:
                               send_btn = self.page.locator(
                                   "button[type='submit'], button[aria-label*='send' i], form button"
@@ -462,43 +446,58 @@ jobs:
                           classification = "bot challenge"
                       raise RuntimeError(f"{classification} ({status}) - {body_sample}")
 
-                  # Wait for SSE stream completion
-                  poll_start = time.time()
-                  while time.time() - poll_start < 240:
-                      if req_failed_flag[0]:
-                          raise RuntimeError("Chat request stream failed unexpectedly.")
-                      self.dismiss_consent_dialog()
-                      if req_finished_flag[0]:
-                          log(f"Chat stream completed in {time.time() - poll_start:.1f}s.")
-                          break
-                      time.sleep(0.5)
-
-                  raw_text = ""
-                  try:
-                      raw_text = captured_response.text()
-                  except Exception as e:
-                      log(f"Error reading response.text(): {e}")
-
-                  self.last_raw_body = raw_text
-                  raw_dump_path = DEBUG_DIR / f"raw_{label}.txt"
-                  raw_dump_path.write_text(raw_text, encoding="utf-8")
-
+                  # FAST WAIT: Do not wait on Playwright requestfinished!
+                  # Watch the UI directly: when Duck is done typing, the Stop button disappears
+                  log("Streaming response... waiting for completion in UI...")
+                  start_poll = time.time()
                   assembled_text = ""
-                  if raw_text:
-                      try:
-                          assembled_text = self.parse_sse_body(raw_text)
-                      except Exception as sse_err:
-                          log(f"SSE parse error: {sse_err}")
 
+                  # Wait up to 60 seconds (Probe takes ~3s, full chunks take ~15-25s)
+                  for _ in range(60):
+                      self.dismiss_consent_dialog()
+
+                      # Check if DuckDuckGo is still generating
+                      stop_btn = self.page.locator("button[aria-label*='Stop' i], button:has-text('Stop generating'), button:has-text('Stop')")
+                      is_generating = False
+                      try:
+                          is_generating = stop_btn.count() > 0 and stop_btn.first.is_visible()
+                      except Exception:
+                          pass
+
+                      # Check text in the latest chat bubble
+                      try:
+                          bubbles = self.page.locator("[data-testid='chat-message'], article, .message")
+                          if bubbles.count() > 0:
+                              latest_text = bubbles.last.inner_text().strip()
+                              if latest_text and not is_generating:
+                                  assembled_text = latest_text
+                                  break
+                      except Exception:
+                          pass
+
+                      time.sleep(1.0)
+
+                  # If DOM locator didn't catch specific message bubbles, use DOM fallback
                   if not assembled_text.strip():
-                      log("Assembled SSE text empty. Falling back to DOM...")
+                      log("Reading from full DOM body...")
                       assembled_text = self.fallback_dom_salvage(prompt)
+
+                  # If still empty, try reading the network response directly
+                  if not assembled_text.strip():
+                      try:
+                          raw_sse = captured_response.text()
+                          assembled_text = self.parse_sse_body(raw_sse)
+                      except Exception:
+                          pass
+
+                  log(f"Response extracted! Length: {len(assembled_text)} chars. Preview: {assembled_text[:120]!r}")
+                  self.last_raw_body = assembled_text
 
                   if not assembled_text.strip():
                       raise RuntimeError("Failed to extract any text response from Duck.ai")
 
                   self.in_chat_session = True
-                  time.sleep(random.uniform(3, 6))
+                  time.sleep(random.uniform(2, 4))
                   return assembled_text
 
           def probe_mode(client: DuckChatSession):

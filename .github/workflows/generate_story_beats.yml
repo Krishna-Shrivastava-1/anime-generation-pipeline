@@ -110,10 +110,6 @@ jobs:
           RUN_LOG = DEBUG_DIR / "run.log"
 
           TOR_SOCKS = "socks5://127.0.0.1:9050"
-          CONSENT_RE = re.compile(
-              r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$",
-              re.IGNORECASE,
-          )
 
           def log(msg: str):
               ts = time.strftime("%Y-%m-%d %H:%M:%S")
@@ -222,6 +218,8 @@ jobs:
                   self.finished_requests = set()
                   self.failed_requests = set()
                   self.success_count = 0
+                  self.last_http_status = None
+                  self.last_raw_body = ""
                   self._init_browser()
 
               def _init_browser(self):
@@ -290,25 +288,58 @@ jobs:
                   self._init_browser()
                   self.success_count = 0
 
-              def click_consent_buttons(self):
-                  for _ in range(3):
+              def dismiss_consent_dialog(self):
+                  """Actively detects and clicks onboarding modal buttons such as 'Agree and continue'."""
+                  log("Checking for consent dialog / onboarding popup...")
+                  for _ in range(8):
                       clicked = False
+                      button_candidates = [
+                          self.page.locator("button:has-text('Agree and continue')"),
+                          self.page.locator("button:has-text('Agree & continue')"),
+                          self.page.locator("button:has-text('Agree')"),
+                          self.page.locator("button:has-text('Continue')"),
+                          self.page.locator("button:has-text('Get started')"),
+                          self.page.locator("button:has-text('Got it')"),
+                          self.page.locator("button:has-text('Accept')"),
+                          self.page.get_by_role("button", name=re.compile(r"agree|continue|accept|get started|got it", re.I)),
+                          self.page.locator("[role='dialog'] button"),
+                      ]
+
+                      for locator in button_candidates:
+                          try:
+                              count = locator.count()
+                              for i in range(count):
+                                  btn = locator.nth(i)
+                                  if btn.is_visible():
+                                      txt = (btn.inner_text() or "").strip()
+                                      log(f"Found consent button ({txt!r}). Clicking now...")
+                                      btn.scroll_into_view_if_needed()
+                                      btn.click(timeout=3000, force=True)
+                                      self.page.wait_for_timeout(1000)
+                                      clicked = True
+                                      break
+                          except Exception:
+                              pass
+                          if clicked:
+                              break
+
+                      dialog = self.page.locator("[role='dialog'], [aria-modal='true']")
+                      is_dialog_up = False
                       try:
-                          buttons = self.page.get_by_role("button", name=CONSENT_RE)
-                          count = buttons.count()
-                          for i in range(count):
-                              btn = buttons.nth(i)
-                              if btn.is_visible():
-                                  txt = (btn.inner_text() or "").strip()
-                                  log(f"Clicking consent button: {txt!r}")
-                                  btn.click(timeout=3000)
-                                  self.page.wait_for_timeout(1000)
-                                  clicked = True
-                                  break
+                          if dialog.count() > 0 and dialog.first.is_visible():
+                              is_dialog_up = True
                       except Exception:
                           pass
-                      if not clicked:
+
+                      if clicked and not is_dialog_up:
+                          log("Consent popup successfully dismissed.")
+                          return True
+
+                      if not is_dialog_up and not clicked:
                           break
+
+                      self.page.wait_for_timeout(800)
+                  return False
 
               def get_prompt_box(self):
                   return self.page.locator(
@@ -347,7 +378,7 @@ jobs:
                   last_txt = ""
                   stable_count = 0
                   for _ in range(30):
-                      self.click_consent_buttons()
+                      self.dismiss_consent_dialog()
                       try:
                           body_txt = self.page.inner_text("body")
                       except Exception:
@@ -397,15 +428,20 @@ jobs:
                               raise
 
               def _execute_single_query(self, prompt: str, label: str, attempt: int) -> str:
-                  self.click_consent_buttons()
                   log("Navigating to https://duck.ai/chat ...")
                   self.page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
-                  self.page.wait_for_timeout(2500)
-                  self.click_consent_buttons()
+                  self.page.wait_for_timeout(3000)
+
+                  # Dismiss onboarding consent popup before touching inputs
+                  self.dismiss_consent_dialog()
 
                   box = self.get_prompt_box()
                   box.wait_for(state="visible", timeout=30000)
 
+                  # Double-check consent popup in case it appeared late
+                  self.dismiss_consent_dialog()
+
+                  box.click(timeout=5000, force=True)
                   box.fill(prompt)
                   input_val = box.input_value()
                   if len(input_val) < 0.9 * len(prompt):
@@ -414,7 +450,8 @@ jobs:
                       )
 
                   def is_chat_post(resp):
-                      return resp.request.method == "POST" and resp.url.endswith("/duckchat/v1/chat")
+                      clean_path = resp.url.split("?")[0].rstrip("/")
+                      return resp.request.method == "POST" and clean_path.endswith("/duckchat/v1/chat")
 
                   captured_response = None
                   try:
@@ -423,11 +460,15 @@ jobs:
                       captured_response = resp_info.value
                   except Exception as e:
                       log(f"Enter did not trigger chat response ({e}). Attempting send button click...")
+                      # Re-check dialog before clicking send button
+                      self.dismiss_consent_dialog()
                       try:
-                          send_btn = self.page.locator("button[type='submit'], button[aria-label*='send' i]").first
+                          send_btn = self.page.locator(
+                              "button[type='submit'], button[aria-label*='send' i], button[aria-label*='submit' i], form button"
+                          ).first
                           if send_btn.is_visible():
                               with self.page.expect_response(is_chat_post, timeout=30000) as resp_info2:
-                                  send_btn.click(timeout=5000)
+                                  send_btn.click(timeout=5000, force=True)
                               captured_response = resp_info2.value
                       except Exception as e2:
                           snap(self.page, f"prompt_never_sent_{label}")
@@ -438,6 +479,7 @@ jobs:
                       raise RuntimeError("prompt never sent: no response captured")
 
                   status = captured_response.status
+                  self.last_http_status = status
                   log(f"HTTP Status of /duckchat/v1/chat: {status}")
 
                   if status != 200:
@@ -470,6 +512,7 @@ jobs:
                   except Exception as e:
                       log(f"Error reading response.text(): {e}")
 
+                  self.last_raw_body = raw_text
                   raw_dump_path = DEBUG_DIR / f"raw_{label}_attempt{attempt}.txt"
                   raw_dump_path.write_text(raw_text, encoding="utf-8")
 
@@ -511,7 +554,12 @@ jobs:
               try:
                   text = client.query(prompt, label="probe")
                   parsed = parse_first_balanced_json(text)
-                  log(f"Probe captured text:\n{text}")
+                  print("--- PROBE RESULTS ---")
+                  print(f"Captured text:\n{text}")
+                  print(f"HTTP Status: {client.last_http_status}")
+                  print(f"First 400 chars of raw SSE body:\n{client.last_raw_body[:400]}")
+                  print("---------------------")
+
                   if parsed and parsed.get("ok") is True:
                       log("Probe SUCCESS! Valid JSON returned.")
                       sys.exit(0)

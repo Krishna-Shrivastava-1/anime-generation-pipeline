@@ -20,7 +20,7 @@ if not GROQ_API_KEY:
     sys.exit(1)
 
 groq_client = Groq(api_key=GROQ_API_KEY)
-GROQ_MODEL = "llama-3.3-70b-versatile"
+GROQ_MODEL = "openai/gpt-oss-120b"
 
 DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
 STATE_FILE = Path("build/pipeline_state.json")

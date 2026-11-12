@@ -115,8 +115,8 @@ jobs:
           TARGET_MINUTES = float(os.environ.get("TARGET_MINUTES", "12"))
           INPUT_HINTS = os.environ.get("INPUT_HINTS", "").strip()
           TEXT_WAIT = int(os.environ.get("TEXT_WAIT_SECONDS", "180"))
-          MAX_CLIP_DURATION = 3.0  # Clips will NEVER exceed 3.0 seconds
-          MAX_WORDS_PER_BEAT = 8   # Speech pacing for 3.0s cut
+          MAX_CLIP_DURATION = 3.0  # Max visual cut duration
+          MAX_WORDS_PER_BEAT = 8   # Words per 3s visual cut
           MAX_ATTEMPTS = 2
 
           DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
@@ -129,7 +129,7 @@ jobs:
 
           if RESET_STATE and STATE_FILE.exists():
               STATE_FILE.unlink()
-              print("[INIT] Old pipeline_state.json removed for clean regeneration.", flush=True)
+              print("[INIT] Cleared old pipeline_state.json for clean regeneration.", flush=True)
 
           CONTINUE_LABELS = re.compile(
               r"^(agree and continue|agree & continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I)
@@ -201,9 +201,9 @@ jobs:
                   time.sleep(2)
               time.sleep(3)
 
-          def click_continue(page):
-              """Clicks initial modal terms buttons on page load only."""
-              for _ in range(2):
+          def click_initial_modal(page):
+              """Dismisses the initial 'Get Started' or 'I Agree' modal once."""
+              for _ in range(3):
                   try:
                       buttons = page.get_by_role("button", name=CONTINUE_LABELS)
                       for i in range(buttons.count()):
@@ -216,6 +216,7 @@ jobs:
                               return True
                   except Exception:
                       pass
+                  page.wait_for_timeout(500)
               return False
 
           def get_prompt_box(page):
@@ -223,14 +224,33 @@ jobs:
                   "textarea[name='user-prompt'], textarea[placeholder*='ask' i], "
                   "textarea[placeholder*='message' i], textarea").first
 
-          def human_paste_prompt(page, box, text):
+          def submit_prompt(page, box, text):
+              """Fills textarea and explicitly clicks the send button to dispatch the request."""
               box.click()
-              page.wait_for_timeout(400)
-              page.evaluate("t => navigator.clipboard.writeText(t)", text)
               page.wait_for_timeout(200)
-              page.keyboard.press("Control+v")
-              page.wait_for_timeout(500)
-              box.press("Enter")
+              box.fill(text)
+              page.wait_for_timeout(400)
+
+              # Click the Duck.ai send button
+              clicked = page.evaluate("""() => {
+                  const ta = document.querySelector("textarea[name='user-prompt'], textarea");
+                  if (!ta) return false;
+                  const container = ta.closest('form') || ta.closest('div[class*="prompt"], div[class*="composer"], div[class*="input"]') || document;
+                  const buttons = Array.from(container.querySelectorAll('button'));
+                  for (const b of buttons) {
+                      if (!b.disabled && (b.type === 'submit' || b.querySelector('svg') || (b.getAttribute('aria-label') || '').toLowerCase().includes('send'))) {
+                          b.click();
+                          return true;
+                      }
+                  }
+                  return false;
+              }""")
+              log(f"Send button clicked: {clicked}")
+
+              if not clicked:
+                  # Fallback
+                  box.press("Control+Enter")
+                  box.press("Enter")
               page.wait_for_timeout(500)
 
           def parse_sse_text(raw_sse: str) -> str:
@@ -305,10 +325,7 @@ jobs:
               return None
 
           def wait_for_text_generation(page, state, max_wait=TEXT_WAIT):
-              """
-              Captures Duck.ai response via SSE stream + DOM inspection.
-              Scrolls the page and terminates immediately when completion is confirmed.
-              """
+              """Waits for generation, auto-scrolls, and extracts text upon completion."""
               log("Waiting for text generation to complete...")
               start = time.time()
               last_text = ""
@@ -316,9 +333,9 @@ jobs:
 
               while time.time() - start < max_wait:
                   if state.get("rate_limited"):
-                      raise RuntimeError("Duck.ai returned HTTP 418 (Tor exit IP rate-limited).")
+                      raise RuntimeError("Duck.ai returned HTTP 418 (Rate Limit on Tor IP).")
 
-                  # Scroll page to bottom so latest tokens remain mounted in DOM
+                  # Auto-scroll page to keep output active in DOM
                   try:
                       page.evaluate("""() => {
                           window.scrollTo(0, document.body.scrollHeight);
@@ -328,14 +345,14 @@ jobs:
                   except Exception:
                       pass
 
-                  # 1. Primary Check: Completed SSE Stream
+                  # 1. Primary: SSE Network Stream Finished
                   if state.get("chat_done") and state.get("raw_stream"):
                       parsed_sse = parse_sse_text("".join(state["raw_stream"]))
                       if parsed_sse.strip():
                           log(f"Captured text via completed network SSE stream ({len(parsed_sse)} chars).")
                           return deep_repair(parsed_sse)
 
-                  # 2. Secondary Check: DOM Stability & 'Stop generating' button
+                  # 2. Secondary: DOM Stability & Stop Button
                   stop_btn = page.locator("button:has-text('Stop generating'), button:has-text('Stop'), button[aria-label*='Stop' i]")
                   is_generating = False
                   try:
@@ -364,7 +381,7 @@ jobs:
                           stable_ticks = 0
                       last_text = cur_text
 
-                      if stable_ticks >= 4 and len(last_text) > 30:
+                      if stable_ticks >= 3 and len(last_text) > 30:
                           log(f"Captured text via DOM stability ({len(last_text)} chars).")
                           return deep_repair(last_text)
                   except Exception:
@@ -381,7 +398,8 @@ jobs:
 
               return ""
 
-          def build_timeline_chunks(transcript_path="transcript.json", max_chars=1800):
+          def build_timeline_chunks(transcript_path="transcript.json", max_chars=2200):
+              """Groups segments into ~1.5 - 2.0 minute narrative chunks."""
               with open(transcript_path, "r", encoding="utf-8") as f:
                   data = json.load(f)
 
@@ -414,6 +432,7 @@ jobs:
               return movie_title, chunks
 
           def enforce_micro_beats(raw_beats, max_duration=MAX_CLIP_DURATION, max_words=MAX_WORDS_PER_BEAT):
+              """Enforces that individual clips stay <= 3.0s and audio stays in sync with visuals."""
               refined = []
               for b in raw_beats:
                   narr = deep_repair(b.get("narration", "")).strip()
@@ -438,14 +457,12 @@ jobs:
                       })
                       continue
 
+                  # Subdivide if the model provided an overly long scene window
                   splits_by_time = math.ceil(dur / max_duration)
                   splits_by_words = math.ceil(len(words) / max_words)
                   num_splits = max(int(splits_by_time), int(splits_by_words), 1)
 
-                  step_time = round(dur / num_splits, 2)
-                  if step_time > max_duration:
-                      step_time = max_duration
-
+                  step_time = min(max_duration, round(dur / num_splits, 2))
                   words_per_split = max(1, math.ceil(len(words) / num_splits))
 
                   cur_t = st
@@ -498,14 +515,14 @@ jobs:
                   log("==================== RUNNING PROBE MODE ====================")
                   log("Opening https://duck.ai/chat ...")
                   page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
-                  page.wait_for_timeout(3000)
-                  click_continue(page)
+                  page.wait_for_timeout(2000)
+                  click_initial_modal(page)
 
                   box = get_prompt_box(page)
                   box.wait_for(state="visible", timeout=40000)
 
                   probe_prompt = 'Reply with exactly this JSON and nothing else: {"ok": true, "hindi": "नमस्ते"}'
-                  state = {"submitted": False, "raw_stream": [], "chat_done": False, "rate_limited": False}
+                  state = {"raw_stream": [], "chat_done": False, "rate_limited": False}
 
                   def on_resp(resp):
                       if "/duckchat/v1/chat" in resp.url and resp.request.method == "POST":
@@ -521,8 +538,7 @@ jobs:
                           state["chat_done"] = True
                   page.on("requestfinished", on_req_finish)
 
-                  human_paste_prompt(page, box, probe_prompt)
-                  state["submitted"] = True
+                  submit_prompt(page, box, probe_prompt)
 
                   result_text = wait_for_text_generation(page, state, max_wait=45)
                   parsed = parse_first_balanced_json(result_text)
@@ -537,7 +553,7 @@ jobs:
 
               # FULL MODE
               log("==================== RUNNING FULL STORY PIPELINE ====================")
-              movie_title, chunks = build_timeline_chunks("transcript.json", max_chars=1800)
+              movie_title, chunks = build_timeline_chunks("transcript.json", max_chars=2200)
               log(f"Loaded '{movie_title}' with {len(chunks)} chunks.")
 
               pipeline_state = {"completed_chunks": [], "beats": [], "characters": {}}
@@ -565,7 +581,7 @@ jobs:
                   chunk_done = False
 
                   for attempt in range(1, MAX_ATTEMPTS + 1):
-                      state = {"submitted": False, "raw_stream": [], "chat_done": False, "rate_limited": False}
+                      state = {"raw_stream": [], "chat_done": False, "rate_limited": False}
 
                       def on_response(resp):
                           if "/duckchat/v1/chat" in resp.url and resp.request.method == "POST":
@@ -593,35 +609,31 @@ jobs:
                               f"Movie: {movie_title}.\n"
                               f"Previous Story Context:\n{running_story_summary}\n\n"
                               f"Current Movie Segments:\n{chunk_text}\n\n"
-                              "RULES (CRITICAL FOR VIDEO EDITING & FAIR USE):\n"
-                              "1. 100% PURE HINDI (DEVANAGARI SCRIPT ONLY): Every character and narration MUST be Devanagari Hindi (क्लो, हत्या, जांच). Strictly NO Latin characters in narration.\n"
-                              "2. MAXIMUM 3.0 SECONDS CLIP DURATION: Every beat MUST represent a clip of MAXIMUM 3.0 seconds (end_sec - start_sec <= 3.0). Never combine 15 or 30 seconds into one beat.\n"
-                              "3. 6 TO 8 WORDS PER BEAT: Because each visual cut is 2.5 to 3.0 seconds, each beat's narration MUST be strictly 6 to 8 words so TTS voice matches the video cut shot-for-shot.\n"
-                              "4. Output strictly valid JSON matching this schema:\n"
-                              '{"summary": "2 वाक्य में सारांश", '
+                              "CRITICAL EDITING & RECAP RULES:\n"
+                              "1. JUMP CUTS & NO FILLER: Do NOT transcribe line-by-line. Identify the main plot events and SKIP all boring dialogue, silence, and filler. Jump across timestamps to where the key action occurs.\n"
+                              "2. PURE HINDI (DEVANAGARI SCRIPT ONLY): Narration must be 100% Devanagari Hindi (क्लो, हत्या, सबूत). Strictly NO English words or Latin letters in narration.\n"
+                              "3. MAXIMUM 3.0 SECONDS CLIP LENGTH: Every beat MUST represent a short visual cut between 2.0s and 3.0s maximum (end_sec - start_sec <= 3.0s).\n"
+                              "4. STRICT AUDIO-VISUAL SYNC: Write strictly 6 to 8 Hindi words per beat, describing what is shown on screen at that exact 3-second timestamp.\n"
+                              "5. OUTPUT FORMAT (Strictly valid JSON):\n"
+                              '{"summary": "2 वाक्य में इस दृश्य का सारांश", '
                               '"characters": [{"name": "Chloe", "hindi_name": "क्लो", "who": "जासूस"}], '
-                              '"beats": [{"narration": "क्लो जांच के लिए कमरे में आती है।", "start_sec": 0.72, "end_sec": 3.42}]}'
+                              '"beats": ['
+                              '  {"narration": "क्लो जांच के लिए कमरे में आती है।", "start_sec": 0.72, "end_sec": 3.42},'
+                              '  {"narration": "उसे एक छोटे सौदागर से नशीला पैकेट मिलता है।", "start_sec": 25.30, "end_sec": 28.00}'
+                              ']}'
                           )
 
                           if not is_in_chat:
                               log("Opening https://duck.ai/chat ...")
                               page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
-                              page.wait_for_timeout(3000)
-                              click_continue(page)
+                              page.wait_for_timeout(2000)
+                              click_initial_modal(page)
 
                           box = get_prompt_box(page)
                           box.wait_for(state="visible", timeout=40000)
 
-                          log(f"Entering prompt for {chunk_id}...")
-                          human_paste_prompt(page, box, final_prompt)
-                          state["submitted"] = True
-
-                          if not is_in_chat:
-                              dl = time.time() + 15
-                              while time.time() < dl:
-                                  if "chatID=" in page.url or state["raw_stream"]:
-                                      break
-                                  page.wait_for_timeout(1000)
+                          log(f"Entering and submitting prompt for {chunk_id}...")
+                          submit_prompt(page, box, final_prompt)
 
                           result_raw = wait_for_text_generation(page, state, max_wait=TEXT_WAIT)
                           parsed = parse_first_balanced_json(result_raw)

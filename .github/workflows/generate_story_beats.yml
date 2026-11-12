@@ -117,8 +117,6 @@ jobs:
           TEXT_WAIT = int(os.environ.get("TEXT_WAIT_SECONDS", "180"))
           MAX_ATTEMPTS = 2
 
-          TARGET_TOTAL_BEATS = max(35, int(TARGET_MINUTES * 15))
-
           DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
           STATE_FILE = Path("build/pipeline_state.json")
           STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -479,10 +477,16 @@ jobs:
                   prev_beat = smoothed[-1]
                   curr_beat = beats[i]
 
-                  time_gap = curr_beat["start_sec"] - prev_beat["end_sec"]
-                  curr_narr = curr_beat["narration"]
+                  # Robust timestamp extraction supporting both formats
+                  st = curr_beat.get("start_sec") or curr_beat.get("target_window", {}).get("start", 0.0)
+                  prev_en = prev_beat.get("end_sec") or prev_beat.get("target_window", {}).get("end", 0.0)
+                  time_gap = st - prev_en
 
-                  if ("लूसिफ़र" in prev_beat["narration"]) and ("लूसिफ़र बताता है" in curr_narr or "वह बताता है" in curr_narr):
+                  curr_narr = curr_beat.get("narration", "")
+                  prev_narr = prev_beat.get("narration", "")
+
+                  # Smooth character introduction jump (e.g. Dan talking about Lucifer -> Lucifer speaking)
+                  if ("लूसिफ़र" in prev_narr) and ("लूसिफ़र बताता है" in curr_narr or "वह बताता है" in curr_narr):
                       if "पूछताछ" not in curr_narr and "क्लब" not in curr_narr and "मिलने" not in curr_narr:
                           curr_beat["narration"] = "क्लो उससे पूछताछ करने उसके क्लब पहुँचती है, जहाँ " + curr_narr
                           curr_beat["word_count"] = len(curr_beat["narration"].split())
@@ -534,12 +538,9 @@ jobs:
                       log("Probe FAILED.")
                       sys.exit(1)
 
-              # FULL MODE (3 Macro-Acts for 1027 lines)
+              # FULL MODE (Continuous Macro-Acts)
               movie_title, chunks = build_timeline_chunks("transcript.json", max_chars=7500)
               log(f"Loaded '{movie_title}' into {len(chunks)} continuous Macro-Acts.")
-
-              beats_per_chunk = math.ceil(TARGET_TOTAL_BEATS / len(chunks))
-              log(f"Targeting ~{beats_per_chunk} beats per act (Total target: {TARGET_TOTAL_BEATS} beats for {TARGET_MINUTES}m recap).")
 
               pipeline_state = {"completed_chunks": [], "beats": [], "characters": {}}
               if STATE_FILE.exists():
@@ -563,8 +564,8 @@ jobs:
 
                   prompt_lines = [
                       "You are a top-ranked Hindi YouTube Movie Recap Narrator (like 'Movie In Hindi' or 'Mystery Recaps').",
-                      f"Goal: Summarize this portion of '{movie_title}' for a {TARGET_MINUTES}-minute video recap.",
-                      f"Generate strictly {beats_per_chunk} to {beats_per_chunk + 4} highly engaging recap beats.",
+                      f"Goal: Explain the core plot of this act for a {TARGET_MINUTES}-minute video recap.",
+                      "Focus on the most important story moments. Generate 12 to 18 high-quality recap beats that explain the plot seamlessly.",
                       "",
                       f"CHARACTER MAPPINGS: {INPUT_HINTS}",
                       f"STORY CONTEXT SO FAR: {running_synopsis}",
@@ -660,6 +661,8 @@ jobs:
                               b_obj = {
                                   "beat_id": f"B{len(all_beats)+1:04d}",
                                   "narration": b["narration"],
+                                  "start_sec": b["start_sec"],
+                                  "end_sec": b["end_sec"],
                                   "target_window": {"start": b["start_sec"], "end": b["end_sec"]},
                                   "portion": {"start": b["start_sec"], "end": b["end_sec"]},
                                   "duration": b["duration"],

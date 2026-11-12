@@ -1,11 +1,70 @@
-- name: Automate Duck.ai Story Pipeline
+name: Generate Hindi YouTube Movie Recap
+
+"on":
+  workflow_dispatch:
+    inputs:
+      headed:
+        description: "Run non-headless Chrome under Xvfb"
+        required: true
+        type: boolean
+        default: true
+      target_recap_mins:
+        description: "Target recap duration in minutes (e.g. 5)"
+        required: true
+        default: "5"
+
+permissions:
+  contents: write
+
+jobs:
+  generate-recap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Tor & Dependencies
+        timeout-minutes: 4
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tor netcat-openbsd xvfb
+          sudo service tor start
+          for i in {1..30}; do
+            if nc -z 127.0.0.1 9050; then echo "Tor ready"; break; fi
+            sleep 2
+          done
+          nc -z 127.0.0.1 9050
+
+      - name: Install Python dependencies
+        timeout-minutes: 6
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright requests
+          playwright install --with-deps chromium
+
+      - name: Automate Duck.ai Story Pipeline
         timeout-minutes: 110
         env:
-          HEADED: ${{ inputs.headed }}
-          TARGET_RECAP_MINS: ${{ inputs.target_recap_mins }}
+          HEADED: "${{ inputs.headed }}"
+          TARGET_RECAP_MINS: "${{ inputs.target_recap_mins }}"
         run: |
           mkdir -p debug
-          cat > generate_story.py <<'PY'
+          RUNNER_CMD="python3 -"
+          if [ "$HEADED" = "true" ]; then
+            RUNNER_CMD="xvfb-run -a --server-args=\"-screen 0 1440x1000x24\" python3 -"
+          fi
+
+          eval "$RUNNER_CMD" <<'EOF'
           import os, re, sys, json, subprocess, time
           from pathlib import Path
           from playwright.sync_api import sync_playwright
@@ -13,7 +72,7 @@
           HEADED = os.environ.get("HEADED") == "true"
           TARGET_MINS = float(os.environ.get("TARGET_RECAP_MINS", "5"))
           TARGET_WORDS = int(TARGET_MINS * 140)
-          MIN_SCENES = max(12, int(TARGET_MINS * 4)) # Aim for 4-5 scenes per minute
+          MIN_SCENES = max(12, int(TARGET_MINS * 4))
 
           PART_SECONDS = 180
           PART_CHARS = 1800
@@ -179,7 +238,6 @@
               chunks.append((cur_first, len(segs)))
 
           log(f"Transcript broken into {len(chunks)} structural acts.")
-
           all_act_facts = []
 
           with sync_playwright() as p:
@@ -187,7 +245,6 @@
               open_chat()
               page = state["page"]
 
-              # Prime chat
               init_prompt = (
                   "You are an expert YouTube Movie Recap script writer in Hindi.\n"
                   "We will feed a movie transcript in segments. For each segment, extract chronological story events with timestamps."
@@ -195,17 +252,16 @@
               submit_prompt(page, init_prompt)
               time.sleep(2)
 
-              # PASS 1: Extract chronologically
               for ci, (f_id, l_id) in enumerate(chunks):
                   tag = f"ACT{ci + 1}"
                   act_lines = [f"[{s['start']:.0f}s-{s['end']:.0f}s] {s['text']}" for s in segs[f_id - 1:l_id]]
                   prompt = (
                       f"Act {ci + 1} of {len(chunks)} ({segs[f_id-1]['start']:.0f}s to {segs[l_id-1]['end']:.0f}s):\n"
                       f"{' '.join(act_lines)}\n\n"
-                      f"List 2 to 4 major plot beats that happen here in JSON format:\n"
+                      f"Extract 2 to 4 key chronological story events in JSON format:\n"
                       f"###START-{tag}###\n"
                       f"[\n"
-                      f"  {{\"clip_start\": {segs[f_id-1]['start']:.1f}, \"clip_end\": {segs[l_id-1]['end']:.1f}, \"plot\": \"Summary of action/event\"}}\n"
+                      f"  {{\"clip_start\": {segs[f_id-1]['start']:.1f}, \"clip_end\": {segs[l_id-1]['end']:.1f}, \"plot\": \"Detailed third person event description\"}}\n"
                       f"]\n"
                       f"###END-{tag}###"
                   )
@@ -217,25 +273,23 @@
                       all_act_facts.extend(parsed)
                   log(f"[+] Act {ci + 1} done. Total facts collected: {len(all_act_facts)}")
 
-              # PASS 2: Full Hindi Script Synthesis
               log(f"\n===== PASS 2: Synthesizing full script (Target: >={MIN_SCENES} scenes, ~{TARGET_WORDS} words) =====")
               facts_summary = "\n".join([f"[{b.get('clip_start')}s - {b.get('clip_end')}s]: {b.get('plot')}" for b in all_act_facts])
 
               reduce_tag = "FINALRECAP"
               reduce_prompt = (
-                  f"Write the COMPLETE Hindi YouTube Movie Recap script covering the entire storyline from beginning to end.\n\n"
+                  f"Write the COMPLETE Hindi YouTube Movie Recap voiceover script covering the ENTIRE storyline from start to end.\n\n"
                   f"STORY EVENTS SUMMARY:\n{facts_summary}\n\n"
-                  f"STRICT REQUIREMENTS:\n"
-                  f"1. Generate at least {MIN_SCENES} scenes covering ALL acts from start to finish.\n"
-                  f"2. Total word count across all narrations must be approximately {TARGET_WORDS} Hindi words.\n"
-                  f"3. Style: Hindi recap voiceover ('कहानी की शुरुआत में', 'इसके बाद', 'तभी एक चौंकाने वाला सच सामने आता है').\n"
-                  f"4. Do NOT output dummy/placeholder text. Write full narration for every single scene.\n"
-                  f"5. 'clip_start' and 'clip_end' must match the movie timeline progression.\n\n"
-                  f"Format requirement: Return ONLY a JSON list wrapped inside ###START-{reduce_tag}### and ###END-{reduce_tag}###:\n"
+                  f"STRICT RULES:\n"
+                  f"1. You MUST generate at least {MIN_SCENES} scenes covering the whole movie progression.\n"
+                  f"2. Total word count across all narrations must be ~{TARGET_WORDS} words in Hindi.\n"
+                  f"3. Style: Hindi recap narrator ('कहानी की शुरुआत में', 'इसके बाद', 'तभी एक बड़ा खुलासा होता है').\n"
+                  f"4. Output EVERY scene completely. Do NOT shorten, skip, or return sample data.\n"
+                  f"5. clip_start and clip_end must cover each segment chronologically.\n\n"
+                  f"Return ONLY valid JSON wrapped inside ###START-{reduce_tag}### and ###END-{reduce_tag}###:\n"
                   f"###START-{reduce_tag}###\n"
                   f"[\n"
-                  f"  {{\"scene\": 1, \"clip_start\": 0.7, \"clip_end\": 7.0, \"narration\": \"...\"}},\n"
-                  f"  {{\"scene\": 2, \"clip_start\": 7.0, \"clip_end\": 18.0, \"narration\": \"...\"}}\n"
+                  f"  {{\"scene\": 1, \"clip_start\": 0.7, \"clip_end\": 7.0, \"narration\": \"...\"}}\n"
                   f"]\n"
                   f"###END-{reduce_tag}###"
               )
@@ -245,7 +299,7 @@
               final_beats = parse_json_safely(final_raw)
 
               if not final_beats or not isinstance(final_beats, list) or len(final_beats) < 2:
-                  raise ValueError(f"Generation produced invalid scene count ({len(final_beats) if final_beats else 0}).")
+                  raise ValueError(f"Generation returned too few scenes: {len(final_beats) if final_beats else 0}")
 
               total_words = 0
               for idx, b in enumerate(final_beats):
@@ -267,16 +321,35 @@
                   "total_words": total_words,
                   "estimated_audio_minutes": round(total_words / 140, 2),
                   "scenes_count": len(final_beats),
-                  "story_beats": final_beats
+                  "story_beats": final_beats,
               }
 
               Path("story_beats.json").write_text(json.dumps(output_data, indent=2, ensure_ascii=False), encoding="utf-8")
               log(f"SUCCESS! Created story_beats.json with {len(final_beats)} scenes ({total_words} words).")
               state["browser"].close()
-          PY
+          EOF
 
-          if [ "$HEADED" = "true" ]; then
-            xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py
-          else
-            python generate_story.py
+      - name: Commit and push story_beats.json
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -f story_beats.json ]; then
+            git add -f story_beats.json
+            if ! git diff --cached --quiet; then
+              git commit -m "Update story_beats.json [skip ci]"
+              git pull --rebase origin main
+              git push origin HEAD:main
+              echo "Successfully pushed story_beats.json"
+            else
+              echo "No changes in story_beats.json"
+            fi
           fi
+
+      - name: Upload debug artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: duck-ai-debug
+          path: debug/
+          if-no-files-found: ignore

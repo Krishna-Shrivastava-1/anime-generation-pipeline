@@ -1,58 +1,4 @@
-name: Generate Hindi YouTube Movie Recap
-
-on:
-  workflow_dispatch:
-    inputs:
-      headed:
-        description: "Run non-headless Chrome under Xvfb"
-        required: true
-        type: boolean
-        default: true
-      target_recap_mins:
-        description: "Target recap duration in minutes (e.g. 5)"
-        required: true
-        default: "5"
-
-permissions:
-  contents: write
-
-jobs:
-  generate-recap:
-    runs-on: ubuntu-latest
-    timeout-minutes: 120
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install Tor & Dependencies
-        timeout-minutes: 4
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y tor netcat-openbsd xvfb
-          sudo service tor start
-          for i in {1..30}; do
-            if nc -z 127.0.0.1 9050; then echo "Tor ready"; break; fi
-            sleep 2
-          done
-          nc -z 127.0.0.1 9050
-
-      - name: Install Python dependencies
-        timeout-minutes: 6
-        run: |
-          python -m pip install --upgrade pip
-          pip install curl_cffi playwright pillow requests
-          playwright install --with-deps chromium
-
-      - name: Automate Duck.ai Story Pipeline
+- name: Automate Duck.ai Story Pipeline
         timeout-minutes: 110
         env:
           HEADED: ${{ inputs.headed }}
@@ -66,23 +12,22 @@ jobs:
 
           HEADED = os.environ.get("HEADED") == "true"
           TARGET_MINS = float(os.environ.get("TARGET_RECAP_MINS", "5"))
-          TARGET_WORDS = int(TARGET_MINS * 140)  # Standard 140 words/min voiceover rate
+          TARGET_WORDS = int(TARGET_MINS * 140)
+          MIN_SCENES = max(12, int(TARGET_MINS * 4)) # Aim for 4-5 scenes per minute
 
           PART_SECONDS = 180
           PART_CHARS = 1800
-          MAX_WAIT = 260
+          MAX_WAIT = 300
           BROWSER_PROXY = "socks5://127.0.0.1:9050"
           UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
           MODAL_LABELS = re.compile(
               r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done|dismiss)$", re.I
           )
-          ERR_RE = re.compile(r"something went wrong|too many requests|rate limit|try again|reached your daily limit", re.I)
 
           state = {"browser": None, "context": None, "page": None}
 
           def log(msg):
-              line = f"[{time.strftime('%H:%M:%S')}] {msg}"
-              print(line, flush=True)
+              print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
 
           def scroll_to_bottom(page):
               try:
@@ -94,15 +39,6 @@ jobs:
                   }""")
               except Exception:
                   pass
-
-          def new_tor_circuit():
-              log("Restarting Tor circuit...")
-              subprocess.run(["sudo", "service", "tor", "restart"], check=False)
-              for _ in range(30):
-                  if subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0:
-                      break
-                  time.sleep(2)
-              time.sleep(2)
 
           def start_browser(p):
               for key in ("context", "browser"):
@@ -122,8 +58,8 @@ jobs:
                   for i in range(buttons.count()):
                       btn = buttons.nth(i)
                       if btn.is_visible():
-                          btn.click(timeout=2000)
-                          page.wait_for_timeout(500)
+                          btn.click(timeout=1500)
+                          page.wait_for_timeout(400)
                           break
               except Exception:
                   pass
@@ -210,14 +146,11 @@ jobs:
                   page.wait_for_timeout(1000)
               raise TimeoutError(f"Response for {tag} timed out.")
 
-          # Clean and parse JSON safely
           def parse_json_safely(text):
               if not text: return None
               clean = re.sub(r"```(?:json)?", "", text).strip()
-              # Try direct parse
               try: return json.loads(clean)
               except Exception: pass
-              # Try slice
               s = min([p for p in [clean.find("{"), clean.find("[")] if p != -1], default=-1)
               e = max([clean.rfind("}"), clean.rfind("]")])
               if s != -1 and e > s:
@@ -225,7 +158,6 @@ jobs:
                   except Exception: pass
               return None
 
-          # Load transcripts
           t_file = Path("transcript.json")
           if not t_file.exists():
               raise FileNotFoundError("transcript.json missing!")
@@ -248,7 +180,6 @@ jobs:
 
           log(f"Transcript broken into {len(chunks)} structural acts.")
 
-          # ----------------- PASS 1: MAP (Plot Fact Extraction) -----------------
           all_act_facts = []
 
           with sync_playwright() as p:
@@ -256,80 +187,73 @@ jobs:
               open_chat()
               page = state["page"]
 
-              # Prime chat for Plot Extraction
+              # Prime chat
               init_prompt = (
-                  "You are an assistant for a YouTube Movie Recap channel.\n"
-                  "We are analyzing a movie transcript act by act.\n"
-                  "STRICT RULES FOR PASS 1:\n"
-                  "- DO NOT write narration yet.\n"
-                  "- DO NOT translate or quote dialogues.\n"
-                  "- Extract 2-3 third-person plot actions: who did what, what secret was revealed, what changed.\n"
-                  "- Output ONLY raw JSON wrapped in ###START-ACTX### and ###END-ACTX###."
+                  "You are an expert YouTube Movie Recap script writer in Hindi.\n"
+                  "We will feed a movie transcript in segments. For each segment, extract chronological story events with timestamps."
               )
               submit_prompt(page, init_prompt)
-              time.sleep(3)
+              time.sleep(2)
 
+              # PASS 1: Extract chronologically
               for ci, (f_id, l_id) in enumerate(chunks):
                   tag = f"ACT{ci + 1}"
-                  act_lines = [f"#{s['_id']} [{s['start']:.0f}s-{s['end']:.0f}s] {s['text']}" for s in segs[f_id - 1:l_id]]
+                  act_lines = [f"[{s['start']:.0f}s-{s['end']:.0f}s] {s['text']}" for s in segs[f_id - 1:l_id]]
                   prompt = (
-                      f"Analyze ACT {ci + 1}/{len(chunks)} ({segs[f_id-1]['start']:.0f}s - {segs[l_id-1]['end']:.0f}s):\n"
-                      f"TRANSCRIPT:\n" + "\n".join(act_lines) + "\n\n"
-                      f"Return JSON format:\n"
+                      f"Act {ci + 1} of {len(chunks)} ({segs[f_id-1]['start']:.0f}s to {segs[l_id-1]['end']:.0f}s):\n"
+                      f"{' '.join(act_lines)}\n\n"
+                      f"List 2 to 4 major plot beats that happen here in JSON format:\n"
                       f"###START-{tag}###\n"
                       f"[\n"
-                      f"  {{\"action\": \"Third-person description of action or revelation\", \"clip_start\": {segs[f_id-1]['start']:.1f}, \"clip_end\": {segs[l_id-1]['end']:.1f}}}\n"
+                      f"  {{\"clip_start\": {segs[f_id-1]['start']:.1f}, \"clip_end\": {segs[l_id-1]['end']:.1f}, \"plot\": \"Summary of action/event\"}}\n"
                       f"]\n"
                       f"###END-{tag}###"
                   )
-                  log(f"Pass 1: Extracting story facts for Act {ci + 1}...")
+                  log(f"Pass 1: Extracting Act {ci + 1}...")
                   submit_prompt(page, prompt)
                   raw = wait_for_payload(page, tag)
                   parsed = parse_json_safely(raw)
                   if isinstance(parsed, list):
                       all_act_facts.extend(parsed)
-                  log(f"[+] Act {ci + 1} parsed: {len(parsed) if isinstance(parsed, list) else 0} events.")
+                  log(f"[+] Act {ci + 1} done. Total facts collected: {len(all_act_facts)}")
 
-              # ----------------- PASS 2: REDUCE (Unified YouTube Recap) -----------------
-              log("\n===== PASS 2: Synthesizing Unified YouTube Recap Script =====")
+              # PASS 2: Full Hindi Script Synthesis
+              log(f"\n===== PASS 2: Synthesizing full script (Target: >={MIN_SCENES} scenes, ~{TARGET_WORDS} words) =====")
+              facts_summary = "\n".join([f"[{b.get('clip_start')}s - {b.get('clip_end')}s]: {b.get('plot')}" for b in all_act_facts])
+
               reduce_tag = "FINALRECAP"
               reduce_prompt = (
-                  f"Now write the complete Hindi YouTube Movie Recap voiceover script based on all the acts above.\n"
-                  f"TARGET WORD COUNT: ~{TARGET_WORDS} words in Hindi (~{TARGET_MINS} minutes spoken duration).\n\n"
-                  "RECAP NARRATION RULES (CRITICAL):\n"
-                  "1. VOICE: Enthusiastic YouTube Movie Recap narrator in Hindi (third-person).\n"
-                  "   Example: 'कहानी की शुरुआत में हम देखते हैं...', 'दूसरी तरफ...', 'तभी एक बड़ा खुलासा होता है...'\n"
-                  "2. NEVER quote characters line by line. Explain their motives, actions, and the unfolding mystery.\n"
-                  "3. SEAMLESS BRIDGING: Every scene change MUST use bridge words ('कुछ देर बाद', 'तभी वहां', 'हालांकि') to prevent choppy jumps.\n"
-                  "4. CLIPS: Link each narration line to a focused 4 to 8 second video clip timestamp from the facts gathered.\n\n"
-                  f"Return ONLY valid JSON wrapped in ###START-{reduce_tag}### and ###END-{reduce_tag}###:\n"
+                  f"Write the COMPLETE Hindi YouTube Movie Recap script covering the entire storyline from beginning to end.\n\n"
+                  f"STORY EVENTS SUMMARY:\n{facts_summary}\n\n"
+                  f"STRICT REQUIREMENTS:\n"
+                  f"1. Generate at least {MIN_SCENES} scenes covering ALL acts from start to finish.\n"
+                  f"2. Total word count across all narrations must be approximately {TARGET_WORDS} Hindi words.\n"
+                  f"3. Style: Hindi recap voiceover ('कहानी की शुरुआत में', 'इसके बाद', 'तभी एक चौंकाने वाला सच सामने आता है').\n"
+                  f"4. Do NOT output dummy/placeholder text. Write full narration for every single scene.\n"
+                  f"5. 'clip_start' and 'clip_end' must match the movie timeline progression.\n\n"
+                  f"Format requirement: Return ONLY a JSON list wrapped inside ###START-{reduce_tag}### and ###END-{reduce_tag}###:\n"
                   f"###START-{reduce_tag}###\n"
-                  "[\n"
-                  "  {\n"
-                  "    \"scene\": 1,\n"
-                  "    \"clip_start\": 0.0,\n"
-                  "    \"clip_end\": 6.5,\n"
-                  "    \"narration\": \"कहानी की शुरुआत में हम देखते हैं कि डिटेक्टिव क्लोई को एक नया मर्डर केस सौंपा जाता है...\"\n"
-                  "  }\n"
-                  "]\n"
+                  f"[\n"
+                  f"  {{\"scene\": 1, \"clip_start\": 0.7, \"clip_end\": 7.0, \"narration\": \"...\"}},\n"
+                  f"  {{\"scene\": 2, \"clip_start\": 7.0, \"clip_end\": 18.0, \"narration\": \"...\"}}\n"
+                  f"]\n"
                   f"###END-{reduce_tag}###"
               )
 
               submit_prompt(page, reduce_prompt)
-              final_raw = wait_for_payload(page, reduce_tag, max_wait=300)
+              final_raw = wait_for_payload(page, reduce_tag, max_wait=360)
               final_beats = parse_json_safely(final_raw)
 
-              if not final_beats or not isinstance(final_beats, list):
-                  raise ValueError("Failed to obtain final unified recap list from LLM.")
+              if not final_beats or not isinstance(final_beats, list) or len(final_beats) < 2:
+                  raise ValueError(f"Generation produced invalid scene count ({len(final_beats) if final_beats else 0}).")
 
-              # Calculate stats and enforce safe clip bounds
               total_words = 0
-              for b in final_beats:
+              for idx, b in enumerate(final_beats):
+                  b["scene"] = idx + 1
                   nar = b.get("narration", "")
                   w_count = len(nar.split())
                   total_words += w_count
                   b["words"] = w_count
-                  # Clamp clip to avoid negative or oversized video slices
                   cs = max(0.0, float(b.get("clip_start", 0)))
                   ce = max(cs + 2.0, float(b.get("clip_end", cs + 6.0)))
                   b["clip_start"] = round(cs, 2)
@@ -347,7 +271,7 @@ jobs:
               }
 
               Path("story_beats.json").write_text(json.dumps(output_data, indent=2, ensure_ascii=False), encoding="utf-8")
-              log(f"SUCCESS! story_beats.json generated with {len(final_beats)} seamless scenes ({total_words} Hindi words).")
+              log(f"SUCCESS! Created story_beats.json with {len(final_beats)} scenes ({total_words} words).")
               state["browser"].close()
           PY
 
@@ -356,28 +280,3 @@ jobs:
           else
             python generate_story.py
           fi
-
-      - name: Commit and push story_beats.json
-        if: always()
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [ -f story_beats.json ]; then
-            git add -f story_beats.json
-            if ! git diff --cached --quiet; then
-              git commit -m "Update YouTube-style Hindi movie recap story_beats.json [skip ci]"
-              git pull --rebase origin main
-              git push origin HEAD:main
-              echo "Successfully pushed story_beats.json"
-            else
-              echo "No changes in story_beats.json"
-            fi
-          fi
-
-      - name: Upload debug artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: duck-ai-debug
-          path: debug/
-          if-no-files-found: ignore

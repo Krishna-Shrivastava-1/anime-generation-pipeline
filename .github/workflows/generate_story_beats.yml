@@ -8,10 +8,22 @@ on:
         required: true
         type: boolean
         default: true
-      target_recap_mins:
-        description: "Target recap duration in minutes (e.g. 5)"
+      mode:
+        description: "Execution mode (probe | full)"
         required: true
-        default: "5"
+        type: choice
+        options:
+          - probe
+          - full
+        default: probe
+      target_minutes:
+        description: "Target recap duration in minutes (e.g. 12)"
+        required: true
+        default: "12"
+      hints:
+        description: "Optional notes / character name fixes"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -23,13 +35,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
@@ -69,304 +81,939 @@ jobs:
       - name: Automate Duck.ai Story Pipeline
         timeout-minutes: 110
         env:
+          PYTHONIOENCODING: "utf-8"
           HEADED: ${{ inputs.headed }}
-          TARGET_RECAP_MINS: ${{ inputs.target_recap_mins }}
+          RUN_MODE: ${{ inputs.mode }}
+          TARGET_MINUTES: ${{ inputs.target_minutes }}
+          INPUT_HINTS: ${{ inputs.hints }}
         run: |
           mkdir -p debug
           cat > generate_story.py <<'PY'
-          import os, re, sys, json, base64, subprocess, time
+          import os
+          import sys
+          import re
+          import json
+          import time
+          import random
+          import math
+          import subprocess
           from pathlib import Path
           from playwright.sync_api import sync_playwright
 
-          HEADED = os.environ.get("HEADED") == "true"
-          TARGET_MINS = float(os.environ.get("TARGET_RECAP_MINS", "5"))
-          TARGET_WORDS = int(TARGET_MINS * 140)
+          HEADED = os.environ.get("HEADED", "true").lower() == "true"
+          RUN_MODE = os.environ.get("RUN_MODE", "probe").strip().lower()
+          TARGET_MINUTES = float(os.environ.get("TARGET_MINUTES", "12"))
+          INPUT_HINTS = os.environ.get("INPUT_HINTS", "").strip()
 
-          PART_SECONDS = 140
-          PART_CHARS = 1400
-          MAX_WAIT = 180
-          DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+          DEBUG_DIR = Path("debug")
+          DEBUG_DIR.mkdir(parents=True, exist_ok=True)
           RUN_LOG = DEBUG_DIR / "run.log"
 
-          TOR_PROXY = "socks5h://127.0.0.1:9050"
-          BROWSER_PROXY = "socks5://127.0.0.1:9050"
+          TOR_SOCKS = "socks5://127.0.0.1:9050"
+          CONSENT_RE = re.compile(
+              r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$",
+              re.IGNORECASE,
+          )
 
-          CONTINUE_LABELS = re.compile(
-              r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I)
-
-          def log(msg):
-              line = f"[{time.strftime('%H:%M:%S')}] {msg}"
+          def log(msg: str):
+              ts = time.strftime("%Y-%m-%d %H:%M:%S")
+              line = f"[{ts}] {msg}"
               print(line, flush=True)
-              with open(RUN_LOG, "a", encoding="utf-8") as f:
-                  f.write(line + "\n")
-
-          def snap(page, name):
               try:
-                  page.screenshot(path=str(DEBUG_DIR / f"{name}.png"), full_page=True, timeout=15000)
-                  (DEBUG_DIR / f"{name}.html").write_text(page.content(), encoding="utf-8")
-                  log(f"snapshot {name} | url={page.url}")
-              except Exception as e:
-                  log(f"snapshot failed: {e}")
-
-          def new_tor_circuit():
-              log("Restarting Tor for a new exit IP...")
-              subprocess.run(["sudo", "timeout", "60", "service", "tor", "restart"], check=False)
-              for _ in range(30):
-                  if subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0:
-                      break
-                  time.sleep(2)
-              time.sleep(3)
-
-          def click_continue(page):
-              clicked_any = False
-              for _ in range(3):
-                  clicked = False
-                  try:
-                      buttons = page.get_by_role("button", name=CONTINUE_LABELS)
-                      for i in range(buttons.count()):
-                          btn = buttons.nth(i)
-                          if btn.is_visible():
-                              log(f"Clicking button: {(btn.inner_text() or '').strip()!r}")
-                              btn.click(timeout=3000)
-                              page.wait_for_timeout(1000)
-                              clicked = clicked_any = True
-                              break
-                  except Exception:
-                      pass
-                  if not clicked:
-                      break
-              return clicked_any
-
-          def get_prompt_box(page):
-              return page.locator(
-                  "textarea[name='user-prompt'], textarea[placeholder*='ask' i], "
-                  "textarea[placeholder*='message' i], textarea").first
-
-          def human_paste_prompt(page, box, text):
-              box.click()
-              page.wait_for_timeout(400)
-              page.evaluate("t => navigator.clipboard.writeText(t)", text)
-              page.wait_for_timeout(200)
-              page.keyboard.press("Control+v")
-              page.wait_for_timeout(500)
-              box.press("Enter")
-
-          def get_latest_assistant_response(page):
-              """Extracts text strictly from the assistant message containers."""
-              try:
-                  locs = page.locator("article, [data-testid*='message' i], [class*='message' i]")
-                  count = locs.count()
-                  for i in range(count - 1, -1, -1):
-                      txt = locs.nth(i).inner_text()
-                      if "###START-" in txt or "scene" in txt.lower() or "narration" in txt.lower():
-                          return txt
+                  with open(RUN_LOG, "a", encoding="utf-8") as f:
+                      f.write(line + "\n")
               except Exception:
                   pass
-              return page.inner_text("body")
 
-          def extract_payload(body, tag):
-              start_m = f"###START-{tag}###"
-              end_m = f"###END-{tag}###"
-              idx = body.rfind(start_m)
-              if idx != -1:
-                  tail = body[idx + len(start_m):]
-                  brace = tail.find("[") if "[" in tail else tail.find("{")
-                  if brace != -1:
-                      tail = tail[brace:]
-                      e = tail.find(end_m)
-                      if e != -1:
-                          return tail[:e].strip(), True
-                      return tail.strip(), False
-              return None, False
+          def restart_tor():
+              log("Restarting Tor service for new circuit...")
+              subprocess.run(["sudo", "service", "tor", "restart"], check=False)
+              for _ in range(30):
+                  res = subprocess.run(["nc", "-z", "127.0.0.1", "9050"], check=False)
+                  if res.returncode == 0:
+                      break
+                  time.sleep(1)
+              time.sleep(3)
+              log("Tor restarted and listening on port 9050.")
 
-          def parse_json_safely(text):
-              if not text: return None
-              clean = re.sub(r"```(?:json)?", "", text).strip()
-              try: return json.loads(clean)
-              except Exception: pass
-              s = min([p for p in [clean.find("{"), clean.find("[")] if p != -1], default=-1)
-              e = max([clean.rfind("}"), clean.rfind("]")])
-              if s != -1 and e > s:
-                  try: return json.loads(clean[s:e+1])
-                  except Exception: pass
+          def snap(page, name: str):
+              try:
+                  page.screenshot(path=str(DEBUG_DIR / f"{name}.png"), full_page=True, timeout=10000)
+                  (DEBUG_DIR / f"{name}.html").write_text(page.content(), encoding="utf-8")
+                  log(f"Saved snapshot {name} (url: {page.url})")
+              except Exception as e:
+                  log(f"Failed to save snapshot {name}: {e}")
+
+          def strip_markdown_fences(text: str) -> str:
+              text = text.strip()
+              text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE)
+              text = re.sub(r"\s*```$", "", text)
+              return text.strip()
+
+          def parse_first_balanced_json(text: str):
+              cleaned = strip_markdown_fences(text)
+              try:
+                  return json.loads(cleaned)
+              except Exception:
+                  pass
+
+              start_idx = -1
+              for i, ch in enumerate(cleaned):
+                  if ch in ("{", "["):
+                      start_idx = i
+                      break
+              if start_idx == -1:
+                  return None
+
+              open_char = cleaned[start_idx]
+              close_char = "}" if open_char == "{" else "]"
+              depth = 0
+              in_string = False
+              escape = False
+
+              for idx in range(start_idx, len(cleaned)):
+                  c = cleaned[idx]
+                  if escape:
+                      escape = False
+                      continue
+                  if c == "\\":
+                      escape = True
+                      continue
+                  if c == '"':
+                      in_string = not in_string
+                      continue
+                  if not in_string:
+                      if c == open_char:
+                          depth += 1
+                      elif c == close_char:
+                          depth -= 1
+                          if depth == 0:
+                              candidate = cleaned[start_idx : idx + 1]
+                              try:
+                                  return json.loads(candidate)
+                              except Exception:
+                                  break
               return None
 
-          def wait_for_stream_done(page, tag, state_dict, max_wait=MAX_WAIT):
-              start_t = time.time()
-              last_len = 0
-              stable = 0
-              while time.time() - start_t < max_wait:
-                  click_continue(page)
-                  content = get_latest_assistant_response(page)
-                  extracted, finished = extract_payload(content, tag)
+          def salvage_objects(text: str):
+              cleaned = strip_markdown_fences(text)
+              decoder = json.JSONDecoder()
+              results = []
+              idx = 0
+              while idx < len(cleaned):
+                  if cleaned[idx] in ("{", "["):
+                      try:
+                          obj, end_pos = decoder.raw_decode(cleaned[idx:])
+                          results.append(obj)
+                          idx += end_pos
+                          continue
+                      except Exception:
+                          pass
+                  idx += 1
+              return results
 
-                  if finished:
-                      return extracted
+          class DuckChatClient:
+              def __init__(self, headless: bool = True):
+                  self.headless = headless
+                  self.playwright = None
+                  self.browser = None
+                  self.context = None
+                  self.page = None
+                  self.finished_requests = set()
+                  self.failed_requests = set()
+                  self.success_count = 0
+                  self._init_browser()
 
-                  if len(content) == last_len and len(content) > 50:
-                      stable += 1
-                  else:
-                      stable = 0
-                  last_len = len(content)
+              def _init_browser(self):
+                  self.close()
+                  self.playwright = sync_playwright().start()
+                  self.browser = self.playwright.chromium.launch(
+                      headless=self.headless,
+                      proxy={"server": TOR_SOCKS},
+                      args=[
+                          "--disable-dev-shm-usage",
+                          "--disable-blink-features=AutomationControlled",
+                          "--no-sandbox",
+                      ],
+                  )
+                  self.context = self.browser.new_context(
+                      viewport={"width": 1366, "height": 850},
+                      user_agent=(
+                          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                          "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+                      ),
+                  )
+                  self.context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+                  self.page = self.context.new_page()
+                  self.finished_requests = set()
+                  self.failed_requests = set()
 
-                  if (state_dict.get("chat_done") or stable >= 6) and extracted:
-                      return extracted
+                  def on_req_finished(req):
+                      self.finished_requests.add(req)
 
-                  page.wait_for_timeout(1500)
-              raise TimeoutError(f"Timeout waiting for tag {tag}")
+                  def on_req_failed(req):
+                      self.failed_requests.add(req)
 
-          # Load Transcripts
-          t_file = Path("transcript.json")
-          if not t_file.exists():
-              raise FileNotFoundError("transcript.json is missing in root!")
-          transcript_data = json.loads(t_file.read_text(encoding="utf-8"))
-          segs = transcript_data.get("segments", [])
-          for i, s in enumerate(segs):
-              s["_id"] = i + 1
-              s["start"] = float(s["start"])
-              s["end"] = float(s["end"])
-              s["text"] = str(s["text"]).strip()
+                  self.page.on("requestfinished", on_req_finished)
+                  self.page.on("requestfailed", on_req_failed)
 
-          chunks, cur_first, cur_chars = [], 1, 0
-          for s in segs:
-              cur_chars += len(s["text"]) + 15
-              if s["end"] - segs[cur_first - 1]["start"] >= PART_SECONDS or cur_chars >= PART_CHARS:
-                  chunks.append((cur_first, s["_id"]))
-                  cur_first, cur_chars = s["_id"] + 1, 0
-          if cur_first <= len(segs):
-              chunks.append((cur_first, len(segs)))
+              def close(self):
+                  try:
+                      if self.page:
+                          self.page.close()
+                  except Exception:
+                      pass
+                  try:
+                      if self.context:
+                          self.context.close()
+                  except Exception:
+                      pass
+                  try:
+                      if self.browser:
+                          self.browser.close()
+                  except Exception:
+                      pass
+                  try:
+                      if self.playwright:
+                          self.playwright.stop()
+                  except Exception:
+                      pass
+                  self.page = None
+                  self.context = None
+                  self.browser = None
+                  self.playwright = None
 
-          log(f"Transcript split into {len(chunks)} chronological parts.")
-          all_story_beats = []
+              def restart_all(self):
+                  log("Resetting DuckChatClient and Tor circuit...")
+                  self.close()
+                  restart_tor()
+                  self._init_browser()
+                  self.success_count = 0
 
-          with sync_playwright() as p:
-              browser = p.chromium.launch(
-                  headless=not HEADED,
-                  proxy={"server": BROWSER_PROXY},
-                  args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"]
-              )
-              context = browser.new_context(
-                  viewport={"width": 1440, "height": 1000},
-                  user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
-                  permissions=["clipboard-read", "clipboard-write"]
-              )
-              context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
-              page = context.new_page()
+              def click_consent_buttons(self):
+                  for _ in range(3):
+                      clicked = False
+                      try:
+                          buttons = self.page.get_by_role("button", name=CONSENT_RE)
+                          count = buttons.count()
+                          for i in range(count):
+                              btn = buttons.nth(i)
+                              if btn.is_visible():
+                                  txt = (btn.inner_text() or "").strip()
+                                  log(f"Clicking consent button: {txt!r}")
+                                  btn.click(timeout=3000)
+                                  self.page.wait_for_timeout(1000)
+                                  clicked = True
+                                  break
+                      except Exception:
+                          pass
+                      if not clicked:
+                          break
 
-              log("Opening https://duck.ai/chat ...")
-              page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
-              page.wait_for_timeout(3000)
-              click_continue(page)
+              def get_prompt_box(self):
+                  return self.page.locator(
+                      "textarea[name='user-prompt'], textarea[placeholder*='ask' i], "
+                      "textarea[placeholder*='message' i], textarea"
+                  ).first
 
-              # Initialize chat session
-              box = get_prompt_box(page)
-              box.wait_for(state="visible", timeout=40000)
-              init_prompt = (
-                  "You are an expert Hindi YouTube Movie Recap narrator.\n"
-                  "We will give you movie transcript pieces chronologically.\n"
-                  "Rules:\n"
-                  "- Write natural voiceover recap lines entirely in Hindi.\n"
-                  "- Third-person storytelling ('कहानी में हम देखते हैं कि...', 'तभी एक बड़ा मोड़ आता है...').\n"
-                  "- Output ONLY raw JSON array inside the requested markers."
-              )
-              human_paste_prompt(page, box, init_prompt)
-              page.wait_for_timeout(4000)
-              click_continue(page)
+              def parse_sse_body(self, raw_sse: str) -> str:
+                  chunks = []
+                  for line in raw_sse.splitlines():
+                      line = line.strip()
+                      if not line.startswith("data:"):
+                          continue
+                      payload_str = line[len("data:"):].strip()
+                      if not payload_str or payload_str == "[DONE]":
+                          continue
+                      try:
+                          data = json.loads(payload_str)
+                      except Exception:
+                          continue
 
-              # Loop each chronological part
-              for ci, (f_id, l_id) in enumerate(chunks):
-                  tag = f"PART{ci + 1}"
-                  act_lines = [f"[{s['start']:.0f}s-{s['end']:.0f}s] {s['text']}" for s in segs[f_id - 1:l_id]]
-                  part_start = segs[f_id-1]['start']
-                  part_end = segs[l_id-1]['end']
+                      action = data.get("action", "")
+                      err_type = str(data.get("type", ""))
+                      if action == "error" or err_type.startswith("ERR_") or "error" in data:
+                          err_msg = data.get("message") or data.get("error") or str(data)
+                          raise RuntimeError(f"SSE stream error: {err_msg}")
 
-                  state_dict = {"chat_done": False}
-                  def on_request_finished(req):
-                      if req.method == "POST" and "/duckchat/v1/chat" in req.url:
-                          state_dict["chat_done"] = True
-                  page.on("requestfinished", on_request_finished)
+                      chunk = data.get("message", "")
+                      if chunk:
+                          chunks.append(chunk)
 
-                  prompt = (
-                      f"Part {ci + 1}/{len(chunks)} ({part_start:.0f}s to {part_end:.0f}s):\n"
-                      f"TRANSCRIPT DIALOGUES:\n{' '.join(act_lines)}\n\n"
-                      f"Write 2 to 3 chronological Hindi voiceover recap scenes covering this part.\n"
-                      f"Format requirements:\n"
-                      f"###START-{tag}###\n"
-                      f"[\n"
-                      f"  {{\"clip_start\": {part_start:.1f}, \"clip_end\": {min(part_start + 8.0, part_end):.1f}, \"narration\": \"<Detailed Hindi explanation of this scene>\"}}\n"
-                      f"]\n"
-                      f"###END-{tag}###"
+                  return "".join(chunks)
+
+              def fallback_dom_salvage(self, prompt: str):
+                  log("Entering fallback DOM text extraction...")
+                  last_txt = ""
+                  stable_count = 0
+                  for _ in range(30):
+                      self.click_consent_buttons()
+                      try:
+                          body_txt = self.page.inner_text("body")
+                      except Exception:
+                          body_txt = ""
+
+                      stop_btn = self.page.locator("button:has-text('Stop')")
+                      has_stop = False
+                      try:
+                          has_stop = stop_btn.count() > 0 and stop_btn.first.is_visible()
+                      except Exception:
+                          pass
+
+                      if not has_stop and body_txt == last_txt and len(body_txt) > 200:
+                          stable_count += 1
+                      else:
+                          stable_count = 0
+                      last_txt = body_txt
+
+                      if stable_count >= 6:
+                          break
+                      self.page.wait_for_timeout(1000)
+
+                  objs = salvage_objects(last_txt)
+                  for obj in reversed(objs):
+                      obj_str = json.dumps(obj)
+                      if obj_str in prompt or (isinstance(obj, dict) and "ok" in obj and "hindi" not in obj):
+                          continue
+                      return obj_str
+                  return ""
+
+              def query(self, prompt: str, label: str = "query") -> str:
+                  if len(prompt) > 12000:
+                      log(f"Warning: Prompt length {len(prompt)} exceeds 12000 chars, truncating.")
+                      prompt = prompt[:12000]
+
+                  for attempt in range(1, 4):
+                      log(f"--- Query '{label}' (Attempt {attempt}/3) ---")
+                      try:
+                          return self._execute_single_query(prompt, label, attempt)
+                      except Exception as e:
+                          log(f"Attempt {attempt} failed with error: {e}")
+                          snap(self.page, f"err_{label}_attempt{attempt}")
+                          if attempt < 3:
+                              self.restart_all()
+                              time.sleep(random.uniform(6, 12))
+                          else:
+                              raise
+
+              def _execute_single_query(self, prompt: str, label: str, attempt: int) -> str:
+                  self.click_consent_buttons()
+                  log("Navigating to https://duck.ai/chat ...")
+                  self.page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
+                  self.page.wait_for_timeout(2500)
+                  self.click_consent_buttons()
+
+                  box = self.get_prompt_box()
+                  box.wait_for(state="visible", timeout=30000)
+
+                  box.fill(prompt)
+                  input_val = box.input_value()
+                  if len(input_val) < 0.9 * len(prompt):
+                      raise RuntimeError(
+                          f"input truncated: expected >= {int(0.9 * len(prompt))} chars, got {len(input_val)}"
+                      )
+
+                  def is_chat_post(resp):
+                      return resp.request.method == "POST" and resp.url.endswith("/duckchat/v1/chat")
+
+                  captured_response = None
+                  try:
+                      with self.page.expect_response(is_chat_post, timeout=30000) as resp_info:
+                          box.press("Enter")
+                      captured_response = resp_info.value
+                  except Exception as e:
+                      log(f"Enter did not trigger chat response ({e}). Attempting send button click...")
+                      try:
+                          send_btn = self.page.locator("button[type='submit'], button[aria-label*='send' i]").first
+                          if send_btn.is_visible():
+                              with self.page.expect_response(is_chat_post, timeout=30000) as resp_info2:
+                                  send_btn.click(timeout=5000)
+                              captured_response = resp_info2.value
+                      except Exception as e2:
+                          snap(self.page, f"prompt_never_sent_{label}")
+                          raise RuntimeError(f"prompt never sent: {e2}")
+
+                  if not captured_response:
+                      snap(self.page, f"prompt_never_sent_{label}")
+                      raise RuntimeError("prompt never sent: no response captured")
+
+                  status = captured_response.status
+                  log(f"HTTP Status of /duckchat/v1/chat: {status}")
+
+                  if status != 200:
+                      body_sample = ""
+                      try:
+                          body_sample = captured_response.text()[:300]
+                      except Exception:
+                          pass
+                      classification = "generic"
+                      if status == 429 or "ERR_RATE_LIMIT" in body_sample:
+                          classification = "rate limit"
+                      elif status == 418 or "ERR_CHALLENGE" in body_sample:
+                          classification = "bot challenge"
+                      log(f"Response error classification: {classification}. Status: {status}. Body: {body_sample!r}")
+                      raise RuntimeError(f"{classification} ({status})")
+
+                  req = captured_response.request
+                  poll_start = time.time()
+                  while time.time() - poll_start < 240:
+                      if req in self.failed_requests:
+                          raise RuntimeError("Chat request failed unexpectedly during streaming.")
+                      if req in self.finished_requests:
+                          break
+                      time.sleep(0.5)
+
+                  raw_text = ""
+                  assembled_text = ""
+                  try:
+                      raw_text = captured_response.text()
+                  except Exception as e:
+                      log(f"Error reading response.text(): {e}")
+
+                  raw_dump_path = DEBUG_DIR / f"raw_{label}_attempt{attempt}.txt"
+                  raw_dump_path.write_text(raw_text, encoding="utf-8")
+
+                  if raw_text:
+                      try:
+                          assembled_text = self.parse_sse_body(raw_text)
+                      except Exception as sse_err:
+                          log(f"SSE parse error: {sse_err}")
+
+                  log(
+                      f"Label '{label}': HTTP {status}, raw body len={len(raw_text)}, "
+                      f"assembled len={len(assembled_text)}, preview={assembled_text[:200]!r}"
                   )
 
-                  log(f"Processing Part {ci + 1}/{len(chunks)} ({part_start:.0f}s - {part_end:.0f}s)...")
-                  box = get_prompt_box(page)
-                  human_paste_prompt(page, box, prompt)
+                  if not assembled_text.strip():
+                      log("Assembled SSE text is empty. Falling back to DOM...")
+                      assembled_text = self.fallback_dom_salvage(prompt)
 
-                  try:
-                      raw_text = wait_for_stream_done(page, tag, state_dict)
-                      parsed = parse_json_safely(raw_text)
-                  except Exception as e:
-                      log(f"Error extracting Part {ci + 1}: {e}")
-                      snap(page, f"err_part_{ci+1}")
-                      parsed = None
+                  if not assembled_text.strip():
+                      raise RuntimeError("Failed to extract any text response from Duck.ai")
 
-                  # Verify that real Hindi narration was written
-                  valid_scenes = []
-                  if isinstance(parsed, list):
-                      for item in parsed:
-                          nar = str(item.get("narration", "")).strip()
-                          # Reject prompt templates or unparsed markers
-                          if "Detailed Hindi" in nar or len(nar) < 10:
-                              continue
-                          valid_scenes.append(item)
-
-                  if valid_scenes:
-                      all_story_beats.extend(valid_scenes)
-                      log(f"[+] Part {ci + 1} added {len(valid_scenes)} valid Hindi scenes. Total: {len(all_story_beats)}")
+                  self.success_count += 1
+                  if self.success_count % 4 == 0:
+                      log("Reached 4 successful requests on this circuit. Cycling Tor and browser...")
+                      self.restart_all()
                   else:
-                      log(f"[-] Part {ci + 1} had no valid scenes. Extracting direct dialogue translation...")
-                      sample_text = " ".join([s['text'] for s in segs[f_id - 1:l_id][:2]])
-                      all_story_beats.append({
-                          "clip_start": round(part_start, 2),
-                          "clip_end": round(min(part_start + 7.0, part_end), 2),
-                          "narration": f"कहानी के इस सीन में आगे की जांच शुरू होती है जिसमें दिखाया जाता है कि {sample_text}."
+                      time.sleep(random.uniform(6, 12))
+
+                  return assembled_text
+
+          def format_time_code(seconds: float) -> str:
+              mins = int(seconds // 60)
+              secs = int(seconds % 60)
+              return f"{mins:02d}:{secs:02d}"
+
+          def probe_mode(client: DuckChatClient):
+              log("=== RUNNING PROBE MODE ===")
+              prompt = 'Reply with exactly this JSON and nothing else: {"ok": true, "hindi": "नमस्ते"}'
+              try:
+                  text = client.query(prompt, label="probe")
+                  parsed = parse_first_balanced_json(text)
+                  log(f"Probe captured text:\n{text}")
+                  if parsed and parsed.get("ok") is True:
+                      log("Probe SUCCESS! Valid JSON returned.")
+                      sys.exit(0)
+                  else:
+                      log(f"Probe FAILED: JSON did not validate. Parsed: {parsed}")
+                      sys.exit(1)
+              except Exception as e:
+                  log(f"Probe execution error: {e}")
+                  sys.exit(1)
+
+          def build_full_timeline(transcript_data: dict):
+              segments = transcript_data.get("segments", [])
+              timeline = []
+              for s in segments:
+                  s_id_str = f"S{int(s['id']):04d}"
+                  timeline.append({
+                      "type": "dialogue",
+                      "id": s_id_str,
+                      "start": float(s["start"]),
+                      "end": float(s["end"]),
+                      "text": str(s.get("text", "")).strip(),
+                  })
+
+              visuals_path = Path("visuals.json")
+              if visuals_path.exists():
+                  try:
+                      v_list = json.loads(visuals_path.read_text(encoding="utf-8"))
+                      for v in v_list:
+                          v_id = v.get("id", "V0001")
+                          timeline.append({
+                              "type": "visual",
+                              "id": v_id,
+                              "start": float(v["start"]),
+                              "end": float(v["end"]),
+                              "text": f"(screen) {str(v.get('text', '')).strip()}",
+                          })
+                  except Exception as e:
+                      log(f"Warning reading visuals.json: {e}")
+
+              timeline.sort(key=lambda x: (x["start"], x["end"]))
+              return timeline
+
+          def split_into_chunks(timeline_items: list, max_chars: int = 4500):
+              lines = []
+              for item in timeline_items:
+                  tc = format_time_code(item["start"])
+                  lines.append(f"[{item['id']} | {tc}] {item['text']}")
+
+              chunks = []
+              cur_chunk = []
+              cur_len = 0
+              for idx, line in enumerate(lines):
+                  line_len = len(line) + 1
+                  if cur_len + line_len > max_chars and cur_chunk:
+                      chunks.append(list(cur_chunk))
+                      overlap = cur_chunk[-3:] if len(cur_chunk) >= 3 else cur_chunk
+                      cur_chunk = list(overlap)
+                      cur_len = sum(len(l) + 1 for l in cur_chunk)
+                  cur_chunk.append(line)
+                  cur_len += line_len
+
+              if cur_chunk:
+                  chunks.append(cur_chunk)
+
+              log(f"Created {len(chunks)} text chunks for Step 1.")
+              return chunks
+
+          def step1_scene_notes(client: DuckChatClient, chunks: list, hints_text: str, seg_map: dict):
+              log("=== STEP 1: SCENE NOTES ===")
+              all_scenes = []
+              story_so_far = "Beginning of the movie."
+
+              for c_idx, chunk_lines in enumerate(chunks):
+                  label = f"scene_chunk_{c_idx+1}"
+                  chunk_text = "\n".join(chunk_lines)
+
+                  prev_scenes_info = ""
+                  if all_scenes:
+                      recent = all_scenes[-2:]
+                      prev_scenes_info = "PREVIOUS SCENES:\n" + json.dumps(recent, ensure_ascii=False)
+
+                  prompt = (
+                      f"HINTS / TRUSTED INFO:\n{hints_text}\n\n"
+                      f"STORY SO FAR (max 120 words):\n{story_so_far}\n\n"
+                      f"{prev_scenes_info}\n\n"
+                      f"NEW LINES:\n{chunk_text}\n\n"
+                      "You are watching a movie piece by piece and taking notes. Split NEW LINES into scenes (one place/time/situation). "
+                      "Use only what the lines support, no outside knowledge. Convert dialogue into third-person plot actions; never copy sentences. "
+                      "Merge misspelled name variants into one person; unnamed people get a role. "
+                      'Return ONLY JSON: {"scenes":[{"title":"","where_when":"","people":[""],"why":"what earlier event or goal causes this scene",'
+                      '"what_happens":"3-5 plain sentences","outcome":"what changes","importance":3,'
+                      '"moments":[{"seg_start":"S0012","seg_end":"S0015","what":"one sentence"}]}],"story_so_far":""}. '
+                      "2-6 moments per scene, tight ranges, in order. Silent action cited from (screen) lines must also be a moment."
+                  )
+
+                  raw_resp = client.query(prompt, label=label)
+                  parsed = parse_first_balanced_json(raw_resp)
+                  if not parsed:
+                      salvaged = salvage_objects(raw_resp)
+                      for cand in salvaged:
+                          if isinstance(cand, dict) and "scenes" in cand:
+                              parsed = cand
+                              break
+
+                  if not parsed or not isinstance(parsed.get("scenes"), list):
+                      log(f"Warning: Could not parse scenes for chunk {c_idx+1}. Using fallback scene.")
+                      first_seg = chunk_lines[0].split()[0].strip("[]")
+                      last_seg = chunk_lines[-1].split()[0].strip("[]")
+                      parsed = {
+                          "scenes": [{
+                              "title": f"Action sequence {c_idx+1}",
+                              "where_when": "Continuity location",
+                              "people": ["Main character"],
+                              "why": "Plot progresses",
+                              "what_happens": "Characters discuss recent events and plan next moves.",
+                              "outcome": "New information is discovered.",
+                              "importance": 3,
+                              "moments": [{"seg_start": first_seg, "seg_end": last_seg, "what": "Dialogue and events unfold."}],
+                          }],
+                          "story_so_far": story_so_far,
+                      }
+
+                  story_so_far = str(parsed.get("story_so_far", story_so_far)).strip()[:800]
+
+                  chunk_seg_ids = set()
+                  for line in chunk_lines:
+                      m = re.match(r"^\[([A-Z0-9]+)\s*\|", line)
+                      if m:
+                          chunk_seg_ids.add(m.group(1))
+
+                  for s in parsed.get("scenes", []):
+                      s_id = f"S{len(all_scenes)+1:02d}"
+                      valid_moments = []
+                      moments_raw = s.get("moments", [])
+                      if not isinstance(moments_raw, list) or len(moments_raw) == 0:
+                          if chunk_seg_ids:
+                              sorted_ids = sorted(list(chunk_seg_ids))
+                              moments_raw = [{"seg_start": sorted_ids[0], "seg_end": sorted_ids[-1], "what": s.get("title", "")}]
+
+                      for mi, m in enumerate(moments_raw):
+                          st_id = m.get("seg_start", "")
+                          en_id = m.get("seg_end", "")
+                          if st_id not in seg_map:
+                              continue
+                          if en_id not in seg_map:
+                              en_id = st_id
+                          st_sec = seg_map[st_id]["start"]
+                          en_sec = seg_map[en_id]["end"]
+                          if en_sec < st_sec:
+                              en_sec = st_sec + 2.0
+                          valid_moments.append({
+                              "m_id": f"M{len(valid_moments)+1}",
+                              "moment_id": f"{s_id}_M{len(valid_moments)+1}",
+                              "seg_start": st_id,
+                              "seg_end": en_id,
+                              "start_sec": st_sec,
+                              "end_sec": en_sec,
+                              "what": m.get("what", ""),
+                          })
+
+                      if not valid_moments:
+                          continue
+
+                      scene_start = min(m["start_sec"] for m in valid_moments)
+                      scene_end = max(m["end_sec"] for m in valid_moments)
+                      importance = int(s.get("importance", 3))
+                      if importance < 1: importance = 1
+                      if importance > 5: importance = 5
+
+                      scene_entry = {
+                          "scene_id": s_id,
+                          "title": s.get("title", f"Scene {s_id}"),
+                          "where_when": s.get("where_when", ""),
+                          "people": s.get("people", []),
+                          "why": s.get("why", ""),
+                          "what_happens": s.get("what_happens", ""),
+                          "outcome": s.get("outcome", ""),
+                          "importance": importance,
+                          "duration": max(scene_end - scene_start, 4.0),
+                          "scene_start": scene_start,
+                          "scene_end": scene_end,
+                          "moments": valid_moments,
+                      }
+                      all_scenes.append(scene_entry)
+
+                  (DEBUG_DIR / "story_notes.checkpoint.json").write_text(
+                      json.dumps(all_scenes, ensure_ascii=False, indent=2), encoding="utf-8"
+                  )
+
+              Path("story_notes.json").write_text(
+                  json.dumps(all_scenes, ensure_ascii=False, indent=2), encoding="utf-8"
+              )
+              log(f"Step 1 Complete: {len(all_scenes)} scenes extracted.")
+              return all_scenes
+
+          def step2_whole_story(client: DuckChatClient, scenes: list, hints_text: str):
+              log("=== STEP 2: WHOLE STORY SYNOPSIS ===")
+              compact_notes = []
+              for sc in scenes:
+                  compact_notes.append({
+                      "scene_id": sc["scene_id"],
+                      "title": sc["title"],
+                      "people": sc["people"],
+                      "why": sc["why"],
+                      "what": sc["what_happens"],
+                      "outcome": sc["outcome"],
+                  })
+              notes_str = json.dumps(compact_notes, ensure_ascii=False)
+              if len(notes_str) > 11000:
+                  grouped = []
+                  for i in range(0, len(compact_notes), 10):
+                      grp = compact_notes[i : i + 10]
+                      grouped.append({
+                          "scenes": f"{grp[0]['scene_id']} - {grp[-1]['scene_id']}",
+                          "overview": " -> ".join([g["title"] for g in grp]),
                       })
+                  notes_str = json.dumps(grouped, ensure_ascii=False)
 
-                  page.wait_for_timeout(2000)
+              prompt = (
+                  f"HINTS / TRUSTED INFO:\n{hints_text}\n\n"
+                  f"COMPACT SCENE NOTES:\n{notes_str}\n\n"
+                  "Return JSON with logline, synopsis (250-400 words, beginning to end, with cause and effect), "
+                  "characters (with hindi_name), and scene_links (scene_id and bridge_to_next sentence).\n"
+                  'Return ONLY JSON: {"logline":"","synopsis":"","characters":[{"name":"","hindi_name":"","aliases":[],"who":""}],'
+                  '"scene_links":[{"scene_id":"S01","bridge_to_next":""}]}'
+              )
 
-              if len(all_story_beats) == 0:
-                  raise RuntimeError("No story beats generated.")
+              raw_resp = client.query(prompt, label="whole_story")
+              parsed = parse_first_balanced_json(raw_resp)
+              if not parsed:
+                  salvaged = salvage_objects(raw_resp)
+                  for cand in salvaged:
+                      if isinstance(cand, dict) and "synopsis" in cand:
+                          parsed = cand
+                          break
 
-              total_words = 0
-              for idx, b in enumerate(all_story_beats):
-                  b["scene"] = idx + 1
-                  nar = b.get("narration", "")
-                  w_count = len(nar.split())
-                  total_words += w_count
-                  b["words"] = w_count
-                  cs = max(0.0, float(b.get("clip_start", 0)))
-                  ce = max(cs + 2.0, float(b.get("clip_end", cs + 6.0)))
-                  b["clip_start"] = round(cs, 2)
-                  b["clip_end"] = round(ce, 2)
-                  b["clip_duration"] = round(ce - cs, 2)
+              if not parsed or not isinstance(parsed, dict):
+                  parsed = {
+                      "logline": "A thrilling story unfolds with dramatic twists and turns.",
+                      "synopsis": "The story follows the central characters through a complex series of events leading to a dramatic resolution.",
+                      "characters": [{"name": "Main Character", "hindi_name": "नायक", "aliases": [], "who": "Protagonist"}],
+                      "scene_links": [],
+                  }
 
-              output_data = {
-                  "movie_title": transcript_data.get("movie_title", "movie"),
-                  "total_original_duration": transcript_data.get("duration", segs[-1]["end"]),
-                  "target_duration_minutes": TARGET_MINS,
+              (DEBUG_DIR / "whole_story.checkpoint.json").write_text(
+                  json.dumps(parsed, ensure_ascii=False, indent=2), encoding="utf-8"
+              )
+              log("Step 2 Complete: Synopsis and character list acquired.")
+              return parsed
+
+          def contains_latin_chars(text: str) -> bool:
+              return bool(re.search(r"[a-zA-Z]", text))
+
+          def step3_narration(client: DuckChatClient, scenes: list, whole_story: dict, target_minutes: float):
+              log("=== STEP 3: NARRATION GENERATION ===")
+              total_budget_words = int(target_minutes * 135)
+              total_weight = sum(sc["duration"] * sc["importance"] for sc in scenes) or 1.0
+
+              logline = whole_story.get("logline", "")
+              synopsis = whole_story.get("synopsis", "")
+              characters_str = json.dumps(whole_story.get("characters", []), ensure_ascii=False)
+              links_map = {item.get("scene_id"): item.get("bridge_to_next", "") for item in whole_story.get("scene_links", [])}
+
+              all_scene_sentences = {}
+              last_4_sentences = []
+              previous_outcome = "कहानी की शुरुआत होती है।"
+
+              for idx, sc in enumerate(scenes):
+                  sc_id = sc["scene_id"]
+                  label = f"narration_{sc_id}"
+                  weight = sc["duration"] * sc["importance"]
+                  sc_words = total_budget_words * (weight / total_weight)
+                  target_sents = round(sc_words / 12)
+                  min_sents = 2 if sc["importance"] >= 3 else 1
+                  max_sents = max(min_sents, math.floor(sc["duration"] / 3.5))
+                  exact_n = max(min_sents, min(max_sents, target_sents))
+                  if exact_n <= 0:
+                      exact_n = 1
+
+                  moments_formatted = []
+                  for m in sc["moments"]:
+                      moments_formatted.append(f"{m['m_id']}: {m['what']} (Footage: {m['start_sec']:.1f}s to {m['end_sec']:.1f}s)")
+                  moments_str = "\n".join(moments_formatted)
+
+                  next_title = scenes[idx + 1]["title"] if idx + 1 < len(scenes) else "फिल्म का अंत"
+                  bridge_to_next = links_map.get(sc_id, "")
+
+                  base_prompt = (
+                      f"LOGLINE & SYNOPSIS:\nLogline: {logline}\nSynopsis: {synopsis}\n\n"
+                      f"CHARACTERS (use Hindi names in Devanagari):\n{characters_str}\n\n"
+                      f"PREVIOUS SCENE OUTCOME:\n{previous_outcome}\n\n"
+                      f"LAST 4 NARRATED SENTENCES:\n{chr(10).join(last_4_sentences) if last_4_sentences else 'None'}\n\n"
+                      f"CURRENT SCENE ({sc_id} - {sc['title']}):\n"
+                      f"Where/When: {sc['where_when']}\nPeople: {', '.join(sc['people'])}\nWhy: {sc['why']}\nWhat happens: {sc['what_happens']}\nOutcome: {sc['outcome']}\n"
+                      f"Moments:\n{moments_str}\n\n"
+                      f"NEXT SCENE: {next_title}\nBridge context: {bridge_to_next}\n\n"
+                      f"RULES:\n"
+                      f"1. You are a Hindi YouTube movie-recap narrator telling the whole story as ONE continuous narration. Devanagari only (NO Latin letters), conversational, present tense.\n"
+                      f"2. The viewer must always know WHERE we are, WHO is here and WHY. The first sentence of a scene links to the previous scene as cause or consequence (bridges such as 'इसी बीच', 'कुछ घंटे बाद', 'इसी वजह से'). Introduce a character in a few words the first time they appear. "
+                      f"{'The first scene starts with a one-line hook;' if idx == 0 else ''} "
+                      f"{'The last scene ends with a closing line.' if idx == len(scenes)-1 else ''}\n"
+                      f"3. Explain, do not read out dialogue. Never quote. Use only facts in the notes, no invented motives.\n"
+                      f"4. Exactly {exact_n} sentences of 10-16 words, each tagged with the moment it describes (e.g. 'M1', 'M2'), moments in order.\n"
+                      f'5. Return ONLY JSON: {{"sentences": [{{"moment": "M1", "text": "यहाँ देवनागरी में वाक्य होगा।"}}]}}'
+                  )
+
+                  def fetch_narration(prompt_to_send):
+                      raw_r = client.query(prompt_to_send, label=label)
+                      p = parse_first_balanced_json(raw_r)
+                      if not p:
+                          for cand in salvage_objects(raw_r):
+                              if isinstance(cand, dict) and "sentences" in cand:
+                                  p = cand
+                                  break
+                      return p
+
+                  parsed = fetch_narration(base_prompt)
+                  sents = parsed.get("sentences", []) if isinstance(parsed, dict) else []
+
+                  has_latin = any(contains_latin_chars(s.get("text", "")) for s in sents if isinstance(s, dict))
+                  if has_latin:
+                      log(f"Scene {sc_id}: Detected Latin letters in Devanagari output. Re-asking once...")
+                      retry_prompt = base_prompt + "\n\nCRITICAL: Do not use ANY English / Latin characters. Output strictly in Hindi (Devanagari script)."
+                      parsed = fetch_narration(retry_prompt)
+                      sents = parsed.get("sentences", []) if isinstance(parsed, dict) else []
+
+                  if len(sents) != exact_n:
+                      log(f"Scene {sc_id}: Count mismatch (expected {exact_n}, got {len(sents)}). Re-asking once...")
+                      retry_prompt = base_prompt + f"\n\nCRITICAL: Return EXACTLY {exact_n} sentences inside the 'sentences' array."
+                      re_parsed = fetch_narration(retry_prompt)
+                      if isinstance(re_parsed, dict) and len(re_parsed.get("sentences", [])) > 0:
+                          sents = re_parsed.get("sentences", [])
+
+                  valid_sents = []
+                  for s in sents:
+                      if isinstance(s, dict) and s.get("text"):
+                          m_tag = s.get("moment", "M1").upper()
+                          t_clean = strip_markdown_fences(s["text"]).replace('"', "").strip()
+                          valid_sents.append({"moment": m_tag, "text": t_clean})
+
+                  if not valid_sents:
+                      valid_sents = [{"moment": "M1", "text": f"कहानी में आगे बढ़ते हुए {sc['title']} का यह महत्वपूर्ण घटनाक्रम सामने आता है।"}]
+
+                  all_scene_sentences[sc_id] = valid_sents
+                  recent_texts = [vs["text"] for vs in valid_sents]
+                  last_4_sentences = (last_4_sentences + recent_texts)[-4:]
+                  previous_outcome = sc["outcome"]
+
+                  (DEBUG_DIR / "narration.checkpoint.json").write_text(
+                      json.dumps(all_scene_sentences, ensure_ascii=False, indent=2), encoding="utf-8"
+                  )
+
+              log("Step 3 Complete: Narration sentences generated.")
+              return all_scene_sentences
+
+          def step4_timing_and_assembly(scenes: list, whole_story: dict, scene_sentences: dict, movie_title: str, target_mins: float):
+              log("=== STEP 4 & 5: TIMING ALLOCATION & VALIDATION CHECKS ===")
+              beats = []
+              beat_counter = 1
+
+              for sc in scenes:
+                  sc_id = sc["scene_id"]
+                  sents = scene_sentences.get(sc_id, [])
+                  moment_lookup = {m["m_id"]: m for m in sc["moments"]}
+                  fallback_moment = sc["moments"][0]
+
+                  grouped_by_moment = {}
+                  for s in sents:
+                      m_key = s["moment"]
+                      if m_key not in moment_lookup:
+                          m_key = fallback_moment["m_id"]
+                      grouped_by_moment.setdefault(m_key, []).append(s)
+
+                  last_end_time = sc["scene_start"]
+
+                  for m_key in sorted(grouped_by_moment.keys(), key=lambda k: moment_lookup[k]["start_sec"]):
+                      m_obj = moment_lookup[m_key]
+                      m_sents = grouped_by_moment[m_key]
+                      m_count = len(m_sents)
+
+                      orig_start = m_obj["start_sec"]
+                      orig_end = m_obj["end_sec"]
+                      cur_dur = orig_end - orig_start
+                      needed_dur = m_count * 3.5
+
+                      if cur_dur < needed_dur:
+                          diff = (needed_dur - cur_dur) / 2.0
+                          adj_start = max(0.0, orig_start - diff)
+                          adj_end = orig_end + diff
+                      else:
+                          adj_start = orig_start
+                          adj_end = orig_end
+
+                      if adj_start < last_end_time:
+                          adj_start = last_end_time
+                          adj_end = max(adj_end, adj_start + needed_dur)
+
+                      slice_len = (adj_end - adj_start) / float(m_count)
+
+                      for i, sent in enumerate(m_sents):
+                          b_start = round(adj_start + (i * slice_len), 2)
+                          b_end = round(adj_start + ((i + 1) * slice_len), 2)
+                          if b_end <= b_start:
+                              b_end = round(b_start + 3.5, 2)
+
+                          last_end_time = b_end
+                          w_count = len(sent["text"].split())
+
+                          beat = {
+                              "beat_id": f"B{beat_counter:04d}",
+                              "scene_id": sc_id,
+                              "moment_id": m_obj["moment_id"],
+                              "narration": sent["text"],
+                              "target_window": {"start": b_start, "end": b_end},
+                              "portion": {"start": b_start, "end": b_end},
+                              "word_count": w_count,
+                          }
+                          beats.append(beat)
+                          beat_counter += 1
+
+              total_words = sum(b["word_count"] for b in beats)
+              target_words = int(target_mins * 135)
+              lower_bound = target_words * 0.85
+              upper_bound = target_words * 1.15
+
+              if not (lower_bound <= total_words <= upper_bound):
+                  log(f"WARNING: Total words ({total_words}) is outside +-15% target range [{lower_bound:.0f}, {upper_bound:.0f}]. Target was {target_words}.")
+              else:
+                  log(f"SUCCESS: Total words ({total_words}) is well within +-15% target range [{lower_bound:.0f}, {upper_bound:.0f}].")
+
+              final_output = {
+                  "movie_title": movie_title,
+                  "target_minutes": target_mins,
+                  "characters": whole_story.get("characters", []),
+                  "synopsis": whole_story.get("synopsis", ""),
+                  "total_beats": len(beats),
                   "total_words": total_words,
-                  "estimated_audio_minutes": round(total_words / 140, 2),
-                  "scenes_count": len(all_story_beats),
-                  "story_beats": all_story_beats,
+                  "beats": beats,
               }
+              return final_output
 
-              Path("story_beats.json").write_text(json.dumps(output_data, indent=2, ensure_ascii=False), encoding="utf-8")
-              log(f"SUCCESS! Wrote story_beats.json with {len(all_story_beats)} scenes ({total_words} Hindi words).")
-              browser.close()
+          def full_mode(client: DuckChatClient):
+              log("=== RUNNING FULL MODE PIPELINE ===")
+              t_file = Path("transcript.json")
+              if not t_file.exists():
+                  raise FileNotFoundError("transcript.json is missing in repository root!")
+
+              transcript_data = json.loads(t_file.read_text(encoding="utf-8"))
+              movie_title = transcript_data.get("movie_title", "Untitled Movie")
+
+              hints_file = Path("hints.txt")
+              hints_content = hints_file.read_text(encoding="utf-8") if hints_file.exists() else ""
+              combined_hints = (hints_content + "\n" + INPUT_HINTS).strip()
+
+              timeline = build_full_timeline(transcript_data)
+              seg_map = {item["id"]: item for item in timeline}
+              chunks = split_into_chunks(timeline, max_chars=4500)
+
+              try:
+                  scenes = step1_scene_notes(client, chunks, combined_hints, seg_map)
+                  if not scenes:
+                      raise RuntimeError("No scenes were parsed in Step 1.")
+
+                  whole_story = step2_whole_story(client, scenes, combined_hints)
+                  scene_sentences = step3_narration(client, scenes, whole_story, TARGET_MINUTES)
+                  final_payload = step4_timing_and_assembly(scenes, whole_story, scene_sentences, movie_title, TARGET_MINUTES)
+
+                  Path("story_beats.json").write_text(
+                      json.dumps(final_payload, ensure_ascii=False, indent=2), encoding="utf-8"
+                  )
+                  log(f"SUCCESS: Wrote story_beats.json with {final_payload['total_beats']} beats ({final_payload['total_words']} words).")
+
+              except Exception as e:
+                  log(f"Fatal error during full pipeline: {e}")
+                  partial_data = {
+                      "error": str(e),
+                      "timestamp": time.time(),
+                      "movie_title": movie_title,
+                      "target_minutes": TARGET_MINUTES,
+                  }
+                  (DEBUG_DIR / "story_beats.partial.json").write_text(
+                      json.dumps(partial_data, ensure_ascii=False, indent=2), encoding="utf-8"
+                  )
+                  sys.exit(1)
+
+          def main():
+              log("Starting Duck.ai Story Generator...")
+              client = DuckChatClient(headless=not HEADED)
+              try:
+                  if RUN_MODE == "probe":
+                      probe_mode(client)
+                  else:
+                      full_mode(client)
+              finally:
+                  client.close()
+
+          if __name__ == "__main__":
+              main()
           PY
 
           if [ "$HEADED" = "true" ]; then
-            xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_story.py
+            xvfb-run -a --server-args="-screen 0 1366x850x24" python generate_story.py
           else
             python generate_story.py
           fi
@@ -375,6 +1022,7 @@ jobs:
         if: always()
         run: |
           pkill -9 -f chrome || true
+          pkill -9 -f chromium || true
           pkill -9 -f Xvfb || true
 
       - name: Commit and push story_beats.json
@@ -383,14 +1031,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ -f story_beats.json ]; then
-            git add -f story_beats.json
+            git add -f story_beats.json story_notes.json || true
             if ! git diff --cached --quiet; then
-              git commit -m "Generate YouTube movie recap story beats [skip ci]"
+              git commit -m "Generate YouTube Hindi movie recap story beats [skip ci]"
               git pull --rebase origin main
               git push origin HEAD:main
-              echo "Successfully pushed story_beats.json"
+              echo "Successfully pushed results"
             else
-              echo "No changes in story_beats.json"
+              echo "No changes to commit"
             fi
           fi
 

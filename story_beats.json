@@ -2,17 +2,113 @@
   "movie_title": "movie",
   "total_original_duration": 1039.86,
   "target_duration_minutes": 4.0,
-  "total_words": 18,
-  "estimated_audio_minutes": 0.13,
-  "scenes_count": 1,
+  "total_words": 78,
+  "estimated_audio_minutes": 0.56,
+  "scenes_count": 13,
   "story_beats": [
     {
+      "clip_start": 0.7,
+      "clip_end": 6.7,
+      "narration": "Hindi voiceover narration for this part...",
       "scene": 1,
-      "clip_start": 0.0,
-      "clip_end": 6.5,
-      "narration": "कहानी की शुरुआत में हम देखते हैं कि डिटेक्टिव क्लोई को एक नया मर्डर केस सौंपा जाता है...",
-      "words": 18,
-      "clip_duration": 6.5
+      "words": 6,
+      "clip_duration": 6.0
+    },
+    {
+      "clip_start": 90.5,
+      "clip_end": 96.5,
+      "narration": "Hindi voiceover narration for this part...",
+      "scene": 2,
+      "words": 6,
+      "clip_duration": 6.0
+    },
+    {
+      "clip_start": 167.0,
+      "clip_end": 173.0,
+      "narration": "Hindi voiceover narration for this part...",
+      "scene": 3,
+      "words": 6,
+      "clip_duration": 6.0
+    },
+    {
+      "clip_start": 247.7,
+      "clip_end": 253.7,
+      "narration": "Hindi voiceover narration for this part...",
+      "scene": 4,
+      "words": 6,
+      "clip_duration": 6.0
+    },
+    {
+      "clip_start": 305.3,
+      "clip_end": 311.3,
+      "narration": "Hindi voiceover narration for this part...",
+      "scene": 5,
+      "words": 6,
+      "clip_duration": 6.0
+    },
+    {
+      "clip_start": 408.9,
+      "clip_end": 414.9,
+      "narration": "Hindi voiceover narration for this part...",
+      "scene": 6,
+      "words": 6,
+      "clip_duration": 6.0
+    },
+    {
+      "clip_start": 489.7,
+      "clip_end": 495.7,
+      "narration": "Hindi voiceover narration for this part...",
+      "scene": 7,
+      "words": 6,
+      "clip_duration": 6.0
+    },
+    {
+      "clip_start": 551.7,
+      "clip_end": 557.7,
+      "narration": "Hindi voiceover narration for this part...",
+      "scene": 8,
+      "words": 6,
+      "clip_duration": 6.0
+    },
+    {
+      "clip_start": 609.8,
+      "clip_end": 615.8,
+      "narration": "Hindi voiceover narration for this part...",
+      "scene": 9,
+      "words": 6,
+      "clip_duration": 6.0
+    },
+    {
+      "clip_start": 685.4,
+      "clip_end": 691.4,
+      "narration": "Hindi voiceover narration for this part...",
+      "scene": 10,
+      "words": 6,
+      "clip_duration": 6.0
+    },
+    {
+      "clip_start": 767.5,
+      "clip_end": 773.5,
+      "narration": "Hindi voiceover narration for this part...",
+      "scene": 11,
+      "words": 6,
+      "clip_duration": 6.0
+    },
+    {
+      "clip_start": 832.1,
+      "clip_end": 838.1,
+      "narration": "Hindi voiceover narration for this part...",
+      "scene": 12,
+      "words": 6,
+      "clip_duration": 6.0
+    },
+    {
+      "clip_start": 979.5,
+      "clip_end": 985.5,
+      "narration": "Hindi voiceover narration for this part...",
+      "scene": 13,
+      "words": 6,
+      "clip_duration": 6.0
     }
   ]
 }

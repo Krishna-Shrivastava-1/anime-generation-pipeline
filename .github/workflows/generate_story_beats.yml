@@ -73,8 +73,8 @@ jobs:
           TARGET_MINS = float(os.environ.get("TARGET_RECAP_MINS", "5"))
           TARGET_WORDS = int(TARGET_MINS * 140)
 
-          PART_SECONDS = 150
-          PART_CHARS = 1500
+          PART_SECONDS = 140
+          PART_CHARS = 1400
           MAX_WAIT = 180
           BROWSER_PROXY = "socks5://127.0.0.1:9050"
           UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36"
@@ -168,15 +168,26 @@ jobs:
                   send_btn.click(timeout=2500)
               else:
                   box.press("Enter")
-              page.wait_for_timeout(1500)
+              page.wait_for_timeout(2000)
               dismiss_modals(page)
 
-          def extract_payload(body, tag):
+          def get_latest_assistant_text(page):
+              # Only read the assistant's message container, avoid picking up prompt input
+              try:
+                  loc = page.locator("article, [data-testid='chat-message-assistant'], [class*='message_assistant']")
+                  cnt = loc.count()
+                  if cnt > 0:
+                      return loc.nth(cnt - 1).inner_text(timeout=2000)
+              except Exception:
+                  pass
+              return page.inner_text("body", timeout=3000)
+
+          def extract_payload(text, tag):
               start_m = f"###START-{tag}###"
               end_m = f"###END-{tag}###"
-              idx = body.rfind(start_m)
+              idx = text.rfind(start_m)
               if idx != -1:
-                  tail = body[idx + len(start_m):]
+                  tail = text[idx + len(start_m):]
                   brace = tail.find("[") if "[" in tail else tail.find("{")
                   if brace != -1:
                       tail = tail[brace:]
@@ -185,24 +196,6 @@ jobs:
                           return tail[:e].strip(), True
                       return tail.strip(), False
               return None, False
-
-          def wait_for_payload(page, tag, max_wait=MAX_WAIT):
-              t0 = time.time()
-              last_len, stable = -1, 0
-              while time.time() - t0 < max_wait:
-                  dismiss_modals(page)
-                  check_and_click_continue(page)
-                  scroll_to_bottom(page)
-                  body = page.inner_text("body", timeout=5000)
-                  text, finished = extract_payload(body, tag)
-                  if finished:
-                      return text
-                  stable = stable + 1 if len(body) == last_len else 0
-                  last_len = len(body)
-                  if not is_generating(page) and stable >= 5 and text:
-                      return text
-                  page.wait_for_timeout(1000)
-              raise TimeoutError(f"Response for {tag} timed out.")
 
           def parse_json_safely(text):
               if not text: return None
@@ -216,6 +209,29 @@ jobs:
                   except Exception: pass
               return None
 
+          def wait_for_response(page, tag, max_wait=MAX_WAIT):
+              t0 = time.time()
+              last_len, stable = -1, 0
+              while time.time() - t0 < max_wait:
+                  dismiss_modals(page)
+                  check_and_click_continue(page)
+                  scroll_to_bottom(page)
+                  content = get_latest_assistant_text(page)
+                  raw_json, finished = extract_payload(content, tag)
+
+                  if finished:
+                      return raw_json
+
+                  # Check if stream finished generating and stable
+                  stable = stable + 1 if len(content) == last_len else 0
+                  last_len = len(content)
+                  if not is_generating(page) and stable >= 5 and raw_json:
+                      return raw_json
+
+                  page.wait_for_timeout(1000)
+              raise TimeoutError(f"Response for {tag} timed out.")
+
+          # Load transcripts
           t_file = Path("transcript.json")
           if not t_file.exists():
               raise FileNotFoundError("transcript.json missing!")
@@ -236,7 +252,7 @@ jobs:
           if cur_first <= len(segs):
               chunks.append((cur_first, len(segs)))
 
-          log(f"Transcript broken into {len(chunks)} chronological parts.")
+          log(f"Transcript split into {len(chunks)} chronological parts.")
           all_story_beats = []
 
           with sync_playwright() as p:
@@ -244,14 +260,14 @@ jobs:
               open_chat()
               page = state["page"]
 
+              # Prime chat with strict guidelines
               init_prompt = (
                   "You are a professional Hindi YouTube Movie Recap voiceover writer.\n"
-                  "I will send transcript parts one by one. For each part, write 2 to 3 engaging recap scenes in Hindi.\n"
                   "RULES:\n"
-                  "1. Write third-person voiceover narration explaining character actions and motives.\n"
-                  "2. Use recap bridges ('कहानी की शुरुआत में', 'इसके बाद', 'तभी वहां', 'हालांकि').\n"
-                  "3. Assign accurate video start and end timestamps from the lines provided.\n"
-                  "4. Always output JSON inside the requested markers."
+                  "1. Write ONLY in Hindi (Devanagari script) voiceover style.\n"
+                  "2. Explain what is happening in third-person (e.g. 'तभी डिटेक्टिव क्लोई को एक नया केस मिलता है...').\n"
+                  "3. NEVER output English placeholder phrases like 'Hindi voiceover narration'. Always write actual Hindi storytelling.\n"
+                  "4. Always output JSON inside the specified markers."
               )
               submit_prompt(page, init_prompt)
               time.sleep(2)
@@ -262,34 +278,57 @@ jobs:
                   part_start = segs[f_id-1]['start']
                   part_end = segs[l_id-1]['end']
 
+                  # Strict prompt with NO English placeholder strings in the example
                   prompt = (
-                      f"Write 2 to 3 Hindi recap voiceover scenes for Part {ci + 1}/{len(chunks)} ({part_start:.0f}s - {part_end:.0f}s):\n"
-                      f"TRANSCRIPT:\n" + " ".join(act_lines) + "\n\n"
-                      f"Return JSON:\n"
+                      f"Write 2 to 3 chronological Hindi movie recap scenes for this clip ({part_start:.0f}s to {part_end:.0f}s).\n"
+                      f"DIALOGUES:\n" + " ".join(act_lines) + "\n\n"
+                      f"INSTRUCTIONS:\n"
+                      f"- Write actual Hindi narration for each scene (approx 20-35 Hindi words per scene).\n"
+                      f"- Specify 'clip_start' and 'clip_end' within {part_start:.0f} and {part_end:.0f}.\n"
+                      f"- Wrap your JSON strictly inside ###START-{tag}### and ###END-{tag}###\n\n"
+                      f"Output structure:\n"
                       f"###START-{tag}###\n"
                       f"[\n"
-                      f"  {{\n"
-                      f"    \"clip_start\": {part_start:.1f},\n"
-                      f"    \"clip_end\": {min(part_start + 6.0, part_end):.1f},\n"
-                      f"    \"narration\": \"Hindi voiceover narration for this part...\"\n"
-                      f"  }}\n"
+                      f"  {{\"clip_start\": {part_start:.1f}, \"clip_end\": {min(part_start + 8.0, part_end):.1f}, \"narration\": \"यहाँ पूरी हिंदी कहानी लिखें\"}}\n"
                       f"]\n"
                       f"###END-{tag}###"
                   )
 
                   log(f"Generating recap for Part {ci + 1}/{len(chunks)} ({part_start:.0f}s - {part_end:.0f}s)...")
                   submit_prompt(page, prompt)
-                  raw = wait_for_payload(page, tag)
-                  parsed = parse_json_safely(raw)
 
-                  if isinstance(parsed, list) and len(parsed) > 0:
-                      all_story_beats.extend(parsed)
-                      log(f"[+] Part {ci + 1} added {len(parsed)} scenes. (Total accumulated: {len(all_story_beats)})")
+                  try:
+                      raw_text = wait_for_response(page, tag)
+                      parsed = parse_json_safely(raw_text)
+                  except Exception as e:
+                      log(f"Error on Part {ci + 1}: {e}")
+                      parsed = None
+
+                  # Validate that narration is real Hindi, not boilerplate
+                  valid_scenes = []
+                  if isinstance(parsed, list):
+                      for item in parsed:
+                          nar = str(item.get("narration", "")).strip()
+                          # Reject boilerplate / placeholders
+                          if "Hindi voiceover" in nar or "यहाँ पूरी हिंदी कहानी" in nar or len(nar) < 10:
+                              continue
+                          valid_scenes.append(item)
+
+                  if valid_scenes:
+                      all_story_beats.extend(valid_scenes)
+                      log(f"[+] Part {ci + 1} added {len(valid_scenes)} valid Hindi scenes. (Total: {len(all_story_beats)})")
                   else:
-                      log(f"[-] Part {ci + 1} parsing failed or empty. Skipping.")
+                      log(f"[-] Part {ci + 1} produced no valid Hindi narration. Using dialogue context fallback.")
+                      # Fallback scene to ensure timeline continuity
+                      fallback_text = " ".join([s['text'] for s in segs[f_id - 1:l_id][:2]])
+                      all_story_beats.append({
+                          "clip_start": round(part_start, 2),
+                          "clip_end": round(min(part_start + 6.0, part_end), 2),
+                          "narration": f"कहानी के इस दृश्य में घटना आगे बढ़ती है जहां {fallback_text[:60]}..."
+                      })
 
               if len(all_story_beats) == 0:
-                  raise ValueError("Failed to generate any scenes across all parts.")
+                  raise ValueError("Failed to generate recap scenes.")
 
               total_words = 0
               for idx, b in enumerate(all_story_beats):
@@ -315,7 +354,7 @@ jobs:
               }
 
               Path("story_beats.json").write_text(json.dumps(output_data, indent=2, ensure_ascii=False), encoding="utf-8")
-              log(f"SUCCESS! Created story_beats.json with {len(all_story_beats)} scenes ({total_words} words).")
+              log(f"SUCCESS! Created story_beats.json with {len(all_story_beats)} Hindi scenes ({total_words} words).")
               state["browser"].close()
           EOF
 

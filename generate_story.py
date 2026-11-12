@@ -9,6 +9,7 @@ if sys.platform != "win32":
     sys.stderr.reconfigure(encoding="utf-8")
 
 HEADED = os.environ.get("HEADED") == "true"
+USE_TOR = os.environ.get("USE_TOR", "false").strip().lower() == "true"
 RUN_MODE = os.environ.get("RUN_MODE", "full").strip().lower()
 RESET_STATE = os.environ.get("RESET_STATE", "false").strip().lower() == "true"
 TEXT_WAIT = int(os.environ.get("TEXT_WAIT_SECONDS", "180"))
@@ -25,7 +26,9 @@ DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
 STATE_FILE = Path("build/pipeline_state.json")
 STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
 RUN_LOG = DEBUG_DIR / "run.log"
-BROWSER_PROXY = "socks5://127.0.0.1:9050"
+
+# Only proxy if explicitly requested via USE_TOR
+BROWSER_PROXY = "socks5://127.0.0.1:9050" if USE_TOR else None
 
 if RESET_STATE and STATE_FILE.exists():
     STATE_FILE.unlink()
@@ -78,21 +81,12 @@ def parse_balanced_json(text: str):
                     except Exception: break
     return None
 
-def new_tor_circuit():
-    log("Restarting Tor for fresh exit IP...")
-    subprocess.run(["sudo", "timeout", "60", "service", "tor", "restart"], check=False)
-    for _ in range(30):
-        if subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0: break
-        time.sleep(2)
-    time.sleep(3)
-
 # ==================== PLAYWRIGHT DUCK.AI CONTROLLER ====================
 
 def get_prompt_box(page):
     return page.locator("textarea[name='user-prompt'], textarea[placeholder*='ask' i], textarea").first
 
 def click_ask_button(page):
-    """Safely clicks the Ask button only if visible and enabled."""
     try:
         ask_btn = page.locator("button[aria-label*='ask' i], button:has-text('Ask'), button[type='submit']").first
         if ask_btn.count() > 0 and ask_btn.is_visible() and ask_btn.is_enabled():
@@ -119,7 +113,6 @@ def submit_prompt(page, box, text, context):
     box.click()
     page.wait_for_timeout(200)
 
-    # Use native React property setter so React recognizes the text change
     page.evaluate("""(val) => {
         const textarea = document.querySelector('textarea');
         if (textarea) {
@@ -132,15 +125,13 @@ def submit_prompt(page, box, text, context):
     }""", text)
     page.wait_for_timeout(300)
 
-    # Fallback to Playwright fill if textarea is still empty
     cur_val = page.evaluate("() => document.querySelector('textarea')?.value || ''")
     if not cur_val:
         try: box.fill(text)
         except Exception: pass
 
     page.wait_for_timeout(300)
-    clicked = click_ask_button(page)
-    if not clicked:
+    if not click_ask_button(page):
         box.focus()
         box.press("Enter")
     page.wait_for_timeout(500)
@@ -162,11 +153,13 @@ def parse_sse_text(raw_sse: str) -> str:
 def wait_for_duck_response(page, state, max_wait=TEXT_WAIT):
     start = time.time()
     last_text, stable_ticks = "", 0
-    page.wait_for_timeout(6000)
+    page.wait_for_timeout(5000)
 
     while time.time() - start < max_wait:
+        # Graceful handling of HTTP 418
         if state.get("rate_limited"):
-            raise RuntimeError("Duck.ai returned HTTP 418 (Tor IP blocked).")
+            log("[WARN] Duck.ai returned HTTP 418 (Rate limited / Tor IP blocked).")
+            return None
 
         try: page.evaluate("window.scrollTo(0, document.body.scrollHeight);")
         except Exception: pass
@@ -210,8 +203,18 @@ def wait_for_duck_response(page, state, max_wait=TEXT_WAIT):
     return deep_repair(last_text)
 
 def start_fresh_browser(p_runner):
-    b = p_runner.chromium.launch(headless=not HEADED, proxy={"server": BROWSER_PROXY})
-    ctx = b.new_context(viewport={"width": 1440, "height": 1000}, user_agent="Mozilla/5.0 Chrome/124.0.0.0 Safari/537.36")
+    launch_kwargs = {
+        "headless": not HEADED,
+        "args": ["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"]
+    }
+    if BROWSER_PROXY:
+        log(f"Using browser proxy: {BROWSER_PROXY}")
+        launch_kwargs["proxy"] = {"server": BROWSER_PROXY}
+    else:
+        log("Connecting directly (No Tor proxy) to ensure clean access.")
+
+    b = p_runner.chromium.launch(**launch_kwargs)
+    ctx = b.new_context(viewport={"width": 1440, "height": 1000}, user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36")
     pg = ctx.new_page()
     return b, ctx, pg
 
@@ -243,7 +246,88 @@ def duck_ask_json(page, context, prompt):
     raw_resp = wait_for_duck_response(page, state, max_wait=TEXT_WAIT)
     return parse_balanced_json(raw_resp)
 
-# ==================== GROQ SUPERVISOR & EDITOR ====================
+# ==================== GROQ ENGINES (SUPERVISOR & FALLBACK) ====================
+
+def groq_discover_context(full_transcript):
+    """Fallback context discoverer using Groq if Duck.ai is ever rate-limited."""
+    log("Groq Engine: Discovering show title & characters directly from transcript...")
+    segments = full_transcript.get("segments", [])
+    sample = "\n".join([f"[{s['start']:.1f}s] {s.get('text', '')}" for s in segments[:50]])
+
+    prompt = f"""Identify the movie or TV show title and characters from these dialogues:
+{sample}
+
+TASK:
+1. Identify the exact show/movie title.
+2. List characters with their English name, pure Devanagari Hindi name, and role.
+
+Output STRICT JSON:
+{{
+  "identified_title": "detected title",
+  "characters": [
+    {{"name": "Lucifer Morningstar", "hindi_name": "लूसिफ़र", "role": "क्लब मालिक"}},
+    {{"name": "Chloe Decker", "hindi_name": "डिटेक्टिव क्लो", "role": "जांच अधिकारी"}},
+    {{"name": "Dan Espinoza", "hindi_name": "डिटेक्टिव डैन", "role": "साथी जासूस"}},
+    {{"name": "Jimmy Barnes", "hindi_name": "जिमी बार्न्स", "role": "संगीत निर्माता"}},
+    {{"name": "2Vile", "hindi_name": "रैपर टू-वाइल", "role": "रैपर"}},
+    {{"name": "Trixie", "hindi_name": "ट्रिक्सी", "role": "क्लो की बेटी"}}
+  ]
+}}"""
+    try:
+        res = groq_client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            temperature=0.2
+        )
+        return json.loads(res.choices[0].message.content)
+    except Exception as e:
+        log(f"Groq context discovery failed: {e}")
+        return {"identified_title": "Lucifer Pilot", "characters": []}
+
+def groq_generate_scene_beats(chunk_text, movie_title, character_directory, prev_continuity_str):
+    """Fallback generator using Groq when Duck.ai is rate-limited."""
+    log("Groq Generator: Generating scene beats...")
+    prompt = f"""You are a professional Hindi YouTube movie-recap narrator.
+Movie/Show: {movie_title}
+CHARACTERS: {json.dumps(character_directory, ensure_ascii=False)}
+
+PREVIOUS STORY CONTEXT:
+{prev_continuity_str}
+
+SCENE TRANSCRIPT:
+{chunk_text}
+
+TASK:
+Generate sequential story recap beats for this scene in Hindi Devanagari.
+RULES:
+1. WORD COUNT: Exactly 8 to 12 words per beat (MAX 13 words).
+2. USE REAL NAMES: Use characters' real names (e.g. क्लो, लूसिफ़र, जिमी, टू-वाइल, ट्रिक्सी). Never use 'एक व्यक्ति' or 'कोई'.
+3. NATURAL CONTINUITY: Connect scene shifts smoothly.
+4. TIMESTAMPS: Extract start_sec and end_sec matching the dialogue timestamps.
+
+Output STRICT JSON:
+{{
+  "beats": [
+    {{
+      "narration": "डैन क्लो को बताता है कि हत्या का मुख्य गवाह लूसिफ़र है।",
+      "start_sec": 61.15,
+      "end_sec": 65.15
+    }}
+  ]
+}}"""
+    try:
+        res = groq_client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            temperature=0.25
+        )
+        data = json.loads(res.choices[0].message.content)
+        return data.get("beats", [])
+    except Exception as e:
+        log(f"Groq generator failed: {e}")
+        return []
 
 def groq_supervise_and_edit_beats(raw_beats, character_directory, scene_title):
     log(f"Groq Editor: Reviewing and trimming beats for '{scene_title}'...")
@@ -274,14 +358,18 @@ Output STRICT JSON:
     }}
   ]
 }}"""
-    res = groq_client.chat.completions.create(
-        model=GROQ_MODEL,
-        messages=[{"role": "user", "content": prompt}],
-        response_format={"type": "json_object"},
-        temperature=0.2
-    )
-    data = json.loads(res.choices[0].message.content)
-    return data.get("beats", raw_beats)
+    try:
+        res = groq_client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            temperature=0.2
+        )
+        data = json.loads(res.choices[0].message.content)
+        return data.get("beats", raw_beats)
+    except Exception as e:
+        log(f"Groq editor pass skipped: {e}")
+        return raw_beats
 
 # ==================== MAIN PIPELINE ====================
 
@@ -300,23 +388,20 @@ with sync_playwright() as p:
         log("Probe passed.")
         sys.exit(0)
 
-    # PHASE 1: Duck.ai Live Context Discovery (Sample 35 lines to stay well under character limits)
-    log("\n[PHASE 1] Duck.ai Live Context & Character Discovery...")
+    # PHASE 1: Discovery (Duck.ai live with Groq fallback)
+    log("\n[PHASE 1] Live Context & Character Discovery...")
     page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
     page.wait_for_timeout(3000)
 
     segments = full_transcript.get("segments", [])
-    # 35 lines provide optimal context (~2,000 characters) without hitting input limits
     sample_dialogues = "\n".join([f"[{s['start']:.1f}s] {s.get('text', '')}" for s in segments[:35]])
 
-    discovery_prompt = f"""Search your knowledge base and the web to identify this movie / TV episode from these dialogue lines.
-
-TRANSCRIPT DIALOGUE SAMPLE:
+    discovery_prompt = f"""Identify this movie / TV episode from these dialogue lines:
 {sample_dialogues}
 
 TASK:
 1. Identify the exact show/movie title.
-2. List ALL main characters appearing or mentioned, with their English name, pure Devanagari Hindi name, and who they are (e.g. Chloe Decker -> क्लो, Lucifer Morningstar -> लूसिफ़र, Jimmy Barnes -> जिमी बार्न्स, 2Vile -> टू-वाइल, Beatrice/Trixie -> ट्रिक्सी, Delilah -> डेलाइला).
+2. List characters with their English name, pure Devanagari Hindi name, and role (e.g. Chloe Decker -> क्लो, Lucifer Morningstar -> लूसिफ़र, Jimmy Barnes -> जिमी बार्न्स, 2Vile -> टू-वाइल, Beatrice/Trixie -> ट्रिक्सी, Delilah -> डेलाइला).
 
 Return STRICT JSON:
 ```json
@@ -334,24 +419,14 @@ Return STRICT JSON:
 ```"""
     discovery_result = duck_ask_json(page, context, discovery_prompt)
     if not discovery_result or "characters" not in discovery_result:
-        log("Duck.ai discovery returned fallback context roster.")
-        discovery_result = {
-            "identified_title": "Lucifer Pilot",
-            "characters": [
-                {"name": "Lucifer", "hindi_name": "लूसिफ़र", "role": "क्लब मालिक"},
-                {"name": "Chloe", "hindi_name": "डिटेक्टिव क्लो", "role": "जांच अधिकारी"},
-                {"name": "Dan", "hindi_name": "डिटेक्टिव डैन", "role": "जासूस साथी"},
-                {"name": "Jimmy Barnes", "hindi_name": "जिमी बार्न्स", "role": "म्यूजिक प्रोड्यूसर"},
-                {"name": "2Vile", "hindi_name": "रैपर टू-वाइल", "role": "रैपर"},
-                {"name": "Trixie", "hindi_name": "ट्रिक्सी", "role": "क्लो की बेटी"}
-            ]
-        }
+        log("Duck.ai was rate-limited or blocked. Using Groq for Phase 1...")
+        discovery_result = groq_discover_context(full_transcript)
 
     character_directory = discovery_result.get("characters", [])
     movie_title = discovery_result.get("identified_title", full_transcript.get("movie_title", "Movie Recap"))
-    log(f"Duck.ai identified movie: '{movie_title}' with {len(character_directory)} characters.")
+    log(f"Identified movie: '{movie_title}' with {len(character_directory)} characters.")
 
-    # PHASE 2: Group into natural scenes (max 3000 chars per chunk to prevent prompt bloat)
+    # PHASE 2: Group into natural scenes
     lines = []
     for s in segments:
         s_id = f"S{int(s['id']):04d}"
@@ -377,7 +452,7 @@ Return STRICT JSON:
 
     all_beats = pipeline_state.get("beats", [])
 
-    # PHASE 3: Duck.ai Writes -> Groq Edits
+    # PHASE 3: Scene Generation (Duck.ai with automatic Groq Fallback)
     for c_idx, chunk_lines in enumerate(chunks):
         chunk_id = f"chunk_{c_idx+1}"
         if chunk_id in pipeline_state.get("completed_chunks", []):
@@ -417,14 +492,10 @@ Return STRICT JSON:
         raw_chunk_json = duck_ask_json(page, context, writer_prompt)
         raw_beats = raw_chunk_json.get("beats", []) if raw_chunk_json else []
 
+        # If Duck.ai returned 418 or empty, seamlessly use Groq generator
         if not raw_beats:
-            log(f"Retrying {chunk_id}...")
-            new_tor_circuit()
-            if browser: browser.close()
-            browser, context, page = start_fresh_browser(p)
-            page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
-            raw_chunk_json = duck_ask_json(page, context, writer_prompt)
-            raw_beats = raw_chunk_json.get("beats", []) if raw_chunk_json else []
+            log(f"Duck.ai unavailable for {chunk_id}. Activating Groq Generator...")
+            raw_beats = groq_generate_scene_beats(chunk_text, movie_title, character_directory, prev_continuity_str)
 
         # Groq Supervisor: Trims words to 8-12 and removes duplicate beats
         polished_beats = groq_supervise_and_edit_beats(raw_beats, character_directory, f"Act {c_idx+1}")
@@ -457,8 +528,8 @@ Return STRICT JSON:
         with open(STATE_FILE, "w", encoding="utf-8") as sf:
             json.dump(pipeline_state, sf, indent=2, ensure_ascii=False)
 
-        log(f"SUCCESS: {chunk_id} completed. Total beats: {len(all_beats)}")
-        page.wait_for_timeout(2000)
+        log(f"SUCCESS: {chunk_id} completed. Total beats so far: {len(all_beats)}")
+        page.wait_for_timeout(1000)
 
     final_output = {
         "movie_title": movie_title,

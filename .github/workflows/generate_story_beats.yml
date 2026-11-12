@@ -26,7 +26,7 @@ on:
         required: true
         default: "12"
       hints:
-        description: "Optional notes / character fixes (e.g. Delilah=डेलाइला, Lucifer=लूसिफ़र)"
+        description: "Character hints & corrections"
         required: false
         default: "Delilah/Darlala/Jaila=डेलाइला (मृतक गायिका), Chloe=क्लो (डिटेक्टिव), Dan=डैन (डिटेक्टिव), Lucifer=लूसिफ़र (गवाह/क्लब मालिक)"
 
@@ -77,7 +77,7 @@ jobs:
       - name: Verify Tor Connection
         timeout-minutes: 3
         run: |
-          python - <<'PY'
+          python - <<'EOF'
           from curl_cffi import requests
           p = "socks5h://127.0.0.1:9050"
           r = requests.get("https://check.torproject.org/api/ip", proxies={"http": p, "https": p}, impersonate="chrome", timeout=60)
@@ -86,7 +86,7 @@ jobs:
           print("Tor IP:", data)
           if not data.get("IsTor"):
               raise RuntimeError("Traffic is not using Tor.")
-          PY
+          EOF
 
       - name: Automate Duck.ai Story Pipeline
         timeout-minutes: 110
@@ -389,7 +389,7 @@ jobs:
                   return deep_repair(last_text)
               return ""
 
-          def build_timeline_chunks(transcript_path="transcript.json", max_chars=5000):
+          def build_timeline_chunks(transcript_path="transcript.json", max_chars=4500):
               with open(transcript_path, "r", encoding="utf-8") as f:
                   data = json.load(f)
 
@@ -491,7 +491,7 @@ jobs:
                       sys.exit(1)
 
               # FULL MODE
-              movie_title, chunks = build_timeline_chunks("transcript.json", max_chars=5000)
+              movie_title, chunks = build_timeline_chunks("transcript.json", max_chars=4500)
               log(f"Loaded '{movie_title}' into {len(chunks)} contextual chunks.")
 
               pipeline_state = {"completed_chunks": [], "beats": [], "characters": {}}
@@ -514,53 +514,42 @@ jobs:
                   log(f"\n--- PROCESSING: {chunk_id} ({c_idx+1}/{len(chunks)}) ---")
                   chunk_text = "\n".join(chunk_lines)
 
-                  final_prompt = f"""
-You are an expert Hindi YouTube Movie Recap Narrator (like 'Movie In Hindi' or 'Mystery Recaps').
-Your goal is to explain the movie engagingly, revealing the mystery, character motivations, and plot points step-by-step.
+                  prompt_lines = [
+                      "You are an expert Hindi YouTube Movie Recap Narrator (like 'Movie In Hindi' or 'Mystery Recaps').",
+                      "Your goal is to explain the movie engagingly, revealing the mystery, character motivations, and plot points step-by-step.",
+                      "",
+                      f"MOVIE TITLE: {movie_title}",
+                      f"CHARACTER NOTES / HINTS: {INPUT_HINTS}",
+                      f"STORY SO FAR: {running_synopsis}",
+                      "",
+                      "CURRENT SCENE TRANSCRIPT:",
+                      chunk_text,
+                      "",
+                      "MANDATORY RULES FOR YOUTUBE EXPLANATION VIDEO:",
+                      "1. THE 3 Ws IN RECAP: Every beat must make sense to the listener:",
+                      "   - WHO & WHERE (कौन और कहाँ): Identify who is actually on screen in this scene.",
+                      "   - WHAT (क्या हुआ): What action, clue, or event happens?",
+                      "   - WHY (क्यों): Why is it important? What is their motive or reaction?",
+                      "2. SPEAKER VS. MENTIONED PERSON:",
+                      "   - The transcript is spoken dialogue. If Detective Dan says 'The witness is Lucifer', DAN is talking, NOT Lucifer! Do NOT write 'Lucifer says' when someone else is merely talking about him.",
+                      "3. GRAMMATICALLY COMPLETE SENTENCES ONLY:",
+                      "   - Every single beat MUST be a complete, natural spoken Hindi sentence (पूर्ण विचार).",
+                      "   - DO NOT cut sentences in half. Each beat should be 8 to 15 Hindi words that take 2.5 to 3.5 seconds to speak.",
+                      "4. JUMP CUTS & NO FILLER:",
+                      "   - Skip boring greetings or long pauses. Jump the timestamps to the key moments, clues, and emotional beats.",
+                      "5. STRICT PURE HINDI (DEVANAGARI SCRIPT ONLY):",
+                      "   - Narration must be 100% Hindi Devanagari. No English words or Latin letters.",
+                      "",
+                      "STRICT JSON OUTPUT FORMAT ONLY:",
+                      '{"summary": "3-4 sentences in Hindi explaining what happened in this entire scene",',
+                      '"characters": [{"name": "Chloe", "hindi_name": "क्लो", "who": "मुख्य जासूस"}, {"name": "Lucifer Morningstar", "hindi_name": "लूसिफ़र मॉर्निंगस्टार", "who": "रहस्यमयी क्लब मालिक और गवाह"}],',
+                      '"beats": [',
+                      '  {"narration": "डिटेक्टिव क्लो मौका-ए-वारदात पर पहुँचकर कत्ल की बारीकी से जांच करती है।", "start_sec": 1.20, "end_sec": 4.10},',
+                      '  {"narration": "डैन उसे बताता है कि इस खौफनाक वारदात का इकलौता गवाह लूसिफ़र नाम का आदमी है।", "start_sec": 57.50, "end_sec": 61.20}',
+                      ']}'
+                  ]
+                  final_prompt = "\n".join(prompt_lines)
 
-MOVIE TITLE: {movie_title}
-CHARACTER NOTES / HINTS: {INPUT_HINTS}
-STORY SO FAR: {running_synopsis}
-
-CURRENT SCENE TRANSCRIPT:
-{chunk_text}
-
-MANDATORY RULES FOR YOUTUBE EXPLANATION VIDEO:
-1. THE 3 Ws IN RECAP: Every beat must make sense to the listener:
-   - WHO & WHERE (कौन और कहाँ): Identify who is actually on screen in this scene.
-   - WHAT (क्या हुआ): What action, clue, or event happens?
-   - WHY (क्यों): Why is it important? What is their motive or reaction?
-2. SPEAKER VS. MENTIONED PERSON:
-   - The transcript is spoken dialogue. If Detective Dan says "The witness is Lucifer", DAN is talking, NOT Lucifer! Do NOT write "Lucifer says" when someone else is merely talking about him.
-3. GRAMMATICALLY COMPLETE SENTENCES ONLY:
-   - Every single beat MUST be a complete, natural spoken Hindi sentence (पूर्ण विचार).
-   - DO NOT cut sentences in half. Each beat should be 8 to 15 Hindi words that take 2.5 to 3.5 seconds to speak.
-4. JUMP CUTS & NO FILLER:
-   - Skip boring greetings or long pauses. Jump the timestamps to the key moments, clues, and emotional beats.
-5. STRICT PURE HINDI (DEVANAGARI SCRIPT ONLY):
-   - Narration must be 100% Hindi Devanagari. No English words or Latin letters.
-
-STRICT JSON OUTPUT FORMAT ONLY:
-{{
-  "summary": "3-4 sentences in Hindi explaining what happened in this entire scene",
-  "characters": [
-    {{"name": "Chloe", "hindi_name": "क्लो", "who": "मुख्य जासूस"}},
-    {{"name": "Lucifer Morningstar", "hindi_name": "लूसिफ़र मॉर्निंगस्टार", "who": "रहस्यमयी क्लब मालिक और गवाह"}}
-  ],
-  "beats": [
-    {{
-      "narration": "डिटेक्टिव क्लो मौका-ए-वारदात पर पहुँचकर कत्ल की बारीकी से जांच करती है।",
-      "start_sec": 1.20,
-      "end_sec": 4.10
-    }},
-    {{
-      "narration": "डैन उसे बताता है कि इस खौफनाक वारदात का इकलौता गवाह लूसिफ़र नाम का आदमी है।",
-      "start_sec": 57.50,
-      "end_sec": 61.20
-    }}
-  ]
-}}
-"""
                   chunk_done = False
                   for attempt in range(1, MAX_ATTEMPTS + 1):
                       state = {"raw_stream": [], "chat_done": False, "rate_limited": False}

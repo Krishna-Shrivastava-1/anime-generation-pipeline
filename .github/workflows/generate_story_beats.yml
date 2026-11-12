@@ -438,7 +438,6 @@ jobs:
               refined = []
               for b in raw_beats:
                   narr = deep_repair(b.get("narration", "")).strip()
-                  # Strip stray English alphabetic noise if model outputted markdown labels
                   narr = re.sub(r"\b[A-Za-z]\b", "", narr).strip()
                   if not narr:
                       continue
@@ -449,7 +448,6 @@ jobs:
                   if en <= st:
                       en = round(st + 2.8, 2)
 
-                  # If window exceeds 3.0s, clamp the visual window without cutting narration!
                   dur = round(en - st, 2)
                   if dur > max_duration:
                       en = round(st + max_duration, 2)
@@ -547,6 +545,8 @@ jobs:
               all_beats = pipeline_state.get("beats", [])
               beat_counter = len(all_beats) + 1
 
+              hints_context = f"\nUser Provided Hints / Character Notes:\n{INPUT_HINTS}\n" if INPUT_HINTS else ""
+
               for c_idx, chunk_lines in enumerate(chunks):
                   chunk_id = f"chunk_{c_idx+1}"
                   if chunk_id in pipeline_state.get("completed_chunks", []):
@@ -578,24 +578,29 @@ jobs:
                           is_in_chat = bool(page and "chatID=" in page.url)
                           chunk_text = "\n".join(chunk_lines)
 
-                          # ------------------ PASS 1: DRAFT PROMPT ------------------
+                          # ------------------ PASS 1: OMNISCIENT THIRD-PERSON DRAFT ------------------
                           draft_prompt = (
-                              f"You are a top-tier Hindi YouTube movie recap narrator (YouTube Movie Explanation style).\n"
-                              f"Movie: {movie_title}.\n"
-                              f"Previous Context: {running_story_summary}\n\n"
-                              f"Transcript Segments:\n{chunk_text}\n\n"
-                              "STORYTELLING & EDITING RULES:\n"
-                              "1. NATURAL CONVERSATIONAL HINDI (बोलचाल की हिंदी): Narration must be written in Devanagari script using natural, engaging spoken Hindi. Use common conversational terms in Devanagari (केस, मर्डर, सस्पेक्ट, क्लब, ड्रग्स, डिटेक्टिव, पुलिस, विटनेस, सबूत, सीन). Do NOT use stiff Sanskrit bookish words like 'वरिष्ठ अधिकारी' or 'नशीले पदार्थ'.\n"
-                              "2. SCENE LOGIC & WHO IS ON SCREEN: Clearly distinguish between who is physically ON SCREEN versus who is only being TALKED ABOUT. For example, if Dan tells Chloe about Lucifer, Dan and Chloe are on screen, NOT Lucifer. Explicitly narrate the transition when a character goes to a new location.\n"
-                              "3. COMPLETE INDEPENDENT SENTENCES: Every single beat must be a complete, punchy sentence of 6 to 9 words. NEVER split a sentence across multiple beats!\n"
-                              "4. CLIP TIMINGS: Every beat represents a cut between 2.0s and 3.0s max (end_sec - start_sec <= 3.0s).\n"
-                              "5. OUTPUT STRICT JSON ONLY:\n"
+                              f"You are a master Hindi YouTube movie recap narrator and scriptwriter (YouTube Movie Explanation style).\n"
+                              f"Movie/Series: {movie_title}.\n"
+                              f"{hints_context}"
+                              f"Previous Story Context:\n{running_story_summary}\n\n"
+                              f"Current Movie Segments & Transcript:\n{chunk_text}\n\n"
+                              "CRITICAL STORYTELLING & EDITING RULES:\n"
+                              "1. THIRD-PERSON OMNISCIENT RECAP VOICE: Do NOT do line-by-line dialogue reporting (Never write: 'उसने कहा... फिर उसने पूछा...'). Instead, narrate from an omniscient third-person perspective. Synthesize the dialogue into key plot actions, discoveries, conflicts, and character motives.\n"
+                              "2. ZERO SETTING HALLUCINATION & STRICT PRESENCE: Only narrate characters who are physically on screen. When characters talk ABOUT someone (e.g., a boss, captain, witness, or doctor who is not there), do NOT assume that person is in the scene. NEVER invent generic rooms or offices ('कमरे में') unless explicitly established; ground the scene in dramatic context ('घटनास्थल पर', 'जांच के दौरान', 'रास्ते में').\n"
+                              "3. SEAMLESS SCENE TRANSITIONS: When characters travel or the scene jumps to a new location, explicitly bridge the cut (e.g., 'अब क्लो पूछताछ करने के लिए सीधे क्लब पहुंचती है...', 'तभी दूसरी तरफ...').\n"
+                              "4. NATURAL RECAP HINDI (बोलचाल की हिंदी in Devanagari): Use natural, engaging spoken Hindi with everyday loanwords written in Devanagari (केस, मर्डर, क्राइम सीन, डिटेक्टिव, सस्पेक्ट, क्लब, ड्रग्स, सबूत, जांच, बॉडी, ट्विस्ट). Avoid stiff, archaic Sanskrit words like 'वरिष्ठ अधिकारी' or 'नशीले पदार्थ'.\n"
+                              "5. COMPLETE INDEPENDENT SENTENCES: Every beat represents a short video cut strictly between 2.0s and 3.0s (end_sec - start_sec <= 3.0s). Crucial: Narration for EVERY beat MUST be a complete, self-contained sentence of 6 to 9 words. NEVER split a sentence across beats.\n\n"
+                              "OUTPUT STRICT JSON ONLY:\n"
                               "{\n"
                               '  "summary": "2 वाक्य में इस पूरे दृश्य का स्पष्ट सारांश",\n'
-                              '  "characters": [{"name": "Chloe", "hindi_name": "क्लो", "who": "डिटेक्टिव"}],\n'
+                              '  "characters": [{"name": "CharacterName", "hindi_name": "नाम", "who": "भूमिका"}],\n'
                               '  "beats": [\n'
-                              '    {"narration": "डिटेक्टिव क्लो मर्डर सीन पर सबूत जुटाने पहुंचती है।", "start_sec": 1.2, "end_sec": 3.9},\n'
-                              '    {"narration": "सीनियर ऑफिसर इस केस को मामूली ड्रग ओवरडोज बताता है।", "start_sec": 14.1, "end_sec": 16.8}\n'
+                              '    {"narration": "डिटेक्टिव क्लो क्राइम सीन पर पहुंचकर सबूतों की जांच करती है।", "start_sec": 1.20, "end_sec": 3.90},\n'
+                              '    {"narration": "डैन का मानना है कि यह सीधा-साधा ड्रग ओवरडोज का केस है।", "start_sec": 14.10, "end_sec": 16.80},\n'
+                              '    {"narration": "लेकिन क्लो इस बात को अनसुना कर चश्मदीद गवाह तलाशती है।", "start_sec": 24.50, "end_sec": 27.20},\n'
+                              '    {"narration": "डैन बताता है कि लक्स क्लब का मालिक इस मर्डर का गवाह है।", "start_sec": 35.00, "end_sec": 37.80},\n'
+                              '    {"narration": "अब क्लो पूछताछ करने के लिए सीधे लूसिफ़र के क्लब पहुंचती है।", "start_sec": 58.10, "end_sec": 60.90}\n'
                               '  ]\n'
                               "}"
                           )
@@ -608,7 +613,7 @@ jobs:
                           box = get_prompt_box(page)
                           box.wait_for(state="visible", timeout=40000)
 
-                          log(f"Submitting PASS 1 (Drafting) for {chunk_id}...")
+                          log(f"Submitting PASS 1 (Story Draft) for {chunk_id}...")
                           submit_prompt(page, box, draft_prompt, context)
 
                           # Fast-fail check
@@ -636,14 +641,13 @@ jobs:
                           log(f"PASS 1 Draft received ({len(draft_parsed.get('beats', []))} beats). Starting PASS 2 (Audit & Polish)...")
 
                           # ------------------ PASS 2: AUDIT & POLISH PROMPT ------------------
-                          # Sent directly in the same chat session
                           refine_prompt = (
-                              "Now strictly AUDIT and POLISH your JSON response according to these 4 quality checks:\n"
-                              "1. TONE CHECK: Is it natural conversational Hindi (Devanagari) that YouTube recap viewers love? Remove all stiff, robotic, or textbook phrases.\n"
-                              "2. SCENE & CHARACTER CONTINUITY: Did you verify who is physically on screen vs who is being discussed? Make sure scene transitions (e.g., Chloe moving to the club) are clearly stated.\n"
-                              "3. SENTENCE COMPLETENESS: Ensure EVERY beat is a 100% complete, standalone sentence (6-9 words). NO broken clauses, NO trailing phrases.\n"
-                              "4. TIMINGS: Ensure every beat has (end_sec - start_sec) <= 3.0s.\n\n"
-                              "Output ONLY the final, polished JSON with the exact same format: {\"summary\": ..., \"characters\": [...], \"beats\": [...]}."
+                              "Now strictly AUDIT and POLISH your JSON response according to these 4 recap quality checks:\n"
+                              "1. THIRD-PERSON FLOW: Eliminate all ping-pong dialogue reporting ('उसने कहा... उसने पूछा'). Ensure it reads like an engaging, third-person story explanation.\n"
+                              "2. SCENE LOGIC & BRIDGING: Confirm who is physically on screen vs who is being discussed. When the scene shifts or characters move, is the transition clearly narrated so the viewer is never lost?\n"
+                              "3. SENTENCE COMPLETENESS & TONE: Ensure EVERY beat is a 100% complete, standalone sentence (6-9 words) in natural spoken Hindi (बोलचाल की हिंदी in Devanagari). Fix any broken clauses or robotic textbook words.\n"
+                              "4. STRICT TIMESTAMPS: Ensure every beat duration is strictly between 2.0s and 3.0s (end_sec - start_sec <= 3.0s).\n\n"
+                              "Return ONLY the final, polished JSON with the exact same format: {\"summary\": ..., \"characters\": [...], \"beats\": [...]}."
                           )
 
                           state["raw_stream"] = []
@@ -657,7 +661,6 @@ jobs:
                           refined_raw = wait_for_text_generation(page, state, max_wait=TEXT_WAIT)
                           refined_parsed = parse_first_balanced_json(refined_raw)
 
-                          # Use refined JSON if valid; fallback to draft if polisher missed JSON format
                           if refined_parsed and isinstance(refined_parsed.get("beats"), list) and len(refined_parsed.get("beats")) > 0:
                               parsed = refined_parsed
                               log(f"PASS 2 Polish succeeded for {chunk_id}!")

@@ -390,7 +390,6 @@ jobs:
               return ""
 
           def build_timeline_chunks(transcript_path="transcript.json", max_chars=5000):
-              """Builds larger scene-sized chunks to preserve plot context and character identity."""
               with open(transcript_path, "r", encoding="utf-8") as f:
                   data = json.load(f)
 
@@ -423,10 +422,6 @@ jobs:
               return movie_title, chunks
 
           def validate_and_format_beats(raw_beats):
-              """
-              Preserves whole, grammatically complete sentences.
-              Never slices sentences into broken fragments.
-              """
               valid = []
               for b in raw_beats:
                   narr = deep_repair(b.get("narration", "")).strip()
@@ -436,8 +431,7 @@ jobs:
 
                   st = round(float(b.get("start_sec") or b.get("target_window", {}).get("start", 0.0)), 2)
                   en = round(float(b.get("end_sec") or b.get("target_window", {}).get("end", st + 3.0)), 2)
-                  
-                  # Allow 2.0s to 4.5s natural speaking duration
+
                   if en <= st or (en - st) < 1.8:
                       en = round(st + 3.0, 2)
                   elif (en - st) > 5.0:
@@ -520,9 +514,8 @@ jobs:
                   log(f"\n--- PROCESSING: {chunk_id} ({c_idx+1}/{len(chunks)}) ---")
                   chunk_text = "\n".join(chunk_lines)
 
-                  # YOUTUBE RECAP NARRATOR PROMPT WITH 3Ws AND SPEAKER-DISTINCTION
                   final_prompt = f"""
-You are a top-tier Hindi YouTube Movie Recap Narrator (like 'Movie In Hindi' or 'Mystery Recaps').
+You are an expert Hindi YouTube Movie Recap Narrator (like 'Movie In Hindi' or 'Mystery Recaps').
 Your goal is to explain the movie engagingly, revealing the mystery, character motivations, and plot points step-by-step.
 
 MOVIE TITLE: {movie_title}
@@ -615,12 +608,10 @@ STRICT JSON OUTPUT FORMAT ONLY:
 
                           running_synopsis = parsed.get("summary", running_synopsis)
 
-                          # Deduplicate and register characters
                           for ch in parsed.get("characters", []):
                               if isinstance(ch, dict) and ch.get("name"):
                                   pipeline_state.setdefault("characters", {})[ch["name"]] = ch
 
-                          # Format beats with full grammatical integrity
                           sanitized = validate_and_format_beats(parsed.get("beats", []))
                           for b in sanitized:
                               b_obj = {
@@ -655,7 +646,6 @@ STRICT JSON OUTPUT FORMAT ONLY:
                       log(f"Aborting at {chunk_id} due to repeated errors.")
                       break
 
-              # Normalize character names across the dataset
               final_chars = list(pipeline_state.get("characters", {}).values())
 
               final_output = {

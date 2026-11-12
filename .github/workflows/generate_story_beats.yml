@@ -101,7 +101,7 @@ jobs:
           TARGET_MINUTES: ${{ inputs.target_minutes }}
           MAX_CLIP_SEC: ${{ inputs.max_clip_sec }}
           INPUT_HINTS: ${{ inputs.hints }}
-          TEXT_WAIT_SECONDS: "180"
+          TEXT_WAIT_SECONDS: "200"
         run: |
           mkdir -p debug build
           cat > recap_engine.py <<'PY'
@@ -120,7 +120,7 @@ jobs:
           TARGET_MINUTES = float(os.environ.get("TARGET_MINUTES", "12"))
           MAX_CLIP_DURATION = float(os.environ.get("MAX_CLIP_SEC", "3.0"))
           INPUT_HINTS = os.environ.get("INPUT_HINTS", "").strip()
-          TEXT_WAIT = int(os.environ.get("TEXT_WAIT_SECONDS", "180"))
+          TEXT_WAIT = int(os.environ.get("TEXT_WAIT_SECONDS", "200"))
           MAX_ATTEMPTS = 3
 
           DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
@@ -242,10 +242,10 @@ jobs:
                   cdp = context.new_cdp_session(page)
                   cdp.send("Input.insertText", {"text": text})
                   cdp.detach()
-              except Exception as e:
+              except Exception:
                   box.fill(text)
 
-              page.wait_for_timeout(400)
+              page.wait_for_timeout(500)
               try:
                   page.evaluate("""(el) => {
                       el.dispatchEvent(new Event('input', { bubbles: true }));
@@ -254,10 +254,10 @@ jobs:
               except Exception:
                   pass
 
-              page.wait_for_timeout(200)
+              page.wait_for_timeout(300)
               if not click_ask_button(page):
                   box.press("Enter")
-              page.wait_for_timeout(500)
+              page.wait_for_timeout(600)
 
           def parse_sse_text(raw_sse: str) -> str:
               chunks = []
@@ -281,14 +281,23 @@ jobs:
               if not text:
                   return None
               cleaned = text.strip()
-              cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned, flags=re.IGNORECASE)
-              cleaned = re.sub(r"\s*```$", "", cleaned).strip()
 
+              # Priority 1: Match ```json ... ``` blocks
+              code_fence_match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", cleaned, re.IGNORECASE)
+              if code_fence_match:
+                  candidate = code_fence_match.group(1).strip()
+                  try:
+                      return deep_repair(json.loads(candidate))
+                  except Exception:
+                      pass
+
+              # Priority 2: Direct full parse
               try:
                   return deep_repair(json.loads(cleaned))
               except Exception:
                   pass
 
+              # Priority 3: Balanced bracket scanner
               start_idx = -1
               for i, ch in enumerate(cleaned):
                   if ch in ("{", "["):
@@ -326,66 +335,125 @@ jobs:
                                   break
               return None
 
-          def wait_for_response(page, state, max_wait=TEXT_WAIT):
+          # ------------------ FAILSAFE ASSISTANT EXTRACTOR ------------------
+          EXTRACT_ASSISTANT_JS = """() => {
+              // Scroll body and chat containers to the bottom
+              window.scrollTo({ top: document.body.scrollHeight, behavior: 'auto' });
+              const scrollable = document.querySelectorAll('main, [class*="chat"], [class*="conversation"], [class*="scroll"], [data-testid*="scroll"]');
+              scrollable.forEach(el => { el.scrollTop = el.scrollHeight; });
+
+              // Check if Duck.ai is actively generating (Stop button check)
+              const stopButtons = Array.from(document.querySelectorAll('button')).filter(b => {
+                  const txt = (b.innerText || '').toLowerCase();
+                  const aria = (b.getAttribute('aria-label') || '').toLowerCase();
+                  return (txt.includes('stop') || aria.includes('stop')) && b.offsetParent !== null;
+              });
+              const isGenerating = stopButtons.length > 0;
+
+              // Priority 1: Check code blocks (Assistant returns ```json ... ```)
+              const codeBlocks = Array.from(document.querySelectorAll('pre code, pre'));
+              for (let i = codeBlocks.length - 1; i >= 0; i--) {
+                  const block = codeBlocks[i];
+                  const codeText = (block.innerText || '').trim();
+                  if (!codeText) continue;
+
+                  // Skip if inside user message
+                  const userParent = block.closest('[class*="user"], [data-user="true"]');
+                  if (userParent) continue;
+                  if (codeText.includes("You are the head scriptwriter") || codeText.includes("You said")) continue;
+
+                  if (codeText.includes('{') && (codeText.includes('beats') || codeText.includes('synopsis') || codeText.includes('summary'))) {
+                      return { text: codeText, isGenerating: isGenerating, source: 'code_block' };
+                  }
+              }
+
+              // Priority 2: Filter for assistant message nodes (exclude anything from user)
+              const messageNodes = Array.from(document.querySelectorAll('article, [class*="message"], [data-testid*="message"], [class*="chat-message"]'));
+              const assistantNodes = messageNodes.filter(node => {
+                  const t = node.innerText || '';
+                  if (t.includes('You said')) return false;
+                  if (t.includes('You are the head scriptwriter')) return false;
+                  if (node.getAttribute('data-author') === 'user') return false;
+                  if (node.querySelector('[aria-label*="user" i], [class*="user" i]')) return false;
+                  return true;
+              });
+
+              if (assistantNodes.length > 0) {
+                  const lastAssistant = assistantNodes[assistantNodes.length - 1];
+                  const text = (lastAssistant.innerText || '').trim();
+                  if (text.length > 25 && !text.includes('How can I help you today?')) {
+                      return { text: text, isGenerating: isGenerating, source: 'assistant_message' };
+                  }
+              }
+
+              return { text: '', isGenerating: isGenerating, source: 'none' };
+          }"""
+
+          def wait_for_response(page, current_chat_state, max_wait=TEXT_WAIT):
+              log(f"Waiting for Duck.ai response (max {max_wait}s)...")
               start = time.time()
               last_text = ""
               stable_ticks = 0
+              has_started_generating = False
 
               while time.time() - start < max_wait:
-                  if state.get("rate_limited"):
+                  if current_chat_state.get("rate_limited"):
                       raise RuntimeError("Duck.ai returned HTTP 418 (Tor IP rate-limited).")
 
-                  if state.get("chat_done") and state.get("raw_stream"):
-                      parsed_sse = parse_sse_text("".join(state["raw_stream"]))
-                      if parsed_sse.strip():
+                  # Check SSE network stream if completed
+                  if current_chat_state.get("chat_done") and current_chat_state.get("raw_stream"):
+                      parsed_sse = parse_sse_text("".join(current_chat_state["raw_stream"]))
+                      if parsed_sse.strip() and "{" in parsed_sse and "beats" in parsed_sse:
+                          log(f"Captured response via completed SSE stream ({len(parsed_sse)} chars).")
                           return deep_repair(parsed_sse)
 
-                  stop_btn = page.locator("button:has-text('Stop generating'), button:has-text('Stop')")
-                  is_generating = False
+                  # Query DOM
                   try:
-                      is_generating = stop_btn.count() > 0 and stop_btn.first.is_visible()
-                  except Exception:
-                      pass
+                      dom_data = page.evaluate(EXTRACT_ASSISTANT_JS)
+                      cur_text = dom_data.get("text", "").strip()
+                      is_generating = dom_data.get("isGenerating", False)
+                      source = dom_data.get("source", "none")
 
-                  try:
-                      cur_text = page.evaluate("""() => {
-                          const codes = document.querySelectorAll('pre code, code');
-                          if (codes.length > 0) {
-                              const lastCode = (codes[codes.length - 1].innerText || '').trim();
-                              if (lastCode.includes('{') || lastCode.includes('beats')) return lastCode;
-                          }
-                          const msgs = document.querySelectorAll('[class*="message"], article, [data-testid*="message"]');
-                          if (msgs.length > 0) {
-                              return (msgs[msgs.length - 1].innerText || '').trim();
-                          }
-                          return '';
-                      }""")
-                      if cur_text and cur_text == last_text and not is_generating:
-                          stable_ticks += 1
-                      else:
-                          stable_ticks = 0
-                      last_text = cur_text
+                      # Guardrail: NEVER accept user prompt as response
+                      if "You said" in cur_text or cur_text.startswith("You are the head scriptwriter"):
+                          cur_text = ""
 
-                      if stable_ticks >= 3 and len(last_text) > 30:
-                          return deep_repair(last_text)
-                  except Exception:
-                      pass
+                      if is_generating or len(cur_text) > 40:
+                          has_started_generating = True
+
+                      if cur_text:
+                          if cur_text == last_text and not is_generating:
+                              stable_ticks += 1
+                          else:
+                              stable_ticks = 0
+                          last_text = cur_text
+
+                          # Must have started, stop button must be gone, and text unchanged for 4 checks (8s)
+                          if has_started_generating and not is_generating and stable_ticks >= 4 and len(last_text) > 50:
+                              log(f"Captured complete response via DOM stability ({source}, {len(last_text)} chars).")
+                              return deep_repair(last_text)
+                  except Exception as e:
+                      log(f"DOM poll notice: {e}")
 
                   page.wait_for_timeout(2000)
 
-              if state.get("raw_stream"):
-                  parsed_sse = parse_sse_text("".join(state["raw_stream"]))
-                  if parsed_sse.strip():
+              # Fallback to network stream if DOM was delayed
+              if current_chat_state.get("raw_stream"):
+                  parsed_sse = parse_sse_text("".join(current_chat_state["raw_stream"]))
+                  if parsed_sse.strip() and "beats" in parsed_sse:
                       return deep_repair(parsed_sse)
-              return deep_repair(last_text)
+
+              if last_text and len(last_text) > 50:
+                  return deep_repair(last_text)
+
+              raise RuntimeError(f"Response timed out after {max_wait}s.")
 
           # ------------------ TIMELINE CHUNKER & TRANSCRIPT LOADER ------------------
           def load_transcript_and_chunk(transcript_path="transcript.json", max_chars=2400):
               if not Path(transcript_path).exists():
-                  # Create mock structure if file is absent to allow engine testing
-                  log(f"Warning: '{transcript_path}' not found. Generating mock transcript for engine execution.")
+                  log(f"Warning: '{transcript_path}' not found. Generating mock transcript.")
                   mock = {
-                      "movie_title": "Example Mystery Film",
+                      "movie_title": "Mystery Recap Movie",
                       "segments": [
                           {"id": 1, "start": 5.0, "end": 12.0, "text": "Detective Chloe: Look at these marks on the floor. Someone dragged the body."},
                           {"id": 2, "start": 13.5, "end": 20.0, "text": "Officer Dan: It's just a normal drug case. Let's close it."},
@@ -432,7 +500,6 @@ jobs:
               cleaned = []
               for b in raw_beats:
                   narr = deep_repair(b.get("narration", "")).strip()
-                  # Remove single letter English tags or stray punctuation
                   narr = re.sub(r"\b[A-Za-z]\b", "", narr).strip()
                   if not narr:
                       continue
@@ -463,13 +530,14 @@ jobs:
                   })
               return cleaned
 
-          # ------------------ PLAYWRIGHT INSTANCE ------------------
+          # ------------------ PLAYWRIGHT SETUP ------------------
           browser = None
           context = None
           page = None
+          current_chat_state = {"raw_stream": [], "chat_done": False, "rate_limited": False}
 
           def launch_browser(pw):
-              global browser, context, page
+              global browser, context, page, current_chat_state
               if browser:
                   try: browser.close()
                   except Exception: pass
@@ -486,6 +554,21 @@ jobs:
               context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
               page = context.new_page()
 
+              def on_res(resp):
+                  if "/duckchat/v1/chat" in resp.url and resp.request.method == "POST":
+                      if resp.status == 418:
+                          current_chat_state["rate_limited"] = True
+                      try:
+                          current_chat_state["raw_stream"].append(resp.body().decode("utf-8", errors="replace"))
+                      except Exception:
+                          pass
+              page.on("response", on_res)
+
+              def on_done(req):
+                  if "/duckchat/v1/chat" in req.url and req.method == "POST":
+                      current_chat_state["chat_done"] = True
+              page.on("requestfinished", on_done)
+
           with sync_playwright() as p:
               launch_browser(p)
 
@@ -493,7 +576,7 @@ jobs:
               # MODE: PROBE
               # ==============================================================
               if RUN_MODE == "probe":
-                  log("Starting probe validation test on Duck.ai...")
+                  log("Starting probe test on Duck.ai...")
                   page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
                   page.wait_for_timeout(3000)
 
@@ -501,18 +584,12 @@ jobs:
                   box.wait_for(state="visible", timeout=40000)
 
                   probe_prompt = 'Output valid JSON only: {"status": "ready", "hindi": "कहानी शुरू"}'
-                  state = {"raw_stream": [], "chat_done": False, "rate_limited": False}
-
-                  def probe_resp(resp):
-                      if "/duckchat/v1/chat" in resp.url and resp.request.method == "POST":
-                          if resp.status == 418: state["rate_limited"] = True
-                          try: state["raw_stream"].append(resp.body().decode("utf-8", errors="replace"))
-                          except Exception: pass
-                  page.on("response", probe_resp)
-                  page.on("requestfinished", lambda req: state.update({"chat_done": True}) if "/duckchat/v1/chat" in req.url else None)
+                  current_chat_state["raw_stream"].clear()
+                  current_chat_state["chat_done"] = False
+                  current_chat_state["rate_limited"] = False
 
                   submit_prompt(page, box, probe_prompt, context)
-                  out = wait_for_response(page, state, max_wait=45)
+                  out = wait_for_response(page, current_chat_state, max_wait=45)
                   parsed = parse_first_balanced_json(out)
                   log(f"Probe Result: {parsed}")
 
@@ -563,15 +640,9 @@ jobs:
                   chunk_success = False
 
                   for attempt in range(1, MAX_ATTEMPTS + 1):
-                      state = {"raw_stream": [], "chat_done": False, "rate_limited": False}
-
-                      def on_res(resp):
-                          if "/duckchat/v1/chat" in resp.url and resp.request.method == "POST":
-                              if resp.status == 418: state["rate_limited"] = True
-                              try: state["raw_stream"].append(resp.body().decode("utf-8", errors="replace"))
-                              except Exception: pass
-                      page.on("response", on_res)
-                      page.on("requestfinished", lambda req: state.update({"chat_done": True}) if "/duckchat/v1/chat" in req.url else None)
+                      current_chat_state["raw_stream"].clear()
+                      current_chat_state["chat_done"] = False
+                      current_chat_state["rate_limited"] = False
 
                       try:
                           is_in_chat = bool(page and "chatID=" in page.url)
@@ -627,11 +698,11 @@ jobs:
                           log(f"Submitting Pass 1 (Story Synthesis) for {chunk_id}...")
                           submit_prompt(page, box, pass1_prompt, context)
 
-                          # Fast-fail confirmation
+                          # Fast-fail confirmation check
                           confirmed = False
                           for _ in range(10):
                               page.wait_for_timeout(1000)
-                              if "chatID=" in page.url or len(state["raw_stream"]) > 0:
+                              if "chatID=" in page.url or len(current_chat_state["raw_stream"]) > 0:
                                   confirmed = True; break
                               stop_btn = page.locator("button:has-text('Stop generating'), button:has-text('Stop')")
                               if stop_btn.count() > 0 and stop_btn.first.is_visible():
@@ -643,11 +714,11 @@ jobs:
                               snap(page, f"fail_submit_{chunk_id}")
                               raise RuntimeError(f"Prompt submission not acknowledged for {chunk_id}")
 
-                          pass1_raw = wait_for_response(page, state, max_wait=TEXT_WAIT)
+                          pass1_raw = wait_for_response(page, current_chat_state, max_wait=TEXT_WAIT)
                           pass1_data = parse_first_balanced_json(pass1_raw)
 
                           if not pass1_data or not isinstance(pass1_data.get("beats"), list) or len(pass1_data["beats"]) == 0:
-                              raise RuntimeError(f"Pass 1 JSON parse failed: {pass1_raw[:160]}")
+                              raise RuntimeError(f"Pass 1 JSON parse failed: {pass1_raw[:180]}")
 
                           log(f"Pass 1 returned {len(pass1_data['beats'])} beats. Commencing Pass 2 (Script Doctor Audit)...")
 
@@ -666,25 +737,24 @@ jobs:
                               "Return the final perfected JSON with the same structure: {\"current_location\": ..., \"synopsis\": ..., \"characters\": [...], \"beats\": [...]}."
                           )
 
-                          state["raw_stream"] = []
-                          state["chat_done"] = False
+                          current_chat_state["raw_stream"].clear()
+                          current_chat_state["chat_done"] = False
 
                           page.wait_for_timeout(1500)
                           box = get_prompt_box(page)
                           box.wait_for(state="visible", timeout=20000)
                           submit_prompt(page, box, pass2_prompt, context)
 
-                          pass2_raw = wait_for_response(page, state, max_wait=TEXT_WAIT)
+                          pass2_raw = wait_for_response(page, current_chat_state, max_wait=TEXT_WAIT)
                           pass2_data = parse_first_balanced_json(pass2_raw)
 
                           if pass2_data and isinstance(pass2_data.get("beats"), list) and len(pass2_data["beats"]) > 0:
                               final_chunk_data = pass2_data
                               log(f"Pass 2 audit succeeded for {chunk_id}!")
                           else:
-                              log(f"Pass 2 skipped or invalid; maintaining Pass 1 draft.")
+                              log("Pass 2 missed; maintaining Pass 1 draft.")
                               final_chunk_data = pass1_data
 
-                          # Update running state
                           running_synopsis = final_chunk_data.get("synopsis", running_synopsis)
                           last_location = final_chunk_data.get("current_location", last_location)
 
@@ -742,7 +812,7 @@ jobs:
                   reindexed_beats.append(b_copy)
 
               total_words = sum(b["word_count"] for b in reindexed_beats)
-              est_narration_minutes = round(total_words / 150.0, 2)  # ~150 words per minute speaking rate
+              est_narration_minutes = round(total_words / 150.0, 2)
 
               final_output = {
                   "movie_title": movie_title,
@@ -755,12 +825,12 @@ jobs:
                   "beats": reindexed_beats
               }
 
-              # 1. story_beats.json for automated video renderers (FFmpeg, MoviePy, TTS)
+              # 1. story_beats.json (for video rendering/TTS scripts)
               Path("story_beats.json").write_text(
                   json.dumps(final_output, ensure_ascii=False, indent=2), encoding="utf-8"
               )
 
-              # 2. script_preview.txt for human review / voice actors
+              # 2. script_preview.txt (for reading/checking continuity)
               preview_lines = [
                   f"=== YOUTUBE MOVIE RECAP SCRIPT: {movie_title} ===",
                   f"Estimated Voiceover Runtime: ~{est_narration_minutes} mins | Total Cuts: {len(reindexed_beats)}",
@@ -804,7 +874,7 @@ jobs:
           if [ -f story_beats.json ]; then
             git add -f story_beats.json script_preview.txt build/pipeline_state.json || true
             if ! git diff --cached --quiet; then
-              git commit -m "Generate production-grade YouTube Hindi movie recap script [skip ci]"
+              git commit -m "Generate YouTube Hindi recap beats with scene continuity [skip ci]"
               git pull --rebase origin main
               git push origin HEAD:main
             fi

@@ -117,7 +117,6 @@ jobs:
           TEXT_WAIT = int(os.environ.get("TEXT_WAIT_SECONDS", "180"))
           MAX_ATTEMPTS = 2
 
-          # Calculate total beat quota for target duration (4 min = ~60 beats)
           TARGET_TOTAL_BEATS = max(35, int(TARGET_MINUTES * 15))
 
           DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
@@ -207,6 +206,7 @@ jobs:
           def click_ask_button(page):
               ask_btn = page.get_by_role("button", name=re.compile(r"^\s*ask\s*$", re.I))
               if ask_btn.count() > 0 and ask_btn.first.is_visible():
+                  log("Found 'Ask' button via get_by_role. Clicking...")
                   ask_btn.first.click(timeout=3000)
                   return True
 
@@ -214,6 +214,7 @@ jobs:
               for i in range(btn_text.count()):
                   b = btn_text.nth(i)
                   if b.is_visible() and b.is_enabled():
+                      log("Found button with text 'Ask'. Clicking...")
                       b.click(timeout=3000)
                       return True
 
@@ -412,10 +413,6 @@ jobs:
               return ""
 
           def build_timeline_chunks(transcript_path="transcript.json", max_chars=7500):
-              """
-              Chunks the 1027 lines into 3 Macro-Acts (Beginning, Middle, Climax).
-              Large context ensures conversations and scene transitions stay together.
-              """
               with open(transcript_path, "r", encoding="utf-8") as f:
                   data = json.load(f)
 
@@ -474,10 +471,6 @@ jobs:
               return refined
 
           def audit_and_smooth_transitions(beats):
-              """
-              Audits consecutive beats. If there is a sudden leap between characters
-              without context, it smooths the narrative connection.
-              """
               if len(beats) < 2:
                   return beats
 
@@ -489,10 +482,8 @@ jobs:
                   time_gap = curr_beat["start_sec"] - prev_beat["end_sec"]
                   curr_narr = curr_beat["narration"]
 
-                  # Check if previous beat mentioned Lucifer and current beat starts abruptly with Lucifer speaking
                   if ("लूसिफ़र" in prev_beat["narration"]) and ("लूसिफ़र बताता है" in curr_narr or "वह बताता है" in curr_narr):
                       if "पूछताछ" not in curr_narr and "क्लब" not in curr_narr and "मिलने" not in curr_narr:
-                          # Inject the scene transition bridge
                           curr_beat["narration"] = "क्लो उससे पूछताछ करने उसके क्लब पहुँचती है, जहाँ " + curr_narr
                           curr_beat["word_count"] = len(curr_beat["narration"].split())
 
@@ -570,7 +561,6 @@ jobs:
                   log(f"\n==================== PROCESSING: {chunk_id} ({c_idx+1}/{len(chunks)}) ====================")
                   chunk_text = "\n".join(chunk_lines)
 
-                  # ADVANCED CONTINUITY & TRANSITION PROMPT
                   prompt_lines = [
                       "You are a top-ranked Hindi YouTube Movie Recap Narrator (like 'Movie In Hindi' or 'Mystery Recaps').",
                       f"Goal: Summarize this portion of '{movie_title}' for a {TARGET_MINUTES}-minute video recap.",
@@ -585,7 +575,7 @@ jobs:
                       "CRITICAL RULES FOR SEAMLESS YOUTUBE EXPLANATION (NO JUMP CUTS):",
                       "1. SCENE BRIDGING & TRANSITIONS (MANDATORY):",
                       "   - Never jump abruptly between characters without explanation.",
-                      "   - If Detective Dan tells Chloe that Lucifer is the witness, you MUST explain that Chloe then visits Lucifer's nightclub 'Lux' to question him before Lucifer speaks!",
+                      "   - If Detective Dan tells Chloe that Lucifer is the witness, you MUST explain that Chloe then visits Lucifer's nightclub Lux to question him before Lucifer speaks!",
                       "   - Always explain HOW and WHERE characters meet (उदा: 'सच्चाई जानने के लिए क्लो लूसिफ़र के क्लब पहुँचती है, जहाँ...').",
                       "2. EXPLAIN THE 3 Ws (WHO, WHAT, WHY):",
                       "   - WHO is on screen, WHAT clue/action happens, and WHY it matters to the murder investigation.",
@@ -605,7 +595,7 @@ jobs:
                       '  "beats": [',
                       '    {"narration": "डिटेक्टिव क्लो क्राइम सीन पर पहुँचकर कत्ल के सबूतों की बारीकी से जांच करती है।", "start_sec": 1.20, "end_sec": 4.50},',
                       '    {"narration": "डैन क्लो को बताता है कि इस खौफनाक वारदात का इकलौता गवाह लूसिफ़र नाम का आदमी है।", "start_sec": 57.50, "end_sec": 61.20},',
-                      '    {"narration": "सच्चाई जानने के लिए क्लो तुरंत लूसिफ़र के क्लब 'लक्स' पहुँचकर उससे पूछताछ करती है।", "start_sec": 70.10, "end_sec": 74.00},',
+                      '    {"narration": "सच्चाई जानने के लिए क्लो तुरंत लूसिफ़र के क्लब लक्स पहुँचकर उससे पूछताछ करती है।", "start_sec": 70.10, "end_sec": 74.00},',
                       '    {"narration": "लूसिफ़र बताता है कि डेलाइला सालों से उसके क्लब में काम करती थी और वह उसका करीबी था।", "start_sec": 78.50, "end_sec": 82.50}',
                       '  ]',
                       "}",
@@ -698,10 +688,8 @@ jobs:
                       log(f"Aborting execution at {chunk_id}.")
                       break
 
-              # Post-processing pass: audit and smooth transitions across all beats
               final_beats = audit_and_smooth_transitions(all_beats)
 
-              # Re-index beats sequentially
               for idx, b in enumerate(final_beats, 1):
                   b["beat_id"] = f"B{idx:04d}"
 

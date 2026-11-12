@@ -92,28 +92,56 @@ def get_prompt_box(page):
     return page.locator("textarea[name='user-prompt'], textarea[placeholder*='ask' i], textarea").first
 
 def click_ask_button(page):
-    ask_btn = page.get_by_role("button", name=re.compile(r"^\s*ask\s*$", re.I))
-    if ask_btn.count() > 0 and ask_btn.first.is_visible():
-        ask_btn.first.click(timeout=3000)
-        return True
-    return bool(page.evaluate("""() => {
-        const b = Array.from(document.querySelectorAll('button')).find(x => !x.disabled && (x.innerText||'').trim().toLowerCase() === 'ask');
-        if (b) { b.click(); return true; }
-        return false;
-    }"""))
+    """Safely clicks the Ask button only if visible and enabled."""
+    try:
+        ask_btn = page.locator("button[aria-label*='ask' i], button:has-text('Ask'), button[type='submit']").first
+        if ask_btn.count() > 0 and ask_btn.is_visible() and ask_btn.is_enabled():
+            ask_btn.click(timeout=1500)
+            return True
+    except Exception:
+        pass
+
+    try:
+        return page.evaluate("""() => {
+            const buttons = Array.from(document.querySelectorAll('button'));
+            const ask = buttons.find(b => !b.disabled && (
+                (b.innerText || '').trim().toLowerCase() === 'ask' ||
+                (b.getAttribute('aria-label') || '').toLowerCase().includes('ask') ||
+                (b.getAttribute('aria-label') || '').toLowerCase().includes('send')
+            ));
+            if (ask) { ask.click(); return true; }
+            return false;
+        }""")
+    except Exception:
+        return False
 
 def submit_prompt(page, box, text, context):
     box.click()
     page.wait_for_timeout(200)
-    box.fill("")
-    try:
-        cdp = context.new_cdp_session(page)
-        cdp.send("Input.insertText", {"text": text})
-        cdp.detach()
-    except Exception:
-        box.fill(text)
-    page.wait_for_timeout(400)
-    if not click_ask_button(page):
+
+    # Use native React property setter so React recognizes the text change
+    page.evaluate("""(val) => {
+        const textarea = document.querySelector('textarea');
+        if (textarea) {
+            textarea.focus();
+            const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, "value").set;
+            nativeSetter.call(textarea, val);
+            textarea.dispatchEvent(new Event('input', { bubbles: true }));
+            textarea.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+    }""", text)
+    page.wait_for_timeout(300)
+
+    # Fallback to Playwright fill if textarea is still empty
+    cur_val = page.evaluate("() => document.querySelector('textarea')?.value || ''")
+    if not cur_val:
+        try: box.fill(text)
+        except Exception: pass
+
+    page.wait_for_timeout(300)
+    clicked = click_ask_button(page)
+    if not clicked:
+        box.focus()
         box.press("Enter")
     page.wait_for_timeout(500)
 
@@ -134,7 +162,7 @@ def parse_sse_text(raw_sse: str) -> str:
 def wait_for_duck_response(page, state, max_wait=TEXT_WAIT):
     start = time.time()
     last_text, stable_ticks = "", 0
-    page.wait_for_timeout(7000)
+    page.wait_for_timeout(6000)
 
     while time.time() - start < max_wait:
         if state.get("rate_limited"):
@@ -272,13 +300,14 @@ with sync_playwright() as p:
         log("Probe passed.")
         sys.exit(0)
 
-    # PHASE 1: Duck.ai Live Context Discovery
+    # PHASE 1: Duck.ai Live Context Discovery (Sample 35 lines to stay well under character limits)
     log("\n[PHASE 1] Duck.ai Live Context & Character Discovery...")
     page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
     page.wait_for_timeout(3000)
 
     segments = full_transcript.get("segments", [])
-    sample_dialogues = "\n".join([f"[{s['start']:.1f}s] {s.get('text', '')}" for s in segments[:180]])
+    # 35 lines provide optimal context (~2,000 characters) without hitting input limits
+    sample_dialogues = "\n".join([f"[{s['start']:.1f}s] {s.get('text', '')}" for s in segments[:35]])
 
     discovery_prompt = f"""Search your knowledge base and the web to identify this movie / TV episode from these dialogue lines.
 
@@ -287,7 +316,7 @@ TRANSCRIPT DIALOGUE SAMPLE:
 
 TASK:
 1. Identify the exact show/movie title.
-2. List ALL characters appearing or mentioned, with their English name, pure Devanagari Hindi name, and who they are (e.g. Chloe Decker -> क्लो, Lucifer Morningstar -> लूसिफ़र, Jimmy Barnes -> जिमी बार्न्स, 2Vile -> टू-वाइल, Beatrice/Trixie -> ट्रिक्सी, Delilah -> डेलाइला).
+2. List ALL main characters appearing or mentioned, with their English name, pure Devanagari Hindi name, and who they are (e.g. Chloe Decker -> क्लो, Lucifer Morningstar -> लूसिफ़र, Jimmy Barnes -> जिमी बार्न्स, 2Vile -> टू-वाइल, Beatrice/Trixie -> ट्रिक्सी, Delilah -> डेलाइला).
 
 Return STRICT JSON:
 ```json
@@ -305,6 +334,7 @@ Return STRICT JSON:
 ```"""
     discovery_result = duck_ask_json(page, context, discovery_prompt)
     if not discovery_result or "characters" not in discovery_result:
+        log("Duck.ai discovery returned fallback context roster.")
         discovery_result = {
             "identified_title": "Lucifer Pilot",
             "characters": [
@@ -321,7 +351,7 @@ Return STRICT JSON:
     movie_title = discovery_result.get("identified_title", full_transcript.get("movie_title", "Movie Recap"))
     log(f"Duck.ai identified movie: '{movie_title}' with {len(character_directory)} characters.")
 
-    # PHASE 2: Group into natural scenes
+    # PHASE 2: Group into natural scenes (max 3000 chars per chunk to prevent prompt bloat)
     lines = []
     for s in segments:
         s_id = f"S{int(s['id']):04d}"
@@ -330,7 +360,7 @@ Return STRICT JSON:
     chunks, cur, cur_len = [], [], 0
     for line in lines:
         line_len = len(line) + 1
-        if cur_len + line_len > 6000 and cur:
+        if cur_len + line_len > 3000 and cur:
             chunks.append(list(cur))
             cur = list(cur[-3:]) if len(cur) >= 3 else list(cur)
             cur_len = sum(len(l) + 1 for l in cur)
@@ -347,7 +377,7 @@ Return STRICT JSON:
 
     all_beats = pipeline_state.get("beats", [])
 
-    # PHASE 3: Duck.ai Writes $\rightarrow$ Groq Edits
+    # PHASE 3: Duck.ai Writes -> Groq Edits
     for c_idx, chunk_lines in enumerate(chunks):
         chunk_id = f"chunk_{c_idx+1}"
         if chunk_id in pipeline_state.get("completed_chunks", []):

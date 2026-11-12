@@ -115,8 +115,8 @@ jobs:
           TARGET_MINUTES = float(os.environ.get("TARGET_MINUTES", "12"))
           INPUT_HINTS = os.environ.get("INPUT_HINTS", "").strip()
           TEXT_WAIT = int(os.environ.get("TEXT_WAIT_SECONDS", "180"))
-          MAX_CLIP_DURATION = 3.0  # Max visual cut duration
-          MAX_WORDS_PER_BEAT = 8   # Words per 3s visual cut
+          MAX_CLIP_DURATION = 3.0  # Visual clips strictly <= 3.0s
+          MAX_WORDS_PER_BEAT = 8   # Speech pacing for 3.0s cut
           MAX_ATTEMPTS = 2
 
           DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
@@ -129,10 +129,7 @@ jobs:
 
           if RESET_STATE and STATE_FILE.exists():
               STATE_FILE.unlink()
-              print("[INIT] Cleared old pipeline_state.json for clean regeneration.", flush=True)
-
-          CONTINUE_LABELS = re.compile(
-              r"^(agree and continue|agree & continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I)
+              print("[INIT] Old pipeline_state.json removed for clean regeneration.", flush=True)
 
           def log(msg):
               line = f"[{time.strftime('%H:%M:%S')}] {msg}"
@@ -201,55 +198,78 @@ jobs:
                   time.sleep(2)
               time.sleep(3)
 
-          def click_initial_modal(page):
-              """Dismisses the initial 'Get Started' or 'I Agree' modal once."""
-              for _ in range(3):
-                  try:
-                      buttons = page.get_by_role("button", name=CONTINUE_LABELS)
-                      for i in range(buttons.count()):
-                          btn = buttons.nth(i)
-                          txt = (btn.inner_text() or "").strip()
-                          if btn.is_visible() and len(txt) > 0:
-                              log(f"Dismissing modal button: {txt!r}")
-                              btn.click(timeout=3000)
-                              page.wait_for_timeout(1000)
-                              return True
-                  except Exception:
-                      pass
-                  page.wait_for_timeout(500)
-              return False
-
           def get_prompt_box(page):
               return page.locator(
                   "textarea[name='user-prompt'], textarea[placeholder*='ask' i], "
                   "textarea[placeholder*='message' i], textarea").first
 
-          def submit_prompt(page, box, text):
-              """Fills textarea and explicitly clicks the send button to dispatch the request."""
+          def click_ask_button(page):
+              """Specifically targets the 'Ask' or 'Send' button on Duck.ai."""
+              # 1. Primary: Match button whose visible text is 'Ask'
+              ask_btn = page.get_by_role("button", name=re.compile(r"^\s*ask\s*$", re.I))
+              if ask_btn.count() > 0 and ask_btn.first.is_visible():
+                  log("Found 'Ask' button via get_by_role. Clicking...")
+                  ask_btn.first.click(timeout=3000)
+                  return True
+
+              # 2. Text search for 'Ask'
+              btn_text = page.locator("button:has-text('Ask')")
+              for i in range(btn_text.count()):
+                  b = btn_text.nth(i)
+                  if b.is_visible() and b.is_enabled():
+                      log("Found button with text 'Ask'. Clicking...")
+                      b.click(timeout=3000)
+                      return True
+
+              # 3. JavaScript evaluation fallback targeting the enabled Ask/Submit button
+              js_click = page.evaluate("""() => {
+                  const buttons = Array.from(document.querySelectorAll('button'));
+                  const ask = buttons.find(b => !b.disabled && (b.innerText || '').trim().toLowerCase() === 'ask');
+                  if (ask) { ask.click(); return 'ask_clicked'; }
+                  const send = buttons.find(b => !b.disabled && (b.getAttribute('aria-label') || '').toLowerCase().includes('send'));
+                  if (send) { send.click(); return 'send_clicked'; }
+                  const sub = buttons.find(b => b.type === 'submit' && !b.disabled);
+                  if (sub) { sub.click(); return 'submit_clicked'; }
+                  return null;
+              }""")
+              log(f"JS button click result: {js_click}")
+              return bool(js_click)
+
+          def submit_prompt(page, box, text, context):
+              """Types prompt via native Chrome CDP and clicks the 'Ask' button."""
+              log("Focusing prompt box...")
               box.click()
               page.wait_for_timeout(200)
-              box.fill(text)
-              page.wait_for_timeout(400)
 
-              # Click the Duck.ai send button
-              clicked = page.evaluate("""() => {
-                  const ta = document.querySelector("textarea[name='user-prompt'], textarea");
-                  if (!ta) return false;
-                  const container = ta.closest('form') || ta.closest('div[class*="prompt"], div[class*="composer"], div[class*="input"]') || document;
-                  const buttons = Array.from(container.querySelectorAll('button'));
-                  for (const b of buttons) {
-                      if (!b.disabled && (b.type === 'submit' || b.querySelector('svg') || (b.getAttribute('aria-label') || '').toLowerCase().includes('send'))) {
-                          b.click();
-                          return true;
-                      }
-                  }
-                  return false;
-              }""")
-              log(f"Send button clicked: {clicked}")
+              # Clear existing text
+              box.fill("")
+              page.wait_for_timeout(100)
 
+              # Type via Chrome DevTools Protocol to trigger React events natively
+              try:
+                  cdp = context.new_cdp_session(page)
+                  cdp.send("Input.insertText", {"text": text})
+                  cdp.detach()
+              except Exception as e:
+                  log(f"CDP typing fallback: {e}")
+                  box.fill(text)
+
+              page.wait_for_timeout(500)
+
+              # Dispatch input & change events
+              try:
+                  page.evaluate("""(el) => {
+                      el.dispatchEvent(new Event('input', { bubbles: true }));
+                      el.dispatchEvent(new Event('change', { bubbles: true }));
+                  }""", box.element_handle())
+              except Exception:
+                  pass
+
+              page.wait_for_timeout(300)
+
+              # Click the Ask button
+              clicked = click_ask_button(page)
               if not clicked:
-                  # Fallback
-                  box.press("Control+Enter")
                   box.press("Enter")
               page.wait_for_timeout(500)
 
@@ -333,7 +353,7 @@ jobs:
 
               while time.time() - start < max_wait:
                   if state.get("rate_limited"):
-                      raise RuntimeError("Duck.ai returned HTTP 418 (Rate Limit on Tor IP).")
+                      raise RuntimeError("Duck.ai returned HTTP 418 (Tor IP blocked).")
 
                   # Auto-scroll page to keep output active in DOM
                   try:
@@ -399,7 +419,6 @@ jobs:
               return ""
 
           def build_timeline_chunks(transcript_path="transcript.json", max_chars=2200):
-              """Groups segments into ~1.5 - 2.0 minute narrative chunks."""
               with open(transcript_path, "r", encoding="utf-8") as f:
                   data = json.load(f)
 
@@ -432,7 +451,7 @@ jobs:
               return movie_title, chunks
 
           def enforce_micro_beats(raw_beats, max_duration=MAX_CLIP_DURATION, max_words=MAX_WORDS_PER_BEAT):
-              """Enforces that individual clips stay <= 3.0s and audio stays in sync with visuals."""
+              """Enforces that individual clips stay <= 3.0s and preserves jump cuts between scenes."""
               refined = []
               for b in raw_beats:
                   narr = deep_repair(b.get("narration", "")).strip()
@@ -457,7 +476,7 @@ jobs:
                       })
                       continue
 
-                  # Subdivide if the model provided an overly long scene window
+                  # Subdivide if the model provided a long window
                   splits_by_time = math.ceil(dur / max_duration)
                   splits_by_words = math.ceil(len(words) / max_words)
                   num_splits = max(int(splits_by_time), int(splits_by_words), 1)
@@ -515,8 +534,7 @@ jobs:
                   log("==================== RUNNING PROBE MODE ====================")
                   log("Opening https://duck.ai/chat ...")
                   page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
-                  page.wait_for_timeout(2000)
-                  click_initial_modal(page)
+                  page.wait_for_timeout(3000)
 
                   box = get_prompt_box(page)
                   box.wait_for(state="visible", timeout=40000)
@@ -538,14 +556,14 @@ jobs:
                           state["chat_done"] = True
                   page.on("requestfinished", on_req_finish)
 
-                  submit_prompt(page, box, probe_prompt)
+                  submit_prompt(page, box, probe_prompt, context)
 
                   result_text = wait_for_text_generation(page, state, max_wait=45)
                   parsed = parse_first_balanced_json(result_text)
                   log(f"Probe Parsed JSON: {parsed}")
 
                   if parsed and parsed.get("ok") is True and parsed.get("hindi") == "नमस्ते":
-                      log("Probe SUCCESS! Pure Hindi Unicode verified.")
+                      log("Probe SUCCESS! Pure Hindi Unicode and 'Ask' button verified.")
                       sys.exit(0)
                   else:
                       log("Probe FAILED validation.")
@@ -619,21 +637,41 @@ jobs:
                               '"characters": [{"name": "Chloe", "hindi_name": "क्लो", "who": "जासूस"}], '
                               '"beats": ['
                               '  {"narration": "क्लो जांच के लिए कमरे में आती है।", "start_sec": 0.72, "end_sec": 3.42},'
-                              '  {"narration": "उसे एक छोटे सौदागर से नशीला पैकेट मिलता है।", "start_sec": 25.30, "end_sec": 28.00}'
+                              '  {"narration": "उसे एक छोटे सौदागर से नशीला पैकेट मिलता है।", "start_sec": 24.30, "end_sec": 27.10}'
                               ']}'
                           )
 
                           if not is_in_chat:
                               log("Opening https://duck.ai/chat ...")
                               page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
-                              page.wait_for_timeout(2000)
-                              click_initial_modal(page)
+                              page.wait_for_timeout(3000)
 
                           box = get_prompt_box(page)
                           box.wait_for(state="visible", timeout=40000)
 
                           log(f"Entering and submitting prompt for {chunk_id}...")
-                          submit_prompt(page, box, final_prompt)
+                          submit_prompt(page, box, final_prompt, context)
+
+                          # Fast-Fail Check: Verify Duck.ai actively began the session
+                          confirmed = False
+                          for tick in range(1, 11):
+                              page.wait_for_timeout(1000)
+                              if "chatID=" in page.url or len(state["raw_stream"]) > 0:
+                                  confirmed = True
+                                  log(f"Session confirmed! url={page.url}")
+                                  break
+                              stop_btn = page.locator("button:has-text('Stop generating'), button:has-text('Stop')")
+                              if stop_btn.count() > 0 and stop_btn.first.is_visible():
+                                  confirmed = True
+                                  log("Session confirmed! 'Stop generating' button visible.")
+                                  break
+                              log(f"Waiting for chat to start (tick {tick}/10)... re-clicking Ask.")
+                              click_ask_button(page)
+                              box.press("Enter")
+
+                          if not confirmed:
+                              snap(page, f"submit_failed_{chunk_id}")
+                              raise RuntimeError(f"Prompt failed to submit for {chunk_id}! 'Ask' button was not processed by Duck.ai.")
 
                           result_raw = wait_for_text_generation(page, state, max_wait=TEXT_WAIT)
                           parsed = parse_first_balanced_json(result_raw)

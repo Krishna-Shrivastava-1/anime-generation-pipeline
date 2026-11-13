@@ -1,61 +1,172 @@
 === YOUTUBE MOVIE RECAP SCRIPT: Lucifer ===
-Content Type: Series | Est. Runtime: ~1.28 mins | Beats: 7 | Words: 179
-Synopsis: Detective Chloe is handed a murder case involving a singer. The evidence points to a drug packet found in the victim's purse. Lucifer Morningstar, a witness, says the victim used to work at his club and claims she told him the reason for her murder, which he describes as money. At a wedding, Jimmy Barnes, the victim's ex-fiance, admits he was humiliated by her and that he went to convince her at night. Lucifer provokes him, Jimmy refuses to play along, and Lucifer leaves.
+Content Type: Series | Est. Runtime: ~4.32 mins | Beats: 17 | Words: 605
+Synopsis: Detective Chloe Decker is told that a drug-related case is now hers and is described as an easy one. A packet is found in Delilah's purse, so Lucifer concludes the case is about Delilah, and he suspects she had not paid for the drugs. Lucifer gives his name as a witness and says Delilah once worked for him and that he played her songs. He says that after she became a big star, someone decided to kill her, and that before she died she told him the motive was money. At a wedding, Lucifer confronts Jimmy Barnes about marrying the day after his ex-fiance's killing. Jimmy denies the murder, says he was angry because Delilah's confession humiliated him, and points at another man. Detective Chloe Decker gets the Delilah murder case. A packet found in Delilah's purse leads Lucifer to claim it is her case and that she had not paid for drugs. Lucifer says Delilah told him the motive was money, which is his unverified claim. At Jimmy Barnes's wedding, Lucifer confronts him about marrying the day after Delilah's death. Jimmy denies the murder, says Delilah's confession humiliated him, and points at a rapper. Lucifer then visits a man's home claiming to have drugs for the boss and is turned away at first. He argues with Jockey about hip-hop, and the argument turns hostile. Lucifer says he is immortal, then asks what the man knows about Delilah. The man says Delilah's partner was unfaithful and hid his affair under the name Raaz. The lead points to therapist Dr. Linda in Beverly Hills. LAPD officers, including Chloe, burst in and order everyone to drop their guns. Lucifer says the shooter's last call went to Vile. Chloe then questions Lucifer about his call to dealer Eddie, whom he met with Delilah. Detective Chloe Decker of the LAPD is investigating the murder of Delilah. Lucifer Morningstar, a witness who claims to have known Delilah, says her killer's motive was money, which is his unverified claim. At Jimmy Barnes's wedding, Jimmy denies the murder and points to a rapper. Lucifer's visit to Jockey's home turns hostile, and the man reveals that Delilah's partner was unfaithful and that he saw therapist Dr. Linda in Beverly Hills. LAPD officers then burst in. Lucifer says the shooter's last call went to Vile, and Chloe questions him about his contact with the dealer Eddie. In this section, Chloe arrests Lucifer for interfering with the investigation, and Lucifer offers to help with his supposed talent for talking to people and making wishes come true. He tells Chloe to accept her sin, and when she asks what she wants most, she says she always wanted to be a police officer like her father. Lucifer says he knows something she does not and will share it only if she brings him onto the case. Detective Chloe Decker of the LAPD takes on the murder of Delilah, a former singer. Lucifer Morningstar, a witness, claims Delilah's motive was money and that he has special talents. After Jimmy Barnes, Jockey, and a raid at the home Lucifer visits, the shooter's last call is traced to Vile. Chloe arrests Lucifer for interference. In the car he offers help and says he knows something she does not. He admits he feels responsible for Delilah's career. Chloe agrees to act on his clue about a Beverly Hills therapist, Dr. Linda, and her client Penny Lane. Nothing is confirmed yet, and the case is not solved. Detective Chloe Decker is investigating the murder of Delilah. Lucifer Morningstar claims he can get people to reveal the truth and has pointed Chloe toward therapist Dr. Linda and the alias Penny Lane. Lucifer claims he was helping Delilah's career and that the case still is not solved. In this section, Lucifer meets Chloe's daughter Trixie, who admits she hurt a girl who was bullying her online. Lucifer tells the bully that Hell has a special story for her, and Trixie leaves with her father.
 
 ======================================================================
-[B0001 | Words: 35 | Est: 13s]
-Narration: क्लो को इस केस की ज़िम्मेदारी मिली है, और लूसिफ़र इसे आसान मानकर चल रहा है। ड्रग डीलर की जेब से निकला पैकेट मृतका की पर्स में मिला, तो शक सीधे उसी पर जाता है।
-  - C0001: 18.89s -> 20.89s (2.0s) | Transcript: lieutenant tells Chloe this is her case. Visual of the lieutenant handing over the case is unverified.
-  - C0002: 21.3s -> 23.3s (2.0s) | Transcript: Chloe is told this is her case and that it is an easy one. Visual unverified.
-  - C0003: 27.3s -> 29.3s (2.0s) | Transcript: a small drug packet was taken from the dealer's pocket and was found in the victim's purse. Visual unverified.
-  - C0004: 29.3s -> 31.3s (2.0s) | Transcript: the packet was in the victim's purse. Visual unverified.
-  - C0005: 31.3s -> 33.3s (2.0s) | Transcript: the speaker concludes it is the victim's case. Visual unverified.
-  - C0006: 33.3s -> 35.3s (2.0s) | Transcript: the speaker says the victim must not have paid for the drugs. Visual unverified.
-  - C0007: 35.3s -> 36.3s (1.0s) | Transcript: the speaker mentions the victim's songs are still playing. Visual unverified.
+[B0001 | Words: 27 | Est: 11s]
+Narration: डिटेक्टिव क्लोई को बताया जाता है कि यह केस अब उसका है। उसके सामने एक ड्रग डीलर का मामला रखा जाता है, जिसे आसान बताया जाता है।
+  - C0001: 2.72s -> 4.72s (2.0s) | Transcript: Chloe is told the case is hers. Visual suggestion (unverified): Chloe receiving the case at the station.
+  - C0002: 18.89s -> 20.89s (2.0s) | Transcript: Chloe is told the case is hers and that it is easy. Visual suggestion (unverified): a brief conversation between Chloe and Lucifer.
+  - C0003: 24.3s -> 26.3s (2.0s) | Transcript: Lucifer says not to waste time on this easy case. Visual suggestion (unverified): Lucifer speaking in the office.
+  - C0004: 27.3s -> 29.3s (2.0s) | Transcript: the drug dealer is mentioned as the small suspect. Visual suggestion (unverified): an evidence close-up.
+  - C0005: 31.3s -> 33.3s (2.0s) | Transcript: the packet is linked to Delilah's purse. Visual suggestion (unverified): the evidence bag.
+  - C0006: 35.3s -> 37.3s (2.0s) | Transcript: Lucifer says the case belongs to Delilah. Visual suggestion (unverified): Lucifer looking at the case file.
 ----------------------------------------------------------------------
-[B0002 | Words: 29 | Est: 12s]
-Narration: लूसिफ़र ने गवाह के रूप में अपना नाम लूसिफ़र मॉर्निंगस्टार बताया। वह कहता है कि मृतका कभी इसी जगह काम करती थी, और वह अक्सर उसके गाने बजाता था।
-  - C0008: 61.15s -> 63.15s (2.0s) | Transcript: Lucifer Morningstar is named as the witness. Visual unverified.
-  - C0009: 64.24s -> 66.24s (2.0s) | Transcript: the witness's name is confirmed as Lucifer Morningstar. Visual unverified.
-  - C0010: 82.46s -> 84.46s (2.0s) | Transcript: the victim used to work at this place for a few years. Visual unverified.
-  - C0011: 84.46s -> 86.46s (2.0s) | Transcript: the witness says he used to play the victim's songs sometimes. Visual unverified.
-  - C0012: 86.46s -> 87.46s (1.0s) | Transcript: continuation of the witness's account of playing her songs. Visual unverified.
-  - C0013: 87.46s -> 89.46s (2.0s) | Transcript: the victim became a big star and someone decided to kill her. Visual unverified.
-  - C0014: 89.46s -> 90.46s (1.0s) | Transcript: continuation of the victim becoming a star and being killed. Visual unverified.
+[B0002 | Words: 28 | Est: 10s]
+Narration: एक पैकेट डेलिला के पर्स में मिला था, इसलिए लूसिफर इसे उसी का केस मानता है। उसका अंदाज़ा है कि डेलिला ने ड्रग्स के पैसे नहीं चुकाए थे।
+  - C0007: 33.3s -> 35.3s (2.0s) | Transcript: the packet is found in Delilah's purse and Lucifer says it is Delilah's case. Visual suggestion (unverified): Lucifer pointing at the packet.
+  - C0008: 35.3s -> 37.3s (2.0s) | Transcript: Lucifer says Delilah must not have paid for the drugs. Visual suggestion (unverified): Lucifer speaking to Chloe.
+  - C0009: 37.3s -> 39.3s (2.0s) | Transcript: Lucifer says the drug-related theory is his own guess. Visual suggestion (unverified): Chloe reacting.
+  - C0010: 39.3s -> 41.3s (2.0s) | Transcript: Lucifer asks how he knows. Visual suggestion (unverified): Lucifer gesturing at the scene.
+  - C0011: 31.3s -> 33.3s (2.0s) | Transcript: the packet and the purse are mentioned together. Visual suggestion (unverified): a repeat shot of the purse evidence.
 ----------------------------------------------------------------------
-[B0003 | Words: 25 | Est: 9s]
-Narration: मृतका को गोली किसने मारी, यह अभी साफ़ नहीं। लूसिफ़र का दावा है कि मरने से पहले मृतका ने उसे कत्ल की वजह बताई थी।
-  - C0015: 92.46s -> 94.46s (2.0s) | Transcript: the witness says he does not know the shooter, but the victim told him something before she died. Visual unverified.
-  - C0016: 95.46s -> 97.46s (2.0s) | Transcript: the witness says she told him the reason for the murder. Visual unverified.
-  - C0017: 97.46s -> 99.46s (2.0s) | Transcript: the witness says the reason is a matter the victim explained. Visual unverified.
-  - C0018: 99.46s -> 100.84s (1.38s) | Transcript: the conversation continues about the victim and the reason behind the crime. Visual unverified.
+[B0003 | Words: 23 | Est: 10s]
+Narration: उसकी कार और घड़ी देखकर लूसिफर को लगता है कि ड्रग डीलर पैसे वाला दिखता है। हालांकि घड़ी नकली भी हो सकती है।
+  - C0012: 40.75s -> 42.75s (2.0s) | Transcript: Lucifer tells Chloe to look at the car. Visual suggestion (unverified): the car on the scene.
+  - C0013: 42.75s -> 44.75s (2.0s) | Transcript: Lucifer tells Chloe to look at the watch. Visual suggestion (unverified): a close-up of the watch.
+  - C0014: 43.75s -> 45.75s (2.0s) | Transcript: the watch does not look cheap. Visual suggestion (unverified): Lucifer examining the watch.
+  - C0015: 45.75s -> 47.75s (2.0s) | Transcript: Lucifer says the watch may be fake. Visual suggestion (unverified): Chloe reacting to the watch.
+  - C0016: 47.75s -> 49.75s (2.0s) | Transcript: Lucifer says everyone's eyes are on the case. Visual suggestion (unverified): Chloe and Lucifer at the scene.
 ----------------------------------------------------------------------
-[B0004 | Words: 18 | Est: 6s]
-Narration: लूसिफ़र के मुताबिक़ मामला पैसों का है। उसका कहना है कि मृतका की आत्मा पूरी तरह नहीं गई।
-  - C0019: 109.84s -> 111.84s (2.0s) | Transcript: Lucifer says the victim did not die completely, and her soul did not move on. Visual unverified.
-  - C0020: 115.38s -> 117.38s (2.0s) | Transcript: the speaker states the reason for the murder is a matter of money. Visual unverified.
-  - C0021: 117.38s -> 119.38s (2.0s) | Transcript: the conversation continues on the money motive. Visual unverified.
+[B0004 | Words: 16 | Est: 6s]
+Narration: लूसिफर पूछता है कि क्या कोई गवाह है। फिर वह खुद को लूसिफर मॉर्निंगस्टार बताता है।
+  - C0017: 54.26s -> 56.26s (2.0s) | Transcript: Lucifer asks Chloe about the witness and says he will ask for the case. Visual suggestion (unverified): Lucifer speaking to Chloe.
+  - C0018: 57.26s -> 59.26s (2.0s) | Transcript: Is there any witness, and the answer is Lucifer Morningstar. Visual suggestion (unverified): Lucifer stepping forward.
+  - C0019: 61.15s -> 63.15s (2.0s) | Transcript: Lucifer Morningstar is named as the witness. Visual suggestion (unverified): Chloe questioning Lucifer.
 ----------------------------------------------------------------------
-[B0005 | Words: 32 | Est: 11s]
-Narration: फिर शादी के समारोह में जिमी बार्न्स सामने आता है। वह लूसिफ़र से कहता है कि मृतका ने उसकी शादी तोड़ी थी, और उसने रात में उसे मनाने की कोशिश की थी।
-  - C0022: 233.99s -> 235.99s (2.0s) | Transcript: Jimmy Barnes asks whether the other person recognizes him at a private function. Visual of a wedding setting is unverified.
-  - C0023: 236.99s -> 238.99s (2.0s) | Transcript: the other person says this is a private function and asks how he came inside. Visual unverified.
-  - C0024: 258.66s -> 260.66s (2.0s) | Transcript: Jimmy says the victim had ruined his marriage once. Visual unverified.
-  - C0025: 265.66s -> 267.66s (2.0s) | Transcript: the speaker says the other person had gone to convince her at night. Visual unverified.
-  - C0026: 267.66s -> 269.66s (2.0s) | Transcript: the speaker says if he had convinced her, he would have killed her. Visual unverified.
-  - C0027: 269.66s -> 270.66s (1.0s) | Transcript: the speaker says that would not have happened. Visual unverified.
+[B0005 | Words: 30 | Est: 13s]
+Narration: लूसिफर बताता है कि डेलिला कभी उसके यहाँ काम करती थी और वह अक्सर उसके गाने बजाता था। बाद में वह बड़ी स्टार बनी, और किसी ने उसे मार दिया।
+  - C0020: 80.46s -> 82.46s (2.0s) | Transcript: Lucifer is asked about his relationship with the victim. Visual suggestion (unverified): Lucifer answering in the club.
+  - C0021: 82.46s -> 84.46s (2.0s) | Transcript: Delilah worked there for a few years. Visual suggestion (unverified): a club interior shot.
+  - C0022: 84.46s -> 86.46s (2.0s) | Transcript: Lucifer used to play Delilah's songs. Visual suggestion (unverified): music playing in the club.
+  - C0023: 86.46s -> 88.46s (2.0s) | Transcript: Delilah became a big star. Visual suggestion (unverified): a poster or stage shot of Delilah.
+  - C0024: 88.46s -> 90.46s (2.0s) | Transcript: someone decided to kill her. Visual suggestion (unverified): a tense reaction shot.
+  - C0025: 90.46s -> 92.46s (2.0s) | Transcript: Chloe asks whether Lucifer knows the shooter. Visual suggestion (unverified): Chloe questioning Lucifer.
+  - C0026: 92.46s -> 94.46s (2.0s) | Transcript: Lucifer says he does not know the shooter. Visual suggestion (unverified): Lucifer answering.
 ----------------------------------------------------------------------
-[B0006 | Words: 21 | Est: 8s]
-Narration: जिमी मानता है कि अपमान से वह गुस्से में था। लूसिफ़र उसे मन के खेल में फँसाने की कोशिश करता है।
-  - C0028: 282.66s -> 284.66s (2.0s) | Transcript: Jimmy says he was angry because he was humiliated by her confession. Visual unverified.
-  - C0029: 284.66s -> 286.66s (2.0s) | Transcript: Jimmy continues that he was humiliated and says his lottery is on. Visual unverified.
-  - C0030: 286.66s -> 287.66s (1.0s) | Transcript: the other person says that is what he sees. Visual unverified.
-  - C0031: 288.66s -> 290.66s (2.0s) | Transcript: the speaker tells the other to play with his mind games for a while. Visual unverified.
+[B0006 | Words: 15 | Est: 8s]
+Narration: डेलिला ने मरने से पहले लूसिफर को हत्या की वजह बताई थी। वजह है पैसा।
+  - C0027: 95.46s -> 97.46s (2.0s) | Transcript: before she died, she told Lucifer something. Visual suggestion (unverified): Lucifer recalling the conversation.
+  - C0028: 113.38s -> 115.38s (2.0s) | Transcript: Lucifer asks Jimmy for the reason for the murder. Visual suggestion (unverified): a tense exchange.
+  - C0029: 115.38s -> 117.38s (2.0s) | Transcript: the reason is described as a matter of money. Visual suggestion (unverified): Lucifer speaking.
+  - C0030: 117.38s -> 119.38s (2.0s) | Transcript: the greed for money is mentioned. Visual suggestion (unverified): a reaction shot.
 ----------------------------------------------------------------------
-[B0007 | Words: 19 | Est: 8s]
-Narration: जिमी ने ऐसे खेल में न फँसने की बात कहकर बात खत्म की। आख़िर में लूसिफ़र विदा लेता है।
-  - C0032: 277.66s -> 279.66s (2.0s) | Transcript: Jimmy tells the other to stop staring at him and says he will not fall for mind games. Visual unverified.
-  - C0033: 279.66s -> 281.66s (2.0s) | Transcript: Jimmy says he is not going to come to the other's mind games. Visual unverified.
-  - C0034: 330.18s -> 331.18s (1.0s) | Transcript: the speaker says he should go now. Visual unverified.
-  - C0035: 331.18s -> 333.43s (2.25s) | Transcript: the speaker leaves with a closing congratulation on the wedding. Visual unverified.
+[B0007 | Words: 27 | Est: 10s]
+Narration: जिमी ने हत्या से साफ इनकार किया। उसने कहा कि डेलिला के कबूलनामे ने उसे सबके सामने शर्मिंदा किया। फिर उसने एक रैपर पर उंगली उठा दी।
+  - C0031: 331.18s -> 332.68s (1.5s) | Wedding scene, transcript segment 149 (Congratulations on your wedding). Visuals unverified. Jimmy's denial is not in the supplied transcript, so this beat is short on footage. Only about 3.25 seconds of wedding footage exists here, and more clips are needed.
+  - C0032: 332.68s -> 334.43s (1.75s) | Wedding scene, transcript segment 150 (Enjoy). Visuals unverified. Same footage-gap warning as C0031.
+----------------------------------------------------------------------
+[B0008 | Words: 25 | Est: 9s]
+Narration: लूसिफर एक घर पहुंचता है और बॉस के लिए ड्रग्स होने की बात कहता है। उसे पहले अंदर जाने से मना कर दिया जाता है।
+  - C0033: 352.36s -> 354.36s (2.0s) | Doorway greeting and request to meet the boss, transcript segments 151-152. Visuals unverified.
+  - C0034: 355.36s -> 357.36s (2.0s) | Man asks whether the boss is home, transcript segment 153. Visuals unverified.
+  - C0035: 359.36s -> 361.36s (2.0s) | Refusal at the door, transcript segments 155-156. Visuals unverified.
+  - C0036: 361.36s -> 363.36s (2.0s) | Lucifer says he has drugs for the boss, transcript segment 158. Visuals unverified.
+  - C0037: 364.0s -> 365.0s (1.0s) | Reply that the right medicine is needed, transcript segment 159. Visuals unverified.
+----------------------------------------------------------------------
+[B0009 | Words: 33 | Est: 14s]
+Narration: जॉकी से हिप-हॉप को लेकर लूसिफर की बहस बिगड़ जाती है। कोई उसे गोली मारने को चिल्लाता है। लूसिफर कहता है कि वह अमर है। फिर वह डेलिला के बारे में पूछता है।
+  - C0038: 376.74s -> 378.74s (2.0s) | Music argument begins, transcript segments 160-161. Visuals unverified.
+  - C0039: 385.74s -> 387.74s (2.0s) | Jockey and Lucifer introduce themselves, transcript segments 164-166. Visuals unverified.
+  - C0040: 394.29s -> 396.29s (2.0s) | Hip-hop insult exchange, transcript segment 168. Visuals unverified.
+  - C0041: 404.74s -> 406.74s (2.0s) | Argument over the music turns hostile, transcript segment 173. Visuals unverified.
+  - C0042: 414.88s -> 416.88s (2.0s) | Lucifer says he does not hate black people, transcript segment 177. Visuals unverified.
+  - C0043: 432.14s -> 434.14s (2.0s) | Threat exchange, transcript segment 184. Visuals unverified.
+  - C0044: 447.47s -> 449.47s (2.0s) | Someone shouts to shoot Lucifer, transcript segment 189. Visuals unverified.
+----------------------------------------------------------------------
+[B0010 | Words: 29 | Est: 12s]
+Narration: उस आदमी ने कहा कि डेलिला का साथी बेवफा था, और अपना अफेयर उसने राज़ नाम से छिपाया था। बात बेवर्ली हिल्स की थेरेपिस्ट डॉक्टर लिंडा तक पहुंचती है।
+  - C0045: 475.68s -> 477.68s (2.0s) | Lucifer asks with whom the affair was, transcript segment 203. Visuals unverified.
+  - C0046: 478.68s -> 480.68s (2.0s) | Name kept as Raaz, transcript segment 206. Visuals unverified.
+  - C0047: 482.68s -> 484.68s (2.0s) | Question about a friend who knows Raaz, transcript segment 208. Visuals unverified.
+  - C0048: 487.68s -> 489.68s (2.0s) | Therapist mentioned, transcript segment 210. Visuals unverified.
+  - C0049: 491.68s -> 493.68s (2.0s) | Dr. Linda named, transcript segment 212. Visuals unverified.
+  - C0050: 494.68s -> 496.68s (2.0s) | Five visits a week under another name, transcript segment 214. Visuals unverified.
+----------------------------------------------------------------------
+[B0011 | Words: 46 | Est: 12s]
+Narration: क्लोई समेत पुलिस अंदर घुस आती है और सबको हथियार फेंकने का आदेश देती है। लूसिफर बताता है कि हत्यारे की आखिरी कॉल वाइल को गई थी। फिर सवाल एडी पर आता है, जो ड्रग डीलर है और जिससे लूसिफर डेलिला के साथ मिल चुका है।
+  - C0051: 504.68s -> 506.68s (2.0s) | LAPD order to throw guns down, transcript segment 220. Visuals unverified.
+  - C0052: 507.68s -> 509.68s (2.0s) | Both raise hands, transcript segment 221. Visuals unverified.
+  - C0053: 511.68s -> 513.68s (2.0s) | Guns placed in a bucket, transcript segment 223. Visuals unverified.
+  - C0054: 520.68s -> 522.68s (2.0s) | Lucifer mentions the shooter's last call to Vile, transcript segments 227-228. Visuals unverified.
+  - C0055: 533.38s -> 535.38s (2.0s) | Chloe asks about the call to Eddie, transcript segment 233. Visuals unverified.
+  - C0056: 536.38s -> 538.38s (2.0s) | Lucifer says Eddie is his dealer and he met him with Delilah, transcript segment 236. Visuals unverified.
+----------------------------------------------------------------------
+[B0012 | Words: 31 | Est: 13.3s]
+Narration: क्लोई लूसिफर को पुलिस की जांच में दखल देने के आरोप में गिरफ्तार करती है। लूसिफर इसे रोल-प्ले जैसा बताता है और कहता है कि ये हथकड़ियां उसे नहीं बांध सकतीं।
+  - C0057: 589.41s -> 591.41s (2.0s) | Transcript: 'You stay there. And you come with me.' Visual unverified: Chloe leads Lucifer toward the car.
+  - C0058: 591.41s -> 593.41s (2.0s) | Transcript: 'What? Oh. Role play.' Visual unverified: Lucifer reacts with a playful expression.
+  - C0059: 595.41s -> 597.41s (2.0s) | Transcript: 'But I don't understand why you have arrested me.' Visual unverified: Lucifer questions the arrest.
+  - C0060: 598.41s -> 600.41s (2.0s) | Transcript: 'Because you are interfering in the police investigation.' Visual unverified: Chloe explains the arrest.
+  - C0061: 601.41s -> 603.41s (2.0s) | Transcript: 'You have broken so many laws and don't like your face.' Visual unverified: Chloe stands close to Lucifer.
+  - C0062: 604.41s -> 606.41s (2.0s) | Transcript: 'By the way, these handcuffs can't tie me up.' Visual unverified: Lucifer with handcuffs.
+  - C0063: 606.41s -> 608.41s (2.0s) | Transcript: 'Really?' Visual unverified: Chloe reacts to the handcuff remark.
+----------------------------------------------------------------------
+[B0013 | Words: 34 | Est: 14.6s]
+Narration: लूसिफर मदद की पेशकश करता है और दावा करता है कि लोग उससे बातें करने लगते हैं। वह क्लोई से अपना पाप स्वीकार करने को कहता है, पर क्लोई साफ़ मना कर देती है।
+  - C0064: 625.84s -> 627.84s (2.0s) | Transcript: 'I have a special talent.' Visual unverified: Lucifer speaks in the car.
+  - C0065: 627.84s -> 629.84s (2.0s) | Transcript: 'I can talk to people. I can see them.' Visual unverified: Lucifer gestures toward Chloe.
+  - C0066: 630.84s -> 632.84s (2.0s) | Transcript: 'Are you blind?' Visual unverified: Chloe glances at Lucifer.
+  - C0067: 634.84s -> 636.84s (2.0s) | Transcript: 'People just talk to me.' Visual unverified: Lucifer leans back in the seat.
+  - C0068: 638.84s -> 640.84s (2.0s) | Transcript: 'Accept your sin. No.' Visual unverified: Chloe refuses in the car.
+  - C0069: 640.84s -> 642.84s (2.0s) | Transcript: 'I don't accept my sin. People accept their sin.' Visual unverified: Chloe speaks firmly.
+  - C0070: 643.84s -> 645.84s (2.0s) | Transcript: 'I can make people's wishes come true.' Visual unverified: Lucifer speaks with a smile.
+  - C0071: 645.84s -> 647.84s (2.0s) | Transcript continuation of Lucifer's wish claim. Visual unverified: close shot of Lucifer.
+----------------------------------------------------------------------
+[B0014 | Words: 61 | Est: 26.0s]
+Narration: लूसिफर कहता है कि वह लोगों की इच्छाएं पूरी कर सकता है। फिर वह पूछता है कि क्लोई की ज़िंदगी में सबसे ज़्यादा क्या चाहिए। क्लोई बताती है कि बचपन में वह अपने पिता जैसी पुलिस अफ़सर बनना चाहती थी। लूसिफर कहता है कि वह एक बात जानता है, जो क्लोई नहीं जानती, पर केस में शामिल करने पर ही बताएगा।
+  - C0072: 653.84s -> 655.84s (2.0s) | Transcript: 'But you are responsible for your sins.' Visual unverified: Lucifer makes a point to Chloe.
+  - C0073: 671.16s -> 673.16s (2.0s) | Transcript: 'Now tell me this, detective.' Visual unverified: Lucifer turns toward Chloe.
+  - C0074: 673.16s -> 675.16s (2.0s) | Transcript: 'What do you want the most in your life?' Visual unverified: Lucifer asks the question.
+  - C0075: 676.02s -> 678.02s (2.0s) | Transcript: 'Okay, so this is your magic.' Visual unverified: Lucifer smiles in the car.
+  - C0076: 680.02s -> 682.02s (2.0s) | Transcript: 'Okay, so this is your magic.' Visual unverified: Chloe listens with a serious face.
+  - C0077: 685.38s -> 687.38s (2.0s) | Transcript: 'Maybe when I was a kid, I always wanted to be a police officer like my daddy.' Visual unverified: Chloe speaks in the car.
+  - C0078: 687.38s -> 689.38s (2.0s) | Transcript continuation of Chloe's childhood answer. Visual unverified: Chloe looks ahead while speaking.
+  - C0079: 689.38s -> 691.38s (2.0s) | Transcript continuation of Chloe's childhood answer. Visual unverified: Chloe in profile.
+  - C0080: 692.8s -> 694.8s (2.0s) | Transcript: 'So that I can help people one day.' Visual unverified: Chloe reflects.
+  - C0081: 695.8s -> 697.8s (2.0s) | Transcript: 'And people take me seriously when I tell them to sit quietly in the car.' Visual unverified: Chloe speaks to Lucifer.
+  - C0082: 711.31s -> 713.31s (2.0s) | Transcript: 'I know what you don't know.' Visual unverified: Lucifer makes a knowing remark.
+  - C0083: 714.31s -> 716.31s (2.0s) | Transcript: 'Then I will tell you when you will put me in this case.' Visual unverified: Lucifer makes a deal with Chloe.
+  - C0084: 717.31s -> 719.31s (2.0s) | Transcript continuation of Lucifer's case request. Visual unverified: Chloe reacts to Lucifer.
+----------------------------------------------------------------------
+[B0015 | Words: 42 | Est: 17.0s]
+Narration: लूसिफर का दावा है कि अगर वह डेलिला के करियर में दखल न देता, तो वह आज ज़िंदा होती। क्लोई साफ़ कहती है कि अगर उसका सुराग काम नहीं आया, तो ऐसा दोबारा नहीं होगा। लूसिफर हां कहकर सहमत हो जाता है।
+  - C0085: 726.98s -> 729.48s (2.5s) | Lucifer says that if he had not helped Delilah's career, she would be alive. Visual unverified.
+  - C0086: 729.48s -> 731.62s (2.14s) | Lucifer's claim continues into the reply. Visual unverified.
+  - C0087: 731.62s -> 734.62s (3.0s) | Chloe responds with her condition about the clue not working out. Visual unverified.
+  - C0088: 734.62s -> 737.62s (3.0s) | Chloe repeats that the situation will not happen again if the clue fails. Visual unverified.
+  - C0089: 737.62s -> 740.62s (3.0s) | Chloe asks whether he is sure. Visual unverified.
+  - C0090: 740.62s -> 743.62s (3.0s) | Lucifer answers yes and agrees. Visual unverified.
+----------------------------------------------------------------------
+[B0016 | Words: 64 | Est: 26.0s]
+Narration: लूसिफर कहता है कि बेवर्ली हिल्स में डॉक्टर लिंडा नाम की एक थेरेपिस्ट है। क्लोई पूछती है कि क्या डेलिला उसकी क्लाइंट थी। लूसिफर बताता है कि क्लाइंट ने पहले दूसरा नाम इस्तेमाल किया था, पेनी लेन। उसके मुताबिक़ डेलिला शायद यही नाम लेती थी। क्लोई कहती है कि केस अभी सुलझा नहीं है। लूसिफर कहता है कि उसकी बातें सच साबित हुई हैं।
+  - C0091: 747.12s -> 749.12s (2.0s) | Lucifer mentions the therapist named Linda in Beverly Hills. Visual unverified.
+  - C0092: 749.12s -> 752.12s (3.0s) | Chloe asks whether the therapist's client was Delilah, and Lucifer denies it. Visual unverified.
+  - C0093: 752.12s -> 755.12s (3.0s) | Lucifer says the client used another name. Visual unverified.
+  - C0094: 755.12s -> 757.6s (2.48s) | Lucifer names Penny Lane as the alias. Visual unverified.
+  - C0095: 757.6s -> 760.6s (3.0s) | Lucifer suggests Delilah probably used the Penny Lane name. Visual unverified.
+  - C0096: 761.54s -> 764.54s (3.0s) | Chloe says the case has not been solved yet. Visual unverified.
+  - C0097: 802.98s -> 805.98s (3.0s) | Lucifer says his words have been proven true. Visual unverified.
+  - C0098: 805.98s -> 808.98s (3.0s) | Lucifer's claim about the Penny Lane and Dr. Linda connection is discussed. Visual unverified.
+  - C0099: 808.98s -> 811.94s (2.96s) | Remark about the partnership, kept to visual context only. Visual unverified.
+----------------------------------------------------------------------
+[B0017 | Words: 74 | Est: 30.6s]
+Narration: लूसिफर की मुलाक़ात एक छोटी लड़की से होती है, जिसका नाम बिएट्रिस है, पर सब उसे ट्रिक्सी बुलाते हैं। वह बताती है कि उसकी मां पुलिस अफ़सर है। उसे एक लड़की परेशान कर रही थी, जो फेक अकाउंट बनाकर उसका मज़ाक उड़ाती थी। इसलिए ट्रिक्सी ने उसकी पिटाई कर दी। लूसिफर उस लड़की से कहता है कि नर्क में उसके लिए एक ख़ास कहानी है। फिर ट्रिक्सी अपने पिता के साथ चली जाती है।
+  - C0100: 893.34s -> 895.84s (2.5s) | Trixie says her mom is a police officer (transcript line; visual unverified)
+  - C0101: 896.34s -> 897.86s (1.52s) | Trixie: She'll arrest you (visual unverified)
+  - C0102: 899.86s -> 901.86s (2.0s) | Lucifer: I do know your mom (visual unverified)
+  - C0103: 911.78s -> 913.58s (1.8s) | Trixie gives her name, Beatrice (visual unverified)
+  - C0104: 920.31s -> 922.31s (2.0s) | Trixie says the girl was watching and harassing her (visual unverified)
+  - C0105: 924.17s -> 926.17s (2.0s) | Trixie describes the fake account and mocking (visual unverified)
+  - C0106: 928.29s -> 930.29s (2.0s) | Trixie says she beat the girl up (visual unverified)
+  - C0107: 934.32s -> 936.0s (1.68s) | Lucifer reacts to the story (visual unverified)
+  - C0108: 947.86s -> 949.54s (1.68s) | Lucifer tells the bully there is a story in Hell made for her (visual unverified)
+  - C0109: 949.62s -> 951.42s (1.8s) | Lucifer: so have fun (visual unverified)
+  - C0110: 1008.47s -> 1010.47s (2.0s) | Request to drop her to mom (visual unverified)
+  - C0111: 1011.03s -> 1012.95s (1.92s) | Go with your dad (visual unverified)
+  - C0112: 1014.79s -> 1015.95s (1.16s) | Thanks, mommy (visual unverified)
+  - C0113: 1016.35s -> 1017.67s (1.32s) | Trixie leaves the scene (visual unverified)
+  - C0114: 1021.6s -> 1022.76s (1.16s) | Daddy, will you tell me (visual unverified)
+  - C0115: 1027.58s -> 1029.74s (2.16s) | I liked meeting her on the way (visual unverified)
+  - C0116: 1034.7s -> 1036.58s (1.88s) | Did you like her (visual unverified)
 ----------------------------------------------------------------------

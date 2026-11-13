@@ -1,298 +1,340 @@
 {
-  "next_segment_idx": 149,
+  "next_segment_idx": 148,
   "chunk_num": 1,
   "beats": [
     {
-      "narration": "क्लो को इस केस की ज़िम्मेदारी मिली है, और लूसिफ़र इसे आसान मानकर चल रहा है। ड्रग डीलर की जेब से निकला पैकेट मृतका की पर्स में मिला, तो शक सीधे उसी पर जाता है।",
-      "word_count": 35,
-      "estimated_duration": 13,
+      "narration": "लेफ्टिनेंट ने यह केस क्लोई को सौंप दिया है। ड्रग का एक पैकेट एक औरत के पर्स में मिला था, और सबकी नजरें इसी केस पर टिकी हैं।",
+      "word_count": 28,
+      "estimated_duration": 10,
       "is_scene_bridge": false,
       "clips": [
+        {
+          "start": 0.72,
+          "end": 2.72,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'Please come in, sir.' Yeh opening line hai jisme Chloe ko andar bulaya jata hai."
+        },
+        {
+          "start": 2.72,
+          "end": 4.72,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'Do you want to know what I have found out?' Chloe ke sath jaankari ki baat."
+        },
+        {
+          "start": 13.68,
+          "end": 15.68,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'Lieutenant told me that this is my case.' Case Chloe ko milne ki pushti."
+        },
         {
           "start": 18.89,
           "end": 20.89,
           "duration": 2.0,
-          "scene_context": "Transcript: lieutenant tells Chloe this is her case. Visual of the lieutenant handing over the case is unverified."
+          "scene_context": "Transcript: 'Yes, Chloe, this is your case.' Case ki pushti karne wali line."
         },
         {
           "start": 21.3,
           "end": 23.3,
           "duration": 2.0,
-          "scene_context": "Transcript: Chloe is told this is her case and that it is an easy one. Visual unverified."
+          "scene_context": "Transcript: 'This is an easy case.' Case ko aasan bataya jata hai. Visual unverified."
+        }
+      ]
+    },
+    {
+      "narration": "ड्रग डीलर के पैसों का उधार न चुकाने की वजह से हत्या हुई हो सकती है। लूसिफ़र गाड़ी और घड़ी देखकर कहता है कि शायद सब नकली है।",
+      "word_count": 28,
+      "estimated_duration": 10,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 24.3,
+          "end": 26.3,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'Darlala must have not paid the drugs.' Drug payment ka shak. Naam transcript me galat ho sakta hai."
         },
         {
           "start": 27.3,
           "end": 29.3,
           "duration": 2.0,
-          "scene_context": "Transcript: a small drug packet was taken from the dealer's pocket and was found in the victim's purse. Visual unverified."
-        },
-        {
-          "start": 29.3,
-          "end": 31.3,
-          "duration": 2.0,
-          "scene_context": "Transcript: the packet was in the victim's purse. Visual unverified."
+          "scene_context": "Transcript: 'This is the small, heavy drug dealer.' Dealer ka zikr. Visual unverified."
         },
         {
           "start": 31.3,
           "end": 33.3,
           "duration": 2.0,
-          "scene_context": "Transcript: the speaker concludes it is the victim's case. Visual unverified."
+          "scene_context": "Transcript: 'So, it's Darlala's case.' Case ka dhyan kis par hai, yeh bataya gaya."
         },
         {
-          "start": 33.3,
-          "end": 35.3,
+          "start": 37.3,
+          "end": 39.3,
           "duration": 2.0,
-          "scene_context": "Transcript: the speaker says the victim must not have paid for the drugs. Visual unverified."
+          "scene_context": "Transcript: 'And how do you know this? Look at his car.' Car ko sabut ke roop me dikhaya jata hai."
         },
         {
-          "start": 35.3,
-          "end": 36.3,
-          "duration": 1.0,
-          "scene_context": "Transcript: the speaker mentions the victim's songs are still playing. Visual unverified."
+          "start": 39.3,
+          "end": 41.3,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'Look at his watch. It doesn't look cheap.' Watch ka zikr. Visual unverified."
         }
       ]
     },
     {
-      "narration": "लूसिफ़र ने गवाह के रूप में अपना नाम लूसिफ़र मॉर्निंगस्टार बताया। वह कहता है कि मृतका कभी इसी जगह काम करती थी, और वह अक्सर उसके गाने बजाता था।",
-      "word_count": 29,
-      "estimated_duration": 12,
+      "narration": "लूसिफ़र मॉर्निंगस्टार खुद को इस मामले का गवाह बताता है। वो सिंगर को पहले क्लब में काम करते देख चुका है और कभी-कभी उसके गाने भी बजाता था।",
+      "word_count": 28,
+      "estimated_duration": 10,
       "is_scene_bridge": false,
       "clips": [
+        {
+          "start": 57.26,
+          "end": 59.26,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'Anyway, let it go. Is there any witness?' Witness ka sawal."
+        },
         {
           "start": 61.15,
           "end": 63.15,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer Morningstar is named as the witness. Visual unverified."
+          "scene_context": "Transcript: 'Lucifer Morningstar.' Witness ka naam liya jata hai."
         },
         {
-          "start": 64.24,
-          "end": 66.24,
+          "start": 67.24,
+          "end": 69.24,
           "duration": 2.0,
-          "scene_context": "Transcript: the witness's name is confirmed as Lucifer Morningstar. Visual unverified."
+          "scene_context": "Transcript: 'Is this your real name?' Naam par sawal."
+        },
+        {
+          "start": 80.46,
+          "end": 82.46,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'What was your relationship with the victim?' Chloe ka sawal."
         },
         {
           "start": 82.46,
           "end": 84.46,
           "duration": 2.0,
-          "scene_context": "Transcript: the victim used to work at this place for a few years. Visual unverified."
-        },
-        {
-          "start": 84.46,
-          "end": 86.46,
-          "duration": 2.0,
-          "scene_context": "Transcript: the witness says he used to play the victim's songs sometimes. Visual unverified."
-        },
-        {
-          "start": 86.46,
-          "end": 87.46,
-          "duration": 1.0,
-          "scene_context": "Transcript: continuation of the witness's account of playing her songs. Visual unverified."
-        },
-        {
-          "start": 87.46,
-          "end": 89.46,
-          "duration": 2.0,
-          "scene_context": "Transcript: the victim became a big star and someone decided to kill her. Visual unverified."
-        },
-        {
-          "start": 89.46,
-          "end": 90.46,
-          "duration": 1.0,
-          "scene_context": "Transcript: continuation of the victim becoming a star and being killed. Visual unverified."
+          "scene_context": "Transcript: 'She used to work here for a few years.' Singer ka club se rishta."
         }
       ]
     },
     {
-      "narration": "मृतका को गोली किसने मारी, यह अभी साफ़ नहीं। लूसिफ़र का दावा है कि मरने से पहले मृतका ने उसे कत्ल की वजह बताई थी।",
-      "word_count": 25,
-      "estimated_duration": 9,
-      "is_scene_bridge": false,
+      "narration": "लूसिफ़र के मुताबिक सिंगर ने मरने से पहले उसे हत्या की वजह बताई थी। वजह पैसों से जुड़ी बताई जा रही है।",
+      "word_count": 22,
+      "estimated_duration": 10,
+      "is_scene_bridge": true,
       "clips": [
         {
-          "start": 92.46,
-          "end": 94.46,
+          "start": 113.38,
+          "end": 115.38,
           "duration": 2.0,
-          "scene_context": "Transcript: the witness says he does not know the shooter, but the victim told him something before she died. Visual unverified."
-        },
-        {
-          "start": 95.46,
-          "end": 97.46,
-          "duration": 2.0,
-          "scene_context": "Transcript: the witness says she told him the reason for the murder. Visual unverified."
-        },
-        {
-          "start": 97.46,
-          "end": 99.46,
-          "duration": 2.0,
-          "scene_context": "Transcript: the witness says the reason is a matter the victim explained. Visual unverified."
-        },
-        {
-          "start": 99.46,
-          "end": 100.84,
-          "duration": 1.38,
-          "scene_context": "Transcript: the conversation continues about the victim and the reason behind the crime. Visual unverified."
-        }
-      ]
-    },
-    {
-      "narration": "लूसिफ़र के मुताबिक़ मामला पैसों का है। उसका कहना है कि मृतका की आत्मा पूरी तरह नहीं गई।",
-      "word_count": 18,
-      "estimated_duration": 6,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 109.84,
-          "end": 111.84,
-          "duration": 2.0,
-          "scene_context": "Transcript: Lucifer says the victim did not die completely, and her soul did not move on. Visual unverified."
+          "scene_context": "Transcript: 'Tell me the reason for the murder.' Wajah ka sawal."
         },
         {
           "start": 115.38,
           "end": 117.38,
           "duration": 2.0,
-          "scene_context": "Transcript: the speaker states the reason for the murder is a matter of money. Visual unverified."
+          "scene_context": "Transcript: 'It's a matter of money.' Paison ki wajah."
         },
         {
           "start": 117.38,
           "end": 119.38,
           "duration": 2.0,
-          "scene_context": "Transcript: the conversation continues on the money motive. Visual unverified."
+          "scene_context": "Transcript: 'You don't get the greed for money.' Lalach ka zikr."
+        },
+        {
+          "start": 121.99,
+          "end": 123.99,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'Yes. Absolutely.' Lucifer ki haan. Visual unverified."
+        },
+        {
+          "start": 127.99,
+          "end": 129.99,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'She also said that I just pressed the trigger.' Trigger wala claim."
         }
       ]
     },
     {
-      "narration": "फिर शादी के समारोह में जिमी बार्न्स सामने आता है। वह लूसिफ़र से कहता है कि मृतका ने उसकी शादी तोड़ी थी, और उसने रात में उसे मनाने की कोशिश की थी।",
-      "word_count": 32,
-      "estimated_duration": 11,
+      "narration": "लूसिफ़र का दावा है कि सिंगर की आत्मा पूरी तरह नहीं गई है। क्लोई हैरान होती है और पूछती है कि क्या वो मरे हुए इंसान से बात कर रहा था।",
+      "word_count": 31,
+      "estimated_duration": 10,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 107.84,
+          "end": 109.84,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'You talked to a dead person.' Chloe ka sawal."
+        },
+        {
+          "start": 109.84,
+          "end": 111.84,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'No. She didn't die completely.' Lucifer ka jawab."
+        },
+        {
+          "start": 111.84,
+          "end": 113.84,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'Her soul didn't go beyond that.' Aatma wala claim."
+        },
+        {
+          "start": 131.99,
+          "end": 133.99,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'Jaila was shot by a drug dealer.' Singer ki maut ka zikr."
+        },
+        {
+          "start": 134.99,
+          "end": 136.99,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'And it seems Jaila had a bad reputation.' Singer ki chhavi par baat."
+        }
+      ]
+    },
+    {
+      "narration": "लूसिफ़र को शक है कि जिमी बार्न्स ने सिंगर को रात में मनाने की कोशिश की थी। जिमी गुस्से में कहता है कि सिंगर के कबूलनामे से वो अपमानित हुआ था।",
+      "word_count": 31,
+      "estimated_duration": 10,
       "is_scene_bridge": false,
       "clips": [
         {
           "start": 233.99,
           "end": 235.99,
           "duration": 2.0,
-          "scene_context": "Transcript: Jimmy Barnes asks whether the other person recognizes him at a private function. Visual of a wedding setting is unverified."
+          "scene_context": "Transcript: 'Jimmy Barnes, do you recognize me?' Jimmy se seedha sawal."
         },
         {
-          "start": 236.99,
-          "end": 238.99,
+          "start": 240.99,
+          "end": 242.99,
           "duration": 2.0,
-          "scene_context": "Transcript: the other person says this is a private function and asks how he came inside. Visual unverified."
+          "scene_context": "Transcript: 'Yes, I am a private person.' Jimmy ka jawab. Visual unverified."
         },
         {
-          "start": 258.66,
-          "end": 260.66,
+          "start": 275.66,
+          "end": 277.66,
           "duration": 2.0,
-          "scene_context": "Transcript: Jimmy says the victim had ruined his marriage once. Visual unverified."
+          "scene_context": "Transcript: 'Did you kill her?' Hatya ka seedha sawal."
         },
         {
-          "start": 265.66,
-          "end": 267.66,
+          "start": 280.66,
+          "end": 282.66,
           "duration": 2.0,
-          "scene_context": "Transcript: the speaker says the other person had gone to convince her at night. Visual unverified."
+          "scene_context": "Transcript: 'Yes, I was angry because I was humiliated' Jimmy ka gussa."
         },
-        {
-          "start": 267.66,
-          "end": 269.66,
-          "duration": 2.0,
-          "scene_context": "Transcript: the speaker says if he had convinced her, he would have killed her. Visual unverified."
-        },
-        {
-          "start": 269.66,
-          "end": 270.66,
-          "duration": 1.0,
-          "scene_context": "Transcript: the speaker says that would not have happened. Visual unverified."
-        }
-      ]
-    },
-    {
-      "narration": "जिमी मानता है कि अपमान से वह गुस्से में था। लूसिफ़र उसे मन के खेल में फँसाने की कोशिश करता है।",
-      "word_count": 21,
-      "estimated_duration": 8,
-      "is_scene_bridge": false,
-      "clips": [
         {
           "start": 282.66,
           "end": 284.66,
           "duration": 2.0,
-          "scene_context": "Transcript: Jimmy says he was angry because he was humiliated by her confession. Visual unverified."
-        },
-        {
-          "start": 284.66,
-          "end": 286.66,
-          "duration": 2.0,
-          "scene_context": "Transcript: Jimmy continues that he was humiliated and says his lottery is on. Visual unverified."
-        },
-        {
-          "start": 286.66,
-          "end": 287.66,
-          "duration": 1.0,
-          "scene_context": "Transcript: the other person says that is what he sees. Visual unverified."
-        },
-        {
-          "start": 288.66,
-          "end": 290.66,
-          "duration": 2.0,
-          "scene_context": "Transcript: the speaker tells the other to play with his mind games for a while. Visual unverified."
+          "scene_context": "Transcript: 'by her confession.' Kabulnama wali wajah."
         }
       ]
     },
     {
-      "narration": "जिमी ने ऐसे खेल में न फँसने की बात कहकर बात खत्म की। आख़िर में लूसिफ़र विदा लेता है।",
-      "word_count": 19,
-      "estimated_duration": 8,
+      "narration": "जिमी उल्टा उस रैपर पर इल्ज़ाम लगाता है जिसके लिए सिंगर ने उसे छोड़ा था। उसका कहना है कि रैपर सिंगर को मारता था, इसलिए असली कातिल वही है।",
+      "word_count": 29,
+      "estimated_duration": 10,
       "is_scene_bridge": false,
       "clips": [
         {
-          "start": 277.66,
-          "end": 279.66,
+          "start": 291.66,
+          "end": 293.66,
           "duration": 2.0,
-          "scene_context": "Transcript: Jimmy tells the other to stop staring at him and says he will not fall for mind games. Visual unverified."
+          "scene_context": "Transcript: 'That rapper?' Rapper ka zikr."
         },
         {
-          "start": 279.66,
-          "end": 281.66,
+          "start": 294.66,
+          "end": 296.66,
           "duration": 2.0,
-          "scene_context": "Transcript: Jimmy says he is not going to come to the other's mind games. Visual unverified."
+          "scene_context": "Transcript: 'Jalaila left me for that idiot.' Jimmy ka claim."
         },
         {
-          "start": 330.18,
-          "end": 331.18,
-          "duration": 1.0,
-          "scene_context": "Transcript: the speaker says he should go now. Visual unverified."
+          "start": 296.66,
+          "end": 298.66,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'He used to beat Jalaila.' Jimmy ka dava, verify nahi."
         },
         {
-          "start": 331.18,
-          "end": 333.43,
-          "duration": 2.25,
-          "scene_context": "Transcript: the speaker leaves with a closing congratulation on the wedding. Visual unverified."
+          "start": 298.66,
+          "end": 300.66,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'He keeps fooling around.' Rapper par ilzam."
+        },
+        {
+          "start": 301.66,
+          "end": 303.66,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'He is the real killer.' Jimmy ka dava."
+        }
+      ]
+    },
+    {
+      "narration": "लूसिफ़र खुद को लूसिफ़र मॉर्निंगस्टार बताता है। जिमी को यकीन नहीं होता, और बातचीत के आखिर में लूसिफ़र वहाँ से जाने की बात करता है।",
+      "word_count": 25,
+      "estimated_duration": 10,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 305.3,
+          "end": 307.3,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'I have not introduced myself to you.' Lucifer ka parichay."
+        },
+        {
+          "start": 307.3,
+          "end": 309.3,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'My name is Lucifer Morningstar.' Naam ka khulasa."
+        },
+        {
+          "start": 317.18,
+          "end": 319.18,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'Oh my God.' Jimmy ki hairani."
+        },
+        {
+          "start": 322.18,
+          "end": 324.18,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'No, it's okay.' Baat ko halka karne wali line."
+        },
+        {
+          "start": 327.18,
+          "end": 329.18,
+          "duration": 2.0,
+          "scene_context": "Transcript: 'That's good. Now I should go.' Lucifer ke jaane ki baat, scene ka ant."
         }
       ]
     }
   ],
   "characters": {
-    "Chloe Decker": {
-      "name": "Chloe Decker",
-      "description": "Detective assigned the murder case; the transcript shows the lieutenant handing her the case."
-    },
     "Lucifer Morningstar": {
       "name": "Lucifer Morningstar",
-      "description": "Witness who speaks to Chloe about the victim and claims she told him the reason for her murder."
+      "description": "Club owner jo khud ko witness bata kar murder case me Chloe ke saath baat karta hai aur shak jatata hai."
     },
-    "Lieutenant (name null, not verified from transcript)": {
-      "name": "Lieutenant (name null, not verified from transcript)",
-      "description": "Senior officer who gives Chloe the case and says it is an easy one."
+    "Chloe Decker": {
+      "name": "Chloe Decker",
+      "description": "Detective jise yeh case mila hai aur jo Lucifer ke dawon par sawal karti hai."
     },
-    "Victim singer (name null, transcript spelling inconsistent: Jaila, Darlala)": {
-      "name": "Victim singer (name null, transcript spelling inconsistent: Jaila, Darlala)",
-      "description": "Former employee at Lucifer's club who became a big star and was shot dead."
+    "Jaila (transcript spelling, verify nahi kiya gaya)": {
+      "name": "Jaila (transcript spelling, verify nahi kiya gaya)",
+      "description": "Singer jiska murder hua hai aur jo pehle club me kaam karti thi."
     },
     "Jimmy Barnes": {
       "name": "Jimmy Barnes",
-      "description": "Man who is set to marry soon; he was the victim's ex-fiance and blames her for ruining his earlier marriage."
+      "description": "Singer ka ex-fiance jo shadi ke din Lucifer ke sawalon ka samna karta hai aur gusse me aata hai."
+    },
+    "Lieutenant (naam nahi)": {
+      "name": "Lieutenant (naam nahi)",
+      "description": "Vo officer jisne Chloe ko yeh case diya."
+    },
+    "Rapper (naam nahi)": {
+      "name": "Rapper (naam nahi)",
+      "description": "Vo vyakti jiske liye Singer ne Jimmy ko chhoda tha, aur jise Jimmy asli killer bata raha hai."
     }
   },
   "synopses": [
-    "Detective Chloe is handed a murder case involving a singer. The evidence points to a drug packet found in the victim's purse. Lucifer Morningstar, a witness, says the victim used to work at his club and claims she told him the reason for her murder, which he describes as money. At a wedding, Jimmy Barnes, the victim's ex-fiance, admits he was humiliated by her and that he went to convince her at night. Lucifer provokes him, Jimmy refuses to play along, and Lucifer leaves."
+    "Lieutenant Chloe ko murder case deta hai. Chloe ko drug packet ke saath ek case ka shak hai. Lucifer khud ko witness batata hai aur bolta hai ki Singer ne use murder ki wajah bataayi thi, jo paison se jud i hai. Lucifer ka claim hai ki Singer ki aatma poori tarah nahi gayi. Lucifer Jimmy Barnes par shak jatata hai ki usne Singer ko raat me manane ki koshish ki thi. Jimmy gusse me aata hai aur rapper par ilzam lagata hai. Ant me Lucifer apna naam batata hai aur baat khatam hoti hai."
   ],
-  "continuity_handoff": "## Continuity Handoff: Lucifer, Season 1 (Hindi recap)\n\n**Continue the Hindi voice-over from the final sentence \"आख़िर में लूसिफ़र विदा लेता है।\" Do not repeat earlier beats.**\n\n### Story so far\n- Detective Chloe Decker is handed a murder case involving a singer. Her lieutenant tells her it is an easy case, and a drug packet found in the victim's purse points toward the victim's own involvement.\n- Lucifer Morningstar, a witness, says the victim used to work at his club and that he used to play her songs. He says she became a big star and was then killed.\n- Lucifer claims the vict"
+  "continuity_handoff": "## Story So Far\n\n**Lucifer Morningstar** (a nightclub owner who claims to be the Devil) is helping **Detective Chloe Decker** on a murder case. The victim is a singer, spelled \"Jaila\" in the earlier transcript and \"Delilah\" in the next section, so the two are likely the same person. Chloe has been given the case. A drug packet was found in the singer's purse, and Lucifer says the singer had told him the reason for her murder, which the transcript describes as a matter of money. Lucifer claims the singer's soul has not fully left, and he calls the killer a drug dealer's victim. He then questions **Jimmy Barnes**, the singer's ex-fiance, who is getting married. Lucifer suspects Jimmy tried to convince her to return to him at night. Jimmy admits he was angry and humiliated by her confession, then blames a rapper she left him for, who he claims beat her. Lucifer introduces himself by name. These are accusations and character claims, not confirmed facts.\n\n## Character Context\n\n- **Lucifer Morningstar:** The main character. He is a witness and a suspect in the audience's mind, and he has a sharp, mocking manner.\n- **Chloe Decker:** The LAPD detective assigned to the case. She is skeptical of Lucifer and his claims.\n- **Delilah (spelled \"Jaila\" in the earlier transcript):** The murdered singer. She once worked at Lucifer's club and was previously engaged to Jimmy.\n- **Jimmy Barnes:** The singer's ex-fiance. He is angry, is getting married, and is named by Lucifer as a possible suspect.\n- **Eddie:** A drug dealer. Lucifer says he is his dealer and that he met him with Delilah.\n- **Raaz:** A married man who had an affair with someone and kept his identity secret. He is being sought through his therapist.\n- **Dr. Linda:** The therapist in Beverly Hills who saw Raaz five times a week under a false name.\n- **The rapper:** Unnamed in the transcript. Jimmy accuses him of abusing Delilah.\n\n## Audience Knowledge\n\nThe audience knows Chloe has the case, the drug packet link, Lucifer's claims about the singer's soul and her reasons for death, and Jimmy's anger and accusations. Lucifer's name and his wedding-day confrontation with Jimmy are also established. Uncertain points include who the real killer is, whether Jimmy or the rapper is responsible, and the meaning of Raaz and the affair. The spelling \"Jaila\" versus \"Delilah\" also needs to be confirmed.\n\n## Upcoming Scene Preview (Not Yet Narrated)\n\n*The following is preview information only and has not been narrated.*\n\nThe next section opens with a brief wedding-day exchange, followed by a scene at a location where a visitor brings drugs for a man who is apparently a dealer or boss. Lucifer introduces himself and insults the dealer's music. The scene escalates into a tense standoff. Lucifer mocks the men's threats, and someone orders \"Shoot him!\" while he claims he did not kill the person. Someone asks about Delilah, and the discussion turns to a man who hit a woman over an affair. Raaz is identified as the married man, and the group is directed to Dr. Linda in Beverly Hills, who saw him five times a week under another name. Police then burst in, ordering everyone to drop their guns, and Chloe arrives. The detective says the murderer's phone records show a last call to a contact named \"Vile\" (possibly garbled). Lucifer admits he called Eddie, his dealer, and that he had met Eddie with Delilah. Chloe calls him a suspect, and the scene ends as someone asks whether Delilah was an actress in a film.\n\n## Exact Continuation Point\n\nThe last three narration beats from the previous output, copied verbatim:\n\n**B0006:** लूसिफ़र को शक है कि जिमी बार्न्स ने सिंगर को रात में मनाने की कोशिश की थी। जिमी गुस्से में कहता है कि सिंगर के कबूलनामे से वो अपमानित हुआ था।\n\n**B0007:** जिमी उल्टा उस रैपर पर इल्ज़ाम लगाता है जिसके लिए सिंगर ने उसे छोड़ा था। उसका कहना है कि रैपर सिंगर को मारता था, इसलिए असली कातिल वही है।\n\n**B0008:** लूसिफ़र खुद को लूसिफ़र मॉर्निंगस्टार बताता है। जिमी को यकीन नहीं होता, और बातचीत के आखिर में लूसिफ़र वहाँ से जाने की बात करता है।\n\nContinuation must begin right after this final sentence of B0008: \"जिमी को यकीन नहीं होता, और बातचीत के आखिर में लूसिफ़र वहाँ से जाने की बात करता है।\""
 }

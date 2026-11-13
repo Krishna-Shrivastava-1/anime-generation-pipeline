@@ -253,6 +253,85 @@ jobs:
                   time.sleep(2)
               time.sleep(3)
 
+          # ------------------ IN-PAGE FETCH INTERCEPTOR (SSE CAPTURE) ------------------
+          FETCH_HOOK_JS = r"""
+          (() => {
+              Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+              if (window.__duckai_hooked) return;
+              window.__duckai_hooked = true;
+              window.__duckai_stream = {
+                  active: false,
+                  done: false,
+                  status: 0,
+                  url: '',
+                  rawChunks: [],
+                  error: ''
+              };
+
+              const origFetch = window.fetch;
+              window.fetch = async function(...args) {
+                  const reqUrl = typeof args[0] === 'string' ? args[0] : (args[0] && args[0].url ? args[0].url : '');
+                  const reqInit = args[1] || {};
+                  const method = (reqInit.method || (args[0] && args[0].method) || 'GET').toUpperCase();
+                  const isChatCall = method === 'POST' && (
+                      reqUrl.includes('/duckchat/') ||
+                      reqUrl.includes('/chat')
+                  ) && !reqUrl.includes('status');
+
+                  const response = await origFetch.apply(this, args);
+                  if (isChatCall) {
+                      window.__duckai_stream = {
+                          active: true,
+                          done: false,
+                          status: response.status,
+                          url: reqUrl,
+                          rawChunks: [],
+                          error: ''
+                      };
+                      try {
+                          const clone = response.clone();
+                          const reader = clone.body ? clone.body.getReader() : null;
+                          if (reader) {
+                              const decoder = new TextDecoder('utf-8');
+                              (async () => {
+                                  try {
+                                      while (true) {
+                                          const { value, done } = await reader.read();
+                                          if (done) break;
+                                          if (value) {
+                                              window.__duckai_stream.rawChunks.push(decoder.decode(value, { stream: true }));
+                                          }
+                                      }
+                                      const tail = decoder.decode();
+                                      if (tail) window.__duckai_stream.rawChunks.push(tail);
+                                  } catch (err) {
+                                      window.__duckai_stream.error = String(err);
+                                  } finally {
+                                      window.__duckai_stream.active = false;
+                                      window.__duckai_stream.done = true;
+                                  }
+                              })();
+                          } else {
+                              clone.text().then(t => {
+                                  if (t) window.__duckai_stream.rawChunks.push(t);
+                                  window.__duckai_stream.active = false;
+                                  window.__duckai_stream.done = true;
+                              }).catch(() => {
+                                  window.__duckai_stream.active = false;
+                                  window.__duckai_stream.done = true;
+                              });
+                          }
+                      } catch (e) {
+                          window.__duckai_stream.error = String(e);
+                          window.__duckai_stream.active = false;
+                          window.__duckai_stream.done = true;
+                      }
+                  }
+                  return response;
+              };
+          })();
+          """
+
           # ------------------ DUCK.AI MODAL & SETTINGS CONFIG ------------------
           def dismiss_duckai_modals(page):
               consent_patterns = [
@@ -322,7 +401,7 @@ jobs:
                       page.wait_for_timeout(1200)
 
               if take_verify_snap:
-                  visible_options = page.evaluate("""() => {
+                  visible_options = page.evaluate(r"""() => {
                       const els = Array.from(document.querySelectorAll('[role="menuitem"], [role="menuitemradio"], [role="option"], [role="radio"], [role="switch"], button, label'));
                       return els
                           .filter(el => el.offsetParent !== null)
@@ -331,7 +410,7 @@ jobs:
                               role: el.getAttribute('role') || '',
                               aria: el.getAttribute('aria-label') || '',
                               checked: el.getAttribute('aria-checked') || el.getAttribute('aria-pressed') || '',
-                              text: (el.innerText || '').trim().replace(/\\s+/g, ' ')
+                              text: (el.innerText || '').trim().replace(/\s+/g, ' ')
                           }))
                           .filter(x => x.text.length > 0 && x.text.length < 120);
                   }""")
@@ -430,15 +509,15 @@ jobs:
               if take_verify_snap:
                   snap(page, "model_settings_verified", save_html=True)
 
-          # ------------------ PLAYWRIGHT UTILITIES ------------------
+          # ------------------ PLAYWRIGHT UTILITIES & SCROLLING ------------------
           def get_prompt_box(page):
               return page.locator(
                   "textarea[name='user-prompt'], textarea[placeholder*='ask' i], "
                   "textarea[placeholder*='message' i], textarea").first
 
           def click_ask_button(page):
-              ask_btn = page.get_by_role("button", name=re.compile(r"^\s*ask\s*$", re.I))
-              if ask_btn.count() > 0 and ask_btn.first.is_visible():
+              ask_btn = page.get_by_role("button", name=re.compile(r"^\s*(ask|send|submit)\s*$", re.I))
+              if ask_btn.count() > 0 and ask_btn.first.is_visible() and ask_btn.first.is_enabled():
                   ask_btn.first.click(timeout=3000)
                   return True
 
@@ -449,11 +528,15 @@ jobs:
                       b.click(timeout=3000)
                       return True
 
-              js_click = page.evaluate("""() => {
+              js_click = page.evaluate(r"""() => {
                   const buttons = Array.from(document.querySelectorAll('button'));
                   const ask = buttons.find(b => !b.disabled && (b.innerText || '').trim().toLowerCase() === 'ask');
                   if (ask) { ask.click(); return 'ask'; }
-                  const send = buttons.find(b => !b.disabled && (b.getAttribute('aria-label') || '').toLowerCase().includes('send'));
+                  const send = buttons.find(b => !b.disabled && (
+                      (b.getAttribute('aria-label') || '').toLowerCase().includes('send') ||
+                      (b.getAttribute('aria-label') || '').toLowerCase().includes('submit') ||
+                      (b.getAttribute('aria-label') || '').toLowerCase().includes('ask')
+                  ));
                   if (send) { send.click(); return 'send'; }
                   const sub = buttons.find(b => b.type === 'submit' && !b.disabled);
                   if (sub) { sub.click(); return 'submit'; }
@@ -465,17 +548,23 @@ jobs:
               box.click()
               page.wait_for_timeout(200)
               box.fill("")
-              page.wait_for_timeout(100)
+              page.wait_for_timeout(150)
 
               filled = False
               try:
-                  box.fill(text, timeout=15000)
-                  if len(box.input_value()) >= min(len(text), 100):
+                  box.fill(text, timeout=20000)
+                  val_len = len(box.input_value())
+                  if val_len >= int(len(text) * 0.95):
                       filled = True
-              except Exception:
+                  else:
+                      log(f"Warning: box.fill length {val_len} < expected {len(text)}; retrying via CDP insertText.")
+              except Exception as e:
+                  log(f"box.fill fallback triggered: {e}")
                   filled = False
 
               if not filled:
+                  box.fill("")
+                  box.click()
                   try:
                       cdp = context.new_cdp_session(page)
                       chunk_size = 2000
@@ -499,6 +588,46 @@ jobs:
                   box.press("Enter")
               page.wait_for_timeout(600)
 
+          def scroll_chat_to_bottom(page):
+              try:
+                  page.evaluate(r"""() => {
+                      // 1. Scroll window / document
+                      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' });
+                      if (document.scrollingElement) {
+                          document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
+                      }
+
+                      // 2. Scroll EVERY overflow-y scrollable container (CSS-module class safe)
+                      const allEls = document.querySelectorAll('div, main, section, article');
+                      for (const el of allEls) {
+                          if (el.scrollHeight > el.clientHeight + 20) {
+                              const style = window.getComputedStyle(el);
+                              if (['auto', 'scroll', 'overlay'].includes(style.overflowY)) {
+                                  el.scrollTop = el.scrollHeight;
+                              }
+                          }
+                      }
+
+                      // 3. Click any visible "scroll to bottom" button if present
+                      const scrollBtns = Array.from(document.querySelectorAll('button')).filter(b => {
+                          const aria = (b.getAttribute('aria-label') || '').toLowerCase();
+                          const title = (b.getAttribute('title') || '').toLowerCase();
+                          return (aria.includes('scroll') || aria.includes('bottom') || title.includes('bottom')) && b.offsetParent !== null;
+                      });
+                      if (scrollBtns.length > 0) {
+                          try { scrollBtns[scrollBtns.length - 1].click(); } catch (_) {}
+                      }
+
+                      // 4. Bring the bottom-most content block inside <main> into view
+                      const mainEl = document.querySelector('main') || document.body;
+                      const blocks = mainEl.querySelectorAll('pre, article, p, [data-testid]');
+                      if (blocks.length > 0) {
+                          try { blocks[blocks.length - 1].scrollIntoView({ behavior: 'instant', block: 'end' }); } catch (_) {}
+                      }
+                  }""")
+              except Exception:
+                  pass
+
           def parse_sse_text(raw_sse: str) -> str:
               chunks = []
               for line in raw_sse.splitlines():
@@ -510,7 +639,19 @@ jobs:
                       continue
                   try:
                       data = json.loads(payload)
-                      chunk = data.get("message", "")
+                      if data.get("type") == "reasoning" or data.get("role") == "reasoning":
+                          continue
+                      chunk = (
+                          data.get("message")
+                          or data.get("delta")
+                          or data.get("text")
+                          or data.get("content")
+                          or ""
+                      )
+                      if not chunk and isinstance(data.get("choices"), list) and data["choices"]:
+                          c0 = data["choices"][0]
+                          if isinstance(c0, dict):
+                              chunk = (c0.get("delta") or {}).get("content") or (c0.get("message") or {}).get("content") or ""
                       if chunk:
                           chunks.append(chunk)
                   except Exception:
@@ -595,88 +736,195 @@ jobs:
 
               return candidates[-1] if candidates else None
 
-          # ------------------ FAILSAFE ASSISTANT EXTRACTOR ------------------
-          EXTRACT_ASSISTANT_JS = """() => {
-              window.scrollTo({ top: document.body.scrollHeight, behavior: 'auto' });
-              const scrollable = document.querySelectorAll('main, [class*="chat"], [class*="conversation"], [class*="scroll"], [data-testid*="scroll"]');
-              scrollable.forEach(el => { el.scrollTop = el.scrollHeight; });
+          # ------------------ MULTI-STRATEGY DOM EXTRACTOR ------------------
+          EXTRACT_ASSISTANT_JS = r"""(promptTail) => {
+              // Scroll all containers to bottom first
+              const allEls = document.querySelectorAll('div, main, section, article');
+              for (const el of allEls) {
+                  if (el.scrollHeight > el.clientHeight + 20) {
+                      const style = window.getComputedStyle(el);
+                      if (['auto', 'scroll', 'overlay'].includes(style.overflowY)) {
+                          el.scrollTop = el.scrollHeight;
+                      }
+                  }
+              }
+              window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' });
 
+              // Detect active generation
               const stopButtons = Array.from(document.querySelectorAll('button')).filter(b => {
                   const txt = (b.innerText || '').toLowerCase();
                   const aria = (b.getAttribute('aria-label') || '').toLowerCase();
-                  return (txt.includes('stop') || aria.includes('stop')) && b.offsetParent !== null;
+                  const title = (b.getAttribute('title') || '').toLowerCase();
+                  const testid = (b.getAttribute('data-testid') || '').toLowerCase();
+                  return (
+                      txt.includes('stop') || aria.includes('stop') ||
+                      title.includes('stop') || testid.includes('stop') ||
+                      aria.includes('cancel')
+                  ) && b.offsetParent !== null;
               });
-              const isGenerating = stopButtons.length > 0;
+              const streamActive = Boolean(window.__duckai_stream && window.__duckai_stream.active);
+              const isGenerating = stopButtons.length > 0 || streamActive;
 
               const isPromptLeak = (t) => {
                   if (!t) return true;
                   return t.includes('PROMPT 1 — MOVIE / SERIES RECAP GENERATOR') ||
                          t.includes('8. REQUIRED JSON OUTPUT') ||
                          t.includes('Natural conversational Hindi narration in Devanagari.') ||
-                         t.includes('You said');
+                         t.includes('Timestamped Transcript:');
               };
 
+              // Strategy 1: Code blocks (<pre> / <code>) not containing the prompt
               const codeBlocks = Array.from(document.querySelectorAll('pre code, pre'));
               for (let i = codeBlocks.length - 1; i >= 0; i--) {
                   const block = codeBlocks[i];
                   const codeText = (block.innerText || '').trim();
-                  if (!codeText) continue;
-                  const userParent = block.closest('[class*="user"], [data-user="true"]');
-                  if (userParent) continue;
-                  if (isPromptLeak(codeText)) continue;
-                  if (codeText.includes('{') && (codeText.includes('beats') || codeText.includes('status'))) {
-                      return { text: codeText, isGenerating: isGenerating, source: 'code_block' };
+                  if (!codeText || isPromptLeak(codeText)) continue;
+                  if (codeText.includes('{') && (codeText.includes('beats') || codeText.includes('status') || codeText.includes('narration'))) {
+                      return { text: codeText, isGenerating, source: 'code_block' };
                   }
               }
 
-              const messageNodes = Array.from(document.querySelectorAll('article, [class*="message"], [data-testid*="message"], [class*="chat-message"]'));
-              const assistantNodes = messageNodes.filter(node => {
-                  const t = node.innerText || '';
-                  if (isPromptLeak(t)) return false;
-                  if (node.getAttribute('data-author') === 'user') return false;
-                  if (node.querySelector('[aria-label*="user" i], [class*="user" i]')) return false;
-                  return true;
+              // Strategy 2: Specific assistant containers
+              const assistantSelectors = [
+                  '[data-author="assistant"]',
+                  '[data-testid*="assistant" i]',
+                  '[data-testid*="response" i]',
+                  '[class*="assistant" i]',
+                  'article',
+                  '[class*="message" i]',
+                  '[data-testid*="message" i]'
+              ];
+              const seen = new Set();
+              const candidates = [];
+              for (const sel of assistantSelectors) {
+                  for (const node of document.querySelectorAll(sel)) {
+                      if (seen.has(node)) continue;
+                      seen.add(node);
+                      const t = (node.innerText || '').trim();
+                      if (!t || t.length < 15) continue;
+                      if (isPromptLeak(t)) continue;
+                      if (node.getAttribute('data-author') === 'user') continue;
+                      if (t.includes('How can I help you today?')) continue;
+                      candidates.push(t);
+                  }
+              }
+              if (candidates.length > 0) {
+                  // Pick the last non-empty candidate
+                  return { text: candidates[candidates.length - 1], isGenerating, source: 'assistant_node' };
+              }
+
+              // Strategy 3: Anchor off Copy / Regenerate buttons on the assistant turn
+              const copyBtns = Array.from(document.querySelectorAll('button')).filter(b => {
+                  const txt = (b.innerText || '').toLowerCase();
+                  const aria = (b.getAttribute('aria-label') || '').toLowerCase();
+                  const title = (b.getAttribute('title') || '').toLowerCase();
+                  return (txt === 'copy' || aria.includes('copy') || title.includes('copy')) && b.offsetParent !== null;
               });
-
-              if (assistantNodes.length > 0) {
-                  const lastAssistant = assistantNodes[assistantNodes.length - 1];
-                  const text = (lastAssistant.innerText || '').trim();
-                  if (text.length > 20 && !text.includes('How can I help you today?')) {
-                      return { text: text, isGenerating: isGenerating, source: 'assistant_message' };
+              if (copyBtns.length > 0) {
+                  const lastCopy = copyBtns[copyBtns.length - 1];
+                  let parent = lastCopy.parentElement;
+                  for (let depth = 0; depth < 6 && parent; depth++) {
+                      const pt = (parent.innerText || '').trim();
+                      if (pt.length > 25 && !isPromptLeak(pt) && pt.includes('{')) {
+                          return { text: pt, isGenerating, source: 'copy_ancestor' };
+                      }
+                      parent = parent.parentElement;
                   }
               }
 
-              return { text: '', isGenerating: isGenerating, source: 'none' };
+              // Strategy 4: Extract everything after the prompt tail inside <main> / body (immune to hashed CSS)
+              const rootEl = document.querySelector('main') || document.body;
+              const fullText = (rootEl.innerText || '').trim();
+              if (promptTail && promptTail.length >= 12) {
+                  const idx = fullText.lastIndexOf(promptTail);
+                  if (idx !== -1) {
+                      const after = fullText.slice(idx + promptTail.length).trim();
+                      if (after.length > 15) {
+                          return { text: after, isGenerating, source: 'after_prompt_tail' };
+                      }
+                  }
+              }
+
+              // Fallback: if a JSON brace appears outside prompt text
+              if (fullText.includes('{"') && !isPromptLeak(fullText.slice(-3000))) {
+                  return { text: fullText.slice(-12000), isGenerating, source: 'body_tail' };
+              }
+
+              return { text: '', isGenerating, source: 'none' };
           }"""
 
-          def wait_for_response(page, current_chat_state, max_wait=TEXT_WAIT, expect_beats=True):
+          def get_inpage_stream_text(page):
+              try:
+                  st = page.evaluate("() => window.__duckai_stream || null")
+                  if not st:
+                      return None
+                  raw = "".join(st.get("rawChunks") or [])
+                  parsed = parse_sse_text(raw) if raw else ""
+                  return {
+                      "active": bool(st.get("active")),
+                      "done": bool(st.get("done")),
+                      "status": int(st.get("status") or 0),
+                      "url": st.get("url") or "",
+                      "raw_len": len(raw),
+                      "parsed": parsed,
+                      "raw": raw
+                  }
+              except Exception:
+                  return None
+
+          def wait_for_response(page, current_chat_state, prompt_text="", max_wait=TEXT_WAIT, expect_beats=True):
               log(f"Waiting for Duck.ai response (max {max_wait}s)...")
+              prompt_tail = prompt_text[-60:].strip() if prompt_text else ""
               start = time.time()
               last_text = ""
               stable_ticks = 0
               has_started_generating = False
+              last_progress_log = 0.0
 
               while time.time() - start < max_wait:
-                  if current_chat_state.get("rate_limited"):
-                      raise RuntimeError("Duck.ai returned HTTP 418 (Tor IP rate-limited).")
+                  elapsed = time.time() - start
 
+                  if current_chat_state.get("rate_limited"):
+                      raise RuntimeError("Duck.ai returned HTTP 418/429 (Tor IP rate-limited).")
+
+                  # 1. Check in-page fetch stream interceptor
+                  inpage = get_inpage_stream_text(page)
+                  if inpage:
+                      if inpage["status"] in (418, 429):
+                          raise RuntimeError(f"Duck.ai fetch returned HTTP {inpage['status']} (Tor IP rate-limited).")
+                      if inpage["active"] or inpage["raw_len"] > 0:
+                          has_started_generating = True
+                      if inpage["done"] and inpage["parsed"].strip():
+                          parsed_sse = inpage["parsed"]
+                          if "{" in parsed_sse and (not expect_beats or '"beats"' in parsed_sse):
+                              log(f"Captured response via in-page fetch SSE ({len(parsed_sse)} chars, status={inpage['status']}).")
+                              return deep_repair(parsed_sse)
+
+                  # 2. Check Playwright requestfinished network stream
                   if current_chat_state.get("chat_done") and current_chat_state.get("raw_stream"):
                       parsed_sse = parse_sse_text("".join(current_chat_state["raw_stream"]))
                       if parsed_sse.strip() and "{" in parsed_sse:
                           if not expect_beats or '"beats"' in parsed_sse:
-                              log(f"Captured response via completed SSE stream ({len(parsed_sse)} chars).")
+                              log(f"Captured response via Playwright network SSE ({len(parsed_sse)} chars).")
                               return deep_repair(parsed_sse)
 
+                  # 3. Scroll and extract via DOM
+                  scroll_chat_to_bottom(page)
+                  dom_source = "none"
+                  dom_len = 0
+                  is_generating = False
                   try:
-                      dom_data = page.evaluate(EXTRACT_ASSISTANT_JS)
-                      cur_text = dom_data.get("text", "").strip()
-                      is_generating = dom_data.get("isGenerating", False)
-                      source = dom_data.get("source", "none")
+                      dom_data = page.evaluate(EXTRACT_ASSISTANT_JS, prompt_tail)
+                      cur_text = (dom_data.get("text") or "").strip()
+                      is_generating = bool(dom_data.get("isGenerating", False))
+                      dom_source = dom_data.get("source", "none")
+                      dom_len = len(cur_text)
 
                       if "PROMPT 1 — MOVIE / SERIES RECAP GENERATOR" in cur_text or "8. REQUIRED JSON OUTPUT" in cur_text:
                           cur_text = ""
+                          dom_len = 0
 
-                      if is_generating or len(cur_text) > 30:
+                      if is_generating or dom_len > 25:
                           has_started_generating = True
 
                       if cur_text:
@@ -686,19 +934,28 @@ jobs:
                               stable_ticks = 0
                           last_text = cur_text
 
+                          # Fast-exit as soon as complete valid JSON is present and DOM has stabilized
                           if has_started_generating and not is_generating and stable_ticks >= 4 and len(last_text) > 25:
-                              log(f"Captured complete response via DOM stability ({source}, {len(last_text)} chars).")
+                              log(f"Captured complete response via DOM stability ({dom_source}, {len(last_text)} chars).")
                               return deep_repair(last_text)
                   except Exception as e:
                       log(f"DOM poll notice: {e}")
 
+                  if elapsed - last_progress_log >= 15.0:
+                      last_progress_log = elapsed
+                      stream_info = f"raw={inpage['raw_len']} done={inpage['done']} status={inpage['status']}" if inpage else "no_hook"
+                      log(f"[WAIT {int(elapsed)}s/{max_wait}s] stream=({stream_info}) | dom=({dom_source}, {dom_len} chars, gen={is_generating}, stable={stable_ticks})")
+
                   page.wait_for_timeout(2000)
 
+              # Final fallback on timeout
+              inpage = get_inpage_stream_text(page)
+              if inpage and inpage["parsed"].strip():
+                  return deep_repair(inpage["parsed"])
               if current_chat_state.get("raw_stream"):
                   parsed_sse = parse_sse_text("".join(current_chat_state["raw_stream"]))
                   if parsed_sse.strip():
                       return deep_repair(parsed_sse)
-
               if last_text and len(last_text) > 25:
                   return deep_repair(last_text)
 
@@ -771,7 +1028,7 @@ jobs:
           - Use a compelling YouTube storyteller style.
           - Keep sentences clear, fluent and easy to speak.
           - Use everyday Hindi rather than formal, literary or difficult vocabulary.
-          - Write English-origin words in Devanagari, such as पुलिस, ड्रग्स, केस and प्लान.
+          - Write English-origin words in Devanagari, such as पुलिस, ड्रग्स, केस और प्लान.
           - Do not write narration in English or Roman Hindi.
           - Avoid robotic explanations, excessive descriptions and repetitive character introductions.
           - Do not reproduce long dialogue exchanges. Summarize their meaning naturally.
@@ -934,7 +1191,6 @@ jobs:
               prompt = prompt.replace("__PART_IDENTIFIER__", INPUT_PART or "")
               prompt = prompt.replace("__TARGET_DURATION__", target_dur_text)
               prompt = prompt.replace("__PREVIOUS_CONTEXT__", prev_context)
-              # Compact JSON maximizes how many transcript segments fit inside the 16k limit
               prompt = prompt.replace("__TRANSCRIPT_JSON__", json.dumps(chunk_obj, ensure_ascii=False, separators=(",", ":")))
               return prompt
 
@@ -946,13 +1202,11 @@ jobs:
               if start_idx >= len(all_segments):
                   return None, start_idx
 
-              # Estimate proportional target duration for this slice later; reserve ~120 chars buffer for context/duration text
               base_obj = {
                   "movie_title": movie_title,
                   "duration": total_duration,
                   "segments": []
               }
-              # Keep prev_context bounded to <= 1200 chars so segments have plenty of room
               bounded_context = prev_context[-1200:] if len(prev_context) > 1200 else prev_context
               base_prompt = render_prompt_1(movie_title, f"{TARGET_MINUTES} minutes (section)" if TARGET_MINUTES else "null", bounded_context, base_obj)
               budget_for_segments = MAX_PROMPT_CHARS - len(base_prompt) - 100
@@ -970,7 +1224,6 @@ jobs:
                   extra_len = len(seg_str) + (1 if selected_segments else 0)
                   if used_chars + extra_len > budget_for_segments:
                       if not selected_segments:
-                          # Force at least 1 segment even if unusually huge
                           selected_segments.append(seg)
                           idx += 1
                       break
@@ -1001,7 +1254,6 @@ jobs:
               }
               final_prompt = render_prompt_1(movie_title, target_dur_text, bounded_context, chunk_obj)
 
-              # Safety guard: trim trailing segment if final string somehow exceeded MAX_PROMPT_CHARS
               while len(final_prompt) > MAX_PROMPT_CHARS and len(selected_segments) > 1:
                   selected_segments.pop()
                   idx -= 1
@@ -1093,21 +1345,29 @@ jobs:
                   user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
                   permissions=["clipboard-read", "clipboard-write"]
               )
-              context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
+              context.add_init_script(FETCH_HOOK_JS)
               page = context.new_page()
 
+              def is_chat_req(req):
+                  return req.method == "POST" and ("/duckchat/" in req.url or "/chat" in req.url) and "status" not in req.url
+
               def on_res(resp):
-                  if "/duckchat/v1/chat" in resp.url and resp.request.method == "POST":
-                      if resp.status == 418:
+                  if is_chat_req(resp.request):
+                      log(f"Network chat response headers: HTTP {resp.status} -> {resp.url}")
+                      if resp.status in (418, 429):
                           current_chat_state["rate_limited"] = True
-                      try:
-                          current_chat_state["raw_stream"].append(resp.body().decode("utf-8", errors="replace"))
-                      except Exception:
-                          pass
               page.on("response", on_res)
 
               def on_done(req):
-                  if "/duckchat/v1/chat" in req.url and req.method == "POST":
+                  if is_chat_req(req):
+                      try:
+                          resp = req.response()
+                          if resp:
+                              body = resp.body().decode("utf-8", errors="replace")
+                              if body:
+                                  current_chat_state["raw_stream"].append(body)
+                      except Exception as e:
+                          log(f"requestfinished body note: {e}")
                       current_chat_state["chat_done"] = True
               page.on("requestfinished", on_done)
 
@@ -1133,7 +1393,7 @@ jobs:
                   current_chat_state["rate_limited"] = False
 
                   submit_prompt(page, box, probe_prompt, context)
-                  out = wait_for_response(page, current_chat_state, max_wait=60, expect_beats=False)
+                  out = wait_for_response(page, current_chat_state, prompt_text=probe_prompt, max_wait=60, expect_beats=False)
                   parsed = parse_first_balanced_json(out, require_beats=False)
                   log(f"Probe Result: {parsed}")
 
@@ -1144,6 +1404,7 @@ jobs:
                       sys.exit(0)
                   else:
                       log("Probe FAILED.")
+                      snap(page, "probe_failed")
                       if browser:
                           browser.close()
                       sys.exit(1)
@@ -1180,7 +1441,6 @@ jobs:
                   cur_idx = pipeline_state["next_segment_idx"]
                   chunk_num = pipeline_state["chunk_num"] + 1
 
-                  # Build Previous Story Context from user hints + accumulated synopsis + last narration
                   ctx_parts = []
                   if INPUT_HINTS:
                       ctx_parts.append(INPUT_HINTS)
@@ -1206,7 +1466,6 @@ jobs:
                       current_chat_state["rate_limited"] = False
 
                       try:
-                          # Start fresh chat per chunk so Duck.ai doesn't overflow conversation history
                           page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
                           page.wait_for_timeout(3000)
 
@@ -1225,23 +1484,47 @@ jobs:
                           submit_prompt(page, box, chunk_meta["prompt"], context)
 
                           confirmed = False
-                          for _ in range(12):
+                          for wait_sec in range(15):
                               page.wait_for_timeout(1000)
-                              if "chatID=" in page.url or len(current_chat_state["raw_stream"]) > 0:
+                              inpage = get_inpage_stream_text(page)
+                              box_cleared = False
+                              try:
+                                  box_cleared = len(box.input_value().strip()) == 0
+                              except Exception:
+                                  box_cleared = True
+
+                              if (
+                                  "chatID=" in page.url
+                                  or len(current_chat_state["raw_stream"]) > 0
+                                  or (inpage and (inpage["active"] or inpage["done"] or inpage["status"] > 0))
+                                  or box_cleared
+                              ):
                                   confirmed = True
+                                  log(f"Submission acknowledged at +{wait_sec+1}s (url_has_chatID={'chatID=' in page.url}, box_cleared={box_cleared}).")
                                   break
-                              stop_btn = page.locator("button:has-text('Stop generating'), button:has-text('Stop')")
+
+                              stop_btn = page.locator("button:has-text('Stop'), button[aria-label*='stop' i], button[title*='stop' i]")
                               if stop_btn.count() > 0 and stop_btn.first.is_visible():
                                   confirmed = True
+                                  log(f"Submission acknowledged via Stop button at +{wait_sec+1}s.")
                                   break
-                              click_ask_button(page)
-                              box.press("Enter")
+
+                              # Only re-trigger submit every 4s if prompt is STILL sitting inside textarea
+                              if wait_sec in (3, 7, 11):
+                                  click_ask_button(page)
+                                  box.press("Enter")
 
                           if not confirmed:
                               snap(page, f"fail_submit_chunk_{chunk_num}_att_{attempt}")
                               raise RuntimeError(f"Chunk {chunk_num} submission not acknowledged.")
 
-                          raw_resp = wait_for_response(page, current_chat_state, max_wait=TEXT_WAIT, expect_beats=True)
+                          raw_resp = wait_for_response(
+                              page,
+                              current_chat_state,
+                              prompt_text=chunk_meta["prompt"],
+                              max_wait=TEXT_WAIT,
+                              expect_beats=True
+                          )
                           (DEBUG_DIR / f"raw_chunk_{chunk_num}_att_{attempt}.txt").write_text(raw_resp, encoding="utf-8")
 
                           parsed_json = parse_first_balanced_json(raw_resp, require_beats=True)

@@ -1006,25 +1006,27 @@ jobs:
           Use Web Search right now to look up:
           - Title: __MOVIE_TITLE__ | Type: __CONTENT_TYPE__ | Season: __SEASON__ | Episode: __EPISODE__ | Part: __PART_IDENTIFIER__
 
-          Output a concise plain-text reference sheet (under 1,400 chars) so any unlabelled subtitle snippet can be matched to its exact on-screen scene:
+          Output a concise plain-text reference sheet (under 1,400 chars) so any unlabelled subtitle snippet can be matched to its exact on-screen scene and true physical setting:
           1. **Characters & Roles:** Exact names, brief 2–4 word role/identity labels (e.g. detective, ex-husband, victim, club owner, suspect), and relationships.
-          2. **Chronological Scene Index:** Numbered 1-line descriptions of the main scenes in order (who is present, setting, and what happens). Strictly a scene-lookup index—NOT an opening intro to copy blindly.""").strip()
+          2. **Chronological Scene Index:** Numbered 1-line descriptions of the main scenes in order (**exact physical setting/location**, who is present, and what happens). Strictly a scene-lookup index—NOT an opening intro to copy blindly.""").strip()
 
           PROMPT_1_TEMPLATE = textwrap.dedent("""\
           # PROMPT 1 — MOVIE / SERIES RECAP GENERATOR (DRAFT)
 
           Act as a YouTube movie/series recap writer and video editor. Convert the timestamped transcript into a clear, well-paced Hindi voice-over recap in third-person storytelling style so viewers understand the full story effortlessly without feeling rushed or confused.
 
-          ## 1. IDENTIFY THE EXACT ON-SCREEN SCENE & INTRODUCE CHARACTERS NATURALLY
-          - Read the transcript and use Web Search + the Verified Scene Map to pinpoint **which exact scene(s)** these timestamps cover and **who is speaking each line**.
+          ## 1. EXACT SCENE, SETTING & NAMED CHARACTER CLARITY (CRITICAL!)
+          - Read the transcript and use Web Search + the Verified Scene Map to pinpoint **which exact scene(s)** these timestamps cover, **who is speaking each line**, and the **true setting**.
           - Start directly at the exact scene where this transcript begins. NEVER add an earlier off-screen intro absent from these timestamps.
-          - **First-Mention Character Context:** The very first time any key character appears or is mentioned in this transcript, naturally include their 2–4 word identity/role inside the sentence so viewers immediately know who they are (never drop unexplained bare names).
+          - **NEVER Guess Locations:** Do NOT invent or guess a location (like "at the police station" or "in an office") unless explicitly confirmed by the transcript dialogue or Verified Scene Map/Web Search.
+          - **Use Real Names + Roles (No Vague Labels):** When a character is confirmed via Transcript + Web Search, always use their actual name + a brief 2–4 word role/identity on first mention—never hide known characters behind vague labels like "उसका सहकर्मी".
+          - **No Sudden Character Jumps:** Never jump to a character taking action in Beat 2 without first introducing who they are and why they are involved.
 
-          ## 2. GLOBAL PACING & BREATHABLE STORYTELLING (CRITICAL!)
+          ## 2. GLOBAL PACING & BREATHABLE STORYTELLING
           - **Total Video Budget:** The ENTIRE transcript must fit cleanly into **~__TARGET_MINUTES__ minutes (~__TOTAL_TARGET_WORDS__ Hindi words total)**.
           - **This Chunk's Budget:** This chunk is **__CHUNK_PCT__%** of the runtime -> write strictly **~__TARGET_WORDS__ Hindi words (~__TARGET_DURATION__)** across **2–5 focused beats (~30–50 words per beat)**.
-          - Never cram 3–4 unrelated developments into one rushed 70+ word beat. Give each major turn 1 clear beat (~30–50 words) explaining **What happened, Why it matters, and How it moves the story**, and simply skip minor banter/filler so the pacing feels calm, clear, and engaging.
-          - Write in natural conversational Hindi (Devanagari only; everyday English words in Devanagari). No dialogue reading, no robotic disclaimers, no repetitive starters like "इसके बाद".
+          - Give each major turn 1 clear beat (~30–50 words) explaining **What happened, Why it matters, and How it moves the story**, skipping minor banter/filler so pacing stays calm and clear.
+          - Write in natural conversational Hindi (Devanagari only; clean phonetic spellings for English names). No dialogue reading, no robotic disclaimers, no repetitive starters like "इसके बाद".
 
           ## 3. PHRASE-SYNCED MICRO-CLIPS (CRITICAL!)
           Split each beat's `narration` sequentially into short spoken phrases (`spoken_text`), assigning one relevant `1.5–2.5s` clip (`<= 3.0s` max) per phrase so joining all `spoken_text` values in order equals `narration`. Use ONLY timestamps from the supplied transcript.
@@ -1051,7 +1053,7 @@ jobs:
           1. **Story so far:** Important events already narrated in sequence, character relationships, revelations and unresolved conflicts.
           2. **Character context:** Canonical names, already-introduced roles/identities (so the next part does not re-introduce them awkwardly), and verified spellings.
           3. **Audience knowledge:** What viewers already know vs what remains uncertain.
-          4. **Upcoming scene preview:** Which exact scene happens in the preview, its characters, and how it connects (clearly marked as preview only, not yet narrated).
+          4. **Upcoming scene preview:** Which exact scene and setting happens in the preview, its characters, and how it connects (clearly marked as preview only, not yet narrated).
           5. **Exact continuation point:** Copy the final 2–3 narration beats VERBATIM and identify the exact final sentence where continuation must begin.
 
           **OUTPUT:** One clean copy-ready handoff text. No JSON, no new narration.
@@ -1079,14 +1081,14 @@ jobs:
 
           Continue the YouTube Hindi recap from the continuity handoff and new transcript below.
 
-          ## 1. SCENE MATCHING, CONTINUITY & CHARACTER CLARITY
-          - Use Web Search + Verified Scene Map to pinpoint **which exact scene(s)** the new transcript covers and who speaks each line.
+          ## 1. SCENE MATCHING, SETTING & CHARACTER CLARITY
+          - Use Web Search + Verified Scene Map to pinpoint **which exact scene(s)** and **true physical setting** the new transcript covers and who speaks each line.
           - Continue smoothly from the exact final sentence of the previous narration. Never repeat earlier events or add off-screen backstory.
-          - Whenever a **new** character appears for the first time, naturally add a 2–4 word role/identity label so viewers stay oriented.
+          - **NEVER Guess Locations:** Do not invent unconfirmed settings. Always use confirmed character names + brief 2–4 word role on first mention (never vague labels or abrupt character jumps).
 
           ## 2. GLOBAL PACING & PHRASE-SYNCED CLIPS
           - Full video budget: **~__TARGET_MINUTES__ minutes (~__TOTAL_TARGET_WORDS__ words total)**. This chunk (**__CHUNK_PCT__%** of runtime) budget: **~__TARGET_WORDS__ Hindi words (~__TARGET_DURATION__)**, kept at **~30–50 words per beat** (1–2 clear developments per beat, never rushed).
-          - Keep only plot-critical events in natural, fluent third-person Hindi (Devanagari only, no dialogue reading, no robotic disclaimers, avoid repeating "इसके बाद") explaining **What, Why, and How**.
+          - Natural, fluent third-person Hindi (Devanagari only, clean phonetic name spellings, no dialogue reading, no robotic disclaimers, avoid "इसके बाद") explaining **What, Why, and How**.
           - Split each beat's `narration` sequentially into short `spoken_text` phrases with one `<= 3.0s` transcript clip per phrase so joining `spoken_text` equals `narration`.
 
           ## 3. OUTPUT FORMAT
@@ -1108,8 +1110,8 @@ jobs:
 
           You have this chunk's transcript, the draft JSON below, and the upcoming ~100-line preview from Prompt 2.
           Use Web Search on `__MOVIE_TITLE__` (`__CONTENT_TYPE__`, Season `__SEASON__`, Episode `__EPISODE__`) + the transcript to refine the JSON:
-          1. **On-Screen Accuracy & Character Intros:** Verify Beat 1 starts strictly with the opening scene of this transcript (NO off-screen intro), fix any speaker mix-ups, and ensure every newly introduced character has a brief 2–4 word role label on first mention.
-          2. **Balanced Pacing (Not Rushed!):** Full video target is ~__TARGET_MINUTES__m (~__TOTAL_TARGET_WORDS__ words); this chunk (**__CHUNK_PCT__%** of runtime) budget is **~__TARGET_WORDS__ words (~__TARGET_DURATION__)**. Keep beats at **~30–50 words each** (split overcrowded 65+ word beats or drop minor filler so viewers easily follow **What, Why, and How**). Avoid "इसके बाद".
+          1. **True Scene, Setting & Named Characters:** Verify Beat 1 starts strictly with the opening scene of this transcript (NO off-screen intro). Remove any guessed physical location not confirmed by Web Search/transcript. Use confirmed character names + 2–4 word role on first mention (never vague labels like "सहकर्मी", and never jump to a character in Beat 2 before introducing who they are).
+          2. **Balanced Pacing:** Full video target is ~__TARGET_MINUTES__m (~__TOTAL_TARGET_WORDS__ words); this chunk (**__CHUNK_PCT__%** of runtime) budget is **~__TARGET_WORDS__ words (~__TARGET_DURATION__)**. Keep beats at **~30–50 words each** so viewers easily follow **What, Why, and How**. Clean Hindi phonetic spellings; avoid "इसके बाद".
           3. **Phrase-Synced Clips:** Every clip (`<= 3.0s`, valid chunk timestamps) must carry its exact sequential `spoken_text` phrase from `narration` so joining all `spoken_text` equals `narration`.
 
           Verified Scene Map: __EPISODE_BIBLE__
@@ -1129,12 +1131,13 @@ jobs:
 
           ## MANDATORY VERIFICATION & UPGRADE CHECKLIST:
           1. **WEB SEARCH & RAW TRANSCRIPT AUDIT (ZERO HALLUCINATIONS!):**
-             - Use Web Search on `__MOVIE_TITLE__` (`__CONTENT_TYPE__`, Season `__SEASON__`, Episode `__EPISODE__`) and cross-check every beat against the Raw Timestamped Transcript below.
-             - Fix **every** speaker misattribution and remove **any** off-screen intro or invented detail not present in the Raw Transcript timestamps. Beat 1 must match the exact opening scene of the transcript.
-          2. **CRYSTAL-CLEAR VIEWER EXPERIENCE & PACING (NEVER RUSHED!):**
-             - **First-Mention Character Framing:** Whenever a major character appears for the first time (if not already introduced in Previous Verified Ending), naturally include their 2–4 word role/relationship inside the narration so the viewer never gets lost.
-             - **Comfortable Beat Sizing:** Aim for **~30–50 words per beat** (1–2 connected story turns per beat—if a beat crams 4 turns into 70+ words, split or trim minor trivia so it breathes naturally!).
-             - **Global Budget Discipline:** The full recap must finish in **~__TARGET_MINUTES__ minutes (~__TOTAL_TARGET_WORDS__ Hindi words total)**. This chunk (**__CHUNK_PCT__%** of runtime) budget is **~__TARGET_WORDS__ words (~__TARGET_DURATION__)**. Keep only essential plot + future-relevant setups in gripping, natural third-person Hindi (Devanagari only, no dialogue reading, no robotic disclaimers, avoid repeating "इसके बाद") so viewers say: *"I understood the whole movie effortlessly!"*
+             - Use Web Search on `__MOVIE_TITLE__` (`__CONTENT_TYPE__`, Season `__SEASON__`, Episode `__EPISODE__`) and cross-check every claim in Luna's draft against the Raw Timestamped Transcript below.
+             - **Fix Wrong/Guessed Locations:** If Luna guessed a wrong setting (like saying characters are at a police station when Web Search/scene shows they are at the crime scene, or vice versa), fix it to the true verified setting or omit the unconfirmed setting.
+             - **Fix Speaker Swaps & Vague Labels:** Replace vague labels (like "सहकर्मी") with the character's verified real name + brief 2–4 word role on first mention. Remove any off-screen intro not in the Raw Transcript timestamps.
+          2. **CRYSTAL-CLEAR VIEWER FLOW & PACING (NO ABRUPT JUMPS!):**
+             - **No Character Teleportation:** Never let Beat 2 jump to a character investigating or confronting someone without first establishing who that character is and why they are involved.
+             - **Comfortable Beat Sizing:** Aim for **~30–50 words per beat** (1–2 connected story turns per beat, never 4 crammed turns).
+             - **Global Budget Discipline:** Full recap must finish in **~__TARGET_MINUTES__ minutes (~__TOTAL_TARGET_WORDS__ Hindi words total)**. This chunk (**__CHUNK_PCT__%** of runtime) budget is **~__TARGET_WORDS__ words (~__TARGET_DURATION__)**. Use gripping, natural third-person Hindi with clean phonetic name spellings (Devanagari only, no dialogue reading, no robotic disclaimers, avoid "इसके बाद") so viewers say: *"I understood the whole movie effortlessly!"*
           3. **PHRASE-SYNCED CLIP ALIGNMENT (STRICT!):**
              - Divide each beat's `narration` sequentially into short spoken phrases (`spoken_text`, ~3–8 words each) and pair **each phrase** with one relevant `<= 3.0s` clip whose timestamp exists in the Raw Transcript below.
              - Joining every clip's `spoken_text` in order MUST equal the beat's `narration`.

@@ -1038,7 +1038,6 @@ jobs:
               const rootEl = document.querySelector('main') || document.body;
               const fullText = (rootEl.innerText || '').trim();
 
-              // On multi-turn chats (Prompt 2 or Prompt 4), slice strictly AFTER promptTail first
               if (promptTail && promptTail.length >= 12) {
                   const idx = fullText.lastIndexOf(promptTail);
                   if (idx !== -1) {
@@ -1051,7 +1050,6 @@ jobs:
                   }
               }
 
-              // Only inspect NEW code blocks added in this turn (prevents grabbing Turn 1 JSON during Turn 3!)
               if (expectJson) {
                   const codeBlocks = Array.from(document.querySelectorAll('pre code, pre'));
                   if (codeBlocks.length > (prevCodeBlocks || 0)) {
@@ -1065,7 +1063,6 @@ jobs:
                   }
               }
 
-              // Fallback: after_prompt_tail even if partial
               if (promptTail && promptTail.length >= 12) {
                   const idx = fullText.lastIndexOf(promptTail);
                   if (idx !== -1) {
@@ -1218,9 +1215,9 @@ jobs:
 
               raise RuntimeError(f"Response timed out after {max_wait}s.")
 
-          # ------------------ PROMPTS 0, 1, 2, 3, AND 4 ------------------
+          # ------------------ UNIVERSAL PROMPTS 0, 1, 2, 3, AND 4 ------------------
           PROMPT_0_TEMPLATE = textwrap.dedent("""\
-          # PROMPT 0 — VERIFIED EPISODE / MOVIE CHARACTER & PLOT REFERENCE
+          # PROMPT 0 — VERIFIED EPISODE / MOVIE SCENE MAP (FOR TRANSCRIPT MATCHING)
 
           Use Web Search right now to look up the exact production below:
           - Title: __MOVIE_TITLE__
@@ -1229,9 +1226,9 @@ jobs:
           - Episode: __EPISODE__
           - Part: __PART_IDENTIFIER__
 
-          Output a concise plain-text reference sheet (under 1,400 characters) for accurate transcript speaker identification:
+          Output a concise plain-text reference sheet (under 1,400 characters) so any unlabelled subtitle transcript segment can be matched to its exact on-screen scene:
           1. **Characters & Roles:** Exact names, aliases, spellings and relationships (who is who).
-          2. **Chronological Scene Outline:** Brief bullet list of the actual main scenes in order (who is in each scene and what drives the plot) so an unlabelled subtitle transcript never swaps speakers (e.g., who investigates vs who reacts).
+          2. **Chronological Scene Index:** Brief numbered 1-line descriptions of the main scenes in order (who is present, setting, and key action/topic). This is strictly a lookup index to identify WHICH scene a transcript slice belongs to—NOT an opening summary to copy blindly.
 
           Do NOT invent facts. Keep it compact and factual.""").strip()
 
@@ -1239,36 +1236,37 @@ jobs:
           # PROMPT 1 — MOVIE / SERIES RECAP GENERATOR
 
           ## ROLE
-          Act as a professional YouTube movie/series recap writer and video editing planner. Convert the supplied timestamped transcript into a short, simple, fast-paced Hindi voice-over recap in clear third-person storytelling style, paired with carefully selected original-footage clips.
+          Act as a professional YouTube movie/series recap writer and video editing planner. Convert the supplied timestamped transcript into a short, simple, fast-paced Hindi voice-over recap in clear third-person storytelling style, paired with original-footage clips.
 
-          Tell what is happening clearly so the viewer never gets confused. Do NOT read dialogues or translate lines one-by-one. Narrate from a third-person storyteller view without any hallucination.
+          ## 1. IDENTIFY THE EXACT ON-SCREEN SCENE FROM THE TRANSCRIPT (CRITICAL!)
+          - First, read the supplied transcript from start to finish and match its dialogue/events against the Verified Scene Map and Web Search to pinpoint **WHICH exact scene(s)** these timestamps actually cover.
+          - Start your narration **directly at the scene where the supplied transcript begins**—do NOT assume it starts at scene 1 of the movie/episode.
+          - **NEVER** insert an earlier off-screen intro, backstory, or prior scene summary that is absent from the supplied transcript timestamps.
+          - Introduce a character **only when they first appear, speak, or become directly relevant inside the supplied transcript**.
+          - Use the Scene Map + Web Search to verify who is actually speaking and acting in each line. Never swap characters or attribute one person's lines/actions to another.
 
-          ## 1. RESEARCH & SPEAKER ACCURACY
-          Use the supplied Verified Character/Scene Reference and Web Search to confirm who is actually speaking and acting in each scene. Fix inconsistent speech-to-text spellings. Never swap characters or attribute one character's words/actions to another. Never introduce events absent from the supplied transcript.
-
-          ## 2. STORYTELLING PRIORITIES & ANTI-FILLER PACING
+          ## 2. ANTI-FILLER YOUTUBE STORYTELLING
           We are compressing a full movie/episode into a tight YouTube recap (target for this section: __TARGET_DURATION__, ~__TARGET_WORDS__ Hindi words).
-          - **KEEP ONLY:** Main plot developments, key character actions, revelations, motives and scenes needed for future continuity.
-          - **SKIP COMPLETELY:** Casual banter, jokes, minor observations (e.g. small-talk remarks), flirting and non-essential dialogue.
-          - Tell the viewer **What happened, Why it happened, and How it moves the story**.
-          - Distinguish sarcasm, jokes and hypotheticals from real events; accusations from facts. Never invent actions or outcomes.
+          - **KEEP ONLY:** Essential plot developments, key character actions, revelations, motives and setups needed for future scenes.
+          - **SKIP COMPLETELY:** Casual banter, jokes, minor observations, flirting and throwaway dialogue.
+          - Tell **What happened, Why it happened, and How it moves the story** so a first-time viewer never gets confused.
+          - Express uncertainty, suspicions, or accusations naturally inside the sentence itself—NEVER append robotic meta-disclaimers (like claiming something is "only a claim, not proof").
 
           ## 3. HINDI NARRATION STYLE
-          - Simple, punchy, conversational Hindi in Devanagari script (~130–150 words/min). English-origin everyday words in Devanagari (पुलिस, प्लान, केस).
-          - Fast-paced third-person storyteller voice—no dialogue reading, no formal vocabulary, no repetitive starters ("इसके बाद", "उधर").
+          - Simple, punchy, conversational Hindi in Devanagari script (~130–150 words/min). Everyday English-origin words in Devanagari.
+          - Fast-paced third-person YouTube storyteller voice—no dialogue reading, no formal vocabulary, no repetitive starters.
 
           ## 4. MICRO-LEVEL CLIP SEGMENTATION (CRITICAL)
           - Target 1.5–2.5s per clip; NEVER exceed 3s.
-          - Combined clip duration for each beat must cover its `estimated_duration`.
-          - Use ONLY timestamps present in the supplied transcript; mark unverified visual guesses as unverified.
+          - Combined clip duration for each beat must cover its `estimated_duration` using ONLY timestamps present in the supplied transcript. Mark visual guesses as unverified.
 
           ## 5. REQUIRED JSON OUTPUT
           Return strictly valid JSON only (no Markdown fences, no trailing commas, escaped quotes):
-          {"movie_title":"Title","content_type":"Movie or TV Series","season":null,"episode":null,"part_identifier":null,"target_minutes":null,"estimated_narration_minutes":0,"total_beats":0,"total_words":0,"characters":[{"name":"Name","description":"Role"}],"synopsis":"Concise summary of this section only.","beats":[{"beat_id":"B0001","narration":"Hindi Devanagari narration","word_count":0,"estimated_duration":0,"is_scene_bridge":false,"clips":[{"clip_id":"C0001","start":0.0,"end":2.0,"duration":2.0,"scene_context":"Transcript context (mark visuals unverified)"}]}]}
+          {"movie_title":"Title","content_type":"Movie or TV Series","season":null,"episode":null,"part_identifier":null,"target_minutes":null,"estimated_narration_minutes":0,"total_beats":0,"total_words":0,"characters":[{"name":"Name","description":"Role"}],"synopsis":"Concise summary of ONLY the scenes in this transcript chunk.","beats":[{"beat_id":"B0001","narration":"Hindi Devanagari narration","word_count":0,"estimated_duration":0,"is_scene_bridge":false,"clips":[{"clip_id":"C0001","start":0.0,"end":2.0,"duration":2.0,"scene_context":"Transcript context (mark visuals unverified)"}]}]}
 
           ## INPUT
           Title: __MOVIE_TITLE__ | Type: __CONTENT_TYPE__ | Season: __SEASON__ | Episode: __EPISODE__ | Part: __PART_IDENTIFIER__
-          Verified Reference & Context: __PREVIOUS_CONTEXT__
+          Verified Scene Map & Context: __PREVIOUS_CONTEXT__
 
           Timestamped Transcript:
           __TRANSCRIPT_JSON__""").strip()
@@ -1278,7 +1276,7 @@ jobs:
 
           You have already processed the earlier part of this movie/series in this conversation. I am providing the next approximately 100 transcript lines as a **PREVIEW ONLY**.
 
-          Read the preview carefully to understand upcoming events, identify characters and speakers, clarify dialogue references, and understand how the next scene connects to the existing story.
+          Read the preview carefully to identify which exact upcoming scene(s) it covers, identify characters and speakers, clarify dialogue references, and understand how the next scene connects to the existing story.
 
           **Do NOT generate narration, recap beats, clips, or JSON for the preview.**
 
@@ -1289,7 +1287,7 @@ jobs:
           1. **Story so far:** Summarize the important events already narrated, preserving the correct sequence, character relationships, revelations and unresolved conflicts.
           2. **Character context:** Include relevant character names, identities, relationships and any name corrections established through reliable context or research.
           3. **Audience knowledge:** Explain what the audience already knows and what remains uncertain.
-          4. **Upcoming scene preview:** Briefly explain what happens in the preview, its important characters and how it connects to the story so far. Clearly mark these events as preview information, not yet narrated.
+          4. **Upcoming scene preview:** Briefly explain which exact scene happens in the preview, its important characters and how it connects to the story so far. Clearly mark these events as preview information, not yet narrated.
           5. **Exact continuation point:** Copy the final 2–3 narration beats from the previous generated output VERBATIM, including their complete narration text. Identify the exact final sentence where continuation must begin.
 
           Important:
@@ -1315,7 +1313,7 @@ jobs:
           1. **Story so far:** Sequence of already-narrated events, relationships, revelations and unresolved conflicts.
           2. **Character context:** Canonical names, identities, relationships and verified spellings.
           3. **Audience knowledge:** What viewers already know vs what remains uncertain.
-          4. **Upcoming scene preview:** Briefly explain what happens in the preview and how it connects (clearly marked as preview only, not yet narrated).
+          4. **Upcoming scene preview:** Briefly explain which exact scene happens in the preview and how it connects (clearly marked as preview only, not yet narrated).
           5. **Exact continuation point:** Copy the final 2–3 narration beats provided below VERBATIM, and identify the exact final sentence where continuation must begin.
 
           **OUTPUT:** One clean, copy-ready continuity handoff. No JSON, no new narration and no extra commentary.
@@ -1334,16 +1332,17 @@ jobs:
 
           Continue an existing YouTube movie/series recap using the continuity handoff and new timestamped transcript provided below.
 
-          ## 1. CONTINUITY & SPEAKER ACCURACY
-          - Continue smoothly from the exact final sentence of the previous narration. Do NOT repeat previously narrated events or restart the story.
-          - The upcoming scene preview in the handoff is context only; narrate only events supported by the new transcript.
-          - Use Web Search + the Verified Reference to confirm who is speaking/acting in each scene. Never swap speakers or hallucinate motives/events.
+          ## 1. IDENTIFY THE EXACT ON-SCREEN SCENE & CONTINUITY
+          - First, analyze the new transcript lines and match them against the Verified Scene Map and Web Search to confirm **which exact scene(s)** are happening on screen and who is speaking each line.
+          - Continue smoothly from the exact final sentence of the previous narration. Do NOT repeat previously narrated events, and do NOT insert off-screen backstory absent from the new transcript.
+          - The upcoming scene preview in the handoff is context only; narrate only events supported by the new transcript timestamps.
+          - Never swap speakers or hallucinate motives/events.
 
           ## 2. ANTI-FILLER YOUTUBE STORYTELLING
           Target for this section: __TARGET_DURATION__ (~__TARGET_WORDS__ Hindi words at 130–150 wpm).
           - **KEEP ONLY:** Essential plot developments, key actions, revelations and setups needed for future scenes.
           - **SKIP COMPLETELY:** Banter, filler jokes, minor throwaway lines and repetitive dialogue.
-          - Short, punchy, engaging third-person Hindi storytelling (Devanagari only) explaining **What happened, Why it happened, and How it impacts the story**—NO dialogue reading, NO viewer confusion.
+          - Short, punchy, engaging third-person Hindi storytelling (Devanagari only) explaining **What happened, Why it happened, and How it impacts the story**—NO dialogue reading, NO viewer confusion, and NO robotic meta-disclaimers.
 
           ## 3. MICRO-LEVEL CLIP EDITING
           - Clips must be 1.5–2.5s (NEVER > 3s) and cover each beat's `estimated_duration` using ONLY timestamps from the new transcript. Mark visual guesses unverified.
@@ -1356,7 +1355,7 @@ jobs:
 
           ## INPUT
           Title: __MOVIE_TITLE__ | Type: __CONTENT_TYPE__ | Season: __SEASON__ | Episode: __EPISODE__ | Part: __PART_IDENTIFIER__
-          Verified Reference: __EPISODE_BIBLE__
+          Verified Scene Map: __EPISODE_BIBLE__
 
           **CONTINUITY HANDOFF:**
           __HANDOFF_TEXT__
@@ -1365,27 +1364,31 @@ jobs:
           __TRANSCRIPT_JSON__""").strip()
 
           PROMPT_4_TEMPLATE = textwrap.dedent("""\
-          # PROMPT 4 — SCRIPT ENHANCER, WEB-SEARCH FACT CHECKER & FILLER CUTTER
+          # PROMPT 4 — SCRIPT ENHANCER, SCENE MATCHER & FILLER CUTTER
 
-          Act as a ruthless YouTube Movie Recap Senior Editor. You now have the full context of this chunk's transcript, the draft JSON below, AND the upcoming ~100-line preview from Prompt 2.
+          Act as a ruthless YouTube Movie Recap Senior Editor. You have this chunk's transcript, the draft JSON below, AND the upcoming ~100-line preview from Prompt 2.
 
-          Your job is to **judge, fact-check via Web Search, cut all filler, and rewrite the draft JSON** into a tight, crystal-clear, binge-worthy Hindi YouTube recap.
+          Your job is to **audit against the actual on-screen transcript + Web Search, cut all filler, and rewrite the draft JSON** into a tight, crystal-clear, binge-worthy Hindi YouTube recap.
 
           ## MANDATORY FIXES TO APPLY:
-          1. **WEB SEARCH SPEAKER & PLOT AUDIT:** Use Web Search on `__MOVIE_TITLE__` (`__CONTENT_TYPE__`, Season `__SEASON__`, Episode `__EPISODE__`) + the Verified Reference below to verify **who actually says and does what** in every beat. Fix any character swaps (e.g., attributing Chloe's actions/lines to Lucifer or vice versa) and remove any hallucinated details.
-          2. **CUT ALL FILLER & MERGE WEAK BEATS:** We must fit a full movie/episode into a tight total recap (~__TARGET_MINUTES__ mins total; this section budget: ~__TARGET_DURATION__, ~__TARGET_WORDS__ Hindi words).
-             - **DELETE or MERGE** trivial observations, casual jokes/banter (like small-talk remarks), and scenes that do NOT advance the main plot or connect to the upcoming preview/future story.
-             - Keep ONLY high-value scenes that actually matter for understanding the plot and upcoming events!
-          3. **ENHANCE YOUTUBE "WHAT / WHY / HOW" FLOW:**
+          1. **ON-SCREEN SCENE & SPEAKER AUDIT (CRITICAL!):**
+             - Re-check this chunk's transcript lines using Web Search on `__MOVIE_TITLE__` (`__CONTENT_TYPE__`, Season `__SEASON__`, Episode `__EPISODE__`) + the Verified Scene Map below to confirm **which exact scene(s)** this transcript chunk covers and **who is actually on screen speaking/acting** in every beat.
+             - **REMOVE any off-screen intro or prior backstory** not present in this chunk's transcript timestamps—Beat 1 MUST start strictly with what is actually happening in the opening lines of this transcript chunk, introducing characters only when they enter the scene.
+             - Fix any speaker swaps or misattributed actions and remove any invented details.
+          2. **CUT ALL FILLER & MERGE WEAK BEATS:**
+             - Total video target is ~__TARGET_MINUTES__ mins; this section budget is ~__TARGET_DURATION__ (~__TARGET_WORDS__ Hindi words).
+             - **DELETE or MERGE** trivial observations, casual banter/jokes, and scenes that do NOT advance the main plot or connect to the upcoming preview/future story.
+          3. **NATURAL YOUTUBE "WHAT / WHY / HOW" FLOW:**
              - Rewrite narration in crisp, gripping third-person Hindi storyteller style (Devanagari only, everyday words, zero dialogue-reading).
-             - Make sure a viewer who hasn't seen the movie never gets confused: clearly connect *who* is doing *what*, *why* they are doing it, and *how* it raises the stakes.
-             - Ensure beat 1 connects seamlessly from the Previous Ending Context (if any), and the final beat flows naturally toward the upcoming scene.
+             - Keep a first-time viewer completely oriented: clearly convey *who* is on screen, *what* they are doing, *why*, and *how* it raises the stakes.
+             - Remove any robotic meta-disclaimers at the end of beats—convey claims or suspicions naturally inside the storytelling itself.
+             - Ensure Beat 1 flows smoothly from Previous Chunk Ending (if any) and the final beat leads cleanly into the upcoming scene.
           4. **CLIP COVERAGE & TIMESTAMPS:**
-             - Whenever you merge, rewrite, or drop beats, update each beat's `clips` array using valid timestamps from this chunk's transcript (each clip `<= 3.0s`, combined clip duration >= beat `estimated_duration`).
+             - Update each beat's `clips` array using valid timestamps from this chunk's transcript (each clip `<= 3.0s`, combined clip duration >= beat `estimated_duration`).
              - Continue beat IDs from `__NEXT_BEAT_ID__` and clip IDs from `__NEXT_CLIP_ID__`.
 
           ## CONTEXT
-          Verified Reference: __EPISODE_BIBLE__
+          Verified Scene Map: __EPISODE_BIBLE__
           Previous Chunk Ending: __PREV_ENDING__
           Upcoming Scene Context (from Prompt 2): __UPCOMING_CONTEXT__
 
@@ -1638,7 +1641,7 @@ jobs:
                   p = p.replace("__NEXT_BEAT_ID__", f"B{next_beat_num:04d}")
                   p = p.replace("__NEXT_CLIP_ID__", f"C{next_clip_num:04d}")
                   p = p.replace("__EPISODE_BIBLE__", bible_txt)
-                  p = p.replace("__PREV_ENDING__", prev_ending or "Start of story")
+                  p = p.replace("__PREV_ENDING__", prev_ending or "Start of supplied transcript")
                   p = p.replace("__UPCOMING_CONTEXT__", up_ctx)
                   p = p.replace("__DRAFT_JSON__", json.dumps(d_obj, ensure_ascii=False, separators=(",", ":")))
                   return p
@@ -1647,7 +1650,6 @@ jobs:
               up_ctx = (upcoming_handoff or "Final chunk of transcript; bring this section to a clean conclusion.")[:2500]
               prompt = render(draft_payload, up_ctx, bible_txt)
 
-              # If compact draft JSON + prompt exceeds limit, strip scene_context from draft clips first to fit
               if len(prompt) > MAX_PROMPT_CHARS:
                   slim_beats = []
                   for b in draft_payload["beats"]:
@@ -1671,7 +1673,6 @@ jobs:
               }
 
           def build_merged_handoff_for_next_chunk(handoff_text, enhanced_beats):
-              # Merge Prompt 2's continuity + preview with the ENHANCED final 2-3 beats from Prompt 4
               tail_beats = enhanced_beats[-3:] if len(enhanced_beats) >= 3 else enhanced_beats
               verbatim_lines = []
               for idx, b in enumerate(tail_beats, 1):
@@ -1860,9 +1861,9 @@ jobs:
 
               verify_snap_taken = False
 
-              # ---- ONE-TIME PROMPT 0 (WEB SEARCH EPISODE CHARACTER & SCENE MAP) ----
+              # ---- ONE-TIME PROMPT 0 (WEB SEARCH SCENE MAP) ----
               if ENABLE_WEB_SEARCH and not pipeline_state.get("episode_bible"):
-                  log(f"Running 1-time PROMPT 0 (Web Search Character & Scene Map for '{movie_title}')...")
+                  log(f"Running 1-time PROMPT 0 (Web Search Scene Map for '{movie_title}')...")
                   p0_text = build_prompt_0(movie_title)
                   for p0_att in range(1, 3):
                       try:
@@ -1885,7 +1886,7 @@ jobs:
                               (DEBUG_DIR / "episode_bible_p0.txt").write_text(bible_txt.strip(), encoding="utf-8")
                               with open(STATE_FILE, "w", encoding="utf-8") as sf:
                                   json.dump(pipeline_state, sf, indent=2, ensure_ascii=False)
-                              log(f"SUCCESS PROMPT 0: captured {len(bible_txt.strip())} chars Episode Reference.")
+                              log(f"SUCCESS PROMPT 0: captured {len(bible_txt.strip())} chars Scene Map.")
                               break
                       except Exception as p0_err:
                           log(f"PROMPT 0 attempt {p0_att} notice (non-fatal): {p0_err}")
@@ -2056,7 +2057,7 @@ jobs:
                               except Exception as rec_err:
                                   log(f"Recovery PROMPT 2 attempt {rec_att} failed: {rec_err}")
 
-                  # ---- STEP C: PROMPT 4 (Enhancement, Web-Search Audit & Filler Cut) ----
+                  # ---- STEP C: PROMPT 4 (Enhancement, On-Screen Scene Audit & Filler Cut) ----
                   prev_ending = ""
                   if pipeline_state["beats"]:
                       prev_ending = pipeline_state["beats"][-1]["narration"]
@@ -2072,9 +2073,8 @@ jobs:
                       next_clip_num
                   )
                   enhanced_norm = None
-                  log(f"Running PROMPT 4 (Script Enhancer & Filler Cut, {p4_meta['prompt_chars']} chars)...")
+                  log(f"Running PROMPT 4 (Script Enhancer & Scene Audit, {p4_meta['prompt_chars']} chars)...")
 
-                  # Attempt 1: Same active chat (has full chunk transcript + Prompt 2 preview in context!)
                   try:
                       page.wait_for_timeout(1200)
                       prev_cb = count_code_blocks(page)
@@ -2102,7 +2102,6 @@ jobs:
                       log(f"Same-chat PROMPT 4 failed ({p4_err}); trying fresh-chat PROMPT 4 fallback...")
                       snap(page, f"err_p4_chunk_{chunk_num}")
 
-                  # Attempt 2: Fresh-chat fallback for Prompt 4 (with fresh Tor IP)
                   if enhanced_norm is None:
                       try:
                           renew_tor()
@@ -2133,7 +2132,6 @@ jobs:
 
                   final_chunk_norm = enhanced_norm if enhanced_norm is not None else draft_norm
 
-                  # Commit chunk results to pipeline_state
                   pipeline_state["beats"].extend(final_chunk_norm["beats"])
                   if final_chunk_norm["synopsis"]:
                       pipeline_state["synopses"].append(final_chunk_norm["synopsis"])
@@ -2149,7 +2147,6 @@ jobs:
                               json.dump(pipeline_state, sf, indent=2, ensure_ascii=False)
                           log(f"CRITICAL: Could not generate Continuity Handoff after Chunk {chunk_num}. Saved progress & exiting.")
                           break
-                      # Step D: Merge Prompt 2 context + Prompt 4's authoritative final enhanced beats!
                       merged_handoff = build_merged_handoff_for_next_chunk(handoff_text, final_chunk_norm["beats"])
                       (DEBUG_DIR / f"merged_handoff_chunk_{chunk_num}.txt").write_text(merged_handoff, encoding="utf-8")
                       pipeline_state["continuity_handoff"] = merged_handoff

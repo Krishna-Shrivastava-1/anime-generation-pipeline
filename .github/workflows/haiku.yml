@@ -364,9 +364,7 @@ jobs:
               return page.locator("textarea[name='user-prompt'], textarea[placeholder*='ask' i], textarea[placeholder*='message' i], textarea").first
 
           def dismiss_duckai_modals(page):
-              patterns = [
-                  re.compile(r"^\s*(get started|agree and continue|i agree|accept|next|continue)\s*$", re.I),
-              ]
+              patterns = [re.compile(r"^\s*(get started|agree and continue|i agree|accept|next|continue)\s*$", re.I)]
               for _ in range(4):
                   clicked = False
                   for pat in patterns:
@@ -421,13 +419,9 @@ jobs:
               page.wait_for_timeout(1200)
 
               model_btn_selectors = [
-                  "button[data-testid*='model' i]",
-                  "button[aria-label*='model' i]",
-                  "button:has-text('Luna')",
-                  "button:has-text('Haiku')",
-                  "button:has-text('Claude')",
-                  "button:has-text('GPT')",
-                  "button:has-text('Model')",
+                  "button[data-testid*='model' i]", "button[aria-label*='model' i]",
+                  "button:has-text('Luna')", "button:has-text('Haiku')",
+                  "button:has-text('Claude')", "button:has-text('GPT')", "button:has-text('Model')",
               ]
               opened = False
               btn_txt = ""
@@ -550,7 +544,7 @@ jobs:
               if ask_btn.count() > 0 and ask_btn.first.is_visible() and ask_btn.first.is_enabled():
                   ask_btn.first.click(timeout=3000)
                   return True
-              js_click = page.evaluate(r"""() => {
+              return bool(page.evaluate(r"""() => {
                   const btns = Array.from(document.querySelectorAll('button'));
                   const ask = btns.find(b => !b.disabled && (b.innerText || '').trim().toLowerCase() === 'ask');
                   if (ask) { ask.click(); return true; }
@@ -559,8 +553,7 @@ jobs:
                   const sub = btns.find(b => b.type === 'submit' && !b.disabled);
                   if (sub) { sub.click(); return true; }
                   return false;
-              }""")
-              return bool(js_click)
+              }"""))
 
           def submit_prompt(page, box, text, context):
               box.scroll_into_view_if_needed(timeout=5000)
@@ -934,43 +927,31 @@ jobs:
               return None
 
           def ensure_phrase_sync(narration: str, clips: list):
-              # Ensures every clip has spoken_text, spoken_word_count, estimated_spoken_duration
-              # and that joined spoken_text cleanly covers the full narration.
               if not clips:
                   return clips
               words = narration.split()
               if not words:
                   return clips
-
               provided = [str(c.get("spoken_text", "")).strip() for c in clips]
               joined_words = " ".join(p for p in provided if p).split()
-
-              # Check if model already provided good sequential coverage (>= 75% word match & no empty clips)
-              all_non_empty = all(bool(p) for p in provided)
-              ratio_ok = 0.75 * len(words) <= len(joined_words) <= 1.25 * len(words)
-              if all_non_empty and ratio_ok:
+              if all(bool(p) for p in provided) and (0.75 * len(words) <= len(joined_words) <= 1.25 * len(words)):
                   for c in clips:
                       sw = len(str(c["spoken_text"]).split())
                       c["spoken_word_count"] = sw
                       c["estimated_spoken_duration"] = round((sw / 140.0) * 60.0, 2)
                   return clips
-
-              # Deterministic fallback: distribute narration words across clips sequentially proportional to clip duration
               total_dur = sum(max(0.5, float(c.get("duration", 2.0))) for c in clips)
-              idx = 0
-              n_words = len(words)
+              idx, n_words = 0, len(words)
               for i, c in enumerate(clips):
                   if i == len(clips) - 1:
                       chunk_words = words[idx:]
                   else:
-                      remaining_clips = len(clips) - i - 1
+                      rem = len(clips) - i - 1
                       share = max(1, round(n_words * (max(0.5, float(c.get("duration", 2.0))) / total_dur)))
-                      max_take = max(1, (n_words - idx) - remaining_clips)
-                      take = min(share, max_take)
+                      take = min(share, max(1, (n_words - idx) - rem))
                       chunk_words = words[idx : idx + take]
                       idx += take
-                  sp = " ".join(chunk_words).strip()
-                  c["spoken_text"] = sp
+                  c["spoken_text"] = " ".join(chunk_words).strip()
                   c["spoken_word_count"] = len(chunk_words)
                   c["estimated_spoken_duration"] = round((len(chunk_words) / 140.0) * 60.0, 2)
               return clips
@@ -999,30 +980,22 @@ jobs:
                           en = round(st + MAX_CLIP_DURATION, 2)
                           dur = MAX_CLIP_DURATION
                       norm_clips.append({
-                          "start": st,
-                          "end": en,
-                          "duration": dur,
+                          "start": st, "end": en, "duration": dur,
                           "spoken_text": str(c.get("spoken_text", "")).strip(),
-                          "spoken_word_count": 0,
-                          "estimated_spoken_duration": 0.0,
+                          "spoken_word_count": 0, "estimated_spoken_duration": 0.0,
                           "scene_context": str(c.get("scene_context", "")).strip()
                       })
                   norm_clips = ensure_phrase_sync(narr, norm_clips)
                   norm_beats.append({
-                      "narration": narr,
-                      "word_count": wc,
+                      "narration": narr, "word_count": wc,
                       "estimated_duration": b.get("estimated_duration") or est_dur,
                       "is_scene_bridge": bool(b.get("is_scene_bridge", False)),
                       "clips": norm_clips
                   })
               return {
-                  "movie_title": obj.get("movie_title"),
-                  "content_type": obj.get("content_type"),
-                  "season": obj.get("season"),
-                  "episode": obj.get("episode"),
-                  "part_identifier": obj.get("part_identifier"),
-                  "characters": obj.get("characters", []),
-                  "synopsis": str(obj.get("synopsis", "")).strip(),
+                  "movie_title": obj.get("movie_title"), "content_type": obj.get("content_type"),
+                  "season": obj.get("season"), "episode": obj.get("episode"), "part_identifier": obj.get("part_identifier"),
+                  "characters": obj.get("characters", []), "synopsis": str(obj.get("synopsis", "")).strip(),
                   "beats": norm_beats
               }
 
@@ -1034,28 +1007,27 @@ jobs:
           - Title: __MOVIE_TITLE__ | Type: __CONTENT_TYPE__ | Season: __SEASON__ | Episode: __EPISODE__ | Part: __PART_IDENTIFIER__
 
           Output a concise plain-text reference sheet (under 1,400 chars) so any unlabelled subtitle snippet can be matched to its exact on-screen scene:
-          1. **Characters & Roles:** Exact names, aliases, relationships.
-          2. **Chronological Scene Index:** Numbered 1-line descriptions of the main scenes in order (who is present, setting, and what happens). Strictly a scene-lookup index—NOT an intro to copy blindly.""").strip()
+          1. **Characters & Roles:** Exact names, brief 2–4 word role/identity labels (e.g. detective, ex-husband, victim, club owner, suspect), and relationships.
+          2. **Chronological Scene Index:** Numbered 1-line descriptions of the main scenes in order (who is present, setting, and what happens). Strictly a scene-lookup index—NOT an opening intro to copy blindly.""").strip()
 
           PROMPT_1_TEMPLATE = textwrap.dedent("""\
           # PROMPT 1 — MOVIE / SERIES RECAP GENERATOR (DRAFT)
 
-          Act as a YouTube movie/series recap writer and video editor. Convert the timestamped transcript into an engaging, crystal-clear, fast-paced Hindi voice-over recap in third-person storytelling style so viewers understand the whole story effortlessly.
+          Act as a YouTube movie/series recap writer and video editor. Convert the timestamped transcript into a clear, well-paced Hindi voice-over recap in third-person storytelling style so viewers understand the full story effortlessly without feeling rushed or confused.
 
-          ## 1. IDENTIFY THE EXACT ON-SCREEN SCENE FIRST
+          ## 1. IDENTIFY THE EXACT ON-SCREEN SCENE & INTRODUCE CHARACTERS NATURALLY
           - Read the transcript and use Web Search + the Verified Scene Map to pinpoint **which exact scene(s)** these timestamps cover and **who is speaking each line**.
-          - Start directly at the exact scene where this transcript begins. NEVER add an earlier off-screen intro absent from these timestamps. Introduce characters only when they appear in the transcript.
+          - Start directly at the exact scene where this transcript begins. NEVER add an earlier off-screen intro absent from these timestamps.
+          - **First-Mention Character Context:** The very first time any key character appears or is mentioned in this transcript, naturally include their 2–4 word identity/role inside the sentence so viewers immediately know who they are (never drop unexplained bare names).
 
-          ## 2. ANTI-FILLER YOUTUBE STORYTELLING
-          Target for this section: __TARGET_DURATION__ (~__TARGET_WORDS__ Hindi words at 130–150 wpm).
-          - **KEEP ONLY:** Main plot developments, key actions, revelations, motives and setups needed for later scenes.
-          - **SKIP:** Casual banter, jokes, throwaway remarks and filler.
-          - Tell **What happened, Why it happened, and How it moves the story** in punchy conversational Hindi (Devanagari only; everyday English words in Devanagari). No dialogue reading, no robotic disclaimers.
+          ## 2. GLOBAL PACING & BREATHABLE STORYTELLING (CRITICAL!)
+          - **Total Video Budget:** The ENTIRE transcript must fit cleanly into **~__TARGET_MINUTES__ minutes (~__TOTAL_TARGET_WORDS__ Hindi words total)**.
+          - **This Chunk's Budget:** This chunk is **__CHUNK_PCT__%** of the runtime -> write strictly **~__TARGET_WORDS__ Hindi words (~__TARGET_DURATION__)** across **2–5 focused beats (~30–50 words per beat)**.
+          - Never cram 3–4 unrelated developments into one rushed 70+ word beat. Give each major turn 1 clear beat (~30–50 words) explaining **What happened, Why it matters, and How it moves the story**, and simply skip minor banter/filler so the pacing feels calm, clear, and engaging.
+          - Write in natural conversational Hindi (Devanagari only; everyday English words in Devanagari). No dialogue reading, no robotic disclaimers, no repetitive starters like "इसके बाद".
 
           ## 3. PHRASE-SYNCED MICRO-CLIPS (CRITICAL!)
-          Split each beat's `narration` sequentially into short spoken phrases (`spoken_text`), assigning one relevant `1.5–2.5s` clip (`<= 3.0s` max) per phrase so the editor knows exactly which clip to loop while those words play in TTS:
-          - Joining all `spoken_text` values in a beat in order must equal the beat's `narration`.
-          - Use ONLY timestamps from the supplied transcript. Mark visual guesses unverified.
+          Split each beat's `narration` sequentially into short spoken phrases (`spoken_text`), assigning one relevant `1.5–2.5s` clip (`<= 3.0s` max) per phrase so joining all `spoken_text` values in order equals `narration`. Use ONLY timestamps from the supplied transcript.
 
           ## 4. REQUIRED JSON OUTPUT
           Return strictly valid JSON only:
@@ -1077,7 +1049,7 @@ jobs:
 
           Create a concise continuity handoff for a fresh chat session:
           1. **Story so far:** Important events already narrated in sequence, character relationships, revelations and unresolved conflicts.
-          2. **Character context:** Canonical names, identities, relationships and verified spellings.
+          2. **Character context:** Canonical names, already-introduced roles/identities (so the next part does not re-introduce them awkwardly), and verified spellings.
           3. **Audience knowledge:** What viewers already know vs what remains uncertain.
           4. **Upcoming scene preview:** Which exact scene happens in the preview, its characters, and how it connects (clearly marked as preview only, not yet narrated).
           5. **Exact continuation point:** Copy the final 2–3 narration beats VERBATIM and identify the exact final sentence where continuation must begin.
@@ -1091,7 +1063,7 @@ jobs:
           # PROMPT 2 — CONTINUITY HANDOFF
 
           Create a concise continuity handoff from the recap state below plus the next ~100 transcript lines as **PREVIEW ONLY** (do NOT narrate the preview or output JSON):
-          1. **Story so far**, 2. **Character context**, 3. **Audience knowledge**, 4. **Upcoming scene preview (preview only)**, 5. **Exact continuation point** (copy the final beats below VERBATIM).
+          1. **Story so far**, 2. **Character context & already-introduced roles**, 3. **Audience knowledge**, 4. **Upcoming scene preview (preview only)**, 5. **Exact continuation point** (copy the final beats below VERBATIM).
 
           ALREADY NARRATED SYNOPSIS & CHARACTERS:
           __RECOVERY_STATE__
@@ -1107,13 +1079,14 @@ jobs:
 
           Continue the YouTube Hindi recap from the continuity handoff and new transcript below.
 
-          ## 1. SCENE MATCHING & CONTINUITY
+          ## 1. SCENE MATCHING, CONTINUITY & CHARACTER CLARITY
           - Use Web Search + Verified Scene Map to pinpoint **which exact scene(s)** the new transcript covers and who speaks each line.
           - Continue smoothly from the exact final sentence of the previous narration. Never repeat earlier events or add off-screen backstory.
+          - Whenever a **new** character appears for the first time, naturally add a 2–4 word role/identity label so viewers stay oriented.
 
-          ## 2. ANTI-FILLER STORYTELLING & PHRASE-SYNCED CLIPS
-          Target for this section: __TARGET_DURATION__ (~__TARGET_WORDS__ Hindi words).
-          - Keep only plot-critical events in punchy, clear third-person Hindi (Devanagari only, no dialogue reading, no robotic disclaimers) explaining **What, Why, and How**.
+          ## 2. GLOBAL PACING & PHRASE-SYNCED CLIPS
+          - Full video budget: **~__TARGET_MINUTES__ minutes (~__TOTAL_TARGET_WORDS__ words total)**. This chunk (**__CHUNK_PCT__%** of runtime) budget: **~__TARGET_WORDS__ Hindi words (~__TARGET_DURATION__)**, kept at **~30–50 words per beat** (1–2 clear developments per beat, never rushed).
+          - Keep only plot-critical events in natural, fluent third-person Hindi (Devanagari only, no dialogue reading, no robotic disclaimers, avoid repeating "इसके बाद") explaining **What, Why, and How**.
           - Split each beat's `narration` sequentially into short `spoken_text` phrases with one `<= 3.0s` transcript clip per phrase so joining `spoken_text` equals `narration`.
 
           ## 3. OUTPUT FORMAT
@@ -1131,14 +1104,13 @@ jobs:
           __TRANSCRIPT_JSON__""").strip()
 
           PROMPT_4_TEMPLATE = textwrap.dedent("""\
-          # PROMPT 4 — LUNA SELF-REFINEMENT & FILLER CUTTER
+          # PROMPT 4 — LUNA SELF-REFINEMENT & PACING EDITOR
 
           You have this chunk's transcript, the draft JSON below, and the upcoming ~100-line preview from Prompt 2.
           Use Web Search on `__MOVIE_TITLE__` (`__CONTENT_TYPE__`, Season `__SEASON__`, Episode `__EPISODE__`) + the transcript to refine the JSON:
-          1. **On-Screen Accuracy:** Verify Beat 1 starts strictly with the opening scene of this transcript (NO off-screen intro) and fix any speaker mix-ups.
-          2. **Cut Filler:** Target ~__TARGET_DURATION__ (~__TARGET_WORDS__ words). Merge or cut banter/filler; keep only essential plot & future-setup scenes.
-          3. **Engaging Hindi Flow:** Clear third-person YouTube storytelling (What/Why/How, no dialogue reading, no robotic disclaimers).
-          4. **Phrase-Synced Clips:** Every clip (`<= 3.0s`, valid chunk timestamps) must carry its exact sequential `spoken_text` phrase from `narration` so joining all `spoken_text` equals `narration`.
+          1. **On-Screen Accuracy & Character Intros:** Verify Beat 1 starts strictly with the opening scene of this transcript (NO off-screen intro), fix any speaker mix-ups, and ensure every newly introduced character has a brief 2–4 word role label on first mention.
+          2. **Balanced Pacing (Not Rushed!):** Full video target is ~__TARGET_MINUTES__m (~__TOTAL_TARGET_WORDS__ words); this chunk (**__CHUNK_PCT__%** of runtime) budget is **~__TARGET_WORDS__ words (~__TARGET_DURATION__)**. Keep beats at **~30–50 words each** (split overcrowded 65+ word beats or drop minor filler so viewers easily follow **What, Why, and How**). Avoid "इसके बाद".
+          3. **Phrase-Synced Clips:** Every clip (`<= 3.0s`, valid chunk timestamps) must carry its exact sequential `spoken_text` phrase from `narration` so joining all `spoken_text` equals `narration`.
 
           Verified Scene Map: __EPISODE_BIBLE__
           Previous Ending: __PREV_ENDING__
@@ -1152,21 +1124,20 @@ jobs:
           PROMPT_5_CRITIC_TEMPLATE = textwrap.dedent("""\
           # PROMPT 5 — HAIKU FINAL CROSS-CHECK, WEB-SEARCH VERIFICATION & YOUTUBE POLISH
 
-          You are the **Senior Fact-Checker & Lead YouTube Storyteller** reviewing a draft JSON produced by another model (`6 Luna`).
-          Do NOT trust the draft blindly—verify EVERYTHING against **Web Search** + the **Actual Raw Timestamped Transcript** below!
+          You are the **Senior Fact-Checker & Lead YouTube Storyteller** reviewing `6 Luna`'s draft JSON.
+          Verify EVERYTHING against **Web Search** + the **Actual Raw Timestamped Transcript** below!
 
           ## MANDATORY VERIFICATION & UPGRADE CHECKLIST:
           1. **WEB SEARCH & RAW TRANSCRIPT AUDIT (ZERO HALLUCINATIONS!):**
-             - Use Web Search on `__MOVIE_TITLE__` (`__CONTENT_TYPE__`, Season `__SEASON__`, Episode `__EPISODE__`) and cross-check every claim in the draft JSON against the Raw Timestamped Transcript below.
-             - Fix **every** speaker misattribution (make sure the character who actually spoke/acted in the real episode & transcript is credited—never swap characters).
-             - Remove **any** off-screen intro or invented detail not present in the Raw Transcript timestamps. Beat 1 must match the exact opening scene of the transcript.
-          2. **VIEWER CLARITY & ENGAGING YOUTUBE STORYTELLING:**
-             - Rewrite stiff or confusing beats into captivating, natural, third-person Hindi YouTube narration (Devanagari only, everyday Hindi, zero dialogue reading, zero robotic disclaimers).
-             - Make sure **What happened, Why it happened, and How it affects the story** is crystal clear so viewers feel: *"After watching this explanation, I completely understood the movie/episode!"*
-             - Keep only high-value plot beats matching this section's budget (~__TARGET_DURATION__, ~__TARGET_WORDS__ words for a ~__TARGET_MINUTES__m total video).
+             - Use Web Search on `__MOVIE_TITLE__` (`__CONTENT_TYPE__`, Season `__SEASON__`, Episode `__EPISODE__`) and cross-check every beat against the Raw Timestamped Transcript below.
+             - Fix **every** speaker misattribution and remove **any** off-screen intro or invented detail not present in the Raw Transcript timestamps. Beat 1 must match the exact opening scene of the transcript.
+          2. **CRYSTAL-CLEAR VIEWER EXPERIENCE & PACING (NEVER RUSHED!):**
+             - **First-Mention Character Framing:** Whenever a major character appears for the first time (if not already introduced in Previous Verified Ending), naturally include their 2–4 word role/relationship inside the narration so the viewer never gets lost.
+             - **Comfortable Beat Sizing:** Aim for **~30–50 words per beat** (1–2 connected story turns per beat—if a beat crams 4 turns into 70+ words, split or trim minor trivia so it breathes naturally!).
+             - **Global Budget Discipline:** The full recap must finish in **~__TARGET_MINUTES__ minutes (~__TOTAL_TARGET_WORDS__ Hindi words total)**. This chunk (**__CHUNK_PCT__%** of runtime) budget is **~__TARGET_WORDS__ words (~__TARGET_DURATION__)**. Keep only essential plot + future-relevant setups in gripping, natural third-person Hindi (Devanagari only, no dialogue reading, no robotic disclaimers, avoid repeating "इसके बाद") so viewers say: *"I understood the whole movie effortlessly!"*
           3. **PHRASE-SYNCED CLIP ALIGNMENT (STRICT!):**
-             - For each beat, divide `narration` sequentially into short spoken phrases (`spoken_text`, ~3–8 words each) and pair **each phrase** with one relevant `<= 3.0s` clip whose timestamp exists in the Raw Transcript below.
-             - Joining every clip's `spoken_text` in order MUST equal the beat's `narration`. That lets the video editor loop each clip during those exact spoken words!
+             - Divide each beat's `narration` sequentially into short spoken phrases (`spoken_text`, ~3–8 words each) and pair **each phrase** with one relevant `<= 3.0s` clip whose timestamp exists in the Raw Transcript below.
+             - Joining every clip's `spoken_text` in order MUST equal the beat's `narration`.
              - Continue beat IDs from `__NEXT_BEAT_ID__` and clip IDs from `__NEXT_CLIP_ID__`.
 
           ## REFERENCE CONTEXT
@@ -1174,7 +1145,7 @@ jobs:
           Previous Verified Ending (continue smoothly from here): __PREV_ENDING__
           Upcoming Preview Context: __UPCOMING_CONTEXT__
 
-          ## RAW TIMESTAMPED TRANSCRIPT OF THIS CHUNK (`start|text`):
+          ## RAW TIMESTAMPED TRANSCRIPT OF THIS CHUNK (`start-end|text`):
           __RAW_TRANSCRIPT_COMPACT__
 
           ## LUNA'S DRAFT JSON TO AUDIT & FIX:
@@ -1192,16 +1163,23 @@ jobs:
 
           def calc_target_budget(chunk_segments, total_duration):
               if not TARGET_MINUTES:
-                  return "null", "150"
+                  return "null", "150", "560", "25"
               try:
                   total_target_min = float(TARGET_MINUTES)
+                  total_words_budget = max(120, int(round(total_target_min * 140)))
                   cs = float(chunk_segments[0].get("start", 0.0))
                   ce = float(chunk_segments[-1].get("end", cs))
                   span = max(0.0, ce - cs)
-                  prop_min = max(0.4, round(total_target_min * (span / total_duration), 2)) if (total_duration > 0 and span > 0) else max(1.0, round(total_target_min / 3.0, 2))
-                  return f"~{prop_min} minutes (full video target: {total_target_min} minutes)", str(max(60, int(round(prop_min * 140))))
+                  if total_duration > 0 and span > 0:
+                      ratio = min(1.0, span / total_duration)
+                  else:
+                      ratio = 0.33
+                  pct = max(5, int(round(ratio * 100)))
+                  prop_min = max(0.4, round(total_target_min * ratio, 2))
+                  chunk_words = max(60, int(round(prop_min * 140)))
+                  return f"~{prop_min} minutes (full video target: {total_target_min} minutes)", str(chunk_words), str(total_words_budget), str(pct)
               except Exception:
-                  return f"{TARGET_MINUTES} minutes", "250"
+                  return f"{TARGET_MINUTES} minutes", "200", "560", "33"
 
           def build_prompt_0(movie_title):
               p = PROMPT_0_TEMPLATE
@@ -1217,20 +1195,22 @@ jobs:
                   return None, start_idx
               ctx = " | ".join([x for x in [episode_bible[:1400], ("Notes: " + initial_hints[:500]) if initial_hints else ""] if x]) or "None"
 
-              def render(dur_t, words_t, segs):
+              def render(dur_t, words_t, tot_w, pct_t, segs):
                   obj = {"movie_title": movie_title, "duration": total_duration, "segments": segs}
                   p = PROMPT_1_TEMPLATE
                   for k, v in [
                       ("__MOVIE_TITLE__", movie_title), ("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "null"),
                       ("__SEASON__", INPUT_SEASON or "null"), ("__EPISODE__", INPUT_EPISODE or "null"),
-                      ("__PART_IDENTIFIER__", INPUT_PART or "null"), ("__TARGET_DURATION__", dur_t),
-                      ("__TARGET_WORDS__", words_t), ("__PREVIOUS_CONTEXT__", ctx),
+                      ("__PART_IDENTIFIER__", INPUT_PART or "null"), ("__TARGET_MINUTES__", TARGET_MINUTES or "4"),
+                      ("__TOTAL_TARGET_WORDS__", tot_w), ("__CHUNK_PCT__", pct_t),
+                      ("__TARGET_DURATION__", dur_t), ("__TARGET_WORDS__", words_t),
+                      ("__PREVIOUS_CONTEXT__", ctx),
                       ("__TRANSCRIPT_JSON__", json.dumps(obj, ensure_ascii=False, separators=(",", ":")))
                   ]:
                       p = p.replace(k, v)
                   return p
 
-              budget = MAX_PROMPT_CHARS - len(render("~1.5m", "210", [])) - 120
+              budget = MAX_PROMPT_CHARS - len(render("~1.5m", "210", "560", "30", [])) - 120
               selected, used, idx = [], 0, start_idx
               while idx < len(all_segs):
                   s_str = json.dumps(all_segs[idx], ensure_ascii=False, separators=(",", ":"))
@@ -1241,17 +1221,18 @@ jobs:
                       break
                   selected.append(all_segs[idx]); used += extra; idx += 1
 
-              dur_t, words_t = calc_target_budget(selected, total_duration)
-              final_p = render(dur_t, words_t, selected)
+              dur_t, words_t, tot_w, pct_t = calc_target_budget(selected, total_duration)
+              final_p = render(dur_t, words_t, tot_w, pct_t, selected)
               while len(final_p) > MAX_PROMPT_CHARS and len(selected) > 1:
                   selected.pop(); idx -= 1
-                  dur_t, words_t = calc_target_budget(selected, total_duration)
-                  final_p = render(dur_t, words_t, selected)
+                  dur_t, words_t, tot_w, pct_t = calc_target_budget(selected, total_duration)
+                  final_p = render(dur_t, words_t, tot_w, pct_t, selected)
 
               return {
                   "prompt_type": "PROMPT_1", "movie_title": movie_title, "start_idx": start_idx, "end_idx": idx,
                   "segment_count": len(selected), "time_start": selected[0].get("start"), "time_end": selected[-1].get("end"),
-                  "dur_text": dur_t, "words_text": words_t, "prompt_chars": len(final_p), "prompt": final_p
+                  "dur_text": dur_t, "words_text": words_t, "total_words_text": tot_w, "chunk_pct": pct_t,
+                  "prompt_chars": len(final_p), "prompt": final_p
               }, idx
 
           def build_prompt_3_chunk(transcript_data, start_idx, handoff_text, episode_bible, next_beat_num, next_clip_num):
@@ -1264,24 +1245,26 @@ jobs:
               bible = (episode_bible or "None")[:1200]
               handoff = handoff_text.strip()[-6000:]
 
-              def render(dur_t, words_t, segs, h_txt):
+              def render(dur_t, words_t, tot_w, pct_t, segs, h_txt):
                   obj = {"movie_title": movie_title, "duration": total_duration, "segments": segs}
                   p = PROMPT_3_TEMPLATE
                   for k, v in [
                       ("__MOVIE_TITLE__", movie_title), ("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "null"),
                       ("__SEASON__", INPUT_SEASON or "null"), ("__EPISODE__", INPUT_EPISODE or "null"),
-                      ("__PART_IDENTIFIER__", INPUT_PART or "null"), ("__TARGET_DURATION__", dur_t),
-                      ("__TARGET_WORDS__", words_t), ("__NEXT_BEAT_ID__", nb_id), ("__NEXT_CLIP_ID__", nc_id),
+                      ("__PART_IDENTIFIER__", INPUT_PART or "null"), ("__TARGET_MINUTES__", TARGET_MINUTES or "4"),
+                      ("__TOTAL_TARGET_WORDS__", tot_w), ("__CHUNK_PCT__", pct_t),
+                      ("__TARGET_DURATION__", dur_t), ("__TARGET_WORDS__", words_t),
+                      ("__NEXT_BEAT_ID__", nb_id), ("__NEXT_CLIP_ID__", nc_id),
                       ("__EPISODE_BIBLE__", bible), ("__HANDOFF_TEXT__", h_txt),
                       ("__TRANSCRIPT_JSON__", json.dumps(obj, ensure_ascii=False, separators=(",", ":")))
                   ]:
                       p = p.replace(k, v)
                   return p
 
-              budget = MAX_PROMPT_CHARS - len(render("~1.5m", "210", [], handoff)) - 120
+              budget = MAX_PROMPT_CHARS - len(render("~1.5m", "210", "560", "30", [], handoff)) - 120
               if budget < 600:
                   handoff = handoff[-max(1500, len(handoff) - (800 - budget)):]
-                  budget = MAX_PROMPT_CHARS - len(render("~1.5m", "210", [], handoff)) - 120
+                  budget = MAX_PROMPT_CHARS - len(render("~1.5m", "210", "560", "30", [], handoff)) - 120
 
               selected, used, idx = [], 0, start_idx
               while idx < len(all_segs):
@@ -1293,17 +1276,18 @@ jobs:
                       break
                   selected.append(all_segs[idx]); used += extra; idx += 1
 
-              dur_t, words_t = calc_target_budget(selected, total_duration)
-              final_p = render(dur_t, words_t, selected, handoff)
+              dur_t, words_t, tot_w, pct_t = calc_target_budget(selected, total_duration)
+              final_p = render(dur_t, words_t, tot_w, pct_t, selected, handoff)
               while len(final_p) > MAX_PROMPT_CHARS and len(selected) > 1:
                   selected.pop(); idx -= 1
-                  dur_t, words_t = calc_target_budget(selected, total_duration)
-                  final_p = render(dur_t, words_t, selected, handoff)
+                  dur_t, words_t, tot_w, pct_t = calc_target_budget(selected, total_duration)
+                  final_p = render(dur_t, words_t, tot_w, pct_t, selected, handoff)
 
               return {
                   "prompt_type": "PROMPT_3", "movie_title": movie_title, "start_idx": start_idx, "end_idx": idx,
                   "segment_count": len(selected), "time_start": selected[0].get("start"), "time_end": selected[-1].get("end"),
-                  "dur_text": dur_t, "words_text": words_t, "prompt_chars": len(final_p), "prompt": final_p
+                  "dur_text": dur_t, "words_text": words_t, "total_words_text": tot_w, "chunk_pct": pct_t,
+                  "prompt_chars": len(final_p), "prompt": final_p
               }, idx
 
           def build_prompt_2_preview(transcript_data, preview_start_idx, recovery_state=None, recovery_beats=None):
@@ -1343,6 +1327,9 @@ jobs:
                   for k, v in [
                       ("__MOVIE_TITLE__", movie_title), ("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "N/A"),
                       ("__SEASON__", INPUT_SEASON or "N/A"), ("__EPISODE__", INPUT_EPISODE or "N/A"),
+                      ("__TARGET_MINUTES__", TARGET_MINUTES or "4"),
+                      ("__TOTAL_TARGET_WORDS__", chunk_meta.get("total_words_text", "560")),
+                      ("__CHUNK_PCT__", chunk_meta.get("chunk_pct", "30")),
                       ("__TARGET_DURATION__", chunk_meta.get("dur_text", "proportional")),
                       ("__TARGET_WORDS__", chunk_meta.get("words_text", "180")),
                       ("__EPISODE_BIBLE__", bible_txt), ("__PREV_ENDING__", prev_ending or "Start of transcript"),
@@ -1376,7 +1363,9 @@ jobs:
                   for k, v in [
                       ("__MOVIE_TITLE__", movie_title), ("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "N/A"),
                       ("__SEASON__", INPUT_SEASON or "N/A"), ("__EPISODE__", INPUT_EPISODE or "N/A"),
-                      ("__TARGET_MINUTES__", TARGET_MINUTES or "12"),
+                      ("__TARGET_MINUTES__", TARGET_MINUTES or "4"),
+                      ("__TOTAL_TARGET_WORDS__", chunk_meta.get("total_words_text", "560")),
+                      ("__CHUNK_PCT__", chunk_meta.get("chunk_pct", "30")),
                       ("__TARGET_DURATION__", chunk_meta.get("dur_text", "proportional")),
                       ("__TARGET_WORDS__", chunk_meta.get("words_text", "180")),
                       ("__NEXT_BEAT_ID__", f"B{next_beat_num:04d}"), ("__NEXT_CLIP_ID__", f"C{next_clip_num:04d}"),
@@ -1389,19 +1378,15 @@ jobs:
 
               bible_txt = (episode_bible or "None")[:1000]
               up_ctx = (upcoming_handoff or "Final chunk.")[:1500]
-
-              # Ensure full Luna JSON + as much raw transcript as fits under MAX_PROMPT_CHARS
               raw_joined = "\n".join(compact_lines)
               prompt = render(luna_payload, raw_joined, up_ctx, bible_txt)
 
               if len(prompt) > MAX_PROMPT_CHARS:
-                  # Strip verbose scene_context from Luna clips so raw transcript fits completely
                   for b in luna_payload["beats"]:
                       b["clips"] = [{"start": c["start"], "end": c["end"], "duration": c["duration"], "spoken_text": c.get("spoken_text", "")} for c in b.get("clips", [])]
                   prompt = render(luna_payload, raw_joined, up_ctx[:900], bible_txt[:700])
 
               if len(prompt) > MAX_PROMPT_CHARS:
-                  # Trim transcript lines proportionally only if still over budget
                   over = len(prompt) - MAX_PROMPT_CHARS + 100
                   raw_joined = raw_joined[:max(1500, len(raw_joined) - over)]
                   prompt = render(luna_payload, raw_joined, up_ctx[:700], bible_txt[:500])
@@ -1479,7 +1464,7 @@ jobs:
                   browser.close()
                   sys.exit(0 if (parsed2 and parsed2.get("status") == "ready") else 1)
 
-              log(f"Starting Dual-Model Engine | Draft: '{DRAFT_MODEL}' (P1/P2/P3/P4) | Critic: '{CRITIC_MODEL}' (P0/P5)")
+              log(f"Starting Dual-Model Engine | Draft: '{DRAFT_MODEL}' | Critic: '{CRITIC_MODEL}' | Target: {TARGET_MINUTES}m")
               transcript_data = load_transcript("transcript.json")
               total_segments = len(transcript_data.get("segments", []))
               movie_title = INPUT_MOVIE_TITLE or str(transcript_data.get("movie_title") or "Untitled")
@@ -1495,7 +1480,6 @@ jobs:
               draft_snap_done = False
               critic_snap_done = False
 
-              # ---- PROMPT 0 (CRITIC MODEL + WEB SEARCH) ----
               if ENABLE_WEB_SEARCH and not pipeline_state.get("episode_bible"):
                   log(f"Running PROMPT 0 on '{CRITIC_MODEL}' (Web Search Scene Map)...")
                   p0_txt = build_prompt_0(movie_title)
@@ -1517,7 +1501,6 @@ jobs:
                           log(f"PROMPT 0 att {att} notice: {e}")
                           if att < 2: renew_tor(); launch_browser(p)
 
-              # ---- CHUNK LOOP ----
               while pipeline_state["next_segment_idx"] < total_segments:
                   cur_idx = pipeline_state["next_segment_idx"]
                   chunk_num = pipeline_state["chunk_num"] + 1
@@ -1532,9 +1515,8 @@ jobs:
                   if not chunk_meta:
                       break
 
-                  log(f"\n=== CHUNK {chunk_num} ({chunk_meta['prompt_type']} on '{DRAFT_MODEL}'): segs {chunk_meta['start_idx']+1}..{chunk_meta['end_idx']}/{total_segments} ({chunk_meta['time_start']}s-{chunk_meta['time_end']}s) ===")
+                  log(f"\n=== CHUNK {chunk_num} ({chunk_meta['prompt_type']} on '{DRAFT_MODEL}'): segs {chunk_meta['start_idx']+1}..{chunk_meta['end_idx']}/{total_segments} ({chunk_meta['chunk_pct']}% -> ~{chunk_meta['words_text']} words) ===")
 
-                  # SESSION A (DRAFT MODEL: P1/P3 -> P2 -> P4)
                   draft_norm = None
                   for att in range(1, MAX_ATTEMPTS + 1):
                       try:
@@ -1560,7 +1542,6 @@ jobs:
                       log(f"CRITICAL: Draft failed on Chunk {chunk_num}. Exiting.")
                       break
 
-                  # Same-chat PROMPT 2
                   handoff_text = ""
                   if next_idx < total_segments:
                       p2_meta = build_prompt_2_preview(transcript_data, next_idx)
@@ -1578,7 +1559,6 @@ jobs:
                           except Exception as e:
                               log(f"Same-chat PROMPT 2 notice: {e}")
 
-                  # Same-chat PROMPT 4 (Luna refines before Haiku cross-check)
                   prev_ending = pipeline_state["beats"][-1]["narration"] if pipeline_state["beats"] else ""
                   p4_meta = build_prompt_4_enhance(movie_title, chunk_meta, draft_norm, bible, prev_ending, handoff_text, nb_num, nc_num)
                   luna_final = draft_norm
@@ -1594,9 +1574,8 @@ jobs:
                               luna_final = normalize_chunk_beats(pj4)
                               log(f"SUCCESS PROMPT 4 ('{DRAFT_MODEL}'): {len(luna_final['beats'])} beats.")
                   except Exception as e:
-                      log(f"Same-chat PROMPT 4 notice (continuing to Haiku Critic with draft): {e}")
+                      log(f"Same-chat PROMPT 4 notice: {e}")
 
-                  # Recovery PROMPT 2 if same-chat Prompt 2 failed
                   if next_idx < total_segments and not handoff_text:
                       rec_beats = (pipeline_state["beats"] + luna_final["beats"])[-3:]
                       p2_rec = build_prompt_2_preview(transcript_data, next_idx, recovery_state={"synopses": pipeline_state["synopses"][-2:]}, recovery_beats=rec_beats)
@@ -1614,7 +1593,6 @@ jobs:
                           except Exception as re_err:
                               log(f"Recovery PROMPT 2 att {r_att} notice: {re_err}")
 
-                  # SESSION B (CRITIC MODEL: PROMPT 5 CROSS-CHECK IN NEW CHAT!)
                   p5_meta = build_prompt_5_critic(movie_title, transcript_data, chunk_meta, luna_final, bible, prev_ending, handoff_text, nb_num, nc_num)
                   verified_norm = None
                   log(f"Running PROMPT 5 Cross-Check in NEW chat on '{CRITIC_MODEL}' ({p5_meta['prompt_chars']} chars)...")
@@ -1710,7 +1688,7 @@ jobs:
 
               preview_lines = [
                   f"=== YOUTUBE MOVIE RECAP SCRIPT: {final_output['movie_title']} ===",
-                  f"Est. Runtime: ~{final_output['estimated_narration_minutes']} mins | Beats: {final_output['total_beats']} | Words: {final_output['total_words']}",
+                  f"Est. Runtime: ~{final_output['estimated_narration_minutes']} mins | Target: {final_output['target_minutes']} mins | Beats: {final_output['total_beats']} | Words: {final_output['total_words']}",
                   f"Synopsis: {final_output['synopsis']}\n", "=" * 70
               ]
               for b in final_output["beats"]:

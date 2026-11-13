@@ -5,1051 +5,819 @@
   "episode": null,
   "part_identifier": null,
   "target_minutes": 4.0,
-  "estimated_narration_minutes": 4.32,
-  "total_beats": 17,
-  "total_words": 605,
+  "estimated_narration_minutes": 4.16,
+  "total_beats": 15,
+  "total_words": 583,
   "characters": [
     {
-      "name": "Chloe Decker",
-      "description": "LAPD detective leading the Delilah murder investigation. She arrested Lucifer for interfering and is following his Penny Lane and Dr. Linda clue."
+      "name": "Lucifer Morningstar",
+      "description": "The Devil who runs Lux in Los Angeles and consults for the LAPD; questions everyone's motives"
     },
     {
-      "name": "Lucifer Morningstar",
-      "description": "Witness in the Delilah murder case who talks to and charms people; he meets Trixie and warns the bully about Hell"
+      "name": "Chloe Decker",
+      "description": "LAPD homicide detective leading the case; skeptical of Lucifer and treats him as a possible suspect after his contact with Eddie"
     },
     {
       "name": "Delilah",
-      "description": "Murder victim. Lucifer says she may have used the name Penny Lane with her therapist. This is not yet confirmed."
+      "description": "The murdered pop star, shot outside Lux"
     },
     {
       "name": "Jimmy Barnes",
-      "description": "Delilah's ex-fiancé. He married at the wedding scene and denies the murder."
+      "description": "Record producer and Delilah's ex-fiancé; his accusation against the rapper is his own claim"
     },
     {
-      "name": "लूसिफर मॉर्निंगस्टार",
-      "description": "Nightclub owner and witness in the case. He claims Delilah told him the motive was money. His claims are unverified."
+      "name": "Detective Chloe Decker",
+      "description": "LAPD homicide detective and lead on Delilah's murder; Lucifer's skeptical partner; mother of Trixie"
     },
     {
-      "name": "डेलिला",
-      "description": "Pop star and murder victim. Her ex-fiancé is Jimmy Barnes."
+      "name": "Vile (2Vile)",
+      "description": "Rapper who had a volatile relationship with Delilah and admitted hitting her once over an affair"
     },
     {
-      "name": "क्लोई डेकर",
-      "description": "LAPD detective assigned to the case."
+      "name": "Dr. Linda Martin",
+      "description": "Lucifer's therapist and the Beverly Hills therapist named by Vile"
     },
     {
-      "name": "जिमी बार्न्स",
-      "description": "Delilah's ex-fiancé. He is getting married at the wedding scene and denies the murder."
-    },
-    {
-      "name": "जॉकी",
-      "description": "A man at the home Lucifer visits. He argues with Lucifer about hip-hop and music."
-    },
-    {
-      "name": "एडी",
-      "description": "A drug dealer. Lucifer met him with Delilah."
-    },
-    {
-      "name": "डॉ. लिंडा",
-      "description": "Therapist in Beverly Hills. The man in the scene visited her five times a week under someone else's name."
-    },
-    {
-      "name": "वाइल (2-Vile)",
-      "description": "Rapper. The shooter's last call went to this contact."
-    },
-    {
-      "name": "Jockey",
-      "description": "Man at the home Lucifer visits. He gave the lead about Delilah's unfaithful partner, Raaz."
+      "name": "Raaz",
+      "description": "Alias of the married man in Delilah's affair; identity unconfirmed"
     },
     {
       "name": "Eddie",
-      "description": "Drug dealer connected to Delilah and Lucifer."
-    },
-    {
-      "name": "Dr. Linda",
-      "description": "Therapist in Beverly Hills. Lucifer's clue points to her client who used the name Penny Lane."
-    },
-    {
-      "name": "Vile",
-      "description": "Contact the shooter called last. Research suggests this is the rapper 2-Vile, but this is not confirmed in the transcript."
+      "description": "Vile's dealer through whom Vile met Delilah; connection to the shooter is unconfirmed"
     },
     {
       "name": "Penny Lane",
-      "description": "Former alias named by Lucifer. Not yet confirmed as Delilah."
+      "description": "A former alias that Lucifer claims Delilah probably used. This is his claim and is not confirmed."
     },
     {
-      "name": "Trixie (Beatrice)",
-      "description": "Chloe Decker's young daughter. The transcript calls her Beatrice, and everyone calls her Trixie. She was bullied by a girl who made a fake account to mock her"
-    },
-    {
-      "name": "Bully girl",
-      "description": "Unnamed girl who harassed Trixie with a fake account and was beaten by Trixie"
+      "name": "Trixie Espinoza",
+      "description": "Chloe's daughter; identity in the preview is inferred from the cast list"
     }
   ],
-  "synopsis": "Detective Chloe Decker is told that a drug-related case is now hers and is described as an easy one. A packet is found in Delilah's purse, so Lucifer concludes the case is about Delilah, and he suspects she had not paid for the drugs. Lucifer gives his name as a witness and says Delilah once worked for him and that he played her songs. He says that after she became a big star, someone decided to kill her, and that before she died she told him the motive was money. At a wedding, Lucifer confronts Jimmy Barnes about marrying the day after his ex-fiance's killing. Jimmy denies the murder, says he was angry because Delilah's confession humiliated him, and points at another man. Detective Chloe Decker gets the Delilah murder case. A packet found in Delilah's purse leads Lucifer to claim it is her case and that she had not paid for drugs. Lucifer says Delilah told him the motive was money, which is his unverified claim. At Jimmy Barnes's wedding, Lucifer confronts him about marrying the day after Delilah's death. Jimmy denies the murder, says Delilah's confession humiliated him, and points at a rapper. Lucifer then visits a man's home claiming to have drugs for the boss and is turned away at first. He argues with Jockey about hip-hop, and the argument turns hostile. Lucifer says he is immortal, then asks what the man knows about Delilah. The man says Delilah's partner was unfaithful and hid his affair under the name Raaz. The lead points to therapist Dr. Linda in Beverly Hills. LAPD officers, including Chloe, burst in and order everyone to drop their guns. Lucifer says the shooter's last call went to Vile. Chloe then questions Lucifer about his call to dealer Eddie, whom he met with Delilah. Detective Chloe Decker of the LAPD is investigating the murder of Delilah. Lucifer Morningstar, a witness who claims to have known Delilah, says her killer's motive was money, which is his unverified claim. At Jimmy Barnes's wedding, Jimmy denies the murder and points to a rapper. Lucifer's visit to Jockey's home turns hostile, and the man reveals that Delilah's partner was unfaithful and that he saw therapist Dr. Linda in Beverly Hills. LAPD officers then burst in. Lucifer says the shooter's last call went to Vile, and Chloe questions him about his contact with the dealer Eddie. In this section, Chloe arrests Lucifer for interfering with the investigation, and Lucifer offers to help with his supposed talent for talking to people and making wishes come true. He tells Chloe to accept her sin, and when she asks what she wants most, she says she always wanted to be a police officer like her father. Lucifer says he knows something she does not and will share it only if she brings him onto the case. Detective Chloe Decker of the LAPD takes on the murder of Delilah, a former singer. Lucifer Morningstar, a witness, claims Delilah's motive was money and that he has special talents. After Jimmy Barnes, Jockey, and a raid at the home Lucifer visits, the shooter's last call is traced to Vile. Chloe arrests Lucifer for interference. In the car he offers help and says he knows something she does not. He admits he feels responsible for Delilah's career. Chloe agrees to act on his clue about a Beverly Hills therapist, Dr. Linda, and her client Penny Lane. Nothing is confirmed yet, and the case is not solved. Detective Chloe Decker is investigating the murder of Delilah. Lucifer Morningstar claims he can get people to reveal the truth and has pointed Chloe toward therapist Dr. Linda and the alias Penny Lane. Lucifer claims he was helping Delilah's career and that the case still is not solved. In this section, Lucifer meets Chloe's daughter Trixie, who admits she hurt a girl who was bullying her online. Lucifer tells the bully that Hell has a special story for her, and Trixie leaves with her father.",
+  "synopsis": "In Los Angeles, Lucifer Morningstar runs the nightclub Lux. A pop star linked to the club, Delilah, is shot dead outside it. The LAPD assigns the case to Detective Chloe Decker, who considers it simple, but Lucifer insists on getting involved. He claims Delilah told him the motive was money and that the drug dealer only pulled the trigger. The investigation leads to Jimmy Barnes, her ex-fiance, who is angry about her confession and points at a rapper as the real killer. That accusation is unproven. Delilah, a pop star once connected to Lux, is shot dead outside the club. Lucifer, who claims Delilah told him the motive was money, insists on helping Detective Chloe Decker, who considers the case simple. Lucifer confronts Jimmy Barnes, Delilah's ex-fiancé, who accuses a rapper of being the killer, a claim with no proof yet. Lucifer then questions that rapper, Vile, who admits hitting Delilah once after learning she was cheating, and says the married lover kept the name Raaz and secretly saw Dr. Linda in Beverly Hills. The LAPD arrives with guns drawn; the shooter's last call went to Vile, who admits calling his dealer Eddie, through whom he met Delilah, and Chloe warns that this makes him a suspect. Delilah, a pop star once linked to Lux, was shot outside the club. Jimmy Barnes accuses a rapper, which is unproven. Lucifer confronts the rapper Vile, who admits he hit Delilah once over an affair with a married man called Raaz and suggests Dr. Linda may know him. Police learn the shooter's last call went to Vile, who admits calling his dealer Eddie, through whom he met Delilah. Chloe tells Vile this makes him a suspect, and Lucifer says almost everyone in Hollywood calls Eddie. An unidentified speaker makes a threat, and Chloe arrests Lucifer for interfering with the investigation. He says the handcuffs cannot hold him. Delilah, a pop star formerly connected to the nightclub Lux, was shot outside Lux. Detective Chloe Decker leads the LAPD case, and Lucifer Morningstar, the Devil who runs Lux, offers his help. The rapper Vile admitted hitting Delilah after learning of an affair with a married man who used the alias Raaz. He also admitted calling his dealer Eddie two days before the murder, which made him a suspect. The shooter's last call went to Vile. Chloe arrested Lucifer for interfering with the investigation, and he offered help. In this segment, Lucifer asks Chloe what she wants most. She says she always wanted to be a police officer like her father to help people. Lucifer claims he knows something she does not. He says that if he had not helped Delilah's career, she might still be alive, and Chloe warns that his clue must work. He names Penny Lane as a name Delilah probably used, and says Dr. Linda had a Beverly Hills client under that name. Chloe replies that the case is not solved yet. These claims are unverified. Delilah is shot outside Lux, and Chloe Decker takes the case while Lucifer inserts himself into the investigation. Vile admits hitting Delilah over an affair and names Raaz, and police trace the shooter's last call to Vile, who had called Eddie. Chloe arrests Lucifer for interference, after which he offers help. Lucifer claims to know something Chloe does not, and suggests Delilah may have used the name Penny Lane. Chloe insists the case is not solved. The shooter's identity and the roles of Vile, Jimmy and Eddie remain unconfirmed.",
   "beats": [
     {
       "beat_id": "B0001",
-      "narration": "डिटेक्टिव क्लोई को बताया जाता है कि यह केस अब उसका है। उसके सामने एक ड्रग डीलर का मामला रखा जाता है, जिसे आसान बताया जाता है।",
-      "word_count": 27,
-      "estimated_duration": 11,
+      "narration": "लॉस एंजिल्स में लूसिफ़र मॉर्निंगस्टार अपना नाइटक्लब लक्स चलाता है। उसके बाहर पॉप स्टार डेलिला को गोली मार दी जाती है। क्लोई डेकर को यह केस मिलता है, जिसे वह आसान मानती है।",
+      "word_count": 33,
+      "estimated_duration": 14.0,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0001",
-          "start": 2.72,
-          "end": 4.72,
+          "start": 0.72,
+          "end": 2.72,
           "duration": 2.0,
-          "scene_context": "Transcript: Chloe is told the case is hers. Visual suggestion (unverified): Chloe receiving the case at the station."
+          "scene_context": "Opening of the case discussion with Chloe and Lucifer (visuals unverified)"
         },
         {
           "clip_id": "C0002",
-          "start": 18.89,
-          "end": 20.89,
+          "start": 13.68,
+          "end": 15.68,
           "duration": 2.0,
-          "scene_context": "Transcript: Chloe is told the case is hers and that it is easy. Visual suggestion (unverified): a brief conversation between Chloe and Lucifer."
+          "scene_context": "Chloe says the lieutenant gave her the case (visuals unverified)"
         },
         {
           "clip_id": "C0003",
-          "start": 24.3,
-          "end": 26.3,
+          "start": 18.89,
+          "end": 20.89,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer says not to waste time on this easy case. Visual suggestion (unverified): Lucifer speaking in the office."
+          "scene_context": "Lucifer confirms it is Chloe's case (visuals unverified)"
         },
         {
           "clip_id": "C0004",
-          "start": 27.3,
-          "end": 29.3,
+          "start": 24.3,
+          "end": 26.3,
           "duration": 2.0,
-          "scene_context": "Transcript: the drug dealer is mentioned as the small suspect. Visual suggestion (unverified): an evidence close-up."
+          "scene_context": "Chloe says the case is easy (visuals unverified)"
         },
         {
           "clip_id": "C0005",
-          "start": 31.3,
-          "end": 33.3,
+          "start": 37.3,
+          "end": 39.3,
           "duration": 2.0,
-          "scene_context": "Transcript: the packet is linked to Delilah's purse. Visual suggestion (unverified): the evidence bag."
+          "scene_context": "Lucifer asks how Chloe knows the case (visuals unverified)"
         },
         {
           "clip_id": "C0006",
-          "start": 35.3,
-          "end": 37.3,
+          "start": 45.75,
+          "end": 47.75,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer says the case belongs to Delilah. Visual suggestion (unverified): Lucifer looking at the case file."
+          "scene_context": "Lucifer comments on the watch and the suspect (visuals unverified)"
+        },
+        {
+          "clip_id": "C0007",
+          "start": 49.87,
+          "end": 51.87,
+          "duration": 2.0,
+          "scene_context": "Lucifer says everyone is watching the case (visuals unverified)"
         }
       ]
     },
     {
       "beat_id": "B0002",
-      "narration": "एक पैकेट डेलिला के पर्स में मिला था, इसलिए लूसिफर इसे उसी का केस मानता है। उसका अंदाज़ा है कि डेलिला ने ड्रग्स के पैसे नहीं चुकाए थे।",
-      "word_count": 28,
-      "estimated_duration": 10,
+      "narration": "लूसिफ़र का दावा है कि डेलिला ने मरने से पहले उसे वजह बताई थी, और वजह थी पैसा। उसके मुताबिक़ ड्रग डीलर ने बस ट्रिगर दबाया, असली खेल कोई और खेल रहा है। यह बात अभी सिर्फ़ उसका दावा है।",
+      "word_count": 40,
+      "estimated_duration": 17.0,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0007",
-          "start": 33.3,
-          "end": 35.3,
-          "duration": 2.0,
-          "scene_context": "Transcript: the packet is found in Delilah's purse and Lucifer says it is Delilah's case. Visual suggestion (unverified): Lucifer pointing at the packet."
-        },
-        {
           "clip_id": "C0008",
-          "start": 35.3,
-          "end": 37.3,
+          "start": 95.46,
+          "end": 97.46,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer says Delilah must not have paid for the drugs. Visual suggestion (unverified): Lucifer speaking to Chloe."
+          "scene_context": "Lucifer says she told him the reason for the murder (visuals unverified)"
         },
         {
           "clip_id": "C0009",
-          "start": 37.3,
-          "end": 39.3,
+          "start": 115.38,
+          "end": 117.38,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer says the drug-related theory is his own guess. Visual suggestion (unverified): Chloe reacting."
+          "scene_context": "Lucifer says the motive is a matter of money (visuals unverified)"
         },
         {
           "clip_id": "C0010",
-          "start": 39.3,
-          "end": 41.3,
+          "start": 124.99,
+          "end": 126.99,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer asks how he knows. Visual suggestion (unverified): Lucifer gesturing at the scene."
+          "scene_context": "Lucifer says Delilah said he only pressed the trigger (visuals unverified)"
         },
         {
           "clip_id": "C0011",
-          "start": 31.3,
-          "end": 33.3,
+          "start": 129.99,
+          "end": 131.99,
           "duration": 2.0,
-          "scene_context": "Transcript: the packet and the purse are mentioned together. Visual suggestion (unverified): a repeat shot of the purse evidence."
+          "scene_context": "Lucifer says the drug dealer shot her (visuals unverified)"
+        },
+        {
+          "clip_id": "C0012",
+          "start": 134.99,
+          "end": 136.99,
+          "duration": 2.0,
+          "scene_context": "Chloe says she must have been involved in something (visuals unverified)"
+        },
+        {
+          "clip_id": "C0013",
+          "start": 138.99,
+          "end": 140.99,
+          "duration": 2.0,
+          "scene_context": "Discussion of the victim's possible involvement (visuals unverified)"
+        },
+        {
+          "clip_id": "C0014",
+          "start": 141.99,
+          "end": 143.99,
+          "duration": 2.0,
+          "scene_context": "Chloe says Lucifer is not in her world (visuals unverified)"
+        },
+        {
+          "clip_id": "C0015",
+          "start": 84.46,
+          "end": 86.46,
+          "duration": 2.0,
+          "scene_context": "Lucifer says she used to work at the club (visuals unverified)"
+        },
+        {
+          "clip_id": "C0016",
+          "start": 87.46,
+          "end": 89.46,
+          "duration": 2.0,
+          "scene_context": "Lucifer says he played her songs and she became a star (visuals unverified)"
         }
       ]
     },
     {
       "beat_id": "B0003",
-      "narration": "उसकी कार और घड़ी देखकर लूसिफर को लगता है कि ड्रग डीलर पैसे वाला दिखता है। हालांकि घड़ी नकली भी हो सकती है।",
-      "word_count": 23,
-      "estimated_duration": 10,
+      "narration": "जांच पूर्व मंगेतर, प्रोड्यूसर जिमी बार्न्स तक पहुंचती है। डेलिला के कन्फेशन से अपमानित जिमी गुस्से में है, और वह एक रैपर पर इल्ज़ाम लगाकर उसे असली कातिल बताता है। यह सिर्फ़ उसका आरोप है, सबूत नहीं।",
+      "word_count": 37,
+      "estimated_duration": 17.0,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0012",
-          "start": 40.75,
-          "end": 42.75,
+          "clip_id": "C0017",
+          "start": 236.99,
+          "end": 238.99,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer tells Chloe to look at the car. Visual suggestion (unverified): the car on the scene."
+          "scene_context": "Lucifer asks Jimmy Barnes if he recognizes him (visuals unverified)"
         },
         {
-          "clip_id": "C0013",
-          "start": 42.75,
-          "end": 44.75,
+          "clip_id": "C0018",
+          "start": 249.66,
+          "end": 251.66,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer tells Chloe to look at the watch. Visual suggestion (unverified): a close-up of the watch."
+          "scene_context": "Lucifer says Jimmy is getting married the day after the murder (visuals unverified)"
         },
         {
-          "clip_id": "C0014",
-          "start": 43.75,
-          "end": 45.75,
+          "clip_id": "C0019",
+          "start": 252.66,
+          "end": 254.66,
           "duration": 2.0,
-          "scene_context": "Transcript: the watch does not look cheap. Visual suggestion (unverified): Lucifer examining the watch."
+          "scene_context": "Lucifer mentions the ex-fiance who was killed (visuals unverified)"
         },
         {
-          "clip_id": "C0015",
-          "start": 45.75,
-          "end": 47.75,
+          "clip_id": "C0020",
+          "start": 254.66,
+          "end": 256.66,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer says the watch may be fake. Visual suggestion (unverified): Chloe reacting to the watch."
+          "scene_context": "Lucifer continues the ex-fiance remark (visuals unverified)"
         },
         {
-          "clip_id": "C0016",
-          "start": 47.75,
-          "end": 49.75,
+          "clip_id": "C0021",
+          "start": 258.66,
+          "end": 260.66,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer says everyone's eyes are on the case. Visual suggestion (unverified): Chloe and Lucifer at the scene."
+          "scene_context": "Jimmy responds that he is sad to hear the news (visuals unverified)"
+        },
+        {
+          "clip_id": "C0022",
+          "start": 282.66,
+          "end": 284.66,
+          "duration": 2.0,
+          "scene_context": "Jimmy says he was angry because he was humiliated by her confession (visuals unverified)"
+        },
+        {
+          "clip_id": "C0023",
+          "start": 284.66,
+          "end": 286.66,
+          "duration": 2.0,
+          "scene_context": "Jimmy continues about the confession (visuals unverified)"
+        },
+        {
+          "clip_id": "C0024",
+          "start": 292.66,
+          "end": 294.66,
+          "duration": 2.0,
+          "scene_context": "Jimmy says Delilah left him for a rapper (visuals unverified)"
+        },
+        {
+          "clip_id": "C0025",
+          "start": 296.66,
+          "end": 298.66,
+          "duration": 2.0,
+          "scene_context": "Jimmy accuses the rapper of beating Delilah (visuals unverified)"
         }
       ]
     },
     {
       "beat_id": "B0004",
-      "narration": "लूसिफर पूछता है कि क्या कोई गवाह है। फिर वह खुद को लूसिफर मॉर्निंगस्टार बताता है।",
-      "word_count": 16,
-      "estimated_duration": 6,
-      "is_scene_bridge": false,
+      "narration": "अगले सीन में लूसिफ़र अपना नाम बताकर एक रैपर के ठिकाने पर पहुंचता है, जहां उसकी तीखी बहस होती है। असली आदेश किसने दिया, इस सवाल का जवाब अब उसी रैपर के इर्द-गिर्द घूमता है।",
+      "word_count": 35,
+      "estimated_duration": 17.0,
+      "is_scene_bridge": true,
       "clips": [
         {
-          "clip_id": "C0017",
-          "start": 54.26,
-          "end": 56.26,
+          "clip_id": "C0026",
+          "start": 299.66,
+          "end": 301.66,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer asks Chloe about the witness and says he will ask for the case. Visual suggestion (unverified): Lucifer speaking to Chloe."
+          "scene_context": "Jimmy says the rapper is the real killer (accusation, unproven) (visuals unverified)"
         },
         {
-          "clip_id": "C0018",
-          "start": 57.26,
-          "end": 59.26,
+          "clip_id": "C0027",
+          "start": 301.66,
+          "end": 303.66,
           "duration": 2.0,
-          "scene_context": "Transcript: Is there any witness, and the answer is Lucifer Morningstar. Visual suggestion (unverified): Lucifer stepping forward."
+          "scene_context": "Lucifer responds with I see (visuals unverified)"
         },
         {
-          "clip_id": "C0019",
-          "start": 61.15,
-          "end": 63.15,
+          "clip_id": "C0028",
+          "start": 303.66,
+          "end": 305.3,
+          "duration": 1.64,
+          "scene_context": "Lucifer begins the introduction (visuals unverified)"
+        },
+        {
+          "clip_id": "C0029",
+          "start": 305.3,
+          "end": 307.3,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer Morningstar is named as the witness. Visual suggestion (unverified): Chloe questioning Lucifer."
+          "scene_context": "Lucifer says he has not introduced himself (visuals unverified)"
+        },
+        {
+          "clip_id": "C0030",
+          "start": 307.3,
+          "end": 309.3,
+          "duration": 2.0,
+          "scene_context": "Lucifer says his name is Lucifer Morningstar (visuals unverified)"
+        },
+        {
+          "clip_id": "C0031",
+          "start": 317.18,
+          "end": 319.18,
+          "duration": 2.0,
+          "scene_context": "Reaction line in the confrontation (visuals unverified)"
+        },
+        {
+          "clip_id": "C0032",
+          "start": 320.18,
+          "end": 322.18,
+          "duration": 2.0,
+          "scene_context": "Reaction line in the confrontation (visuals unverified)"
+        },
+        {
+          "clip_id": "C0033",
+          "start": 322.18,
+          "end": 323.18,
+          "duration": 1.0,
+          "scene_context": "Transition into the next exchange (visuals unverified)"
         }
       ]
     },
     {
       "beat_id": "B0005",
-      "narration": "लूसिफर बताता है कि डेलिला कभी उसके यहाँ काम करती थी और वह अक्सर उसके गाने बजाता था। बाद में वह बड़ी स्टार बनी, और किसी ने उसे मार दिया।",
-      "word_count": 30,
-      "estimated_duration": 13,
+      "narration": "लूसिफ़र सीधे रैपर वाइल से डेलिला के बारे में पूछता है, और जवाब में धमकी मिलती है। फिर वाइल कबूल करता है कि उसने डेलिला को एक बार मारा था, क्योंकि उसे पता चला था कि वह किसी और के साथ अफेयर चला रही थी।",
+      "word_count": 45,
+      "estimated_duration": 16,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0020",
-          "start": 80.46,
-          "end": 82.46,
+          "clip_id": "C0034",
+          "start": 436.5,
+          "end": 438.5,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer is asked about his relationship with the victim. Visual suggestion (unverified): Lucifer answering in the club."
+          "scene_context": "Lucifer asks the rapper Vile what he knows about Delilah. Speaker per transcript, confirmed by reference. Visuals unverified."
         },
         {
-          "clip_id": "C0021",
-          "start": 82.46,
-          "end": 84.46,
+          "clip_id": "C0035",
+          "start": 447.47,
+          "end": 449.47,
           "duration": 2.0,
-          "scene_context": "Transcript: Delilah worked there for a few years. Visual suggestion (unverified): a club interior shot."
+          "scene_context": "Rapper Vile responds that Lucifer has already died, a threat directed at Lucifer. Visuals unverified."
         },
         {
-          "clip_id": "C0022",
-          "start": 84.46,
-          "end": 86.46,
+          "clip_id": "C0036",
+          "start": 449.95,
+          "end": 451.95,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer used to play Delilah's songs. Visual suggestion (unverified): music playing in the club."
+          "scene_context": "Vile's men shout to shoot Lucifer; Lucifer denies killing anyone. Visuals unverified."
         },
         {
-          "clip_id": "C0023",
-          "start": 86.46,
-          "end": 88.46,
+          "clip_id": "C0037",
+          "start": 452.95,
+          "end": 454.95,
           "duration": 2.0,
-          "scene_context": "Transcript: Delilah became a big star. Visual suggestion (unverified): a poster or stage shot of Delilah."
+          "scene_context": "Lucifer says he loves Delilah and that love makes people act irrationally. Visuals unverified."
         },
         {
-          "clip_id": "C0024",
-          "start": 88.46,
-          "end": 90.46,
+          "clip_id": "C0038",
+          "start": 457.95,
+          "end": 459.95,
           "duration": 2.0,
-          "scene_context": "Transcript: someone decided to kill her. Visual suggestion (unverified): a tense reaction shot."
+          "scene_context": "Vile says Delilah made him mad and he did not kill her. Visuals unverified."
         },
         {
-          "clip_id": "C0025",
-          "start": 90.46,
-          "end": 92.46,
+          "clip_id": "C0039",
+          "start": 460.95,
+          "end": 462.95,
           "duration": 2.0,
-          "scene_context": "Transcript: Chloe asks whether Lucifer knows the shooter. Visual suggestion (unverified): Chloe questioning Lucifer."
+          "scene_context": "Lucifer questions whether Vile would raise a hand on Delilah. Visuals unverified."
         },
         {
-          "clip_id": "C0026",
-          "start": 92.46,
-          "end": 94.46,
+          "clip_id": "C0040",
+          "start": 463.95,
+          "end": 465.95,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer says he does not know the shooter. Visual suggestion (unverified): Lucifer answering."
+          "scene_context": "Vile says he was right to hit her once. Visuals unverified."
+        },
+        {
+          "clip_id": "C0041",
+          "start": 466.95,
+          "end": 468.95,
+          "duration": 2.0,
+          "scene_context": "Vile says he hit her because she had an affair with someone else. Visuals unverified."
         }
       ]
     },
     {
       "beat_id": "B0006",
-      "narration": "डेलिला ने मरने से पहले लूसिफर को हत्या की वजह बताई थी। वजह है पैसा।",
-      "word_count": 15,
-      "estimated_duration": 8,
+      "narration": "डेलिला का प्रेमी एक शादीशुदा आदमी था, जिसने अपनी पहचान राज़ नाम से छिपाई थी। वाइल के मुताबिक़ बेवर्ली हिल्स की डॉ. लिंडा उसे जानती हो सकती हैं, क्योंकि वह उनसे हफ़्ते में पांच बार मिलता था। यह अभी सिर्फ़ एक सुराग है, पहचान पक्की नहीं।",
+      "word_count": 46,
+      "estimated_duration": 16,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0027",
-          "start": 95.46,
-          "end": 97.46,
+          "clip_id": "C0042",
+          "start": 475.68,
+          "end": 477.68,
           "duration": 2.0,
-          "scene_context": "Transcript: before she died, she told Lucifer something. Visual suggestion (unverified): Lucifer recalling the conversation."
+          "scene_context": "Lucifer asks with whom Delilah had the affair. Visuals unverified."
         },
         {
-          "clip_id": "C0028",
-          "start": 113.38,
-          "end": 115.38,
+          "clip_id": "C0043",
+          "start": 482.68,
+          "end": 484.68,
           "duration": 2.0,
-          "scene_context": "Transcript: Lucifer asks Jimmy for the reason for the murder. Visual suggestion (unverified): a tense exchange."
+          "scene_context": "Vile says the man kept his name as Raaz and was married. Visuals unverified."
         },
         {
-          "clip_id": "C0029",
-          "start": 115.38,
-          "end": 117.38,
+          "clip_id": "C0044",
+          "start": 487.68,
+          "end": 489.68,
           "duration": 2.0,
-          "scene_context": "Transcript: the reason is described as a matter of money. Visual suggestion (unverified): Lucifer speaking."
+          "scene_context": "Lucifer asks whether a friend knew Raaz; Vile says Delilah trusted no one. Visuals unverified."
         },
         {
-          "clip_id": "C0030",
-          "start": 117.38,
-          "end": 119.38,
+          "clip_id": "C0045",
+          "start": 489.68,
+          "end": 491.68,
           "duration": 2.0,
-          "scene_context": "Transcript: the greed for money is mentioned. Visual suggestion (unverified): a reaction shot."
+          "scene_context": "Vile suggests the therapist was the only person who might know. Visuals unverified."
+        },
+        {
+          "clip_id": "C0046",
+          "start": 491.68,
+          "end": 493.68,
+          "duration": 2.0,
+          "scene_context": "Vile names the therapist as Dr. Linda. Visuals unverified."
+        },
+        {
+          "clip_id": "C0047",
+          "start": 493.68,
+          "end": 495.68,
+          "duration": 2.0,
+          "scene_context": "Vile says the therapist is in Beverly Hills. Visuals unverified."
+        },
+        {
+          "clip_id": "C0048",
+          "start": 496.68,
+          "end": 498.68,
+          "duration": 2.0,
+          "scene_context": "Vile says the married man saw her five times a week under another name. Visuals unverified."
+        },
+        {
+          "clip_id": "C0049",
+          "start": 500.68,
+          "end": 502.68,
+          "duration": 2.0,
+          "scene_context": "Lucifer acknowledges the lead and thanks Vile. Visuals unverified."
         }
       ]
     },
     {
       "beat_id": "B0007",
-      "narration": "जिमी ने हत्या से साफ इनकार किया। उसने कहा कि डेलिला के कबूलनामे ने उसे सबके सामने शर्मिंदा किया। फिर उसने एक रैपर पर उंगली उठा दी।",
-      "word_count": 27,
-      "estimated_duration": 10,
+      "narration": "पुलिस पहुंचती है और बताती है कि हत्यारे की आख़िरी कॉल वाइल को गई थी। वाइल मानता है कि उसने अपने डीलर एडी को फ़ोन किया था, जिसके ज़रिए वह डेलिला से मिला था। पुलिस की नज़र में यही उसे शक के दायरे में लाता है।",
+      "word_count": 46,
+      "estimated_duration": 16,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0031",
-          "start": 331.18,
-          "end": 332.68,
-          "duration": 1.5,
-          "scene_context": "Wedding scene, transcript segment 149 (Congratulations on your wedding). Visuals unverified. Jimmy's denial is not in the supplied transcript, so this beat is short on footage. Only about 3.25 seconds of wedding footage exists here, and more clips are needed."
+          "clip_id": "C0050",
+          "start": 504.68,
+          "end": 506.68,
+          "duration": 2.0,
+          "scene_context": "LAPD officers arrive and order everyone to throw their guns down. Visuals unverified."
         },
         {
-          "clip_id": "C0032",
-          "start": 332.68,
-          "end": 334.43,
-          "duration": 1.75,
-          "scene_context": "Wedding scene, transcript segment 150 (Enjoy). Visuals unverified. Same footage-gap warning as C0031."
+          "clip_id": "C0051",
+          "start": 507.68,
+          "end": 509.68,
+          "duration": 2.0,
+          "scene_context": "Officers order both suspects to raise their hands. Visuals unverified."
+        },
+        {
+          "clip_id": "C0052",
+          "start": 516.68,
+          "end": 518.68,
+          "duration": 2.0,
+          "scene_context": "Chloe says she checked the murderer's phone record. Visuals unverified."
+        },
+        {
+          "clip_id": "C0053",
+          "start": 520.68,
+          "end": 522.68,
+          "duration": 2.0,
+          "scene_context": "Chloe states the shooter's last call was to Vile. Visuals unverified."
+        },
+        {
+          "clip_id": "C0054",
+          "start": 524.68,
+          "end": 526.68,
+          "duration": 2.0,
+          "scene_context": "Chloe asks how Lucifer made the connection on his own. Visuals unverified."
+        },
+        {
+          "clip_id": "C0055",
+          "start": 529.38,
+          "end": 531.38,
+          "duration": 2.0,
+          "scene_context": "Chloe asks Lucifer to tell her about Delilah. Visuals unverified."
+        },
+        {
+          "clip_id": "C0056",
+          "start": 533.38,
+          "end": 535.38,
+          "duration": 2.0,
+          "scene_context": "Chloe asks why the rapper called the shooter two days before the murder. Visuals unverified."
+        },
+        {
+          "clip_id": "C0057",
+          "start": 536.38,
+          "end": 538.38,
+          "duration": 2.0,
+          "scene_context": "Vile says he called Eddie, his dealer, and met Delilah through him. Visuals unverified."
         }
       ]
     },
     {
       "beat_id": "B0008",
-      "narration": "लूसिफर एक घर पहुंचता है और बॉस के लिए ड्रग्स होने की बात कहता है। उसे पहले अंदर जाने से मना कर दिया जाता है।",
-      "word_count": 25,
-      "estimated_duration": 9,
+      "narration": "पुलिस को शक है कि हत्यारे की आख़िरी कॉल वाइल तक गई थी, और वाइल ने अपने डीलर एडी को फ़ोन करने की बात मानी है। अब लूसिफ़र भी शक के घेरे में है, क्योंकि उसने भी एडी को फ़ोन किया था।",
+      "word_count": 42,
+      "estimated_duration": 8,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0033",
-          "start": 352.36,
-          "end": 354.36,
+          "clip_id": "C0058",
+          "start": 538.38,
+          "end": 540.38,
           "duration": 2.0,
-          "scene_context": "Doorway greeting and request to meet the boss, transcript segments 151-152. Visuals unverified."
+          "scene_context": "Lucifer and Chloe discuss the suspicion; speaker tag absent in transcript, speaker assignment unverified, visuals unverified"
         },
         {
-          "clip_id": "C0034",
-          "start": 355.36,
-          "end": 357.36,
+          "clip_id": "C0059",
+          "start": 541.38,
+          "end": 543.38,
           "duration": 2.0,
-          "scene_context": "Man asks whether the boss is home, transcript segment 153. Visuals unverified."
+          "scene_context": "Chloe says Lucifer becomes a suspect for calling Eddie; speaker assignment unverified, visuals unverified"
         },
         {
-          "clip_id": "C0035",
-          "start": 359.36,
-          "end": 361.36,
+          "clip_id": "C0060",
+          "start": 543.38,
+          "end": 545.38,
           "duration": 2.0,
-          "scene_context": "Refusal at the door, transcript segments 155-156. Visuals unverified."
+          "scene_context": "Lucifer questions the suspicion over the Eddie call; speaker assignment unverified, visuals unverified"
         },
         {
-          "clip_id": "C0036",
-          "start": 361.36,
-          "end": 363.36,
+          "clip_id": "C0061",
+          "start": 546.38,
+          "end": 548.38,
           "duration": 2.0,
-          "scene_context": "Lucifer says he has drugs for the boss, transcript segment 158. Visuals unverified."
-        },
-        {
-          "clip_id": "C0037",
-          "start": 364.0,
-          "end": 365.0,
-          "duration": 1.0,
-          "scene_context": "Reply that the right medicine is needed, transcript segment 159. Visuals unverified."
+          "scene_context": "Lucifer says nearly everyone in Hollywood calls Eddie; speaker assignment unverified, visuals unverified"
         }
       ]
     },
     {
       "beat_id": "B0009",
-      "narration": "जॉकी से हिप-हॉप को लेकर लूसिफर की बहस बिगड़ जाती है। कोई उसे गोली मारने को चिल्लाता है। लूसिफर कहता है कि वह अमर है। फिर वह डेलिला के बारे में पूछता है।",
-      "word_count": 33,
-      "estimated_duration": 14,
+      "narration": "तभी एक अनजान शख़्स सबको गोली मारने की धमकी देता है। क्लोई लूसिफ़र को पुलिस जांच में दखल देने के आरोप में गिरफ़्तार कर लेती है, पर वह कहता है कि हथकड़ियां उसे नहीं बांध सकतीं।",
+      "word_count": 36,
+      "estimated_duration": 8,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0038",
-          "start": 376.74,
-          "end": 378.74,
+          "clip_id": "C0062",
+          "start": 573.74,
+          "end": 575.74,
           "duration": 2.0,
-          "scene_context": "Music argument begins, transcript segments 160-161. Visuals unverified."
+          "scene_context": "Unidentified speaker threatens to shoot everyone if anyone speaks again; speaker unclear, visuals unverified"
         },
         {
-          "clip_id": "C0039",
-          "start": 385.74,
-          "end": 387.74,
+          "clip_id": "C0063",
+          "start": 589.41,
+          "end": 591.41,
           "duration": 2.0,
-          "scene_context": "Jockey and Lucifer introduce themselves, transcript segments 164-166. Visuals unverified."
+          "scene_context": "Chloe tells Lucifer to stay and come with her; speaker assignment inferred from preview, visuals unverified"
         },
         {
-          "clip_id": "C0040",
-          "start": 394.29,
-          "end": 396.29,
+          "clip_id": "C0064",
+          "start": 601.41,
+          "end": 603.41,
           "duration": 2.0,
-          "scene_context": "Hip-hop insult exchange, transcript segment 168. Visuals unverified."
+          "scene_context": "Chloe states the arrest reason, interfering in the police investigation; speaker assignment inferred from preview, visuals unverified"
         },
         {
-          "clip_id": "C0041",
-          "start": 404.74,
-          "end": 406.74,
+          "clip_id": "C0065",
+          "start": 604.41,
+          "end": 606.41,
           "duration": 2.0,
-          "scene_context": "Argument over the music turns hostile, transcript segment 173. Visuals unverified."
-        },
-        {
-          "clip_id": "C0042",
-          "start": 414.88,
-          "end": 416.88,
-          "duration": 2.0,
-          "scene_context": "Lucifer says he does not hate black people, transcript segment 177. Visuals unverified."
-        },
-        {
-          "clip_id": "C0043",
-          "start": 432.14,
-          "end": 434.14,
-          "duration": 2.0,
-          "scene_context": "Threat exchange, transcript segment 184. Visuals unverified."
-        },
-        {
-          "clip_id": "C0044",
-          "start": 447.47,
-          "end": 449.47,
-          "duration": 2.0,
-          "scene_context": "Someone shouts to shoot Lucifer, transcript segment 189. Visuals unverified."
+          "scene_context": "Lucifer says the handcuffs cannot tie him up; speaker assignment inferred from preview, visuals unverified"
         }
       ]
     },
     {
       "beat_id": "B0010",
-      "narration": "उस आदमी ने कहा कि डेलिला का साथी बेवफा था, और अपना अफेयर उसने राज़ नाम से छिपाया था। बात बेवर्ली हिल्स की थेरेपिस्ट डॉक्टर लिंडा तक पहुंचती है।",
-      "word_count": 29,
+      "narration": "लूसिफ़र क्लोई से उसकी सबसे बड़ी इच्छा पूछता है। क्लोई बताती है कि वह पिता की तरह पुलिस अफ़सर बनकर लोगों की मदद करना चाहती थी। लूसिफ़र दावा करता है कि उसके पास एक ऐसी बात है जो क्लोई नहीं जानती।",
+      "word_count": 41,
       "estimated_duration": 12,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0045",
-          "start": 475.68,
-          "end": 477.68,
+          "clip_id": "C0066",
+          "start": 671.16,
+          "end": 673.16,
           "duration": 2.0,
-          "scene_context": "Lucifer asks with whom the affair was, transcript segment 203. Visuals unverified."
+          "scene_context": "Lucifer asks Chloe what she wants most in life (speaker and visuals unverified)."
         },
         {
-          "clip_id": "C0046",
-          "start": 478.68,
-          "end": 480.68,
+          "clip_id": "C0067",
+          "start": 676.02,
+          "end": 678.02,
           "duration": 2.0,
-          "scene_context": "Name kept as Raaz, transcript segment 206. Visuals unverified."
+          "scene_context": "Lucifer says this is her magic (speaker and visuals unverified)."
         },
         {
-          "clip_id": "C0047",
-          "start": 482.68,
-          "end": 484.68,
+          "clip_id": "C0068",
+          "start": 678.02,
+          "end": 680.02,
           "duration": 2.0,
-          "scene_context": "Question about a friend who knows Raaz, transcript segment 208. Visuals unverified."
+          "scene_context": "Continuation of the wish exchange (visuals unverified)."
         },
         {
-          "clip_id": "C0048",
-          "start": 487.68,
-          "end": 489.68,
+          "clip_id": "C0069",
+          "start": 695.8,
+          "end": 697.8,
           "duration": 2.0,
-          "scene_context": "Therapist mentioned, transcript segment 210. Visuals unverified."
+          "scene_context": "Chloe says she wanted to be a police officer like her father so she can help people (speaker unverified, visuals unverified)."
         },
         {
-          "clip_id": "C0049",
-          "start": 491.68,
-          "end": 493.68,
+          "clip_id": "C0070",
+          "start": 706.31,
+          "end": 708.31,
           "duration": 2.0,
-          "scene_context": "Dr. Linda named, transcript segment 212. Visuals unverified."
+          "scene_context": "Chloe talks about people taking her seriously; Lucifer asks whether he is a magician (visuals unverified)."
         },
         {
-          "clip_id": "C0050",
-          "start": 494.68,
-          "end": 496.68,
+          "clip_id": "C0071",
+          "start": 708.31,
+          "end": 710.31,
           "duration": 2.0,
-          "scene_context": "Five visits a week under another name, transcript segment 214. Visuals unverified."
+          "scene_context": "Brief exchange about the car and Lucifer's answer; speakers unclear (visuals unverified)."
         }
       ]
     },
     {
       "beat_id": "B0011",
-      "narration": "क्लोई समेत पुलिस अंदर घुस आती है और सबको हथियार फेंकने का आदेश देती है। लूसिफर बताता है कि हत्यारे की आखिरी कॉल वाइल को गई थी। फिर सवाल एडी पर आता है, जो ड्रग डीलर है और जिससे लूसिफर डेलिला के साथ मिल चुका है।",
-      "word_count": 46,
-      "estimated_duration": 12,
+      "narration": "लूसिफ़र मानता है कि अगर उसने डेलिला के करियर में मदद न की होती तो शायद वह ज़िंदा होती। क्लोई चेतावनी देती है कि उसका सुराग काम न आया तो ऐसा दोबारा नहीं होगा।",
+      "word_count": 34,
+      "estimated_duration": 6,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0051",
-          "start": 504.68,
-          "end": 506.68,
+          "clip_id": "C0072",
+          "start": 726.98,
+          "end": 728.98,
           "duration": 2.0,
-          "scene_context": "LAPD order to throw guns down, transcript segment 220. Visuals unverified."
+          "scene_context": "Lucifer says if he had not helped Delilah in her career, she would have been alive today (speaker unverified, visuals unverified)."
         },
         {
-          "clip_id": "C0052",
-          "start": 507.68,
-          "end": 509.68,
+          "clip_id": "C0073",
+          "start": 732.62,
+          "end": 734.62,
           "duration": 2.0,
-          "scene_context": "Both raise hands, transcript segment 221. Visuals unverified."
+          "scene_context": "Brief acknowledgment; speaker unclear (visuals unverified)."
         },
         {
-          "clip_id": "C0053",
-          "start": 511.68,
-          "end": 513.68,
+          "clip_id": "C0074",
+          "start": 738.62,
+          "end": 740.62,
           "duration": 2.0,
-          "scene_context": "Guns placed in a bucket, transcript segment 223. Visuals unverified."
-        },
-        {
-          "clip_id": "C0054",
-          "start": 520.68,
-          "end": 522.68,
-          "duration": 2.0,
-          "scene_context": "Lucifer mentions the shooter's last call to Vile, transcript segments 227-228. Visuals unverified."
-        },
-        {
-          "clip_id": "C0055",
-          "start": 533.38,
-          "end": 535.38,
-          "duration": 2.0,
-          "scene_context": "Chloe asks about the call to Eddie, transcript segment 233. Visuals unverified."
-        },
-        {
-          "clip_id": "C0056",
-          "start": 536.38,
-          "end": 538.38,
-          "duration": 2.0,
-          "scene_context": "Lucifer says Eddie is his dealer and he met him with Delilah, transcript segment 236. Visuals unverified."
+          "scene_context": "Chloe warns that if his clue does not work out, this will not happen again (speaker and visuals unverified)."
         }
       ]
     },
     {
       "beat_id": "B0012",
-      "narration": "क्लोई लूसिफर को पुलिस की जांच में दखल देने के आरोप में गिरफ्तार करती है। लूसिफर इसे रोल-प्ले जैसा बताता है और कहता है कि ये हथकड़ियां उसे नहीं बांध सकतीं।",
-      "word_count": 31,
-      "estimated_duration": 13.3,
+      "narration": "लूसिफ़र पेनी लेन नाम लेता है, जो डेलिला का पुराना नाम हो सकता है। उसका दावा है कि बेवर्ली हिल्स की थेरेपिस्ट डॉ. लिंडा का एक मरीज़ इसी नाम से आता था। क्लोई कहती है कि केस अभी सुलझा नहीं है।",
+      "word_count": 41,
+      "estimated_duration": 8,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0057",
-          "start": 589.41,
-          "end": 591.41,
+          "clip_id": "C0075",
+          "start": 746.12,
+          "end": 748.12,
           "duration": 2.0,
-          "scene_context": "Transcript: 'You stay there. And you come with me.' Visual unverified: Chloe leads Lucifer toward the car."
+          "scene_context": "Lucifer says there is a therapist in Beverly Hills named Linda (visuals unverified)."
         },
         {
-          "clip_id": "C0058",
-          "start": 591.41,
-          "end": 593.41,
+          "clip_id": "C0076",
+          "start": 755.6,
+          "end": 757.6,
           "duration": 2.0,
-          "scene_context": "Transcript: 'What? Oh. Role play.' Visual unverified: Lucifer reacts with a playful expression."
+          "scene_context": "Lucifer names Penny Lane as the other name Delilah probably used (speaker and visuals unverified)."
         },
         {
-          "clip_id": "C0059",
-          "start": 595.41,
-          "end": 597.41,
+          "clip_id": "C0077",
+          "start": 757.6,
+          "end": 759.6,
           "duration": 2.0,
-          "scene_context": "Transcript: 'But I don't understand why you have arrested me.' Visual unverified: Lucifer questions the arrest."
+          "scene_context": "Lucifer says Delilah probably went by Penny Lane's name; this claim is unverified (visuals unverified)."
         },
         {
-          "clip_id": "C0060",
-          "start": 598.41,
-          "end": 600.41,
+          "clip_id": "C0078",
+          "start": 762.54,
+          "end": 764.54,
           "duration": 2.0,
-          "scene_context": "Transcript: 'Because you are interfering in the police investigation.' Visual unverified: Chloe explains the arrest."
-        },
-        {
-          "clip_id": "C0061",
-          "start": 601.41,
-          "end": 603.41,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'You have broken so many laws and don't like your face.' Visual unverified: Chloe stands close to Lucifer."
-        },
-        {
-          "clip_id": "C0062",
-          "start": 604.41,
-          "end": 606.41,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'By the way, these handcuffs can't tie me up.' Visual unverified: Lucifer with handcuffs."
-        },
-        {
-          "clip_id": "C0063",
-          "start": 606.41,
-          "end": 608.41,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'Really?' Visual unverified: Chloe reacts to the handcuff remark."
+          "scene_context": "Chloe says the case has not been solved yet (visuals unverified)."
         }
       ]
     },
     {
       "beat_id": "B0013",
-      "narration": "लूसिफर मदद की पेशकश करता है और दावा करता है कि लोग उससे बातें करने लगते हैं। वह क्लोई से अपना पाप स्वीकार करने को कहता है, पर क्लोई साफ़ मना कर देती है।",
-      "word_count": 34,
-      "estimated_duration": 14.6,
-      "is_scene_bridge": false,
+      "narration": "केस अभी उलझा है, तभी एक किरदार को खबर मिलती है कि उसकी बेटी झगड़े में फँस गई है। वह कहता है कि वह केस सुलझाने आया है, किसी का काम करने नहीं।",
+      "word_count": 33,
+      "estimated_duration": 8.3,
+      "is_scene_bridge": true,
       "clips": [
         {
-          "clip_id": "C0064",
-          "start": 625.84,
-          "end": 627.84,
+          "clip_id": "C0079",
+          "start": 826.12,
+          "end": 828.12,
           "duration": 2.0,
-          "scene_context": "Transcript: 'I have a special talent.' Visual unverified: Lucifer speaks in the car."
+          "scene_context": "Speaker says their daughter is in a fight and they have to leave (visual unverified; speaker identity unverified)"
         },
         {
-          "clip_id": "C0065",
-          "start": 627.84,
-          "end": 629.84,
+          "clip_id": "C0080",
+          "start": 828.12,
+          "end": 830.12,
           "duration": 2.0,
-          "scene_context": "Transcript: 'I can talk to people. I can see them.' Visual unverified: Lucifer gestures toward Chloe."
+          "scene_context": "Speaker asks whether the daughter can manage herself; seven years mentioned (visual unverified)"
         },
         {
-          "clip_id": "C0066",
-          "start": 630.84,
-          "end": 632.84,
+          "clip_id": "C0081",
+          "start": 830.12,
+          "end": 832.12,
           "duration": 2.0,
-          "scene_context": "Transcript: 'Are you blind?' Visual unverified: Chloe glances at Lucifer."
+          "scene_context": "Speaker says they are not there to work for the other person's house (visual unverified)"
         },
         {
-          "clip_id": "C0067",
-          "start": 634.84,
-          "end": 636.84,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'People just talk to me.' Visual unverified: Lucifer leans back in the seat."
-        },
-        {
-          "clip_id": "C0068",
-          "start": 638.84,
-          "end": 640.84,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'Accept your sin. No.' Visual unverified: Chloe refuses in the car."
-        },
-        {
-          "clip_id": "C0069",
-          "start": 640.84,
-          "end": 642.84,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'I don't accept my sin. People accept their sin.' Visual unverified: Chloe speaks firmly."
-        },
-        {
-          "clip_id": "C0070",
-          "start": 643.84,
-          "end": 645.84,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'I can make people's wishes come true.' Visual unverified: Lucifer speaks with a smile."
-        },
-        {
-          "clip_id": "C0071",
-          "start": 645.84,
-          "end": 647.84,
-          "duration": 2.0,
-          "scene_context": "Transcript continuation of Lucifer's wish claim. Visual unverified: close shot of Lucifer."
+          "clip_id": "C0082",
+          "start": 832.12,
+          "end": 834.38,
+          "duration": 2.26,
+          "scene_context": "Speaker says they are there to solve the case (visual unverified)"
         }
       ]
     },
     {
       "beat_id": "B0014",
-      "narration": "लूसिफर कहता है कि वह लोगों की इच्छाएं पूरी कर सकता है। फिर वह पूछता है कि क्लोई की ज़िंदगी में सबसे ज़्यादा क्या चाहिए। क्लोई बताती है कि बचपन में वह अपने पिता जैसी पुलिस अफ़सर बनना चाहती थी। लूसिफर कहता है कि वह एक बात जानता है, जो क्लोई नहीं जानती, पर केस में शामिल करने पर ही बताएगा।",
-      "word_count": 61,
-      "estimated_duration": 26.0,
+      "narration": "एक युवा किरदार कहता है कि उसे पीटने वालों को पकड़ा जाएगा। फिर वह मानता है कि फ़र्ज़ी अकाउंट से उसका मज़ाक उड़ाने वाली एक लड़की को उसने पीटा।",
+      "word_count": 29,
+      "estimated_duration": 9.8,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0072",
-          "start": 653.84,
-          "end": 655.84,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'But you are responsible for your sins.' Visual unverified: Lucifer makes a point to Chloe."
-        },
-        {
-          "clip_id": "C0073",
-          "start": 671.16,
-          "end": 673.16,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'Now tell me this, detective.' Visual unverified: Lucifer turns toward Chloe."
-        },
-        {
-          "clip_id": "C0074",
-          "start": 673.16,
-          "end": 675.16,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'What do you want the most in your life?' Visual unverified: Lucifer asks the question."
-        },
-        {
-          "clip_id": "C0075",
-          "start": 676.02,
-          "end": 678.02,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'Okay, so this is your magic.' Visual unverified: Lucifer smiles in the car."
-        },
-        {
-          "clip_id": "C0076",
-          "start": 680.02,
-          "end": 682.02,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'Okay, so this is your magic.' Visual unverified: Chloe listens with a serious face."
-        },
-        {
-          "clip_id": "C0077",
-          "start": 685.38,
-          "end": 687.38,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'Maybe when I was a kid, I always wanted to be a police officer like my daddy.' Visual unverified: Chloe speaks in the car."
-        },
-        {
-          "clip_id": "C0078",
-          "start": 687.38,
-          "end": 689.38,
-          "duration": 2.0,
-          "scene_context": "Transcript continuation of Chloe's childhood answer. Visual unverified: Chloe looks ahead while speaking."
-        },
-        {
-          "clip_id": "C0079",
-          "start": 689.38,
-          "end": 691.38,
-          "duration": 2.0,
-          "scene_context": "Transcript continuation of Chloe's childhood answer. Visual unverified: Chloe in profile."
-        },
-        {
-          "clip_id": "C0080",
-          "start": 692.8,
-          "end": 694.8,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'So that I can help people one day.' Visual unverified: Chloe reflects."
-        },
-        {
-          "clip_id": "C0081",
-          "start": 695.8,
-          "end": 697.8,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'And people take me seriously when I tell them to sit quietly in the car.' Visual unverified: Chloe speaks to Lucifer."
-        },
-        {
-          "clip_id": "C0082",
-          "start": 711.31,
-          "end": 713.31,
-          "duration": 2.0,
-          "scene_context": "Transcript: 'I know what you don't know.' Visual unverified: Lucifer makes a knowing remark."
-        },
-        {
           "clip_id": "C0083",
-          "start": 714.31,
-          "end": 716.31,
+          "start": 852.83,
+          "end": 854.83,
           "duration": 2.0,
-          "scene_context": "Transcript: 'Then I will tell you when you will put me in this case.' Visual unverified: Lucifer makes a deal with Chloe."
+          "scene_context": "Speaker says they will catch the ones who beat them (visual unverified; speaker identity unverified)"
         },
         {
           "clip_id": "C0084",
-          "start": 717.31,
-          "end": 719.31,
+          "start": 924.17,
+          "end": 926.17,
           "duration": 2.0,
-          "scene_context": "Transcript continuation of Lucifer's case request. Visual unverified: Chloe reacts to Lucifer."
+          "scene_context": "Young speaker says the girl was watching and harassing them (visual unverified; speaker identity unverified)"
+        },
+        {
+          "clip_id": "C0085",
+          "start": 926.17,
+          "end": 927.81,
+          "duration": 1.64,
+          "scene_context": "Speaker says the girl made a fake account to mock them (visual unverified)"
+        },
+        {
+          "clip_id": "C0086",
+          "start": 928.29,
+          "end": 930.29,
+          "duration": 2.0,
+          "scene_context": "Speaker says they beat her at the place where she was ashamed (visual unverified)"
+        },
+        {
+          "clip_id": "C0087",
+          "start": 930.29,
+          "end": 932.45,
+          "duration": 2.16,
+          "scene_context": "Continuation of the same confession (visual unverified)"
         }
       ]
     },
     {
       "beat_id": "B0015",
-      "narration": "लूसिफर का दावा है कि अगर वह डेलिला के करियर में दखल न देता, तो वह आज ज़िंदा होती। क्लोई साफ़ कहती है कि अगर उसका सुराग काम नहीं आया, तो ऐसा दोबारा नहीं होगा। लूसिफर हां कहकर सहमत हो जाता है।",
-      "word_count": 42,
-      "estimated_duration": 17.0,
+      "narration": "केस पर कब्ज़े को लेकर तनातनी बढ़ जाती है। एक किरदार दावा करता है कि वह केस सुलझा रहा था, जबकि दूसरा कहता है कि केस उसके पास है और पहला उसे चुराना चाहता था। यह टकराव आगे की जाँच में खलल डाल सकता है।",
+      "word_count": 45,
+      "estimated_duration": 5.9,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0085",
-          "start": 726.98,
-          "end": 729.48,
-          "duration": 2.5,
-          "scene_context": "Lucifer says that if he had not helped Delilah's career, she would be alive. Visual unverified."
-        },
-        {
-          "clip_id": "C0086",
-          "start": 729.48,
-          "end": 731.62,
-          "duration": 2.14,
-          "scene_context": "Lucifer's claim continues into the reply. Visual unverified."
-        },
-        {
-          "clip_id": "C0087",
-          "start": 731.62,
-          "end": 734.62,
-          "duration": 3.0,
-          "scene_context": "Chloe responds with her condition about the clue not working out. Visual unverified."
-        },
-        {
           "clip_id": "C0088",
-          "start": 734.62,
-          "end": 737.62,
-          "duration": 3.0,
-          "scene_context": "Chloe repeats that the situation will not happen again if the clue fails. Visual unverified."
+          "start": 978.3,
+          "end": 980.3,
+          "duration": 2.0,
+          "scene_context": "Speaker says 'Don't hit me' and 'I was solving the case' (visual unverified; speaker identities unverified)"
         },
         {
           "clip_id": "C0089",
-          "start": 737.62,
-          "end": 740.62,
-          "duration": 3.0,
-          "scene_context": "Chloe asks whether he is sure. Visual unverified."
+          "start": 980.3,
+          "end": 982.3,
+          "duration": 2.0,
+          "scene_context": "Other speaker says 'I have the case' (visual unverified)"
         },
         {
           "clip_id": "C0090",
-          "start": 740.62,
-          "end": 743.62,
-          "duration": 3.0,
-          "scene_context": "Lucifer answers yes and agrees. Visual unverified."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0016",
-      "narration": "लूसिफर कहता है कि बेवर्ली हिल्स में डॉक्टर लिंडा नाम की एक थेरेपिस्ट है। क्लोई पूछती है कि क्या डेलिला उसकी क्लाइंट थी। लूसिफर बताता है कि क्लाइंट ने पहले दूसरा नाम इस्तेमाल किया था, पेनी लेन। उसके मुताबिक़ डेलिला शायद यही नाम लेती थी। क्लोई कहती है कि केस अभी सुलझा नहीं है। लूसिफर कहता है कि उसकी बातें सच साबित हुई हैं।",
-      "word_count": 64,
-      "estimated_duration": 26.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0091",
-          "start": 747.12,
-          "end": 749.12,
-          "duration": 2.0,
-          "scene_context": "Lucifer mentions the therapist named Linda in Beverly Hills. Visual unverified."
-        },
-        {
-          "clip_id": "C0092",
-          "start": 749.12,
-          "end": 752.12,
-          "duration": 3.0,
-          "scene_context": "Chloe asks whether the therapist's client was Delilah, and Lucifer denies it. Visual unverified."
-        },
-        {
-          "clip_id": "C0093",
-          "start": 752.12,
-          "end": 755.12,
-          "duration": 3.0,
-          "scene_context": "Lucifer says the client used another name. Visual unverified."
-        },
-        {
-          "clip_id": "C0094",
-          "start": 755.12,
-          "end": 757.6,
-          "duration": 2.48,
-          "scene_context": "Lucifer names Penny Lane as the alias. Visual unverified."
-        },
-        {
-          "clip_id": "C0095",
-          "start": 757.6,
-          "end": 760.6,
-          "duration": 3.0,
-          "scene_context": "Lucifer suggests Delilah probably used the Penny Lane name. Visual unverified."
-        },
-        {
-          "clip_id": "C0096",
-          "start": 761.54,
-          "end": 764.54,
-          "duration": 3.0,
-          "scene_context": "Chloe says the case has not been solved yet. Visual unverified."
-        },
-        {
-          "clip_id": "C0097",
-          "start": 802.98,
-          "end": 805.98,
-          "duration": 3.0,
-          "scene_context": "Lucifer says his words have been proven true. Visual unverified."
-        },
-        {
-          "clip_id": "C0098",
-          "start": 805.98,
-          "end": 808.98,
-          "duration": 3.0,
-          "scene_context": "Lucifer's claim about the Penny Lane and Dr. Linda connection is discussed. Visual unverified."
-        },
-        {
-          "clip_id": "C0099",
-          "start": 808.98,
-          "end": 811.94,
-          "duration": 2.96,
-          "scene_context": "Remark about the partnership, kept to visual context only. Visual unverified."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0017",
-      "narration": "लूसिफर की मुलाक़ात एक छोटी लड़की से होती है, जिसका नाम बिएट्रिस है, पर सब उसे ट्रिक्सी बुलाते हैं। वह बताती है कि उसकी मां पुलिस अफ़सर है। उसे एक लड़की परेशान कर रही थी, जो फेक अकाउंट बनाकर उसका मज़ाक उड़ाती थी। इसलिए ट्रिक्सी ने उसकी पिटाई कर दी। लूसिफर उस लड़की से कहता है कि नर्क में उसके लिए एक ख़ास कहानी है। फिर ट्रिक्सी अपने पिता के साथ चली जाती है।",
-      "word_count": 74,
-      "estimated_duration": 30.6,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0100",
-          "start": 893.34,
-          "end": 895.84,
-          "duration": 2.5,
-          "scene_context": "Trixie says her mom is a police officer (transcript line; visual unverified)"
-        },
-        {
-          "clip_id": "C0101",
-          "start": 896.34,
-          "end": 897.86,
-          "duration": 1.52,
-          "scene_context": "Trixie: She'll arrest you (visual unverified)"
-        },
-        {
-          "clip_id": "C0102",
-          "start": 899.86,
-          "end": 901.86,
-          "duration": 2.0,
-          "scene_context": "Lucifer: I do know your mom (visual unverified)"
-        },
-        {
-          "clip_id": "C0103",
-          "start": 911.78,
-          "end": 913.58,
-          "duration": 1.8,
-          "scene_context": "Trixie gives her name, Beatrice (visual unverified)"
-        },
-        {
-          "clip_id": "C0104",
-          "start": 920.31,
-          "end": 922.31,
-          "duration": 2.0,
-          "scene_context": "Trixie says the girl was watching and harassing her (visual unverified)"
-        },
-        {
-          "clip_id": "C0105",
-          "start": 924.17,
-          "end": 926.17,
-          "duration": 2.0,
-          "scene_context": "Trixie describes the fake account and mocking (visual unverified)"
-        },
-        {
-          "clip_id": "C0106",
-          "start": 928.29,
-          "end": 930.29,
-          "duration": 2.0,
-          "scene_context": "Trixie says she beat the girl up (visual unverified)"
-        },
-        {
-          "clip_id": "C0107",
-          "start": 934.32,
-          "end": 936.0,
-          "duration": 1.68,
-          "scene_context": "Lucifer reacts to the story (visual unverified)"
-        },
-        {
-          "clip_id": "C0108",
-          "start": 947.86,
-          "end": 949.54,
-          "duration": 1.68,
-          "scene_context": "Lucifer tells the bully there is a story in Hell made for her (visual unverified)"
-        },
-        {
-          "clip_id": "C0109",
-          "start": 949.62,
-          "end": 951.42,
-          "duration": 1.8,
-          "scene_context": "Lucifer: so have fun (visual unverified)"
-        },
-        {
-          "clip_id": "C0110",
-          "start": 1008.47,
-          "end": 1010.47,
-          "duration": 2.0,
-          "scene_context": "Request to drop her to mom (visual unverified)"
-        },
-        {
-          "clip_id": "C0111",
-          "start": 1011.03,
-          "end": 1012.95,
-          "duration": 1.92,
-          "scene_context": "Go with your dad (visual unverified)"
-        },
-        {
-          "clip_id": "C0112",
-          "start": 1014.79,
-          "end": 1015.95,
-          "duration": 1.16,
-          "scene_context": "Thanks, mommy (visual unverified)"
-        },
-        {
-          "clip_id": "C0113",
-          "start": 1016.35,
-          "end": 1017.67,
-          "duration": 1.32,
-          "scene_context": "Trixie leaves the scene (visual unverified)"
-        },
-        {
-          "clip_id": "C0114",
-          "start": 1021.6,
-          "end": 1022.76,
-          "duration": 1.16,
-          "scene_context": "Daddy, will you tell me (visual unverified)"
-        },
-        {
-          "clip_id": "C0115",
-          "start": 1027.58,
-          "end": 1029.74,
-          "duration": 2.16,
-          "scene_context": "I liked meeting her on the way (visual unverified)"
-        },
-        {
-          "clip_id": "C0116",
-          "start": 1034.7,
-          "end": 1036.58,
+          "start": 983.58,
+          "end": 985.46,
           "duration": 1.88,
-          "scene_context": "Did you like her (visual unverified)"
+          "scene_context": "Speaker refers to 'the one you wanted to steal from me' (visual unverified)"
         }
       ]
     }

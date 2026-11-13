@@ -30,6 +30,11 @@ on:
         required: true
         type: boolean
         default: true
+      web_search:
+        description: "Enable Web Search in Duck.ai Tools menu"
+        required: true
+        type: boolean
+        default: true
       movie_title:
         description: "Movie/Series Title (optional, overrides transcript.json title)"
         required: false
@@ -170,6 +175,7 @@ jobs:
           RESET_STATE: ${{ inputs.reset_state }}
           MODEL_NAME: ${{ inputs.model_name }}
           REASONING_MODE: ${{ inputs.reasoning_mode }}
+          WEB_SEARCH: ${{ inputs.web_search }}
           INPUT_MOVIE_TITLE: ${{ inputs.movie_title }}
           INPUT_CONTENT_TYPE: ${{ inputs.content_type }}
           INPUT_SEASON: ${{ inputs.season }}
@@ -197,6 +203,7 @@ jobs:
           RESET_STATE = os.environ.get("RESET_STATE", "false").strip().lower() == "true"
           TARGET_MODEL = os.environ.get("MODEL_NAME", "Claude Haiku 5.5").strip()
           ENABLE_REASONING = os.environ.get("REASONING_MODE", "true").strip().lower() == "true"
+          ENABLE_WEB_SEARCH = os.environ.get("WEB_SEARCH", "true").strip().lower() == "true"
 
           INPUT_MOVIE_TITLE = os.environ.get("INPUT_MOVIE_TITLE", "").strip()
           INPUT_CONTENT_TYPE = os.environ.get("INPUT_CONTENT_TYPE", "Movie").strip()
@@ -300,7 +307,6 @@ jobs:
               log("Tor circuit refresh check timed out; continuing anyway.")
 
           # ------------------ IN-PAGE FETCH INTERCEPTOR ------------------
-          # Strictly matches /duckchat/v1/chat (ignores /duckchat/v1/summarize, /status, etc.)
           FETCH_HOOK_JS = r"""
           (() => {
               Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
@@ -410,7 +416,8 @@ jobs:
               start = time.time()
               while (time.time() - start) * 1000 < timeout_ms:
                   try:
-                      if get_prompt_box(page).is_visible():
+                      model_btn = page.locator("button[data-testid*='model' i], button[aria-label*='model' i]")
+                      if get_prompt_box(page).is_visible() and (model_btn.count() > 0 and model_btn.first.is_visible()):
                           return
                   except Exception:
                       pass
@@ -422,11 +429,11 @@ jobs:
                       pass
                   page.wait_for_timeout(500)
 
-          def configure_duckai_settings(page, target_model="Claude Haiku 5.5", enable_reasoning=True, take_verify_snap=True):
-              log(f"Configuring Duck.ai settings -> Model: '{target_model}' | Reasoning: {enable_reasoning}")
+          def configure_duckai_settings(page, target_model="Claude Haiku 5.5", enable_reasoning=True, enable_web_search=True, take_verify_snap=True):
+              log(f"Configuring Duck.ai settings -> Model: '{target_model}' | Reasoning: {enable_reasoning} | WebSearch: {enable_web_search}")
               wait_for_duckai_ui_ready(page)
               dismiss_duckai_modals(page)
-              page.wait_for_timeout(1200)
+              page.wait_for_timeout(1500)
 
               model_btn_selectors = [
                   "button[data-testid*='model' i]",
@@ -514,6 +521,12 @@ jobs:
               if not model_selected:
                   log(f"WARNING: Could not match model '{target_model}' automatically.")
 
+              try:
+                  page.keyboard.press("Escape")
+                  page.wait_for_timeout(400)
+              except Exception:
+                  pass
+
               if enable_reasoning:
                   def try_enable_reasoning():
                       r_candidates = page.locator(
@@ -544,26 +557,67 @@ jobs:
                               pass
                       return False
 
-                  reasoning_toggled = try_enable_reasoning()
-                  if not reasoning_toggled:
-                      gear = page.locator("button[aria-label*='setting' i], button:has-text('Settings'), button[title*='Setting' i]")
-                      for i in range(gear.count()):
-                          g = gear.nth(i)
-                          if g.is_visible():
+                  if not try_enable_reasoning():
+                      log("WARNING: Reasoning toggle not found on UI.")
+
+              if enable_web_search:
+                  try:
+                      tools_btn = page.locator("button:has-text('Tools'), button[aria-label*='tool' i]")
+                      if tools_btn.count() > 0 and tools_btn.first.is_visible():
+                          tools_btn.first.click(timeout=4000)
+                          page.wait_for_timeout(1000)
+                          if take_verify_snap:
+                              tools_options = page.evaluate(r"""() => {
+                                  const els = Array.from(document.querySelectorAll('[role="menuitem"], [role="menuitemcheckbox"], [role="switch"], [role="option"], button, label'));
+                                  return els
+                                      .filter(el => el.offsetParent !== null)
+                                      .map(el => ({
+                                          tag: el.tagName,
+                                          role: el.getAttribute('role') || '',
+                                          aria: el.getAttribute('aria-label') || '',
+                                          checked: el.getAttribute('aria-checked') || el.getAttribute('aria-pressed') || '',
+                                          text: (el.innerText || '').trim().replace(/\s+/g, ' ')
+                                      }))
+                                      .filter(x => x.text.length > 0 && x.text.length < 120);
+                              }""")
+                              log(f"Visible Tools menu options: {json.dumps(tools_options, ensure_ascii=False)}")
+                              snap(page, "tools_dropdown_open", save_html=False)
+
+                          ws_candidates = page.locator(
+                              "[role='menuitemcheckbox']:has-text('Search'), [role='menuitem']:has-text('Search'), "
+                              "[role='switch']:has-text('Search'), [role='option']:has-text('Search'), "
+                              "button:has-text('Web Search'), button:has-text('Search'), label:has-text('Search')"
+                          )
+                          ws_toggled = False
+                          for i in range(ws_candidates.count()):
+                              el = ws_candidates.nth(i)
+                              if not el.is_visible():
+                                  continue
+                              txt = (el.inner_text() or "").strip()
+                              if "chat suggestions" in txt.lower() or "how duck.ai" in txt.lower():
+                                  continue
+                              aria_checked = el.get_attribute("aria-checked")
+                              aria_pressed = el.get_attribute("aria-pressed")
+                              if aria_checked == "true" or aria_pressed == "true":
+                                  log(f"Web Search already enabled ('{txt}').")
+                                  ws_toggled = True
+                                  break
                               try:
-                                  g.click(timeout=3000)
-                                  page.wait_for_timeout(1000)
-                                  if try_enable_reasoning():
-                                      reasoning_toggled = True
-                                      if take_verify_snap:
-                                          snap(page, "settings_reasoning_panel", save_html=False)
-                                  page.keyboard.press("Escape")
-                                  page.wait_for_timeout(500)
+                                  el.click(timeout=3000)
+                                  log(f"Clicked Web Search control: '{txt}'")
+                                  ws_toggled = True
+                                  page.wait_for_timeout(800)
                                   break
                               except Exception:
                                   pass
-                  if not reasoning_toggled:
-                      log("WARNING: Reasoning toggle not found on UI.")
+                          if not ws_toggled:
+                              log("WARNING: Web Search toggle not matched inside Tools menu.")
+                          page.keyboard.press("Escape")
+                          page.wait_for_timeout(400)
+                      else:
+                          log("Tools button not visible; Web Search may be automatic or unavailable for this model.")
+                  except Exception as ws_err:
+                      log(f"Web Search setup notice: {ws_err}")
 
               try:
                   page.keyboard.press("Escape")
@@ -815,19 +869,16 @@ jobs:
               try:
                   return json.loads(s)
               except json.JSONDecodeError as first_err:
-                  # 1. Remove trailing commas before } or ]
                   fixed = re.sub(r",(\s*[}\]])", r"\1", s)
                   try:
                       return json.loads(fixed)
                   except json.JSONDecodeError:
                       pass
 
-                  # 2. If truncated mid-JSON inside "beats", salvage complete beat objects
                   if '"beats"' in fixed:
                       beats_pos = fixed.find('"beats"')
                       arr_start = fixed.find("[", beats_pos)
                       if arr_start != -1:
-                          # Find the end of the last complete beat object inside beats array
                           depth = 0
                           in_str = False
                           esc = False
@@ -884,7 +935,6 @@ jobs:
               except Exception:
                   pass
 
-              # Balanced extraction
               candidates = []
               i = 0
               n = len(cleaned)
@@ -929,7 +979,6 @@ jobs:
               if candidates:
                   return candidates[-1]
 
-              # Final fallback: repair from first '{' to end if truncated
               first_brace = cleaned.find("{")
               if first_brace != -1:
                   try:
@@ -1079,25 +1128,54 @@ jobs:
                   if current_chat_state.get("rate_limited"):
                       raise RuntimeError("Duck.ai returned HTTP 418/429 (Tor IP rate-limited).")
 
-                  # 1. Check in-page fetch stream interceptor
                   inpage = get_inpage_stream_text(page)
                   if inpage:
                       if inpage["status"] in (418, 429):
                           raise RuntimeError(f"Duck.ai fetch returned HTTP {inpage['status']} (Tor IP rate-limited).")
                       if inpage["active"] or inpage["raw_len"] > 0:
                           has_started_generating = True
-                      if inpage["done"] and inpage["parsed"].strip():
+
+                      # FAIL-FAST once the HTTP SSE stream completes
+                      if inpage["done"]:
+                          page.wait_for_timeout(2000)
+                          scroll_chat_to_bottom(page)
                           parsed_sse = inpage["parsed"]
+                          dom_after = ""
+                          try:
+                              dom_res = page.evaluate(EXTRACT_ASSISTANT_JS, {"promptTail": prompt_tail, "expectJson": expect_json})
+                              dom_after = (dom_res.get("text") or "").strip()
+                          except Exception:
+                              pass
+
                           if expect_json:
                               if "{" in parsed_sse and (not expect_beats or '"beats"' in parsed_sse):
                                   log(f"Captured JSON via in-page fetch SSE ({len(parsed_sse)} chars).")
                                   return deep_repair(parsed_sse)
+                              if "{" in dom_after and (not expect_beats or '"beats"' in dom_after):
+                                  log(f"Captured JSON via DOM after SSE done ({len(dom_after)} chars).")
+                                  return deep_repair(dom_after)
+                              (DEBUG_DIR / f"failed_sse_{int(time.time())}.txt").write_text(
+                                  f"=== PARSED ({len(parsed_sse)} chars) ===\n{parsed_sse}\n\n"
+                                  f"=== DOM ({len(dom_after)} chars) ===\n{dom_after}\n\n"
+                                  f"=== RAW SSE TAIL ===\n{inpage['raw'][-4000:]}",
+                                  encoding="utf-8"
+                              )
+                              raise RuntimeError(
+                                  f"Stream finished (raw={inpage['raw_len']}, parsed={len(parsed_sse)}, dom={len(dom_after)}) "
+                                  f"without valid JSON beats. Preview: {(parsed_sse or dom_after)[:220]!r}"
+                              )
                           else:
-                              if len(parsed_sse.strip()) > 80:
-                                  log(f"Captured Handoff via in-page fetch SSE ({len(parsed_sse)} chars).")
-                                  return deep_repair(clean_handoff_text(parsed_sse))
+                              out_txt = clean_handoff_text(parsed_sse) if len(parsed_sse.strip()) >= 80 else clean_handoff_text(dom_after)
+                              if len(out_txt) >= 80:
+                                  log(f"Captured Handoff via in-page fetch SSE ({len(out_txt)} chars).")
+                                  return deep_repair(out_txt)
+                              (DEBUG_DIR / f"failed_handoff_{int(time.time())}.txt").write_text(
+                                  f"=== PARSED ===\n{parsed_sse}\n\n=== DOM ===\n{dom_after}\n\n=== RAW SSE TAIL ===\n{inpage['raw'][-4000:]}",
+                                  encoding="utf-8"
+                              )
+                              raise RuntimeError(f"Handoff stream finished too short ({len(out_txt)} chars). Preview: {out_txt[:220]!r}")
 
-                  # 2. Check Playwright requestfinished network stream
+                  # Fallback: Playwright requestfinished
                   if current_chat_state.get("chat_done") and current_chat_state.get("raw_stream"):
                       parsed_sse = parse_sse_text("".join(current_chat_state["raw_stream"]))
                       if parsed_sse.strip():
@@ -1105,12 +1183,10 @@ jobs:
                               if "{" in parsed_sse and (not expect_beats or '"beats"' in parsed_sse):
                                   log(f"Captured JSON via Playwright network SSE ({len(parsed_sse)} chars).")
                                   return deep_repair(parsed_sse)
-                          else:
-                              if len(parsed_sse.strip()) > 80:
-                                  log(f"Captured Handoff via Playwright network SSE ({len(parsed_sse)} chars).")
-                                  return deep_repair(clean_handoff_text(parsed_sse))
+                          elif len(parsed_sse.strip()) > 80:
+                              log(f"Captured Handoff via Playwright network SSE ({len(parsed_sse)} chars).")
+                              return deep_repair(clean_handoff_text(parsed_sse))
 
-                  # 3. Scroll and extract via DOM
                   scroll_chat_to_bottom(page)
                   dom_source = "none"
                   dom_len = 0
@@ -1330,7 +1406,7 @@ jobs:
           - Write entirely in natural, simple, conversational Hindi using Devanagari script.
           - Short, fast-paced, third-person YouTube storyteller voice—NO dialogue reading, NO formal/literary words, NO viewer confusion.
           - Keep narration fluent and connected to the previous part.
-          - Use ~130–150 spoken words per minute, paced naturally for this section without padding.
+          - Use ~130–150 spoken Hindi words per minute, paced naturally for this section without padding.
           - Create meaningful beats based on story developments, not individual transcript lines.
 
           ## 4. MICRO-LEVEL CLIP EDITING
@@ -1656,6 +1732,7 @@ jobs:
                   page,
                   TARGET_MODEL,
                   ENABLE_REASONING,
+                  ENABLE_WEB_SEARCH,
                   take_verify_snap=take_verify_snap
               )
 
@@ -1745,7 +1822,6 @@ jobs:
                       f"({chunk_meta['time_start']}s - {chunk_meta['time_end']}s) | Prompt: {chunk_meta['prompt_chars']} chars ==="
                   )
 
-                  # ---- STEP A: Run PROMPT 1 (first chunk) or PROMPT 3 (next chunks) ----
                   norm_chunk = None
                   for attempt in range(1, MAX_ATTEMPTS + 1):
                       try:
@@ -1772,7 +1848,6 @@ jobs:
 
                           parsed_json = parse_first_balanced_json(raw_resp, require_beats=True)
                           if not is_valid_recap_json(parsed_json):
-                              # Try DOM extraction fallback if SSE stream had malformed/partial data
                               dom_fallback = page.evaluate(EXTRACT_ASSISTANT_JS, {
                                   "promptTail": chunk_meta["prompt"][-60:].strip(),
                                   "expectJson": True
@@ -1814,7 +1889,6 @@ jobs:
                   pipeline_state["next_segment_idx"] = next_idx
                   pipeline_state["chunk_num"] = chunk_num
 
-                  # ---- STEP B: If more transcript remains, run PROMPT 2 (Continuity Handoff) ----
                   handoff_text = ""
                   if next_idx < total_segments:
                       p2_meta = build_prompt_2_preview(transcript_data, next_idx)
@@ -1991,7 +2065,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f story_beats.json script_preview.txt build/pipeline_state.json debug/model_settings_verified.png debug/settings_dropdown_open.png || true
+          git add -f story_beats.json script_preview.txt build/pipeline_state.json debug/model_settings_verified.png debug/settings_dropdown_open.png debug/tools_dropdown_open.png || true
           if ! git diff --cached --quiet; then
             git commit -m "Update Hindi recap JSON & Duck.ai settings verification screenshot [skip ci]"
             git pull --rebase origin main

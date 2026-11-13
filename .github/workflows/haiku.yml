@@ -141,7 +141,7 @@ jobs:
         run: |
           mkdir -p debug build
           cat > recap_engine.py <<'PY'
-          import os, re, sys, json, subprocess, time
+          import os, re, sys, json, subprocess, time, textwrap
           from pathlib import Path
           from playwright.sync_api import sync_playwright
           import ftfy
@@ -278,7 +278,6 @@ jobs:
               dismiss_duckai_modals(page)
               page.wait_for_timeout(1500)
 
-              # 1. Locate & open model selector dropdown
               model_btn_selectors = [
                   "button[aria-label*='model' i]",
                   "button[data-testid*='model' i]",
@@ -316,7 +315,6 @@ jobs:
                       settings_loc.first.click(timeout=4000)
                       page.wait_for_timeout(1200)
 
-              # Log all visible interactive options so we know exact labels in Duck.ai
               visible_options = page.evaluate("""() => {
                   const els = Array.from(document.querySelectorAll('[role="menuitem"], [role="menuitemradio"], [role="option"], [role="radio"], [role="switch"], button, label'));
                   return els
@@ -334,7 +332,6 @@ jobs:
 
               snap(page, "settings_dropdown_open", save_html=False)
 
-              # 2. Select target model (exact match -> Haiku + version -> Claude Haiku)
               model_selected = False
               target_lower = target_model.lower()
               search_strategies = [
@@ -368,10 +365,7 @@ jobs:
               if not model_selected:
                   log(f"WARNING: Could not match model '{target_model}' automatically. Check settings_dropdown_open.png.")
 
-              # 3. Enable Reasoning mode if requested
               if enable_reasoning:
-                  reasoning_toggled = False
-                  # Check if Reasoning toggle is already visible in main UI or inside a settings/mode menu
                   def try_enable_reasoning():
                       r_candidates = page.locator(
                           "button:has-text('Reasoning'), button[aria-label*='reason' i], "
@@ -400,7 +394,6 @@ jobs:
 
                   reasoning_toggled = try_enable_reasoning()
 
-                  # If not found directly, check Settings gear / drawer
                   if not reasoning_toggled:
                       gear = page.locator("button[aria-label*='setting' i], button:has-text('Settings'), button[title*='Setting' i]")
                       for i in range(gear.count()):
@@ -412,7 +405,6 @@ jobs:
                                   if try_enable_reasoning():
                                       reasoning_toggled = True
                                       snap(page, "settings_reasoning_panel", save_html=False)
-                                  # Close settings modal if Escape works
                                   page.keyboard.press("Escape")
                                   page.wait_for_timeout(500)
                                   break
@@ -422,14 +414,12 @@ jobs:
                   if not reasoning_toggled:
                       log("WARNING: Reasoning toggle was not found on UI. Check debug screenshots.")
 
-              # Ensure any open dropdown is closed before taking final verification screenshot
               try:
                   page.keyboard.press("Escape")
               except Exception:
                   pass
               page.wait_for_timeout(1000)
 
-              # Take final verification screenshot for user inspection
               snap(page, "model_settings_verified", save_html=True)
 
           # ------------------ PLAYWRIGHT UTILITIES ------------------
@@ -538,7 +528,6 @@ jobs:
                   return None
               cleaned = strip_thinking_blocks(text)
 
-              # Priority 1: Check all ```json ... ``` blocks (prefer last valid block in case reasoning mentioned schema)
               code_fences = re.findall(r"```(?:json)?\s*([\s\S]*?)\s*```", cleaned, re.IGNORECASE)
               for candidate in reversed(code_fences):
                   try:
@@ -548,7 +537,6 @@ jobs:
                   except Exception:
                       pass
 
-              # Priority 2: Direct full parse
               try:
                   parsed = deep_repair(json.loads(cleaned))
                   if not require_beats or is_valid_recap_json(parsed):
@@ -556,7 +544,6 @@ jobs:
               except Exception:
                   pass
 
-              # Priority 3: Scan all balanced top-level JSON objects/arrays and pick the best match
               candidates = []
               i = 0
               n = len(cleaned)
@@ -710,217 +697,218 @@ jobs:
               raise RuntimeError(f"Response timed out after {max_wait}s.")
 
           # ------------------ PROMPT 1 BUILDER & OUTPUT NORMALIZER ------------------
-          PROMPT_1_TEMPLATE = """# PROMPT 1 — MOVIE / SERIES RECAP GENERATOR
+          PROMPT_1_TEMPLATE = textwrap.dedent("""\
+          # PROMPT 1 — MOVIE / SERIES RECAP GENERATOR
 
-## ROLE
-Act as a professional YouTube movie/series recap writer and video editing planner. Convert the supplied timestamped transcript into an engaging, concise Hindi voice-over recap with carefully selected original-footage clips.
+          ## ROLE
+          Act as a professional YouTube movie/series recap writer and video editing planner. Convert the supplied timestamped transcript into an engaging, concise Hindi voice-over recap with carefully selected original-footage clips.
 
-The goal is to tell the complete important story naturally, not rewrite every dialogue or describe every scene.
+          The goal is to tell the complete important story naturally, not rewrite every dialogue or describe every scene.
 
-## 1. PRODUCTION DETAILS AND RESEARCH
+          ## 1. PRODUCTION DETAILS AND RESEARCH
 
-Use the supplied title and production details. If web search is available, research the exact movie/series and episode to verify:
-- Canonical character names, spellings, aliases, relationships and identities.
-- Story references or context needed to understand ambiguous dialogue.
-- Incorrect or inconsistent speech-to-text names.
+          Use the supplied title and production details. If web search is available, research the exact movie/series and episode to verify:
+          - Canonical character names, spellings, aliases, relationships and identities.
+          - Story references or context needed to understand ambiguous dialogue.
+          - Incorrect or inconsistent speech-to-text names.
 
-Normalize misspelled names only when research or context reliably confirms the intended character. Do not create separate characters because the transcript spells one name differently.
+          Normalize misspelled names only when research or context reliably confirms the intended character. Do not create separate characters because the transcript spells one name differently.
 
-Research should clarify the supplied transcript, never replace it. Do not introduce events absent from the supplied material or reveal future spoilers. Never claim research was performed if search was unavailable or unused.
+          Research should clarify the supplied transcript, never replace it. Do not introduce events absent from the supplied material or reveal future spoilers. Never claim research was performed if search was unavailable or unused.
 
-Use only the production details explicitly provided. For missing episode numbers, part identifiers or target duration, use null or an appropriate neutral value. Never invent them.
+          Use only the production details explicitly provided. For missing episode numbers, part identifiers or target duration, use null or an appropriate neutral value. Never invent them.
 
-## 2. UNDERSTAND THE STORY BEFORE WRITING
+          ## 2. UNDERSTAND THE STORY BEFORE WRITING
 
-Read the entire supplied transcript before generating narration.
+          Read the entire supplied transcript before generating narration.
 
-First understand the sequence of events, characters, relationships, motivations, conflicts, revelations and consequences. Then decide what deserves narration.
+          First understand the sequence of events, characters, relationships, motivations, conflicts, revelations and consequences. Then decide what deserves narration.
 
-Use these priorities:
-- **Essential:** Main plot developments, important actions, revelations and turning points.
-- **Important:** Character relationships, motives and context necessary to understand the plot.
-- **Optional:** Details that improve continuity but do not significantly affect the story.
-- **Skip:** Filler, repetitive dialogue, unnecessary flirting, casual banter and insignificant reactions.
+          Use these priorities:
+          - **Essential:** Main plot developments, important actions, revelations and turning points.
+          - **Important:** Character relationships, motives and context necessary to understand the plot.
+          - **Optional:** Details that improve continuity but do not significantly affect the story.
+          - **Skip:** Filler, repetitive dialogue, unnecessary flirting, casual banter and insignificant reactions.
 
-Do not narrate the transcript line by line. Combine related dialogue exchanges into coherent story developments. Spend narration time on what actually changes the story.
+          Do not narrate the transcript line by line. Combine related dialogue exchanges into coherent story developments. Spend narration time on what actually changes the story.
 
-Be especially careful with dialogue intent:
-- Distinguish sarcasm, jokes, rhetorical questions and hypothetical statements from real events.
-- Do not turn a sarcastic or mock objection into an actual objection.
-- Distinguish suggestions from decisions and accusations from established facts.
-- Do not invent actions, reactions, agreements, motivations or conclusions.
-- Attribute uncertain claims to the character making them rather than presenting them as facts.
+          Be especially careful with dialogue intent:
+          - Distinguish sarcasm, jokes, rhetorical questions and hypothetical statements from real events.
+          - Do not turn a sarcastic or mock objection into an actual objection.
+          - Distinguish suggestions from decisions and accusations from established facts.
+          - Do not invent actions, reactions, agreements, motivations or conclusions.
+          - Attribute uncertain claims to the character making them rather than presenting them as facts.
 
-## 3. NARRATION LENGTH AND PACING
+          ## 3. NARRATION LENGTH AND PACING
 
-Use approximately 130–150 spoken Hindi words per minute.
+          Use approximately 130–150 spoken Hindi words per minute.
 
-| Target duration | Approximate word count |
-|---|---:|
-| 5 minutes | 650–750 |
-| 10 minutes | 1,300–1,500 |
-| 15 minutes | 1,950–2,250 |
-| 20 minutes | 2,600–3,000 |
+          | Target duration | Approximate word count |
+          |---|---:|
+          | 5 minutes | 650–750 |
+          | 10 minutes | 1,300–1,500 |
+          | 15 minutes | 1,950–2,250 |
+          | 20 minutes | 2,600–3,000 |
 
-Distribute narration naturally across the available story. Do not force every beat to have equal length.
+          Distribute narration naturally across the available story. Do not force every beat to have equal length.
 
-If the transcript contains only a short section, narrate only that section. Never invent or pad events to reach the requested duration.
+          If the transcript contains only a short section, narrate only that section. Never invent or pad events to reach the requested duration.
 
-Calculate each beat's estimated narration duration based on its word count and the speaking rate.
+          Calculate each beat's estimated narration duration based on its word count and the speaking rate.
 
-## 4. HINDI NARRATION STYLE
+          ## 4. HINDI NARRATION STYLE
 
-Write entirely in natural, conversational Hindi using Devanagari script.
+          Write entirely in natural, conversational Hindi using Devanagari script.
 
-- Use a compelling YouTube storyteller style.
-- Keep sentences clear, fluent and easy to speak.
-- Use everyday Hindi rather than formal, literary or difficult vocabulary.
-- Write English-origin words in Devanagari, such as पुलिस, ड्रग्स, केस and प्लान.
-- Do not write narration in English or Roman Hindi.
-- Avoid robotic explanations, excessive descriptions and repetitive character introductions.
-- Do not reproduce long dialogue exchanges. Summarize their meaning naturally.
-- Maintain continuity between beats so the narration feels like one connected story.
-- Use transitions only when needed; avoid repeatedly starting with phrases such as "इसके बाद" or "उधर".
+          - Use a compelling YouTube storyteller style.
+          - Keep sentences clear, fluent and easy to speak.
+          - Use everyday Hindi rather than formal, literary or difficult vocabulary.
+          - Write English-origin words in Devanagari, such as पुलिस, ड्रग्स, केस and प्लान.
+          - Do not write narration in English or Roman Hindi.
+          - Avoid robotic explanations, excessive descriptions and repetitive character introductions.
+          - Do not reproduce long dialogue exchanges. Summarize their meaning naturally.
+          - Maintain continuity between beats so the narration feels like one connected story.
+          - Use transitions only when needed; avoid repeatedly starting with phrases such as "इसके बाद" or "उधर".
 
-The narration should sound like someone naturally telling an interesting story, not reading a police report or summarizing a transcript.
+          The narration should sound like someone naturally telling an interesting story, not reading a police report or summarizing a transcript.
 
-## 5. MICRO-LEVEL CLIP SEGMENTATION AND FULL COVERAGE
+          ## 5. MICRO-LEVEL CLIP SEGMENTATION AND FULL COVERAGE
 
-This is a critical video-editing requirement.
+          This is a critical video-editing requirement.
 
-The narration will be converted into audio using TTS. Original footage must visually cover the narration throughout its entire duration.
+          The narration will be converted into audio using TTS. Original footage must visually cover the narration throughout its entire duration.
 
-**Do not provide only one or two clips for a long narration beat.** Each beat must contain enough short clips to cover its complete estimated narration duration.
+          **Do not provide only one or two clips for a long narration beat.** Each beat must contain enough short clips to cover its complete estimated narration duration.
 
-Clip rules:
-- Target approximately 1.5–2.5 seconds per clip.
-- Absolute maximum duration is 3 seconds. Never exceed it.
-- Use more clips for longer narration beats. For example, a 24-second narration should generally have around 10–14 clips, not 2–4.
-- Divide the narration conceptually into small sections and select relevant footage for each section.
-- Think like a video editor creating frequent jump cuts, not like a summarizer selecting one representative shot per scene.
-- Match footage to the meaning being narrated. Select relevant character shots, reactions, actions, expressions, locations, objects and other available visual moments.
-- Prefer visual variety. Avoid repeatedly selecting nearly identical dialogue shots from the same conversation.
-- Clips may be selected from anywhere in the supplied transcript, regardless of their original chronological order.
-- Do not reuse the same timestamp range unnecessarily.
-- Do not select extra clips just to increase their number. Every clip must have a purpose.
+          Clip rules:
+          - Target approximately 1.5–2.5 seconds per clip.
+          - Absolute maximum duration is 3 seconds. Never exceed it.
+          - Use more clips for longer narration beats. For example, a 24-second narration should generally have around 10–14 clips, not 2–4.
+          - Divide the narration conceptually into small sections and select relevant footage for each section.
+          - Think like a video editor creating frequent jump cuts, not like a summarizer selecting one representative shot per scene.
+          - Match footage to the meaning being narrated. Select relevant character shots, reactions, actions, expressions, locations, objects and other available visual moments.
+          - Prefer visual variety. Avoid repeatedly selecting nearly identical dialogue shots from the same conversation.
+          - Clips may be selected from anywhere in the supplied transcript, regardless of their original chronological order.
+          - Do not reuse the same timestamp range unnecessarily.
+          - Do not select extra clips just to increase their number. Every clip must have a purpose.
 
-**Full coverage calculation:**
-The combined duration of the selected clips for a beat should approximately match or exceed its estimated narration duration. For example, a 24-second narration needs approximately 24 seconds or more of selected footage.
+          **Full coverage calculation:**
+          The combined duration of the selected clips for a beat should approximately match or exceed its estimated narration duration. For example, a 24-second narration needs approximately 24 seconds or more of selected footage.
 
-A beat is not adequately covered just because it has a few relevant clips.
+          A beat is not adequately covered just because it has a few relevant clips.
 
-If enough reliable footage cannot be identified from the supplied transcript, use the available clips and leave the remaining coverage unresolved. Never fabricate timestamps or footage to satisfy the duration requirement.
+          If enough reliable footage cannot be identified from the supplied transcript, use the available clips and leave the remaining coverage unresolved. Never fabricate timestamps or footage to satisfy the duration requirement.
 
-## 6. TIMESTAMP AND VISUAL ACCURACY
+          ## 6. TIMESTAMP AND VISUAL ACCURACY
 
-- Use only timestamps present in the supplied transcript.
-- Every clip must have a valid start and end timestamp.
-- Duration must equal end minus start.
-- Never invent timestamps, extend clip boundaries arbitrarily or use footage outside the supplied transcript.
-- Transcript timestamps identify dialogue/audio timing; they do not verify the camera shot or actual visuals.
-- Describe only what the transcript establishes. If suggesting a possible visual, clearly label it as unverified.
-- Do not claim a particular close-up, reaction, camera angle, movement or object shot exists unless the supplied material confirms it.
-- If a timestamp or scene reference is ambiguous, do not pretend certainty.
+          - Use only timestamps present in the supplied transcript.
+          - Every clip must have a valid start and end timestamp.
+          - Duration must equal end minus start.
+          - Never invent timestamps, extend clip boundaries arbitrarily or use footage outside the supplied transcript.
+          - Transcript timestamps identify dialogue/audio timing; they do not verify the camera shot or actual visuals.
+          - Describe only what the transcript establishes. If suggesting a possible visual, clearly label it as unverified.
+          - Do not claim a particular close-up, reaction, camera angle, movement or object shot exists unless the supplied material confirms it.
+          - If a timestamp or scene reference is ambiguous, do not pretend certainty.
 
-## 7. BEAT STRUCTURE
+          ## 7. BEAT STRUCTURE
 
-Create meaningful narration beats based on story developments, not arbitrary transcript line counts.
+          Create meaningful narration beats based on story developments, not arbitrary transcript line counts.
 
-Each beat should:
-- Cover one connected development or group of related events.
-- Have narration that flows naturally from the previous beat.
-- Include an appropriate number of micro-clips to cover its complete narration duration.
-- Avoid unnecessary scene breaks. Set `is_scene_bridge` to true only when the beat genuinely connects different scenes or locations.
+          Each beat should:
+          - Cover one connected development or group of related events.
+          - Have narration that flows naturally from the previous beat.
+          - Include an appropriate number of micro-clips to cover its complete narration duration.
+          - Avoid unnecessary scene breaks. Set `is_scene_bridge` to true only when the beat genuinely connects different scenes or locations.
 
-Do not create separate beats for every dialogue exchange. Keep related developments together.
+          Do not create separate beats for every dialogue exchange. Keep related developments together.
 
-## 8. REQUIRED JSON OUTPUT
+          ## 8. REQUIRED JSON OUTPUT
 
-Return valid JSON only. No Markdown fences, explanations or text outside the JSON.
+          Return valid JSON only. No Markdown fences, explanations or text outside the JSON.
 
-Use this exact structure:
+          Use this exact structure:
 
-{
-  "movie_title": "Title",
-  "content_type": "Movie or TV Series",
-  "season": null,
-  "episode": null,
-  "part_identifier": null,
-  "target_minutes": null,
-  "estimated_narration_minutes": 0,
-  "total_beats": 0,
-  "total_words": 0,
-  "characters": [
-    {
-      "name": "Canonical character name",
-      "description": "Brief description of their role in the supplied story"
-    }
-  ],
-  "synopsis": "Concise summary of the supplied story section only.",
-  "beats": [
-    {
-      "beat_id": "B0001",
-      "narration": "Natural conversational Hindi narration in Devanagari.",
-      "word_count": 0,
-      "estimated_duration": 0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0001",
-          "start": 0.0,
-          "end": 2.0,
-          "duration": 2.0,
-          "scene_context": "What the transcript establishes about this moment. Mark any visual suggestion as unverified."
-        }
-      ]
-    }
-  ]
-}
+          {
+            "movie_title": "Title",
+            "content_type": "Movie or TV Series",
+            "season": null,
+            "episode": null,
+            "part_identifier": null,
+            "target_minutes": null,
+            "estimated_narration_minutes": 0,
+            "total_beats": 0,
+            "total_words": 0,
+            "characters": [
+              {
+                "name": "Canonical character name",
+                "description": "Brief description of their role in the supplied story"
+              }
+            ],
+            "synopsis": "Concise summary of the supplied story section only.",
+            "beats": [
+              {
+                "beat_id": "B0001",
+                "narration": "Natural conversational Hindi narration in Devanagari.",
+                "word_count": 0,
+                "estimated_duration": 0,
+                "is_scene_bridge": false,
+                "clips": [
+                  {
+                    "clip_id": "C0001",
+                    "start": 0.0,
+                    "end": 2.0,
+                    "duration": 2.0,
+                    "scene_context": "What the transcript establishes about this moment. Mark any visual suggestion as unverified."
+                  }
+                ]
+              }
+            ]
+          }
 
-## 9. FINAL QUALITY CHECK
+          ## 9. FINAL QUALITY CHECK
 
-Before returning JSON, verify:
+          Before returning JSON, verify:
 
-**Story and narration**
-- The complete supplied transcript was considered before selecting story events.
-- Important developments are included and insignificant dialogue is removed.
-- No events, motivations or facts have been invented.
-- Character names are consistent and correctly normalized where confirmed.
-- Narration is natural, fluent Hindi in Devanagari.
-- Beats connect logically without unnecessary repetition.
+          **Story and narration**
+          - The complete supplied transcript was considered before selecting story events.
+          - Important developments are included and insignificant dialogue is removed.
+          - No events, motivations or facts have been invented.
+          - Character names are consistent and correctly normalized where confirmed.
+          - Narration is natural, fluent Hindi in Devanagari.
+          - Beats connect logically without unnecessary repetition.
 
-**Editing and clip coverage**
-- Every beat has enough micro-clips for its narration duration.
-- Combined clip duration approximately covers the entire beat's estimated narration duration.
-- Clips are preferably 1.5–2.5 seconds and never exceed 3 seconds.
-- Clips provide visual variety rather than repeating nearly identical shots.
-- All timestamps come from the supplied transcript.
-- Unverified visuals are not presented as confirmed footage.
+          **Editing and clip coverage**
+          - Every beat has enough micro-clips for its narration duration.
+          - Combined clip duration approximately covers the entire beat's estimated narration duration.
+          - Clips are preferably 1.5–2.5 seconds and never exceed 3 seconds.
+          - Clips provide visual variety rather than repeating nearly identical shots.
+          - All timestamps come from the supplied transcript.
+          - Unverified visuals are not presented as confirmed footage.
 
-**JSON**
-- JSON is valid and follows the exact schema.
-- Word counts, durations and total counts are calculated correctly.
-- Missing production details are not invented.
-- Every beat contains a clips array, which may be empty only when no reliable timestamp can be identified.
+          **JSON**
+          - JSON is valid and follows the exact schema.
+          - Word counts, durations and total counts are calculated correctly.
+          - Missing production details are not invented.
+          - Every beat contains a clips array, which may be empty only when no reliable timestamp can be identified.
 
-## INPUT
+          ## INPUT
 
-Movie/Series Title: __MOVIE_TITLE__
+          Movie/Series Title: __MOVIE_TITLE__
 
-Content Type: __CONTENT_TYPE__
+          Content Type: __CONTENT_TYPE__
 
-Season: __SEASON__
+          Season: __SEASON__
 
-Episode: __EPISODE__
+          Episode: __EPISODE__
 
-Part Identifier: __PART_IDENTIFIER__
+          Part Identifier: __PART_IDENTIFIER__
 
-Target Narration Duration: __TARGET_DURATION__
+          Target Narration Duration: __TARGET_DURATION__
 
-Previous Story Context: __PREVIOUS_CONTEXT__
+          Previous Story Context: __PREVIOUS_CONTEXT__
 
-Timestamped Transcript:
-__TRANSCRIPT_JSON__"""
+          Timestamped Transcript:
+          __TRANSCRIPT_JSON__""").strip()
 
           def load_transcript(transcript_path="transcript.json"):
               p = Path(transcript_path)

@@ -58,6 +58,10 @@ on:
         description: "Max duration per video cut (Fair Use safe <= 3.0s)"
         required: true
         default: "3.0"
+      max_prompt_chars:
+        description: "Hard max characters per Duck.ai prompt (<= 16000)"
+        required: true
+        default: "15500"
       hints:
         description: "Previous Story Context / character or plot notes"
         required: false
@@ -136,6 +140,7 @@ jobs:
           INPUT_PART: ${{ inputs.part_identifier }}
           TARGET_MINUTES: ${{ inputs.target_minutes }}
           MAX_CLIP_SEC: ${{ inputs.max_clip_sec }}
+          MAX_PROMPT_CHARS: ${{ inputs.max_prompt_chars }}
           INPUT_HINTS: ${{ inputs.hints }}
           TEXT_WAIT_SECONDS: "420"
         run: |
@@ -163,6 +168,7 @@ jobs:
           INPUT_PART = os.environ.get("INPUT_PART", "").strip()
           TARGET_MINUTES = os.environ.get("TARGET_MINUTES", "12").strip()
           MAX_CLIP_DURATION = float(os.environ.get("MAX_CLIP_SEC", "3.0"))
+          MAX_PROMPT_CHARS = min(int(os.environ.get("MAX_PROMPT_CHARS", "15500")), 15900)
           INPUT_HINTS = os.environ.get("INPUT_HINTS", "").strip()
           TEXT_WAIT = int(os.environ.get("TEXT_WAIT_SECONDS", "420"))
           MAX_ATTEMPTS = 3
@@ -273,7 +279,7 @@ jobs:
                   if not clicked:
                       break
 
-          def configure_duckai_settings(page, target_model="Claude Haiku 5.5", enable_reasoning=True):
+          def configure_duckai_settings(page, target_model="Claude Haiku 5.5", enable_reasoning=True, take_verify_snap=True):
               log(f"Configuring Duck.ai settings -> Model: '{target_model}' | Reasoning: {enable_reasoning}")
               dismiss_duckai_modals(page)
               page.wait_for_timeout(1500)
@@ -315,22 +321,22 @@ jobs:
                       settings_loc.first.click(timeout=4000)
                       page.wait_for_timeout(1200)
 
-              visible_options = page.evaluate("""() => {
-                  const els = Array.from(document.querySelectorAll('[role="menuitem"], [role="menuitemradio"], [role="option"], [role="radio"], [role="switch"], button, label'));
-                  return els
-                      .filter(el => el.offsetParent !== null)
-                      .map(el => ({
-                          tag: el.tagName,
-                          role: el.getAttribute('role') || '',
-                          aria: el.getAttribute('aria-label') || '',
-                          checked: el.getAttribute('aria-checked') || el.getAttribute('aria-pressed') || '',
-                          text: (el.innerText || '').trim().replace(/\\s+/g, ' ')
-                      }))
-                      .filter(x => x.text.length > 0 && x.text.length < 120);
-              }""")
-              log(f"Visible UI options during settings config: {json.dumps(visible_options, ensure_ascii=False)}")
-
-              snap(page, "settings_dropdown_open", save_html=False)
+              if take_verify_snap:
+                  visible_options = page.evaluate("""() => {
+                      const els = Array.from(document.querySelectorAll('[role="menuitem"], [role="menuitemradio"], [role="option"], [role="radio"], [role="switch"], button, label'));
+                      return els
+                          .filter(el => el.offsetParent !== null)
+                          .map(el => ({
+                              tag: el.tagName,
+                              role: el.getAttribute('role') || '',
+                              aria: el.getAttribute('aria-label') || '',
+                              checked: el.getAttribute('aria-checked') || el.getAttribute('aria-pressed') || '',
+                              text: (el.innerText || '').trim().replace(/\\s+/g, ' ')
+                          }))
+                          .filter(x => x.text.length > 0 && x.text.length < 120);
+                  }""")
+                  log(f"Visible UI options during settings config: {json.dumps(visible_options, ensure_ascii=False)}")
+                  snap(page, "settings_dropdown_open", save_html=False)
 
               model_selected = False
               target_lower = target_model.lower()
@@ -404,7 +410,8 @@ jobs:
                                   page.wait_for_timeout(1000)
                                   if try_enable_reasoning():
                                       reasoning_toggled = True
-                                      snap(page, "settings_reasoning_panel", save_html=False)
+                                      if take_verify_snap:
+                                          snap(page, "settings_reasoning_panel", save_html=False)
                                   page.keyboard.press("Escape")
                                   page.wait_for_timeout(500)
                                   break
@@ -420,7 +427,8 @@ jobs:
                   pass
               page.wait_for_timeout(1000)
 
-              snap(page, "model_settings_verified", save_html=True)
+              if take_verify_snap:
+                  snap(page, "model_settings_verified", save_html=True)
 
           # ------------------ PLAYWRIGHT UTILITIES ------------------
           def get_prompt_box(page):
@@ -696,7 +704,7 @@ jobs:
 
               raise RuntimeError(f"Response timed out after {max_wait}s.")
 
-          # ------------------ PROMPT 1 BUILDER & OUTPUT NORMALIZER ------------------
+          # ------------------ PROMPT 1 TEMPLATE & 16K CHUNK BUILDER ------------------
           PROMPT_1_TEMPLATE = textwrap.dedent("""\
           # PROMPT 1 — MOVIE / SERIES RECAP GENERATOR
 
@@ -917,36 +925,113 @@ jobs:
               with open(p, "r", encoding="utf-8") as f:
                   return json.load(f)
 
-          def build_prompt_1(transcript_data):
-              movie_title = INPUT_MOVIE_TITLE or str(transcript_data.get("movie_title") or "Untitled")
-              target_dur = f"{TARGET_MINUTES} minutes" if TARGET_MINUTES else "null"
-
+          def render_prompt_1(movie_title, target_dur_text, prev_context, chunk_obj):
               prompt = PROMPT_1_TEMPLATE
               prompt = prompt.replace("__MOVIE_TITLE__", movie_title)
               prompt = prompt.replace("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "")
               prompt = prompt.replace("__SEASON__", INPUT_SEASON or "")
               prompt = prompt.replace("__EPISODE__", INPUT_EPISODE or "")
               prompt = prompt.replace("__PART_IDENTIFIER__", INPUT_PART or "")
-              prompt = prompt.replace("__TARGET_DURATION__", target_dur)
-              prompt = prompt.replace("__PREVIOUS_CONTEXT__", INPUT_HINTS or "")
-              prompt = prompt.replace("__TRANSCRIPT_JSON__", json.dumps(transcript_data, ensure_ascii=False, indent=2))
-              return movie_title, prompt
+              prompt = prompt.replace("__TARGET_DURATION__", target_dur_text)
+              prompt = prompt.replace("__PREVIOUS_CONTEXT__", prev_context)
+              # Compact JSON maximizes how many transcript segments fit inside the 16k limit
+              prompt = prompt.replace("__TRANSCRIPT_JSON__", json.dumps(chunk_obj, ensure_ascii=False, separators=(",", ":")))
+              return prompt
 
-          def normalize_prompt1_output(raw_obj, fallback_title):
+          def build_next_chunk_from_index(transcript_data, start_idx, prev_context):
+              movie_title = INPUT_MOVIE_TITLE or str(transcript_data.get("movie_title") or "Untitled")
+              total_duration = float(transcript_data.get("duration") or 0.0)
+              all_segments = transcript_data.get("segments", [])
+
+              if start_idx >= len(all_segments):
+                  return None, start_idx
+
+              # Estimate proportional target duration for this slice later; reserve ~120 chars buffer for context/duration text
+              base_obj = {
+                  "movie_title": movie_title,
+                  "duration": total_duration,
+                  "segments": []
+              }
+              # Keep prev_context bounded to <= 1200 chars so segments have plenty of room
+              bounded_context = prev_context[-1200:] if len(prev_context) > 1200 else prev_context
+              base_prompt = render_prompt_1(movie_title, f"{TARGET_MINUTES} minutes (section)" if TARGET_MINUTES else "null", bounded_context, base_obj)
+              budget_for_segments = MAX_PROMPT_CHARS - len(base_prompt) - 100
+
+              if budget_for_segments < 500:
+                  raise RuntimeError(f"Prompt template + context leaves insufficient room ({budget_for_segments} chars) under {MAX_PROMPT_CHARS} char limit.")
+
+              selected_segments = []
+              used_chars = 0
+              idx = start_idx
+
+              while idx < len(all_segments):
+                  seg = all_segments[idx]
+                  seg_str = json.dumps(seg, ensure_ascii=False, separators=(",", ":"))
+                  extra_len = len(seg_str) + (1 if selected_segments else 0)
+                  if used_chars + extra_len > budget_for_segments:
+                      if not selected_segments:
+                          # Force at least 1 segment even if unusually huge
+                          selected_segments.append(seg)
+                          idx += 1
+                      break
+                  selected_segments.append(seg)
+                  used_chars += extra_len
+                  idx += 1
+
+              chunk_start = float(selected_segments[0].get("start", 0.0))
+              chunk_end = float(selected_segments[-1].get("end", chunk_start))
+              chunk_span = max(0.0, chunk_end - chunk_start)
+
+              target_dur_text = "null"
+              if TARGET_MINUTES:
+                  try:
+                      total_target_min = float(TARGET_MINUTES)
+                      if total_duration > 0 and chunk_span > 0:
+                          prop_min = max(0.5, round(total_target_min * (chunk_span / total_duration), 1))
+                          target_dur_text = f"~{prop_min} minutes for this transcript section (total video target: {total_target_min} minutes)"
+                      else:
+                          target_dur_text = f"{total_target_min} minutes"
+                  except Exception:
+                      target_dur_text = f"{TARGET_MINUTES} minutes"
+
+              chunk_obj = {
+                  "movie_title": movie_title,
+                  "duration": total_duration,
+                  "segments": selected_segments
+              }
+              final_prompt = render_prompt_1(movie_title, target_dur_text, bounded_context, chunk_obj)
+
+              # Safety guard: trim trailing segment if final string somehow exceeded MAX_PROMPT_CHARS
+              while len(final_prompt) > MAX_PROMPT_CHARS and len(selected_segments) > 1:
+                  selected_segments.pop()
+                  idx -= 1
+                  chunk_obj["segments"] = selected_segments
+                  final_prompt = render_prompt_1(movie_title, target_dur_text, bounded_context, chunk_obj)
+
+              chunk_meta = {
+                  "movie_title": movie_title,
+                  "start_idx": start_idx,
+                  "end_idx": idx,
+                  "segment_count": len(selected_segments),
+                  "time_start": selected_segments[0].get("start"),
+                  "time_end": selected_segments[-1].get("end"),
+                  "prompt_chars": len(final_prompt),
+                  "prompt": final_prompt
+              }
+              return chunk_meta, idx
+
+          def normalize_chunk_beats(raw_obj):
               obj = deep_repair(raw_obj)
               beats = obj.get("beats", [])
-              normalized_beats = []
-              total_words = 0
-              clip_counter = 1
-
-              for b_idx, b in enumerate(beats, 1):
+              norm_beats = []
+              for b in beats:
                   if not isinstance(b, dict):
                       continue
                   narr = str(b.get("narration", "")).strip()
-                  wc = len(narr.split()) if narr else 0
-                  total_words += wc
-                  est_dur = round((wc / 140.0) * 60.0, 2) if wc > 0 else float(b.get("estimated_duration") or 0.0)
-
+                  if not narr:
+                      continue
+                  wc = len(narr.split())
+                  est_dur = round((wc / 140.0) * 60.0, 2)
                   raw_clips = b.get("clips", [])
                   norm_clips = []
                   if isinstance(raw_clips, list):
@@ -962,43 +1047,27 @@ jobs:
                               en = round(st + MAX_CLIP_DURATION, 2)
                               dur = MAX_CLIP_DURATION
                           norm_clips.append({
-                              "clip_id": c.get("clip_id") or f"C{clip_counter:04d}",
                               "start": st,
                               "end": en,
                               "duration": dur,
                               "scene_context": str(c.get("scene_context", "")).strip()
                           })
-                          clip_counter += 1
-
-                  normalized_beats.append({
-                      "beat_id": b.get("beat_id") or f"B{b_idx:04d}",
+                  norm_beats.append({
                       "narration": narr,
                       "word_count": wc,
                       "estimated_duration": b.get("estimated_duration") or est_dur,
                       "is_scene_bridge": bool(b.get("is_scene_bridge", False)),
                       "clips": norm_clips
                   })
-
-              est_minutes = round(total_words / 140.0, 2)
-              target_min_val = None
-              try:
-                  target_min_val = float(TARGET_MINUTES) if TARGET_MINUTES else None
-              except Exception:
-                  target_min_val = None
-
               return {
-                  "movie_title": obj.get("movie_title") or fallback_title,
-                  "content_type": obj.get("content_type") or (INPUT_CONTENT_TYPE or None),
-                  "season": obj.get("season") if obj.get("season") is not None else (INPUT_SEASON or None),
-                  "episode": obj.get("episode") if obj.get("episode") is not None else (INPUT_EPISODE or None),
-                  "part_identifier": obj.get("part_identifier") if obj.get("part_identifier") is not None else (INPUT_PART or None),
-                  "target_minutes": obj.get("target_minutes") if obj.get("target_minutes") is not None else target_min_val,
-                  "estimated_narration_minutes": obj.get("estimated_narration_minutes") or est_minutes,
-                  "total_beats": len(normalized_beats),
-                  "total_words": total_words,
+                  "movie_title": obj.get("movie_title"),
+                  "content_type": obj.get("content_type"),
+                  "season": obj.get("season"),
+                  "episode": obj.get("episode"),
+                  "part_identifier": obj.get("part_identifier"),
                   "characters": obj.get("characters", []),
-                  "synopsis": obj.get("synopsis", ""),
-                  "beats": normalized_beats
+                  "synopsis": str(obj.get("synopsis", "")).strip(),
+                  "beats": norm_beats
               }
 
           # ------------------ PLAYWRIGHT SETUP ------------------
@@ -1053,7 +1122,7 @@ jobs:
                   page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
                   page.wait_for_timeout(3000)
 
-                  configure_duckai_settings(page, TARGET_MODEL, ENABLE_REASONING)
+                  configure_duckai_settings(page, TARGET_MODEL, ENABLE_REASONING, take_verify_snap=True)
 
                   box = get_prompt_box(page)
                   box.wait_for(state="visible", timeout=40000)
@@ -1080,76 +1149,187 @@ jobs:
                       sys.exit(1)
 
               # ==============================================================
-              # MODE: FULL RECAP ENGINE (PROMPT 1)
+              # MODE: FULL RECAP ENGINE (16K CHUNKED PROMPT 1)
               # ==============================================================
-              log("Starting Full Story Explanation Engine (PROMPT 1)...")
+              log("Starting Full Story Explanation Engine (16K-limit chunked PROMPT 1)...")
               transcript_data = load_transcript("transcript.json")
-              movie_title, full_prompt = build_prompt_1(transcript_data)
-              log(f"Loaded transcript for '{movie_title}' | Prompt size: {len(full_prompt)} chars.")
+              total_segments = len(transcript_data.get("segments", []))
+              movie_title = INPUT_MOVIE_TITLE or str(transcript_data.get("movie_title") or "Untitled")
+              log(f"Loaded '{movie_title}': {total_segments} segments | Max prompt limit: {MAX_PROMPT_CHARS} chars.")
 
-              final_output = None
-              for attempt in range(1, MAX_ATTEMPTS + 1):
-                  current_chat_state["raw_stream"].clear()
-                  current_chat_state["chat_done"] = False
-                  current_chat_state["rate_limited"] = False
-
+              pipeline_state = {
+                  "next_segment_idx": 0,
+                  "chunk_num": 0,
+                  "beats": [],
+                  "characters": {},
+                  "synopses": [],
+                  "last_narration": ""
+              }
+              if STATE_FILE.exists():
                   try:
-                      page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
-                      page.wait_for_timeout(3000)
+                      with open(STATE_FILE, "r", encoding="utf-8") as sf:
+                          loaded = json.load(sf)
+                          if isinstance(loaded, dict):
+                              pipeline_state = deep_repair(loaded)
+                  except Exception:
+                      pass
 
-                      configure_duckai_settings(page, TARGET_MODEL, ENABLE_REASONING)
+              verify_snap_taken = False
 
-                      box = get_prompt_box(page)
-                      box.wait_for(state="visible", timeout=40000)
+              while pipeline_state["next_segment_idx"] < total_segments:
+                  cur_idx = pipeline_state["next_segment_idx"]
+                  chunk_num = pipeline_state["chunk_num"] + 1
 
-                      log(f"Submitting PROMPT 1 (attempt {attempt}/{MAX_ATTEMPTS})...")
-                      submit_prompt(page, box, full_prompt, context)
+                  # Build Previous Story Context from user hints + accumulated synopsis + last narration
+                  ctx_parts = []
+                  if INPUT_HINTS:
+                      ctx_parts.append(INPUT_HINTS)
+                  if pipeline_state.get("synopses"):
+                      ctx_parts.append("Story so far: " + " ".join(pipeline_state["synopses"][-3:]))
+                  if pipeline_state.get("last_narration"):
+                      ctx_parts.append("Last narration line: " + pipeline_state["last_narration"])
+                  prev_ctx = " | ".join(ctx_parts).strip()
 
-                      confirmed = False
-                      for _ in range(12):
-                          page.wait_for_timeout(1000)
-                          if "chatID=" in page.url or len(current_chat_state["raw_stream"]) > 0:
-                              confirmed = True
-                              break
-                          stop_btn = page.locator("button:has-text('Stop generating'), button:has-text('Stop')")
-                          if stop_btn.count() > 0 and stop_btn.first.is_visible():
-                              confirmed = True
-                              break
-                          click_ask_button(page)
-                          box.press("Enter")
-
-                      if not confirmed:
-                          snap(page, f"fail_submit_att_{attempt}")
-                          raise RuntimeError("Prompt submission not acknowledged by Duck.ai.")
-
-                      raw_resp = wait_for_response(page, current_chat_state, max_wait=TEXT_WAIT, expect_beats=True)
-                      (DEBUG_DIR / f"raw_response_att_{attempt}.txt").write_text(raw_resp, encoding="utf-8")
-
-                      parsed_json = parse_first_balanced_json(raw_resp, require_beats=True)
-                      if not is_valid_recap_json(parsed_json):
-                          snap(page, f"bad_json_att_{attempt}")
-                          raise RuntimeError(f"Invalid or empty JSON beats returned: {raw_resp[:250]}")
-
-                      final_output = normalize_prompt1_output(parsed_json, movie_title)
-                      log(f"SUCCESS: Generated {final_output['total_beats']} beats ({final_output['total_words']} words).")
+                  chunk_meta, next_idx = build_next_chunk_from_index(transcript_data, cur_idx, prev_ctx)
+                  if not chunk_meta:
                       break
 
-                  except Exception as err:
-                      log(f"Attempt {attempt} failed: {err}")
-                      snap(page, f"err_att_{attempt}")
-                      if attempt < MAX_ATTEMPTS:
-                          renew_tor()
-                          launch_browser(p)
+                  log(
+                      f"\n=== CHUNK {chunk_num}: segments {chunk_meta['start_idx']+1}..{chunk_meta['end_idx']}/{total_segments} "
+                      f"({chunk_meta['time_start']}s - {chunk_meta['time_end']}s) | Prompt: {chunk_meta['prompt_chars']} chars ==="
+                  )
 
-              if not final_output:
-                  log("CRITICAL: Failed to generate recap output after all attempts.")
-                  if browser:
-                      browser.close()
-                  sys.exit(1)
+                  chunk_success = False
+                  for attempt in range(1, MAX_ATTEMPTS + 1):
+                      current_chat_state["raw_stream"].clear()
+                      current_chat_state["chat_done"] = False
+                      current_chat_state["rate_limited"] = False
 
-              # Save state & final files
-              with open(STATE_FILE, "w", encoding="utf-8") as sf:
-                  json.dump(final_output, sf, indent=2, ensure_ascii=False)
+                      try:
+                          # Start fresh chat per chunk so Duck.ai doesn't overflow conversation history
+                          page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
+                          page.wait_for_timeout(3000)
+
+                          configure_duckai_settings(
+                              page,
+                              TARGET_MODEL,
+                              ENABLE_REASONING,
+                              take_verify_snap=(not verify_snap_taken)
+                          )
+                          verify_snap_taken = True
+
+                          box = get_prompt_box(page)
+                          box.wait_for(state="visible", timeout=40000)
+
+                          log(f"Submitting Chunk {chunk_num} (attempt {attempt}/{MAX_ATTEMPTS})...")
+                          submit_prompt(page, box, chunk_meta["prompt"], context)
+
+                          confirmed = False
+                          for _ in range(12):
+                              page.wait_for_timeout(1000)
+                              if "chatID=" in page.url or len(current_chat_state["raw_stream"]) > 0:
+                                  confirmed = True
+                                  break
+                              stop_btn = page.locator("button:has-text('Stop generating'), button:has-text('Stop')")
+                              if stop_btn.count() > 0 and stop_btn.first.is_visible():
+                                  confirmed = True
+                                  break
+                              click_ask_button(page)
+                              box.press("Enter")
+
+                          if not confirmed:
+                              snap(page, f"fail_submit_chunk_{chunk_num}_att_{attempt}")
+                              raise RuntimeError(f"Chunk {chunk_num} submission not acknowledged.")
+
+                          raw_resp = wait_for_response(page, current_chat_state, max_wait=TEXT_WAIT, expect_beats=True)
+                          (DEBUG_DIR / f"raw_chunk_{chunk_num}_att_{attempt}.txt").write_text(raw_resp, encoding="utf-8")
+
+                          parsed_json = parse_first_balanced_json(raw_resp, require_beats=True)
+                          if not is_valid_recap_json(parsed_json):
+                              snap(page, f"bad_json_chunk_{chunk_num}_att_{attempt}")
+                              raise RuntimeError(f"Invalid or empty JSON beats on Chunk {chunk_num}: {raw_resp[:220]}")
+
+                          norm_chunk = normalize_chunk_beats(parsed_json)
+                          if not norm_chunk["beats"]:
+                              raise RuntimeError(f"Chunk {chunk_num} produced 0 valid beats.")
+
+                          pipeline_state["beats"].extend(norm_chunk["beats"])
+                          if norm_chunk["synopsis"]:
+                              pipeline_state["synopses"].append(norm_chunk["synopsis"])
+                          pipeline_state["last_narration"] = norm_chunk["beats"][-1]["narration"]
+
+                          for ch in norm_chunk.get("characters", []):
+                              if isinstance(ch, dict) and ch.get("name"):
+                                  pipeline_state["characters"][ch["name"]] = ch
+
+                          pipeline_state["next_segment_idx"] = next_idx
+                          pipeline_state["chunk_num"] = chunk_num
+
+                          with open(STATE_FILE, "w", encoding="utf-8") as sf:
+                              json.dump(pipeline_state, sf, indent=2, ensure_ascii=False)
+
+                          log(f"SUCCESS Chunk {chunk_num}: +{len(norm_chunk['beats'])} beats (total: {len(pipeline_state['beats'])})")
+                          chunk_success = True
+                          page.wait_for_timeout(2000)
+                          break
+
+                      except Exception as err:
+                          log(f"Chunk {chunk_num} attempt {attempt} failed: {err}")
+                          snap(page, f"err_chunk_{chunk_num}_att_{attempt}")
+                          if attempt < MAX_ATTEMPTS:
+                              renew_tor()
+                              launch_browser(p)
+
+                  if not chunk_success:
+                      log(f"CRITICAL: Failed on Chunk {chunk_num}. Saving partial progress & exiting.")
+                      break
+
+              # ------------------ MERGE & EXPORT FINAL JSON ------------------
+              final_beats = []
+              total_words = 0
+              clip_counter = 1
+
+              for b_idx, b in enumerate(pipeline_state["beats"], 1):
+                  b_copy = {
+                      "beat_id": f"B{b_idx:04d}",
+                      "narration": b["narration"],
+                      "word_count": b["word_count"],
+                      "estimated_duration": b["estimated_duration"],
+                      "is_scene_bridge": b["is_scene_bridge"],
+                      "clips": []
+                  }
+                  total_words += b["word_count"]
+                  for c in b.get("clips", []):
+                      b_copy["clips"].append({
+                          "clip_id": f"C{clip_counter:04d}",
+                          "start": c["start"],
+                          "end": c["end"],
+                          "duration": c["duration"],
+                          "scene_context": c["scene_context"]
+                      })
+                      clip_counter += 1
+                  final_beats.append(b_copy)
+
+              target_min_val = None
+              try:
+                  target_min_val = float(TARGET_MINUTES) if TARGET_MINUTES else None
+              except Exception:
+                  target_min_val = None
+
+              final_output = {
+                  "movie_title": movie_title,
+                  "content_type": INPUT_CONTENT_TYPE or None,
+                  "season": INPUT_SEASON or None,
+                  "episode": INPUT_EPISODE or None,
+                  "part_identifier": INPUT_PART or None,
+                  "target_minutes": target_min_val,
+                  "estimated_narration_minutes": round(total_words / 140.0, 2),
+                  "total_beats": len(final_beats),
+                  "total_words": total_words,
+                  "characters": list(pipeline_state.get("characters", {}).values()),
+                  "synopsis": " ".join(pipeline_state.get("synopses", [])).strip(),
+                  "beats": final_beats
+              }
 
               Path("story_beats.json").write_text(
                   json.dumps(final_output, ensure_ascii=False, indent=2), encoding="utf-8"
@@ -1174,7 +1354,7 @@ jobs:
                   preview_lines.append("-" * 70)
 
               Path("script_preview.txt").write_text("\n".join(preview_lines), encoding="utf-8")
-              log("GENERATION COMPLETE: story_beats.json and script_preview.txt written.")
+              log(f"GENERATION COMPLETE: {len(final_beats)} beats written to story_beats.json & script_preview.txt.")
 
               if browser:
                   browser.close()

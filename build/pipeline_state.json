@@ -1,420 +1,1756 @@
 {
-  "master_summary": "Chloe and Dan inspect Delilah’s car and talk through the obvious theory: the dead shooter was a drug dealer, and Delilah may have been killed over money. Chloe doubts it’s that simple. Dan brings up the Palmetto Street case and cautions her against getting too invested; Chloe still asks to speak with the witness.  Lucifer tells Chloe he was with Delilah and that he questioned the shooter after the man died. When Chloe asks how Lucifer wasn’t hurt by the bullets, he says he’s immortal. She doesn’t take him seriously and leaves. Lucifer then investigates on his own: at Delilah’s former fiancé Jimmy Barnes’s wedding, he learns about her relationship with rapper Too Vile. He confronts Too Vile, who denies killing Delilah and says her therapist could know about her other relationships.  Chloe follows the shooter’s phone records to Too Vile and arrives to question him. Too Vile recognizes her from her earlier acting career, which catches Lucifer’s attention. The police can’t hold Too Vile on the information they have. Lucifer persuades Chloe to let him help, explaining that he can get people to reveal what they truly want. He tries this with Chloe, but it doesn’t work as expected; she doesn’t respond to his usual influence, which intrigues him. He tells her the therapist may be a useful lead. Before they can pursue it, Chloe gets a call from Trixie’s school and leaves because Trixie has been in a fight.  At school, Trixie explains that another girl had been bullying her, and she describes kicking the girl in a very matter-of-fact, childish way. Lucifer takes her side and gets along with her almost immediately. Trixie asks what he does; when he says he’s the Devil, she laughs at him rather than being frightened. Dan arrives and criticizes Chloe for not having closed the case, then reacts negatively to Lucifer being there. He and Chloe argue briefly, and Dan leaves. Chloe then takes Trixie to her grandmother’s house.",
-  "next_segment_idx": 467,
-  "chunk_num": 3,
+  "master_summary": "In the season premiere, three Night's Watch rangers, Waymar Royce, Gared, and Will, ride beyond the Wall and find ritually arranged animal and human corpses, including a young girl leaning against a tree who turns and opens her blue eyes. A White Walker kills Waymar Royce and Gared, and Will escapes south to report what he saw. At Winterfell, Bran Stark practises archery under his father Ned's eye and misses his shot, while his mother Catelyn and sister Sansa sit sewing. Ned's men bring in Will, a Night's Watch deserter who claims to have seen the White Walkers, and Ned, as Warden of the North, sentences him to death and carries out the execution himself while Bran watches. On the ride back, the party finds a dead stag and a dead direwolf with an antler in its throat, along with five wolf pups, one for each of Ned's trueborn children. As they prepare to leave, Jon Snow, Ned's bastard son, hears a sound and finds a sixth, white pup a few feet away. Viserys Targaryen, the exiled heir to the Iron Throne, arranges for his sister Daenerys to marry the Dothraki warlord Khal Drogo in exchange for an army to help him reclaim the throne, and Daenerys, young and frightened, has little say in the match. King Robert Baratheon then arrives at Winterfell after the death of Jon Arryn, the king's Hand, and asks Ned to become the new Hand, but Ned remains undecided throughout the episode. Robert travels with Cersei and Jaime Lannister, and in Winterfell, Bran climbs a tower and accidentally sees Jaime and Cersei together, exposing their secret incestuous relationship. The episode ends as Jaime pushes Bran out of the tower window to protect the secret and Bran falls.",
+  "next_segment_idx": 399,
+  "chunk_num": 9,
   "beats": [
     {
-      "narration": "डेलिला की कार और सामान से जाँच शुरू होती है। डैन इसे नशे के पैसों से जुड़ी सीधी हत्या मानता है, लेकिन क्लोई को यह कहानी अधूरी लगती है। पुराने पाल्मेटो स्ट्रीट मामले की याद दिलाकर डैन उसे ज़्यादा उलझने से रोकना चाहता है।",
-      "word_count": 44,
-      "estimated_duration": 18.0,
+      "narration": "लेफ्टिनेंट ने बताया यह मेरा केस है। हाँ, क्लो, यह तुम्हारा केस है। लेकिन ज़्यादा समय मत बर्बाद करो, यह आसान केस है। यह खून का नमूना है। यह छोटा-मोटा ड्रग डीलर है। उसकी जेब से यह मिला, और पैकेट डेलिला के पर्स में था। तो यह डेलिला का केस है। डेलिला ने ड्रग्स के पैसे नहीं चुकाए होंगे। उसके गाने अभी भी बज रहे हैं।",
+      "word_count": 66,
+      "estimated_duration": 28.29,
       "is_scene_bridge": false,
       "clips": [
         {
-          "start": 39.3,
-          "end": 41.3,
-          "duration": 2.0,
-          "spoken_text": "डेलिला की कार और सामान",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
+          "start": 13.68,
+          "end": 16.68,
+          "duration": 3.0,
+          "spoken_text": "लेफ्टिनेंट ने बताया",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.29,
           "scene_context": ""
         },
         {
-          "start": 42.75,
-          "end": 45.75,
-          "duration": 3.0,
-          "spoken_text": "से जाँच शुरू होती है।",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 45.75,
-          "end": 48.75,
-          "duration": 3.0,
-          "spoken_text": "डैन इसे नशे के",
+          "start": 16.68,
+          "end": 18.89,
+          "duration": 2.21,
+          "spoken_text": "यह मेरा केस है।",
           "spoken_word_count": 4,
           "estimated_spoken_duration": 1.71,
+          "scene_context": ""
+        },
+        {
+          "start": 18.89,
+          "end": 21.3,
+          "duration": 2.41,
+          "spoken_text": "हाँ, क्लो, यह तुम्हारा केस है।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": ""
+        },
+        {
+          "start": 21.3,
+          "end": 24.3,
+          "duration": 3.0,
+          "spoken_text": "लेकिन ज़्यादा समय मत बर्बाद करो, यह आसान केस है।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.29,
+          "scene_context": ""
+        },
+        {
+          "start": 24.3,
+          "end": 25.3,
+          "duration": 1.0,
+          "spoken_text": "यह खून का नमूना है।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 25.3,
+          "end": 27.3,
+          "duration": 2.0,
+          "spoken_text": "यह छोटा-मोटा ड्रग डीलर है।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 27.3,
+          "end": 29.3,
+          "duration": 2.0,
+          "spoken_text": "उसकी जेब से यह मिला,",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 29.3,
+          "end": 31.3,
+          "duration": 2.0,
+          "spoken_text": "और पैकेट डेलिला के पर्स में था।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": ""
+        },
+        {
+          "start": 31.3,
+          "end": 33.3,
+          "duration": 2.0,
+          "spoken_text": "तो यह डेलिला का केस है।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
           "scene_context": ""
         },
         {
           "start": 33.3,
           "end": 35.3,
           "duration": 2.0,
-          "spoken_text": "पैसों से जुड़ी सीधी हत्या",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
+          "spoken_text": "डेलिला ने ड्रग्स के पैसे नहीं चुकाए होंगे।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.43,
           "scene_context": ""
         },
         {
           "start": 35.3,
           "end": 37.3,
           "duration": 2.0,
-          "spoken_text": "मानता है, लेकिन क्लोई",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 1.71,
-          "scene_context": ""
-        },
-        {
-          "start": 49.87,
-          "end": 52.26,
-          "duration": 2.39,
-          "spoken_text": "को यह कहानी अधूरी लगती है।",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.57,
-          "scene_context": ""
-        },
-        {
-          "start": 52.26,
-          "end": 55.26,
-          "duration": 3.0,
-          "spoken_text": "पुराने पाल्मेटो स्ट्रीट मामले की",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 55.26,
-          "end": 57.26,
-          "duration": 2.0,
-          "spoken_text": "याद दिलाकर डैन उसे ज़्यादा",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 57.26,
-          "end": 60.26,
-          "duration": 3.0,
-          "spoken_text": "उलझने से रोकना चाहता है।",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
+          "spoken_text": "उसके गाने अभी भी बज रहे हैं।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
           "scene_context": ""
         }
       ]
     },
     {
-      "narration": "लूसिफ़र भी जाँच में अपनी जगह बना लेता है। वह डेलिला की आत्मा से बात करने और हत्यारे से सवाल पूछने का दावा करता है। क्लोई इसे गंभीरता से नहीं लेती, पर गोलियों से उसके बच जाने का राज पूछती है।",
-      "word_count": 41,
-      "estimated_duration": 16.0,
+      "narration": "चलो, छोड़ो, कोई गवाह है? लूसिफ़र मॉर्निंगस्टार। क्या यह तुम्हारा असली नाम है? मैं माली नहीं हूँ। उसका तुम्हारे साथ क्या रिश्ता था? वह यहाँ कुछ साल काम करती थी। और मैं कभी-कभी उसके गाने बजाता था। फिर वह बड़ी स्टार बनी, और किसी ने उसे मारने की ठानी। क्या तुम हत्यारे को जानते हो? नहीं, पर मरने से पहले उसने कुछ बताया था। उसने मुझे हत्या की वजह बताई।",
+      "word_count": 70,
+      "estimated_duration": 30.0,
       "is_scene_bridge": false,
       "clips": [
+        {
+          "start": 57.26,
+          "end": 60.26,
+          "duration": 3.0,
+          "spoken_text": "चलो, छोड़ो, कोई गवाह है?",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
         {
           "start": 61.15,
           "end": 64.15,
           "duration": 3.0,
-          "spoken_text": "लूसिफ़र भी जाँच में",
+          "spoken_text": "लूसिफ़र मॉर्निंगस्टार।",
+          "spoken_word_count": 2,
+          "estimated_spoken_duration": 0.86,
+          "scene_context": ""
+        },
+        {
+          "start": 67.24,
+          "end": 70.24,
+          "duration": 3.0,
+          "spoken_text": "क्या यह तुम्हारा असली नाम है?",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": ""
+        },
+        {
+          "start": 70.24,
+          "end": 72.24,
+          "duration": 2.0,
+          "spoken_text": "मैं माली नहीं हूँ।",
           "spoken_word_count": 4,
           "estimated_spoken_duration": 1.71,
           "scene_context": ""
         },
         {
-          "start": 64.24,
-          "end": 67.24,
-          "duration": 3.0,
-          "spoken_text": "अपनी जगह बना लेता है।",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
+          "start": 80.46,
+          "end": 82.46,
+          "duration": 2.0,
+          "spoken_text": "उसका तुम्हारे साथ क्या रिश्ता था?",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
           "scene_context": ""
         },
         {
-          "start": 107.84,
-          "end": 110.84,
-          "duration": 3.0,
-          "spoken_text": "वह डेलिला की आत्मा से",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
+          "start": 82.46,
+          "end": 84.46,
+          "duration": 2.0,
+          "spoken_text": "वह यहाँ कुछ साल काम करती थी।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
           "scene_context": ""
         },
         {
-          "start": 112.38,
-          "end": 115.38,
+          "start": 84.46,
+          "end": 87.46,
           "duration": 3.0,
-          "spoken_text": "बात करने और हत्यारे से",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
+          "spoken_text": "और मैं कभी-कभी उसके गाने बजाता था।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": ""
+        },
+        {
+          "start": 87.46,
+          "end": 90.46,
+          "duration": 3.0,
+          "spoken_text": "फिर वह बड़ी स्टार बनी, और किसी ने उसे मारने की ठानी।",
+          "spoken_word_count": 12,
+          "estimated_spoken_duration": 5.14,
+          "scene_context": ""
+        },
+        {
+          "start": 90.46,
+          "end": 92.46,
+          "duration": 2.0,
+          "spoken_text": "क्या तुम हत्यारे को जानते हो?",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": ""
+        },
+        {
+          "start": 92.46,
+          "end": 95.46,
+          "duration": 3.0,
+          "spoken_text": "नहीं, पर मरने से पहले उसने कुछ बताया था।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.86,
+          "scene_context": ""
+        },
+        {
+          "start": 95.46,
+          "end": 97.46,
+          "duration": 2.0,
+          "spoken_text": "उसने मुझे हत्या की वजह बताई।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": ""
+        }
+      ]
+    },
+    {
+      "narration": "ठीक है। हत्या की वजह बताओ। यह पैसों का मामला है। पैसों का लालच नहीं दिखता? हाँ, बिल्कुल। क्या यह दिलचस्प नहीं है? डेलिला को एक ड्रग डीलर ने गोली मारी। और लगता है डेलिला की छवि भी ख़राब थी। यह कोई रॉकेट साइंस नहीं है। उसने ज़रूर किसी चीज़ में हाथ डाला होगा। उसने डेलिला को मारा और भगवान ने उसे सफ़ाई के लिए मार दिया। यह तुम्हारी दुनिया नहीं है, डिटेक्टिव।",
+      "word_count": 73,
+      "estimated_duration": 31.29,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 113.38,
+          "end": 114.38,
+          "duration": 1.0,
+          "spoken_text": "ठीक है।",
+          "spoken_word_count": 2,
+          "estimated_spoken_duration": 0.86,
           "scene_context": ""
         },
         {
           "start": 115.38,
           "end": 117.38,
           "duration": 2.0,
-          "spoken_text": "सवाल पूछने का दावा करता है।",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.57,
+          "spoken_text": "हत्या की वजह बताओ।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
           "scene_context": ""
         },
         {
-          "start": 157.5,
-          "end": 159.5,
+          "start": 117.38,
+          "end": 119.99,
+          "duration": 2.61,
+          "spoken_text": "यह पैसों का मामला है।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 119.99,
+          "end": 121.99,
           "duration": 2.0,
-          "spoken_text": "क्लोई इसे गंभीरता से",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 1.71,
-          "scene_context": ""
-        },
-        {
-          "start": 159.5,
-          "end": 162.5,
-          "duration": 3.0,
-          "spoken_text": "नहीं लेती, पर गोलियों से",
+          "spoken_text": "पैसों का लालच नहीं दिखता?",
           "spoken_word_count": 5,
           "estimated_spoken_duration": 2.14,
           "scene_context": ""
         },
         {
-          "start": 150.25,
-          "end": 153.25,
-          "duration": 3.0,
-          "spoken_text": "उसके बच जाने का राज पूछती है।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": ""
-        }
-      ]
-    },
-    {
-      "narration": "लूसिफ़र अपनी अमरता बताता है, मगर क्लोई उसे मज़ाक समझकर चली जाती है। वह फिर भी केस छोड़ने को तैयार नहीं। उसकी छेड़छाड़ के पीछे डेलिला के हत्यारे को ढूँढ़ने की ज़िद है, और क्लोई की बेपरवाही उसे और उत्सुक करती है।",
-      "word_count": 42,
-      "estimated_duration": 17.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 154.5,
-          "end": 157.5,
-          "duration": 3.0,
-          "spoken_text": "लूसिफ़र अपनी अमरता बताता है,",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 157.5,
-          "end": 160.5,
-          "duration": 3.0,
-          "spoken_text": "मगर क्लोई उसे मज़ाक समझकर",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 181.98,
-          "end": 183.98,
+          "start": 121.99,
+          "end": 123.99,
           "duration": 2.0,
-          "spoken_text": "चली जाती है। वह फिर भी",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.57,
+          "spoken_text": "हाँ, बिल्कुल।",
+          "spoken_word_count": 2,
+          "estimated_spoken_duration": 0.86,
           "scene_context": ""
         },
         {
-          "start": 187.58,
-          "end": 190.58,
-          "duration": 3.0,
-          "spoken_text": "केस छोड़ने को तैयार नहीं।",
+          "start": 127.99,
+          "end": 129.99,
+          "duration": 2.0,
+          "spoken_text": "क्या यह दिलचस्प नहीं है?",
           "spoken_word_count": 5,
           "estimated_spoken_duration": 2.14,
           "scene_context": ""
         },
         {
-          "start": 170.98,
-          "end": 173.98,
-          "duration": 3.0,
-          "spoken_text": "उसकी छेड़छाड़ के पीछे",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 1.71,
-          "scene_context": ""
-        },
-        {
-          "start": 167.98,
-          "end": 170.98,
-          "duration": 3.0,
-          "spoken_text": "डेलिला के हत्यारे को ढूँढ़ने",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 172.98,
-          "end": 175.98,
-          "duration": 3.0,
-          "spoken_text": "की ज़िद है, और क्लोई",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 183.98,
-          "end": 186.98,
-          "duration": 3.0,
-          "spoken_text": "की बेपरवाही उसे और उत्सुक करती है।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": ""
-        }
-      ]
-    },
-    {
-      "narration": "अपनी पड़ताल में लूसिफ़र डेलिला के पूर्व मंगेतर जिमी बार्न्स की शादी में पहुँचता है। जिमी बताता है कि डेलिला ने कभी उसकी शादी बिगाड़ी थी और वह उससे मिलने गया था। लूसिफ़र उसे शक की नज़र से परखता है, मगर जिमी हत्या से इनकार करता है।",
-      "word_count": 47,
-      "estimated_duration": 19.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 233.99,
-          "end": 236.99,
-          "duration": 3.0,
-          "spoken_text": "अपनी पड़ताल में लूसिफ़र",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 1.71,
-          "scene_context": ""
-        },
-        {
-          "start": 249.66,
-          "end": 252.66,
-          "duration": 3.0,
-          "spoken_text": "डेलिला के पूर्व मंगेतर जिमी",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 252.66,
-          "end": 255.66,
-          "duration": 3.0,
-          "spoken_text": "बार्न्स की शादी में पहुँचता है।",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.57,
-          "scene_context": ""
-        },
-        {
-          "start": 258.66,
-          "end": 261.66,
-          "duration": 3.0,
-          "spoken_text": "जिमी बताता है कि डेलिला",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 260.66,
-          "end": 263.66,
-          "duration": 3.0,
-          "spoken_text": "ने कभी उसकी शादी बिगाड़ी थी",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.57,
-          "scene_context": ""
-        },
-        {
-          "start": 265.66,
-          "end": 268.66,
-          "duration": 3.0,
-          "spoken_text": "और वह उससे मिलने गया था।",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.57,
-          "scene_context": ""
-        },
-        {
-          "start": 273.66,
-          "end": 276.66,
-          "duration": 3.0,
-          "spoken_text": "लूसिफ़र उसे शक की नज़र",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 267.66,
-          "end": 270.66,
-          "duration": 3.0,
-          "spoken_text": "से परखता है, मगर जिमी",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 275.66,
-          "end": 278.66,
-          "duration": 3.0,
-          "spoken_text": "हत्या से इनकार करता है।",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        }
-      ]
-    },
-    {
-      "narration": "जिमी शक की दिशा डेलिला के प्रेमी, रैपर टू वाइल की ओर मोड़ता है। जिमी के इस इशारे के बाद लूसिफ़र सीधे टू वाइल के पास पहुँचता है। वह उससे डेलिला के रिश्तों और उसकी मौत के बारे में सवाल करता है।",
-      "word_count": 42,
-      "estimated_duration": 16.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 290.66,
-          "end": 293.66,
-          "duration": 3.0,
-          "spoken_text": "जिमी शक की दिशा डेलिला",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 292.66,
-          "end": 295.66,
-          "duration": 3.0,
-          "spoken_text": "के प्रेमी, रैपर टू वाइल",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 294.66,
-          "end": 297.66,
-          "duration": 3.0,
-          "spoken_text": "की ओर मोड़ता है।",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 1.71,
-          "scene_context": ""
-        },
-        {
-          "start": 298.66,
-          "end": 301.66,
-          "duration": 3.0,
-          "spoken_text": "जिमी के इस इशारे के बाद",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.57,
-          "scene_context": ""
-        },
-        {
-          "start": 387.74,
-          "end": 390.74,
-          "duration": 3.0,
-          "spoken_text": "लूसिफ़र सीधे टू वाइल के पास पहुँचता है।",
+          "start": 129.99,
+          "end": 131.99,
+          "duration": 2.0,
+          "spoken_text": "डेलिला को एक ड्रग डीलर ने गोली मारी।",
           "spoken_word_count": 8,
           "estimated_spoken_duration": 3.43,
           "scene_context": ""
         },
         {
-          "start": 426.88,
-          "end": 429.88,
+          "start": 131.99,
+          "end": 134.99,
           "duration": 3.0,
-          "spoken_text": "वह उससे डेलिला के रिश्तों",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
+          "spoken_text": "और लगता है डेलिला की छवि भी ख़राब थी।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.86,
           "scene_context": ""
         },
         {
-          "start": 432.14,
-          "end": 434.14,
+          "start": 134.99,
+          "end": 136.99,
           "duration": 2.0,
-          "spoken_text": "और उसकी मौत के बारे में",
+          "spoken_text": "यह कोई रॉकेट साइंस नहीं है।",
           "spoken_word_count": 6,
           "estimated_spoken_duration": 2.57,
           "scene_context": ""
         },
         {
+          "start": 136.99,
+          "end": 138.99,
+          "duration": 2.0,
+          "spoken_text": "उसने ज़रूर किसी चीज़ में हाथ डाला होगा।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.43,
+          "scene_context": ""
+        },
+        {
+          "start": 138.99,
+          "end": 141.99,
+          "duration": 3.0,
+          "spoken_text": "उसने डेलिला को मारा और भगवान ने उसे सफ़ाई के लिए मार दिया।",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 5.57,
+          "scene_context": ""
+        },
+        {
+          "start": 141.99,
+          "end": 143.99,
+          "duration": 2.0,
+          "spoken_text": "यह तुम्हारी दुनिया नहीं है, डिटेक्टिव।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": ""
+        }
+      ]
+    },
+    {
+      "narration": "ठीक है। हत्या की वजह बताओ। यह पैसों का मामला है। पैसों का लालच नहीं दिखता? हाँ, बिल्कुल। क्या यह दिलचस्प नहीं है? डेलिला को एक ड्रग डीलर ने गोली मारी। और लगता है डेलिला की छवि भी ख़राब थी। यह कोई रॉकेट साइंस नहीं है। उसने ज़रूर किसी चीज़ में हाथ डाला होगा।",
+      "word_count": 54,
+      "estimated_duration": 23.14,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 143.99,
+          "end": 146.99,
+          "duration": 3.0,
+          "spoken_text": "ठीक है। हत्या की वजह बताओ।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "क्लो और लूसिफ़र डेलिला की हत्या की वजह पर चर्चा करते हैं।"
+        },
+        {
+          "start": 146.99,
+          "end": 149.99,
+          "duration": 3.0,
+          "spoken_text": "यह पैसों का मामला है।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "जाँच का संदर्भ पैसों के लेन-देन की ओर मुड़ता है।"
+        },
+        {
+          "start": 149.99,
+          "end": 152.99,
+          "duration": 3.0,
+          "spoken_text": "पैसों का लालच नहीं दिखता?",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र लालच के मकसद पर सवाल उठाता है।"
+        },
+        {
+          "start": 152.99,
+          "end": 155.99,
+          "duration": 3.0,
+          "spoken_text": "हाँ, बिल्कुल।",
+          "spoken_word_count": 2,
+          "estimated_spoken_duration": 0.86,
+          "scene_context": "क्लो सहमति जताती है।"
+        },
+        {
+          "start": 155.99,
+          "end": 158.99,
+          "duration": 3.0,
+          "spoken_text": "क्या यह दिलचस्प नहीं है?",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र मामले की दिलचस्पी की बात करता है।"
+        },
+        {
+          "start": 158.99,
+          "end": 161.99,
+          "duration": 3.0,
+          "spoken_text": "डेलिला को एक ड्रग डीलर ने",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "डेलिला की मौत के पीछे ड्रग डीलर का ज़िक्र होता है।"
+        },
+        {
+          "start": 161.99,
+          "end": 164.99,
+          "duration": 3.0,
+          "spoken_text": "गोली मारी।",
+          "spoken_word_count": 2,
+          "estimated_spoken_duration": 0.86,
+          "scene_context": "डेलिला को गोली लगने की पुष्टि होती है।"
+        },
+        {
+          "start": 164.99,
+          "end": 167.99,
+          "duration": 3.0,
+          "spoken_text": "और लगता है डेलिला की छवि",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "डेलिला की साख पर सवाल उठते हैं।"
+        },
+        {
+          "start": 167.99,
+          "end": 170.99,
+          "duration": 3.0,
+          "spoken_text": "भी ख़राब थी।",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.29,
+          "scene_context": "जाँच में डेलिला की बदनामी का संकेत मिलता है।"
+        },
+        {
+          "start": 170.99,
+          "end": 173.99,
+          "duration": 3.0,
+          "spoken_text": "यह कोई रॉकेट साइंस नहीं है।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "लूसिफ़र मामले को सरल बताता है।"
+        },
+        {
+          "start": 173.99,
+          "end": 176.99,
+          "duration": 3.0,
+          "spoken_text": "उसने ज़रूर किसी चीज़ में हाथ डाला होगा।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.43,
+          "scene_context": "संदिग्ध के किसी गलत काम में फँसे होने का अनुमान लगाया जाता है।"
+        }
+      ]
+    },
+    {
+      "narration": "उसने डेलिला को मारा और भगवान ने उसे सफ़ाई के लिए मार दिया। यह तुम्हारी दुनिया नहीं है, डिटेक्टिव। लूसिफ़र अमर होने की बात करता है। क्लो इसे रिपोर्ट में लिखने की बात कहती है। फिर शादी के समारोह में लूसिफ़र अचानक आपत्ति जताता है। जिमी बार्न्स उसे पहचानने की बात पूछता है और याद दिलाता है कि यह निजी आयोजन है।",
+      "word_count": 62,
+      "estimated_duration": 26.57,
+      "is_scene_bridge": true,
+      "clips": [
+        {
+          "start": 176.99,
+          "end": 179.99,
+          "duration": 3.0,
+          "spoken_text": "उसने डेलिला को मारा और भगवान",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "हत्यारे के डेलिला को मारने का संदर्भ आता है।"
+        },
+        {
+          "start": 179.99,
+          "end": 182.99,
+          "duration": 3.0,
+          "spoken_text": "ने उसे सफ़ाई के लिए मार",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "लूसिफ़र हत्यारे की नियति की बात करता है।"
+        },
+        {
+          "start": 182.99,
+          "end": 184.99,
+          "duration": 2.0,
+          "spoken_text": "दिया। यह तुम्हारी दुनिया",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "हत्यारे की मौत का ज़िक्र होता है।"
+        },
+        {
+          "start": 184.99,
+          "end": 187.99,
+          "duration": 3.0,
+          "spoken_text": "नहीं है, डिटेक्टिव। लूसिफ़र अमर होने",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "लूसिफ़र क्लो को उसकी दुनिया से अलग बताता है।"
+        },
+        {
+          "start": 187.99,
+          "end": 188.99,
+          "duration": 1.0,
+          "spoken_text": "की बात",
+          "spoken_word_count": 2,
+          "estimated_spoken_duration": 0.86,
+          "scene_context": "क्लो को डिटेक्टिव कहकर संबोधित किया जाता है।"
+        },
+        {
+          "start": 188.99,
+          "end": 191.99,
+          "duration": 3.0,
+          "spoken_text": "करता है। क्लो इसे रिपोर्ट में",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "लूसिफ़र का अजीब दावा फिर उभरता है।"
+        },
+        {
+          "start": 191.99,
+          "end": 194.99,
+          "duration": 3.0,
+          "spoken_text": "लिखने की बात कहती है। फिर",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "क्लो इस दावे को अपनी रिपोर्ट में दर्ज करने की बात करती है।"
+        },
+        {
+          "start": 194.99,
+          "end": 197.99,
+          "duration": 3.0,
+          "spoken_text": "शादी के समारोह में लूसिफ़र अचानक",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "दृश्य शादी के समारोह में बदलता है।"
+        },
+        {
+          "start": 197.99,
+          "end": 200.99,
+          "duration": 3.0,
+          "spoken_text": "आपत्ति जताता है। जिमी बार्न्स उसे",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "लूसिफ़र समारोह में अचानक आपत्ति करता है।"
+        },
+        {
+          "start": 200.99,
+          "end": 203.99,
+          "duration": 3.0,
+          "spoken_text": "पहचानने की बात पूछता है और",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "जिमी बार्न्स लूसिफ़र की पहचान पर सवाल करता है।"
+        },
+        {
+          "start": 203.99,
+          "end": 206.99,
+          "duration": 3.0,
+          "spoken_text": "याद दिलाता है कि यह निजी",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "जिमी बार्न्स समारोह की निजता की याद दिलाता है।"
+        },
+        {
+          "start": 206.99,
+          "end": 209.99,
+          "duration": 3.0,
+          "spoken_text": "आयोजन है।",
+          "spoken_word_count": 2,
+          "estimated_spoken_duration": 0.86,
+          "scene_context": "लूसिफ़र से पूछा जाता है कि वह निजी समारोह में कैसे आया।"
+        }
+      ]
+    },
+    {
+      "narration": "लूसिफ़र जिमी को याद दिलाता है कि वह उसे भूल नहीं सकता। वह डेलिला की हत्या पर शादी से ठीक पहले सवाल उठाता है। जिमी दुख जताता है, पर कहता है कि डेलिला ने पहले भी उसकी शादी बिगाड़ी थी और इस बार ऐसा नहीं होगा। लूसिफ़र बताता है कि जिमी रात में उससे मिलने गया था।",
+      "word_count": 57,
+      "estimated_duration": 24.43,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 242.99,
+          "end": 245.66,
+          "duration": 2.67,
+          "spoken_text": "लूसिफ़र जिमी को याद दिलाता है",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "लूसिफ़र जिमी से पूछता है कि क्या वह उसे पहचानता है।"
+        },
+        {
+          "start": 245.66,
+          "end": 247.66,
+          "duration": 2.0,
+          "spoken_text": "कि वह उसे भूल नहीं सकता।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "लूसिफ़र कहता है कि जिमी उसे चाहकर भी नहीं भूल सकता।"
+        },
+        {
+          "start": 247.66,
+          "end": 249.66,
+          "duration": 2.0,
+          "spoken_text": "वह डेलिला की हत्या पर",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र डेलिला की हत्या का ज़िक्र करता है।"
+        },
+        {
+          "start": 249.66,
+          "end": 252.66,
+          "duration": 3.0,
+          "spoken_text": "शादी से ठीक पहले सवाल उठाता है।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "लूसिफ़र जिमी की शादी से ठीक पहले के समय पर सवाल उठाता है।"
+        },
+        {
+          "start": 252.66,
+          "end": 254.66,
+          "duration": 2.0,
+          "spoken_text": "जिमी दुख जताता है,",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "जिमी डेलिला की बेरहमी से हुई हत्या पर दुख जताता है।"
+        },
+        {
+          "start": 254.66,
+          "end": 256.66,
+          "duration": 2.0,
+          "spoken_text": "पर कहता है कि डेलिला ने पहले भी",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.43,
+          "scene_context": "जिमी अपनी पुरानी मंगेतर का ज़िक्र करता है।"
+        },
+        {
+          "start": 256.66,
+          "end": 258.66,
+          "duration": 2.0,
+          "spoken_text": "उसकी शादी बिगाड़ी थी और",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "जिमी कहता है कि डेलिला ने उसकी शादी पहले बिगाड़ी थी।"
+        },
+        {
+          "start": 258.66,
+          "end": 260.66,
+          "duration": 2.0,
+          "spoken_text": "इस बार ऐसा नहीं होगा।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "जिमी कहता है कि वह दोबारा अपनी शादी नहीं बिगड़ने देगा।"
+        },
+        {
+          "start": 260.66,
+          "end": 262.66,
+          "duration": 2.0,
+          "spoken_text": "लूसिफ़र बताता है कि जिमी",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र जिमी की पिछली शादी की कोशिश पर तंज करता है।"
+        },
+        {
+          "start": 265.66,
+          "end": 267.66,
+          "duration": 2.0,
+          "spoken_text": "रात में उससे मिलने गया था।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "लूसिफ़र कहता है कि जिमी रात में डेलिला को मनाने गया था।"
+        }
+      ]
+    },
+    {
+      "narration": "जिमी भड़ककर कहता है कि अगर वह डेलिला को मना लेता, तो उसे मार देता। फिर वह बताता है कि डेलिला के अपमानजनक खुलासे से वह आहत था। अब उसकी लॉटरी चलने वाली है। वह एक हिंसक रैपर को असली हत्यारा बताता है, जो डेलिला को पीटता और बंदूक चलाता था। लूसिफ़र अपना परिचय देता है: मेरा नाम लूसिफ़र मॉर्निंगस्टार है।",
+      "word_count": 61,
+      "estimated_duration": 26.14,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 267.66,
+          "end": 269.66,
+          "duration": 2.0,
+          "spoken_text": "जिमी भड़ककर कहता है कि",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "जिमी भड़ककर डेलिला को न मना पाने की बात कहता है।"
+        },
+        {
+          "start": 269.66,
+          "end": 271.66,
+          "duration": 2.0,
+          "spoken_text": "अगर वह डेलिला को मना लेता, तो उसे मार देता।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.29,
+          "scene_context": "जिमी कहता है कि अगर वह डेलिला को मना लेता तो उसे मार देता।"
+        },
+        {
+          "start": 273.66,
+          "end": 275.66,
+          "duration": 2.0,
+          "spoken_text": "फिर वह बताता है कि",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "जिमी अपनी नाराज़गी का कारण बताने लगता है।"
+        },
+        {
+          "start": 280.66,
+          "end": 282.66,
+          "duration": 2.0,
+          "spoken_text": "डेलिला के अपमानजनक खुलासे से",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "जिमी कहता है कि डेलिला के खुलासे ने उसे अपमानित किया।"
+        },
+        {
+          "start": 282.66,
+          "end": 284.66,
+          "duration": 2.0,
+          "spoken_text": "वह आहत था।",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.29,
+          "scene_context": "जिमी अपनी आहत भावना स्वीकार करता है।"
+        },
+        {
+          "start": 284.66,
+          "end": 286.66,
+          "duration": 2.0,
+          "spoken_text": "अब उसकी लॉटरी चलने वाली है।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "जिमी कहता है कि अब उसकी लॉटरी चलने वाली है।"
+        },
+        {
+          "start": 292.66,
+          "end": 294.66,
+          "duration": 2.0,
+          "spoken_text": "वह एक हिंसक रैपर को",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "जिमी डेलिला के रैपर प्रेमी का नाम लेता है।"
+        },
+        {
+          "start": 294.66,
+          "end": 296.66,
+          "duration": 2.0,
+          "spoken_text": "असली हत्यारा बताता है,",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "जिमी रैपर पर डेलिला की हत्या का आरोप लगाता है।"
+        },
+        {
+          "start": 296.66,
+          "end": 299.66,
+          "duration": 3.0,
+          "spoken_text": "जो डेलिला को पीटता और बंदूक चलाता था।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.43,
+          "scene_context": "जिमी बताता है कि रैपर डेलिला को पीटता और बंदूक चलाता था।"
+        },
+        {
+          "start": 305.3,
+          "end": 307.3,
+          "duration": 2.0,
+          "spoken_text": "लूसिफ़र अपना परिचय देता है:",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र अपना परिचय देने लगता है।"
+        },
+        {
+          "start": 307.3,
+          "end": 310.3,
+          "duration": 3.0,
+          "spoken_text": "मेरा नाम लूसिफ़र मॉर्निंगस्टार है।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र अपना पूरा नाम बताता है।"
+        }
+      ]
+    },
+    {
+      "narration": "जिमी भड़ककर कहता है कि अगर वह डेलिला को मना लेता, तो उसे मार देता। फिर वह बताता है कि डेलिला के अपमानजनक खुलासे से वह आहत था।",
+      "word_count": 28,
+      "estimated_duration": 12.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 317.18,
+          "end": 320.18,
+          "duration": 3.0,
+          "spoken_text": "जिमी भड़ककर कहता है कि",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "शादी के दौरान जिमी और लूसिफ़र की बातचीत जारी है।"
+        },
+        {
+          "start": 320.18,
+          "end": 323.18,
+          "duration": 3.0,
+          "spoken_text": "अगर वह डेलिला को मना लेता,",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "जिमी अपनी बात पर ज़ोर देता है।"
+        },
+        {
+          "start": 323.18,
+          "end": 326.18,
+          "duration": 3.0,
+          "spoken_text": "तो उसे मार देता।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "जिमी की धमकी भरी बात पर तनाव बढ़ता है।"
+        },
+        {
+          "start": 326.18,
+          "end": 329.18,
+          "duration": 3.0,
+          "spoken_text": "फिर वह बताता है कि",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "जिमी अपनी भावनाएँ सामने रखता है।"
+        },
+        {
+          "start": 329.18,
+          "end": 332.18,
+          "duration": 3.0,
+          "spoken_text": "डेलिला के अपमानजनक खुलासे से",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "डेलिला के खुलासे को लेकर जिमी की चोट उभरती है।"
+        },
+        {
+          "start": 332.18,
+          "end": 334.43,
+          "duration": 2.25,
+          "spoken_text": "वह आहत था।",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.29,
+          "scene_context": "शादी से पहले का भावनात्मक दृश्य।"
+        }
+      ]
+    },
+    {
+      "narration": "अब उसकी लॉटरी चलने वाली है। वह एक हिंसक रैपर को असली हत्यारा बताता है, जो डेलिला को पीटता और बंदूक चलाता था।",
+      "word_count": 23,
+      "estimated_duration": 9.86,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 352.36,
+          "end": 355.36,
+          "duration": 3.0,
+          "spoken_text": "अब उसकी लॉटरी",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.29,
+          "scene_context": "लूसिफ़र एक घर के बाहर पहुँचता है।"
+        },
+        {
+          "start": 355.36,
+          "end": 358.36,
+          "duration": 3.0,
+          "spoken_text": "चलने वाली है।",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.29,
+          "scene_context": "दरवाज़े पर मौजूद व्यक्ति से बात होती है।"
+        },
+        {
+          "start": 358.36,
+          "end": 361.36,
+          "duration": 3.0,
+          "spoken_text": "वह एक हिंसक रैपर को",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र किसी और पर आरोप लगाता है।"
+        },
+        {
+          "start": 361.36,
+          "end": 364.36,
+          "duration": 3.0,
+          "spoken_text": "असली हत्यारा बताता है,",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "हत्या के संदिग्ध पर बातचीत जारी है।"
+        },
+        {
+          "start": 364.36,
+          "end": 367.36,
+          "duration": 3.0,
+          "spoken_text": "जो डेलिला को पीटता",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "रैपर के हिंसक व्यवहार का ज़िक्र।"
+        },
+        {
+          "start": 367.36,
+          "end": 370.36,
+          "duration": 3.0,
+          "spoken_text": "और बंदूक चलाता था।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "मौन दृश्य; हिंसा का संदर्भ बना रहता है।"
+        }
+      ]
+    },
+    {
+      "narration": "अंदर संगीत चल रहा है और लूसिफ़र उसे घटिया बताकर संगीतकार को चिढ़ा देता है। वह अपना परिचय देता है: मेरा नाम लूसिफ़र मॉर्निंगस्टार है।",
+      "word_count": 25,
+      "estimated_duration": 10.71,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 376.74,
+          "end": 379.74,
+          "duration": 3.0,
+          "spoken_text": "अंदर संगीत चल रहा है",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "अंदर संगीत और उसकी आलोचना पर प्रतिक्रिया।"
+        },
+        {
+          "start": 379.74,
+          "end": 382.74,
+          "duration": 3.0,
+          "spoken_text": "और लूसिफ़र उसे घटिया बताकर",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र संगीत की आलोचना करता है।"
+        },
+        {
+          "start": 382.74,
+          "end": 385.74,
+          "duration": 3.0,
+          "spoken_text": "संगीतकार को चिढ़ा देता है।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "संगीतकार और लूसिफ़र के बीच तकरार बढ़ती है।"
+        },
+        {
+          "start": 385.74,
+          "end": 388.74,
+          "duration": 3.0,
+          "spoken_text": "वह अपना परिचय देता है:",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र खुद का परिचय देता है।"
+        },
+        {
+          "start": 388.74,
+          "end": 391.74,
+          "duration": 3.0,
+          "spoken_text": "मेरा नाम लूसिफ़र मॉर्निंगस्टार है।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र अपना नाम बताता है।"
+        }
+      ]
+    },
+    {
+      "narration": "संदिग्ध से पूछताछ के बीच लूसिफ़र मौत से न डरने और अमर होने का दावा करता है। जब वह डेलिला के बारे में पूछता है, सामने मौजूद महिला उसे खबरों से अनजान बताकर ताना देती है। गोली चलाने की नौबत आती है, पर वह हत्या से इनकार करती है।",
+      "word_count": 49,
+      "estimated_duration": 21.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 421.88,
+          "end": 423.88,
+          "duration": 2.0,
+          "spoken_text": "संदिग्ध से पूछताछ के बीच",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र संदिग्ध से सवाल करता है।"
+        },
+        {
+          "start": 423.88,
+          "end": 425.88,
+          "duration": 2.0,
+          "spoken_text": "लूसिफ़र मौत से न डरने",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "सामने वाला उसकी बात समझने की पुष्टि करता है।"
+        },
+        {
+          "start": 425.88,
+          "end": 426.88,
+          "duration": 1.0,
+          "spoken_text": "और अमर होने का दावा करता है।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "सवाल-जवाब के बाद लूसिफ़र अपनी अमरता का दावा करता है।"
+        },
+        {
+          "start": 432.14,
+          "end": 434.14,
+          "duration": 2.0,
+          "spoken_text": "जब वह डेलिला के बारे में पूछता है,",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.43,
+          "scene_context": "लूसिफ़र डेलिला के बारे में पूछता है।"
+        },
+        {
           "start": 434.14,
           "end": 436.5,
           "duration": 2.36,
-          "spoken_text": "सवाल करता है।",
+          "spoken_text": "सामने मौजूद महिला उसे खबरों से",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "महिला उसे खबरें न देखने की बात कहती है।"
+        },
+        {
+          "start": 436.5,
+          "end": 438.5,
+          "duration": 2.0,
+          "spoken_text": "अनजान बताकर ताना देती है।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "महिला लूसिफ़र को खबरों से अनजान बताती है।"
+        },
+        {
+          "start": 447.47,
+          "end": 449.95,
+          "duration": 2.48,
+          "spoken_text": "गोली चलाने की नौबत आती है,",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "कोई उसे गोली चलाने का आदेश देता है।"
+        },
+        {
+          "start": 449.95,
+          "end": 450.95,
+          "duration": 1.0,
+          "spoken_text": "पर वह हत्या से इनकार करती है।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "महिला कहती है कि उसने हत्या नहीं की।"
+        }
+      ]
+    },
+    {
+      "narration": "वह अपने प्रेमी पर भरोसा जताती है और कहती है कि उससे प्यार करती है। बातचीत में सामने आता है कि प्रेमी किसी और के साथ संबंध में था और कभी-कभी हिंसक भी होता था। महिला इसे उसके प्रेम-प्रसंग से जोड़ती है, मगर उस गुप्त साथी का नाम उसे मालूम नहीं।",
+      "word_count": 51,
+      "estimated_duration": 21.86,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 450.95,
+          "end": 452.95,
+          "duration": 2.0,
+          "spoken_text": "वह अपने प्रेमी पर भरोसा जताती",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "लूसिफ़र पूछता है कि वह उस पर भरोसा क्यों करती है।"
+        },
+        {
+          "start": 452.95,
+          "end": 454.95,
+          "duration": 2.0,
+          "spoken_text": "है और कहती है कि उससे प्यार करती है।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.86,
+          "scene_context": "महिला बताती है कि वह उससे प्यार करती है।"
+        },
+        {
+          "start": 454.95,
+          "end": 456.95,
+          "duration": 2.0,
+          "spoken_text": "बातचीत में सामने आता है कि",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "वे प्रेम और हिंसा के रिश्ते पर बात करते हैं।"
+        },
+        {
+          "start": 456.95,
+          "end": 458.95,
+          "duration": 2.0,
+          "spoken_text": "प्रेमी किसी और के साथ संबंध में था",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.43,
+          "scene_context": "महिला प्रेमी के किसी और के साथ संबंध का ज़िक्र करती है।"
+        },
+        {
+          "start": 458.95,
+          "end": 460.95,
+          "duration": 2.0,
+          "spoken_text": "और कभी-कभी हिंसक भी होता था।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "उसके हिंसक व्यवहार पर सवाल-जवाब होता है।"
+        },
+        {
+          "start": 461.95,
+          "end": 463.95,
+          "duration": 2.0,
+          "spoken_text": "महिला इसे उसके प्रेम-प्रसंग से जोड़ती है,",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "महिला बताती है कि हिंसा के पीछे प्रेम-प्रसंग था।"
+        },
+        {
+          "start": 463.95,
+          "end": 466.95,
+          "duration": 3.0,
+          "spoken_text": "मगर उस गुप्त साथी का नाम",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "महिला प्रेमी के संबंध का कारण बताती है।"
+        },
+        {
+          "start": 475.68,
+          "end": 478.68,
+          "duration": 3.0,
+          "spoken_text": "उसे मालूम नहीं।",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.29,
+          "scene_context": "लूसिफ़र पूछता है कि संबंध किसके साथ था और महिला जवाब देती है।"
+        }
+      ]
+    },
+    {
+      "narration": "वह बताती है कि प्रेमी ने उस व्यक्ति का नाम राज़ रखा था और किसी पर भरोसा नहीं करता था। फिर उसका चिकित्सक सामने आता है, बेवर्ली हिल्स की डॉ. लिंडा, जिनसे वह किसी और के नाम पर अक्सर मिलता था। जानकारी मिलते ही लूसिफ़र धन्यवाद देता है, लेकिन पुलिस छापा मारकर सबको हथियार डालने का आदेश देती है।",
+      "word_count": 59,
+      "estimated_duration": 25.29,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 478.68,
+          "end": 480.68,
+          "duration": 2.0,
+          "spoken_text": "वह बताती है कि प्रेमी ने",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "महिला कहती है कि प्रेमी ने उसे नाम नहीं बताया था।"
+        },
+        {
+          "start": 480.68,
+          "end": 482.68,
+          "duration": 2.0,
+          "spoken_text": "उस व्यक्ति का नाम राज़ रखा था",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "वह बताती है कि प्रेमी ने नाम छिपाकर रखा था।"
+        },
+        {
+          "start": 485.68,
+          "end": 487.68,
+          "duration": 2.0,
+          "spoken_text": "और किसी पर भरोसा नहीं करता था।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "महिला कहती है कि वह किसी पर भरोसा नहीं करता था।"
+        },
+        {
+          "start": 487.68,
+          "end": 489.68,
+          "duration": 2.0,
+          "spoken_text": "फिर उसका चिकित्सक सामने आता है,",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "लूसिफ़र पूछता है कि क्या कोई दोस्त राज़ जानता है और महिला चिकित्सक का ज़िक्र करती है।"
+        },
+        {
+          "start": 491.68,
+          "end": 494.68,
+          "duration": 3.0,
+          "spoken_text": "बेवर्ली हिल्स की डॉ. लिंडा,",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "चिकित्सक का नाम डॉ. लिंडा और बेवर्ली हिल्स का पता बताया जाता है।"
+        },
+        {
+          "start": 494.68,
+          "end": 496.68,
+          "duration": 2.0,
+          "spoken_text": "जिनसे वह किसी और के नाम पर",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "महिला बताती है कि प्रेमी किसी और के नाम पर उनसे मिलता था।"
+        },
+        {
+          "start": 496.68,
+          "end": 498.68,
+          "duration": 2.0,
+          "spoken_text": "अक्सर मिलता था।",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.29,
+          "scene_context": "महिला बताती है कि वह हफ़्ते में पाँच बार मिलने जाता था।"
+        },
+        {
+          "start": 500.68,
+          "end": 503.68,
+          "duration": 3.0,
+          "spoken_text": "जानकारी मिलते ही लूसिफ़र धन्यवाद देता है,",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "लूसिफ़र जानकारी के लिए धन्यवाद देता है।"
+        },
+        {
+          "start": 504.68,
+          "end": 507.68,
+          "duration": 3.0,
+          "spoken_text": "लेकिन पुलिस छापा मारकर सबको",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "एलएपीडी अधिकारी छापा मारकर सबको रोक लेते हैं।"
+        },
+        {
+          "start": 511.68,
+          "end": 513.68,
+          "duration": 2.0,
+          "spoken_text": "हथियार डालने का आदेश देती है।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "एलएपीडी अधिकारी सभी को हथियार ज़मीन पर रखने का आदेश देते हैं।"
+        }
+      ]
+    },
+    {
+      "narration": "हत्यारे के फोन रिकॉर्ड से पता चलता है कि आख़िरी कॉल एडी को की गई थी। अभिनेत्री मानती है कि वह डेलिला के साथ एडी से मिली थी, मगर इस बात से हत्या साबित नहीं होती। फिर भी, एडी से संपर्क उसे जाँच का संदिग्ध बना देता है।",
+      "word_count": 48,
+      "estimated_duration": 20.57,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 513.68,
+          "end": 515.18,
+          "duration": 1.5,
+          "spoken_text": "हत्यारे के फोन रिकॉर्ड से",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "जासूस को जल्दी करने के लिए कहा जाता है।"
+        },
+        {
+          "start": 515.18,
+          "end": 518.18,
+          "duration": 3.0,
+          "spoken_text": "पता चलता है कि आख़िरी कॉल",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "हत्यारे के फोन रिकॉर्ड की जाँच का खुलासा।"
+        },
+        {
+          "start": 518.18,
+          "end": 520.68,
+          "duration": 2.5,
+          "spoken_text": "एडी को की गई थी।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "फोन की आख़िरी कॉल एडी को होने की बात।"
+        },
+        {
+          "start": 520.68,
+          "end": 523.18,
+          "duration": 2.5,
+          "spoken_text": "अभिनेत्री मानती है कि वह",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र सवाल करता है कि जासूस ने यह कड़ी कैसे जोड़ी।"
+        },
+        {
+          "start": 523.18,
+          "end": 526.18,
+          "duration": 3.0,
+          "spoken_text": "डेलिला के साथ एडी से मिली थी,",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "अभिनेत्री बताती है कि वह डेलिला के साथ एडी से मिली थी।"
+        },
+        {
+          "start": 526.18,
+          "end": 529.18,
+          "duration": 3.0,
+          "spoken_text": "मगर इस बात से हत्या",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र अभिनेत्री से डेलिला के बारे में पूछता है।"
+        },
+        {
+          "start": 529.18,
+          "end": 531.68,
+          "duration": 2.5,
+          "spoken_text": "साबित नहीं होती। फिर भी,",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "अभिनेत्री कहती है कि वह इस सवाल का जवाब पहले भी दे चुकी है।"
+        },
+        {
+          "start": 531.68,
+          "end": 534.68,
+          "duration": 3.0,
+          "spoken_text": "एडी से संपर्क उसे जाँच",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "जासूस पूछता है कि अभिनेत्री ने एडी को फोन क्यों किया।"
+        },
+        {
+          "start": 534.68,
+          "end": 537.68,
+          "duration": 3.0,
+          "spoken_text": "का संदिग्ध बना देता है।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "अभिनेत्री बताती है कि एडी उसका ड्रग डीलर है।"
+        }
+      ]
+    },
+    {
+      "narration": "अभिनेत्री कहती है कि हॉलीवुड में एडी को बहुत लोग फोन करते हैं, इसलिए सिर्फ़ उससे बात करना उसे हत्यारा नहीं बनाता। पूछताछ के दौरान लूसिफ़र उसे पुरानी फ़िल्म से पहचान लेता है और उसके न्यूड दृश्य पर टिप्पणी करता है। अभिनेत्री की नाराज़गी बढ़ती है; फिर वह सबको गोली मारने की धमकी देकर लूसिफ़र से अकेले बात करना चाहती है।",
+      "word_count": 61,
+      "estimated_duration": 26.14,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 537.68,
+          "end": 540.38,
+          "duration": 2.7,
+          "spoken_text": "अभिनेत्री कहती है कि हॉलीवुड में",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "अभिनेत्री एडी से मिलने की बात को हल्के में लेने को कहती है।"
+        },
+        {
+          "start": 540.38,
+          "end": 543.38,
+          "duration": 3.0,
+          "spoken_text": "एडी को बहुत लोग फोन करते हैं,",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "जासूस स्पष्ट करता है कि एडी से संपर्क उसे संदिग्ध बनाता है।"
+        },
+        {
+          "start": 543.38,
+          "end": 546.38,
+          "duration": 3.0,
+          "spoken_text": "इसलिए सिर्फ़ उससे बात करना",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "अभिनेत्री पूछती है कि क्या एडी को फोन करने वाला हर व्यक्ति संदिग्ध है।"
+        },
+        {
+          "start": 546.38,
+          "end": 549.38,
+          "duration": 3.0,
+          "spoken_text": "उसे हत्यारा नहीं बनाता।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "अभिनेत्री कहती है कि हॉलीवुड में बहुत लोग एडी को फोन करते हैं।"
+        },
+        {
+          "start": 549.38,
+          "end": 552.38,
+          "duration": 3.0,
+          "spoken_text": "पूछताछ के दौरान लूसिफ़र उसे",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र अभिनेत्री की फ़िल्मों के बारे में पूछने लगता है।"
+        },
+        {
+          "start": 552.38,
+          "end": 555.38,
+          "duration": 3.0,
+          "spoken_text": "पुरानी फ़िल्म से पहचान लेता है",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "अभिनेत्री पूछती है कि लूसिफ़र किस फ़िल्म की बात कर रहा है।"
+        },
+        {
+          "start": 555.38,
+          "end": 558.38,
+          "duration": 3.0,
+          "spoken_text": "और उसके न्यूड दृश्य पर टिप्पणी करता है।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.43,
+          "scene_context": "उसे पुरानी फ़िल्म के दृश्य की याद दिलाई जाती है।"
+        },
+        {
+          "start": 558.38,
+          "end": 561.38,
+          "duration": 3.0,
+          "spoken_text": "अभिनेत्री की नाराज़गी बढ़ती है;",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र फ़िल्म का नाम याद करके अभिनेत्री को पहचानने की बात करता है।"
+        },
+        {
+          "start": 561.38,
+          "end": 564.38,
+          "duration": 3.0,
+          "spoken_text": "फिर वह सबको गोली मारने",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "अभिनेत्री लूसिफ़र से कहती है कि वह केवल सवाल पूछ सकता है।"
+        },
+        {
+          "start": 564.38,
+          "end": 567.38,
+          "duration": 3.0,
+          "spoken_text": "की धमकी देकर लूसिफ़र से",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र फ़िल्म के चर्चित न्यूड दृश्य का ज़िक्र करता है।"
+        },
+        {
+          "start": 567.38,
+          "end": 570.38,
+          "duration": 3.0,
+          "spoken_text": "अकेले बात करना चाहती है।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "अभिनेत्री सबको गोली मारने की धमकी देती है और लूसिफ़र से बात चाहती है।"
+        }
+      ]
+    },
+    {
+      "narration": "छापे के बाद जासूस लूसिफ़र को गिरफ़्तार कर लेती है। वह गिरफ़्तारी को गैरकानूनी कहता है, मगर क्लोई उसे वहीं रुकने और उसके साथ चलने का आदेश देती है। लूसिफ़र हथकड़ियों से निकलकर सबको चौंका देता है।",
+      "word_count": 37,
+      "estimated_duration": 15.86,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 577.74,
+          "end": 579.74,
+          "duration": 2.0,
+          "spoken_text": "छापे के बाद जासूस",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "जासूस से बातचीत जारी है।"
+        },
+        {
+          "start": 579.74,
+          "end": 582.74,
+          "duration": 3.0,
+          "spoken_text": "लूसिफ़र को गिरफ़्तार कर लेती है।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "लूसिफ़र धमकी भरी बात कहता है।"
+        },
+        {
+          "start": 585.41,
+          "end": 588.41,
+          "duration": 3.0,
+          "spoken_text": "वह गिरफ़्तारी को गैरकानूनी कहता है,",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "गिरफ़्तारी की वैधता पर सवाल उठता है।"
+        },
+        {
+          "start": 588.41,
+          "end": 590.41,
+          "duration": 2.0,
+          "spoken_text": "मगर क्लोई उसे वहीं रुकने",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "क्लोई लूसिफ़र को निर्देश देती है।"
+        },
+        {
+          "start": 590.41,
+          "end": 593.41,
+          "duration": 3.0,
+          "spoken_text": "और उसके साथ चलने का आदेश देती है।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.43,
+          "scene_context": "लूसिफ़र आदेश पर हैरानी जताता है।"
+        },
+        {
+          "start": 604.41,
+          "end": 606.41,
+          "duration": 2.0,
+          "spoken_text": "लूसिफ़र हथकड़ियों से निकलकर",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "वह कहता है कि हथकड़ियाँ उसे बाँध नहीं सकतीं।"
+        },
+        {
+          "start": 606.41,
+          "end": 609.41,
+          "duration": 3.0,
+          "spoken_text": "सबको चौंका देता है।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "क्लोई उसकी तरकीब देखकर चकित होती है।"
+        }
+      ]
+    },
+    {
+      "narration": "वह केस सुलझाने और हत्यारे को सज़ा दिलाने में मदद की पेशकश करता है। क्लोई उसे पागल समझकर कार में चुप बैठने को कहती है, पर लूसिफ़र अपनी खास प्रतिभा बताता है: लोगों से बात करके वह उनके बारे में बहुत कुछ जान लेता है, हालांकि उनके मन नहीं पढ़ सकता।",
+      "word_count": 51,
+      "estimated_duration": 21.86,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 611.84,
+          "end": 613.84,
+          "duration": 2.0,
+          "spoken_text": "वह केस सुलझाने और",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "लूसिफ़र जाँच में मदद की बात करता है।"
+        },
+        {
+          "start": 613.84,
+          "end": 615.84,
+          "duration": 2.0,
+          "spoken_text": "हत्यारे को सज़ा दिलाने",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "वह हत्यारे को सज़ा देने की बात जोड़ता है।"
+        },
+        {
+          "start": 615.84,
+          "end": 618.84,
+          "duration": 3.0,
+          "spoken_text": "में मदद की पेशकश करता है।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "क्लोई उसकी साझेदारी की बात पर अविश्वास जताती है।"
+        },
+        {
+          "start": 618.84,
+          "end": 621.84,
+          "duration": 3.0,
+          "spoken_text": "क्लोई उसे पागल समझकर",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "क्लोई उसे कार में चुप बैठने को कहती है।"
+        },
+        {
+          "start": 621.84,
+          "end": 624.84,
+          "duration": 3.0,
+          "spoken_text": "कार में चुप बैठने को कहती है,",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "लूसिफ़र मदद करने पर अड़ा रहता है।"
+        },
+        {
+          "start": 624.84,
+          "end": 627.84,
+          "duration": 3.0,
+          "spoken_text": "पर लूसिफ़र अपनी खास प्रतिभा बताता है:",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "वह अपनी खास प्रतिभा का दावा करता है।"
+        },
+        {
+          "start": 627.84,
+          "end": 630.84,
+          "duration": 3.0,
+          "spoken_text": "लोगों से बात करके वह",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र लोगों को समझने की अपनी क्षमता समझाता है।"
+        },
+        {
+          "start": 630.84,
+          "end": 633.84,
+          "duration": 3.0,
+          "spoken_text": "उनके बारे में बहुत कुछ जान लेता है,",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.43,
+          "scene_context": "क्लोई उसकी क्षमता पर सवाल करती है।"
+        },
+        {
+          "start": 633.84,
+          "end": 636.84,
+          "duration": 3.0,
+          "spoken_text": "हालांकि उनके मन नहीं पढ़ सकता।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "लूसिफ़र स्पष्ट करता है कि वह मन नहीं पढ़ता।"
+        }
+      ]
+    },
+    {
+      "narration": "लूसिफ़र केस सुलझाने और हत्यारे को सज़ा दिलाने में मदद की पेशकश करता है। क्लोई उसे पागल समझकर कार में चुप बैठने को कहती है, पर लूसिफ़र अपनी खास प्रतिभा बताता है: लोगों से बात करके वह उनके बारे में बहुत कुछ जान लेता है, हालांकि उनके मन नहीं पढ़ सकता है।",
+      "word_count": 52,
+      "estimated_duration": 22.29,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 643.84,
+          "end": 646.34,
+          "duration": 2.5,
+          "spoken_text": "लूसिफ़र केस सुलझाने और",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": ""
+        },
+        {
+          "start": 646.34,
+          "end": 648.84,
+          "duration": 2.5,
+          "spoken_text": "हत्यारे को सज़ा दिलाने",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": ""
+        },
+        {
+          "start": 648.84,
+          "end": 651.84,
+          "duration": 3.0,
+          "spoken_text": "में मदद की पेशकश करता है।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": ""
+        },
+        {
+          "start": 651.84,
+          "end": 654.34,
+          "duration": 2.5,
+          "spoken_text": "क्लोई उसे पागल समझकर",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": ""
+        },
+        {
+          "start": 654.34,
+          "end": 657.34,
+          "duration": 3.0,
+          "spoken_text": "कार में चुप बैठने को",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 657.34,
+          "end": 659.84,
+          "duration": 2.5,
+          "spoken_text": "कहती है, पर लूसिफ़र",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": ""
+        },
+        {
+          "start": 659.84,
+          "end": 662.84,
+          "duration": 3.0,
+          "spoken_text": "अपनी खास प्रतिभा बताता है:",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 662.84,
+          "end": 665.34,
+          "duration": 2.5,
+          "spoken_text": "लोगों से बात करके वह",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 665.34,
+          "end": 668.34,
+          "duration": 3.0,
+          "spoken_text": "उनके बारे में बहुत कुछ",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 668.34,
+          "end": 670.84,
+          "duration": 2.5,
+          "spoken_text": "जान लेता है, हालांकि",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": ""
+        },
+        {
+          "start": 670.84,
+          "end": 673.84,
+          "duration": 3.0,
+          "spoken_text": "उनके मन नहीं पढ़ सकता है।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": ""
+        }
+      ]
+    },
+    {
+      "narration": "लूसिफ़र क्लोई से पूछता है कि वह जीवन में सबसे ज़्यादा क्या चाहती है। क्लोई बताती है कि बचपन में वह अपने पिता की तरह पुलिस अधिकारी बनना चाहती थी, ताकि लोगों की मदद कर सके और लोग उसकी बात गंभीरता से लें।",
+      "word_count": 43,
+      "estimated_duration": 18.43,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 675.0,
+          "end": 677.5,
+          "duration": 2.5,
+          "spoken_text": "लूसिफ़र क्लोई से पूछता है",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 677.5,
+          "end": 680.0,
+          "duration": 2.5,
+          "spoken_text": "कि वह जीवन में सबसे",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 680.0,
+          "end": 682.5,
+          "duration": 2.5,
+          "spoken_text": "ज़्यादा क्या चाहती है।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": ""
+        },
+        {
+          "start": 682.5,
+          "end": 685.5,
+          "duration": 3.0,
+          "spoken_text": "क्लोई बताती है कि बचपन",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 685.5,
+          "end": 688.0,
+          "duration": 2.5,
+          "spoken_text": "में वह अपने पिता की",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 688.0,
+          "end": 691.0,
+          "duration": 3.0,
+          "spoken_text": "तरह पुलिस अधिकारी बनना",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": ""
+        },
+        {
+          "start": 691.0,
+          "end": 693.5,
+          "duration": 2.5,
+          "spoken_text": "चाहती थी, ताकि लोगों",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": ""
+        },
+        {
+          "start": 693.5,
+          "end": 696.0,
+          "duration": 2.5,
+          "spoken_text": "की मदद कर सके और",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 696.0,
+          "end": 699.0,
+          "duration": 3.0,
+          "spoken_text": "लोग उसकी बात",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.29,
+          "scene_context": ""
+        },
+        {
+          "start": 699.0,
+          "end": 701.5,
+          "duration": 2.5,
+          "spoken_text": "गंभीरता से लें।",
           "spoken_word_count": 3,
           "estimated_spoken_duration": 1.29,
           "scene_context": ""
@@ -422,509 +1758,398 @@
       ]
     },
     {
-      "narration": "टू वाइल हत्या से इनकार करता है, लेकिन बताता है कि डेलिला का एक गुप्त प्रेमी था। उस रिश्ते की जानकारी शायद उसकी चिकित्सक डॉक्टर लिंडा के पास हो। तभी क्लोई पुलिस के साथ पहुँचती है; फोन रिकॉर्ड ने उसे टू वाइल तक पहुँचाया है, और अब पूछताछ आमने-सामने होगी।",
-      "word_count": 50,
-      "estimated_duration": 20.0,
+      "narration": "लूसिफ़र केस में शामिल करने पर बताने की बात टालता है। फिर वह मानता है कि डेलिला के करियर में मदद न करता, तो शायद वह आज ज़िंदा होती। क्लोई एक मौका देती है, और वह बेवर्ली हिल्स की चिकित्सक लिंडा तथा डेलिला के उसके मुवक्किल होने की बात उठाता है।",
+      "word_count": 51,
+      "estimated_duration": 21.86,
       "is_scene_bridge": false,
       "clips": [
         {
-          "start": 449.95,
-          "end": 452.95,
-          "duration": 3.0,
-          "spoken_text": "टू वाइल हत्या से इनकार",
+          "start": 703.0,
+          "end": 705.5,
+          "duration": 2.5,
+          "spoken_text": "लूसिफ़र केस में शामिल करने",
           "spoken_word_count": 5,
           "estimated_spoken_duration": 2.14,
           "scene_context": ""
         },
         {
-          "start": 458.95,
-          "end": 461.95,
-          "duration": 3.0,
-          "spoken_text": "करता है, लेकिन बताता है",
+          "start": 705.5,
+          "end": 708.0,
+          "duration": 2.5,
+          "spoken_text": "पर बताने की बात टालता है।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": ""
+        },
+        {
+          "start": 708.0,
+          "end": 710.5,
+          "duration": 2.5,
+          "spoken_text": "फिर वह मानता है कि",
           "spoken_word_count": 5,
           "estimated_spoken_duration": 2.14,
           "scene_context": ""
         },
         {
-          "start": 475.68,
-          "end": 478.68,
-          "duration": 3.0,
-          "spoken_text": "कि डेलिला का एक गुप्त",
+          "start": 710.5,
+          "end": 713.0,
+          "duration": 2.5,
+          "spoken_text": "डेलिला के करियर में मदद",
           "spoken_word_count": 5,
           "estimated_spoken_duration": 2.14,
           "scene_context": ""
         },
         {
-          "start": 480.68,
-          "end": 483.68,
-          "duration": 3.0,
-          "spoken_text": "प्रेमी था। उस रिश्ते की",
+          "start": 713.0,
+          "end": 715.5,
+          "duration": 2.5,
+          "spoken_text": "न करता, तो शायद वह",
           "spoken_word_count": 5,
           "estimated_spoken_duration": 2.14,
           "scene_context": ""
         },
         {
-          "start": 487.68,
-          "end": 490.68,
-          "duration": 3.0,
-          "spoken_text": "जानकारी शायद उसकी चिकित्सक",
+          "start": 715.5,
+          "end": 717.5,
+          "duration": 2.0,
+          "spoken_text": "आज ज़िंदा होती।",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.29,
+          "scene_context": ""
+        },
+        {
+          "start": 717.5,
+          "end": 720.0,
+          "duration": 2.5,
+          "spoken_text": "क्लोई एक मौका देती है,",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 720.0,
+          "end": 722.5,
+          "duration": 2.5,
+          "spoken_text": "और वह बेवर्ली हिल्स की",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": ""
+        },
+        {
+          "start": 722.5,
+          "end": 725.0,
+          "duration": 2.5,
+          "spoken_text": "चिकित्सक लिंडा तथा डेलिला",
           "spoken_word_count": 4,
           "estimated_spoken_duration": 1.71,
           "scene_context": ""
         },
         {
-          "start": 491.68,
-          "end": 494.68,
-          "duration": 3.0,
-          "spoken_text": "डॉक्टर लिंडा के पास हो।",
+          "start": 725.0,
+          "end": 727.5,
+          "duration": 2.5,
+          "spoken_text": "के उसके मुवक्किल होने की",
           "spoken_word_count": 5,
           "estimated_spoken_duration": 2.14,
           "scene_context": ""
         },
         {
-          "start": 504.68,
-          "end": 507.68,
-          "duration": 3.0,
-          "spoken_text": "तभी क्लोई पुलिस के साथ पहुँचती है;",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
+          "start": 727.5,
+          "end": 730.0,
+          "duration": 2.5,
+          "spoken_text": "बात उठाता है।",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.29,
           "scene_context": ""
+        }
+      ]
+    },
+    {
+      "narration": "लूसिफ़र बताता है कि डेलिला पहले पेनी लेन नाम से जानी जाती थी। क्लोई उसकी जानकारी की पुष्टि करती है, लेकिन उसे याद दिलाती है कि मामला अभी सुलझा नहीं है। बातचीत के बीच लूसिफ़र छेड़ता है कि वह क्लोई को पहले देख चुका है; क्लोई उसकी बात को टाल देती है।",
+      "word_count": 52,
+      "estimated_duration": 22.29,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 750.12,
+          "end": 751.12,
+          "duration": 1.0,
+          "spoken_text": "लूसिफ़र बताता है कि",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "लूसिफ़र डेलिला के पुराने नाम की बात शुरू करता है।"
         },
         {
-          "start": 516.68,
-          "end": 519.68,
-          "duration": 3.0,
-          "spoken_text": "फोन रिकॉर्ड ने उसे टू वाइल तक",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": ""
-        },
-        {
-          "start": 520.68,
-          "end": 523.68,
-          "duration": 3.0,
-          "spoken_text": "पहुँचाया है, और अब पूछताछ",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.14,
-          "scene_context": ""
-        },
-        {
-          "start": 526.68,
-          "end": 529.68,
-          "duration": 3.0,
-          "spoken_text": "आमने-सामने होगी।",
+          "start": 751.12,
+          "end": 752.12,
+          "duration": 1.0,
+          "spoken_text": "डेलिला पहले",
           "spoken_word_count": 2,
           "estimated_spoken_duration": 0.86,
-          "scene_context": ""
+          "scene_context": "क्लोई पुराने नाम के बारे में उसकी बात सुनती है।"
+        },
+        {
+          "start": 753.0,
+          "end": 755.6,
+          "duration": 2.6,
+          "spoken_text": "पेनी लेन नाम से जानी जाती थी।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "पेनी लेन नाम का खुलासा होता है।"
+        },
+        {
+          "start": 755.6,
+          "end": 757.6,
+          "duration": 2.0,
+          "spoken_text": "क्लोई उसकी जानकारी की पुष्टि करती है,",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "दोनों डेलिला के पुराने नाम की पहचान पर बात करते हैं।"
+        },
+        {
+          "start": 761.54,
+          "end": 762.54,
+          "duration": 1.0,
+          "spoken_text": "लेकिन उसे याद दिलाती है",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "क्लोई लूसिफ़र की खुशी पर उसे टोकती है।"
+        },
+        {
+          "start": 762.54,
+          "end": 764.54,
+          "duration": 2.0,
+          "spoken_text": "कि मामला अभी सुलझा नहीं है।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "जाँच अभी अधूरी होने की बात साफ़ होती है।"
+        },
+        {
+          "start": 765.54,
+          "end": 767.54,
+          "duration": 2.0,
+          "spoken_text": "बातचीत के बीच लूसिफ़र छेड़ता है",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "लूसिफ़र क्लोई को पहले देखने की बात उठाता है।"
+        },
+        {
+          "start": 769.54,
+          "end": 771.54,
+          "duration": 2.0,
+          "spoken_text": "कि वह क्लोई को पहले देख चुका है;",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.43,
+          "scene_context": "लूसिफ़र अपनी पुरानी मुलाकात का संकेत देता है।"
+        },
+        {
+          "start": 771.54,
+          "end": 772.54,
+          "duration": 1.0,
+          "spoken_text": "क्लोई उसकी बात",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.29,
+          "scene_context": "क्लोई उसकी छेड़छाड़ पर प्रतिक्रिया देती है।"
+        },
+        {
+          "start": 772.54,
+          "end": 775.54,
+          "duration": 3.0,
+          "spoken_text": "को टाल देती है।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "क्लोई बातचीत को आगे बढ़ाने से बचती है।"
         }
       ]
     },
     {
-      "narration": "टू वाइल बताता है कि उसने एडी को फोन किया था, क्योंकि वह उससे नशे का सामान लेता था। डेलिला से उसकी पहचान भी थी, मगर वह हत्या से इनकार करता है। तभी उसे क्लोई का पुराना अभिनय याद आता है; उसकी यह टिप्पणी क्लोई को असहज करती है।",
-      "word_count": 49,
-      "estimated_duration": 23.0,
+      "narration": "लूसिफ़र क्लोई की काबिलियत पहचानता है: पुरुषों की दुनिया में अपनी जगह बनाने वाली समझदार अधिकारी से लोग डरते हैं। वह उसे खुद पर भरोसा रखने और निशाना साधने की सलाह देता है। फिर डेलिला के पुराने नाम से जुड़ा सुराग सही निकलता है—पेनी लेन, बेवर्ली हिल्स की चिकित्सक लिंडा की मुवक्किल थी। इस खोज से दोनों की साझेदारी मजबूत होती है।",
+      "word_count": 62,
+      "estimated_duration": 26.57,
       "is_scene_bridge": false,
       "clips": [
-        {
-          "start": 533.38,
-          "end": 536.38,
-          "duration": 3.0,
-          "spoken_text": "टू वाइल बताता है कि"
-        },
-        {
-          "start": 536.38,
-          "end": 539.38,
-          "duration": 3.0,
-          "spoken_text": "उसने एडी को फोन किया था,"
-        },
-        {
-          "start": 539.38,
-          "end": 542.38,
-          "duration": 3.0,
-          "spoken_text": "क्योंकि वह उससे नशे का सामान लेता था।"
-        },
-        {
-          "start": 543.38,
-          "end": 546.38,
-          "duration": 3.0,
-          "spoken_text": "डेलिला से उसकी पहचान भी थी,"
-        },
-        {
-          "start": 546.38,
-          "end": 549.38,
-          "duration": 3.0,
-          "spoken_text": "मगर वह हत्या से इनकार करता है।"
-        },
-        {
-          "start": 550.38,
-          "end": 553.38,
-          "duration": 3.0,
-          "spoken_text": "तभी उसे क्लोई का पुराना अभिनय याद आता है;"
-        },
-        {
-          "start": 554.38,
-          "end": 557.38,
-          "duration": 3.0,
-          "spoken_text": "उसकी यह टिप्पणी क्लोई को असहज करती है।"
-        }
-      ]
-    },
-    {
-      "narration": "टू वाइल क्लोई की पुरानी फ़िल्म का नाम याद करता है और उसके एक विवादित दृश्य का ज़िक्र करता है। लूसिफ़र उसकी बात पर प्रतिक्रिया देता है, जिससे क्लोई का झुंझलाना बढ़ता है। पुलिस के पास टू वाइल को रोके रखने का आधार नहीं, इसलिए लूसिफ़र क्लोई को साथ काम करने के लिए मनाने लगता है।",
-      "word_count": 56,
-      "estimated_duration": 25.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 557.38,
-          "end": 560.38,
-          "duration": 3.0,
-          "spoken_text": "टू वाइल क्लोई की पुरानी फ़िल्म का नाम याद करता"
-        },
-        {
-          "start": 561.74,
-          "end": 564.74,
-          "duration": 3.0,
-          "spoken_text": "है और उसके एक विवादित दृश्य"
-        },
-        {
-          "start": 565.74,
-          "end": 568.74,
-          "duration": 3.0,
-          "spoken_text": "का ज़िक्र करता है। लूसिफ़र उसकी बात पर प्रतिक्रिया देता है,"
-        },
-        {
-          "start": 569.74,
-          "end": 572.74,
-          "duration": 3.0,
-          "spoken_text": "जिससे क्लोई का झुंझलाना बढ़ता है।"
-        },
-        {
-          "start": 572.74,
-          "end": 575.74,
-          "duration": 3.0,
-          "spoken_text": "पुलिस के पास टू वाइल को"
-        },
-        {
-          "start": 577.74,
-          "end": 580.74,
-          "duration": 3.0,
-          "spoken_text": "रोके रखने का आधार नहीं,"
-        },
-        {
-          "start": 611.84,
-          "end": 614.84,
-          "duration": 3.0,
-          "spoken_text": "इसलिए लूसिफ़र क्लोई को साथ काम करने"
-        },
-        {
-          "start": 615.84,
-          "end": 618.84,
-          "duration": 3.0,
-          "spoken_text": "के लिए मनाने लगता है।"
-        }
-      ]
-    },
-    {
-      "narration": "लूसिफ़र दावा करता है कि वह लोगों की असली इच्छाएँ समझ सकता है। क्लोई उसकी बात को जादू और नाटक कहकर टाल देती है। वह फिर भी उससे पूछता है कि वह जीवन में सबसे ज़्यादा क्या चाहती है। क्लोई बताती है कि बचपन से उसका सपना पुलिस अधिकारी बनकर लोगों की मदद करना था।",
-      "word_count": 55,
-      "estimated_duration": 24.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 621.84,
-          "end": 624.84,
-          "duration": 3.0,
-          "spoken_text": "लूसिफ़र दावा करता है कि"
-        },
-        {
-          "start": 625.84,
-          "end": 628.84,
-          "duration": 3.0,
-          "spoken_text": "वह लोगों की असली इच्छाएँ समझ सकता है।"
-        },
-        {
-          "start": 630.84,
-          "end": 633.84,
-          "duration": 3.0,
-          "spoken_text": "क्लोई उसकी बात को जादू और"
-        },
-        {
-          "start": 635.84,
-          "end": 638.84,
-          "duration": 3.0,
-          "spoken_text": "नाटक कहकर टाल देती है।"
-        },
-        {
-          "start": 668.16,
-          "end": 671.16,
-          "duration": 3.0,
-          "spoken_text": "वह फिर भी उससे पूछता है"
-        },
-        {
-          "start": 671.16,
-          "end": 674.16,
-          "duration": 3.0,
-          "spoken_text": "कि वह जीवन में सबसे ज़्यादा क्या चाहती है।"
-        },
-        {
-          "start": 685.38,
-          "end": 688.38,
-          "duration": 3.0,
-          "spoken_text": "क्लोई बताती है कि बचपन से"
-        },
-        {
-          "start": 692.8,
-          "end": 695.8,
-          "duration": 3.0,
-          "spoken_text": "उसका सपना पुलिस अधिकारी बनकर लोगों की मदद करना था।"
-        }
-      ]
-    },
-    {
-      "narration": "लूसिफ़र को क्लोई का जवाब चौंकाता है; वह उसके पुराने अभिनय और मर्दों की दुनिया में पहचान बनाने की कोशिश पर बात करता है। क्लोई मानती है कि यह सच है। तभी स्कूल से फोन आता है—ट्रिक्सी लड़ाई में पड़ गई है। क्लोई तुरंत निकलती है, और लूसिफ़र भी उसके पीछे स्कूल पहुँच जाता है।",
-      "word_count": 55,
-      "estimated_duration": 25.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 695.8,
-          "end": 698.8,
-          "duration": 3.0,
-          "spoken_text": "लूसिफ़र को क्लोई का जवाब चौंकाता है;"
-        },
         {
           "start": 776.22,
           "end": 779.22,
           "duration": 3.0,
-          "spoken_text": "वह उसके पुराने अभिनय और"
+          "spoken_text": "लूसिफ़र क्लोई की काबिलियत पहचानता है:",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "क्लोई अपनी पिछली ज़िंदगी भूलना चाहती है; लूसिफ़र उसे समझता है।"
         },
         {
           "start": 780.22,
           "end": 783.22,
           "duration": 3.0,
-          "spoken_text": "मर्दों की दुनिया में पहचान बनाने की कोशिश पर बात करता है।"
+          "spoken_text": "पुरुषों की दुनिया में",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.71,
+          "scene_context": "लूसिफ़र पुलिस महकमे में क्लोई की स्थिति पर बात करता है।"
         },
         {
           "start": 784.22,
-          "end": 787.22,
-          "duration": 3.0,
-          "spoken_text": "क्लोई मानती है कि यह सच है।"
-        },
-        {
-          "start": 815.81,
-          "end": 818.81,
-          "duration": 3.0,
-          "spoken_text": "तभी स्कूल से फोन आता है—"
-        },
-        {
-          "start": 823.12,
-          "end": 826.12,
-          "duration": 3.0,
-          "spoken_text": "ट्रिक्सी लड़ाई में पड़ गई है।"
-        },
-        {
-          "start": 827.12,
-          "end": 830.12,
-          "duration": 3.0,
-          "spoken_text": "क्लोई तुरंत निकलती है, और"
-        },
-        {
-          "start": 846.83,
-          "end": 849.83,
-          "duration": 3.0,
-          "spoken_text": "लूसिफ़र भी उसके पीछे स्कूल पहुँच जाता है।"
-        }
-      ]
-    },
-    {
-      "narration": "स्कूल में ट्रिक्सी लूसिफ़र से मिलती है और अपना नाम बताती है। वह समझाती है कि एक लड़की नकली खाता बनाकर उसे चिढ़ाती थी, इसलिए उसने पलटकर मारपीट की। लूसिफ़र उसे सही ठहराता है और बदमाश लड़की को डराने की बात करता है। डैन पहुँचकर क्लोई पर केस को लेकर नाराज़ होता है और लूसिफ़र की मौजूदगी से भी खीझता है।",
-      "word_count": 61,
-      "estimated_duration": 27.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 899.86,
-          "end": 902.86,
-          "duration": 3.0,
-          "spoken_text": "स्कूल में ट्रिक्सी लूसिफ़र से मिलती है"
-        },
-        {
-          "start": 902.86,
-          "end": 905.86,
-          "duration": 3.0,
-          "spoken_text": "और अपना नाम बताती है।"
-        },
-        {
-          "start": 919.75,
-          "end": 922.75,
-          "duration": 3.0,
-          "spoken_text": "वह समझाती है कि एक लड़की"
-        },
-        {
-          "start": 924.09,
-          "end": 927.09,
-          "duration": 3.0,
-          "spoken_text": "नकली खाता बनाकर उसे चिढ़ाती थी,"
-        },
-        {
-          "start": 928.29,
-          "end": 931.29,
-          "duration": 3.0,
-          "spoken_text": "इसलिए उसने पलटकर मारपीट की।"
-        },
-        {
-          "start": 934.32,
-          "end": 937.32,
-          "duration": 3.0,
-          "spoken_text": "लूसिफ़र उसे सही ठहराता है"
-        },
-        {
-          "start": 946.42,
-          "end": 949.42,
-          "duration": 3.0,
-          "spoken_text": "और बदमाश लड़की को डराने की बात करता है।"
-        },
-        {
-          "start": 974.58,
-          "end": 977.58,
-          "duration": 3.0,
-          "spoken_text": "डैन पहुँचकर क्लोई पर केस को लेकर नाराज़ होता"
-        },
-        {
-          "start": 979.38,
-          "end": 982.38,
-          "duration": 3.0,
-          "spoken_text": "है और लूसिफ़र की मौजूदगी से भी खीझता है।"
-        }
-      ]
-    },
-    {
-      "narration": "क्लोई ट्रिक्सी को पिता संग भेजती है, माँ-बेटी प्यार जताती हैं, और क्लोई बेटी पर गर्व करती है। डैन पूछता है, क्या मामला है। ट्रिक्सी पिता से जानना चाहती है। लूसिफ़र को रास्ते में मिलना अच्छा लगा। क्या ट्रिक्सी को भी पसंद आया? वह अपने आकर्षण पर यक़ीन जताता है।",
-      "word_count": 50,
-      "estimated_duration": 28.11,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 1008.47,
-          "end": 1010.95,
-          "duration": 2.48,
-          "spoken_text": "क्लोई ट्रिक्सी को पिता संग भेजती है,",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "क्लोई ट्रिक्सी को उसके पिता के साथ भेजती है।"
-        },
-        {
-          "start": 1011.03,
-          "end": 1012.95,
-          "duration": 1.92,
-          "spoken_text": "माँ-बेटी प्यार जताती हैं,",
+          "end": 786.22,
+          "duration": 2.0,
+          "spoken_text": "अपनी जगह बनाने वाली",
           "spoken_word_count": 4,
           "estimated_spoken_duration": 1.71,
-          "scene_context": "ट्रिक्सी और क्लोई स्नेह जताती हैं।"
+          "scene_context": "क्लोई अपनी पहचान और काम को लेकर सहमति जताती है।"
         },
         {
-          "start": 1013.03,
-          "end": 1014.71,
-          "duration": 1.68,
-          "spoken_text": "और क्लोई बेटी पर गर्व करती है।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "क्लोई ट्रिक्सी की हिम्मत की तारीफ़ करती है।"
-        },
-        {
-          "start": 1016.35,
-          "end": 1017.67,
-          "duration": 1.32,
-          "spoken_text": "डैन पूछता है, क्या मामला है।",
+          "start": 786.22,
+          "end": 789.22,
+          "duration": 3.0,
+          "spoken_text": "समझदार अधिकारी से लोग डरते हैं।",
           "spoken_word_count": 6,
           "estimated_spoken_duration": 2.57,
-          "scene_context": "डैन लूसिफ़र से सवाल करता है।"
+          "scene_context": "लूसिफ़र क्लोई की समझदारी और काम की तारीफ़ करता है।"
         },
         {
-          "start": 1021.6,
-          "end": 1022.76,
-          "duration": 1.16,
-          "spoken_text": "ट्रिक्सी पिता से जानना चाहती है।",
+          "start": 790.22,
+          "end": 792.0,
+          "duration": 1.78,
+          "spoken_text": "वह उसे खुद पर भरोसा रखने",
           "spoken_word_count": 6,
           "estimated_spoken_duration": 2.57,
-          "scene_context": "ट्रिक्सी डैन से कुछ पूछना चाहती है।"
+          "scene_context": "लूसिफ़र क्लोई को आत्मविश्वास रखने की सलाह देता है।"
         },
         {
-          "start": 1027.58,
-          "end": 1029.74,
-          "duration": 2.16,
-          "spoken_text": "लूसिफ़र को रास्ते में मिलना अच्छा लगा।",
+          "start": 792.0,
+          "end": 795.0,
+          "duration": 3.0,
+          "spoken_text": "और निशाना साधने की सलाह देता है।",
           "spoken_word_count": 7,
           "estimated_spoken_duration": 3.0,
-          "scene_context": "लूसिफ़र ट्रिक्सी से रास्ते में हुई मुलाक़ात का ज़िक्र करता है।"
+          "scene_context": "क्लोई को उसके पेशेवर हुनर पर भरोसा रखने को कहा जाता है।"
         },
         {
-          "start": 1032.78,
-          "end": 1033.98,
-          "duration": 1.2,
-          "spoken_text": "क्या ट्रिक्सी को भी पसंद आया?",
+          "start": 798.03,
+          "end": 800.51,
+          "duration": 2.48,
+          "spoken_text": "फिर डेलिला के पुराने नाम से",
           "spoken_word_count": 6,
           "estimated_spoken_duration": 2.57,
-          "scene_context": "लूसिफ़र से पूछा जाता है कि ट्रिक्सी को वह पसंद आया या नहीं।"
+          "scene_context": "क्लोई संदेश के ज़रिये केस की जानकारी मँगाती है।"
         },
         {
-          "start": 1034.7,
-          "end": 1036.58,
-          "duration": 1.88,
-          "spoken_text": "वह अपने आकर्षण पर यक़ीन जताता है।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "लूसिफ़र अपने आकर्षण पर भरोसा जताता है।"
+          "start": 800.51,
+          "end": 802.98,
+          "duration": 2.47,
+          "spoken_text": "जुड़ा सुराग सही निकलता है—",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "लूसिफ़र को मिली जानकारी की पुष्टि होती है।"
+        },
+        {
+          "start": 802.98,
+          "end": 804.98,
+          "duration": 2.0,
+          "spoken_text": "पेनी लेन, बेवर्ली हिल्स की",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "सुराग पेनी लेन और बेवर्ली हिल्स तक पहुँचता है।"
+        },
+        {
+          "start": 804.98,
+          "end": 806.98,
+          "duration": 2.0,
+          "spoken_text": "चिकित्सक लिंडा की मुवक्किल थी।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.14,
+          "scene_context": "डेलिला की चिकित्सक लिंडा का नाम सामने आता है।"
+        },
+        {
+          "start": 806.98,
+          "end": 809.98,
+          "duration": 3.0,
+          "spoken_text": "इस खोज से दोनों की साझेदारी",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.57,
+          "scene_context": "क्लोई और लूसिफ़र सुराग मिलने पर साथ काम करने लगते हैं।"
+        },
+        {
+          "start": 809.98,
+          "end": 811.94,
+          "duration": 1.96,
+          "spoken_text": "मजबूत होती है।",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.29,
+          "scene_context": "दोनों की नई साझेदारी का संकेत मिलता है।"
         }
       ]
     }
   ],
   "characters": {
-    "क्लोईडेकर": {
-      "name": "क्लोई डेकर",
-      "description": "डेलिला की हत्या की जाँच कर रही जासूस"
-    },
-    "डैनएस्पिनोज़ा": {
-      "name": "डैन एस्पिनोज़ा",
-      "description": "क्लोई का सहकर्मी और ट्रिक्सी का पिता"
+    "क्लो": {
+      "name": "क्लो",
+      "description": "हत्या की जाँच कर रही जासूस"
     },
     "लूसिफ़रमॉर्निंगस्टार": {
       "name": "लूसिफ़र मॉर्निंगस्टार",
-      "description": "शैतान, जो क्लोई की जाँच में मदद करना चाहता है"
+      "description": "डेलिला की हत्या की पड़ताल में रुचि लेने वाला गवाह"
     },
     "डेलिला": {
       "name": "डेलिला",
-      "description": "हत्या की शिकार अभिनेत्री"
+      "description": "लूसिफ़र की कथित मुवक्किल, जिसकी मौत हो चुकी है"
+    },
+    "ड्रगडीलर": {
+      "name": "ड्रग डीलर",
+      "description": "मृतका से जुड़ा संदिग्ध"
+    },
+    "क्लोडेकर": {
+      "name": "क्लो डेकर",
+      "description": "हत्या की जाँच कर रही डिटेक्टिव"
     },
     "जिमीबार्न्स": {
       "name": "जिमी बार्न्स",
-      "description": "डेलिला का पूर्व मंगेतर"
+      "description": "दूल्हा, जिसकी शादी में लूसिफ़र ने हत्या पर सवाल उठाए"
     },
-    "टूवाइल": {
-      "name": "टू वाइल",
-      "description": "रैपर और डेलिला का प्रेमी"
+    "रैपर": {
+      "name": "रैपर",
+      "description": "जिमी के अनुसार डेलिला को सताने वाला व्यक्ति"
     },
-    "लिंडामार्टिन": {
-      "name": "लिंडा मार्टिन",
-      "description": "डेलिला की चिकित्सक"
+    "महिला": {
+      "name": "महिला",
+      "description": "हत्यारे का बचाव करने वाली प्रेमिका"
     },
-    "ट्रिक्सी": {
-      "name": "ट्रिक्सी",
-      "description": "क्लोई की बेटी"
+    "डॉलिंडा": {
+      "name": "डॉ. लिंडा",
+      "description": "बेवर्ली हिल्स की चिकित्सक"
     },
-    "बीट्रिस": {
-      "name": "बीट्रिस",
-      "description": "ट्रिक्सी की सहपाठी, जिसे सब लव कहते हैं"
+    "एलएपीडीअधिकारी": {
+      "name": "एलएपीडी अधिकारी",
+      "description": "हथियार डालने का आदेश देने वाले पुलिसकर्मी"
     },
-    "ट्रिक्सीएस्पिनोज़ा": {
-      "name": "ट्रिक्सी एस्पिनोज़ा",
-      "description": "क्लोई और डैन की बेटी"
+    "जासूस": {
+      "name": "जासूस",
+      "description": "हत्यारे के फोन रिकॉर्ड से एडी तक पहुँचने वाली जाँचकर्ता"
+    },
+    "अभिनेत्री": {
+      "name": "अभिनेत्री",
+      "description": "डेलिला को जानने वाली संदिग्ध"
+    },
+    "लूसिफ़र": {
+      "name": "लूसिफ़र",
+      "description": "लोगों की इच्छाएँ जानने की क्षमता का दावा करने वाला व्यक्ति, जो लोगों से बात करके उनके बारे में बहुत कुछ जान लेता है"
+    },
+    "क्लोईडेकर": {
+      "name": "क्लोई डेकर",
+      "description": "हत्याकांड की जाँच कर रही पुलिस अधिकारी"
+    },
+    "क्लोई": {
+      "name": "क्लोई",
+      "description": "जासूस, जो लूसिफ़र की बातों पर संदेह करती है"
     }
   },
   "synopses": [
-    "क्लोई हत्या की आसान व्याख्या पर संदेह करती है, जबकि लूसिफ़र अलग-अलग लोगों से पूछताछ कर डेलिला के छिपे रिश्ते तक पहुँचता है। टू वाइल से पूछताछ के बीच क्लोई भी वहाँ पहुँचती है।",
-    "टू वाइल से पूछताछ के दौरान क्लोई की पुरानी पहचान सामने आती है। लूसिफ़र उसकी जाँच में साथ देने का रास्ता निकालता है और डेलिला के चिकित्सक तक पहुँचने का सुराग देता है। क्लोई को ट्रिक्सी के स्कूल जाना पड़ता है, जहाँ लूसिफ़र उससे मिलता है। बाद में डैन पहुँचकर क्लोई से उलझता है।",
-    "स्कूल की घटना के बाद क्लोई ट्रिक्सी को डैन के साथ भेजती है। लूसिफ़र ट्रिक्सी से हुई मुलाक़ात को याद करता है और अपने आकर्षण पर भरोसा जताता है।"
+    "क्लो डेलिला की हत्या की जाँच शुरू करती है। पैसों और नशीले पदार्थों की कड़ी सामने आती है, जबकि गवाह लूसिफ़र मौत के बाद मृतका से बात करने का विचित्र दावा करता है।",
+    "डेलिला की हत्या की वजह पैसों का लालच मानी जा रही है। लूसिफ़र अमर होने की बात कहकर क्लो को चौंकाता है और असली हत्यारे को खोजने पर ज़ोर देता है। फिर एक शादी के समारोह में वह आपत्ति जताकर माहौल बिगाड़ता है और जिमी बार्न्स से सामना करता है।",
+    "जिमी से लूसिफ़र की तीखी पूछताछ में डेलिला की हत्या, उसकी पुरानी नाराज़गी और एक हिंसक रैपर का नाम सामने आता है।",
+    "शादी में जिमी से सामना करने के बाद लूसिफ़र वहाँ से चला जाता है। बाद में वह एक संगीतकार के घर पहुँचता है और उसके संगीत को लेकर तीखी बहस में उलझ जाता है।",
+    "लूसिफ़र हत्या के संदिग्ध से पूछताछ करता है। एक महिला अपने प्रेमी का बचाव करते हुए उसके गुप्त प्रेम-संबंध और चिकित्सक का पता बताती है। तभी पुलिस पहुँचकर सभी से हथियार डालने को कहती है।",
+    "हत्यारे के फोन रिकॉर्ड से एडी तक पहुँची जाँच में अभिनेत्री बताती है कि वह डेलिला के साथ एडी से मिली थी। पूछताछ के बीच लूसिफ़र उसकी पुरानी फ़िल्म पर टिप्पणी करता है, जिससे तनाव बढ़ता है।",
+    "गिरफ़्तार होने के बाद भी लूसिफ़र मामले में मदद करने पर अड़ा रहता है और अपनी खास प्रतिभा बताता है।",
+    "लूसिफ़र अपनी खास क्षमता दिखाकर क्लोई का भरोसा जीतने की कोशिश करता है और डेलिला की मौत में अपनी भूमिका का संकेत देता है। क्लोई उसे केस में शामिल करने पर राज़ी होती है, तो वह एक नए सुराग की बात करता है।",
+    "लूसिफ़र डेलिला के पुराने नाम पेनी लेन का पता लगाता है। क्लोई को हौसला देने के बाद, दोनों को डेलिला की चिकित्सक लिंडा के बारे में अहम सुराग मिलता है।"
   ]
 }

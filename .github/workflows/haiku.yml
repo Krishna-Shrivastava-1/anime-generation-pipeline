@@ -74,7 +74,7 @@ on:
       max_prompt_chars:
         description: "Hard max characters per Duck.ai prompt (<= 16000)"
         required: true
-        default: "15500"
+        default: "11500"
 
 permissions:
   contents: write
@@ -210,7 +210,9 @@ jobs:
           INPUT_PART = os.environ.get("INPUT_PART", "").strip()
           TARGET_MINUTES = os.environ.get("TARGET_MINUTES", "4").strip()
           MAX_CLIP_DURATION = float(os.environ.get("MAX_CLIP_SEC", "3.0"))
-          MAX_PROMPT_CHARS = min(int(os.environ.get("MAX_PROMPT_CHARS", "15500")), 15900)
+          MAX_PROMPT_CHARS = min(int(os.environ.get("MAX_PROMPT_CHARS", "11500")), 15500)
+          DRAFT_MAX_CHARS = min(MAX_PROMPT_CHARS, 11500)
+          CRITIC_MAX_CHARS = min(MAX_PROMPT_CHARS, 10200)
           TEXT_WAIT = int(os.environ.get("TEXT_WAIT_SECONDS", "420"))
           MAX_ATTEMPTS = 3
 
@@ -773,6 +775,9 @@ jobs:
                               dom_after = (dom_res.get("text") or "").strip()
                           except Exception:
                               pass
+                          combined_err = (parsed_sse + "\n" + dom_after).lower()
+                          if "maximum length for this chat" in combined_err:
+                              raise RuntimeError("PROMPT_TOO_LONG: Duck.ai chat hit maximum length.")
                           if expect_json:
                               if "{" in parsed_sse and (not expect_beats or '"beats"' in parsed_sse):
                                   log(f"Captured JSON via SSE ({len(parsed_sse)} chars).")
@@ -791,6 +796,8 @@ jobs:
 
                   if current_chat_state.get("chat_done") and current_chat_state.get("raw_stream"):
                       parsed_sse = parse_sse_text("".join(current_chat_state["raw_stream"]))
+                      if "maximum length for this chat" in parsed_sse.lower():
+                          raise RuntimeError("PROMPT_TOO_LONG: Duck.ai chat hit maximum length.")
                       if parsed_sse.strip():
                           if expect_json and "{" in parsed_sse and (not expect_beats or '"beats"' in parsed_sse):
                               return deep_repair(parsed_sse)
@@ -802,6 +809,8 @@ jobs:
                   try:
                       dom_data = page.evaluate(EXTRACT_ASSISTANT_JS, {"promptTail": prompt_tail, "expectJson": expect_json, "prevCodeBlocks": prev_code_blocks})
                       cur_text = (dom_data.get("text") or "").strip()
+                      if "maximum length for this chat" in cur_text.lower():
+                          raise RuntimeError("PROMPT_TOO_LONG: Duck.ai chat hit maximum length.")
                       if not expect_json:
                           cur_text = clean_plain_text(cur_text)
                       is_gen = bool(dom_data.get("isGenerating", False))
@@ -816,6 +825,8 @@ jobs:
                           if has_started and not is_gen and stable_ticks >= 4 and len(last_text) > min_len:
                               log(f"Captured via DOM stability ({dom_source}, {len(last_text)} chars).")
                               return deep_repair(last_text)
+                  except RuntimeError:
+                      raise
                   except Exception:
                       pass
 
@@ -1035,27 +1046,28 @@ jobs:
           Use Web Search right now to look up the complete chronological plot summary of:
           Title: __MOVIE_TITLE__ | Type: __CONTENT_TYPE__ | Season: __SEASON__ | Episode: __EPISODE__ | Part: __PART_IDENTIFIER__
 
-          Output one clean, detailed plain-text plot summary (under 3,500 chars) covering all characters (with roles), locations, key twists, and ending in chronological order.""").strip()
+          Output one clean, detailed plain-text plot summary (under 3,000 chars) covering all characters (with roles), locations, key twists, and ending in chronological order.""").strip()
 
           PROMPT_DRAFT_FROM_SUMMARY = textwrap.dedent("""\
-          # STEP 1 — SUMMARY-DRIVEN HINDI RECAP & TIMESTAMP CLIP EXTRACTOR
+          # STEP 1 — SUMMARY-DRIVEN HINDI RECAP & JUMP-CUT CLIP EXTRACTOR
 
           You are a YouTube movie/series recap writer and video editor.
           I am giving you:
-          1) The **MASTER STORY SUMMARY** (the verified, complete story flow with real character names, roles, motivations, and locations).
-          2) A **TIMESTAMPED TRANSCRIPT CHUNK** (`start-end|text` in seconds) from the video file.
+          1) The **MASTER STORY SUMMARY** (verified plot flow, real character names, roles, motivations, and true settings).
+          2) A **TIMESTAMPED TRANSCRIPT CHUNK** (`start-end|text` in seconds, plus `[SILENT_GAP start-end]` markers for silent/action scenes).
 
           ## YOUR JOB (FOLLOW STRICTLY):
           1. **Follow the Master Story Summary Flow, Anchored to This Transcript Chunk:**
-             - Use the **MASTER STORY SUMMARY** for all real character names, roles, relationships, true settings, and plot clarity (automatically fix any ASR subtitle typos like "Darlala" -> "डेलिला", "Fasker" -> etc.).
-             - Narrate **ONLY the scenes and plot events present in this Timestamped Transcript Chunk** in chronological order. Do NOT repeat events already listed in `ALREADY NARRATED`, and do NOT skip ahead into future scenes that are not in this transcript chunk.
-             - Explain **What happens, Why it matters, and How it connects** in crisp, gripping third-person Hindi (Devanagari script only, clean phonetic Hindi spellings for English names, e.g., `लूसिफ़र मॉर्निंगस्टार`, `च्लोई डेकर`, `डैन एस्पिनोज़ा`). No dialogue reading, no robotic disclaimers, avoid repeating "इसके बाद".
+             - Use the **MASTER STORY SUMMARY** for all real character names, roles, relationships, true settings, and plot clarity (automatically fix ASR typos like "Darlala" -> "डेलिला").
+             - Narrate **ONLY the scenes and plot events occurring in this Timestamped Transcript Chunk** in chronological order. Do NOT repeat events in `ALREADY NARRATED`, and do NOT skip ahead to future scenes.
+             - Explain **What happens, Why it matters, and How it connects** in crisp, gripping third-person Hindi (Devanagari only, clean phonetic Hindi spellings for English names). No dialogue reading, no robotic disclaimers, avoid repeating "इसके बाद".
           2. **Global Budget & Beat Sizing:**
              - Full video target: **~__TARGET_MINUTES__ minutes (~__TOTAL_TARGET_WORDS__ Hindi words total)**.
-             - This chunk (**__CHUNK_PCT__%** of runtime) budget: **~__TARGET_WORDS__ Hindi words (~__TARGET_DURATION__)** across focused beats of **~30–50 words per beat**.
-          3. **Extract Exact Phrase-Synced Clips (`<= __MAX_CLIP_SEC__s` each):**
+             - This chunk (**__CHUNK_PCT__%** of runtime) budget: **~__TARGET_WORDS__ Hindi words (~__TARGET_DURATION__)** across beats of **~30–50 words per beat**.
+          3. **Extract Forward, Non-Overlapping Jump-Cut Clips (`<= __MAX_CLIP_SEC__s` each):**
              - Break each beat's `narration` sequentially into short spoken phrases (`spoken_text`, ~3–7 words each).
-             - Pair **each phrase** with **1 relevant video clip (`start`, `end`, `duration <= __MAX_CLIP_SEC__`)** whose timestamps come **strictly from this Timestamped Transcript Chunk** (`__CHUNK_START__s` to `__CHUNK_END__s`) matching that character/action/scene.
+             - Pair **each phrase** with **1 jump-cut video clip (`start`, `end`, `duration <= __MAX_CLIP_SEC__`)** from this chunk (`__CHUNK_START__s` to `__CHUNK_END__s`) matching that character/action/scene (use `[SILENT_GAP]` windows when narrating silent action).
+             - Keep clip timestamps **moving forward and non-overlapping** (`next clip start >= previous clip end` wherever possible, no duplicate clips).
              - Joining every clip's `spoken_text` in order MUST equal the beat's `narration`.
           4. **Canonical Hindi Character List:**
              - List characters appearing in this chunk using **only their clean Hindi Devanagari name** + brief Hindi role (no duplicate English/Hindi entries).
@@ -1070,42 +1082,30 @@ jobs:
           **ALREADY NARRATED (DO NOT REPEAT):**
           __ALREADY_NARRATED__
 
-          **UPCOMING TRANSCRIPT LOOKAHEAD (DO NOT NARRATE YET, FOR BOUNDARY ONLY):**
+          **UPCOMING TRANSCRIPT LOOKAHEAD (FOR BOUNDARY ONLY, DO NOT NARRATE):**
           __LOOKAHEAD__
 
           **TIMESTAMPED TRANSCRIPT CHUNK (`start-end|text`):**
           __COMPACT_TRANSCRIPT__""").strip()
 
           PROMPT_CRITIC_VERIFY = textwrap.dedent("""\
-          # STEP 2 — CLIP TIMESTAMP, SUMMARY FLOW & HINDI POLISH VERIFIER
+          # STEP 2 — CLIP TIMESTAMP, JUMP-CUT & HINDI VERIFIER
 
-          You are the **Lead Video Editor & Fact-Checker** auditing a draft recap JSON against:
-          1) The **MASTER STORY SUMMARY** (truth for plot, character names, roles, and settings)
-          2) The **RAW TIMESTAMPED TRANSCRIPT CHUNK** (`start-end|text` in seconds)
-
-          ## AUDIT & FIX CHECKLIST (STRICT):
-          1. **Clip Timestamp Accuracy (`<= __MAX_CLIP_SEC__s`):**
-             - Verify every clip's `start` and `end` actually falls inside `__CHUNK_START__s .. __CHUNK_END__s` and matches what is happening/spoken in the Raw Transcript at that exact timestamp!
-             - Fix any wrong, out-of-range, or >`__MAX_CLIP_SEC__s` clip timestamps by picking the best matching `1.5s–__MAX_CLIP_SEC__s` window from the Raw Transcript.
-          2. **Phrase-to-Clip Sync:**
-             - Joining all `spoken_text` strings in a beat MUST equal that beat's `narration`. Every clip gets ~3–7 words (`spoken_text`).
-          3. **Summary Fidelity & Hindi Polish:**
-             - Fix any subtitle-induced hallucinations or wrong character names/locations using the Master Story Summary.
-             - Ensure smooth continuation after: `__PREV_ENDING__` (zero repetition).
-             - Keep beats ~30–50 words each, hitting this chunk's budget of **~__TARGET_WORDS__ Hindi words** (full video target: ~__TARGET_MINUTES__ mins).
-             - Keep `characters` strictly in clean Hindi Devanagari (no duplicate English/Hindi entries).
-             - Continue IDs from `__NEXT_BEAT_ID__` and `__NEXT_CLIP_ID__`.
+          Audit the Draft JSON against the **MASTER STORY SUMMARY** and **RAW TIMESTAMPED TRANSCRIPT CHUNK**:
+          1. **Clip Timestamps (`<= __MAX_CLIP_SEC__s`):** Verify every clip's `start` and `end` is within `__CHUNK_START__s..__CHUNK_END__s`, matches that spoken phrase's scene/action, and moves forward without overlapping.
+          2. **Phrase Sync:** Joining all `spoken_text` in each beat MUST equal `narration`.
+          3. **Summary & Hindi Polish:** Fix any ASR mishearings/wrong names/settings using Master Story Summary. Smoothly follow: `__PREV_ENDING__`. Target ~__TARGET_WORDS__ Hindi words (~30–50 words/beat). Clean Hindi Devanagari `characters` (no duplicates). Continue IDs from `__NEXT_BEAT_ID__` / `__NEXT_CLIP_ID__`.
 
           ## MASTER STORY SUMMARY:
           __MASTER_SUMMARY__
 
-          ## RAW TIMESTAMPED TRANSCRIPT CHUNK (`start-end|text`):
+          ## RAW TRANSCRIPT (`start-end|text`):
           __COMPACT_TRANSCRIPT__
 
-          ## DRAFT JSON TO VERIFY & FIX:
+          ## DRAFT JSON TO AUDIT:
           __DRAFT_JSON__
 
-          Return strictly valid final JSON only (no Markdown fences, no commentary, no trailing commas).""").strip()
+          Return strictly valid final JSON only (no Markdown fences, no extra text).""").strip()
 
           # ------------------ LOADERS & CHUNK BUILDERS ------------------
           def load_transcript(transcript_path="transcript.json"):
@@ -1146,11 +1146,19 @@ jobs:
               except Exception:
                   return f"{TARGET_MINUTES} minutes", "180", "560", "33"
 
-          def format_seg_line(seg):
-              st = round(float(seg.get("start", 0.0)), 2)
-              en = round(float(seg.get("end", st)), 2)
-              txt = str(seg.get("text", "")).strip().replace("\n", " ")
-              return f"{st}-{en}|{txt}"
+          def format_segs_with_gaps(segs):
+              lines = []
+              prev_end = None
+              for seg in segs:
+                  st = round(float(seg.get("start", 0.0)), 2)
+                  en = round(float(seg.get("end", st)), 2)
+                  if prev_end is not None and (st - prev_end) >= 4.0:
+                      gap_dur = round(st - prev_end, 1)
+                      lines.append(f"[SILENT_GAP {prev_end}-{st} ({gap_dur}s)]")
+                  txt = str(seg.get("text", "")).strip().replace("\n", " ")
+                  lines.append(f"{st}-{en}|{txt}")
+                  prev_end = en
+              return "\n".join(lines)
 
           def build_prompt_0_summary(movie_title):
               p = PROMPT_0_FETCH_SUMMARY
@@ -1169,13 +1177,13 @@ jobs:
                   return None, start_idx
 
               nb_id, nc_id = f"B{next_beat_num:04d}", f"C{next_clip_num:04d}"
-              summary_trimmed = master_summary.strip()[:4800]
-              narrated_trimmed = (already_narrated or "None (this is the start of the video).")[-1500:]
+              summary_trimmed = master_summary.strip()[:3200]
+              narrated_trimmed = (already_narrated or "None (this is the start of the video).")[-1200:]
 
               def render(dur_t, words_t, tot_w, pct_t, segs, lookahead_txt, sum_txt):
                   c_start = round(float(segs[0].get("start", 0.0)), 2) if segs else 0.0
                   c_end = round(float(segs[-1].get("end", 0.0)), 2) if segs else 0.0
-                  compact = "\n".join(format_seg_line(s) for s in segs)
+                  compact = format_segs_with_gaps(segs)
                   p = PROMPT_DRAFT_FROM_SUMMARY
                   for k, v in [
                       ("__MOVIE_TITLE__", movie_title),
@@ -1201,31 +1209,34 @@ jobs:
                       p = p.replace(k, v)
                   return p
 
-              base_len = len(render("~1.5m", "180", "560", "30", [], "x" * 350, summary_trimmed))
-              budget = MAX_PROMPT_CHARS - base_len - 120
+              # Keep chunks around ~3500-4200 chars of transcript so Critic stays safely under Haiku's limit
+              target_draft_cap = min(DRAFT_MAX_CHARS, 9500)
+              base_len = len(render("~1.5m", "180", "560", "30", [], "x" * 300, summary_trimmed))
+              budget = target_draft_cap - base_len - 120
               if budget < 2000:
-                  summary_trimmed = summary_trimmed[:max(1500, len(summary_trimmed) - (2500 - budget))]
-                  budget = MAX_PROMPT_CHARS - len(render("~1.5m", "180", "560", "30", [], "x" * 350, summary_trimmed)) - 120
+                  summary_trimmed = summary_trimmed[:max(1200, len(summary_trimmed) - (2200 - budget))]
+                  budget = target_draft_cap - len(render("~1.5m", "180", "560", "30", [], "x" * 300, summary_trimmed)) - 120
 
               selected, used, idx = [], 0, start_idx
               while idx < len(all_segs):
-                  line = format_seg_line(all_segs[idx])
-                  extra = len(line) + (1 if selected else 0)
+                  seg = all_segs[idx]
+                  line = f"{round(float(seg.get('start', 0.0)), 2)}-{round(float(seg.get('end', 0.0)), 2)}|{str(seg.get('text', '')).strip()}"
+                  extra = len(line) + 32
                   if used + extra > budget:
                       if not selected:
-                          selected.append(all_segs[idx]); idx += 1
+                          selected.append(seg); idx += 1
                       break
-                  selected.append(all_segs[idx]); used += extra; idx += 1
+                  selected.append(seg); used += extra; idx += 1
 
               lookahead_segs = all_segs[idx : idx + 8]
-              lookahead_txt = " | ".join(str(s.get("text", "")).strip() for s in lookahead_segs)[:350] if lookahead_segs else "End of transcript."
+              lookahead_txt = " | ".join(str(s.get("text", "")).strip() for s in lookahead_segs)[:300] if lookahead_segs else "End of transcript."
               dur_t, words_t, tot_w, pct_t = calc_target_budget(selected, total_duration)
               final_p = render(dur_t, words_t, tot_w, pct_t, selected, lookahead_txt, summary_trimmed)
 
-              while len(final_p) > MAX_PROMPT_CHARS and len(selected) > 1:
+              while len(final_p) > DRAFT_MAX_CHARS and len(selected) > 1:
                   selected.pop(); idx -= 1
                   lookahead_segs = all_segs[idx : idx + 8]
-                  lookahead_txt = " | ".join(str(s.get("text", "")).strip() for s in lookahead_segs)[:350] if lookahead_segs else "End of transcript."
+                  lookahead_txt = " | ".join(str(s.get("text", "")).strip() for s in lookahead_segs)[:300] if lookahead_segs else "End of transcript."
                   dur_t, words_t, tot_w, pct_t = calc_target_budget(selected, total_duration)
                   final_p = render(dur_t, words_t, tot_w, pct_t, selected, lookahead_txt, summary_trimmed)
 
@@ -1237,13 +1248,21 @@ jobs:
                   "prompt_chars": len(final_p), "prompt": final_p
               }, idx
 
-          def build_critic_prompt_chunk(movie_title, chunk_meta, draft_norm, master_summary, prev_ending, next_beat_num, next_clip_num):
-              compact = "\n".join(format_seg_line(s) for s in chunk_meta["chunk_segs"])
+          def build_critic_prompt_chunk(movie_title, chunk_meta, draft_norm, master_summary, prev_ending, next_beat_num, next_clip_num, compress_level=0):
+              compact = format_segs_with_gaps(chunk_meta["chunk_segs"])
+              slim_beats = []
+              for b in draft_norm.get("beats", []):
+                  if compress_level >= 1:
+                      slim_clips = [{"start": c["start"], "end": c["end"], "duration": c["duration"], "spoken_text": c.get("spoken_text", "")} for c in b.get("clips", [])]
+                  else:
+                      slim_clips = [{"start": c["start"], "end": c["end"], "duration": c["duration"], "spoken_text": c.get("spoken_text", ""), "scene_context": c.get("scene_context", "")} for c in b.get("clips", [])]
+                  slim_beats.append({"narration": b.get("narration", ""), "is_scene_bridge": b.get("is_scene_bridge", False), "clips": slim_clips})
+
               draft_payload = {
                   "movie_title": movie_title, "content_type": INPUT_CONTENT_TYPE or None,
                   "season": INPUT_SEASON or None, "episode": INPUT_EPISODE or None, "part_identifier": INPUT_PART or None,
                   "characters": draft_norm.get("characters", []), "synopsis": draft_norm.get("synopsis", ""),
-                  "beats": draft_norm.get("beats", [])
+                  "beats": slim_beats
               }
 
               def render(d_obj, raw_txt, sum_txt):
@@ -1264,19 +1283,22 @@ jobs:
                       p = p.replace(k, v)
                   return p
 
-              sum_txt = master_summary.strip()[:3800]
+              hard_cap = CRITIC_MAX_CHARS if compress_level == 0 else max(6500, CRITIC_MAX_CHARS - (compress_level * 1600))
+              sum_cap = 2600 if compress_level == 0 else (1500 if compress_level == 1 else 800)
+              sum_txt = master_summary.strip()[:sum_cap]
               prompt = render(draft_payload, compact, sum_txt)
-              if len(prompt) > MAX_PROMPT_CHARS:
+
+              if len(prompt) > hard_cap:
                   for b in draft_payload["beats"]:
                       b["clips"] = [{"start": c["start"], "end": c["end"], "duration": c["duration"], "spoken_text": c.get("spoken_text", "")} for c in b.get("clips", [])]
-                  prompt = render(draft_payload, compact, sum_txt[:2600])
-              if len(prompt) > MAX_PROMPT_CHARS:
-                  over = len(prompt) - MAX_PROMPT_CHARS + 120
-                  sum_txt = sum_txt[:max(1000, len(sum_txt) - over)]
+                  prompt = render(draft_payload, compact, sum_txt[:1500])
+              if len(prompt) > hard_cap:
+                  over = len(prompt) - hard_cap + 120
+                  sum_txt = sum_txt[:max(600, len(sum_txt) - over)]
                   prompt = render(draft_payload, compact, sum_txt)
-              if len(prompt) > MAX_PROMPT_CHARS:
-                  over = len(prompt) - MAX_PROMPT_CHARS + 120
-                  compact = compact[:max(1500, len(compact) - over)]
+              if len(prompt) > hard_cap:
+                  over = len(prompt) - hard_cap + 120
+                  compact = compact[:max(1200, len(compact) - over)]
                   prompt = render(draft_payload, compact, sum_txt)
 
               return {"prompt_chars": len(prompt), "prompt": prompt}
@@ -1423,7 +1445,7 @@ jobs:
                   nb_num = len(pipeline_state["beats"]) + 1
                   nc_num = sum(len(b.get("clips", [])) for b in pipeline_state["beats"]) + 1
 
-                  recent_beats = [b["narration"] for b in pipeline_state["beats"][-4:]]
+                  recent_beats = [b.get("narration", "") for b in pipeline_state["beats"][-4:] if b.get("narration")]
                   already_narrated = ""
                   if pipeline_state["synopses"] or recent_beats:
                       already_narrated = (
@@ -1438,7 +1460,7 @@ jobs:
                   if not chunk_meta:
                       break
 
-                  log(f"\n=== CHUNK {chunk_num} on '{DRAFT_MODEL}': segs {chunk_meta['start_idx']+1}..{chunk_meta['end_idx']}/{total_segments} ({chunk_meta['time_start']}s..{chunk_meta['time_end']}s | {chunk_meta['chunk_pct']}% -> ~{chunk_meta['words_text']} words) ===")
+                  log(f"\n=== CHUNK {chunk_num} on '{DRAFT_MODEL}': segs {chunk_meta['start_idx']+1}..{chunk_meta['end_idx']}/{total_segments} ({chunk_meta['time_start']}s..{chunk_meta['time_end']}s | {chunk_meta['chunk_pct']}% -> ~{chunk_meta['words_text']} words, {chunk_meta['prompt_chars']} chars) ===")
 
                   draft_norm = None
                   for att in range(1, MAX_ATTEMPTS + 1):
@@ -1466,10 +1488,13 @@ jobs:
 
                   verified_norm = None
                   if CRITIC_MODEL.lower() not in ("", "none", "skip"):
-                      prev_ending = pipeline_state["beats"][-1]["narration"] if pipeline_state["beats"] else ""
-                      critic_meta = build_critic_prompt_chunk(movie_title, chunk_meta, draft_norm, master_summary, prev_ending, nb_num, nc_num)
-                      log(f"Running Critic Clip & Summary Verification on '{CRITIC_MODEL}' ({critic_meta['prompt_chars']} chars)...")
+                      prev_ending = pipeline_state["beats"][-1].get("narration", "") if pipeline_state["beats"] else ""
+                      compress_lvl = 0
                       for c_att in range(1, MAX_ATTEMPTS + 1):
+                          critic_meta = build_critic_prompt_chunk(
+                              movie_title, chunk_meta, draft_norm, master_summary, prev_ending, nb_num, nc_num, compress_level=compress_lvl
+                          )
+                          log(f"Running Critic Clip & Summary Verification on '{CRITIC_MODEL}' ({critic_meta['prompt_chars']} chars, compress={compress_lvl})...")
                           try:
                               open_fresh_duckai_chat(CRITIC_MODEL, ENABLE_REASONING, use_web_search=ENABLE_WEB_SEARCH, take_verify_snap=(not critic_snap_done), snap_prefix="critic")
                               critic_snap_done = True
@@ -1487,7 +1512,11 @@ jobs:
                           except Exception as c_err:
                               log(f"Critic Chunk {chunk_num} att {c_att} failed: {c_err}")
                               snap(page, f"err_critic_c{chunk_num}_a{c_att}")
-                              if c_att < MAX_ATTEMPTS: renew_tor(); launch_browser(p)
+                              if "PROMPT_TOO_LONG" in str(c_err):
+                                  compress_lvl += 1
+                                  log(f"Prompt exceeded Haiku limit -> increasing compression to level {compress_lvl}.")
+                              elif c_att < MAX_ATTEMPTS:
+                                  renew_tor(); launch_browser(p)
 
                   final_chunk = verified_norm if verified_norm is not None else draft_norm
                   if verified_norm is None and CRITIC_MODEL.lower() not in ("", "none", "skip"):
@@ -1508,26 +1537,32 @@ jobs:
 
               # ------------------ MERGE & EXPORT FINAL JSON ------------------
               final_beats, total_words, clip_counter = [], 0, 1
-              for b_idx, b in enumerate(pipeline_state["beats"], 1):
+              for b_idx, b in enumerate(pipeline_state.get("beats", []), 1):
+                  narr = str(b.get("narration", "")).strip()
+                  wc = int(b.get("word_count") or len(narr.split()))
+                  est_dur = round(float(b.get("estimated_duration") or ((wc / 140.0) * 60.0)), 2)
                   b_copy = {
                       "beat_id": f"B{b_idx:04d}",
-                      "narration": b["narration"],
-                      "word_count": b["word_count"],
-                      "estimated_duration": b["estimated_duration"],
-                      "is_scene_bridge": b["is_scene_bridge"],
+                      "narration": narr,
+                      "word_count": wc,
+                      "estimated_duration": est_dur,
+                      "is_scene_bridge": bool(b.get("is_scene_bridge", False)),
                       "clips": []
                   }
-                  total_words += b["word_count"]
+                  total_words += wc
                   for c in b.get("clips", []):
+                      st = round(float(c.get("start", 0.0)), 2)
+                      en = round(float(c.get("end", st)), 2)
+                      dur = round(float(c.get("duration") or max(0.0, en - st)), 2)
                       b_copy["clips"].append({
                           "clip_id": f"C{clip_counter:04d}",
-                          "start": c["start"],
-                          "end": c["end"],
-                          "duration": c["duration"],
-                          "spoken_text": c.get("spoken_text", ""),
-                          "spoken_word_count": c.get("spoken_word_count", 0),
-                          "estimated_spoken_duration": c.get("estimated_spoken_duration", 0.0),
-                          "scene_context": c["scene_context"]
+                          "start": st,
+                          "end": en,
+                          "duration": dur,
+                          "spoken_text": str(c.get("spoken_text", "")).strip(),
+                          "spoken_word_count": int(c.get("spoken_word_count", 0)),
+                          "estimated_spoken_duration": round(float(c.get("estimated_spoken_duration", 0.0)), 2),
+                          "scene_context": str(c.get("scene_context", "")).strip()
                       })
                       clip_counter += 1
                   final_beats.append(b_copy)

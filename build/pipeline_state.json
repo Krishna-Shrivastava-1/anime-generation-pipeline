@@ -1,1106 +1,298 @@
 {
-  "next_segment_idx": 467,
-  "chunk_num": 9,
+  "next_segment_idx": 149,
+  "chunk_num": 1,
   "beats": [
     {
-      "narration": "क्लोई को लेफ्टिनेंट की तरफ़ से यह केस मिलता है, और सबूत देखकर लगता है कि मामला आसान है। एक छोटा ड्रग डीलर और उसका पैकेट मरने वाली के पर्स में मिला। क्लोई का अंदाज़ा है कि शायद ड्रग्स के पैसे नहीं चुकाए गए थे।",
-      "word_count": 45,
-      "estimated_duration": 19.3,
+      "narration": "क्लो को इस केस की ज़िम्मेदारी मिली है, और लूसिफ़र इसे आसान मानकर चल रहा है। ड्रग डीलर की जेब से निकला पैकेट मृतका की पर्स में मिला, तो शक सीधे उसी पर जाता है।",
+      "word_count": 35,
+      "estimated_duration": 13,
       "is_scene_bridge": false,
       "clips": [
-        {
-          "start": 0.72,
-          "end": 2.72,
-          "duration": 2.0,
-          "scene_context": "Transcript shows a line of dialogue: 'Please come in, sir.' Visual content is unverified."
-        },
-        {
-          "start": 2.72,
-          "end": 4.72,
-          "duration": 2.0,
-          "scene_context": "Transcript shows Chloe asking whether the other person wants to know what she found. Visual content is unverified."
-        },
-        {
-          "start": 13.68,
-          "end": 15.68,
-          "duration": 2.0,
-          "scene_context": "Transcript shows the line: 'Lieutenant told me that this is my case.' Visual content is unverified."
-        },
-        {
-          "start": 15.68,
-          "end": 17.68,
-          "duration": 2.0,
-          "scene_context": "Transcript continues the case-assignment exchange with Chloe. Visual content is unverified."
-        },
         {
           "start": 18.89,
           "end": 20.89,
           "duration": 2.0,
-          "scene_context": "Transcript shows the line: 'Yes, Chloe, this is your case.' Visual content is unverified."
+          "scene_context": "Transcript: lieutenant tells Chloe this is her case. Visual of the lieutenant handing over the case is unverified."
         },
         {
           "start": 21.3,
           "end": 23.3,
           "duration": 2.0,
-          "scene_context": "Transcript shows the line: 'This is an easy case.' Visual content is unverified."
-        },
-        {
-          "start": 25.3,
-          "end": 27.3,
-          "duration": 2.0,
-          "scene_context": "Transcript shows the line about a small drug dealer. Visual content is unverified."
+          "scene_context": "Transcript: Chloe is told this is her case and that it is an easy one. Visual unverified."
         },
         {
           "start": 27.3,
           "end": 29.3,
           "duration": 2.0,
-          "scene_context": "Transcript shows the line about a packet being found in the victim's purse. Visual content is unverified."
+          "scene_context": "Transcript: a small drug packet was taken from the dealer's pocket and was found in the victim's purse. Visual unverified."
+        },
+        {
+          "start": 29.3,
+          "end": 31.3,
+          "duration": 2.0,
+          "scene_context": "Transcript: the packet was in the victim's purse. Visual unverified."
         },
         {
           "start": 31.3,
           "end": 33.3,
           "duration": 2.0,
-          "scene_context": "Transcript shows the line: 'So, it's Darlala's case.' Visual content is unverified."
+          "scene_context": "Transcript: the speaker concludes it is the victim's case. Visual unverified."
         },
         {
           "start": 33.3,
           "end": 35.3,
           "duration": 2.0,
-          "scene_context": "Transcript shows Chloe's speculation that the drugs were not paid for. Visual content is unverified."
+          "scene_context": "Transcript: the speaker says the victim must not have paid for the drugs. Visual unverified."
         },
         {
-          "start": 37.3,
-          "end": 39.3,
-          "duration": 2.0,
-          "scene_context": "Transcript shows the line: 'And how do you know this?' Visual content is unverified."
+          "start": 35.3,
+          "end": 36.3,
+          "duration": 1.0,
+          "scene_context": "Transcript: the speaker mentions the victim's songs are still playing. Visual unverified."
         }
       ]
     },
     {
-      "narration": "लूसिफ़र मॉर्निंगस्टार गवाह के तौर पर सामने आता है। वह बताता है कि सिंगर यहाँ काम करती थी और वह उसके गाने बजाता था। स्टार बनने के बाद किसी ने उसे मारने का फैसला किया, और मरने से पहले उसने वजह पैसा बताई।",
-      "word_count": 43,
-      "estimated_duration": 18.5,
+      "narration": "लूसिफ़र ने गवाह के रूप में अपना नाम लूसिफ़र मॉर्निंगस्टार बताया। वह कहता है कि मृतका कभी इसी जगह काम करती थी, और वह अक्सर उसके गाने बजाता था।",
+      "word_count": 29,
+      "estimated_duration": 12,
       "is_scene_bridge": false,
       "clips": [
         {
           "start": 61.15,
           "end": 63.15,
           "duration": 2.0,
-          "scene_context": "Transcript shows Chloe asking for witnesses, followed by the name 'Lucifer Morningstar.' Visual content is unverified."
+          "scene_context": "Transcript: Lucifer Morningstar is named as the witness. Visual unverified."
         },
         {
           "start": 64.24,
           "end": 66.24,
           "duration": 2.0,
-          "scene_context": "Transcript repeats the name 'Lucifer Morningstar.' Visual content is unverified."
-        },
-        {
-          "start": 80.46,
-          "end": 82.46,
-          "duration": 2.0,
-          "scene_context": "Transcript shows Chloe asking about the witness's relationship with the victim. Visual content is unverified."
+          "scene_context": "Transcript: the witness's name is confirmed as Lucifer Morningstar. Visual unverified."
         },
         {
           "start": 82.46,
           "end": 84.46,
           "duration": 2.0,
-          "scene_context": "Transcript shows the witness saying she used to work there for a few years. Visual content is unverified."
+          "scene_context": "Transcript: the victim used to work at this place for a few years. Visual unverified."
         },
         {
           "start": 84.46,
           "end": 86.46,
           "duration": 2.0,
-          "scene_context": "Transcript shows the witness saying he used to play her songs sometimes. Visual content is unverified."
+          "scene_context": "Transcript: the witness says he used to play the victim's songs sometimes. Visual unverified."
+        },
+        {
+          "start": 86.46,
+          "end": 87.46,
+          "duration": 1.0,
+          "scene_context": "Transcript: continuation of the witness's account of playing her songs. Visual unverified."
         },
         {
           "start": 87.46,
           "end": 89.46,
           "duration": 2.0,
-          "scene_context": "Transcript shows the witness saying she became a big star and someone decided to kill her. Visual content is unverified."
+          "scene_context": "Transcript: the victim became a big star and someone decided to kill her. Visual unverified."
+        },
+        {
+          "start": 89.46,
+          "end": 90.46,
+          "duration": 1.0,
+          "scene_context": "Transcript: continuation of the victim becoming a star and being killed. Visual unverified."
+        }
+      ]
+    },
+    {
+      "narration": "मृतका को गोली किसने मारी, यह अभी साफ़ नहीं। लूसिफ़र का दावा है कि मरने से पहले मृतका ने उसे कत्ल की वजह बताई थी।",
+      "word_count": 25,
+      "estimated_duration": 9,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 92.46,
+          "end": 94.46,
+          "duration": 2.0,
+          "scene_context": "Transcript: the witness says he does not know the shooter, but the victim told him something before she died. Visual unverified."
         },
         {
           "start": 95.46,
           "end": 97.46,
           "duration": 2.0,
-          "scene_context": "Transcript shows the witness saying the victim told him the reason for the murder. Visual content is unverified."
+          "scene_context": "Transcript: the witness says she told him the reason for the murder. Visual unverified."
         },
         {
-          "start": 113.38,
-          "end": 115.38,
+          "start": 97.46,
+          "end": 99.46,
           "duration": 2.0,
-          "scene_context": "Transcript shows the line: 'Tell me the reason for the murder.' Visual content is unverified."
+          "scene_context": "Transcript: the witness says the reason is a matter the victim explained. Visual unverified."
+        },
+        {
+          "start": 99.46,
+          "end": 100.84,
+          "duration": 1.38,
+          "scene_context": "Transcript: the conversation continues about the victim and the reason behind the crime. Visual unverified."
+        }
+      ]
+    },
+    {
+      "narration": "लूसिफ़र के मुताबिक़ मामला पैसों का है। उसका कहना है कि मृतका की आत्मा पूरी तरह नहीं गई।",
+      "word_count": 18,
+      "estimated_duration": 6,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "start": 109.84,
+          "end": 111.84,
+          "duration": 2.0,
+          "scene_context": "Transcript: Lucifer says the victim did not die completely, and her soul did not move on. Visual unverified."
         },
         {
           "start": 115.38,
           "end": 117.38,
           "duration": 2.0,
-          "scene_context": "Transcript shows the line: 'It's a matter of money.' Visual content is unverified."
+          "scene_context": "Transcript: the speaker states the reason for the murder is a matter of money. Visual unverified."
         },
         {
           "start": 117.38,
           "end": 119.38,
           "duration": 2.0,
-          "scene_context": "Transcript continues the money-related exchange. Visual content is unverified."
+          "scene_context": "Transcript: the conversation continues on the money motive. Visual unverified."
         }
       ]
     },
     {
-      "narration": "लूसिफ़र की कुछ बातें क्लोई को अजीब लगती हैं, और असली सवाल यह है कि क्या केस का सच सामने आएगा।",
-      "word_count": 21,
-      "estimated_duration": 9.0,
+      "narration": "फिर शादी के समारोह में जिमी बार्न्स सामने आता है। वह लूसिफ़र से कहता है कि मृतका ने उसकी शादी तोड़ी थी, और उसने रात में उसे मनाने की कोशिश की थी।",
+      "word_count": 32,
+      "estimated_duration": 11,
       "is_scene_bridge": false,
       "clips": [
-        {
-          "start": 143.99,
-          "end": 145.99,
-          "duration": 2.0,
-          "scene_context": "Transcript shows the line: 'Had it been so, would the LAPT have solved the case?' Visual content is unverified."
-        },
-        {
-          "start": 150.25,
-          "end": 152.25,
-          "duration": 2.0,
-          "scene_context": "Transcript shows the line: 'I have a question.' Visual content is unverified."
-        },
-        {
-          "start": 166.98,
-          "end": 168.98,
-          "duration": 2.0,
-          "scene_context": "Transcript shows the question: 'Will you find the murderer?' Visual content is unverified."
-        },
-        {
-          "start": 168.98,
-          "end": 170.98,
-          "duration": 2.0,
-          "scene_context": "Transcript continues with the question about punishing the murderer. Visual content is unverified."
-        },
-        {
-          "start": 170.98,
-          "end": 172.98,
-          "duration": 2.0,
-          "scene_context": "Transcript shows the line: 'Is this case necessary for you?' Visual content is unverified."
-        }
-      ]
-    },
-    {
-      "narration": "शादी के समारोह में अचानक तनाव फैल जाता है। किसी ने पूछा कि यह शादी है या बर्बादी। तभी जिमी बार्न्स पहुंचता है, जिसे उसकी पूर्व मंगेतर की बेरहम हत्या की याद दिलाई जाती है।",
-      "word_count": 35,
-      "estimated_duration": 15.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 218.3,
-          "end": 221.3,
-          "duration": 3.0,
-          "scene_context": "A speaker objects to the marriage, calling the bride beautiful and saying the drama is like a dirty shop. Visual of the speaker or bride is unverified."
-        },
-        {
-          "start": 224.3,
-          "end": 226.3,
-          "duration": 2.0,
-          "scene_context": "A speaker asks whether this is a marriage or destruction. The transcript establishes the line, not the camera shot."
-        },
-        {
-          "start": 229.99,
-          "end": 231.99,
-          "duration": 2.0,
-          "scene_context": "Someone replies, 'Nothing will happen to her, Padri.' The speaker and listener are not visually verified."
-        },
         {
           "start": 233.99,
-          "end": 236.99,
-          "duration": 3.0,
-          "scene_context": "A speaker asks, 'Jimmy Barnes, do you recognize me?' This establishes Jimmy's arrival and identity. Visual of Jimmy is unverified."
-        },
-        {
-          "start": 242.99,
-          "end": 245.66,
-          "duration": 2.67,
-          "scene_context": "A visitor asks, 'Don't you recognize me?' and says the other person cannot forget even if they want to. Visual is unverified."
-        },
-        {
-          "start": 249.66,
-          "end": 252.66,
-          "duration": 3.0,
-          "scene_context": "A speaker says Jimmy is getting married the day after his ex-fiance, a big star, was killed. This is an accusation or observation from the speaker, not an established fact."
-        },
-        {
-          "start": 256.66,
-          "end": 258.66,
+          "end": 235.99,
           "duration": 2.0,
-          "scene_context": "Jimmy says he is very sad to hear about it, but that she had ruined his marriage once. This is Jimmy's own claim."
-        }
-      ]
-    },
-    {
-      "narration": "जिमी मानता है कि उसके कबूलनामे से उसका अपमान हुआ और वह गुस्से में था। लेकिन जब उससे सीधे पूछा जाता है कि क्या उसने हत्या की, तो वह साफ़ मना करता है।",
-      "word_count": 33,
-      "estimated_duration": 14.1,
-      "is_scene_bridge": false,
-      "clips": [
+          "scene_context": "Transcript: Jimmy Barnes asks whether the other person recognizes him at a private function. Visual of a wedding setting is unverified."
+        },
+        {
+          "start": 236.99,
+          "end": 238.99,
+          "duration": 2.0,
+          "scene_context": "Transcript: the other person says this is a private function and asks how he came inside. Visual unverified."
+        },
+        {
+          "start": 258.66,
+          "end": 260.66,
+          "duration": 2.0,
+          "scene_context": "Transcript: Jimmy says the victim had ruined his marriage once. Visual unverified."
+        },
         {
           "start": 265.66,
           "end": 267.66,
           "duration": 2.0,
-          "scene_context": "A speaker accuses Jimmy of having gone to convince her at night. This is an accusation, not an established fact."
+          "scene_context": "Transcript: the speaker says the other person had gone to convince her at night. Visual unverified."
         },
         {
           "start": 267.66,
           "end": 269.66,
           "duration": 2.0,
-          "scene_context": "Jimmy says that if he had convinced her, he would have killed her. The transcript does not clarify the exact intent of this line."
+          "scene_context": "Transcript: the speaker says if he had convinced her, he would have killed her. Visual unverified."
         },
         {
-          "start": 271.66,
-          "end": 273.66,
-          "duration": 2.0,
-          "scene_context": "The speaker asks, 'What do you say, Jimmy?' Visual is unverified."
-        },
-        {
-          "start": 273.66,
-          "end": 275.66,
-          "duration": 2.0,
-          "scene_context": "The speaker asks directly, 'Did you kill her?' Visual is unverified."
-        },
-        {
-          "start": 275.66,
-          "end": 277.66,
-          "duration": 2.0,
-          "scene_context": "Jimmy tells the other person to stop staring at him and says he will not play mind games. Visual is unverified."
-        },
-        {
-          "start": 279.66,
-          "end": 280.66,
+          "start": 269.66,
+          "end": 270.66,
           "duration": 1.0,
-          "scene_context": "Jimmy says, 'No, not at all,' denying the murder."
-        },
-        {
-          "start": 280.66,
-          "end": 282.66,
-          "duration": 2.0,
-          "scene_context": "Jimmy says he was angry because he was humiliated. This is Jimmy's own account."
-        },
+          "scene_context": "Transcript: the speaker says that would not have happened. Visual unverified."
+        }
+      ]
+    },
+    {
+      "narration": "जिमी मानता है कि अपमान से वह गुस्से में था। लूसिफ़र उसे मन के खेल में फँसाने की कोशिश करता है।",
+      "word_count": 21,
+      "estimated_duration": 8,
+      "is_scene_bridge": false,
+      "clips": [
         {
           "start": 282.66,
           "end": 284.66,
           "duration": 2.0,
-          "scene_context": "Jimmy says the humiliation came from her confession. This is Jimmy's own account."
+          "scene_context": "Transcript: Jimmy says he was angry because he was humiliated by her confession. Visual unverified."
+        },
+        {
+          "start": 284.66,
+          "end": 286.66,
+          "duration": 2.0,
+          "scene_context": "Transcript: Jimmy continues that he was humiliated and says his lottery is on. Visual unverified."
+        },
+        {
+          "start": 286.66,
+          "end": 287.66,
+          "duration": 1.0,
+          "scene_context": "Transcript: the other person says that is what he sees. Visual unverified."
         },
         {
           "start": 288.66,
           "end": 290.66,
           "duration": 2.0,
-          "scene_context": "Someone says to play with mind games for a while. The transcript establishes the line, not the speaker's visual."
+          "scene_context": "Transcript: the speaker tells the other to play with his mind games for a while. Visual unverified."
         }
       ]
     },
     {
-      "narration": "शादी के एक फंक्शन में किसी ने इस रिश्ते पर सवाल उठाए। उसका कहना था कि यह शादी बर्बादी ला सकती है।",
-      "word_count": 22,
-      "estimated_duration": 9.4,
+      "narration": "जिमी ने ऐसे खेल में न फँसने की बात कहकर बात खत्म की। आख़िर में लूसिफ़र विदा लेता है।",
+      "word_count": 19,
+      "estimated_duration": 8,
       "is_scene_bridge": false,
       "clips": [
         {
-          "start": 318.18,
-          "end": 320.18,
+          "start": 277.66,
+          "end": 279.66,
           "duration": 2.0,
-          "scene_context": "Dialogue reads 'I don't believe it.' Speaker and setting are not clear from the garbled transcript. Wedding setting is inferred from the previous context, not confirmed by the transcript."
+          "scene_context": "Transcript: Jimmy tells the other to stop staring at him and says he will not fall for mind games. Visual unverified."
         },
         {
-          "start": 323.18,
-          "end": 325.18,
+          "start": 279.66,
+          "end": 281.66,
           "duration": 2.0,
-          "scene_context": "Dialogue reads 'You are not getting married because of this trash.' The line is garbled, so the exact meaning is uncertain. Visual of the speaker is unverified."
+          "scene_context": "Transcript: Jimmy says he is not going to come to the other's mind games. Visual unverified."
         },
         {
-          "start": 325.18,
-          "end": 327.18,
-          "duration": 2.0,
-          "scene_context": "Dialogue reads 'How can I do that? No.' Responds to the marriage objection. Visual of the speaker is unverified."
+          "start": 330.18,
+          "end": 331.18,
+          "duration": 1.0,
+          "scene_context": "Transcript: the speaker says he should go now. Visual unverified."
         },
         {
           "start": 331.18,
           "end": 333.43,
           "duration": 2.25,
-          "scene_context": "Dialogue reads 'Congratulations on your wedding.' Establishes the wedding setting in the transcript. Visual of the speaker is unverified."
-        },
-        {
-          "start": 333.43,
-          "end": 334.43,
-          "duration": 1.0,
-          "scene_context": "Dialogue reads 'Enjoy.' Closes the wedding exchange. Visual of the speaker is unverified."
-        }
-      ]
-    },
-    {
-      "narration": "उधर एक शख्स बॉस से मिलने आया, पर उसे मज़ाक में टाल दिया गया। फिर लूसिफ़र मॉर्निंगस्टार ने अपना परिचय दिया और हिप-हॉप पर बहस छिड़ गई। बात आखिर में एक तीखी और डरावनी धमकी पर खत्म हुई।",
-      "word_count": 38,
-      "estimated_duration": 15.9,
-      "is_scene_bridge": true,
-      "clips": [
-        {
-          "start": 352.36,
-          "end": 353.36,
-          "duration": 1.0,
-          "scene_context": "Dialogue reads 'Good afternoon, sir.' The visitor greets someone at a house. Visual of the speaker is unverified."
-        },
-        {
-          "start": 353.36,
-          "end": 355.36,
-          "duration": 2.0,
-          "scene_context": "Dialogue reads 'I have come to meet your boss for a while.' Establishes the visitor's purpose. Visual is unverified."
-        },
-        {
-          "start": 357.36,
-          "end": 358.36,
-          "duration": 1.0,
-          "scene_context": "Dialogue reads 'I am sorry, sir.' The response is from the person at the door. Visual is unverified."
-        },
-        {
-          "start": 358.36,
-          "end": 359.36,
-          "duration": 1.0,
-          "scene_context": "Dialogue reads 'He is making a joke.' The boss is not available, and this is treated as a joke. Visual is unverified."
-        },
-        {
-          "start": 361.36,
-          "end": 362.36,
-          "duration": 1.0,
-          "scene_context": "Dialogue reads 'I have drugs for him.' The garbled line is the visitor's claim, so it is not verified as fact. Visual is unverified."
-        },
-        {
-          "start": 387.74,
-          "end": 389.74,
-          "duration": 2.0,
-          "scene_context": "Dialogue reads 'My name is Lucifer Morningstar.' Introduces the character in the transcript. Visual of the speaker is unverified."
-        },
-        {
-          "start": 391.03,
-          "end": 393.03,
-          "duration": 2.0,
-          "scene_context": "Dialogue reads 'Lucifer Morningstar.' Repeats the introduction. Visual is unverified."
-        },
-        {
-          "start": 396.29,
-          "end": 398.29,
-          "duration": 2.0,
-          "scene_context": "Dialogue reads 'You are insulting me.' This is a reaction in the hip-hop exchange. Visual is unverified."
-        },
-        {
-          "start": 409.88,
-          "end": 411.88,
-          "duration": 2.0,
-          "scene_context": "Dialogue reads 'I just hate your music.' This is part of the hip-hop argument. Visual is unverified."
-        },
-        {
-          "start": 421.88,
-          "end": 423.88,
-          "duration": 2.0,
-          "scene_context": "Dialogue reads 'Do you understand what I am saying?' This is a rhetorical check within the argument. Visual is unverified."
-        },
-        {
-          "start": 426.88,
-          "end": 428.88,
-          "duration": 2.0,
-          "scene_context": "Dialogue reads 'You are very fond of dying.' This is a threatening remark in the transcript, so it is treated as a threat. Visual is unverified."
-        }
-      ]
-    },
-    {
-      "narration": "वह बोला कि उसने खुद को अमर बताया। फिर डिलाइला का नाम आया। एक शख्स ने माना कि उसने अपने डीलर एडी को फ़ोन किया था, जिससे वह डिलाइला के साथ मिला था, पर उसने कहा कि इससे वह कातिल नहीं बन जाता। उधर एक शादीशुदा आदमी, जो अपना नाम राज़ रखता था, डॉक्टर लिंडा से बेवर्ली हिल्स में हफ़्ते में पाँच बार मिलने जाता था। तभी एलएपीडी ने सबको हथियार ज़मीन पर डालने को कहा। पुलिस के मुताबिक कातिल का आखिरी कॉल वाइल को गया था।",
-      "word_count": 87,
-      "estimated_duration": 0.64,
-      "is_scene_bridge": true,
-      "clips": [
-        {
-          "start": 432.14,
-          "end": 434.14,
-          "duration": 2.0,
-          "scene_context": "A speaker says he is immortal and tells others not to miss the bullets. The transcript does not establish the camera shot or who is framed."
-        },
-        {
-          "start": 434.14,
-          "end": 436.5,
-          "duration": 2.36,
-          "scene_context": "A speaker asks what the other person knows about Delilah. Visual framing is unverified."
-        },
-        {
-          "start": 436.5,
-          "end": 438.5,
-          "duration": 2.0,
-          "scene_context": "A reply says the other person does not watch the news. Visual framing is unverified."
-        },
-        {
-          "start": 478.68,
-          "end": 479.68,
-          "duration": 1.0,
-          "scene_context": "A speaker says he does not know, in a reply about the affair. This is a short line, and the visual is unverified."
-        },
-        {
-          "start": 536.38,
-          "end": 538.38,
-          "duration": 2.0,
-          "scene_context": "A speaker says he called Eddie because Eddie is his dealer, and that he had met him with Delilah. Visual framing is unverified."
-        },
-        {
-          "start": 538.38,
-          "end": 539.38,
-          "duration": 1.0,
-          "scene_context": "A speaker asks 'So what?' in response to the questioning about the call. Visual framing is unverified."
-        },
-        {
-          "start": 539.38,
-          "end": 540.38,
-          "duration": 1.0,
-          "scene_context": "A speaker asks whether he becomes a murderer. This is a rhetorical question, not a confession. Visual framing is unverified."
-        },
-        {
-          "start": 540.38,
-          "end": 541.38,
-          "duration": 1.0,
-          "scene_context": "A short 'No.' reply that denies being a murderer. Visual framing is unverified."
-        },
-        {
-          "start": 480.68,
-          "end": 482.68,
-          "duration": 2.0,
-          "scene_context": "A speaker says he kept his name as Raaz and that he was a married man. Visual framing is unverified."
-        },
-        {
-          "start": 482.68,
-          "end": 484.68,
-          "duration": 2.0,
-          "scene_context": "A speaker asks whether any friend knew Raaz, and another says he did not trust anyone. Visual framing is unverified."
-        },
-        {
-          "start": 491.68,
-          "end": 493.68,
-          "duration": 2.0,
-          "scene_context": "A speaker names the therapist as Dr. Linda. Visual framing is unverified."
-        },
-        {
-          "start": 493.68,
-          "end": 494.68,
-          "duration": 1.0,
-          "scene_context": "A speaker places the therapist in Beverly Hills. Visual framing is unverified."
-        },
-        {
-          "start": 494.68,
-          "end": 496.68,
-          "duration": 2.0,
-          "scene_context": "A speaker says he went to meet her five times a week under someone else's name. Visual framing is unverified."
-        },
-        {
-          "start": 504.68,
-          "end": 507.68,
-          "duration": 3.0,
-          "scene_context": "A speaker announces that LAPD is present and tells everyone to throw their guns on the ground. Visual framing is unverified."
-        },
-        {
-          "start": 507.68,
-          "end": 508.68,
-          "duration": 1.0,
-          "scene_context": "A command to both people to raise their hands. Visual framing is unverified."
-        },
-        {
-          "start": 516.68,
-          "end": 518.68,
-          "duration": 2.0,
-          "scene_context": "A speaker says he checked the murderer's phone record. Visual framing is unverified."
-        },
-        {
-          "start": 518.68,
-          "end": 520.68,
-          "duration": 2.0,
-          "scene_context": "A speaker says the murderer made the last call to Vile. The name is a possible speech-to-text error and should not be treated as confirmed."
-        },
-        {
-          "start": 520.68,
-          "end": 521.68,
-          "duration": 1.0,
-          "scene_context": "A short reaction of 'Oh, shit' to the phone-record information. Visual framing is unverified."
-        }
-      ]
-    },
-    {
-      "narration": "पुलिस ने साफ़ कर दिया कि एडी को फ़ोन करने वाला शख़्स भी अब शक के घेरे में है। तभी किसी ने धमकी दी कि अगर एक लफ़्ज़ भी और बोला गया तो सबको गोली मार दी जाएगी। पुलिस ने उसे जाँच में दखल देने के इल्ज़ाम में हिरासत में लेने की बात कही। उसने हथकड़ी को बेकार बताया, पर जल्दी ही मदद की पेशकश कर दी।",
-      "word_count": 67,
-      "estimated_duration": 26.6,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 541.38,
-          "end": 543.38,
-          "duration": 2.0,
-          "scene_context": "Transcript: the detective says the man is still a suspect. Visual of the detective or suspect is unverified."
-        },
-        {
-          "start": 543.38,
-          "end": 545.38,
-          "duration": 2.0,
-          "scene_context": "Transcript: the man asks whether the person who called Eddie is a suspect. Visual is unverified."
-        },
-        {
-          "start": 546.38,
-          "end": 548.38,
-          "duration": 2.0,
-          "scene_context": "Transcript: the man says no one in Hollywood does not call Eddie. Visual is unverified."
-        },
-        {
-          "start": 548.38,
-          "end": 550.38,
-          "duration": 2.0,
-          "scene_context": "Transcript: the man says the detective should go and catch everyone. Visual is unverified."
-        },
-        {
-          "start": 572.74,
-          "end": 575.74,
-          "duration": 3.0,
-          "scene_context": "Transcript: a threat is made, saying the speaker will shoot everyone if one more word is said. Speaker is unclear due to speech-to-text errors. Visual is unverified."
-        },
-        {
-          "start": 577.74,
-          "end": 579.74,
-          "duration": 2.0,
-          "scene_context": "Transcript: a line addressed to the detective says the time will be ruined. Visual is unverified."
-        },
-        {
-          "start": 588.41,
-          "end": 589.41,
-          "duration": 1.0,
-          "scene_context": "Transcript: the detective tells the man to stay there. Visual is unverified."
-        },
-        {
-          "start": 589.41,
-          "end": 590.41,
-          "duration": 1.0,
-          "scene_context": "Transcript: the detective tells the man to come with him. Visual is unverified."
-        },
-        {
-          "start": 593.41,
-          "end": 595.41,
-          "duration": 2.0,
-          "scene_context": "Transcript: the detective says the man will now listen to him. Visual is unverified."
-        },
-        {
-          "start": 598.41,
-          "end": 601.41,
-          "duration": 3.0,
-          "scene_context": "Transcript: the detective explains the arrest is because the man is interfering in the police investigation. Visual is unverified."
-        },
-        {
-          "start": 604.41,
-          "end": 606.41,
-          "duration": 2.0,
-          "scene_context": "Transcript: the man says the handcuffs cannot tie him up. Visual of handcuffs is unverified."
-        },
-        {
-          "start": 609.84,
-          "end": 610.84,
-          "duration": 1.0,
-          "scene_context": "Transcript: a short line asks how the man did this. Visual is unverified."
-        },
-        {
-          "start": 621.84,
-          "end": 622.84,
-          "duration": 1.0,
-          "scene_context": "Transcript: the man says he will help. Visual is unverified."
-        },
-        {
-          "start": 623.84,
-          "end": 625.84,
-          "duration": 2.0,
-          "scene_context": "Transcript: the man asks what he can help with. Visual is unverified."
-        }
-      ]
-    },
-    {
-      "narration": "लूसिफ़र ने दावा किया कि उसके पास ख़ास हुनर है। उसका कहना है कि वो लोगों से बात कर सकता है और लोगों की ख़्वाहिशें पूरी कर सकता है।",
-      "word_count": 29,
-      "estimated_duration": 12.4,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 625.84,
-          "end": 627.84,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the speaker saying 'I have a special talent' and 'I can talk to people'. Speaker is unnamed. Visual of the speaker is unverified."
-        },
-        {
-          "start": 628.84,
-          "end": 630.84,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the line 'I can't see the rest', followed by 'Are you blind?' in the next segment. Visual is unverified."
-        },
-        {
-          "start": 634.84,
-          "end": 636.84,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes 'I am not a magician' and 'People just talk to me'. The speaker is dismissing the idea of magic. Visual is unverified."
-        },
-        {
-          "start": 641.84,
-          "end": 643.84,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the line 'People accept their sin' in the sin-and-responsibility exchange. Visual is unverified."
-        },
-        {
-          "start": 643.84,
-          "end": 645.84,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the line 'I can make people's wishes come true'. Visual is unverified."
-        },
-        {
-          "start": 647.84,
-          "end": 649.84,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the line about the ease of knowing people's heart's wishes. Visual is unverified."
-        }
-      ]
-    },
-    {
-      "narration": "फिर उसने डिटेक्टिव से पूछा कि उसकी ज़िंदगी में सबसे ज़्यादा क्या चाहिए। डिटेक्टिव ने बताया कि बचपन में वो भी पापा की तरह पुलिस अफ़सर बनना चाहते थे।",
-      "word_count": 29,
-      "estimated_duration": 12.4,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 671.16,
-          "end": 673.16,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the question 'What do you want the most in your life?' Visual is unverified."
-        },
-        {
-          "start": 685.38,
-          "end": 687.38,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the start of the answer: 'Maybe when I was a kid, I always wanted to be a police officer like my daddy'. Speaker attribution to the detective is inferred. Visual is unverified."
-        },
-        {
-          "start": 692.8,
-          "end": 694.8,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the line 'So that I can help people one day'. Speaker is inferred to be the detective. Visual is unverified."
-        },
-        {
-          "start": 695.8,
-          "end": 697.8,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the line 'And people take me seriously when I tell them to sit quietly in the car'. Visual is unverified."
-        },
-        {
-          "start": 706.31,
-          "end": 708.31,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the question 'Is it possible that you are a magician?' Visual is unverified."
-        },
-        {
-          "start": 709.31,
-          "end": 711.31,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the lines 'No' and 'Wait a minute'. Speaker attribution is uncertain. Visual is unverified."
-        },
-        {
-          "start": 713.31,
-          "end": 715.31,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the lines 'Okay' and 'What is that?'. Speaker attribution is uncertain. Visual is unverified."
-        }
-      ]
-    },
-    {
-      "narration": "एक मौत का ज़िक्र हुआ, और बेवर्ली हिल्स की थेरेपिस्ट लिंडा का नाम सामने आया।",
-      "word_count": 15,
-      "estimated_duration": 6.4,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 726.98,
-          "end": 728.98,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the speaker saying 'If I had not helped her in her career, she would have been alive today'. Visual is unverified."
-        },
-        {
-          "start": 732.62,
-          "end": 734.62,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the reactions 'Okay', 'Okay', 'Fine'. Speaker attribution is uncertain. Visual is unverified."
-        },
-        {
-          "start": 734.62,
-          "end": 736.62,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the line 'But if your clue didn't work out, then this is not going to happen again'. Visual is unverified."
-        },
-        {
-          "start": 746.12,
-          "end": 748.12,
-          "duration": 2.0,
-          "scene_context": "Transcript establishes the line 'There is a therapist in Beverly Hills. Her name is Linda.' Visual is unverified."
-        }
-      ]
-    },
-    {
-      "narration": "बातचीत में एक अहम बात सामने आई। किसी ने बताया कि दलाला पहले किसी और नाम से जानी जाती थी, और शायद उसने पेनी लेन का नाम इस्तेमाल किया। फिर बेवर्ली हिल्स की डॉक्टर लिंडा का ज़िक्र हुआ, और पेनी लेन नाम के एक क्लाइंट की बात हुई। लेकिन किसी ने साफ़ कहा कि केस अभी सुलझा नहीं है। यह भी साफ़ किया गया कि वह यहाँ घर की सेवा करने नहीं, केस सुलझाने आया है।",
-      "word_count": 76,
-      "estimated_duration": 31.7,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 750.12,
-          "end": 752.12,
-          "duration": 2.0,
-          "scene_context": "A speaker says the woman used to go by another name. The transcript does not show who she is in this line, and the visual is unverified."
-        },
-        {
-          "start": 753.12,
-          "end": 755.6,
-          "duration": 2.48,
-          "scene_context": "A speaker says 'Penny Lane.' The visual is unverified."
-        },
-        {
-          "start": 755.6,
-          "end": 757.6,
-          "duration": 2.0,
-          "scene_context": "A speaker says Dalala probably went by Penny Lane's name. This is a guess in dialogue, not an established fact. The visual is unverified."
-        },
-        {
-          "start": 761.54,
-          "end": 764.54,
-          "duration": 3.0,
-          "scene_context": "A speaker thanks someone and says not to be so happy. The line is a reaction, and the visual is unverified."
-        },
-        {
-          "start": 764.54,
-          "end": 767.54,
-          "duration": 3.0,
-          "scene_context": "A speaker says the case hasn't been solved yet, followed by a line about having known the other person earlier. The speaker for each line is uncertain."
-        },
-        {
-          "start": 802.98,
-          "end": 804.98,
-          "duration": 2.0,
-          "scene_context": "A speaker says the words have been proven true. The transcript is garbled and the speaker is uncertain. The visual is unverified."
-        },
-        {
-          "start": 804.98,
-          "end": 806.98,
-          "duration": 2.0,
-          "scene_context": "A line says there is a client named Penny Lane and a Beverly Hills doctor named Linda. The transcript is garbled, so the exact wording is uncertain. The visual is unverified."
-        },
-        {
-          "start": 806.98,
-          "end": 809.98,
-          "duration": 3.0,
-          "scene_context": "A speaker says 'That's great' and then 'So, you have made a partnership.' The speaker is uncertain, and the visual is unverified."
-        },
-        {
-          "start": 832.12,
-          "end": 834.38,
-          "duration": 2.26,
-          "scene_context": "A line says 'I'm here to solve the case,' and the context attributes it to the detective. Speaker attribution is uncertain, and the visual is unverified."
-        }
-      ]
-    },
-    {
-      "narration": "रात के वक्त एक बच्चा चोरी-छिपे सिगरेट पीते पकड़ा जाता है। वह धमकी देता है कि उसकी माँ पुलिस अफसर है और वह उसे गिरफ्तार करवा देगी। फिर नाम और एक दुकानदार को लेकर थोड़ी उलझन होती है, और बात माँ पर टल जाती है। बातचीत में किसी ने साफ़ कहा कि उसे इस बारे में माँ से पूछना चाहिए।",
-      "word_count": 60,
-      "estimated_duration": 19.3,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 865.66,
-          "end": 867.66,
-          "duration": 2.0,
-          "scene_context": "Segment 414 establishes a line about not allowing cigarettes at night. The visual of the smoking act is unverified."
-        },
-        {
-          "start": 893.34,
-          "end": 895.34,
-          "duration": 2.0,
-          "scene_context": "Segment 417 establishes the claim that the speaker's mother is a police officer. Visual of the speaker is unverified."
-        },
-        {
-          "start": 896.34,
-          "end": 897.86,
-          "duration": 1.52,
-          "scene_context": "Segment 418 establishes the warning that the mother will arrest the other person. Reaction shot is unverified."
-        },
-        {
-          "start": 899.86,
-          "end": 900.86,
-          "duration": 1.0,
-          "scene_context": "Segment 420 establishes the line I do know your mom. Visual is unverified."
-        },
-        {
-          "start": 900.86,
-          "end": 902.86,
-          "duration": 2.0,
-          "scene_context": "Segment 421 establishes the question about the speaker's name. Visual is unverified."
-        },
-        {
-          "start": 902.86,
-          "end": 904.86,
-          "duration": 2.0,
-          "scene_context": "Segment 422 establishes the name Lucifer being given in reply. Visual is unverified."
-        },
-        {
-          "start": 907.78,
-          "end": 909.78,
-          "duration": 2.0,
-          "scene_context": "Segment 424 establishes a self-introduction with the name Beatrice, which may be garbled. Visual is unverified."
-        },
-        {
-          "start": 911.78,
-          "end": 913.58,
-          "duration": 1.8,
-          "scene_context": "Segment 425 establishes a line about a shopkeeper. Visual is unverified."
-        },
-        {
-          "start": 914.86,
-          "end": 915.94,
-          "duration": 1.08,
-          "scene_context": "Segment 427 establishes the line Ask your mom. Visual is unverified."
-        },
-        {
-          "start": 916.95,
-          "end": 918.95,
-          "duration": 2.0,
-          "scene_context": "Segment 428 establishes the question about whom the speaker beat up. Visual is unverified."
-        },
-        {
-          "start": 934.32,
-          "end": 936.0,
-          "duration": 1.68,
-          "scene_context": "Segment 433 establishes a reply saying Oh, I got it. Visual is unverified."
-        }
-      ]
-    },
-    {
-      "narration": "बच्चा बताता है कि एक लड़की उसे परेशान कर रही थी। उसने नकली अकाउंट बनाकर उसका मज़ाक उड़ाया, तो उसने उसे उस जगह मारा जहाँ वह शर्मिंदा हुई थी। किसी ने इस काम को सही बताया। नर्क की एक कहानी का ज़िक्र भी होता है, और अंत में माँ उसे शाबाशी देती है और कहती है कि उसे उस पर गर्व है।",
-      "word_count": 62,
-      "estimated_duration": 26.6,
-      "is_scene_bridge": true,
-      "clips": [
-        {
-          "start": 920.31,
-          "end": 921.79,
-          "duration": 1.48,
-          "scene_context": "Segment 429 establishes the line The girl was watching me. Visual is unverified."
-        },
-        {
-          "start": 922.69,
-          "end": 924.09,
-          "duration": 1.4,
-          "scene_context": "Segment 430 establishes the line She was harassing me. Visual is unverified."
-        },
-        {
-          "start": 924.17,
-          "end": 926.17,
-          "duration": 2.0,
-          "scene_context": "Segment 431 establishes the claim of a fake account making fun of the speaker. Visual is unverified."
-        },
-        {
-          "start": 926.17,
-          "end": 927.81,
-          "duration": 1.64,
-          "scene_context": "Segment 431 continues the fake account and mocking claim. Visual is unverified."
-        },
-        {
-          "start": 928.29,
-          "end": 930.29,
-          "duration": 2.0,
-          "scene_context": "Segment 432 establishes the claim that the speaker beat her up where she was ashamed. Visual is unverified."
-        },
-        {
-          "start": 930.29,
-          "end": 932.29,
-          "duration": 2.0,
-          "scene_context": "Segment 432 continues the account of the confrontation. Visual is unverified."
-        },
-        {
-          "start": 936.08,
-          "end": 937.16,
-          "duration": 1.08,
-          "scene_context": "Segment 434 establishes the line You did it right. Speaker is not clearly identified in the transcript."
-        },
-        {
-          "start": 938.68,
-          "end": 940.32,
-          "duration": 1.64,
-          "scene_context": "Segment 435 establishes the line You did it very well. Speaker is not clearly identified in the transcript."
-        },
-        {
-          "start": 947.86,
-          "end": 949.54,
-          "duration": 1.68,
-          "scene_context": "Segment 438 establishes the line about a story in Hell made especially for the addressee. Visual is unverified."
-        },
-        {
-          "start": 1005.55,
-          "end": 1007.55,
-          "duration": 2.0,
-          "scene_context": "Segment 458 establishes a request to drop the girl off at the mother's and let the speaker go. Visual is unverified."
-        },
-        {
-          "start": 1008.47,
-          "end": 1010.95,
-          "duration": 2.48,
-          "scene_context": "Segment 459 establishes the line Thank you. Go with your dad. Visual is unverified."
-        },
-        {
-          "start": 1011.03,
-          "end": 1012.95,
-          "duration": 1.92,
-          "scene_context": "Segment 460 establishes a parent saying Wow, I love you so much. Visual is unverified."
-        },
-        {
-          "start": 1013.03,
-          "end": 1014.71,
-          "duration": 1.68,
-          "scene_context": "Segment 461 establishes the line You did a great job. I'm proud of you. Visual is unverified."
-        },
-        {
-          "start": 1014.79,
-          "end": 1015.95,
-          "duration": 1.16,
-          "scene_context": "Segment 462 establishes the reply Thanks, mommy. Visual is unverified."
-        },
-        {
-          "start": 1016.35,
-          "end": 1017.67,
-          "duration": 1.32,
-          "scene_context": "Segment 463 establishes the line What's the deal? Visual is unverified."
-        }
-      ]
-    },
-    {
-      "narration": "एक किरदार जवाब में कहता है, \"क्यों नहीं? मैं तो चार्मिंग हूँ।\"",
-      "word_count": 12,
-      "estimated_duration": 5.1,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "start": 1034.7,
-          "end": 1036.58,
-          "duration": 1.88,
-          "scene_context": "The transcript establishes only this dialogue line, 'Why not? I'm Charming.' The speaker is not identified and the visual setting is not established. Any visual of the speaker is unverified. This clip covers about 1.9 seconds of the roughly 5-second narration, so the remaining coverage is unresolved."
+          "scene_context": "Transcript: the speaker leaves with a closing congratulation on the wedding. Visual unverified."
         }
       ]
     }
   ],
   "characters": {
-    "Chloe": {
-      "name": "Chloe",
-      "description": "Detective assigned the case. She reviews the evidence, including a drug dealer's packet found in the victim's purse, and questions the witness."
+    "Chloe Decker": {
+      "name": "Chloe Decker",
+      "description": "Detective assigned the murder case; the transcript shows the lieutenant handing her the case."
     },
     "Lucifer Morningstar": {
       "name": "Lucifer Morningstar",
-      "description": "Introduces himself in this section and argues with a man over hip-hop music. He ends the exchange with a threatening remark."
+      "description": "Witness who speaks to Chloe about the victim and claims she told him the reason for her murder."
     },
-    "Jaila": {
-      "name": "Jaila",
-      "description": "Singer and victim. The transcript also spells this name as Darlala in places; the spelling was not verified against any research, so it is kept as it appears most often."
+    "Lieutenant (name null, not verified from transcript)": {
+      "name": "Lieutenant (name null, not verified from transcript)",
+      "description": "Senior officer who gives Chloe the case and says it is an easy one."
+    },
+    "Victim singer (name null, transcript spelling inconsistent: Jaila, Darlala)": {
+      "name": "Victim singer (name null, transcript spelling inconsistent: Jaila, Darlala)",
+      "description": "Former employee at Lucifer's club who became a big star and was shot dead."
     },
     "Jimmy Barnes": {
       "name": "Jimmy Barnes",
-      "description": "A man attending a wedding-related function who is confronted about his ex-fiance, a big star who was killed. He admits to being angry because he was humiliated by her confession, but denies killing her."
-    },
-    "Unnamed objector": {
-      "name": "Unnamed objector",
-      "description": "A speaker at the ceremony who objects to the marriage, questioning whether it is a marriage or destruction, and later confronts Jimmy about the killing. The transcript does not name this speaker."
-    },
-    "Captain": {
-      "name": "Captain",
-      "description": "Addressed by name at the function. The transcript does not establish this character's role in the story."
-    },
-    "Unnamed visitor": {
-      "name": "Unnamed visitor",
-      "description": "Arrives at a house asking to see the boss, is told he is joking, and says he has drugs for him. Identity not established in the transcript."
-    },
-    "Unnamed wedding guest": {
-      "name": "Unnamed wedding guest",
-      "description": "Questions the marriage at a wedding-related function. The transcript is garbled, so the exact speaker and claim are uncertain."
-    },
-    "Eddie": {
-      "name": "Eddie",
-      "description": "A dealer. A speaker says he called Eddie two days before the shooting, and that he had met Delilah through him."
-    },
-    "Delilah": {
-      "name": "Delilah",
-      "description": "A name that comes up repeatedly in questioning, linked to Eddie and to the speaker's earlier meeting with the dealer. Her role is not clear from the transcript."
-    },
-    "Raaz": {
-      "name": "Raaz",
-      "description": "An alias used by a married man who had an affair. He kept his real identity hidden and did not trust anyone."
-    },
-    "Dr. Linda": {
-      "name": "Dr. Linda",
-      "description": "The therapist of the married man in the Raaz alias. He reportedly met her in Beverly Hills five times a week under another name."
-    },
-    "Unnamed detective": {
-      "name": "Unnamed detective",
-      "description": "Police detective who questions a suspect, warns him about interfering with the investigation, arrests him and asks everyone to put their guns down. Name not confirmed by the transcript."
-    },
-    "Unnamed suspect (man)": {
-      "name": "Unnamed suspect (man)",
-      "description": "Man who is treated as a suspect for calling Eddie, makes jokes during questioning, reacts to his arrest and offers to help the detective. Name not confirmed by the transcript."
-    },
-    "Lucifer": {
-      "name": "Lucifer",
-      "description": "Named in the supplied segments (around 902.86 seconds) during a late-night exchange with a young speaker who is smoking. His exact role is unclear because the transcript is garbled."
-    },
-    "Detective (unnamed)": {
-      "name": "Detective (unnamed)",
-      "description": "The police detective he speaks with. Lucifer addresses him directly as 'detective'. The detective's answer about wanting to be a police officer like his father is inferred from the sequence and is not explicitly attributed in the transcript."
-    },
-    "Linda": {
-      "name": "Linda",
-      "description": "A Beverly Hills doctor or therapist named in the transcript, connected to the client named Penny Lane."
-    },
-    "Dalala (uncertain)": {
-      "name": "Dalala (uncertain)",
-      "description": "Named in a question as a possible client of Linda. The spelling may be a speech-to-text error and the identity is unconfirmed. The reply 'No, no' is unattributed."
-    },
-    "Detective Decker": {
-      "name": "Detective Decker",
-      "description": "Named in the transcript as a detective. Some lines near the end are attributed to the detective in the context, but speaker attribution is uncertain because of speech-to-text errors."
-    },
-    "Penny Lane": {
-      "name": "Penny Lane",
-      "description": "A name mentioned in the transcript as an earlier or alternate name used by Dalala, and as the name of a client."
-    },
-    "Dalala": {
-      "name": "Dalala",
-      "description": "The person the transcript says may have used the name Penny Lane. Speakers describe Dalala's aliases, and the context says Dalala was not Linda's client."
-    },
-    "Beatrice (transcript name, unverified)": {
-      "name": "Beatrice (transcript name, unverified)",
-      "description": "A name given by a speaker at about 907.78 seconds, followed by a line about a shopkeeper. The transcript is garbled, so this may be a speech-to-text error and was not normalized."
-    },
-    "Ms. Puli (transcript name, unverified)": {
-      "name": "Ms. Puli (transcript name, unverified)",
-      "description": "The name addressed at about 943.51 seconds, when a speaker mentions a story in Hell made for her. The name may be a transcription error and was not normalized."
-    },
-    "Young speaker (unnamed)": {
-      "name": "Young speaker (unnamed)",
-      "description": "A young person who is smoking at night, says their mother is a police officer, and later reports that a girl was harassing them online before they beat her up. Later segments show a parent praising them."
-    },
-    "Girl (unnamed)": {
-      "name": "Girl (unnamed)",
-      "description": "Described by the young speaker as harassing them with a fake account and mocking them. The speaker says the confrontation happened where she felt ashamed."
+      "description": "Man who is set to marry soon; he was the victim's ex-fiance and blames her for ruining his earlier marriage."
     }
   },
   "synopses": [
-    "Detective Chloe is handed a murder case involving a singer who was shot. Early evidence suggests a drug-related motive, including a dealer's packet found in the victim's purse, and Chloe speculates that unpaid drug money may be involved. Lucifer Morningstar, a witness who knew the victim, speaks with Chloe. He says the victim told him before her death that money was the reason for the murder. The exchange ends with Chloe's skepticism about his claims and the open question of whether the case will reveal the truth. This summary covers only the supplied transcript section.",
-    "At a wedding-related function, an objector challenges the marriage and suggests it may lead to destruction. Jimmy Barnes arrives and is reminded that his ex-fiance, a big star, was killed. When pressed about whether he killed her, Jimmy says he was angry because her confession humiliated him, but he firmly denies the murder. The transcript is garbled, and it does not mention Lucifer or Chloe.",
-    "The garbled transcript shows a challenge to a marriage at a wedding-related function, followed by a visitor who asks to meet a boss and is told it is a joke. Lucifer Morningstar introduces himself and argues with a man about hip-hop music. The exchange ends with a threatening remark. The transcript's speech-to-text errors make several lines unreliable, and the names and relationships are not confirmed by research.",
-    "In this garbled transcript section, a man describes himself as immortal and is questioned about Delilah. He admits calling his dealer Eddie two days before the shooting, and says he met Delilah through him but did not kill anyone. Police talk about a married man who hid his identity as Raaz, who visited his therapist Dr. Linda in Beverly Hills. Police then order everyone to put their guns down, and the detective says the murderer's last call went to a name rendered as Vile. Several lines are unreliable because of speech-to-text errors, and the transcript does not mention Lucifer or Chloe.",
-    "In this section, the detective tells a man that anyone who called Eddie is now a suspect, and the man dismisses this as absurd. The mood turns tense when someone makes a threat against the room. The detective says the man is interfering with the investigation and arrests him, and the man calls the handcuffs useless. The detective tells him to stay calm and cooperate, and he responds by offering to help solve the case, asking what he can do. Several lines are garbled by speech-to-text errors, so some speaker attributions are uncertain.",
-    "The speaker claims he can talk to people and grant their wishes, and says people must accept their own sins. He asks the detective what he wants most in life, and the detective recalls wanting to become a police officer like his father so he can help people. The conversation then turns to a woman who the speaker says would still be alive had he not helped her career. The transcript also names Linda, a therapist in Beverly Hills, and asks whether Dalala was her client, which is denied.",
-    "The transcript section is heavily garbled. A speaker says Dalala was once known by another name, possibly Penny Lane. The conversation then mentions a client named Penny Lane and a Beverly Hills doctor named Linda. A character says the case is not solved yet, and another says they came to solve the case, not to work for the household.",
-    "This supplied section covers about 854 to 1039 seconds of a garbled transcript. A young person is caught smoking at night and warns that their mother is a police officer. Lucifer's name comes up, and a shopkeeper is mentioned. The young person says a girl was harassing them with a fake account and that they beat her up in a place where she was ashamed. Someone makes a threatening remark about a story in Hell, and a parent later praises the child and says they are proud. The section ends with a remark about meeting someone on the way. This section does not contain the Dalala, Penny Lane, or Linda dialogue described in the previous context, so the narration covers only what this transcript supports. Web research was not performed for this section, so character names remain as transcribed unless the transcript itself supports them.",
-    "The supplied transcript contains only one line of dialogue, at about 1034.7 to 1036.6 seconds, in which a speaker replies 'Why not? I'm Charming.' The speaker and surrounding events are not established by the transcript, so no further story is described."
+    "Detective Chloe is handed a murder case involving a singer. The evidence points to a drug packet found in the victim's purse. Lucifer Morningstar, a witness, says the victim used to work at his club and claims she told him the reason for her murder, which he describes as money. At a wedding, Jimmy Barnes, the victim's ex-fiance, admits he was humiliated by her and that he went to convince her at night. Lucifer provokes him, Jimmy refuses to play along, and Lucifer leaves."
   ],
-  "last_narration": "एक किरदार जवाब में कहता है, \"क्यों नहीं? मैं तो चार्मिंग हूँ।\""
+  "continuity_handoff": "## Continuity Handoff: Lucifer, Season 1 (Hindi recap)\n\n**Continue the Hindi voice-over from the final sentence \"आख़िर में लूसिफ़र विदा लेता है।\" Do not repeat earlier beats.**\n\n### Story so far\n- Detective Chloe Decker is handed a murder case involving a singer. Her lieutenant tells her it is an easy case, and a drug packet found in the victim's purse points toward the victim's own involvement.\n- Lucifer Morningstar, a witness, says the victim used to work at his club and that he used to play her songs. He says she became a big star and was then killed.\n- Lucifer claims the vict"
 }

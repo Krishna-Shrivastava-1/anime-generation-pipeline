@@ -98,12 +98,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y tor netcat-openbsd xvfb curl
           sudo service tor start
-          for i in {1..45}; do
-            if nc -z 127.0.0.1 9050; then
-              if sudo grep -q "Bootstrapped 100%" /var/log/tor/notices.log 2>/dev/null; then
-                echo "Tor bootstrapped 100% and ready"
-                break
-              fi
+          for i in {1..30}; do
+            if nc -z 127.0.0.1 9050 && curl --socks5-hostname 127.0.0.1:9050 -sf --max-time 8 https://check.torproject.org/api/ip >/dev/null; then
+              echo "Tor circuit is bootstrapped and ready"
+              break
             fi
             sleep 2
           done
@@ -148,17 +146,17 @@ jobs:
                   if attempt < 4:
                       print("Restarting Tor for a fresh circuit...", flush=True)
                       subprocess.run(["sudo", "service", "tor", "restart"], check=False)
-                      for _ in range(30):
+                      for _ in range(25):
                           if (
                               subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0
                               and subprocess.run(
-                                  ["sudo", "grep", "-q", "Bootstrapped 100%", "/var/log/tor/notices.log"],
+                                  ["curl", "--socks5-hostname", "127.0.0.1:9050", "-sf", "--max-time", "8", "https://check.torproject.org/api/ip"],
+                                  stdout=subprocess.DEVNULL,
                                   stderr=subprocess.DEVNULL,
                               ).returncode == 0
                           ):
                               break
                           time.sleep(2)
-                      time.sleep(2)
 
           if last_err:
               raise RuntimeError(f"Tor verification failed after 4 attempts: {last_err}")
@@ -287,18 +285,22 @@ jobs:
           def renew_tor():
               log("Refreshing Tor IP circuit...")
               subprocess.run(["sudo", "service", "tor", "restart"], check=False)
-              for _ in range(45):
-                  port_up = subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0
-                  booted = subprocess.run(
-                      ["sudo", "grep", "-q", "Bootstrapped 100%", "/var/log/tor/notices.log"],
-                      stderr=subprocess.DEVNULL,
-                  ).returncode == 0
-                  if port_up and booted:
-                      break
+              for i in range(25):
+                  port_up = subprocess.run(["nc", "-z", "127.0.0.1", "9050"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
+                  if port_up:
+                      circuit_ok = subprocess.run(
+                          ["curl", "--socks5-hostname", "127.0.0.1:9050", "-sf", "--max-time", "8", "https://check.torproject.org/api/ip"],
+                          stdout=subprocess.DEVNULL,
+                          stderr=subprocess.DEVNULL,
+                      ).returncode == 0
+                      if circuit_ok:
+                          log(f"Tor circuit ready after {(i+1)*2}s.")
+                          return
                   time.sleep(2)
-              time.sleep(2)
+              log("Tor circuit refresh check timed out; continuing anyway.")
 
           # ------------------ IN-PAGE FETCH INTERCEPTOR ------------------
+          # Strictly matches /duckchat/v1/chat (ignores /duckchat/v1/summarize, /status, etc.)
           FETCH_HOOK_JS = r"""
           (() => {
               Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
@@ -318,10 +320,11 @@ jobs:
                   const reqUrl = typeof args[0] === 'string' ? args[0] : (args[0] && args[0].url ? args[0].url : '');
                   const reqInit = args[1] || {};
                   const method = (reqInit.method || (args[0] && args[0].method) || 'GET').toUpperCase();
+                  const cleanUrl = reqUrl.split('?')[0];
                   const isChatCall = method === 'POST' && (
-                      reqUrl.includes('/duckchat/') ||
-                      reqUrl.includes('/chat')
-                  ) && !reqUrl.includes('status');
+                      cleanUrl.includes('/duckchat/v1/chat') ||
+                      cleanUrl.endsWith('/chat')
+                  );
 
                   const response = await origFetch.apply(this, args);
                   if (isChatCall) {
@@ -403,14 +406,32 @@ jobs:
                   if not clicked:
                       break
 
+          def wait_for_duckai_ui_ready(page, timeout_ms=45000):
+              start = time.time()
+              while (time.time() - start) * 1000 < timeout_ms:
+                  try:
+                      if get_prompt_box(page).is_visible():
+                          return
+                  except Exception:
+                      pass
+                  try:
+                      btn = page.get_by_role("button", name=re.compile(r"(get started|agree|accept|continue)", re.I))
+                      if btn.count() > 0 and btn.first.is_visible():
+                          return
+                  except Exception:
+                      pass
+                  page.wait_for_timeout(500)
+
           def configure_duckai_settings(page, target_model="Claude Haiku 5.5", enable_reasoning=True, take_verify_snap=True):
               log(f"Configuring Duck.ai settings -> Model: '{target_model}' | Reasoning: {enable_reasoning}")
+              wait_for_duckai_ui_ready(page)
               dismiss_duckai_modals(page)
-              page.wait_for_timeout(1500)
+              page.wait_for_timeout(1200)
 
               model_btn_selectors = [
-                  "button[aria-label*='model' i]",
                   "button[data-testid*='model' i]",
+                  "button[aria-label*='model' i]",
+                  "button:has-text('Luna')",
                   "button:has-text('Claude')",
                   "button:has-text('GPT')",
                   "button:has-text('Llama')",
@@ -496,10 +517,10 @@ jobs:
               if enable_reasoning:
                   def try_enable_reasoning():
                       r_candidates = page.locator(
-                          "button:has-text('Reasoning'), button[aria-label*='reason' i], "
-                          "[role='switch']:has-text('Reason'), [role='menuitemcheckbox']:has-text('Reason'), "
-                          "[role='menuitemradio']:has-text('Reason'), [role='option']:has-text('Reason'), "
-                          "label:has-text('Reasoning'), button:has-text('Reason')"
+                          "button[aria-label*='Reasoning mode' i], button:has-text('Reasoning'), "
+                          "button[aria-label*='reason' i], [role='switch']:has-text('Reason'), "
+                          "[role='menuitemcheckbox']:has-text('Reason'), [role='menuitemradio']:has-text('Reason'), "
+                          "[role='option']:has-text('Reason'), label:has-text('Reasoning')"
                       )
                       for i in range(r_candidates.count()):
                           el = r_candidates.nth(i)
@@ -510,6 +531,9 @@ jobs:
                           txt = (el.inner_text() or "").strip()
                           if aria_checked == "true" or aria_pressed == "true":
                               log(f"Reasoning mode already enabled on '{txt}'.")
+                              return True
+                          if "reasoning" in txt.lower() and "fast" not in txt.lower():
+                              log(f"Reasoning mode already active ('{txt}').")
                               return True
                           try:
                               el.click(timeout=4000)
@@ -769,7 +793,6 @@ jobs:
 
           def clean_handoff_text(text: str) -> str:
               cleaned = strip_thinking_blocks(text or "")
-              # Remove trailing Duck.ai UI chrome if extracted via DOM tail
               for stop_marker in [
                   "\nCopy\n", "\nRegenerate\n", "\nAsk anything", "\nAI-generated",
                   "\nDuck.ai", "\nNew Chat"
@@ -787,6 +810,59 @@ jobs:
               beats = obj.get("beats")
               return isinstance(beats, list) and len(beats) > 0
 
+          def try_json_loads_with_repair(raw_str: str):
+              s = raw_str.strip()
+              try:
+                  return json.loads(s)
+              except json.JSONDecodeError as first_err:
+                  # 1. Remove trailing commas before } or ]
+                  fixed = re.sub(r",(\s*[}\]])", r"\1", s)
+                  try:
+                      return json.loads(fixed)
+                  except json.JSONDecodeError:
+                      pass
+
+                  # 2. If truncated mid-JSON inside "beats", salvage complete beat objects
+                  if '"beats"' in fixed:
+                      beats_pos = fixed.find('"beats"')
+                      arr_start = fixed.find("[", beats_pos)
+                      if arr_start != -1:
+                          # Find the end of the last complete beat object inside beats array
+                          depth = 0
+                          in_str = False
+                          esc = False
+                          last_complete_beat_end = -1
+                          for idx in range(arr_start + 1, len(fixed)):
+                              c = fixed[idx]
+                              if esc:
+                                  esc = False
+                                  continue
+                              if c == "\\":
+                                  esc = True
+                                  continue
+                              if c == '"':
+                                  in_str = not in_str
+                                  continue
+                              if not in_str:
+                                  if c == "{":
+                                      depth += 1
+                                  elif c == "}":
+                                      depth -= 1
+                                      if depth == 0:
+                                          last_complete_beat_end = idx
+                                  elif c == "]" and depth == 0:
+                                      break
+                          if last_complete_beat_end != -1:
+                              repaired = fixed[: last_complete_beat_end + 1] + "]}"
+                              try:
+                                  obj = json.loads(repaired)
+                                  if isinstance(obj.get("beats"), list) and len(obj["beats"]) > 0:
+                                      log(f"JSON repaired by salvaging {len(obj['beats'])} complete beats (original err: {first_err}).")
+                                      return obj
+                              except Exception:
+                                  pass
+                  raise first_err
+
           def parse_first_balanced_json(text: str, require_beats: bool = False):
               if not text:
                   return None
@@ -795,19 +871,20 @@ jobs:
               code_fences = re.findall(r"```(?:json)?\s*([\s\S]*?)\s*```", cleaned, re.IGNORECASE)
               for candidate in reversed(code_fences):
                   try:
-                      parsed = deep_repair(json.loads(candidate.strip()))
+                      parsed = deep_repair(try_json_loads_with_repair(candidate.strip()))
                       if not require_beats or is_valid_recap_json(parsed):
                           return parsed
                   except Exception:
                       pass
 
               try:
-                  parsed = deep_repair(json.loads(cleaned))
+                  parsed = deep_repair(try_json_loads_with_repair(cleaned))
                   if not require_beats or is_valid_recap_json(parsed):
                       return parsed
               except Exception:
                   pass
 
+              # Balanced extraction
               candidates = []
               i = 0
               n = len(cleaned)
@@ -837,7 +914,7 @@ jobs:
                                   if depth == 0:
                                       snippet = cleaned[i : idx + 1]
                                       try:
-                                          parsed = deep_repair(json.loads(snippet))
+                                          parsed = deep_repair(try_json_loads_with_repair(snippet))
                                           candidates.append(parsed)
                                       except Exception:
                                           pass
@@ -849,7 +926,20 @@ jobs:
                   if not require_beats or is_valid_recap_json(obj):
                       return obj
 
-              return candidates[-1] if candidates else None
+              if candidates:
+                  return candidates[-1]
+
+              # Final fallback: repair from first '{' to end if truncated
+              first_brace = cleaned.find("{")
+              if first_brace != -1:
+                  try:
+                      parsed = deep_repair(try_json_loads_with_repair(cleaned[first_brace:]))
+                      if not require_beats or is_valid_recap_json(parsed):
+                          return parsed
+                  except Exception as final_err:
+                      log(f"JSON parse error details: {final_err}")
+
+              return None
 
           # ------------------ MULTI-STRATEGY DOM EXTRACTOR ------------------
           EXTRACT_ASSISTANT_JS = r"""({ promptTail, expectJson }) => {
@@ -891,8 +981,6 @@ jobs:
               const rootEl = document.querySelector('main') || document.body;
               const fullText = (rootEl.innerText || '').trim();
 
-              // For Turn 2 (Prompt 2 Handoff in same chat), ALWAYS slice after promptTail first
-              // so we never accidentally grab Turn 1's JSON block above it!
               if (!expectJson && promptTail && promptTail.length >= 12) {
                   const idx = fullText.lastIndexOf(promptTail);
                   if (idx !== -1) {
@@ -904,7 +992,6 @@ jobs:
               }
 
               if (expectJson) {
-                  // Strategy 1: Code blocks (<pre> / <code>) not containing the prompt
                   const codeBlocks = Array.from(document.querySelectorAll('pre code, pre'));
                   for (let i = codeBlocks.length - 1; i >= 0; i--) {
                       const block = codeBlocks[i];
@@ -916,7 +1003,6 @@ jobs:
                   }
               }
 
-              // Strategy 2: Specific assistant containers (take last valid node)
               const assistantSelectors = [
                   '[data-author="assistant"]',
                   '[data-testid*="assistant" i]',
@@ -946,7 +1032,6 @@ jobs:
               }
 
               if (expectJson) {
-                  // Strategy 3: Anchor off Copy button on the assistant turn
                   const copyBtns = Array.from(document.querySelectorAll('button')).filter(b => {
                       const txt = (b.innerText || '').toLowerCase();
                       const aria = (b.getAttribute('aria-label') || '').toLowerCase();
@@ -966,7 +1051,6 @@ jobs:
                   }
               }
 
-              // Strategy 4: Extract everything after the prompt tail inside <main> / body
               if (promptTail && promptTail.length >= 12) {
                   const idx = fullText.lastIndexOf(promptTail);
                   if (idx !== -1) {
@@ -1073,7 +1157,6 @@ jobs:
 
                   page.wait_for_timeout(2000)
 
-              # Fallbacks on timeout
               inpage = get_inpage_stream_text(page)
               if inpage and inpage["parsed"].strip():
                   txt = inpage["parsed"]
@@ -1120,7 +1203,7 @@ jobs:
           - Use ONLY timestamps present in the supplied transcript; never fabricate or extend timestamps. Mark unverified visual suggestions clearly as unverified.
 
           ## 5. REQUIRED JSON OUTPUT
-          Return valid JSON only. No Markdown fences or extra text. Use this exact schema:
+          Return valid JSON only. Ensure all quotes inside strings are properly escaped and there are no trailing commas. Use this exact schema:
           {
             "movie_title": "Title",
             "content_type": "Movie or TV Series",
@@ -1259,7 +1342,7 @@ jobs:
           - Use ONLY timestamps present in the new transcript. Never fabricate or extend timestamps. Mark visual suggestions as unverified.
 
           ## 5. OUTPUT FORMAT
-          Return valid JSON only (no Markdown fences or extra text) using this exact schema:
+          Return strictly valid JSON only (no Markdown fences, no trailing commas, properly escaped quotes) using this exact schema:
           {"movie_title":"Title","content_type":"Movie or TV Series","season":null,"episode":null,"part_identifier":null,"target_minutes":null,"estimated_narration_minutes":0,"total_beats":0,"total_words":0,"characters":[{"name":"Name","description":"Role"}],"synopsis":"Summary of story covered so far","beats":[{"beat_id":"__NEXT_BEAT_ID__","narration":"Hindi Devanagari narration","word_count":0,"estimated_duration":0,"is_scene_bridge":false,"clips":[{"clip_id":"__NEXT_CLIP_ID__","start":0.0,"end":2.0,"duration":2.0,"scene_context":"Transcript context (mark visuals unverified)"}]}]}
 
           Continue beat IDs sequentially starting at __NEXT_BEAT_ID__ and clip IDs starting at __NEXT_CLIP_ID__.
@@ -1366,7 +1449,6 @@ jobs:
 
               next_beat_id = f"B{next_beat_num:04d}"
               next_clip_id = f"C{next_clip_num:04d}"
-              # Keep handoff bounded so enough budget remains for transcript segments
               bounded_handoff = handoff_text.strip()
               if len(bounded_handoff) > 6500:
                   bounded_handoff = bounded_handoff[-6500:]
@@ -1389,7 +1471,6 @@ jobs:
               base_len = len(render(f"{TARGET_MINUTES} minutes (section)" if TARGET_MINUTES else "null", []))
               budget = MAX_PROMPT_CHARS - base_len - 120
               if budget < 600:
-                  # Trim handoff slightly if needed to preserve transcript room
                   excess = 600 - budget + 200
                   bounded_handoff = bounded_handoff[-max(1500, len(bounded_handoff) - excess):]
                   base_len = len(render(f"{TARGET_MINUTES} minutes (section)" if TARGET_MINUTES else "null", []))
@@ -1544,7 +1625,8 @@ jobs:
               page = context.new_page()
 
               def is_chat_req(req):
-                  return req.method == "POST" and ("/duckchat/" in req.url or "/chat" in req.url) and "status" not in req.url
+                  clean_u = req.url.split("?")[0]
+                  return req.method == "POST" and ("/duckchat/v1/chat" in clean_u or clean_u.endswith("/chat"))
 
               def on_res(resp):
                   if is_chat_req(resp.request):
@@ -1568,7 +1650,8 @@ jobs:
 
           def open_fresh_duckai_chat(take_verify_snap=False):
               page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
-              page.wait_for_timeout(3000)
+              wait_for_duckai_ui_ready(page, timeout_ms=45000)
+              page.wait_for_timeout(1500)
               configure_duckai_settings(
                   page,
                   TARGET_MODEL,
@@ -1689,6 +1772,17 @@ jobs:
 
                           parsed_json = parse_first_balanced_json(raw_resp, require_beats=True)
                           if not is_valid_recap_json(parsed_json):
+                              # Try DOM extraction fallback if SSE stream had malformed/partial data
+                              dom_fallback = page.evaluate(EXTRACT_ASSISTANT_JS, {
+                                  "promptTail": chunk_meta["prompt"][-60:].strip(),
+                                  "expectJson": True
+                              })
+                              dom_txt = (dom_fallback.get("text") or "").strip()
+                              if dom_txt and dom_txt != raw_resp:
+                                  (DEBUG_DIR / f"raw_chunk_{chunk_num}_att_{attempt}_dom.txt").write_text(dom_txt, encoding="utf-8")
+                                  parsed_json = parse_first_balanced_json(dom_txt, require_beats=True)
+
+                          if not is_valid_recap_json(parsed_json):
                               snap(page, f"bad_json_chunk_{chunk_num}_att_{attempt}")
                               raise RuntimeError(f"Invalid or empty JSON beats on Chunk {chunk_num}: {raw_resp[:220]}")
 
@@ -1711,7 +1805,6 @@ jobs:
                       log(f"CRITICAL: Failed on Chunk {chunk_num}. Saving partial progress & exiting.")
                       break
 
-                  # Update accumulated beats/characters/synopsis
                   pipeline_state["beats"].extend(norm_chunk["beats"])
                   if norm_chunk["synopsis"]:
                       pipeline_state["synopses"].append(norm_chunk["synopsis"])
@@ -1724,7 +1817,6 @@ jobs:
                   # ---- STEP B: If more transcript remains, run PROMPT 2 (Continuity Handoff) ----
                   handoff_text = ""
                   if next_idx < total_segments:
-                      # Attempt 1: Same-chat Prompt 2 (uses full live conversation context!)
                       p2_meta = build_prompt_2_preview(transcript_data, next_idx)
                       if p2_meta:
                           log(
@@ -1748,15 +1840,14 @@ jobs:
                                   expect_beats=False
                               )
                               (DEBUG_DIR / f"handoff_chunk_{chunk_num}.txt").write_text(raw_handoff, encoding="utf-8")
-                              if len(raw_handoff.strip()) < 80:
-                                  raise RuntimeError("Prompt 2 returned too short handoff text.")
+                              if len(raw_handoff.strip()) < 150:
+                                  raise RuntimeError(f"Prompt 2 returned too short handoff ({len(raw_handoff.strip())} chars).")
                               handoff_text = raw_handoff.strip()
                               log(f"SUCCESS PROMPT 2 (same chat): captured {len(handoff_text)} chars handoff.")
                           except Exception as p2_err:
                               log(f"Same-chat PROMPT 2 failed ({p2_err}); switching to recovery fresh-chat PROMPT 2...")
                               snap(page, f"err_handoff_chunk_{chunk_num}")
 
-                      # Recovery Attempts: Fresh-chat Prompt 2 using exact last 3 beats verbatim + synopsis + preview
                       if not handoff_text:
                           rec_state = {
                               "characters": list(pipeline_state["characters"].values()),
@@ -1787,7 +1878,7 @@ jobs:
                                       expect_beats=False
                                   )
                                   (DEBUG_DIR / f"handoff_chunk_{chunk_num}_rec.txt").write_text(raw_handoff, encoding="utf-8")
-                                  if len(raw_handoff.strip()) >= 80:
+                                  if len(raw_handoff.strip()) >= 150:
                                       handoff_text = raw_handoff.strip()
                                       log(f"SUCCESS PROMPT 2 (recovery chat): captured {len(handoff_text)} chars.")
                                       break
@@ -1795,7 +1886,6 @@ jobs:
                                   log(f"Recovery PROMPT 2 attempt {rec_att} failed: {rec_err}")
 
                   if next_idx < total_segments and not handoff_text:
-                      # Save beats generated so far before stopping
                       with open(STATE_FILE, "w", encoding="utf-8") as sf:
                           json.dump(pipeline_state, sf, indent=2, ensure_ascii=False)
                       log(f"CRITICAL: Could not generate Continuity Handoff after Chunk {chunk_num}. Saved progress & exiting.")

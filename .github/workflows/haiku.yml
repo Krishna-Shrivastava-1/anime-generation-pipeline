@@ -93,13 +93,18 @@ jobs:
           python-version: "3.11"
 
       - name: Install Tor and System Utilities
-        timeout-minutes: 4
+        timeout-minutes: 5
         run: |
           sudo apt-get update
-          sudo apt-get install -y tor netcat-openbsd xvfb
+          sudo apt-get install -y tor netcat-openbsd xvfb curl
           sudo service tor start
-          for i in {1..30}; do
-            if nc -z 127.0.0.1 9050; then echo "Tor is ready"; break; fi
+          for i in {1..45}; do
+            if nc -z 127.0.0.1 9050; then
+              if sudo grep -q "Bootstrapped 100%" /var/log/tor/notices.log 2>/dev/null; then
+                echo "Tor bootstrapped 100% and ready"
+                break
+              fi
+            fi
             sleep 2
           done
           nc -z 127.0.0.1 9050
@@ -112,17 +117,51 @@ jobs:
           playwright install --with-deps chromium
 
       - name: Verify Anonymous Tor Exit
-        timeout-minutes: 3
+        timeout-minutes: 4
         run: |
           python - <<'PY'
+          import subprocess, time
           from curl_cffi import requests
+
           p = "socks5h://127.0.0.1:9050"
-          r = requests.get("https://check.torproject.org/api/ip", proxies={"http": p, "https": p}, impersonate="chrome", timeout=60)
-          r.raise_for_status()
-          data = r.json()
-          print("Connection Info:", data)
-          if not data.get("IsTor"):
-              raise RuntimeError("Tor connection failed. Traffic is not anonymous.")
+          last_err = None
+
+          for attempt in range(1, 5):
+              try:
+                  print(f"Tor exit check attempt {attempt}/4...", flush=True)
+                  r = requests.get(
+                      "https://check.torproject.org/api/ip",
+                      proxies={"http": p, "https": p},
+                      impersonate="chrome",
+                      timeout=25,
+                  )
+                  r.raise_for_status()
+                  data = r.json()
+                  print("Connection Info:", data, flush=True)
+                  if not data.get("IsTor"):
+                      raise RuntimeError("Traffic is not exiting through Tor.")
+                  last_err = None
+                  break
+              except Exception as e:
+                  last_err = e
+                  print(f"Attempt {attempt} failed: {e}", flush=True)
+                  if attempt < 4:
+                      print("Restarting Tor for a fresh circuit...", flush=True)
+                      subprocess.run(["sudo", "service", "tor", "restart"], check=False)
+                      for _ in range(30):
+                          if (
+                              subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0
+                              and subprocess.run(
+                                  ["sudo", "grep", "-q", "Bootstrapped 100%", "/var/log/tor/notices.log"],
+                                  stderr=subprocess.DEVNULL,
+                              ).returncode == 0
+                          ):
+                              break
+                          time.sleep(2)
+                      time.sleep(2)
+
+          if last_err:
+              raise RuntimeError(f"Tor verification failed after 4 attempts: {last_err}")
           PY
 
       - name: Run YouTube Recap Generation Engine
@@ -247,11 +286,16 @@ jobs:
           def renew_tor():
               log("Refreshing Tor IP circuit...")
               subprocess.run(["sudo", "service", "tor", "restart"], check=False)
-              for _ in range(30):
-                  if subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0:
+              for _ in range(45):
+                  port_up = subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0
+                  booted = subprocess.run(
+                      ["sudo", "grep", "-q", "Bootstrapped 100%", "/var/log/tor/notices.log"],
+                      stderr=subprocess.DEVNULL,
+                  ).returncode == 0
+                  if port_up and booted:
                       break
                   time.sleep(2)
-              time.sleep(3)
+              time.sleep(2)
 
           # ------------------ IN-PAGE FETCH INTERCEPTOR (SSE CAPTURE) ------------------
           FETCH_HOOK_JS = r"""

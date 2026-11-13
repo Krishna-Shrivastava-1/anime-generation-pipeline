@@ -21,17 +21,21 @@ on:
           - "probe"
           - "full"
         default: "full"
-      model_name:
-        description: "Duck.ai model to select"
+      draft_model:
+        description: "Duck.ai model for Prompt 1, Prompt 2, Prompt 3, and Prompt 4"
+        required: true
+        default: "6 Luna"
+      critic_model:
+        description: "Duck.ai model for Prompt 0 and Prompt 5 cross-check (new chat)"
         required: true
         default: "Claude Haiku 5.5"
       reasoning_mode:
-        description: "Enable Reasoning mode in Duck.ai"
+        description: "Enable Reasoning mode for Critic model (Haiku)"
         required: true
         type: boolean
         default: true
       web_search:
-        description: "Enable Web Search in Duck.ai Tools menu"
+        description: "Enable Web Search in Duck.ai Tools menu (both Luna & Haiku)"
         required: true
         type: boolean
         default: true
@@ -128,16 +132,10 @@ jobs:
 
           p = "socks5h://127.0.0.1:9050"
           last_err = None
-
           for attempt in range(1, 5):
               try:
                   print(f"Tor exit check attempt {attempt}/4...", flush=True)
-                  r = requests.get(
-                      "https://check.torproject.org/api/ip",
-                      proxies={"http": p, "https": p},
-                      impersonate="chrome",
-                      timeout=25,
-                  )
+                  r = requests.get("https://check.torproject.org/api/ip", proxies={"http": p, "https": p}, impersonate="chrome", timeout=25)
                   r.raise_for_status()
                   data = r.json()
                   print("Connection Info:", data, flush=True)
@@ -149,20 +147,17 @@ jobs:
                   last_err = e
                   print(f"Attempt {attempt} failed: {e}", flush=True)
                   if attempt < 4:
-                      print("Restarting Tor for a fresh circuit...", flush=True)
                       subprocess.run(["sudo", "service", "tor", "restart"], check=False)
                       for _ in range(25):
                           if (
                               subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0
                               and subprocess.run(
                                   ["curl", "--socks5-hostname", "127.0.0.1:9050", "-sf", "--max-time", "8", "https://check.torproject.org/api/ip"],
-                                  stdout=subprocess.DEVNULL,
-                                  stderr=subprocess.DEVNULL,
+                                  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                               ).returncode == 0
                           ):
                               break
                           time.sleep(2)
-
           if last_err:
               raise RuntimeError(f"Tor verification failed after 4 attempts: {last_err}")
           PY
@@ -173,7 +168,8 @@ jobs:
           HEADED: ${{ inputs.headed }}
           RUN_MODE: ${{ inputs.mode }}
           RESET_STATE: ${{ inputs.reset_state }}
-          MODEL_NAME: ${{ inputs.model_name }}
+          DRAFT_MODEL: ${{ inputs.draft_model }}
+          CRITIC_MODEL: ${{ inputs.critic_model }}
           REASONING_MODE: ${{ inputs.reasoning_mode }}
           WEB_SEARCH: ${{ inputs.web_search }}
           INPUT_MOVIE_TITLE: ${{ inputs.movie_title }}
@@ -201,7 +197,8 @@ jobs:
           HEADED = os.environ.get("HEADED") == "true"
           RUN_MODE = os.environ.get("RUN_MODE", "full").strip().lower()
           RESET_STATE = os.environ.get("RESET_STATE", "false").strip().lower() == "true"
-          TARGET_MODEL = os.environ.get("MODEL_NAME", "Claude Haiku 5.5").strip()
+          DRAFT_MODEL = os.environ.get("DRAFT_MODEL", "6 Luna").strip()
+          CRITIC_MODEL = os.environ.get("CRITIC_MODEL", "Claude Haiku 5.5").strip()
           ENABLE_REASONING = os.environ.get("REASONING_MODE", "true").strip().lower() == "true"
           ENABLE_WEB_SEARCH = os.environ.get("WEB_SEARCH", "true").strip().lower() == "true"
 
@@ -223,7 +220,6 @@ jobs:
           STATE_FILE = Path("build/pipeline_state.json")
           STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
           RUN_LOG = DEBUG_DIR / "engine.log"
-
           BROWSER_PROXY = "socks5://127.0.0.1:9050"
 
           if RESET_STATE and STATE_FILE.exists():
@@ -274,9 +270,9 @@ jobs:
           def deep_repair(val):
               if isinstance(val, str):
                   return fix_hindi_text(val)
-              elif isinstance(val, list):
+              if isinstance(val, list):
                   return [deep_repair(item) for item in val]
-              elif isinstance(val, dict):
+              if isinstance(val, dict):
                   return {k: deep_repair(v) for k, v in val.items()}
               return val
 
@@ -295,16 +291,14 @@ jobs:
               for i in range(25):
                   port_up = subprocess.run(["nc", "-z", "127.0.0.1", "9050"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
                   if port_up:
-                      circuit_ok = subprocess.run(
+                      ok = subprocess.run(
                           ["curl", "--socks5-hostname", "127.0.0.1:9050", "-sf", "--max-time", "8", "https://check.torproject.org/api/ip"],
-                          stdout=subprocess.DEVNULL,
-                          stderr=subprocess.DEVNULL,
+                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                       ).returncode == 0
-                      if circuit_ok:
+                      if ok:
                           log(f"Tor circuit ready after {(i+1)*2}s.")
                           return
                   time.sleep(2)
-              log("Tor circuit refresh check timed out; continuing anyway.")
 
           # ------------------ IN-PAGE FETCH INTERCEPTOR ------------------
           FETCH_HOOK_JS = r"""
@@ -312,36 +306,17 @@ jobs:
               Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
               if (window.__duckai_hooked) return;
               window.__duckai_hooked = true;
-              window.__duckai_stream = {
-                  active: false,
-                  done: false,
-                  status: 0,
-                  url: '',
-                  rawChunks: [],
-                  error: ''
-              };
-
+              window.__duckai_stream = { active: false, done: false, status: 0, url: '', rawChunks: [], error: '' };
               const origFetch = window.fetch;
               window.fetch = async function(...args) {
                   const reqUrl = typeof args[0] === 'string' ? args[0] : (args[0] && args[0].url ? args[0].url : '');
                   const reqInit = args[1] || {};
                   const method = (reqInit.method || (args[0] && args[0].method) || 'GET').toUpperCase();
                   const cleanUrl = reqUrl.split('?')[0];
-                  const isChatCall = method === 'POST' && (
-                      cleanUrl.includes('/duckchat/v1/chat') ||
-                      cleanUrl.endsWith('/chat')
-                  );
-
+                  const isChatCall = method === 'POST' && (cleanUrl.includes('/duckchat/v1/chat') || cleanUrl.endsWith('/chat'));
                   const response = await origFetch.apply(this, args);
                   if (isChatCall) {
-                      window.__duckai_stream = {
-                          active: true,
-                          done: false,
-                          status: response.status,
-                          url: reqUrl,
-                          rawChunks: [],
-                          error: ''
-                      };
+                      window.__duckai_stream = { active: true, done: false, status: response.status, url: reqUrl, rawChunks: [], error: '' };
                       try {
                           const clone = response.clone();
                           const reader = clone.body ? clone.body.getReader() : null;
@@ -352,9 +327,7 @@ jobs:
                                       while (true) {
                                           const { value, done } = await reader.read();
                                           if (done) break;
-                                          if (value) {
-                                              window.__duckai_stream.rawChunks.push(decoder.decode(value, { stream: true }));
-                                          }
+                                          if (value) window.__duckai_stream.rawChunks.push(decoder.decode(value, { stream: true }));
                                       }
                                       const tail = decoder.decode();
                                       if (tail) window.__duckai_stream.rawChunks.push(tail);
@@ -386,24 +359,21 @@ jobs:
           })();
           """
 
-          # ------------------ DUCK.AI MODAL & SETTINGS CONFIG ------------------
+          # ------------------ DUCK.AI MODAL & SETTINGS ------------------
+          def get_prompt_box(page):
+              return page.locator("textarea[name='user-prompt'], textarea[placeholder*='ask' i], textarea[placeholder*='message' i], textarea").first
+
           def dismiss_duckai_modals(page):
-              consent_patterns = [
-                  re.compile(r"^\s*get started\s*$", re.I),
-                  re.compile(r"^\s*agree and continue\s*$", re.I),
-                  re.compile(r"^\s*i agree\s*$", re.I),
-                  re.compile(r"^\s*accept\s*$", re.I),
-                  re.compile(r"^\s*next\s*$", re.I),
-                  re.compile(r"^\s*continue\s*$", re.I),
+              patterns = [
+                  re.compile(r"^\s*(get started|agree and continue|i agree|accept|next|continue)\s*$", re.I),
               ]
               for _ in range(4):
                   clicked = False
-                  for pat in consent_patterns:
+                  for pat in patterns:
                       btn = page.get_by_role("button", name=pat)
                       if btn.count() > 0 and btn.first.is_visible():
                           try:
                               btn.first.click(timeout=3000)
-                              log(f"Dismissed onboarding button matching: {pat.pattern}")
                               page.wait_for_timeout(1200)
                               clicked = True
                               break
@@ -416,8 +386,8 @@ jobs:
               start = time.time()
               while (time.time() - start) * 1000 < timeout_ms:
                   try:
-                      model_btn = page.locator("button[data-testid*='model' i], button[aria-label*='model' i]")
-                      if get_prompt_box(page).is_visible() and (model_btn.count() > 0 and model_btn.first.is_visible()):
+                      m_btn = page.locator("button[data-testid*='model' i], button[aria-label*='model' i]")
+                      if get_prompt_box(page).is_visible() and m_btn.count() > 0 and m_btn.first.is_visible():
                           return
                   except Exception:
                       pass
@@ -429,194 +399,140 @@ jobs:
                       pass
                   page.wait_for_timeout(500)
 
-          def configure_duckai_settings(page, target_model="Claude Haiku 5.5", enable_reasoning=True, enable_web_search=True, take_verify_snap=True):
-              log(f"Configuring Duck.ai settings -> Model: '{target_model}' | Reasoning: {enable_reasoning} | WebSearch: {enable_web_search}")
+          def build_model_matchers(target_model: str):
+              t_low = target_model.lower().strip()
+              tokens = [tok for tok in re.split(r"[\s\-_]+", t_low) if tok]
+              non_gpt = [tok for tok in tokens if tok != "gpt"]
+              strategies = [lambda txt: t_low in txt]
+              if len(tokens) > 1:
+                  strategies.append(lambda txt: all(tok in txt for tok in tokens))
+              if non_gpt and non_gpt != tokens:
+                  strategies.append(lambda txt: all(tok in txt for tok in non_gpt))
+              key_tokens = [tok for tok in non_gpt if len(tok) > 2]
+              if key_tokens:
+                  strategies.append(lambda txt: all(tok in txt for tok in key_tokens))
+                  strategies.append(lambda txt: key_tokens[-1] in txt)
+              return strategies
+
+          def configure_duckai_settings(page, target_model="6 Luna", enable_reasoning=True, enable_web_search=True, take_verify_snap=False, snap_prefix="settings"):
+              log(f"Configuring Duck.ai -> Model: '{target_model}' | Reasoning: {enable_reasoning} | WebSearch: {enable_web_search}")
               wait_for_duckai_ui_ready(page)
               dismiss_duckai_modals(page)
-              page.wait_for_timeout(1500)
+              page.wait_for_timeout(1200)
 
               model_btn_selectors = [
                   "button[data-testid*='model' i]",
                   "button[aria-label*='model' i]",
                   "button:has-text('Luna')",
+                  "button:has-text('Haiku')",
                   "button:has-text('Claude')",
                   "button:has-text('GPT')",
-                  "button:has-text('Llama')",
-                  "button:has-text('Mistral')",
-                  "button:has-text('o3')",
-                  "button:has-text('o4')",
                   "button:has-text('Model')",
               ]
-
-              opened_model_menu = False
+              opened = False
+              btn_txt = ""
               for sel in model_btn_selectors:
                   loc = page.locator(sel)
                   for i in range(loc.count()):
                       b = loc.nth(i)
                       if b.is_visible() and b.is_enabled():
                           try:
-                              txt = (b.inner_text() or "").strip()
-                              log(f"Clicking model selector candidate ({sel}): '{txt}'")
+                              btn_txt = (b.inner_text() or "").strip()
                               b.click(timeout=4000)
-                              page.wait_for_timeout(1200)
-                              opened_model_menu = True
+                              page.wait_for_timeout(1000)
+                              opened = True
                               break
                           except Exception:
                               pass
-                  if opened_model_menu:
+                  if opened:
                       break
 
-              if not opened_model_menu:
-                  settings_loc = page.locator("button[aria-label*='setting' i], button:has-text('Settings')")
-                  if settings_loc.count() > 0 and settings_loc.first.is_visible():
-                      settings_loc.first.click(timeout=4000)
-                      page.wait_for_timeout(1200)
-
               if take_verify_snap:
-                  visible_options = page.evaluate(r"""() => {
-                      const els = Array.from(document.querySelectorAll('[role="menuitem"], [role="menuitemradio"], [role="option"], [role="radio"], [role="switch"], button, label'));
-                      return els
-                          .filter(el => el.offsetParent !== null)
-                          .map(el => ({
-                              tag: el.tagName,
-                              role: el.getAttribute('role') || '',
-                              aria: el.getAttribute('aria-label') || '',
-                              checked: el.getAttribute('aria-checked') || el.getAttribute('aria-pressed') || '',
-                              text: (el.innerText || '').trim().replace(/\s+/g, ' ')
-                          }))
-                          .filter(x => x.text.length > 0 && x.text.length < 120);
-                  }""")
-                  log(f"Visible UI options during settings config: {json.dumps(visible_options, ensure_ascii=False)}")
-                  snap(page, "settings_dropdown_open", save_html=False)
+                  snap(page, f"{snap_prefix}_dropdown_open", save_html=False)
 
               model_selected = False
-              target_lower = target_model.lower()
-              search_strategies = [
-                  lambda t: target_lower in t,
-                  lambda t: "claude" in t and "haiku" in t and "5.5" in t,
-                  lambda t: "haiku" in t and "5.5" in t,
-                  lambda t: "claude" in t and "haiku" in t,
-                  lambda t: "haiku" in t,
-              ]
-
-              for strategy_idx, matcher in enumerate(search_strategies):
-                  candidates = page.locator("[role='menuitem'], [role='menuitemradio'], [role='option'], [role='radio'], label, button")
-                  for i in range(candidates.count()):
-                      el = candidates.nth(i)
+              for idx, matcher in enumerate(build_model_matchers(target_model)):
+                  cands = page.locator("[role='menuitem'], [role='menuitemradio'], [role='option'], [role='radio'], label, button")
+                  for i in range(cands.count()):
+                      el = cands.nth(i)
                       if not el.is_visible():
                           continue
                       txt = (el.inner_text() or "").strip()
-                      if matcher(txt.lower()):
+                      if txt and matcher(txt.lower()):
                           try:
                               el.click(timeout=4000)
-                              log(f"Selected model option (strategy {strategy_idx+1}): '{txt}'")
+                              log(f"Selected model '{target_model}' (strategy {idx+1}): '{txt}'")
                               model_selected = True
-                              page.wait_for_timeout(1000)
+                              page.wait_for_timeout(900)
                               break
-                          except Exception as e:
-                              log(f"Failed clicking model option '{txt}': {e}")
+                          except Exception:
+                              pass
                   if model_selected:
                       break
 
               if not model_selected:
-                  log(f"WARNING: Could not match model '{target_model}' automatically.")
+                  log(f"WARNING: Could not match model '{target_model}' (button showed '{btn_txt}').")
 
               try:
                   page.keyboard.press("Escape")
-                  page.wait_for_timeout(400)
+                  page.wait_for_timeout(350)
               except Exception:
                   pass
 
               if enable_reasoning:
-                  def try_enable_reasoning():
-                      r_candidates = page.locator(
-                          "button[aria-label*='Reasoning mode' i], button:has-text('Reasoning'), "
-                          "button[aria-label*='reason' i], [role='switch']:has-text('Reason'), "
-                          "[role='menuitemcheckbox']:has-text('Reason'), [role='menuitemradio']:has-text('Reason'), "
-                          "[role='option']:has-text('Reason'), label:has-text('Reasoning')"
-                      )
-                      for i in range(r_candidates.count()):
-                          el = r_candidates.nth(i)
-                          if not el.is_visible():
-                              continue
-                          aria_checked = el.get_attribute("aria-checked")
-                          aria_pressed = el.get_attribute("aria-pressed")
-                          txt = (el.inner_text() or "").strip()
-                          if aria_checked == "true" or aria_pressed == "true":
-                              log(f"Reasoning mode already enabled on '{txt}'.")
-                              return True
-                          if "reasoning" in txt.lower() and "fast" not in txt.lower():
-                              log(f"Reasoning mode already active ('{txt}').")
-                              return True
-                          try:
-                              el.click(timeout=4000)
-                              log(f"Clicked Reasoning mode control: '{txt}'")
-                              page.wait_for_timeout(1000)
-                              return True
-                          except Exception:
-                              pass
-                      return False
-
-                  if not try_enable_reasoning():
-                      log("WARNING: Reasoning toggle not found on UI.")
+                  r_cands = page.locator("button[aria-label*='Reasoning mode' i], button:has-text('Reasoning'), [role='switch']:has-text('Reason')")
+                  for i in range(r_cands.count()):
+                      el = r_cands.nth(i)
+                      if not el.is_visible():
+                          continue
+                      txt = (el.inner_text() or "").strip()
+                      if el.get_attribute("aria-checked") == "true" or el.get_attribute("aria-pressed") == "true" or ("reasoning" in txt.lower() and "fast" not in txt.lower()):
+                          log(f"Reasoning already enabled ('{txt}').")
+                          break
+                      try:
+                          el.click(timeout=4000)
+                          log(f"Clicked Reasoning mode control: '{txt}'")
+                          page.wait_for_timeout(900)
+                          break
+                      except Exception:
+                          pass
 
               if enable_web_search:
                   try:
-                      tools_btn = page.locator("button:has-text('Tools'), button[aria-label*='tool' i]")
-                      if tools_btn.count() > 0 and tools_btn.first.is_visible():
-                          tools_btn.first.click(timeout=4000)
-                          page.wait_for_timeout(1000)
-                          if take_verify_snap:
-                              tools_options = page.evaluate(r"""() => {
-                                  const els = Array.from(document.querySelectorAll('[role="menuitem"], [role="menuitemcheckbox"], [role="switch"], [role="option"], button, label, [role="dialog"] *'));
-                                  return els
-                                      .filter(el => el.offsetParent !== null)
-                                      .map(el => ({
-                                          tag: el.tagName,
-                                          role: el.getAttribute('role') || '',
-                                          aria: el.getAttribute('aria-label') || '',
-                                          checked: el.getAttribute('aria-checked') || el.getAttribute('aria-pressed') || '',
-                                          text: (el.innerText || '').trim().replace(/\s+/g, ' ')
-                                      }))
-                                      .filter(x => x.text.length > 0 && x.text.length < 120);
-                              }""")
-                              log(f"Visible Tools menu options: {json.dumps(tools_options, ensure_ascii=False)}")
-                              snap(page, "tools_dropdown_open", save_html=False)
-
-                          ws_candidates = page.locator(
-                              "[role='menuitemcheckbox']:has-text('Search'), [role='menuitem']:has-text('Search'), "
-                              "[role='switch']:has-text('Search'), [role='option']:has-text('Search'), "
-                              "button:has-text('Web Search'), button:has-text('Search'), label:has-text('Search'), "
-                              "div[role='menuitem']:has-text('Web')"
-                          )
-                          ws_toggled = False
-                          for i in range(ws_candidates.count()):
-                              el = ws_candidates.nth(i)
-                              if not el.is_visible():
-                                  continue
-                              txt = (el.inner_text() or "").strip()
-                              if "chat suggestions" in txt.lower() or "how duck.ai" in txt.lower():
-                                  continue
-                              aria_checked = el.get_attribute("aria-checked")
-                              aria_pressed = el.get_attribute("aria-pressed")
-                              if aria_checked == "true" or aria_pressed == "true":
-                                  log(f"Web Search already enabled ('{txt}').")
-                                  ws_toggled = True
-                                  break
-                              try:
-                                  el.click(timeout=3000)
-                                  log(f"Clicked Web Search control: '{txt}'")
-                                  ws_toggled = True
-                                  page.wait_for_timeout(800)
-                                  break
-                              except Exception:
-                                  pass
-                          if not ws_toggled:
-                              log("WARNING: Web Search toggle not matched inside Tools menu.")
-                          page.keyboard.press("Escape")
-                          page.wait_for_timeout(400)
+                      active_ws = page.locator("button[aria-label*='Remove Web Search' i], button:has-text('Web Search'):not(:has-text('Source answers'))")
+                      if active_ws.count() > 0 and active_ws.first.is_visible():
+                          log("Web Search already active.")
                       else:
-                          log("Tools button not visible; Web Search may be automatic or unavailable.")
+                          tools_btn = page.locator("button:has-text('Tools'), button[aria-label*='tool' i]")
+                          if tools_btn.count() > 0 and tools_btn.first.is_visible():
+                              tools_btn.first.click(timeout=4000)
+                              page.wait_for_timeout(900)
+                              if take_verify_snap:
+                                  snap(page, f"{snap_prefix}_tools_open", save_html=False)
+                              ws_cands = page.locator(
+                                  "[role='menuitemcheckbox']:has-text('Search'), [role='menuitem']:has-text('Search'), "
+                                  "[role='switch']:has-text('Search'), [role='option']:has-text('Search'), "
+                                  "button:has-text('Web Search'), button:has-text('Search'), div[role='menuitem']:has-text('Web')"
+                              )
+                              for i in range(ws_cands.count()):
+                                  el = ws_cands.nth(i)
+                                  if not el.is_visible():
+                                      continue
+                                  txt = (el.inner_text() or "").strip()
+                                  if "chat suggestions" in txt.lower() or "how duck.ai" in txt.lower():
+                                      continue
+                                  if el.get_attribute("aria-checked") == "true" or el.get_attribute("aria-pressed") == "true":
+                                      log(f"Web Search already enabled ('{txt}').")
+                                      break
+                                  try:
+                                      el.click(timeout=3000)
+                                      log(f"Clicked Web Search control: '{txt}'")
+                                      page.wait_for_timeout(700)
+                                      break
+                                  except Exception:
+                                      pass
+                              page.keyboard.press("Escape")
+                              page.wait_for_timeout(300)
                   except Exception as ws_err:
                       log(f"Web Search setup notice: {ws_err}")
 
@@ -624,43 +540,25 @@ jobs:
                   page.keyboard.press("Escape")
               except Exception:
                   pass
-              page.wait_for_timeout(1000)
-
+              page.wait_for_timeout(700)
               if take_verify_snap:
-                  snap(page, "model_settings_verified", save_html=True)
+                  snap(page, f"{snap_prefix}_verified", save_html=True)
 
-          # ------------------ PLAYWRIGHT UTILITIES & SCROLLING ------------------
-          def get_prompt_box(page):
-              return page.locator(
-                  "textarea[name='user-prompt'], textarea[placeholder*='ask' i], "
-                  "textarea[placeholder*='message' i], textarea").first
-
+          # ------------------ SUBMISSION, SCROLL & EXTRACTION ------------------
           def click_ask_button(page):
               ask_btn = page.get_by_role("button", name=re.compile(r"^\s*(ask|send|submit)\s*$", re.I))
               if ask_btn.count() > 0 and ask_btn.first.is_visible() and ask_btn.first.is_enabled():
                   ask_btn.first.click(timeout=3000)
                   return True
-
-              btn_text = page.locator("button:has-text('Ask')")
-              for i in range(btn_text.count()):
-                  b = btn_text.nth(i)
-                  if b.is_visible() and b.is_enabled():
-                      b.click(timeout=3000)
-                      return True
-
               js_click = page.evaluate(r"""() => {
-                  const buttons = Array.from(document.querySelectorAll('button'));
-                  const ask = buttons.find(b => !b.disabled && (b.innerText || '').trim().toLowerCase() === 'ask');
-                  if (ask) { ask.click(); return 'ask'; }
-                  const send = buttons.find(b => !b.disabled && (
-                      (b.getAttribute('aria-label') || '').toLowerCase().includes('send') ||
-                      (b.getAttribute('aria-label') || '').toLowerCase().includes('submit') ||
-                      (b.getAttribute('aria-label') || '').toLowerCase().includes('ask')
-                  ));
-                  if (send) { send.click(); return 'send'; }
-                  const sub = buttons.find(b => b.type === 'submit' && !b.disabled);
-                  if (sub) { sub.click(); return 'submit'; }
-                  return null;
+                  const btns = Array.from(document.querySelectorAll('button'));
+                  const ask = btns.find(b => !b.disabled && (b.innerText || '').trim().toLowerCase() === 'ask');
+                  if (ask) { ask.click(); return true; }
+                  const send = btns.find(b => !b.disabled && /send|submit|ask/i.test(b.getAttribute('aria-label') || ''));
+                  if (send) { send.click(); return true; }
+                  const sub = btns.find(b => b.type === 'submit' && !b.disabled);
+                  if (sub) { sub.click(); return true; }
+                  return false;
               }""")
               return bool(js_click)
 
@@ -670,40 +568,28 @@ jobs:
               page.wait_for_timeout(200)
               box.fill("")
               page.wait_for_timeout(150)
-
               filled = False
               try:
                   box.fill(text, timeout=20000)
-                  val_len = len(box.input_value())
-                  if val_len >= int(len(text) * 0.95):
+                  if len(box.input_value()) >= int(len(text) * 0.95):
                       filled = True
-                  else:
-                      log(f"Warning: box.fill length {val_len} < expected {len(text)}; retrying via CDP insertText.")
-              except Exception as e:
-                  log(f"box.fill fallback triggered: {e}")
+              except Exception:
                   filled = False
-
               if not filled:
                   box.fill("")
                   box.click()
                   try:
                       cdp = context.new_cdp_session(page)
-                      chunk_size = 2000
-                      for idx in range(0, len(text), chunk_size):
-                          cdp.send("Input.insertText", {"text": text[idx : idx + chunk_size]})
+                      for idx in range(0, len(text), 2000):
+                          cdp.send("Input.insertText", {"text": text[idx : idx + 2000]})
                       cdp.detach()
                   except Exception:
                       box.fill(text)
-
               page.wait_for_timeout(500)
               try:
-                  page.evaluate("""(el) => {
-                      el.dispatchEvent(new Event('input', { bubbles: true }));
-                      el.dispatchEvent(new Event('change', { bubbles: true }));
-                  }""", box.element_handle())
+                  page.evaluate("(el) => { el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true })); }", box.element_handle())
               except Exception:
                   pass
-
               page.wait_for_timeout(400)
               if not click_ask_button(page):
                   box.press("Enter")
@@ -713,45 +599,60 @@ jobs:
               try:
                   page.evaluate(r"""() => {
                       window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' });
-                      if (document.scrollingElement) {
-                          document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
-                      }
-                      const allEls = document.querySelectorAll('div, main, section, article');
-                      for (const el of allEls) {
+                      if (document.scrollingElement) document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
+                      for (const el of document.querySelectorAll('div, main, section, article')) {
                           if (el.scrollHeight > el.clientHeight + 20) {
-                              const style = window.getComputedStyle(el);
-                              if (['auto', 'scroll', 'overlay'].includes(style.overflowY)) {
-                                  el.scrollTop = el.scrollHeight;
-                              }
+                              const oy = window.getComputedStyle(el).overflowY;
+                              if (['auto', 'scroll', 'overlay'].includes(oy)) el.scrollTop = el.scrollHeight;
                           }
-                      }
-                      const scrollBtns = Array.from(document.querySelectorAll('button')).filter(b => {
-                          const aria = (b.getAttribute('aria-label') || '').toLowerCase();
-                          const title = (b.getAttribute('title') || '').toLowerCase();
-                          return (aria.includes('scroll') || aria.includes('bottom') || title.includes('bottom')) && b.offsetParent !== null;
-                      });
-                      if (scrollBtns.length > 0) {
-                          try { scrollBtns[scrollBtns.length - 1].click(); } catch (_) {}
                       }
                       const mainEl = document.querySelector('main') || document.body;
                       const blocks = mainEl.querySelectorAll('pre, article, p, [data-testid]');
-                      if (blocks.length > 0) {
-                          try { blocks[blocks.length - 1].scrollIntoView({ behavior: 'instant', block: 'end' }); } catch (_) {}
-                      }
+                      if (blocks.length > 0) try { blocks[blocks.length - 1].scrollIntoView({ behavior: 'instant', block: 'end' }); } catch (_) {}
                   }""")
               except Exception:
                   pass
+
+          def parse_sse_text(raw_sse: str) -> str:
+              chunks = []
+              for line in raw_sse.splitlines():
+                  line = line.strip()
+                  if not line.startswith("data:"):
+                      continue
+                  payload = line[5:].strip()
+                  if not payload or payload == "[DONE]":
+                      continue
+                  try:
+                      data = json.loads(payload)
+                      if data.get("type") == "reasoning" or data.get("role") == "reasoning":
+                          continue
+                      chunk = data.get("message") or data.get("delta") or data.get("text") or data.get("content") or ""
+                      if not chunk and isinstance(data.get("choices"), list) and data["choices"]:
+                          c0 = data["choices"][0]
+                          if isinstance(c0, dict):
+                              chunk = (c0.get("delta") or {}).get("content") or (c0.get("message") or {}).get("content") or ""
+                      if chunk:
+                          chunks.append(chunk)
+                  except Exception:
+                      continue
+              return "".join(chunks)
+
+          def strip_thinking_blocks(text: str) -> str:
+              return re.sub(r"<think>[\s\S]*?</think>", "", text or "", flags=re.IGNORECASE).strip()
+
+          def clean_plain_text(text: str) -> str:
+              cleaned = strip_thinking_blocks(text)
+              for marker in ["\nCopy\n", "\nRegenerate\n", "\nAsk anything", "\nAI-generated", "\nDuck.ai", "\nNew Chat"]:
+                  if marker in cleaned:
+                      cleaned = cleaned.split(marker)[0]
+              return re.sub(r"^(Thought for \d+s|Thinking\.\.\.)\s*", "", cleaned, flags=re.I).strip()
 
           def reset_stream_tracking(page, current_chat_state):
               current_chat_state["raw_stream"].clear()
               current_chat_state["chat_done"] = False
               current_chat_state["rate_limited"] = False
               try:
-                  page.evaluate("""() => {
-                      window.__duckai_stream = {
-                          active: false, done: false, status: 0, url: '', rawChunks: [], error: ''
-                      };
-                  }""")
+                  page.evaluate("() => { window.__duckai_stream = { active: false, done: false, status: 0, url: '', rawChunks: [], error: '' }; }")
               except Exception:
                   pass
 
@@ -761,14 +662,12 @@ jobs:
                   if not st:
                       return None
                   raw = "".join(st.get("rawChunks") or [])
-                  parsed = parse_sse_text(raw) if raw else ""
                   return {
                       "active": bool(st.get("active")),
                       "done": bool(st.get("done")),
                       "status": int(st.get("status") or 0),
-                      "url": st.get("url") or "",
                       "raw_len": len(raw),
-                      "parsed": parsed,
+                      "parsed": parse_sse_text(raw) if raw else "",
                       "raw": raw
                   }
               except Exception:
@@ -784,85 +683,159 @@ jobs:
               url_before = page.url
               reset_stream_tracking(page, current_chat_state)
               submit_prompt(page, box, prompt_text, context)
-
               for wait_sec in range(15):
                   page.wait_for_timeout(1000)
                   inpage = get_inpage_stream_text(page)
-                  box_cleared = False
                   try:
                       box_cleared = len(box.input_value().strip()) == 0
                   except Exception:
                       box_cleared = True
-
-                  url_changed_to_chat = is_new_chat and ("chatID=" in page.url) and ("chatID=" not in url_before)
-
-                  if (
-                      url_changed_to_chat
-                      or len(current_chat_state["raw_stream"]) > 0
-                      or (inpage and (inpage["active"] or inpage["done"] or inpage["status"] > 0))
-                      or box_cleared
-                  ):
-                      log(f"{label} acknowledged at +{wait_sec+1}s (box_cleared={box_cleared}, stream={bool(inpage and inpage['status'])}).")
+                  url_changed = is_new_chat and ("chatID=" in page.url) and ("chatID=" not in url_before)
+                  if url_changed or len(current_chat_state["raw_stream"]) > 0 or (inpage and (inpage["active"] or inpage["done"] or inpage["status"] > 0)) or box_cleared:
+                      log(f"{label} acknowledged at +{wait_sec+1}s (box_cleared={box_cleared}).")
                       return True
-
                   stop_btn = page.locator("button:has-text('Stop'), button[aria-label*='stop' i], button[title*='stop' i]")
                   if stop_btn.count() > 0 and stop_btn.first.is_visible():
-                      log(f"{label} acknowledged via Stop button at +{wait_sec+1}s.")
                       return True
-
                   if wait_sec in (3, 7, 11):
                       click_ask_button(page)
                       box.press("Enter")
-
               return False
 
-          def parse_sse_text(raw_sse: str) -> str:
-              chunks = []
-              for line in raw_sse.splitlines():
-                  line = line.strip()
-                  if not line.startswith("data:"):
-                      continue
-                  payload = line[5:].strip()
-                  if not payload or payload == "[DONE]":
-                      continue
+          EXTRACT_ASSISTANT_JS = r"""({ promptTail, expectJson, prevCodeBlocks }) => {
+              for (const el of document.querySelectorAll('div, main, section, article')) {
+                  if (el.scrollHeight > el.clientHeight + 20) {
+                      const oy = window.getComputedStyle(el).overflowY;
+                      if (['auto', 'scroll', 'overlay'].includes(oy)) el.scrollTop = el.scrollHeight;
+                  }
+              }
+              window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' });
+              const stopButtons = Array.from(document.querySelectorAll('button')).filter(b => {
+                  const txt = (b.innerText || '').toLowerCase();
+                  const aria = (b.getAttribute('aria-label') || '').toLowerCase();
+                  const title = (b.getAttribute('title') || '').toLowerCase();
+                  const testid = (b.getAttribute('data-testid') || '').toLowerCase();
+                  return (txt.includes('stop') || aria.includes('stop') || title.includes('stop') || testid.includes('stop') || aria.includes('cancel')) && b.offsetParent !== null;
+              });
+              const isGenerating = stopButtons.length > 0 || Boolean(window.__duckai_stream && window.__duckai_stream.active);
+              const isLeak = (t) => !t || t.includes('PROMPT 1 —') || t.includes('PROMPT 2 —') || t.includes('PROMPT 3 —') || t.includes('PROMPT 4 —') || t.includes('PROMPT 5 —') || t.includes('NEW TIMESTAMPED TRANSCRIPT:') || t.includes('CURRENT DRAFT JSON');
+              const rootEl = document.querySelector('main') || document.body;
+              const fullText = (rootEl.innerText || '').trim();
+              if (promptTail && promptTail.length >= 12) {
+                  const idx = fullText.lastIndexOf(promptTail);
+                  if (idx !== -1) {
+                      const after = fullText.slice(idx + promptTail.length).trim();
+                      if (after.length > 30 && !isLeak(after) && (!expectJson || after.includes('"beats"'))) {
+                          return { text: after, isGenerating, source: 'after_prompt_tail_exact' };
+                      }
+                  }
+              }
+              if (expectJson) {
+                  const cbs = Array.from(document.querySelectorAll('pre code, pre'));
+                  if (cbs.length > (prevCodeBlocks || 0)) {
+                      for (let i = cbs.length - 1; i >= (prevCodeBlocks || 0); i--) {
+                          const ct = (cbs[i].innerText || '').trim();
+                          if (ct && !isLeak(ct) && ct.includes('{') && (ct.includes('beats') || ct.includes('status'))) {
+                              return { text: ct, isGenerating, source: 'code_block' };
+                          }
+                      }
+                  }
+              }
+              if (promptTail && promptTail.length >= 12) {
+                  const idx = fullText.lastIndexOf(promptTail);
+                  if (idx !== -1) {
+                      const after = fullText.slice(idx + promptTail.length).trim();
+                      if (after.length > 20) return { text: after, isGenerating, source: 'after_prompt_tail' };
+                  }
+              }
+              return { text: '', isGenerating, source: 'none' };
+          }"""
+
+          def wait_for_response(page, current_chat_state, prompt_text="", max_wait=TEXT_WAIT, expect_json=True, expect_beats=True, prev_code_blocks=0):
+              log(f"Waiting for Duck.ai response (max {max_wait}s | expect_json={expect_json})...")
+              prompt_tail = prompt_text[-60:].strip() if prompt_text else ""
+              start = time.time()
+              last_text = ""
+              stable_ticks = 0
+              has_started = False
+              last_log = 0.0
+
+              while time.time() - start < max_wait:
+                  elapsed = time.time() - start
+                  if current_chat_state.get("rate_limited"):
+                      raise RuntimeError("Duck.ai returned HTTP 418/429 (Tor IP rate-limited).")
+
+                  inpage = get_inpage_stream_text(page)
+                  if inpage:
+                      if inpage["status"] in (418, 429):
+                          raise RuntimeError(f"Duck.ai fetch returned HTTP {inpage['status']} (Tor IP rate-limited).")
+                      if inpage["active"] or inpage["raw_len"] > 0:
+                          has_started = True
+                      if inpage["done"]:
+                          page.wait_for_timeout(2000)
+                          scroll_chat_to_bottom(page)
+                          parsed_sse = inpage["parsed"]
+                          dom_after = ""
+                          try:
+                              dom_res = page.evaluate(EXTRACT_ASSISTANT_JS, {"promptTail": prompt_tail, "expectJson": expect_json, "prevCodeBlocks": prev_code_blocks})
+                              dom_after = (dom_res.get("text") or "").strip()
+                          except Exception:
+                              pass
+                          if expect_json:
+                              if "{" in parsed_sse and (not expect_beats or '"beats"' in parsed_sse):
+                                  log(f"Captured JSON via SSE ({len(parsed_sse)} chars).")
+                                  return deep_repair(parsed_sse)
+                              if "{" in dom_after and (not expect_beats or '"beats"' in dom_after):
+                                  log(f"Captured JSON via DOM ({len(dom_after)} chars).")
+                                  return deep_repair(dom_after)
+                              (DEBUG_DIR / f"failed_sse_{int(time.time())}.txt").write_text(f"PARSED:\n{parsed_sse}\n\nDOM:\n{dom_after}\n\nRAW:\n{inpage['raw'][-4000:]}", encoding="utf-8")
+                              raise RuntimeError(f"Stream finished without valid JSON beats. Preview: {(parsed_sse or dom_after)[:200]!r}")
+                          else:
+                              out_txt = clean_plain_text(parsed_sse) if len(parsed_sse.strip()) >= 80 else clean_plain_text(dom_after)
+                              if len(out_txt) >= 80:
+                                  log(f"Captured text via SSE ({len(out_txt)} chars).")
+                                  return deep_repair(out_txt)
+                              raise RuntimeError(f"Text stream finished too short ({len(out_txt)} chars).")
+
+                  if current_chat_state.get("chat_done") and current_chat_state.get("raw_stream"):
+                      parsed_sse = parse_sse_text("".join(current_chat_state["raw_stream"]))
+                      if parsed_sse.strip():
+                          if expect_json and "{" in parsed_sse and (not expect_beats or '"beats"' in parsed_sse):
+                              return deep_repair(parsed_sse)
+                          if not expect_json and len(parsed_sse.strip()) >= 80:
+                              return deep_repair(clean_plain_text(parsed_sse))
+
+                  scroll_chat_to_bottom(page)
+                  dom_source, dom_len, is_gen = "none", 0, False
                   try:
-                      data = json.loads(payload)
-                      if data.get("type") == "reasoning" or data.get("role") == "reasoning":
-                          continue
-                      chunk = (
-                          data.get("message")
-                          or data.get("delta")
-                          or data.get("text")
-                          or data.get("content")
-                          or ""
-                      )
-                      if not chunk and isinstance(data.get("choices"), list) and data["choices"]:
-                          c0 = data["choices"][0]
-                          if isinstance(c0, dict):
-                              chunk = (c0.get("delta") or {}).get("content") or (c0.get("message") or {}).get("content") or ""
-                      if chunk:
-                          chunks.append(chunk)
+                      dom_data = page.evaluate(EXTRACT_ASSISTANT_JS, {"promptTail": prompt_tail, "expectJson": expect_json, "prevCodeBlocks": prev_code_blocks})
+                      cur_text = (dom_data.get("text") or "").strip()
+                      if not expect_json:
+                          cur_text = clean_plain_text(cur_text)
+                      is_gen = bool(dom_data.get("isGenerating", False))
+                      dom_source = dom_data.get("source", "none")
+                      dom_len = len(cur_text)
+                      if is_gen or dom_len > 25:
+                          has_started = True
+                      min_len = 25 if expect_json else 80
+                      if cur_text:
+                          stable_ticks = (stable_ticks + 1) if (cur_text == last_text and not is_gen) else 0
+                          last_text = cur_text
+                          if has_started and not is_gen and stable_ticks >= 4 and len(last_text) > min_len:
+                              log(f"Captured via DOM stability ({dom_source}, {len(last_text)} chars).")
+                              return deep_repair(last_text)
                   except Exception:
-                      continue
-              return "".join(chunks)
+                      pass
 
-          def strip_thinking_blocks(text: str) -> str:
-              if not text:
-                  return text
-              cleaned = re.sub(r"<think>[\s\S]*?</think>", "", text, flags=re.IGNORECASE)
-              return cleaned.strip()
+                  if elapsed - last_log >= 15.0:
+                      last_log = elapsed
+                      si = f"raw={inpage['raw_len']} done={inpage['done']} status={inpage['status']}" if inpage else "no_hook"
+                      log(f"[WAIT {int(elapsed)}s/{max_wait}s] stream=({si}) | dom=({dom_source}, {dom_len} chars, gen={is_gen})")
+                  page.wait_for_timeout(2000)
 
-          def clean_plain_text(text: str) -> str:
-              cleaned = strip_thinking_blocks(text or "")
-              for stop_marker in [
-                  "\nCopy\n", "\nRegenerate\n", "\nAsk anything", "\nAI-generated",
-                  "\nDuck.ai", "\nNew Chat"
-              ]:
-                  if stop_marker in cleaned:
-                      cleaned = cleaned.split(stop_marker)[0]
-              cleaned = re.sub(r"^(Thought for \d+s|Thinking\.\.\.)\s*", "", cleaned, flags=re.I)
-              return cleaned.strip()
+              raise RuntimeError(f"Response timed out after {max_wait}s.")
 
+          # ------------------ JSON PARSE & PHRASE-TO-CLIP ALIGNMENT ------------------
           def is_valid_recap_json(obj) -> bool:
               if not isinstance(obj, dict):
                   return False
@@ -881,41 +854,26 @@ jobs:
                       return json.loads(fixed)
                   except json.JSONDecodeError:
                       pass
-
                   if '"beats"' in fixed:
-                      beats_pos = fixed.find('"beats"')
-                      arr_start = fixed.find("[", beats_pos)
+                      arr_start = fixed.find("[", fixed.find('"beats"'))
                       if arr_start != -1:
-                          depth = 0
-                          in_str = False
-                          esc = False
-                          last_complete_beat_end = -1
+                          depth, in_str, esc, last_end = 0, False, False, -1
                           for idx in range(arr_start + 1, len(fixed)):
                               c = fixed[idx]
-                              if esc:
-                                  esc = False
-                                  continue
-                              if c == "\\":
-                                  esc = True
-                                  continue
-                              if c == '"':
-                                  in_str = not in_str
-                                  continue
+                              if esc: esc = False; continue
+                              if c == "\\": esc = True; continue
+                              if c == '"': in_str = not in_str; continue
                               if not in_str:
-                                  if c == "{":
-                                      depth += 1
+                                  if c == "{": depth += 1
                                   elif c == "}":
                                       depth -= 1
-                                      if depth == 0:
-                                          last_complete_beat_end = idx
-                                  elif c == "]" and depth == 0:
-                                      break
-                          if last_complete_beat_end != -1:
-                              repaired = fixed[: last_complete_beat_end + 1] + "]}"
+                                      if depth == 0: last_end = idx
+                                  elif c == "]" and depth == 0: break
+                          if last_end != -1:
                               try:
-                                  obj = json.loads(repaired)
-                                  if isinstance(obj.get("beats"), list) and len(obj["beats"]) > 0:
-                                      log(f"JSON repaired by salvaging {len(obj['beats'])} complete beats (original err: {first_err}).")
+                                  obj = json.loads(fixed[: last_end + 1] + "]}")
+                                  if isinstance(obj.get("beats"), list) and obj["beats"]:
+                                      log(f"JSON repaired by salvaging {len(obj['beats'])} complete beats.")
                                       return obj
                               except Exception:
                                   pass
@@ -925,773 +883,102 @@ jobs:
               if not text:
                   return None
               cleaned = strip_thinking_blocks(text)
-
-              code_fences = re.findall(r"```(?:json)?\s*([\s\S]*?)\s*```", cleaned, re.IGNORECASE)
-              for candidate in reversed(code_fences):
+              for cand in reversed(re.findall(r"```(?:json)?\s*([\s\S]*?)\s*```", cleaned, re.IGNORECASE)):
                   try:
-                      parsed = deep_repair(try_json_loads_with_repair(candidate.strip()))
+                      parsed = deep_repair(try_json_loads_with_repair(cand.strip()))
                       if not require_beats or is_valid_recap_json(parsed):
                           return parsed
                   except Exception:
                       pass
-
               try:
                   parsed = deep_repair(try_json_loads_with_repair(cleaned))
                   if not require_beats or is_valid_recap_json(parsed):
                       return parsed
               except Exception:
                   pass
-
-              candidates = []
-              i = 0
-              n = len(cleaned)
+              cands, i, n = [], 0, len(cleaned)
               while i < n:
                   if cleaned[i] in ("{", "["):
-                      open_char = cleaned[i]
-                      close_char = "}" if open_char == "{" else "]"
-                      depth = 0
-                      in_string = False
-                      escape = False
+                      oc, cc = cleaned[i], "}" if cleaned[i] == "{" else "]"
+                      depth, in_s, esc = 0, False, False
                       for idx in range(i, n):
                           c = cleaned[idx]
-                          if escape:
-                              escape = False
-                              continue
-                          if c == "\\":
-                              escape = True
-                              continue
-                          if c == '"':
-                              in_string = not in_string
-                              continue
-                          if not in_string:
-                              if c == open_char:
-                                  depth += 1
-                              elif c == close_char:
+                          if esc: esc = False; continue
+                          if c == "\\": esc = True; continue
+                          if c == '"': in_s = not in_s; continue
+                          if not in_s:
+                              if c == oc: depth += 1
+                              elif c == cc:
                                   depth -= 1
                                   if depth == 0:
-                                      snippet = cleaned[i : idx + 1]
                                       try:
-                                          parsed = deep_repair(try_json_loads_with_repair(snippet))
-                                          candidates.append(parsed)
+                                          cands.append(deep_repair(try_json_loads_with_repair(cleaned[i : idx + 1])))
                                       except Exception:
                                           pass
                                       i = idx
                                       break
                   i += 1
-
-              for obj in reversed(candidates):
+              for obj in reversed(cands):
                   if not require_beats or is_valid_recap_json(obj):
                       return obj
-
-              if candidates:
-                  return candidates[-1]
-
-              first_brace = cleaned.find("{")
-              if first_brace != -1:
+              if cands:
+                  return cands[-1]
+              fb = cleaned.find("{")
+              if fb != -1:
                   try:
-                      parsed = deep_repair(try_json_loads_with_repair(cleaned[first_brace:]))
+                      parsed = deep_repair(try_json_loads_with_repair(cleaned[fb:]))
                       if not require_beats or is_valid_recap_json(parsed):
                           return parsed
-                  except Exception as final_err:
-                      log(f"JSON parse error details: {final_err}")
-
+                  except Exception as e:
+                      log(f"JSON parse error: {e}")
               return None
 
-          # ------------------ TURN-SAFE DOM EXTRACTOR ------------------
-          EXTRACT_ASSISTANT_JS = r"""({ promptTail, expectJson, prevCodeBlocks }) => {
-              const allEls = document.querySelectorAll('div, main, section, article');
-              for (const el of allEls) {
-                  if (el.scrollHeight > el.clientHeight + 20) {
-                      const style = window.getComputedStyle(el);
-                      if (['auto', 'scroll', 'overlay'].includes(style.overflowY)) {
-                          el.scrollTop = el.scrollHeight;
-                      }
-                  }
-              }
-              window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' });
-
-              const stopButtons = Array.from(document.querySelectorAll('button')).filter(b => {
-                  const txt = (b.innerText || '').toLowerCase();
-                  const aria = (b.getAttribute('aria-label') || '').toLowerCase();
-                  const title = (b.getAttribute('title') || '').toLowerCase();
-                  const testid = (b.getAttribute('data-testid') || '').toLowerCase();
-                  return (
-                      txt.includes('stop') || aria.includes('stop') ||
-                      title.includes('stop') || testid.includes('stop') ||
-                      aria.includes('cancel')
-                  ) && b.offsetParent !== null;
-              });
-              const streamActive = Boolean(window.__duckai_stream && window.__duckai_stream.active);
-              const isGenerating = stopButtons.length > 0 || streamActive;
-
-              const isPromptLeak = (t) => {
-                  if (!t) return true;
-                  return t.includes('PROMPT 1 — MOVIE / SERIES RECAP GENERATOR') ||
-                         t.includes('PROMPT 2 — CONTINUITY HANDOFF') ||
-                         t.includes('PROMPT 3 — CONTINUE MOVIE / SERIES RECAP') ||
-                         t.includes('PROMPT 4 — SCRIPT ENHANCER') ||
-                         t.includes('NEW TIMESTAMPED TRANSCRIPT:') ||
-                         t.includes('PREVIEW TRANSCRIPT (NEXT ~100 LINES):') ||
-                         t.includes('CURRENT DRAFT JSON TO ENHANCE:');
-              };
-
-              const rootEl = document.querySelector('main') || document.body;
-              const fullText = (rootEl.innerText || '').trim();
-
-              if (promptTail && promptTail.length >= 12) {
-                  const idx = fullText.lastIndexOf(promptTail);
-                  if (idx !== -1) {
-                      const after = fullText.slice(idx + promptTail.length).trim();
-                      if (after.length > 30 && !isPromptLeak(after)) {
-                          if (!expectJson || after.includes('"beats"')) {
-                              return { text: after, isGenerating, source: 'after_prompt_tail_exact' };
-                          }
-                      }
-                  }
-              }
-
-              if (expectJson) {
-                  const codeBlocks = Array.from(document.querySelectorAll('pre code, pre'));
-                  if (codeBlocks.length > (prevCodeBlocks || 0)) {
-                      for (let i = codeBlocks.length - 1; i >= (prevCodeBlocks || 0); i--) {
-                          const codeText = (codeBlocks[i].innerText || '').trim();
-                          if (!codeText || isPromptLeak(codeText)) continue;
-                          if (codeText.includes('{') && (codeText.includes('beats') || codeText.includes('status') || codeText.includes('narration'))) {
-                              return { text: codeText, isGenerating, source: 'code_block' };
-                          }
-                      }
-                  }
-              }
-
-              if (promptTail && promptTail.length >= 12) {
-                  const idx = fullText.lastIndexOf(promptTail);
-                  if (idx !== -1) {
-                      const after = fullText.slice(idx + promptTail.length).trim();
-                      if (after.length > 20) {
-                          return { text: after, isGenerating, source: 'after_prompt_tail' };
-                      }
-                  }
-              }
-
-              return { text: '', isGenerating, source: 'none' };
-          }"""
-
-          def wait_for_response(page, current_chat_state, prompt_text="", max_wait=TEXT_WAIT, expect_json=True, expect_beats=True, prev_code_blocks=0):
-              log(f"Waiting for Duck.ai response (max {max_wait}s | expect_json={expect_json})...")
-              prompt_tail = prompt_text[-60:].strip() if prompt_text else ""
-              start = time.time()
-              last_text = ""
-              stable_ticks = 0
-              has_started_generating = False
-              last_progress_log = 0.0
-
-              while time.time() - start < max_wait:
-                  elapsed = time.time() - start
-
-                  if current_chat_state.get("rate_limited"):
-                      raise RuntimeError("Duck.ai returned HTTP 418/429 (Tor IP rate-limited).")
-
-                  inpage = get_inpage_stream_text(page)
-                  if inpage:
-                      if inpage["status"] in (418, 429):
-                          raise RuntimeError(f"Duck.ai fetch returned HTTP {inpage['status']} (Tor IP rate-limited).")
-                      if inpage["active"] or inpage["raw_len"] > 0:
-                          has_started_generating = True
-
-                      if inpage["done"]:
-                          page.wait_for_timeout(2000)
-                          scroll_chat_to_bottom(page)
-                          parsed_sse = inpage["parsed"]
-                          dom_after = ""
-                          try:
-                              dom_res = page.evaluate(EXTRACT_ASSISTANT_JS, {
-                                  "promptTail": prompt_tail,
-                                  "expectJson": expect_json,
-                                  "prevCodeBlocks": prev_code_blocks
-                              })
-                              dom_after = (dom_res.get("text") or "").strip()
-                          except Exception:
-                              pass
-
-                          if expect_json:
-                              if "{" in parsed_sse and (not expect_beats or '"beats"' in parsed_sse):
-                                  log(f"Captured JSON via in-page fetch SSE ({len(parsed_sse)} chars).")
-                                  return deep_repair(parsed_sse)
-                              if "{" in dom_after and (not expect_beats or '"beats"' in dom_after):
-                                  log(f"Captured JSON via DOM after SSE done ({len(dom_after)} chars).")
-                                  return deep_repair(dom_after)
-                              (DEBUG_DIR / f"failed_sse_{int(time.time())}.txt").write_text(
-                                  f"=== PARSED ({len(parsed_sse)} chars) ===\n{parsed_sse}\n\n"
-                                  f"=== DOM ({len(dom_after)} chars) ===\n{dom_after}\n\n"
-                                  f"=== RAW SSE TAIL ===\n{inpage['raw'][-4000:]}",
-                                  encoding="utf-8"
-                              )
-                              raise RuntimeError(
-                                  f"Stream finished (raw={inpage['raw_len']}, parsed={len(parsed_sse)}, dom={len(dom_after)}) "
-                                  f"without valid JSON beats. Preview: {(parsed_sse or dom_after)[:220]!r}"
-                              )
-                          else:
-                              out_txt = clean_plain_text(parsed_sse) if len(parsed_sse.strip()) >= 80 else clean_plain_text(dom_after)
-                              if len(out_txt) >= 80:
-                                  log(f"Captured text via in-page fetch SSE ({len(out_txt)} chars).")
-                                  return deep_repair(out_txt)
-                              (DEBUG_DIR / f"failed_text_sse_{int(time.time())}.txt").write_text(
-                                  f"=== PARSED ===\n{parsed_sse}\n\n=== DOM ===\n{dom_after}\n\n=== RAW SSE TAIL ===\n{inpage['raw'][-4000:]}",
-                                  encoding="utf-8"
-                              )
-                              raise RuntimeError(f"Text stream finished too short ({len(out_txt)} chars). Preview: {out_txt[:220]!r}")
-
-                  if current_chat_state.get("chat_done") and current_chat_state.get("raw_stream"):
-                      parsed_sse = parse_sse_text("".join(current_chat_state["raw_stream"]))
-                      if parsed_sse.strip():
-                          if expect_json:
-                              if "{" in parsed_sse and (not expect_beats or '"beats"' in parsed_sse):
-                                  log(f"Captured JSON via Playwright network SSE ({len(parsed_sse)} chars).")
-                                  return deep_repair(parsed_sse)
-                          elif len(parsed_sse.strip()) > 80:
-                              log(f"Captured text via Playwright network SSE ({len(parsed_sse)} chars).")
-                              return deep_repair(clean_plain_text(parsed_sse))
-
-                  scroll_chat_to_bottom(page)
-                  dom_source = "none"
-                  dom_len = 0
-                  is_generating = False
-                  try:
-                      dom_data = page.evaluate(EXTRACT_ASSISTANT_JS, {
-                          "promptTail": prompt_tail,
-                          "expectJson": expect_json,
-                          "prevCodeBlocks": prev_code_blocks
-                      })
-                      cur_text = (dom_data.get("text") or "").strip()
-                      if not expect_json:
-                          cur_text = clean_plain_text(cur_text)
-                      is_generating = bool(dom_data.get("isGenerating", False))
-                      dom_source = dom_data.get("source", "none")
-                      dom_len = len(cur_text)
-
-                      if any(m in cur_text for m in [
-                          "PROMPT 1 — MOVIE / SERIES RECAP GENERATOR",
-                          "PROMPT 2 — CONTINUITY HANDOFF",
-                          "PROMPT 3 — CONTINUE MOVIE / SERIES RECAP",
-                          "PROMPT 4 — SCRIPT ENHANCER"
-                      ]):
-                          cur_text = ""
-                          dom_len = 0
-
-                      if is_generating or dom_len > 25:
-                          has_started_generating = True
-
-                      min_len = 25 if expect_json else 80
-                      if cur_text:
-                          if cur_text == last_text and not is_generating:
-                              stable_ticks += 1
-                          else:
-                              stable_ticks = 0
-                          last_text = cur_text
-
-                          if has_started_generating and not is_generating and stable_ticks >= 4 and len(last_text) > min_len:
-                              log(f"Captured complete response via DOM stability ({dom_source}, {len(last_text)} chars).")
-                              return deep_repair(last_text)
-                  except Exception as e:
-                      log(f"DOM poll notice: {e}")
-
-                  if elapsed - last_progress_log >= 15.0:
-                      last_progress_log = elapsed
-                      stream_info = f"raw={inpage['raw_len']} done={inpage['done']} status={inpage['status']}" if inpage else "no_hook"
-                      log(f"[WAIT {int(elapsed)}s/{max_wait}s] stream=({stream_info}) | dom=({dom_source}, {dom_len} chars, gen={is_generating}, stable={stable_ticks})")
-
-                  page.wait_for_timeout(2000)
-
-              inpage = get_inpage_stream_text(page)
-              if inpage and inpage["parsed"].strip():
-                  txt = inpage["parsed"]
-                  return deep_repair(txt if expect_json else clean_plain_text(txt))
-              if current_chat_state.get("raw_stream"):
-                  parsed_sse = parse_sse_text("".join(current_chat_state["raw_stream"]))
-                  if parsed_sse.strip():
-                      return deep_repair(parsed_sse if expect_json else clean_plain_text(parsed_sse))
-              if last_text and len(last_text) > 25:
-                  return deep_repair(last_text)
-
-              raise RuntimeError(f"Response timed out after {max_wait}s.")
-
-          # ------------------ UNIVERSAL PROMPTS 0, 1, 2, 3, AND 4 ------------------
-          PROMPT_0_TEMPLATE = textwrap.dedent("""\
-          # PROMPT 0 — VERIFIED EPISODE / MOVIE SCENE MAP (FOR TRANSCRIPT MATCHING)
-
-          Use Web Search right now to look up the exact production below:
-          - Title: __MOVIE_TITLE__
-          - Type: __CONTENT_TYPE__
-          - Season: __SEASON__
-          - Episode: __EPISODE__
-          - Part: __PART_IDENTIFIER__
-
-          Output a concise plain-text reference sheet (under 1,400 characters) so any unlabelled subtitle transcript segment can be matched to its exact on-screen scene:
-          1. **Characters & Roles:** Exact names, aliases, spellings and relationships (who is who).
-          2. **Chronological Scene Index:** Brief numbered 1-line descriptions of the main scenes in order (who is present, setting, and key action/topic). This is strictly a lookup index to identify WHICH scene a transcript slice belongs to—NOT an opening summary to copy blindly.
-
-          Do NOT invent facts. Keep it compact and factual.""").strip()
-
-          PROMPT_1_TEMPLATE = textwrap.dedent("""\
-          # PROMPT 1 — MOVIE / SERIES RECAP GENERATOR
-
-          ## ROLE
-          Act as a professional YouTube movie/series recap writer and video editing planner. Convert the supplied timestamped transcript into a short, simple, fast-paced Hindi voice-over recap in clear third-person storytelling style, paired with original-footage clips.
-
-          ## 1. IDENTIFY THE EXACT ON-SCREEN SCENE FROM THE TRANSCRIPT (CRITICAL!)
-          - First, read the supplied transcript from start to finish and match its dialogue/events against the Verified Scene Map and Web Search to pinpoint **WHICH exact scene(s)** these timestamps actually cover.
-          - Start your narration **directly at the scene where the supplied transcript begins**—do NOT assume it starts at scene 1 of the movie/episode.
-          - **NEVER** insert an earlier off-screen intro, backstory, or prior scene summary that is absent from the supplied transcript timestamps.
-          - Introduce a character **only when they first appear, speak, or become directly relevant inside the supplied transcript**.
-          - Use the Scene Map + Web Search to verify who is actually speaking and acting in each line. Never swap characters or attribute one person's lines/actions to another.
-
-          ## 2. ANTI-FILLER YOUTUBE STORYTELLING
-          We are compressing a full movie/episode into a tight YouTube recap (target for this section: __TARGET_DURATION__, ~__TARGET_WORDS__ Hindi words).
-          - **KEEP ONLY:** Essential plot developments, key character actions, revelations, motives and setups needed for future scenes.
-          - **SKIP COMPLETELY:** Casual banter, jokes, minor observations, flirting and throwaway dialogue.
-          - Tell **What happened, Why it happened, and How it moves the story** so a first-time viewer never gets confused.
-          - Express uncertainty, suspicions, or accusations naturally inside the sentence itself—NEVER append robotic meta-disclaimers (like claiming something is "only a claim, not proof").
-
-          ## 3. HINDI NARRATION STYLE
-          - Simple, punchy, conversational Hindi in Devanagari script (~130–150 words/min). Everyday English-origin words in Devanagari.
-          - Fast-paced third-person YouTube storyteller voice—no dialogue reading, no formal vocabulary, no repetitive starters.
-
-          ## 4. MICRO-LEVEL CLIP SEGMENTATION (CRITICAL)
-          - Target 1.5–2.5s per clip; NEVER exceed 3s.
-          - Combined clip duration for each beat must cover its `estimated_duration` using ONLY timestamps present in the supplied transcript. Mark visual guesses as unverified.
-
-          ## 5. REQUIRED JSON OUTPUT
-          Return strictly valid JSON only (no Markdown fences, no trailing commas, escaped quotes):
-          {"movie_title":"Title","content_type":"Movie or TV Series","season":null,"episode":null,"part_identifier":null,"target_minutes":null,"estimated_narration_minutes":0,"total_beats":0,"total_words":0,"characters":[{"name":"Name","description":"Role"}],"synopsis":"Concise summary of ONLY the scenes in this transcript chunk.","beats":[{"beat_id":"B0001","narration":"Hindi Devanagari narration","word_count":0,"estimated_duration":0,"is_scene_bridge":false,"clips":[{"clip_id":"C0001","start":0.0,"end":2.0,"duration":2.0,"scene_context":"Transcript context (mark visuals unverified)"}]}]}
-
-          ## INPUT
-          Title: __MOVIE_TITLE__ | Type: __CONTENT_TYPE__ | Season: __SEASON__ | Episode: __EPISODE__ | Part: __PART_IDENTIFIER__
-          Verified Scene Map & Context: __PREVIOUS_CONTEXT__
-
-          Timestamped Transcript:
-          __TRANSCRIPT_JSON__""").strip()
-
-          PROMPT_2_TEMPLATE = textwrap.dedent("""\
-          # PROMPT 2 — CONTINUITY HANDOFF
-
-          You have already processed the earlier part of this movie/series in this conversation. I am providing the next approximately 100 transcript lines as a **PREVIEW ONLY**.
-
-          Read the preview carefully to identify which exact upcoming scene(s) it covers, identify characters and speakers, clarify dialogue references, and understand how the next scene connects to the existing story.
-
-          **Do NOT generate narration, recap beats, clips, or JSON for the preview.**
-
-          Create a concise continuity handoff that I can copy into a completely new chat so another model can continue the recap seamlessly.
-
-          Include:
-
-          1. **Story so far:** Summarize the important events already narrated, preserving the correct sequence, character relationships, revelations and unresolved conflicts.
-          2. **Character context:** Include relevant character names, identities, relationships and any name corrections established through reliable context or research.
-          3. **Audience knowledge:** Explain what the audience already knows and what remains uncertain.
-          4. **Upcoming scene preview:** Briefly explain which exact scene happens in the preview, its important characters and how it connects to the story so far. Clearly mark these events as preview information, not yet narrated.
-          5. **Exact continuation point:** Copy the final 2–3 narration beats from the previous generated output VERBATIM, including their complete narration text. Identify the exact final sentence where continuation must begin.
-
-          Important:
-          - Preserve established facts and distinguish confirmed events from assumptions, accusations and character claims.
-          - Do not introduce future spoilers beyond the supplied preview.
-          - Do not invent missing story details.
-          - Keep the handoff concise but sufficiently informative for a new chat to continue without the previous conversation.
-          - Do not rewrite or improve the copied narration beats.
-
-          **OUTPUT:** One clean, copy-ready continuity handoff. No JSON, no new narration and no additional commentary.
-
-          PREVIEW TRANSCRIPT (NEXT ~100 LINES):
-          __PREVIEW_JSON__""").strip()
-
-          PROMPT_2_RECOVERY_TEMPLATE = textwrap.dedent("""\
-          # PROMPT 2 — CONTINUITY HANDOFF
-
-          Create a concise continuity handoff from the previously generated recap state below plus the next ~100 transcript lines provided as a **PREVIEW ONLY**.
-
-          **Do NOT generate narration, recap beats, clips, or JSON for the preview.**
-
-          Include:
-          1. **Story so far:** Sequence of already-narrated events, relationships, revelations and unresolved conflicts.
-          2. **Character context:** Canonical names, identities, relationships and verified spellings.
-          3. **Audience knowledge:** What viewers already know vs what remains uncertain.
-          4. **Upcoming scene preview:** Briefly explain which exact scene happens in the preview and how it connects (clearly marked as preview only, not yet narrated).
-          5. **Exact continuation point:** Copy the final 2–3 narration beats provided below VERBATIM, and identify the exact final sentence where continuation must begin.
-
-          **OUTPUT:** One clean, copy-ready continuity handoff. No JSON, no new narration and no extra commentary.
-
-          ALREADY NARRATED STORY SYNOPSIS & CHARACTERS:
-          __RECOVERY_STATE__
-
-          FINAL GENERATED BEATS (COPY VERBATIM):
-          __RECOVERY_BEATS__
-
-          PREVIEW TRANSCRIPT (NEXT ~100 LINES):
-          __PREVIEW_JSON__""").strip()
-
-          PROMPT_3_TEMPLATE = textwrap.dedent("""\
-          # PROMPT 3 — CONTINUE MOVIE / SERIES RECAP
-
-          Continue an existing YouTube movie/series recap using the continuity handoff and new timestamped transcript provided below.
-
-          ## 1. IDENTIFY THE EXACT ON-SCREEN SCENE & CONTINUITY
-          - First, analyze the new transcript lines and match them against the Verified Scene Map and Web Search to confirm **which exact scene(s)** are happening on screen and who is speaking each line.
-          - Continue smoothly from the exact final sentence of the previous narration. Do NOT repeat previously narrated events, and do NOT insert off-screen backstory absent from the new transcript.
-          - The upcoming scene preview in the handoff is context only; narrate only events supported by the new transcript timestamps.
-          - Never swap speakers or hallucinate motives/events.
-
-          ## 2. ANTI-FILLER YOUTUBE STORYTELLING
-          Target for this section: __TARGET_DURATION__ (~__TARGET_WORDS__ Hindi words at 130–150 wpm).
-          - **KEEP ONLY:** Essential plot developments, key actions, revelations and setups needed for future scenes.
-          - **SKIP COMPLETELY:** Banter, filler jokes, minor throwaway lines and repetitive dialogue.
-          - Short, punchy, engaging third-person Hindi storytelling (Devanagari only) explaining **What happened, Why it happened, and How it impacts the story**—NO dialogue reading, NO viewer confusion, and NO robotic meta-disclaimers.
-
-          ## 3. MICRO-LEVEL CLIP EDITING
-          - Clips must be 1.5–2.5s (NEVER > 3s) and cover each beat's `estimated_duration` using ONLY timestamps from the new transcript. Mark visual guesses unverified.
-
-          ## 4. OUTPUT FORMAT
-          Return strictly valid JSON only (no Markdown fences, no trailing commas, escaped quotes):
-          {"movie_title":"Title","content_type":"Movie or TV Series","season":null,"episode":null,"part_identifier":null,"target_minutes":null,"estimated_narration_minutes":0,"total_beats":0,"total_words":0,"characters":[{"name":"Name","description":"Role"}],"synopsis":"Summary of story covered so far","beats":[{"beat_id":"__NEXT_BEAT_ID__","narration":"Hindi Devanagari narration","word_count":0,"estimated_duration":0,"is_scene_bridge":false,"clips":[{"clip_id":"__NEXT_CLIP_ID__","start":0.0,"end":2.0,"duration":2.0,"scene_context":"Transcript context (mark visuals unverified)"}]}]}
-
-          Continue beat IDs from __NEXT_BEAT_ID__ and clip IDs from __NEXT_CLIP_ID__.
-
-          ## INPUT
-          Title: __MOVIE_TITLE__ | Type: __CONTENT_TYPE__ | Season: __SEASON__ | Episode: __EPISODE__ | Part: __PART_IDENTIFIER__
-          Verified Scene Map: __EPISODE_BIBLE__
-
-          **CONTINUITY HANDOFF:**
-          __HANDOFF_TEXT__
-
-          **NEW TIMESTAMPED TRANSCRIPT:**
-          __TRANSCRIPT_JSON__""").strip()
-
-          PROMPT_4_TEMPLATE = textwrap.dedent("""\
-          # PROMPT 4 — SCRIPT ENHANCER, SCENE MATCHER & FILLER CUTTER
-
-          Act as a ruthless YouTube Movie Recap Senior Editor. You have this chunk's transcript, the draft JSON below, AND the upcoming ~100-line preview from Prompt 2.
-
-          Your job is to **audit against the actual on-screen transcript + Web Search, cut all filler, and rewrite the draft JSON** into a tight, crystal-clear, binge-worthy Hindi YouTube recap.
-
-          ## MANDATORY FIXES TO APPLY:
-          1. **ON-SCREEN SCENE & SPEAKER AUDIT (CRITICAL!):**
-             - Re-check this chunk's transcript lines using Web Search on `__MOVIE_TITLE__` (`__CONTENT_TYPE__`, Season `__SEASON__`, Episode `__EPISODE__`) + the Verified Scene Map below to confirm **which exact scene(s)** this transcript chunk covers and **who is actually on screen speaking/acting** in every beat.
-             - **REMOVE any off-screen intro or prior backstory** not present in this chunk's transcript timestamps—Beat 1 MUST start strictly with what is actually happening in the opening lines of this transcript chunk, introducing characters only when they enter the scene.
-             - Fix any speaker swaps or misattributed actions and remove any invented details.
-          2. **CUT ALL FILLER & MERGE WEAK BEATS:**
-             - Total video target is ~__TARGET_MINUTES__ mins; this section budget is ~__TARGET_DURATION__ (~__TARGET_WORDS__ Hindi words).
-             - **DELETE or MERGE** trivial observations, casual banter/jokes, and scenes that do NOT advance the main plot or connect to the upcoming preview/future story.
-          3. **NATURAL YOUTUBE "WHAT / WHY / HOW" FLOW:**
-             - Rewrite narration in crisp, gripping third-person Hindi storyteller style (Devanagari only, everyday words, zero dialogue-reading).
-             - Keep a first-time viewer completely oriented: clearly convey *who* is on screen, *what* they are doing, *why*, and *how* it raises the stakes.
-             - Remove any robotic meta-disclaimers at the end of beats—convey claims or suspicions naturally inside the storytelling itself.
-             - Ensure Beat 1 flows smoothly from Previous Chunk Ending (if any) and the final beat leads cleanly into the upcoming scene.
-          4. **CLIP COVERAGE & TIMESTAMPS:**
-             - Update each beat's `clips` array using valid timestamps from this chunk's transcript (each clip `<= 3.0s`, combined clip duration >= beat `estimated_duration`).
-             - Continue beat IDs from `__NEXT_BEAT_ID__` and clip IDs from `__NEXT_CLIP_ID__`.
-
-          ## CONTEXT
-          Verified Scene Map: __EPISODE_BIBLE__
-          Previous Chunk Ending: __PREV_ENDING__
-          Upcoming Scene Context (from Prompt 2): __UPCOMING_CONTEXT__
-
-          ## CURRENT DRAFT JSON TO ENHANCE:
-          __DRAFT_JSON__
-
-          Return ONLY the final enhanced valid JSON (no Markdown fences, no commentary, no trailing commas, properly escaped quotes).""").strip()
-
-          # ------------------ DYNAMIC BUILDERS ------------------
-          def load_transcript(transcript_path="transcript.json"):
-              p = Path(transcript_path)
-              if not p.exists():
-                  raise FileNotFoundError(f"'{transcript_path}' not found in repository root.")
-              with open(p, "r", encoding="utf-8") as f:
-                  return json.load(f)
-
-          def calc_target_budget(chunk_segments, total_duration):
-              if not TARGET_MINUTES:
-                  return "null", "150"
-              try:
-                  total_target_min = float(TARGET_MINUTES)
-                  chunk_start = float(chunk_segments[0].get("start", 0.0))
-                  chunk_end = float(chunk_segments[-1].get("end", chunk_start))
-                  chunk_span = max(0.0, chunk_end - chunk_start)
-                  if total_duration > 0 and chunk_span > 0:
-                      prop_min = max(0.4, round(total_target_min * (chunk_span / total_duration), 2))
+          def ensure_phrase_sync(narration: str, clips: list):
+              # Ensures every clip has spoken_text, spoken_word_count, estimated_spoken_duration
+              # and that joined spoken_text cleanly covers the full narration.
+              if not clips:
+                  return clips
+              words = narration.split()
+              if not words:
+                  return clips
+
+              provided = [str(c.get("spoken_text", "")).strip() for c in clips]
+              joined_words = " ".join(p for p in provided if p).split()
+
+              # Check if model already provided good sequential coverage (>= 75% word match & no empty clips)
+              all_non_empty = all(bool(p) for p in provided)
+              ratio_ok = 0.75 * len(words) <= len(joined_words) <= 1.25 * len(words)
+              if all_non_empty and ratio_ok:
+                  for c in clips:
+                      sw = len(str(c["spoken_text"]).split())
+                      c["spoken_word_count"] = sw
+                      c["estimated_spoken_duration"] = round((sw / 140.0) * 60.0, 2)
+                  return clips
+
+              # Deterministic fallback: distribute narration words across clips sequentially proportional to clip duration
+              total_dur = sum(max(0.5, float(c.get("duration", 2.0))) for c in clips)
+              idx = 0
+              n_words = len(words)
+              for i, c in enumerate(clips):
+                  if i == len(clips) - 1:
+                      chunk_words = words[idx:]
                   else:
-                      prop_min = max(1.0, round(total_target_min / 3.0, 2))
-                  target_words = max(60, int(round(prop_min * 140)))
-                  return f"~{prop_min} minutes (full video target: {total_target_min} minutes)", str(target_words)
-              except Exception:
-                  return f"{TARGET_MINUTES} minutes", "250"
-
-          def build_prompt_0(movie_title):
-              p = PROMPT_0_TEMPLATE
-              p = p.replace("__MOVIE_TITLE__", movie_title)
-              p = p.replace("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "N/A")
-              p = p.replace("__SEASON__", INPUT_SEASON or "N/A")
-              p = p.replace("__EPISODE__", INPUT_EPISODE or "N/A")
-              p = p.replace("__PART_IDENTIFIER__", INPUT_PART or "N/A")
-              return p
-
-          def build_prompt_1_chunk(transcript_data, start_idx, episode_bible, initial_hints):
-              movie_title = INPUT_MOVIE_TITLE or str(transcript_data.get("movie_title") or "Untitled")
-              total_duration = float(transcript_data.get("duration") or 0.0)
-              all_segments = transcript_data.get("segments", [])
-              if start_idx >= len(all_segments):
-                  return None, start_idx
-
-              ctx_parts = []
-              if episode_bible:
-                  ctx_parts.append(episode_bible[:1400])
-              if initial_hints:
-                  ctx_parts.append("Notes: " + initial_hints[:500])
-              combined_ctx = " | ".join(ctx_parts) if ctx_parts else "None"
-
-              def render(dur_text, words_text, segs):
-                  obj = {"movie_title": movie_title, "duration": total_duration, "segments": segs}
-                  p = PROMPT_1_TEMPLATE
-                  p = p.replace("__MOVIE_TITLE__", movie_title)
-                  p = p.replace("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "null")
-                  p = p.replace("__SEASON__", INPUT_SEASON or "null")
-                  p = p.replace("__EPISODE__", INPUT_EPISODE or "null")
-                  p = p.replace("__PART_IDENTIFIER__", INPUT_PART or "null")
-                  p = p.replace("__TARGET_DURATION__", dur_text)
-                  p = p.replace("__TARGET_WORDS__", words_text)
-                  p = p.replace("__PREVIOUS_CONTEXT__", combined_ctx)
-                  p = p.replace("__TRANSCRIPT_JSON__", json.dumps(obj, ensure_ascii=False, separators=(",", ":")))
-                  return p
-
-              base_len = len(render("~1.5 minutes (full video target: 12 minutes)", "210", []))
-              budget = MAX_PROMPT_CHARS - base_len - 120
-              if budget < 500:
-                  raise RuntimeError(f"Prompt 1 template leaves insufficient space ({budget} chars) under {MAX_PROMPT_CHARS}.")
-
-              selected = []
-              used = 0
-              idx = start_idx
-              while idx < len(all_segments):
-                  seg = all_segments[idx]
-                  s_str = json.dumps(seg, ensure_ascii=False, separators=(",", ":"))
-                  extra = len(s_str) + (1 if selected else 0)
-                  if used + extra > budget:
-                      if not selected:
-                          selected.append(seg)
-                          idx += 1
-                      break
-                  selected.append(seg)
-                  used += extra
-                  idx += 1
-
-              dur_text, words_text = calc_target_budget(selected, total_duration)
-              final_prompt = render(dur_text, words_text, selected)
-              while len(final_prompt) > MAX_PROMPT_CHARS and len(selected) > 1:
-                  selected.pop()
-                  idx -= 1
-                  dur_text, words_text = calc_target_budget(selected, total_duration)
-                  final_prompt = render(dur_text, words_text, selected)
-
-              meta = {
-                  "prompt_type": "PROMPT_1",
-                  "movie_title": movie_title,
-                  "start_idx": start_idx,
-                  "end_idx": idx,
-                  "segment_count": len(selected),
-                  "time_start": selected[0].get("start"),
-                  "time_end": selected[-1].get("end"),
-                  "dur_text": dur_text,
-                  "words_text": words_text,
-                  "prompt_chars": len(final_prompt),
-                  "prompt": final_prompt
-              }
-              return meta, idx
-
-          def build_prompt_3_chunk(transcript_data, start_idx, handoff_text, episode_bible, next_beat_num, next_clip_num):
-              movie_title = INPUT_MOVIE_TITLE or str(transcript_data.get("movie_title") or "Untitled")
-              total_duration = float(transcript_data.get("duration") or 0.0)
-              all_segments = transcript_data.get("segments", [])
-              if start_idx >= len(all_segments):
-                  return None, start_idx
-
-              next_beat_id = f"B{next_beat_num:04d}"
-              next_clip_id = f"C{next_clip_num:04d}"
-              bounded_bible = (episode_bible or "None")[:1200]
-              bounded_handoff = handoff_text.strip()
-              if len(bounded_handoff) > 6000:
-                  bounded_handoff = bounded_handoff[-6000:]
-
-              def render(dur_text, words_text, segs):
-                  obj = {"movie_title": movie_title, "duration": total_duration, "segments": segs}
-                  p = PROMPT_3_TEMPLATE
-                  p = p.replace("__MOVIE_TITLE__", movie_title)
-                  p = p.replace("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "null")
-                  p = p.replace("__SEASON__", INPUT_SEASON or "null")
-                  p = p.replace("__EPISODE__", INPUT_EPISODE or "null")
-                  p = p.replace("__PART_IDENTIFIER__", INPUT_PART or "null")
-                  p = p.replace("__TARGET_DURATION__", dur_text)
-                  p = p.replace("__TARGET_WORDS__", words_text)
-                  p = p.replace("__NEXT_BEAT_ID__", next_beat_id)
-                  p = p.replace("__NEXT_CLIP_ID__", next_clip_id)
-                  p = p.replace("__EPISODE_BIBLE__", bounded_bible)
-                  p = p.replace("__HANDOFF_TEXT__", bounded_handoff)
-                  p = p.replace("__TRANSCRIPT_JSON__", json.dumps(obj, ensure_ascii=False, separators=(",", ":")))
-                  return p
-
-              base_len = len(render("~1.5 minutes (full video target: 12 minutes)", "210", []))
-              budget = MAX_PROMPT_CHARS - base_len - 120
-              if budget < 600:
-                  excess = 600 - budget + 200
-                  bounded_handoff = bounded_handoff[-max(1500, len(bounded_handoff) - excess):]
-                  base_len = len(render("~1.5 minutes (full video target: 12 minutes)", "210", []))
-                  budget = MAX_PROMPT_CHARS - base_len - 120
-
-              selected = []
-              used = 0
-              idx = start_idx
-              while idx < len(all_segments):
-                  seg = all_segments[idx]
-                  s_str = json.dumps(seg, ensure_ascii=False, separators=(",", ":"))
-                  extra = len(s_str) + (1 if selected else 0)
-                  if used + extra > budget:
-                      if not selected:
-                          selected.append(seg)
-                          idx += 1
-                      break
-                  selected.append(seg)
-                  used += extra
-                  idx += 1
-
-              dur_text, words_text = calc_target_budget(selected, total_duration)
-              final_prompt = render(dur_text, words_text, selected)
-              while len(final_prompt) > MAX_PROMPT_CHARS and len(selected) > 1:
-                  selected.pop()
-                  idx -= 1
-                  dur_text, words_text = calc_target_budget(selected, total_duration)
-                  final_prompt = render(dur_text, words_text, selected)
-
-              meta = {
-                  "prompt_type": "PROMPT_3",
-                  "movie_title": movie_title,
-                  "start_idx": start_idx,
-                  "end_idx": idx,
-                  "segment_count": len(selected),
-                  "time_start": selected[0].get("start"),
-                  "time_end": selected[-1].get("end"),
-                  "dur_text": dur_text,
-                  "words_text": words_text,
-                  "prompt_chars": len(final_prompt),
-                  "prompt": final_prompt
-              }
-              return meta, idx
-
-          def build_prompt_2_preview(transcript_data, preview_start_idx, recovery_state=None, recovery_beats=None):
-              all_segments = transcript_data.get("segments", [])
-              if preview_start_idx >= len(all_segments):
-                  return None
-
-              preview_slice = all_segments[preview_start_idx : preview_start_idx + PREVIEW_LINES_LIMIT]
-
-              def render(segs):
-                  if recovery_state is None:
-                      return PROMPT_2_TEMPLATE.replace(
-                          "__PREVIEW_JSON__",
-                          json.dumps(segs, ensure_ascii=False, separators=(",", ":"))
-                      )
-                  else:
-                      p = PROMPT_2_RECOVERY_TEMPLATE
-                      p = p.replace("__RECOVERY_STATE__", json.dumps(recovery_state, ensure_ascii=False))
-                      p = p.replace("__RECOVERY_BEATS__", json.dumps(recovery_beats or [], ensure_ascii=False))
-                      p = p.replace("__PREVIEW_JSON__", json.dumps(segs, ensure_ascii=False, separators=(",", ":")))
-                      return p
-
-              selected = []
-              for seg in preview_slice:
-                  candidate = selected + [seg]
-                  if len(render(candidate)) > MAX_PROMPT_CHARS:
-                      if not selected:
-                          selected = candidate
-                      break
-                  selected = candidate
-
-              final_prompt = render(selected)
-              return {
-                  "prompt_chars": len(final_prompt),
-                  "preview_count": len(selected),
-                  "prompt": final_prompt
-              }
-
-          def build_prompt_4_enhance(movie_title, chunk_meta, draft_norm_obj, episode_bible, prev_ending, upcoming_handoff, next_beat_num, next_clip_num):
-              draft_payload = {
-                  "movie_title": movie_title,
-                  "content_type": INPUT_CONTENT_TYPE or None,
-                  "season": INPUT_SEASON or None,
-                  "episode": INPUT_EPISODE or None,
-                  "part_identifier": INPUT_PART or None,
-                  "characters": draft_norm_obj.get("characters", []),
-                  "synopsis": draft_norm_obj.get("synopsis", ""),
-                  "beats": draft_norm_obj.get("beats", [])
-              }
-
-              def render(d_obj, up_ctx, bible_txt):
-                  p = PROMPT_4_TEMPLATE
-                  p = p.replace("__MOVIE_TITLE__", movie_title)
-                  p = p.replace("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "N/A")
-                  p = p.replace("__SEASON__", INPUT_SEASON or "N/A")
-                  p = p.replace("__EPISODE__", INPUT_EPISODE or "N/A")
-                  p = p.replace("__TARGET_MINUTES__", TARGET_MINUTES or "12")
-                  p = p.replace("__TARGET_DURATION__", chunk_meta.get("dur_text", "proportional"))
-                  p = p.replace("__TARGET_WORDS__", chunk_meta.get("words_text", "180"))
-                  p = p.replace("__NEXT_BEAT_ID__", f"B{next_beat_num:04d}")
-                  p = p.replace("__NEXT_CLIP_ID__", f"C{next_clip_num:04d}")
-                  p = p.replace("__EPISODE_BIBLE__", bible_txt)
-                  p = p.replace("__PREV_ENDING__", prev_ending or "Start of supplied transcript")
-                  p = p.replace("__UPCOMING_CONTEXT__", up_ctx)
-                  p = p.replace("__DRAFT_JSON__", json.dumps(d_obj, ensure_ascii=False, separators=(",", ":")))
-                  return p
-
-              bible_txt = (episode_bible or "None")[:1200]
-              up_ctx = (upcoming_handoff or "Final chunk of transcript; bring this section to a clean conclusion.")[:2500]
-              prompt = render(draft_payload, up_ctx, bible_txt)
-
-              if len(prompt) > MAX_PROMPT_CHARS:
-                  slim_beats = []
-                  for b in draft_payload["beats"]:
-                      slim_clips = [{"start": c["start"], "end": c["end"], "duration": c["duration"]} for c in b.get("clips", [])]
-                      slim_beats.append({
-                          "narration": b["narration"],
-                          "word_count": b["word_count"],
-                          "estimated_duration": b["estimated_duration"],
-                          "is_scene_bridge": b["is_scene_bridge"],
-                          "clips": slim_clips
-                      })
-                  draft_payload["beats"] = slim_beats
-                  prompt = render(draft_payload, up_ctx[:1500], bible_txt[:800])
-
-              if len(prompt) > MAX_PROMPT_CHARS:
-                  prompt = render(draft_payload, up_ctx[:800], bible_txt[:400])
-
-              return {
-                  "prompt_chars": len(prompt),
-                  "prompt": prompt
-              }
-
-          def build_merged_handoff_for_next_chunk(handoff_text, enhanced_beats):
-              tail_beats = enhanced_beats[-3:] if len(enhanced_beats) >= 3 else enhanced_beats
-              verbatim_lines = []
-              for idx, b in enumerate(tail_beats, 1):
-                  verbatim_lines.append(f"[Final Enhanced Beat {idx}] {b['narration']}")
-              last_sentence = tail_beats[-1]["narration"] if tail_beats else ""
-
-              merged = (
-                  handoff_text.strip()
-                  + "\n\n---\n**FINAL ENHANCED CONTINUATION BEATS (AUTHORITATIVE VERBATIM FROM PROMPT 4 — CONTINUE FROM HERE):**\n"
-                  + "\n".join(verbatim_lines)
-                  + f"\n**EXACT LAST NARRATION BEAT TO CONTINUE AFTER:** {last_sentence}"
-              )
-              return merged
+                      remaining_clips = len(clips) - i - 1
+                      share = max(1, round(n_words * (max(0.5, float(c.get("duration", 2.0))) / total_dur)))
+                      max_take = max(1, (n_words - idx) - remaining_clips)
+                      take = min(share, max_take)
+                      chunk_words = words[idx : idx + take]
+                      idx += take
+                  sp = " ".join(chunk_words).strip()
+                  c["spoken_text"] = sp
+                  c["spoken_word_count"] = len(chunk_words)
+                  c["estimated_spoken_duration"] = round((len(chunk_words) / 140.0) * 60.0, 2)
+              return clips
 
           def normalize_chunk_beats(raw_obj):
               obj = deep_repair(raw_obj)
-              beats = obj.get("beats", [])
               norm_beats = []
-              for b in beats:
+              for b in obj.get("beats", []):
                   if not isinstance(b, dict):
                       continue
                   narr = str(b.get("narration", "")).strip()
@@ -1699,26 +986,28 @@ jobs:
                       continue
                   wc = len(narr.split())
                   est_dur = round((wc / 140.0) * 60.0, 2)
-                  raw_clips = b.get("clips", [])
                   norm_clips = []
-                  if isinstance(raw_clips, list):
-                      for c in raw_clips:
-                          if not isinstance(c, dict):
-                              continue
-                          st = round(float(c.get("start", 0.0)), 2)
-                          en = round(float(c.get("end", st)), 2)
-                          if en <= st:
-                              continue
-                          dur = round(en - st, 2)
-                          if dur > MAX_CLIP_DURATION:
-                              en = round(st + MAX_CLIP_DURATION, 2)
-                              dur = MAX_CLIP_DURATION
-                          norm_clips.append({
-                              "start": st,
-                              "end": en,
-                              "duration": dur,
-                              "scene_context": str(c.get("scene_context", "")).strip()
-                          })
+                  for c in (b.get("clips") or []):
+                      if not isinstance(c, dict):
+                          continue
+                      st = round(float(c.get("start", 0.0)), 2)
+                      en = round(float(c.get("end", st)), 2)
+                      if en <= st:
+                          continue
+                      dur = round(en - st, 2)
+                      if dur > MAX_CLIP_DURATION:
+                          en = round(st + MAX_CLIP_DURATION, 2)
+                          dur = MAX_CLIP_DURATION
+                      norm_clips.append({
+                          "start": st,
+                          "end": en,
+                          "duration": dur,
+                          "spoken_text": str(c.get("spoken_text", "")).strip(),
+                          "spoken_word_count": 0,
+                          "estimated_spoken_duration": 0.0,
+                          "scene_context": str(c.get("scene_context", "")).strip()
+                      })
+                  norm_clips = ensure_phrase_sync(narr, norm_clips)
                   norm_beats.append({
                       "narration": narr,
                       "word_count": wc,
@@ -1737,405 +1026,626 @@ jobs:
                   "beats": norm_beats
               }
 
-          # ------------------ PLAYWRIGHT SETUP ------------------
-          browser = None
-          context = None
-          page = None
+          # ------------------ UNIVERSAL PROMPTS 0, 1, 2, 3, 4, AND 5 ------------------
+          PROMPT_0_TEMPLATE = textwrap.dedent("""\
+          # PROMPT 0 — VERIFIED EPISODE / MOVIE SCENE MAP
+
+          Use Web Search right now to look up:
+          - Title: __MOVIE_TITLE__ | Type: __CONTENT_TYPE__ | Season: __SEASON__ | Episode: __EPISODE__ | Part: __PART_IDENTIFIER__
+
+          Output a concise plain-text reference sheet (under 1,400 chars) so any unlabelled subtitle snippet can be matched to its exact on-screen scene:
+          1. **Characters & Roles:** Exact names, aliases, relationships.
+          2. **Chronological Scene Index:** Numbered 1-line descriptions of the main scenes in order (who is present, setting, and what happens). Strictly a scene-lookup index—NOT an intro to copy blindly.""").strip()
+
+          PROMPT_1_TEMPLATE = textwrap.dedent("""\
+          # PROMPT 1 — MOVIE / SERIES RECAP GENERATOR (DRAFT)
+
+          Act as a YouTube movie/series recap writer and video editor. Convert the timestamped transcript into an engaging, crystal-clear, fast-paced Hindi voice-over recap in third-person storytelling style so viewers understand the whole story effortlessly.
+
+          ## 1. IDENTIFY THE EXACT ON-SCREEN SCENE FIRST
+          - Read the transcript and use Web Search + the Verified Scene Map to pinpoint **which exact scene(s)** these timestamps cover and **who is speaking each line**.
+          - Start directly at the exact scene where this transcript begins. NEVER add an earlier off-screen intro absent from these timestamps. Introduce characters only when they appear in the transcript.
+
+          ## 2. ANTI-FILLER YOUTUBE STORYTELLING
+          Target for this section: __TARGET_DURATION__ (~__TARGET_WORDS__ Hindi words at 130–150 wpm).
+          - **KEEP ONLY:** Main plot developments, key actions, revelations, motives and setups needed for later scenes.
+          - **SKIP:** Casual banter, jokes, throwaway remarks and filler.
+          - Tell **What happened, Why it happened, and How it moves the story** in punchy conversational Hindi (Devanagari only; everyday English words in Devanagari). No dialogue reading, no robotic disclaimers.
+
+          ## 3. PHRASE-SYNCED MICRO-CLIPS (CRITICAL!)
+          Split each beat's `narration` sequentially into short spoken phrases (`spoken_text`), assigning one relevant `1.5–2.5s` clip (`<= 3.0s` max) per phrase so the editor knows exactly which clip to loop while those words play in TTS:
+          - Joining all `spoken_text` values in a beat in order must equal the beat's `narration`.
+          - Use ONLY timestamps from the supplied transcript. Mark visual guesses unverified.
+
+          ## 4. REQUIRED JSON OUTPUT
+          Return strictly valid JSON only:
+          {"movie_title":"Title","content_type":"Movie or TV Series","season":null,"episode":null,"part_identifier":null,"target_minutes":null,"estimated_narration_minutes":0,"total_beats":0,"total_words":0,"characters":[{"name":"Name","description":"Role"}],"synopsis":"Concise summary of ONLY these scenes.","beats":[{"beat_id":"B0001","narration":"Full Hindi Devanagari beat narration.","word_count":0,"estimated_duration":0,"is_scene_bridge":false,"clips":[{"clip_id":"C0001","start":0.0,"end":2.0,"duration":2.0,"spoken_text":"First short Hindi phrase of narration.","spoken_word_count":0,"estimated_spoken_duration":0,"scene_context":"Transcript context (mark visuals unverified)"}]}]}
+
+          ## INPUT
+          Title: __MOVIE_TITLE__ | Type: __CONTENT_TYPE__ | Season: __SEASON__ | Episode: __EPISODE__ | Part: __PART_IDENTIFIER__
+          Verified Scene Map & Context: __PREVIOUS_CONTEXT__
+
+          Timestamped Transcript:
+          __TRANSCRIPT_JSON__""").strip()
+
+          PROMPT_2_TEMPLATE = textwrap.dedent("""\
+          # PROMPT 2 — CONTINUITY HANDOFF
+
+          You have already processed the earlier part of this movie/series in this conversation. I am providing the next ~100 transcript lines as a **PREVIEW ONLY**.
+
+          **Do NOT generate narration, recap beats, clips, or JSON for the preview.**
+
+          Create a concise continuity handoff for a fresh chat session:
+          1. **Story so far:** Important events already narrated in sequence, character relationships, revelations and unresolved conflicts.
+          2. **Character context:** Canonical names, identities, relationships and verified spellings.
+          3. **Audience knowledge:** What viewers already know vs what remains uncertain.
+          4. **Upcoming scene preview:** Which exact scene happens in the preview, its characters, and how it connects (clearly marked as preview only, not yet narrated).
+          5. **Exact continuation point:** Copy the final 2–3 narration beats VERBATIM and identify the exact final sentence where continuation must begin.
+
+          **OUTPUT:** One clean copy-ready handoff text. No JSON, no new narration.
+
+          PREVIEW TRANSCRIPT (NEXT ~100 LINES):
+          __PREVIEW_JSON__""").strip()
+
+          PROMPT_2_RECOVERY_TEMPLATE = textwrap.dedent("""\
+          # PROMPT 2 — CONTINUITY HANDOFF
+
+          Create a concise continuity handoff from the recap state below plus the next ~100 transcript lines as **PREVIEW ONLY** (do NOT narrate the preview or output JSON):
+          1. **Story so far**, 2. **Character context**, 3. **Audience knowledge**, 4. **Upcoming scene preview (preview only)**, 5. **Exact continuation point** (copy the final beats below VERBATIM).
+
+          ALREADY NARRATED SYNOPSIS & CHARACTERS:
+          __RECOVERY_STATE__
+
+          FINAL GENERATED BEATS (COPY VERBATIM):
+          __RECOVERY_BEATS__
+
+          PREVIEW TRANSCRIPT (NEXT ~100 LINES):
+          __PREVIEW_JSON__""").strip()
+
+          PROMPT_3_TEMPLATE = textwrap.dedent("""\
+          # PROMPT 3 — CONTINUE MOVIE / SERIES RECAP (DRAFT)
+
+          Continue the YouTube Hindi recap from the continuity handoff and new transcript below.
+
+          ## 1. SCENE MATCHING & CONTINUITY
+          - Use Web Search + Verified Scene Map to pinpoint **which exact scene(s)** the new transcript covers and who speaks each line.
+          - Continue smoothly from the exact final sentence of the previous narration. Never repeat earlier events or add off-screen backstory.
+
+          ## 2. ANTI-FILLER STORYTELLING & PHRASE-SYNCED CLIPS
+          Target for this section: __TARGET_DURATION__ (~__TARGET_WORDS__ Hindi words).
+          - Keep only plot-critical events in punchy, clear third-person Hindi (Devanagari only, no dialogue reading, no robotic disclaimers) explaining **What, Why, and How**.
+          - Split each beat's `narration` sequentially into short `spoken_text` phrases with one `<= 3.0s` transcript clip per phrase so joining `spoken_text` equals `narration`.
+
+          ## 3. OUTPUT FORMAT
+          Return strictly valid JSON only:
+          {"movie_title":"Title","content_type":"Movie or TV Series","season":null,"episode":null,"part_identifier":null,"target_minutes":null,"estimated_narration_minutes":0,"total_beats":0,"total_words":0,"characters":[{"name":"Name","description":"Role"}],"synopsis":"Summary so far","beats":[{"beat_id":"__NEXT_BEAT_ID__","narration":"Full Hindi beat narration","word_count":0,"estimated_duration":0,"is_scene_bridge":false,"clips":[{"clip_id":"__NEXT_CLIP_ID__","start":0.0,"end":2.0,"duration":2.0,"spoken_text":"Sequential Hindi phrase","spoken_word_count":0,"estimated_spoken_duration":0,"scene_context":"Transcript context (mark visuals unverified)"}]}]}
+
+          ## INPUT
+          Title: __MOVIE_TITLE__ | Type: __CONTENT_TYPE__ | Season: __SEASON__ | Episode: __EPISODE__ | Part: __PART_IDENTIFIER__
+          Verified Scene Map: __EPISODE_BIBLE__
+
+          **CONTINUITY HANDOFF:**
+          __HANDOFF_TEXT__
+
+          **NEW TIMESTAMPED TRANSCRIPT:**
+          __TRANSCRIPT_JSON__""").strip()
+
+          PROMPT_4_TEMPLATE = textwrap.dedent("""\
+          # PROMPT 4 — LUNA SELF-REFINEMENT & FILLER CUTTER
+
+          You have this chunk's transcript, the draft JSON below, and the upcoming ~100-line preview from Prompt 2.
+          Use Web Search on `__MOVIE_TITLE__` (`__CONTENT_TYPE__`, Season `__SEASON__`, Episode `__EPISODE__`) + the transcript to refine the JSON:
+          1. **On-Screen Accuracy:** Verify Beat 1 starts strictly with the opening scene of this transcript (NO off-screen intro) and fix any speaker mix-ups.
+          2. **Cut Filler:** Target ~__TARGET_DURATION__ (~__TARGET_WORDS__ words). Merge or cut banter/filler; keep only essential plot & future-setup scenes.
+          3. **Engaging Hindi Flow:** Clear third-person YouTube storytelling (What/Why/How, no dialogue reading, no robotic disclaimers).
+          4. **Phrase-Synced Clips:** Every clip (`<= 3.0s`, valid chunk timestamps) must carry its exact sequential `spoken_text` phrase from `narration` so joining all `spoken_text` equals `narration`.
+
+          Verified Scene Map: __EPISODE_BIBLE__
+          Previous Ending: __PREV_ENDING__
+          Upcoming Context: __UPCOMING_CONTEXT__
+
+          DRAFT JSON:
+          __DRAFT_JSON__
+
+          Return strictly valid JSON only (no Markdown fences or extra text).""").strip()
+
+          PROMPT_5_CRITIC_TEMPLATE = textwrap.dedent("""\
+          # PROMPT 5 — HAIKU FINAL CROSS-CHECK, WEB-SEARCH VERIFICATION & YOUTUBE POLISH
+
+          You are the **Senior Fact-Checker & Lead YouTube Storyteller** reviewing a draft JSON produced by another model (`6 Luna`).
+          Do NOT trust the draft blindly—verify EVERYTHING against **Web Search** + the **Actual Raw Timestamped Transcript** below!
+
+          ## MANDATORY VERIFICATION & UPGRADE CHECKLIST:
+          1. **WEB SEARCH & RAW TRANSCRIPT AUDIT (ZERO HALLUCINATIONS!):**
+             - Use Web Search on `__MOVIE_TITLE__` (`__CONTENT_TYPE__`, Season `__SEASON__`, Episode `__EPISODE__`) and cross-check every claim in the draft JSON against the Raw Timestamped Transcript below.
+             - Fix **every** speaker misattribution (make sure the character who actually spoke/acted in the real episode & transcript is credited—never swap characters).
+             - Remove **any** off-screen intro or invented detail not present in the Raw Transcript timestamps. Beat 1 must match the exact opening scene of the transcript.
+          2. **VIEWER CLARITY & ENGAGING YOUTUBE STORYTELLING:**
+             - Rewrite stiff or confusing beats into captivating, natural, third-person Hindi YouTube narration (Devanagari only, everyday Hindi, zero dialogue reading, zero robotic disclaimers).
+             - Make sure **What happened, Why it happened, and How it affects the story** is crystal clear so viewers feel: *"After watching this explanation, I completely understood the movie/episode!"*
+             - Keep only high-value plot beats matching this section's budget (~__TARGET_DURATION__, ~__TARGET_WORDS__ words for a ~__TARGET_MINUTES__m total video).
+          3. **PHRASE-SYNCED CLIP ALIGNMENT (STRICT!):**
+             - For each beat, divide `narration` sequentially into short spoken phrases (`spoken_text`, ~3–8 words each) and pair **each phrase** with one relevant `<= 3.0s` clip whose timestamp exists in the Raw Transcript below.
+             - Joining every clip's `spoken_text` in order MUST equal the beat's `narration`. That lets the video editor loop each clip during those exact spoken words!
+             - Continue beat IDs from `__NEXT_BEAT_ID__` and clip IDs from `__NEXT_CLIP_ID__`.
+
+          ## REFERENCE CONTEXT
+          Verified Scene Map: __EPISODE_BIBLE__
+          Previous Verified Ending (continue smoothly from here): __PREV_ENDING__
+          Upcoming Preview Context: __UPCOMING_CONTEXT__
+
+          ## RAW TIMESTAMPED TRANSCRIPT OF THIS CHUNK (`start|text`):
+          __RAW_TRANSCRIPT_COMPACT__
+
+          ## LUNA'S DRAFT JSON TO AUDIT & FIX:
+          __LUNA_JSON__
+
+          Return strictly valid final JSON only (no Markdown fences, no commentary, no trailing commas, properly escaped quotes).""").strip()
+
+          # ------------------ DYNAMIC BUILDERS ------------------
+          def load_transcript(transcript_path="transcript.json"):
+              p = Path(transcript_path)
+              if not p.exists():
+                  raise FileNotFoundError(f"'{transcript_path}' not found in repository root.")
+              with open(p, "r", encoding="utf-8") as f:
+                  return json.load(f)
+
+          def calc_target_budget(chunk_segments, total_duration):
+              if not TARGET_MINUTES:
+                  return "null", "150"
+              try:
+                  total_target_min = float(TARGET_MINUTES)
+                  cs = float(chunk_segments[0].get("start", 0.0))
+                  ce = float(chunk_segments[-1].get("end", cs))
+                  span = max(0.0, ce - cs)
+                  prop_min = max(0.4, round(total_target_min * (span / total_duration), 2)) if (total_duration > 0 and span > 0) else max(1.0, round(total_target_min / 3.0, 2))
+                  return f"~{prop_min} minutes (full video target: {total_target_min} minutes)", str(max(60, int(round(prop_min * 140))))
+              except Exception:
+                  return f"{TARGET_MINUTES} minutes", "250"
+
+          def build_prompt_0(movie_title):
+              p = PROMPT_0_TEMPLATE
+              for k, v in [("__MOVIE_TITLE__", movie_title), ("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "N/A"), ("__SEASON__", INPUT_SEASON or "N/A"), ("__EPISODE__", INPUT_EPISODE or "N/A"), ("__PART_IDENTIFIER__", INPUT_PART or "N/A")]:
+                  p = p.replace(k, v)
+              return p
+
+          def build_prompt_1_chunk(transcript_data, start_idx, episode_bible, initial_hints):
+              movie_title = INPUT_MOVIE_TITLE or str(transcript_data.get("movie_title") or "Untitled")
+              total_duration = float(transcript_data.get("duration") or 0.0)
+              all_segs = transcript_data.get("segments", [])
+              if start_idx >= len(all_segs):
+                  return None, start_idx
+              ctx = " | ".join([x for x in [episode_bible[:1400], ("Notes: " + initial_hints[:500]) if initial_hints else ""] if x]) or "None"
+
+              def render(dur_t, words_t, segs):
+                  obj = {"movie_title": movie_title, "duration": total_duration, "segments": segs}
+                  p = PROMPT_1_TEMPLATE
+                  for k, v in [
+                      ("__MOVIE_TITLE__", movie_title), ("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "null"),
+                      ("__SEASON__", INPUT_SEASON or "null"), ("__EPISODE__", INPUT_EPISODE or "null"),
+                      ("__PART_IDENTIFIER__", INPUT_PART or "null"), ("__TARGET_DURATION__", dur_t),
+                      ("__TARGET_WORDS__", words_t), ("__PREVIOUS_CONTEXT__", ctx),
+                      ("__TRANSCRIPT_JSON__", json.dumps(obj, ensure_ascii=False, separators=(",", ":")))
+                  ]:
+                      p = p.replace(k, v)
+                  return p
+
+              budget = MAX_PROMPT_CHARS - len(render("~1.5m", "210", [])) - 120
+              selected, used, idx = [], 0, start_idx
+              while idx < len(all_segs):
+                  s_str = json.dumps(all_segs[idx], ensure_ascii=False, separators=(",", ":"))
+                  extra = len(s_str) + (1 if selected else 0)
+                  if used + extra > budget:
+                      if not selected:
+                          selected.append(all_segs[idx]); idx += 1
+                      break
+                  selected.append(all_segs[idx]); used += extra; idx += 1
+
+              dur_t, words_t = calc_target_budget(selected, total_duration)
+              final_p = render(dur_t, words_t, selected)
+              while len(final_p) > MAX_PROMPT_CHARS and len(selected) > 1:
+                  selected.pop(); idx -= 1
+                  dur_t, words_t = calc_target_budget(selected, total_duration)
+                  final_p = render(dur_t, words_t, selected)
+
+              return {
+                  "prompt_type": "PROMPT_1", "movie_title": movie_title, "start_idx": start_idx, "end_idx": idx,
+                  "segment_count": len(selected), "time_start": selected[0].get("start"), "time_end": selected[-1].get("end"),
+                  "dur_text": dur_t, "words_text": words_t, "prompt_chars": len(final_p), "prompt": final_p
+              }, idx
+
+          def build_prompt_3_chunk(transcript_data, start_idx, handoff_text, episode_bible, next_beat_num, next_clip_num):
+              movie_title = INPUT_MOVIE_TITLE or str(transcript_data.get("movie_title") or "Untitled")
+              total_duration = float(transcript_data.get("duration") or 0.0)
+              all_segs = transcript_data.get("segments", [])
+              if start_idx >= len(all_segs):
+                  return None, start_idx
+              nb_id, nc_id = f"B{next_beat_num:04d}", f"C{next_clip_num:04d}"
+              bible = (episode_bible or "None")[:1200]
+              handoff = handoff_text.strip()[-6000:]
+
+              def render(dur_t, words_t, segs, h_txt):
+                  obj = {"movie_title": movie_title, "duration": total_duration, "segments": segs}
+                  p = PROMPT_3_TEMPLATE
+                  for k, v in [
+                      ("__MOVIE_TITLE__", movie_title), ("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "null"),
+                      ("__SEASON__", INPUT_SEASON or "null"), ("__EPISODE__", INPUT_EPISODE or "null"),
+                      ("__PART_IDENTIFIER__", INPUT_PART or "null"), ("__TARGET_DURATION__", dur_t),
+                      ("__TARGET_WORDS__", words_t), ("__NEXT_BEAT_ID__", nb_id), ("__NEXT_CLIP_ID__", nc_id),
+                      ("__EPISODE_BIBLE__", bible), ("__HANDOFF_TEXT__", h_txt),
+                      ("__TRANSCRIPT_JSON__", json.dumps(obj, ensure_ascii=False, separators=(",", ":")))
+                  ]:
+                      p = p.replace(k, v)
+                  return p
+
+              budget = MAX_PROMPT_CHARS - len(render("~1.5m", "210", [], handoff)) - 120
+              if budget < 600:
+                  handoff = handoff[-max(1500, len(handoff) - (800 - budget)):]
+                  budget = MAX_PROMPT_CHARS - len(render("~1.5m", "210", [], handoff)) - 120
+
+              selected, used, idx = [], 0, start_idx
+              while idx < len(all_segs):
+                  s_str = json.dumps(all_segs[idx], ensure_ascii=False, separators=(",", ":"))
+                  extra = len(s_str) + (1 if selected else 0)
+                  if used + extra > budget:
+                      if not selected:
+                          selected.append(all_segs[idx]); idx += 1
+                      break
+                  selected.append(all_segs[idx]); used += extra; idx += 1
+
+              dur_t, words_t = calc_target_budget(selected, total_duration)
+              final_p = render(dur_t, words_t, selected, handoff)
+              while len(final_p) > MAX_PROMPT_CHARS and len(selected) > 1:
+                  selected.pop(); idx -= 1
+                  dur_t, words_t = calc_target_budget(selected, total_duration)
+                  final_p = render(dur_t, words_t, selected, handoff)
+
+              return {
+                  "prompt_type": "PROMPT_3", "movie_title": movie_title, "start_idx": start_idx, "end_idx": idx,
+                  "segment_count": len(selected), "time_start": selected[0].get("start"), "time_end": selected[-1].get("end"),
+                  "dur_text": dur_t, "words_text": words_t, "prompt_chars": len(final_p), "prompt": final_p
+              }, idx
+
+          def build_prompt_2_preview(transcript_data, preview_start_idx, recovery_state=None, recovery_beats=None):
+              all_segs = transcript_data.get("segments", [])
+              if preview_start_idx >= len(all_segs):
+                  return None
+              preview_slice = all_segs[preview_start_idx : preview_start_idx + PREVIEW_LINES_LIMIT]
+
+              def render(segs):
+                  if recovery_state is None:
+                      return PROMPT_2_TEMPLATE.replace("__PREVIEW_JSON__", json.dumps(segs, ensure_ascii=False, separators=(",", ":")))
+                  p = PROMPT_2_RECOVERY_TEMPLATE
+                  p = p.replace("__RECOVERY_STATE__", json.dumps(recovery_state, ensure_ascii=False))
+                  p = p.replace("__RECOVERY_BEATS__", json.dumps(recovery_beats or [], ensure_ascii=False))
+                  p = p.replace("__PREVIEW_JSON__", json.dumps(segs, ensure_ascii=False, separators=(",", ":")))
+                  return p
+
+              selected = []
+              for seg in preview_slice:
+                  if len(render(selected + [seg])) > MAX_PROMPT_CHARS:
+                      if not selected: selected = [seg]
+                      break
+                  selected.append(seg)
+              final_p = render(selected)
+              return {"prompt_chars": len(final_p), "preview_count": len(selected), "prompt": final_p}
+
+          def build_prompt_4_enhance(movie_title, chunk_meta, draft_norm_obj, episode_bible, prev_ending, upcoming_handoff, next_beat_num, next_clip_num):
+              payload = {
+                  "movie_title": movie_title, "content_type": INPUT_CONTENT_TYPE or None,
+                  "season": INPUT_SEASON or None, "episode": INPUT_EPISODE or None, "part_identifier": INPUT_PART or None,
+                  "characters": draft_norm_obj.get("characters", []), "synopsis": draft_norm_obj.get("synopsis", ""),
+                  "beats": draft_norm_obj.get("beats", [])
+              }
+
+              def render(d_obj, up_ctx, bible_txt):
+                  p = PROMPT_4_TEMPLATE
+                  for k, v in [
+                      ("__MOVIE_TITLE__", movie_title), ("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "N/A"),
+                      ("__SEASON__", INPUT_SEASON or "N/A"), ("__EPISODE__", INPUT_EPISODE or "N/A"),
+                      ("__TARGET_DURATION__", chunk_meta.get("dur_text", "proportional")),
+                      ("__TARGET_WORDS__", chunk_meta.get("words_text", "180")),
+                      ("__EPISODE_BIBLE__", bible_txt), ("__PREV_ENDING__", prev_ending or "Start of transcript"),
+                      ("__UPCOMING_CONTEXT__", up_ctx),
+                      ("__DRAFT_JSON__", json.dumps(d_obj, ensure_ascii=False, separators=(",", ":")))
+                  ]:
+                      p = p.replace(k, v)
+                  return p
+
+              prompt = render(payload, (upcoming_handoff or "Final chunk.")[:2200], (episode_bible or "None")[:1000])
+              if len(prompt) > MAX_PROMPT_CHARS:
+                  for b in payload["beats"]:
+                      b["clips"] = [{"start": c["start"], "end": c["end"], "duration": c["duration"], "spoken_text": c.get("spoken_text", "")} for c in b.get("clips", [])]
+                  prompt = render(payload, (upcoming_handoff or "Final chunk.")[:1200], (episode_bible or "None")[:600])
+              return {"prompt_chars": len(prompt), "prompt": prompt}
+
+          def build_prompt_5_critic(movie_title, transcript_data, chunk_meta, luna_norm_obj, episode_bible, prev_ending, upcoming_handoff, next_beat_num, next_clip_num):
+              all_segs = transcript_data.get("segments", [])
+              chunk_segs = all_segs[chunk_meta["start_idx"] : chunk_meta["end_idx"]]
+              compact_lines = [f"{round(float(s.get('start', 0)), 2)}-{round(float(s.get('end', 0)), 2)}|{str(s.get('text', '')).strip()}" for s in chunk_segs]
+
+              luna_payload = {
+                  "movie_title": movie_title, "content_type": INPUT_CONTENT_TYPE or None,
+                  "season": INPUT_SEASON or None, "episode": INPUT_EPISODE or None, "part_identifier": INPUT_PART or None,
+                  "characters": luna_norm_obj.get("characters", []), "synopsis": luna_norm_obj.get("synopsis", ""),
+                  "beats": luna_norm_obj.get("beats", [])
+              }
+
+              def render(l_obj, raw_txt, up_ctx, bible_txt):
+                  p = PROMPT_5_CRITIC_TEMPLATE
+                  for k, v in [
+                      ("__MOVIE_TITLE__", movie_title), ("__CONTENT_TYPE__", INPUT_CONTENT_TYPE or "N/A"),
+                      ("__SEASON__", INPUT_SEASON or "N/A"), ("__EPISODE__", INPUT_EPISODE or "N/A"),
+                      ("__TARGET_MINUTES__", TARGET_MINUTES or "12"),
+                      ("__TARGET_DURATION__", chunk_meta.get("dur_text", "proportional")),
+                      ("__TARGET_WORDS__", chunk_meta.get("words_text", "180")),
+                      ("__NEXT_BEAT_ID__", f"B{next_beat_num:04d}"), ("__NEXT_CLIP_ID__", f"C{next_clip_num:04d}"),
+                      ("__EPISODE_BIBLE__", bible_txt), ("__PREV_ENDING__", prev_ending or "Start of supplied transcript"),
+                      ("__UPCOMING_CONTEXT__", up_ctx), ("__RAW_TRANSCRIPT_COMPACT__", raw_txt),
+                      ("__LUNA_JSON__", json.dumps(l_obj, ensure_ascii=False, separators=(",", ":")))
+                  ]:
+                      p = p.replace(k, v)
+                  return p
+
+              bible_txt = (episode_bible or "None")[:1000]
+              up_ctx = (upcoming_handoff or "Final chunk.")[:1500]
+
+              # Ensure full Luna JSON + as much raw transcript as fits under MAX_PROMPT_CHARS
+              raw_joined = "\n".join(compact_lines)
+              prompt = render(luna_payload, raw_joined, up_ctx, bible_txt)
+
+              if len(prompt) > MAX_PROMPT_CHARS:
+                  # Strip verbose scene_context from Luna clips so raw transcript fits completely
+                  for b in luna_payload["beats"]:
+                      b["clips"] = [{"start": c["start"], "end": c["end"], "duration": c["duration"], "spoken_text": c.get("spoken_text", "")} for c in b.get("clips", [])]
+                  prompt = render(luna_payload, raw_joined, up_ctx[:900], bible_txt[:700])
+
+              if len(prompt) > MAX_PROMPT_CHARS:
+                  # Trim transcript lines proportionally only if still over budget
+                  over = len(prompt) - MAX_PROMPT_CHARS + 100
+                  raw_joined = raw_joined[:max(1500, len(raw_joined) - over)]
+                  prompt = render(luna_payload, raw_joined, up_ctx[:700], bible_txt[:500])
+
+              return {"prompt_chars": len(prompt), "prompt": prompt}
+
+          def build_merged_handoff_for_next_chunk(handoff_text, verified_beats):
+              tail = verified_beats[-3:] if len(verified_beats) >= 3 else verified_beats
+              lines = [f"[Verified Final Beat {i}] {b['narration']}" for i, b in enumerate(tail, 1)]
+              last_line = tail[-1]["narration"] if tail else ""
+              return (
+                  handoff_text.strip()
+                  + "\n\n---\n**AUTHORITATIVE VERIFIED ENDING BEATS (CONTINUE FROM HERE):**\n"
+                  + "\n".join(lines)
+                  + f"\n**EXACT LAST NARRATION BEAT TO CONTINUE AFTER:** {last_line}"
+              )
+
+          # ------------------ PLAYWRIGHT SETUP & EXECUTION ------------------
+          browser = context = page = None
           current_chat_state = {"raw_stream": [], "chat_done": False, "rate_limited": False}
 
           def launch_browser(pw):
-              global browser, context, page, current_chat_state
+              global browser, context, page
               if browser:
-                  try:
-                      browser.close()
-                  except Exception:
-                      pass
-              browser = pw.chromium.launch(
-                  headless=not HEADED,
-                  proxy={"server": BROWSER_PROXY},
-                  args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"]
-              )
-              context = browser.new_context(
-                  viewport={"width": 1440, "height": 1000},
-                  user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
-                  permissions=["clipboard-read", "clipboard-write"]
-              )
+                  try: browser.close()
+                  except Exception: pass
+              browser = pw.chromium.launch(headless=not HEADED, proxy={"server": BROWSER_PROXY}, args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"])
+              context = browser.new_context(viewport={"width": 1440, "height": 1000}, user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36", permissions=["clipboard-read", "clipboard-write"])
               context.add_init_script(FETCH_HOOK_JS)
               page = context.new_page()
 
               def is_chat_req(req):
-                  clean_u = req.url.split("?")[0]
-                  return req.method == "POST" and ("/duckchat/v1/chat" in clean_u or clean_u.endswith("/chat"))
+                  cu = req.url.split("?")[0]
+                  return req.method == "POST" and ("/duckchat/v1/chat" in cu or cu.endswith("/chat"))
 
-              def on_res(resp):
-                  if is_chat_req(resp.request):
-                      log(f"Network chat response headers: HTTP {resp.status} -> {resp.url}")
-                      if resp.status in (418, 429):
-                          current_chat_state["rate_limited"] = True
-              page.on("response", on_res)
+              page.on("response", lambda r: (
+                  log(f"Network chat HTTP {r.status} -> {r.url}"),
+                  current_chat_state.__setitem__("rate_limited", True) if r.status in (418, 429) else None
+              ) if is_chat_req(r.request) else None)
 
               def on_done(req):
                   if is_chat_req(req):
                       try:
                           resp = req.response()
                           if resp:
-                              body = resp.body().decode("utf-8", errors="replace")
-                              if body:
-                                  current_chat_state["raw_stream"].append(body)
-                      except Exception as e:
-                          log(f"requestfinished body note: {e}")
+                              b = resp.body().decode("utf-8", errors="replace")
+                              if b: current_chat_state["raw_stream"].append(b)
+                      except Exception:
+                          pass
                       current_chat_state["chat_done"] = True
               page.on("requestfinished", on_done)
 
-          def open_fresh_duckai_chat(take_verify_snap=False):
+          def open_fresh_duckai_chat(model_name, use_reasoning, take_verify_snap=False, snap_prefix="settings"):
               page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
               wait_for_duckai_ui_ready(page, timeout_ms=45000)
               page.wait_for_timeout(1500)
-              configure_duckai_settings(
-                  page,
-                  TARGET_MODEL,
-                  ENABLE_REASONING,
-                  ENABLE_WEB_SEARCH,
-                  take_verify_snap=take_verify_snap
-              )
+              configure_duckai_settings(page, model_name, use_reasoning, ENABLE_WEB_SEARCH, take_verify_snap=take_verify_snap, snap_prefix=snap_prefix)
 
           with sync_playwright() as p:
               launch_browser(p)
 
-              # ==============================================================
-              # MODE: PROBE
-              # ==============================================================
               if RUN_MODE == "probe":
-                  log("Starting probe test on Duck.ai...")
-                  open_fresh_duckai_chat(take_verify_snap=True)
-                  box = get_prompt_box(page)
-                  box.wait_for(state="visible", timeout=40000)
+                  open_fresh_duckai_chat(DRAFT_MODEL, False, take_verify_snap=True, snap_prefix="probe_draft")
+                  box = get_prompt_box(page); box.wait_for(state="visible", timeout=40000)
+                  probe_p = 'Output valid JSON only: {"status": "ready", "hindi": "कहानी शुरू"}'
+                  send_and_confirm(page, box, probe_p, context, current_chat_state, "ProbeDraft", is_new_chat=True)
+                  out = wait_for_response(page, current_chat_state, prompt_text=probe_p, max_wait=60, expect_json=True, expect_beats=False)
+                  log(f"Probe Draft Result: {parse_first_balanced_json(out, require_beats=False)}")
+                  open_fresh_duckai_chat(CRITIC_MODEL, ENABLE_REASONING, take_verify_snap=True, snap_prefix="probe_critic")
+                  box = get_prompt_box(page); box.wait_for(state="visible", timeout=40000)
+                  send_and_confirm(page, box, probe_p, context, current_chat_state, "ProbeCritic", is_new_chat=True)
+                  out2 = wait_for_response(page, current_chat_state, prompt_text=probe_p, max_wait=60, expect_json=True, expect_beats=False)
+                  parsed2 = parse_first_balanced_json(out2, require_beats=False)
+                  log(f"Probe Critic Result: {parsed2}")
+                  browser.close()
+                  sys.exit(0 if (parsed2 and parsed2.get("status") == "ready") else 1)
 
-                  probe_prompt = 'Output valid JSON only: {"status": "ready", "hindi": "कहानी शुरू"}'
-                  if not send_and_confirm(page, box, probe_prompt, context, current_chat_state, "Probe", is_new_chat=True):
-                      snap(page, "probe_submit_failed")
-                      raise RuntimeError("Probe submission not acknowledged.")
-
-                  out = wait_for_response(page, current_chat_state, prompt_text=probe_prompt, max_wait=60, expect_json=True, expect_beats=False)
-                  parsed = parse_first_balanced_json(out, require_beats=False)
-                  log(f"Probe Result: {parsed}")
-
-                  if parsed and parsed.get("status") == "ready":
-                      log("Probe PASSED successfully.")
-                      if browser:
-                          browser.close()
-                      sys.exit(0)
-                  else:
-                      log("Probe FAILED.")
-                      snap(page, "probe_failed")
-                      if browser:
-                          browser.close()
-                      sys.exit(1)
-
-              # ==============================================================
-              # MODE: FULL RECAP ENGINE (P0 -> [P1/P3 -> P2 -> P4 -> Merge])
-              # ==============================================================
-              log("Starting Recap Engine (PROMPT 0 -> [PROMPT 1/3 -> PROMPT 2 -> PROMPT 4])...")
+              log(f"Starting Dual-Model Engine | Draft: '{DRAFT_MODEL}' (P1/P2/P3/P4) | Critic: '{CRITIC_MODEL}' (P0/P5)")
               transcript_data = load_transcript("transcript.json")
               total_segments = len(transcript_data.get("segments", []))
               movie_title = INPUT_MOVIE_TITLE or str(transcript_data.get("movie_title") or "Untitled")
-              log(f"Loaded '{movie_title}': {total_segments} segments | Target: {TARGET_MINUTES}m | Max prompt: {MAX_PROMPT_CHARS} chars.")
 
-              pipeline_state = {
-                  "episode_bible": "",
-                  "next_segment_idx": 0,
-                  "chunk_num": 0,
-                  "beats": [],
-                  "characters": {},
-                  "synopses": [],
-                  "continuity_handoff": ""
-              }
+              pipeline_state = {"episode_bible": "", "next_segment_idx": 0, "chunk_num": 0, "beats": [], "characters": {}, "synopses": [], "continuity_handoff": ""}
               if STATE_FILE.exists():
                   try:
-                      with open(STATE_FILE, "r", encoding="utf-8") as sf:
-                          loaded = json.load(sf)
-                          if isinstance(loaded, dict):
-                              pipeline_state = deep_repair(loaded)
+                      loaded = json.load(open(STATE_FILE, "r", encoding="utf-8"))
+                      if isinstance(loaded, dict): pipeline_state = deep_repair(loaded)
                   except Exception:
                       pass
 
-              verify_snap_taken = False
+              draft_snap_done = False
+              critic_snap_done = False
 
-              # ---- ONE-TIME PROMPT 0 (WEB SEARCH SCENE MAP) ----
+              # ---- PROMPT 0 (CRITIC MODEL + WEB SEARCH) ----
               if ENABLE_WEB_SEARCH and not pipeline_state.get("episode_bible"):
-                  log(f"Running 1-time PROMPT 0 (Web Search Scene Map for '{movie_title}')...")
-                  p0_text = build_prompt_0(movie_title)
-                  for p0_att in range(1, 3):
+                  log(f"Running PROMPT 0 on '{CRITIC_MODEL}' (Web Search Scene Map)...")
+                  p0_txt = build_prompt_0(movie_title)
+                  for att in range(1, 3):
                       try:
-                          open_fresh_duckai_chat(take_verify_snap=(not verify_snap_taken))
-                          verify_snap_taken = True
-                          box = get_prompt_box(page)
-                          box.wait_for(state="visible", timeout=40000)
-                          if not send_and_confirm(page, box, p0_text, context, current_chat_state, "PROMPT_0", is_new_chat=True):
-                              raise RuntimeError("Prompt 0 submission not acknowledged.")
-                          bible_txt = wait_for_response(
-                              page,
-                              current_chat_state,
-                              prompt_text=p0_text,
-                              max_wait=180,
-                              expect_json=False,
-                              expect_beats=False
-                          )
-                          if len(bible_txt.strip()) >= 80:
-                              pipeline_state["episode_bible"] = bible_txt.strip()
-                              (DEBUG_DIR / "episode_bible_p0.txt").write_text(bible_txt.strip(), encoding="utf-8")
-                              with open(STATE_FILE, "w", encoding="utf-8") as sf:
-                                  json.dump(pipeline_state, sf, indent=2, ensure_ascii=False)
-                              log(f"SUCCESS PROMPT 0: captured {len(bible_txt.strip())} chars Scene Map.")
+                          open_fresh_duckai_chat(CRITIC_MODEL, ENABLE_REASONING, take_verify_snap=(not critic_snap_done), snap_prefix="critic")
+                          critic_snap_done = True
+                          box = get_prompt_box(page); box.wait_for(state="visible", timeout=40000)
+                          if not send_and_confirm(page, box, p0_txt, context, current_chat_state, "PROMPT_0", is_new_chat=True):
+                              raise RuntimeError("Prompt 0 not acknowledged.")
+                          bible = wait_for_response(page, current_chat_state, prompt_text=p0_txt, max_wait=180, expect_json=False, expect_beats=False)
+                          if len(bible.strip()) >= 80:
+                              pipeline_state["episode_bible"] = bible.strip()
+                              (DEBUG_DIR / "episode_bible_p0.txt").write_text(bible.strip(), encoding="utf-8")
+                              json.dump(pipeline_state, open(STATE_FILE, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+                              log(f"SUCCESS PROMPT 0 ({len(bible.strip())} chars).")
                               break
-                      except Exception as p0_err:
-                          log(f"PROMPT 0 attempt {p0_att} notice (non-fatal): {p0_err}")
-                          if p0_att < 2:
-                              renew_tor()
-                              launch_browser(p)
+                      except Exception as e:
+                          log(f"PROMPT 0 att {att} notice: {e}")
+                          if att < 2: renew_tor(); launch_browser(p)
 
-              # ---- MAIN CHUNK LOOP ----
+              # ---- CHUNK LOOP ----
               while pipeline_state["next_segment_idx"] < total_segments:
                   cur_idx = pipeline_state["next_segment_idx"]
                   chunk_num = pipeline_state["chunk_num"] + 1
-                  next_beat_num = len(pipeline_state["beats"]) + 1
-                  next_clip_num = sum(len(b.get("clips", [])) for b in pipeline_state["beats"]) + 1
-                  episode_bible = pipeline_state.get("episode_bible", "")
+                  nb_num = len(pipeline_state["beats"]) + 1
+                  nc_num = sum(len(b.get("clips", [])) for b in pipeline_state["beats"]) + 1
+                  bible = pipeline_state.get("episode_bible", "")
 
                   if chunk_num == 1 or not pipeline_state.get("continuity_handoff"):
-                      chunk_meta, next_idx = build_prompt_1_chunk(transcript_data, cur_idx, episode_bible, INPUT_HINTS)
+                      chunk_meta, next_idx = build_prompt_1_chunk(transcript_data, cur_idx, bible, INPUT_HINTS)
                   else:
-                      chunk_meta, next_idx = build_prompt_3_chunk(
-                          transcript_data,
-                          cur_idx,
-                          pipeline_state["continuity_handoff"],
-                          episode_bible,
-                          next_beat_num,
-                          next_clip_num
-                      )
-
+                      chunk_meta, next_idx = build_prompt_3_chunk(transcript_data, cur_idx, pipeline_state["continuity_handoff"], bible, nb_num, nc_num)
                   if not chunk_meta:
                       break
 
-                  log(
-                      f"\n=== CHUNK {chunk_num} ({chunk_meta['prompt_type']}): segments {chunk_meta['start_idx']+1}..{chunk_meta['end_idx']}/{total_segments} "
-                      f"({chunk_meta['time_start']}s - {chunk_meta['time_end']}s) | Target: {chunk_meta['dur_text']} (~{chunk_meta['words_text']} words) | Prompt: {chunk_meta['prompt_chars']} chars ==="
-                  )
+                  log(f"\n=== CHUNK {chunk_num} ({chunk_meta['prompt_type']} on '{DRAFT_MODEL}'): segs {chunk_meta['start_idx']+1}..{chunk_meta['end_idx']}/{total_segments} ({chunk_meta['time_start']}s-{chunk_meta['time_end']}s) ===")
 
-                  # ---- STEP A: PROMPT 1 or PROMPT 3 (Draft JSON) ----
+                  # SESSION A (DRAFT MODEL: P1/P3 -> P2 -> P4)
                   draft_norm = None
-                  for attempt in range(1, MAX_ATTEMPTS + 1):
+                  for att in range(1, MAX_ATTEMPTS + 1):
                       try:
-                          open_fresh_duckai_chat(take_verify_snap=(not verify_snap_taken))
-                          verify_snap_taken = True
-
-                          box = get_prompt_box(page)
-                          box.wait_for(state="visible", timeout=40000)
-
-                          log(f"Submitting {chunk_meta['prompt_type']} for Chunk {chunk_num} (attempt {attempt}/{MAX_ATTEMPTS})...")
+                          open_fresh_duckai_chat(DRAFT_MODEL, False, take_verify_snap=(not draft_snap_done), snap_prefix="draft")
+                          draft_snap_done = True
+                          box = get_prompt_box(page); box.wait_for(state="visible", timeout=40000)
                           if not send_and_confirm(page, box, chunk_meta["prompt"], context, current_chat_state, f"Chunk {chunk_num} {chunk_meta['prompt_type']}", is_new_chat=True):
-                              snap(page, f"fail_submit_chunk_{chunk_num}_att_{attempt}")
-                              raise RuntimeError(f"Chunk {chunk_num} submission not acknowledged.")
-
-                          raw_resp = wait_for_response(
-                              page,
-                              current_chat_state,
-                              prompt_text=chunk_meta["prompt"],
-                              max_wait=TEXT_WAIT,
-                              expect_json=True,
-                              expect_beats=True,
-                              prev_code_blocks=0
-                          )
-                          (DEBUG_DIR / f"raw_chunk_{chunk_num}_att_{attempt}.txt").write_text(raw_resp, encoding="utf-8")
-
-                          parsed_json = parse_first_balanced_json(raw_resp, require_beats=True)
-                          if not is_valid_recap_json(parsed_json):
-                              dom_fallback = page.evaluate(EXTRACT_ASSISTANT_JS, {
-                                  "promptTail": chunk_meta["prompt"][-60:].strip(),
-                                  "expectJson": True,
-                                  "prevCodeBlocks": 0
-                              })
-                              dom_txt = (dom_fallback.get("text") or "").strip()
-                              if dom_txt and dom_txt != raw_resp:
-                                  (DEBUG_DIR / f"raw_chunk_{chunk_num}_att_{attempt}_dom.txt").write_text(dom_txt, encoding="utf-8")
-                                  parsed_json = parse_first_balanced_json(dom_txt, require_beats=True)
-
-                          if not is_valid_recap_json(parsed_json):
-                              snap(page, f"bad_json_chunk_{chunk_num}_att_{attempt}")
-                              raise RuntimeError(f"Invalid or empty JSON beats on Chunk {chunk_num}: {raw_resp[:220]}")
-
-                          candidate_norm = normalize_chunk_beats(parsed_json)
-                          if not candidate_norm["beats"]:
-                              raise RuntimeError(f"Chunk {chunk_num} produced 0 valid beats.")
-
-                          draft_norm = candidate_norm
-                          log(f"SUCCESS {chunk_meta['prompt_type']} Draft Chunk {chunk_num}: +{len(draft_norm['beats'])} beats.")
+                              raise RuntimeError("Draft submission not acknowledged.")
+                          raw = wait_for_response(page, current_chat_state, prompt_text=chunk_meta["prompt"], max_wait=TEXT_WAIT, expect_json=True, expect_beats=True, prev_code_blocks=0)
+                          (DEBUG_DIR / f"raw_chunk_{chunk_num}_att_{att}.txt").write_text(raw, encoding="utf-8")
+                          pj = parse_first_balanced_json(raw, require_beats=True)
+                          if not is_valid_recap_json(pj):
+                              raise RuntimeError("Invalid draft JSON beats.")
+                          draft_norm = normalize_chunk_beats(pj)
+                          log(f"SUCCESS {chunk_meta['prompt_type']} Draft: +{len(draft_norm['beats'])} beats.")
                           break
-
-                      except Exception as err:
-                          log(f"Chunk {chunk_num} ({chunk_meta['prompt_type']}) attempt {attempt} failed: {err}")
-                          snap(page, f"err_chunk_{chunk_num}_att_{attempt}")
-                          if attempt < MAX_ATTEMPTS:
-                              renew_tor()
-                              launch_browser(p)
+                      except Exception as e:
+                          log(f"Draft Chunk {chunk_num} att {att} failed: {e}")
+                          snap(page, f"err_draft_c{chunk_num}_a{att}")
+                          if att < MAX_ATTEMPTS: renew_tor(); launch_browser(p)
 
                   if draft_norm is None:
-                      log(f"CRITICAL: Failed on Chunk {chunk_num}. Saving partial progress & exiting.")
+                      log(f"CRITICAL: Draft failed on Chunk {chunk_num}. Exiting.")
                       break
 
-                  # ---- STEP B: PROMPT 2 (Continuity Handoff + 100-line Preview in SAME chat) ----
+                  # Same-chat PROMPT 2
                   handoff_text = ""
                   if next_idx < total_segments:
                       p2_meta = build_prompt_2_preview(transcript_data, next_idx)
                       if p2_meta:
-                          log(
-                              f"Running PROMPT 2 (Continuity Handoff in SAME chat) with {p2_meta['preview_count']} preview lines "
-                              f"({p2_meta['prompt_chars']} chars)..."
-                          )
                           try:
-                              page.wait_for_timeout(1500)
-                              box = get_prompt_box(page)
-                              box.wait_for(state="visible", timeout=30000)
-
+                              page.wait_for_timeout(1200)
+                              box = get_prompt_box(page); box.wait_for(state="visible", timeout=30000)
                               if not send_and_confirm(page, box, p2_meta["prompt"], context, current_chat_state, f"Chunk {chunk_num} PROMPT_2", is_new_chat=False):
-                                  raise RuntimeError("Prompt 2 submission not acknowledged in same chat.")
+                                  raise RuntimeError("Prompt 2 not acknowledged.")
+                              rh = wait_for_response(page, current_chat_state, prompt_text=p2_meta["prompt"], max_wait=TEXT_WAIT, expect_json=False, expect_beats=False, prev_code_blocks=count_code_blocks(page))
+                              if len(rh.strip()) >= 150:
+                                  handoff_text = rh.strip()
+                                  (DEBUG_DIR / f"handoff_chunk_{chunk_num}.txt").write_text(handoff_text, encoding="utf-8")
+                                  log(f"SUCCESS PROMPT 2 (same chat): {len(handoff_text)} chars.")
+                          except Exception as e:
+                              log(f"Same-chat PROMPT 2 notice: {e}")
 
-                              raw_handoff = wait_for_response(
-                                  page,
-                                  current_chat_state,
-                                  prompt_text=p2_meta["prompt"],
-                                  max_wait=TEXT_WAIT,
-                                  expect_json=False,
-                                  expect_beats=False,
-                                  prev_code_blocks=count_code_blocks(page)
-                              )
-                              (DEBUG_DIR / f"handoff_chunk_{chunk_num}.txt").write_text(raw_handoff, encoding="utf-8")
-                              if len(raw_handoff.strip()) < 150:
-                                  raise RuntimeError(f"Prompt 2 returned too short handoff ({len(raw_handoff.strip())} chars).")
-                              handoff_text = raw_handoff.strip()
-                              log(f"SUCCESS PROMPT 2 (same chat): captured {len(handoff_text)} chars handoff.")
-                          except Exception as p2_err:
-                              log(f"Same-chat PROMPT 2 failed ({p2_err}); switching to recovery fresh-chat PROMPT 2...")
-                              snap(page, f"err_handoff_chunk_{chunk_num}")
-
-                      if not handoff_text:
-                          rec_chars = dict(pipeline_state.get("characters", {}))
-                          for ch in draft_norm.get("characters", []):
-                              if isinstance(ch, dict) and ch.get("name"):
-                                  rec_chars[ch["name"]] = ch
-                          rec_syn = (pipeline_state.get("synopses", []) + ([draft_norm["synopsis"]] if draft_norm["synopsis"] else []))[-3:]
-                          rec_beats = (pipeline_state.get("beats", []) + draft_norm["beats"])[-3:]
-                          p2_rec = build_prompt_2_preview(
-                              transcript_data,
-                              next_idx,
-                              recovery_state={"characters": list(rec_chars.values()), "synopses": rec_syn},
-                              recovery_beats=rec_beats
-                          )
-                          for rec_att in range(1, 3):
-                              try:
-                                  renew_tor()
-                                  launch_browser(p)
-                                  open_fresh_duckai_chat(take_verify_snap=False)
-                                  box = get_prompt_box(page)
-                                  box.wait_for(state="visible", timeout=40000)
-                                  if not send_and_confirm(page, box, p2_rec["prompt"], context, current_chat_state, f"Chunk {chunk_num} PROMPT_2_REC", is_new_chat=True):
-                                      raise RuntimeError("Recovery Prompt 2 submission not acknowledged.")
-                                  raw_handoff = wait_for_response(
-                                      page,
-                                      current_chat_state,
-                                      prompt_text=p2_rec["prompt"],
-                                      max_wait=TEXT_WAIT,
-                                      expect_json=False,
-                                      expect_beats=False,
-                                      prev_code_blocks=0
-                                  )
-                                  (DEBUG_DIR / f"handoff_chunk_{chunk_num}_rec.txt").write_text(raw_handoff, encoding="utf-8")
-                                  if len(raw_handoff.strip()) >= 150:
-                                      handoff_text = raw_handoff.strip()
-                                      log(f"SUCCESS PROMPT 2 (recovery chat): captured {len(handoff_text)} chars.")
-                                      break
-                              except Exception as rec_err:
-                                  log(f"Recovery PROMPT 2 attempt {rec_att} failed: {rec_err}")
-
-                  # ---- STEP C: PROMPT 4 (Enhancement, On-Screen Scene Audit & Filler Cut) ----
-                  prev_ending = ""
-                  if pipeline_state["beats"]:
-                      prev_ending = pipeline_state["beats"][-1]["narration"]
-
-                  p4_meta = build_prompt_4_enhance(
-                      movie_title,
-                      chunk_meta,
-                      draft_norm,
-                      episode_bible,
-                      prev_ending,
-                      handoff_text,
-                      next_beat_num,
-                      next_clip_num
-                  )
-                  enhanced_norm = None
-                  log(f"Running PROMPT 4 (Script Enhancer & Scene Audit, {p4_meta['prompt_chars']} chars)...")
-
+                  # Same-chat PROMPT 4 (Luna refines before Haiku cross-check)
+                  prev_ending = pipeline_state["beats"][-1]["narration"] if pipeline_state["beats"] else ""
+                  p4_meta = build_prompt_4_enhance(movie_title, chunk_meta, draft_norm, bible, prev_ending, handoff_text, nb_num, nc_num)
+                  luna_final = draft_norm
                   try:
                       page.wait_for_timeout(1200)
                       prev_cb = count_code_blocks(page)
-                      box = get_prompt_box(page)
-                      box.wait_for(state="visible", timeout=30000)
-                      if not send_and_confirm(page, box, p4_meta["prompt"], context, current_chat_state, f"Chunk {chunk_num} PROMPT_4", is_new_chat=False):
-                          raise RuntimeError("Prompt 4 submission not acknowledged in same chat.")
-                      raw_enh = wait_for_response(
-                          page,
-                          current_chat_state,
-                          prompt_text=p4_meta["prompt"],
-                          max_wait=TEXT_WAIT,
-                          expect_json=True,
-                          expect_beats=True,
-                          prev_code_blocks=prev_cb
-                      )
-                      (DEBUG_DIR / f"enhanced_chunk_{chunk_num}.txt").write_text(raw_enh, encoding="utf-8")
-                      parsed_enh = parse_first_balanced_json(raw_enh, require_beats=True)
-                      if is_valid_recap_json(parsed_enh):
-                          cand_enh = normalize_chunk_beats(parsed_enh)
-                          if cand_enh["beats"]:
-                              enhanced_norm = cand_enh
-                              log(f"SUCCESS PROMPT 4 (same chat): refined into {len(enhanced_norm['beats'])} tight beats.")
-                  except Exception as p4_err:
-                      log(f"Same-chat PROMPT 4 failed ({p4_err}); trying fresh-chat PROMPT 4 fallback...")
-                      snap(page, f"err_p4_chunk_{chunk_num}")
+                      box = get_prompt_box(page); box.wait_for(state="visible", timeout=30000)
+                      if send_and_confirm(page, box, p4_meta["prompt"], context, current_chat_state, f"Chunk {chunk_num} PROMPT_4", is_new_chat=False):
+                          r4 = wait_for_response(page, current_chat_state, prompt_text=p4_meta["prompt"], max_wait=TEXT_WAIT, expect_json=True, expect_beats=True, prev_code_blocks=prev_cb)
+                          (DEBUG_DIR / f"luna_p4_chunk_{chunk_num}.txt").write_text(r4, encoding="utf-8")
+                          pj4 = parse_first_balanced_json(r4, require_beats=True)
+                          if is_valid_recap_json(pj4):
+                              luna_final = normalize_chunk_beats(pj4)
+                              log(f"SUCCESS PROMPT 4 ('{DRAFT_MODEL}'): {len(luna_final['beats'])} beats.")
+                  except Exception as e:
+                      log(f"Same-chat PROMPT 4 notice (continuing to Haiku Critic with draft): {e}")
 
-                  if enhanced_norm is None:
+                  # Recovery PROMPT 2 if same-chat Prompt 2 failed
+                  if next_idx < total_segments and not handoff_text:
+                      rec_beats = (pipeline_state["beats"] + luna_final["beats"])[-3:]
+                      p2_rec = build_prompt_2_preview(transcript_data, next_idx, recovery_state={"synopses": pipeline_state["synopses"][-2:]}, recovery_beats=rec_beats)
+                      for r_att in range(1, 3):
+                          try:
+                              renew_tor(); launch_browser(p)
+                              open_fresh_duckai_chat(DRAFT_MODEL, False, take_verify_snap=False)
+                              box = get_prompt_box(page); box.wait_for(state="visible", timeout=40000)
+                              if send_and_confirm(page, box, p2_rec["prompt"], context, current_chat_state, f"Chunk {chunk_num} P2_REC", is_new_chat=True):
+                                  rh = wait_for_response(page, current_chat_state, prompt_text=p2_rec["prompt"], max_wait=TEXT_WAIT, expect_json=False, expect_beats=False)
+                                  if len(rh.strip()) >= 150:
+                                      handoff_text = rh.strip()
+                                      (DEBUG_DIR / f"handoff_chunk_{chunk_num}_rec.txt").write_text(handoff_text, encoding="utf-8")
+                                      break
+                          except Exception as re_err:
+                              log(f"Recovery PROMPT 2 att {r_att} notice: {re_err}")
+
+                  # SESSION B (CRITIC MODEL: PROMPT 5 CROSS-CHECK IN NEW CHAT!)
+                  p5_meta = build_prompt_5_critic(movie_title, transcript_data, chunk_meta, luna_final, bible, prev_ending, handoff_text, nb_num, nc_num)
+                  verified_norm = None
+                  log(f"Running PROMPT 5 Cross-Check in NEW chat on '{CRITIC_MODEL}' ({p5_meta['prompt_chars']} chars)...")
+                  for c_att in range(1, MAX_ATTEMPTS + 1):
                       try:
-                          renew_tor()
-                          launch_browser(p)
-                          open_fresh_duckai_chat(take_verify_snap=False)
-                          box = get_prompt_box(page)
-                          box.wait_for(state="visible", timeout=40000)
-                          if not send_and_confirm(page, box, p4_meta["prompt"], context, current_chat_state, f"Chunk {chunk_num} PROMPT_4_REC", is_new_chat=True):
-                              raise RuntimeError("Fresh-chat Prompt 4 submission not acknowledged.")
-                          raw_enh = wait_for_response(
-                              page,
-                              current_chat_state,
-                              prompt_text=p4_meta["prompt"],
-                              max_wait=TEXT_WAIT,
-                              expect_json=True,
-                              expect_beats=True,
-                              prev_code_blocks=0
-                          )
-                          (DEBUG_DIR / f"enhanced_chunk_{chunk_num}_rec.txt").write_text(raw_enh, encoding="utf-8")
-                          parsed_enh = parse_first_balanced_json(raw_enh, require_beats=True)
-                          if is_valid_recap_json(parsed_enh):
-                              cand_enh = normalize_chunk_beats(parsed_enh)
-                              if cand_enh["beats"]:
-                                  enhanced_norm = cand_enh
-                                  log(f"SUCCESS PROMPT 4 (fresh chat): refined into {len(enhanced_norm['beats'])} tight beats.")
-                      except Exception as p4_rec_err:
-                          log(f"Fresh-chat PROMPT 4 fallback failed ({p4_rec_err}); keeping Draft Chunk {chunk_num} beats.")
+                          open_fresh_duckai_chat(CRITIC_MODEL, ENABLE_REASONING, take_verify_snap=(not critic_snap_done), snap_prefix="critic")
+                          critic_snap_done = True
+                          box = get_prompt_box(page); box.wait_for(state="visible", timeout=40000)
+                          if not send_and_confirm(page, box, p5_meta["prompt"], context, current_chat_state, f"Chunk {chunk_num} PROMPT_5_CRITIC", is_new_chat=True):
+                              raise RuntimeError("Prompt 5 submission not acknowledged.")
+                          r5 = wait_for_response(page, current_chat_state, prompt_text=p5_meta["prompt"], max_wait=TEXT_WAIT, expect_json=True, expect_beats=True, prev_code_blocks=0)
+                          (DEBUG_DIR / f"haiku_p5_chunk_{chunk_num}_att_{c_att}.txt").write_text(r5, encoding="utf-8")
+                          pj5 = parse_first_balanced_json(r5, require_beats=True)
+                          if not is_valid_recap_json(pj5):
+                              raise RuntimeError("Invalid Prompt 5 JSON beats.")
+                          verified_norm = normalize_chunk_beats(pj5)
+                          log(f"SUCCESS PROMPT 5 ('{CRITIC_MODEL}'): verified {len(verified_norm['beats'])} beats.")
+                          break
+                      except Exception as c_err:
+                          log(f"PROMPT 5 Chunk {chunk_num} att {c_att} failed: {c_err}")
+                          snap(page, f"err_p5_c{chunk_num}_a{c_att}")
+                          if c_att < MAX_ATTEMPTS: renew_tor(); launch_browser(p)
 
-                  final_chunk_norm = enhanced_norm if enhanced_norm is not None else draft_norm
+                  final_chunk = verified_norm if verified_norm is not None else luna_final
+                  if verified_norm is None:
+                      log(f"WARNING: Prompt 5 failed on Chunk {chunk_num}; falling back to Luna output.")
 
-                  pipeline_state["beats"].extend(final_chunk_norm["beats"])
-                  if final_chunk_norm["synopsis"]:
-                      pipeline_state["synopses"].append(final_chunk_norm["synopsis"])
-                  for ch in final_chunk_norm.get("characters", []):
+                  pipeline_state["beats"].extend(final_chunk["beats"])
+                  if final_chunk["synopsis"]:
+                      pipeline_state["synopses"].append(final_chunk["synopsis"])
+                  for ch in final_chunk.get("characters", []):
                       if isinstance(ch, dict) and ch.get("name"):
                           pipeline_state["characters"][ch["name"]] = ch
                   pipeline_state["next_segment_idx"] = next_idx
@@ -2143,27 +1653,20 @@ jobs:
 
                   if next_idx < total_segments:
                       if not handoff_text:
-                          with open(STATE_FILE, "w", encoding="utf-8") as sf:
-                              json.dump(pipeline_state, sf, indent=2, ensure_ascii=False)
-                          log(f"CRITICAL: Could not generate Continuity Handoff after Chunk {chunk_num}. Saved progress & exiting.")
+                          json.dump(pipeline_state, open(STATE_FILE, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+                          log("CRITICAL: Missing Continuity Handoff. Saved & exiting.")
                           break
-                      merged_handoff = build_merged_handoff_for_next_chunk(handoff_text, final_chunk_norm["beats"])
-                      (DEBUG_DIR / f"merged_handoff_chunk_{chunk_num}.txt").write_text(merged_handoff, encoding="utf-8")
-                      pipeline_state["continuity_handoff"] = merged_handoff
+                      merged = build_merged_handoff_for_next_chunk(handoff_text, final_chunk["beats"])
+                      (DEBUG_DIR / f"merged_handoff_chunk_{chunk_num}.txt").write_text(merged, encoding="utf-8")
+                      pipeline_state["continuity_handoff"] = merged
                   else:
                       pipeline_state["continuity_handoff"] = ""
 
-                  with open(STATE_FILE, "w", encoding="utf-8") as sf:
-                      json.dump(pipeline_state, sf, indent=2, ensure_ascii=False)
-
-                  log(f"Saved state after Chunk {chunk_num} (total beats: {len(pipeline_state['beats'])}, next_idx: {next_idx}/{total_segments}).")
-                  page.wait_for_timeout(1500)
+                  json.dump(pipeline_state, open(STATE_FILE, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+                  log(f"Saved Chunk {chunk_num} (total verified beats: {len(pipeline_state['beats'])}, next_idx: {next_idx}/{total_segments}).")
 
               # ------------------ MERGE & EXPORT FINAL JSON ------------------
-              final_beats = []
-              total_words = 0
-              clip_counter = 1
-
+              final_beats, total_words, clip_counter = [], 0, 1
               for b_idx, b in enumerate(pipeline_state["beats"], 1):
                   b_copy = {
                       "beat_id": f"B{b_idx:04d}",
@@ -2180,17 +1683,15 @@ jobs:
                           "start": c["start"],
                           "end": c["end"],
                           "duration": c["duration"],
+                          "spoken_text": c.get("spoken_text", ""),
+                          "spoken_word_count": c.get("spoken_word_count", 0),
+                          "estimated_spoken_duration": c.get("estimated_spoken_duration", 0.0),
                           "scene_context": c["scene_context"]
                       })
                       clip_counter += 1
                   final_beats.append(b_copy)
 
-              target_min_val = None
-              try:
-                  target_min_val = float(TARGET_MINUTES) if TARGET_MINUTES else None
-              except Exception:
-                  target_min_val = None
-
+              target_min_val = float(TARGET_MINUTES) if TARGET_MINUTES else None
               final_output = {
                   "movie_title": movie_title,
                   "content_type": INPUT_CONTENT_TYPE or None,
@@ -2205,32 +1706,23 @@ jobs:
                   "synopsis": " ".join(pipeline_state.get("synopses", [])).strip(),
                   "beats": final_beats
               }
-
-              Path("story_beats.json").write_text(
-                  json.dumps(final_output, ensure_ascii=False, indent=2), encoding="utf-8"
-              )
+              Path("story_beats.json").write_text(json.dumps(final_output, ensure_ascii=False, indent=2), encoding="utf-8")
 
               preview_lines = [
                   f"=== YOUTUBE MOVIE RECAP SCRIPT: {final_output['movie_title']} ===",
-                  f"Content Type: {final_output['content_type']} | Est. Runtime: ~{final_output['estimated_narration_minutes']} mins | Beats: {final_output['total_beats']} | Words: {final_output['total_words']}",
-                  f"Synopsis: {final_output['synopsis']}\n",
-                  "=" * 70
+                  f"Est. Runtime: ~{final_output['estimated_narration_minutes']} mins | Beats: {final_output['total_beats']} | Words: {final_output['total_words']}",
+                  f"Synopsis: {final_output['synopsis']}\n", "=" * 70
               ]
               for b in final_output["beats"]:
-                  bridge_tag = " [SCENE BRIDGE]" if b.get("is_scene_bridge") else ""
-                  preview_lines.append(
-                      f"[{b['beat_id']} | Words: {b['word_count']} | Est: {b['estimated_duration']}s]{bridge_tag}"
-                  )
+                  preview_lines.append(f"[{b['beat_id']} | Words: {b['word_count']} | Est: {b['estimated_duration']}s]")
                   preview_lines.append(f"Narration: {b['narration']}")
                   for c in b.get("clips", []):
                       preview_lines.append(
-                          f"  - {c['clip_id']}: {c['start']}s -> {c['end']}s ({c['duration']}s) | {c['scene_context']}"
+                          f"  - {c['clip_id']}: {c['start']}s->{c['end']}s ({c['duration']}s) | TTS~{c['estimated_spoken_duration']}s | Spoken: \"{c['spoken_text']}\""
                       )
                   preview_lines.append("-" * 70)
-
               Path("script_preview.txt").write_text("\n".join(preview_lines), encoding="utf-8")
               log(f"GENERATION COMPLETE: {len(final_beats)} beats written to story_beats.json & script_preview.txt.")
-
               if browser:
                   browser.close()
           PY
@@ -2247,14 +1739,14 @@ jobs:
           pkill -9 -f chrome || true
           pkill -9 -f Xvfb || true
 
-      - name: Commit and Push Story Assets & Verification Screenshot
+      - name: Commit and Push Story Assets & Verification Screenshots
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f story_beats.json script_preview.txt build/pipeline_state.json debug/model_settings_verified.png debug/settings_dropdown_open.png debug/tools_dropdown_open.png || true
+          git add -f story_beats.json script_preview.txt build/pipeline_state.json debug/*_verified.png debug/*_dropdown_open.png debug/*_tools_open.png || true
           if ! git diff --cached --quiet; then
-            git commit -m "Update Hindi recap JSON & Duck.ai settings verification screenshot [skip ci]"
+            git commit -m "Update dual-model phrase-synced Hindi recap JSON [skip ci]"
             git pull --rebase origin main
             git push origin HEAD:main
           fi

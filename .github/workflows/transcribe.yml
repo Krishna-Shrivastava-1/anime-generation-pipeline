@@ -1,0 +1,152 @@
+name: Transcribe Audio to SRT
+
+on:
+  # Automatically runs when an audio file is pushed to the repository root
+  push:
+    paths:
+      - "*.mp3"
+      - "*.m4a"
+      - "*.wav"
+      - "*.flac"
+      - "*.ogg"
+      - "*.aac"
+      - "*.opus"
+      - "*.wma"
+
+  # Manual trigger from the GitHub Actions tab
+  workflow_dispatch:
+    inputs:
+      audio_file:
+        description: "Audio filename at repo root (leave blank to auto-detect)"
+        required: false
+        default: ""
+      model_size:
+        description: "Whisper model (large-v3-turbo = best speed + accuracy for original-language transcription)"
+        type: choice
+        options:
+          - large-v3-turbo
+          - large-v3
+          - medium
+          - small
+        default: large-v3-turbo
+      language:
+        description: "Optional language code (e.g. en, hi, es, ja). Leave blank to auto-detect"
+        required: false
+        default: ""
+      isolate_vocals:
+        description: "Use Demucs vocal isolation (very slow on CPU; avoid for full-length movies)"
+        type: boolean
+        default: false
+
+jobs:
+  transcribe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Cache Hugging Face Whisper models
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-whisper-${{ inputs.model_size || 'large-v3-turbo' }}
+          restore-keys: |
+            hf-whisper-
+
+      - name: Install Python dependencies
+        env:
+          ISOLATE_VOCALS: ${{ inputs.isolate_vocals || 'false' }}
+        run: |
+          python -m pip install --upgrade pip
+          pip install "faster-whisper>=1.1.0" numpy
+          if [ "$ISOLATE_VOCALS" = "true" ]; then
+            pip install demucs
+          fi
+
+      - name: Force original-language transcription (no translation)
+        run: |
+          python - <<'EOF'
+          from pathlib import Path
+
+          p = Path("transcribe.py")
+          src = p.read_text(encoding="utf-8")
+          src = src.replace(
+              'task = "transcribe" if detected_lang == "en" else "translate"',
+              'task = "transcribe"',
+          )
+          src = src.replace(
+              '"output_language": "en",',
+              '"output_language": detected_lang,',
+          )
+          p.write_text(src, encoding="utf-8")
+          EOF
+
+      - name: Run transcription
+        env:
+          INPUT_FILE: ${{ inputs.audio_file }}
+          MODEL_SIZE: ${{ inputs.model_size || 'large-v3-turbo' }}
+          SOURCE_LANG: ${{ inputs.language }}
+          ISOLATE_VOCALS: ${{ inputs.isolate_vocals || 'false' }}
+        run: |
+          set -euo pipefail
+
+          if [ -n "$INPUT_FILE" ]; then
+            if [ ! -f "$INPUT_FILE" ]; then
+              echo "::error::Specified file '$INPUT_FILE' not found at repo root."
+              exit 1
+            fi
+            AUDIO_FILES=("$INPUT_FILE")
+          else
+            mapfile -d '' AUDIO_FILES < <(
+              find . -maxdepth 1 -type f \( \
+                -iname "*.mp3" -o -iname "*.m4a" -o -iname "*.wav" -o \
+                -iname "*.flac" -o -iname "*.ogg" -o -iname "*.aac" -o \
+                -iname "*.opus" -o -iname "*.wma" \
+              \) -print0 | sort -z
+            )
+          fi
+
+          if [ ${#AUDIO_FILES[@]} -eq 0 ]; then
+            echo "::error::No audio file found in repository root."
+            exit 1
+          fi
+
+          for AUDIO_PATH in "${AUDIO_FILES[@]}"; do
+            AUDIO_PATH="${AUDIO_PATH#./}"
+            echo "=== Transcribing: $AUDIO_PATH (model: $MODEL_SIZE) ==="
+
+            ARGS=("$AUDIO_PATH" "$MODEL_SIZE")
+            if [ -n "$SOURCE_LANG" ]; then
+              ARGS+=(--lang "$SOURCE_LANG")
+            fi
+            if [ "$ISOLATE_VOCALS" = "true" ]; then
+              ARGS+=(--isolate-vocals)
+            fi
+
+            python -u transcribe.py "${ARGS[@]}"
+          done
+
+      - name: Upload SRT and JSON transcripts
+        uses: actions/upload-artifact@v4
+        with:
+          name: transcripts-${{ github.run_number }}
+          path: |
+            work/*/transcript.srt
+            work/*/transcript.json
+          if-no-files-found: error
+          retention-days: 30

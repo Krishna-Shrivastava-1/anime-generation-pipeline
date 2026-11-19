@@ -39,6 +39,7 @@ permissions:
 
 jobs:
   generate-recap:
+  generate-recap:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:
@@ -50,11 +51,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        uses: actions/checkout@v4
         with:
           ref: main
           fetch-depth: 0
 
       - name: Set up Python
+        uses: actions/setup-python@v5
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -95,6 +98,7 @@ jobs:
       - name: Run YouTube Recap Generation Engine
         timeout-minutes: 110
         env:
+          PYTHONIOENCODING: "utf-8"
           HEADED: ${{ inputs.headed }}
           RUN_MODE: ${{ inputs.mode }}
           RESET_STATE: ${{ inputs.reset_state }}
@@ -186,7 +190,7 @@ jobs:
 
           def snap(page, name):
               try:
-                  page.screenshot(path=str(DEBUG_DIR / f"{name}.png"), full_page=True, timeout=15000)
+                  page.screenshot(path=str(DEBUG_DIR / f"{name}.png"), full_page=True, timeout=10000)
                   (DEBUG_DIR / f"{name}.html").write_text(page.content(), encoding="utf-8")
                   log(f"Snapshot taken: {name}")
               except Exception as e:
@@ -864,6 +868,7 @@ jobs:
         if: always()
         run: |
           pkill -9 -f chrome || true
+          pkill -9 -f chromium || true
           pkill -9 -f Xvfb || true
 
       - name: Commit and Push Story Assets

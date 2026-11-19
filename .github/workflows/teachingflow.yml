@@ -1,0 +1,619 @@
+name: Teaching Video Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      json_file:
+        description: "Path to the teaching JSON script file"
+        required: true
+        type: string
+        default: "teachingscript.json"
+      aspect_ratio:
+        description: "Image Aspect Ratio"
+        required: true
+        type: choice
+        options:
+          - "9:16"
+          - "16:9"
+        default: "9:16"
+      headed:
+        description: "Run non-headless Chrome under Xvfb (less detectable)"
+        required: true
+        type: boolean
+        default: true
+      reset_state:
+        description: "Clear previous build/frames and pipeline_state.json before running"
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  generate-teaching-frames:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install Tor
+        timeout-minutes: 4
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tor netcat-openbsd xvfb
+          sudo service tor start
+          for i in {1..30}; do
+            if nc -z 127.0.0.1 9050; then echo "Tor ready"; break; fi
+            sleep 2
+          done
+          nc -z 127.0.0.1 9050
+
+      - name: Install Python dependencies
+        timeout-minutes: 6
+        run: |
+          python -m pip install --upgrade pip
+          pip install curl_cffi playwright pillow requests
+          playwright install --with-deps chromium
+
+      - name: Verify connection (curl_cffi, Chrome TLS impersonation)
+        timeout-minutes: 3
+        run: |
+          python - <<'PY'
+          from curl_cffi import requests
+          p = "socks5h://127.0.0.1:9050"
+          r = requests.get(
+              "https://check.torproject.org/api/ip",
+              proxies={"http": p, "https": p},
+              impersonate="chrome",
+              timeout=60,
+          )
+          r.raise_for_status()
+          data = r.json()
+          print("Connection info:", data)
+          if not data.get("IsTor"):
+              raise RuntimeError("Traffic is not using Tor.")
+          PY
+
+      - name: Reset previous frames if requested
+        if: ${{ inputs.reset_state }}
+        run: |
+          rm -rf build/frames build/pipeline_state.json
+          mkdir -p build/frames
+
+      - name: Automate Duck.ai Teaching Frame Pipeline
+        timeout-minutes: 110
+        env:
+          JSON_FILE: ${{ inputs.json_file }}
+          ASPECT_RATIO: ${{ inputs.aspect_ratio }}
+          HEADED: ${{ inputs.headed }}
+          IMAGE_WAIT_SECONDS: "180"
+        run: |
+          mkdir -p build/frames debug
+
+          cat > generate_teaching_frames.py <<'PY'
+          import os, re, sys, json, base64, subprocess, time
+          from io import BytesIO
+          from pathlib import Path
+          from PIL import Image
+          from playwright.sync_api import sync_playwright
+          from curl_cffi import requests
+
+          JSON_FILE = Path(os.environ.get("JSON_FILE", "teachingscript.json"))
+          ASPECT_RATIO = os.environ.get("ASPECT_RATIO", "9:16")
+          HEADED = os.environ.get("HEADED") == "true"
+          IMAGE_WAIT = int(os.environ.get("IMAGE_WAIT_SECONDS", "180"))
+          LOOSE_AFTER = 50
+          FINAL_WAIT = 75
+          MAX_ATTEMPTS = 2
+
+          OUTPUT_DIR = Path("build/frames"); OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+          DEBUG_DIR = Path("debug"); DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+          STATE_FILE = Path("build/pipeline_state.json")
+          RUN_LOG = DEBUG_DIR / "run.log"
+
+          TOR_PROXY = "socks5h://127.0.0.1:9050"
+          BROWSER_PROXY = "socks5://127.0.0.1:9050"
+
+          CONTINUE_LABELS = re.compile(
+              r"^(agree and continue|continue|i agree|accept|accept all|get started|got it|next|done)$", re.I
+          )
+
+          def log(msg):
+              line = f"[{time.strftime('%H:%M:%S')}] {msg}"
+              print(line, flush=True)
+              with open(RUN_LOG, "a", encoding="utf-8") as f:
+                  f.write(line + "\n")
+
+          def snap(page, name):
+              try:
+                  page.screenshot(path=str(DEBUG_DIR / f"{name}.png"), full_page=True, timeout=15000)
+                  (DEBUG_DIR / f"{name}.html").write_text(page.content(), encoding="utf-8")
+                  log(f"snapshot {name} | url={page.url}")
+              except Exception as e:
+                  log(f"snapshot failed: {e}")
+
+          def new_tor_circuit():
+              log("Restarting Tor for a new exit IP...")
+              subprocess.run(["sudo", "timeout", "60", "service", "tor", "restart"], check=False)
+              for _ in range(30):
+                  if subprocess.run(["nc", "-z", "127.0.0.1", "9050"]).returncode == 0:
+                      break
+                  time.sleep(2)
+              time.sleep(3)
+
+          def click_continue(page):
+              clicked_any = False
+              for _ in range(3):
+                  clicked = False
+                  try:
+                      buttons = page.get_by_role("button", name=CONTINUE_LABELS)
+                      for i in range(buttons.count()):
+                          btn = buttons.nth(i)
+                          if btn.is_visible():
+                              log(f"Clicking button: {(btn.inner_text() or '').strip()!r}")
+                              btn.click(timeout=3000)
+                              page.wait_for_timeout(1000)
+                              clicked = clicked_any = True
+                              break
+                  except Exception:
+                      pass
+                  if not clicked:
+                      break
+              return clicked_any
+
+          def get_prompt_box(page):
+              return page.locator(
+                  "textarea[name='user-prompt'], textarea[placeholder*='ask' i], "
+                  "textarea[placeholder*='message' i], textarea"
+              ).first
+
+          def human_paste_prompt(page, box, text):
+              box.click()
+              page.wait_for_timeout(400)
+              page.evaluate("t => navigator.clipboard.writeText(t)", text)
+              page.wait_for_timeout(200)
+              page.keyboard.press("Control+v")
+              page.wait_for_timeout(500)
+              box.press("Enter")
+
+          def all_images(page):
+              return page.evaluate("""
+                  () => [...document.querySelectorAll('img')].map(i => ({
+                      src: (i.currentSrc || i.src || '').slice(0, 160),
+                      full: i.currentSrc || i.src || '',
+                      w: i.naturalWidth, h: i.naturalHeight
+                  }))
+              """)
+
+          def find_new_image(page, baseline, loose=False):
+              return page.evaluate("""
+                  ({baseline, loose}) => {
+                    document.querySelectorAll('[data-pick]').forEach(e => e.removeAttribute('data-pick'));
+                    const base = new Set(baseline);
+                    const shown = el => {
+                      const r = el.getBoundingClientRect(), cs = getComputedStyle(el);
+                      return r.width >= 200 && r.height >= 200 && cs.visibility !== 'hidden' && cs.display !== 'none';
+                    };
+                    let best = null, area = 0, kind = '', src = '';
+                    const consider = (el, k, s) => {
+                      const r = el.getBoundingClientRect();
+                      if (r.width * r.height > area) { area = r.width * r.height; best = el; kind = k; src = s; }
+                    };
+                    for (const i of document.querySelectorAll('img')) {
+                      const s = i.currentSrc || i.src || '';
+                      if (!s || base.has(s) || (!s.startsWith('data:') && /favicon|logo/i.test(s))) continue;
+                      if (i.complete && i.naturalWidth >= 200 && i.naturalHeight >= 200) consider(i, 'img', s);
+                      else if (loose && i.naturalWidth > 0 && shown(i)) consider(i, 'img-loose', s);
+                    }
+                    if (!best && loose) {
+                      for (const c of document.querySelectorAll('canvas')) if (shown(c)) consider(c, 'canvas', '');
+                      for (const el of document.querySelectorAll('div,span,figure')) {
+                        const bg = getComputedStyle(el).backgroundImage;
+                        const m = bg && bg.match(/url\\(["']?(.*?)["']?\\)/);
+                        if (m && shown(el) && !base.has(m[1]) && (m[1].startsWith('data:') || !/favicon|logo/i.test(m[1]))) consider(el, 'background', m[1]);
+                      }
+                    }
+                    if (!best) return null;
+                    best.setAttribute('data-pick', '1');
+                    const r = best.getBoundingClientRect();
+                    return { src, kind, w: Math.round(r.width), h: Math.round(r.height) };
+                  }
+              """, {"baseline": list(baseline), "loose": loose})
+
+          def valid_image(data):
+              try:
+                  img = Image.open(BytesIO(data)); img.load()
+                  return img.width >= 200 and img.height >= 200
+              except Exception:
+                  return False
+
+          def download_via_button(page):
+              img = page.locator("[data-pick='1']").first
+              img.scroll_into_view_if_needed(timeout=4000)
+              img.hover(timeout=4000)
+              page.wait_for_timeout(600)
+              loc = (
+                  page.get_by_role("button", name=re.compile(r"download", re.I))
+                  .or_(page.locator(
+                      "button[aria-label*='ownload' i], button[title*='ownload' i], "
+                      "a[aria-label*='ownload' i], a[title*='ownload' i], "
+                      "[role=button][aria-label*='ownload' i]"
+                  ))
+              )
+              for idx in range(loc.count() - 1, -1, -1):
+                  btn = loc.nth(idx)
+                  try:
+                      if not btn.is_visible(): continue
+                      with page.expect_download(timeout=15000) as dl_info:
+                          btn.click(timeout=4000)
+                      return Path(dl_info.value.path()).read_bytes()
+                  except Exception:
+                      pass
+              raise RuntimeError("no working download button")
+
+          def fetch_in_page(page, src):
+              if not src: raise RuntimeError("no src")
+              res = page.evaluate("""
+                  async (src) => {
+                    const r = await fetch(src, { credentials: 'include' });
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    const b = await r.blob();
+                    return await new Promise((res, rej) => {
+                      const fr = new FileReader();
+                      fr.onload = () => res(fr.result);
+                      fr.onerror = rej;
+                      fr.readAsDataURL(b);
+                    });
+                  }""", src)
+              return base64.b64decode(res.split(",", 1)[1])
+
+          def dom_image_bytes(page, baseline):
+              res = page.evaluate("""
+                  async (baseline) => {
+                    const base = new Set(baseline);
+                    let best = null, area = 0;
+                    for (const i of document.querySelectorAll('img')) {
+                      const s = i.currentSrc || i.src || '';
+                      if (!s || base.has(s) || !i.complete) continue;
+                      if (!s.startsWith('data:') && /favicon|logo/i.test(s)) continue;
+                      const a = i.naturalWidth * i.naturalHeight;
+                      if (i.naturalWidth >= 200 && i.naturalHeight >= 200 && a > area) { area = a; best = i; }
+                    }
+                    if (!best) throw new Error('no new loaded image in DOM');
+                    const s = best.currentSrc || best.src;
+                    if (s.startsWith('data:')) return s;
+                    const r = await fetch(s, { credentials: 'include' });
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    const b = await r.blob();
+                    return await new Promise((ok, no) => {
+                      const fr = new FileReader();
+                      fr.onload = () => ok(fr.result);
+                      fr.onerror = no;
+                      fr.readAsDataURL(b);
+                    });
+                  }""", list(baseline))
+              return base64.b64decode(res.split(",", 1)[1])
+
+          def fetch_with_curl(src):
+              if not src or src.startswith(("data:", "blob:")):
+                  raise RuntimeError("not a remote URL")
+              r = requests.get(
+                  src, impersonate="chrome", timeout=50,
+                  headers={"Referer": "https://duck.ai/"},
+                  proxies={"http": TOR_PROXY, "https": TOR_PROXY}
+              )
+              r.raise_for_status()
+              return r.content
+
+          def screenshot_picked_image(page):
+              el = page.locator("[data-pick='1']").first
+              return el.screenshot(type="png", timeout=12000) if el.count() else None
+
+          def image_fingerprint(page, baseline):
+              return page.evaluate("""
+                  (baseline) => {
+                    const base = new Set(baseline);
+                    let best = null, area = 0;
+                    for (const i of document.querySelectorAll('img')) {
+                      const s = i.currentSrc || i.src || '';
+                      if (!s || base.has(s) || !i.complete) continue;
+                      if (!s.startsWith('data:') && /favicon|logo/i.test(s)) continue;
+                      const a = i.naturalWidth * i.naturalHeight;
+                      if (i.naturalWidth >= 200 && i.naturalHeight >= 200 && a > area) { area = a; best = i; }
+                    }
+                    if (!best) return null;
+                    const s = best.currentSrc || best.src;
+                    const cs = getComputedStyle(best);
+                    let h = 0;
+                    for (let k = 0; k < s.length; k += 97) h = (h * 31 + s.charCodeAt(k)) | 0;
+                    return { len: s.length, hash: h, w: best.naturalWidth, h: best.naturalHeight,
+                             filter: cs.filter, opacity: cs.opacity };
+                  }""", list(baseline))
+
+          def wait_for_final_image(page, baseline, state, max_wait=FINAL_WAIT):
+              log("Waiting for sharp image to settle...")
+              start, last, stable = time.time(), None, 0
+              while time.time() - start < max_wait:
+                  click_continue(page)
+                  fp = image_fingerprint(page, baseline)
+                  if fp and last and fp["len"] == last["len"] and fp["hash"] == last["hash"]:
+                      stable += 2
+                  else:
+                      stable = 0
+                  last = fp
+                  blurred = bool(fp) and ("blur" in (fp["filter"] or "") or float(fp["opacity"] or 1) < 0.95)
+                  if bool(fp) and not blurred and stable >= 6 and (state["chat_done"] or stable >= 14):
+                      return True
+                  page.wait_for_timeout(1500)
+              return False
+
+          def build_clip_tasks(story_data):
+              tasks = []
+              beats = story_data.get("beats") or [
+                  b for sc in story_data.get("scenes", []) for b in sc.get("beats", [])
+              ]
+              for b_idx, beat in enumerate(beats, start=1):
+                  beat_id = beat.get("beat_id", f"B{b_idx:04d}")
+                  clips = beat.get("clips")
+                  if clips:
+                      for c_idx, clip in enumerate(clips, start=1):
+                          clip_id = clip.get("clip_id", f"{beat_id}_C{c_idx:04d}")
+                          tasks.append((beat, clip, beat_id, clip_id))
+                  else:
+                      tasks.append((beat, beat, beat_id, beat_id))
+              return tasks
+
+          def compile_teaching_prompt(beat, clip, global_style, aspect_ratio, is_in_session):
+              art_style = (global_style or {}).get(
+                  "art_style",
+                  "Clean modern tech-explainer editorial illustration, vector-3D hybrid, deep midnight-blue background, glowing cyan and amber accents."
+              )
+              neg_prompt = (global_style or {}).get(
+                  "negative_prompt",
+                  "blurry, cluttered background, long unreadable text, watermarks, logos"
+              )
+              core_visual = (
+                  clip.get("image_prompt")
+                  or clip.get("prompt_action")
+                  or clip.get("scene_context")
+                  or beat.get("narration")
+                  or ""
+              ).strip()
+
+              ar_note = (
+                  "vertical 9:16 portrait composition"
+                  if aspect_ratio == "9:16"
+                  else "widescreen 16:9 landscape composition"
+              )
+
+              if is_in_session:
+                  return (
+                      f"Generate an image in the exact same illustration style and {ar_note}: "
+                      f"{core_visual} Avoid: {neg_prompt}."
+                  )
+              return (
+                  f"Generate an image ({ar_note}). "
+                  f"Visual scene: {core_visual} "
+                  f"Art style: {art_style} "
+                  f"Avoid: {neg_prompt}."
+              )
+
+          if not JSON_FILE.exists():
+              raise FileNotFoundError(f"Input JSON file not found: {JSON_FILE}")
+
+          story = json.loads(JSON_FILE.read_text(encoding="utf-8-sig"))
+          effective_ar = story.get("aspect_ratio") or ASPECT_RATIO
+          global_style = story.get("global_style", {})
+          clip_tasks = build_clip_tasks(story)
+          log(f"Loaded {len(clip_tasks)} clip image tasks from {JSON_FILE} (aspect={effective_ar})")
+
+          pipeline_state = {"completed_clips": []}
+          if STATE_FILE.exists():
+              try:
+                  loaded = json.loads(STATE_FILE.read_text(encoding="utf-8"))
+                  pipeline_state["completed_clips"] = loaded.get("completed_clips") or loaded.get("completed_beats") or []
+              except Exception:
+                  pass
+
+          browser = None
+          context = None
+          page = None
+
+          def start_fresh_browser(playwright_runner):
+              global browser, context, page
+              if browser:
+                  try:
+                      browser.close()
+                  except Exception:
+                      pass
+              browser = playwright_runner.chromium.launch(
+                  headless=not HEADED,
+                  proxy={"server": BROWSER_PROXY},
+                  args=["--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"]
+              )
+              context = browser.new_context(
+                  viewport={"width": 1440, "height": 1000},
+                  user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+                  permissions=["clipboard-read", "clipboard-write"]
+              )
+              context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
+              page = context.new_page()
+
+          with sync_playwright() as p:
+              start_fresh_browser(p)
+
+              for idx, (beat, clip, beat_id, clip_id) in enumerate(clip_tasks, start=1):
+                  frame_out = OUTPUT_DIR / f"{clip_id}.png"
+
+                  if clip_id in pipeline_state["completed_clips"] and frame_out.exists():
+                      log(f"[{idx}/{len(clip_tasks)}] {clip_id} already generated. Skipping.")
+                      continue
+
+                  log(f"\n==================== [{idx}/{len(clip_tasks)}] {beat_id} -> {clip_id} ====================")
+                  clip_done = False
+
+                  for attempt in range(1, MAX_ATTEMPTS + 1):
+                      state = {"submitted": False, "img_resps": [], "chat_done": False}
+
+                      def on_response(resp):
+                          try:
+                              ct = resp.headers.get("content-type", "")
+                              if state["submitted"] and ct.startswith("image/") and "svg" not in ct:
+                                  state["img_resps"].append(resp)
+                          except Exception:
+                              pass
+
+                      def on_request_finished(req):
+                          try:
+                              if req.method == "POST" and "/duckchat/v1/chat" in req.url:
+                                  state["chat_done"] = True
+                          except Exception:
+                              pass
+
+                      page.on("response", on_response)
+                      page.on("requestfinished", on_request_finished)
+
+                      try:
+                          is_in_chat = bool(page and "chatID=" in page.url)
+                          final_prompt = compile_teaching_prompt(
+                              beat, clip, global_style,
+                              aspect_ratio=effective_ar,
+                              is_in_session=is_in_chat
+                          )
+
+                          if not is_in_chat:
+                              log("Opening https://duck.ai/chat ...")
+                              page.goto("https://duck.ai/chat", wait_until="domcontentloaded", timeout=75000)
+                              page.wait_for_timeout(3000)
+                              click_continue(page)
+
+                          box = get_prompt_box(page)
+                          box.wait_for(state="visible", timeout=40000)
+                          baseline = {i["full"] for i in all_images(page)}
+
+                          log(f"Entering prompt: {final_prompt[:100]}...")
+                          human_paste_prompt(page, box, final_prompt)
+                          state["submitted"] = True
+
+                          if not is_in_chat:
+                              dl = time.time() + 50
+                              while time.time() < dl:
+                                  click_continue(page)
+                                  if "chatID=" in page.url:
+                                      break
+                                  page.wait_for_timeout(1200)
+
+                          log(f"Waiting up to {IMAGE_WAIT}s for image render...")
+                          start_w = time.time()
+                          pick = None
+                          while time.time() - start_w < IMAGE_WAIT:
+                              click_continue(page)
+                              elapsed = int(time.time() - start_w)
+                              pick = find_new_image(page, baseline, loose=(elapsed >= LOOSE_AFTER))
+                              if pick:
+                                  wait_for_final_image(page, baseline, state)
+                                  pick = find_new_image(page, baseline, loose=True) or pick
+                                  break
+                              page.wait_for_timeout(1800)
+
+                          if not pick:
+                              raise RuntimeError(f"No image detected for {clip_id}")
+
+                          found = None
+                          methods = [
+                              ("dom_image", lambda: dom_image_bytes(page, baseline)),
+                              ("fetch_curl", lambda: fetch_with_curl(pick["src"])),
+                              ("download_btn", lambda: download_via_button(page)),
+                              ("in_page_fetch", lambda: fetch_in_page(page, pick["src"])),
+                              ("element_screenshot", lambda: screenshot_picked_image(page))
+                          ]
+                          for m_name, fn in methods:
+                              try:
+                                  log(f"Trying download method: {m_name}")
+                                  d = fn()
+                                  if d and valid_image(d):
+                                      found = d
+                                      log(f"Extracted via {m_name}")
+                                      break
+                              except Exception as ex:
+                                  log(f"{m_name} failed: {str(ex)[:90]}")
+
+                          if not found:
+                              raise RuntimeError("Could not download valid image data through any method.")
+
+                          img = Image.open(BytesIO(found))
+                          img.convert("RGB").save(frame_out, "PNG")
+                          log(f"SUCCESS: SAVED {frame_out}")
+
+                          if clip_id not in pipeline_state["completed_clips"]:
+                              pipeline_state["completed_clips"].append(clip_id)
+                          STATE_FILE.write_text(json.dumps(pipeline_state, indent=2), encoding="utf-8")
+
+                          clip_done = True
+                          page.wait_for_timeout(2500)
+                          break
+
+                      except Exception as err:
+                          log(f"Attempt {attempt} failed on {clip_id}: {err}")
+                          snap(page, f"err_{clip_id}_a{attempt}")
+                          new_tor_circuit()
+                          start_fresh_browser(p)
+                      finally:
+                          try:
+                              page.remove_listener("response", on_response)
+                              page.remove_listener("requestfinished", on_request_finished)
+                          except Exception:
+                              pass
+
+                  if not clip_done:
+                      log(f"Could not complete clip {clip_id}. Stopping execution.")
+                      break
+
+              if browser:
+                  browser.close()
+          PY
+
+          if [ "$HEADED" = "true" ]; then
+            xvfb-run -a --server-args="-screen 0 1440x1000x24" python generate_teaching_frames.py
+          else
+            python generate_teaching_frames.py
+          fi
+
+      - name: Kill leftover browser processes
+        if: always()
+        run: |
+          pkill -9 -f chrome || true
+          pkill -9 -f Xvfb || true
+
+      - name: Commit and push generated teaching frames
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f build/frames/ build/pipeline_state.json
+          if git diff --cached --quiet; then
+            echo "No new frames to commit."
+            exit 0
+          fi
+          git commit -m "Add generated teaching video frames [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Upload debug files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: duck-ai-debug
+          path: debug/
+          if-no-files-found: ignore

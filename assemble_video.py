@@ -104,11 +104,12 @@ import urllib.parse
 from pathlib import Path
 from typing import List, Dict, Any, Tuple
 
+from dotenv import load_dotenv
 import numpy as np
 import soundfile as sf
 import requests
 import PIL.Image
-
+load_dotenv()
 if not hasattr(PIL.Image, 'ANTIALIAS'):
     PIL.Image.ANTIALIAS = PIL.Image.Resampling.LANCZOS
 
@@ -138,12 +139,12 @@ OUTPUT_VIDEO = BUILD_DIR / "final_story_video.mp4"
 BGM_FILE = Path("bgm.mp3")
 
 # Freesound API Configuration
-FREESOUND_API_KEY = "Bs9vTK3Anfb9CPgXomEI3RTWCTRmlS34cOb1NIox"
+FREESOUND_API_KEY =   os.getenv("FREESOUND_API_KEY")
 SFX_MIN_DUR = 0.2
 SFX_MAX_DUR = 6.0
 
 # Groq API Configuration
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "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")
+GROQ_API_KEY =  os.getenv("GROQ_API_KEY")
 
 if not GROQ_API_KEY:
     print("\n" + "="*70)

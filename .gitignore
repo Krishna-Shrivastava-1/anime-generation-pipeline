@@ -2,3 +2,4 @@ models/
 *.onnx
 *.bin
 *.wav
+.env

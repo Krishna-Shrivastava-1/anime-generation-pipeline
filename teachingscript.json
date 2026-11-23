@@ -1,1367 +1,1568 @@
-
 {
-"title": "How YouTube Signs Stream URLs Securely With Expiry",
-"topic": "How youtube stream url is signed securely so even if someone got stream url is get expire after sometime",
-"aspect_ratio": "16:9",
-"target_minutes": 5,
-"total_beats": 40,
-"total_clips": 124,
-"global_style": {
-"art_style": "Clean modern tech-explainer editorial illustration, crisp vector-and-3D hybrid style, deep midnight-blue studio background, glowing cyan, amber, and coral highlights, sharp silhouettes, minimal clean UI cards and glowing data-flow lines, cinematic soft rim lighting, zero clutter, 16:9 widescreen framing.",
-"negative_prompt": "blurry, low resolution, messy cluttered background, long unreadable text, garbled letters, watermarks, logos, realistic noisy photos, distorted anatomy"
-},
-"beats": [
-{
-"beat_id": "B0001",
-"narration": "क्या आपने कभी यूट्यूब वीडियो का डायरेक्ट स्ट्रीम लिंक कॉपी करके किसी दूसरे प्लेयर में चलाया है?",
-"word_count": 17,
-"estimated_duration": 7.0,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0001",
-"spoken_text": "क्या आपने कभी यूट्यूब वीडियो का",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Sleek dark video player interface open on a monitor.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek dark glass video player UI floating on a deep midnight-blue background, glowing red-coral play icon and cyan timeline bar, minimal uncluttered studio lighting, vector-3D hybrid style."
-},
-{
-"clip_id": "C0002",
-"spoken_text": "डायरेक्ट स्ट्रीम लिंक कॉपी करके",
-"spoken_word_count": 5,
-"estimated_spoken_duration": 2.2,
-"scene_context": "Cursor highlighting and copying a glowing stream URL bar.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing dark-mode developer console panel showing a highlighted cyan link bar with a floating copy icon, crisp amber sparks, deep midnight-blue background, uncluttered central focal point."
-},
-{
-"clip_id": "C0003",
-"spoken_text": "किसी दूसरे प्लेयर में चलाया है?",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Pasting the glowing stream link into a separate standalone media player window.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing cyan data ribbon transferring from a dark browser card into a minimalist standalone media player card on the right, deep midnight-blue studio background, sharp rim lighting."
-}
-]
-},
-{
-"beat_id": "B0002",
-"narration": "शुरू में तो वह वीडियो बिल्कुल स्मूद चलता है, लेकिन कुछ घंटों बाद अचानक काम करना बंद कर देता है।",
-"word_count": 20,
-"estimated_duration": 7.6,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0004",
-"spoken_text": "शुरू में तो वह वीडियो बिल्कुल",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.3,
-"scene_context": "Smooth HD playback with steady cyan waveform.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek dark media player displaying smooth glowing cyan audio waves and crisp geometric frames flowing steadily, deep midnight-blue background, clean editorial tech style."
-},
-{
-"clip_id": "C0005",
-"spoken_text": "स्मूद चलता है, लेकिन कुछ घंटों बाद",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "A glowing digital clock fast-forwarding several hours next to the player.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek media player UI on the left and a glowing amber hourglass and fast-spinning clock dial on the right, motion trails, deep midnight-blue studio background."
-},
-{
-"clip_id": "C0006",
-"spoken_text": "अचानक काम करना बंद कर देता है।",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.6,
-"scene_context": "Video stream suddenly freezing with a coral warning icon.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, dark video player card suddenly dimmed with a sharp glowing coral warning triangle and broken link symbol in the center, midnight-blue background, high contrast."
-}
-]
-},
-{
-"beat_id": "B0003",
-"narration": "अगर कोई आपका वह यूआरएल चुरा भी ले, तब भी थोड़ी देर बाद फोर ज़ीरो थ्री एरर आ जाता है।",
-"word_count": 20,
-"estimated_duration": 7.5,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0007",
-"spoken_text": "अगर कोई आपका वह यूआरएल चुरा",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.3,
-"scene_context": "A shadowy hooded silhouette intercepting a glowing URL packet.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek silhouetted dark figure with coral rim light grabbing a glowing cyan link capsule from a data stream, deep midnight-blue studio background, crisp vector-3D hybrid style."
-},
-{
-"clip_id": "C0008",
-"spoken_text": "भी ले, तब भी थोड़ी देर बाद",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.6,
-"scene_context": "A countdown fuse burning down on the stolen URL capsule.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, floating glowing cyan link capsule with an amber countdown ring ticking down to zero, subtle sparks, deep midnight-blue background, minimal uncluttered composition."
-},
-{
-"clip_id": "C0009",
-"spoken_text": "फोर ज़ीरो थ्री एरर आ जाता है।",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.6,
-"scene_context": "A bold 403 Forbidden shield blocking access.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, bold glowing coral digital shield displaying clean uppercase label 403 blocking an incoming connection arrow, dark slate-blue background, high contrast editorial illustration."
-}
-]
-},
-{
-"beat_id": "B0004",
-"narration": "आखिर यूट्यूब इन वीडियो लिंक्स को इतना सिक्योर कैसे बनाता है कि ये समय पूरा होते ही एक्सपायर हो जाएं?",
-"word_count": 20,
-"estimated_duration": 7.7,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0010",
-"spoken_text": "आखिर यूट्यूब इन वीडियो लिंक्स को",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Multiple glowing video URL capsules lined up on a digital conveyor.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, row of sleek glowing cyan URL capsules floating smoothly toward a central server hub, deep midnight-blue background, clean geometric reflections."
-},
-{
-"clip_id": "C0011",
-"spoken_text": "इतना सिक्योर कैसे बनाता है कि",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.3,
-"scene_context": "A glowing padlock and golden cryptographic key wrapping a URL.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, translucent glowing padlock armor forming around a bright cyan link bar with an amber key floating beside it, dark midnight-blue studio background."
-},
-{
-"clip_id": "C0012",
-"spoken_text": "ये समय पूरा होते ही एक्सपायर हो जाएं?",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 3.0,
-"scene_context": "A glowing link capsule dissolving into amber particles as a timer hits zero.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing link capsule shattering cleanly into fading amber dust particles next to a digital stopwatch hitting zero, deep midnight-blue background, crisp lighting."
-}
-]
-},
-{
-"beat_id": "B0005",
-"narration": "इसे समझने के लिए एक बड़े म्यूज़िक कॉन्सर्ट के गेट का एक सिंपल उदाहरण सोचिए।",
-"word_count": 15,
-"estimated_duration": 6.3,
-"is_scene_bridge": true,
-"clips": [
-{
-"clip_id": "C0013",
-"spoken_text": "इसे समझने के लिए एक",
-"spoken_word_count": 5,
-"estimated_spoken_duration": 2.0,
-"scene_context": "Abstract glowing blueprint grid transitioning into a visual analogy.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing cyan lightbulb icon hovering over a minimalist dark blueprint grid, subtle amber light beams, deep midnight-blue background, zero clutter."
-},
-{
-"clip_id": "C0014",
-"spoken_text": "बड़े म्यूज़िक कॉन्सर्ट के गेट का",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Stylized glowing entrance gate of a futuristic music arena.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, stylized minimalist 3D entrance gate to a glowing neon concert arena with cyan spotlights and velvet ropes, deep midnight-blue night sky, clean editorial style."
-},
-{
-"clip_id": "C0015",
-"spoken_text": "एक सिंपल उदाहरण सोचिए।",
-"spoken_word_count": 4,
-"estimated_spoken_duration": 1.9,
-"scene_context": "Clean framed analogy card showing a ticket and gate silhouette.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, crisp floating dark glass card showing a glowing amber event ticket beside a sleek security turnstile icon, deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0006",
-"narration": "मान लीजिए आपके पास एक वीआईपी पास है, जिस पर एंट्री का समय और ऑर्गेनाइज़र की सीक्रेट मोहर लगी है।",
-"word_count": 20,
-"estimated_duration": 7.8,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0016",
-"spoken_text": "मान लीजिए आपके पास एक वीआईपी",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "A sleek glowing digital VIP pass floating in center frame.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek dark metallic VIP pass card with glowing cyan borders and a bold uppercase label VIP in the center, deep midnight-blue studio background."
-},
-{
-"clip_id": "C0017",
-"spoken_text": "पास है, जिस पर एंट्री का समय",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "Close-up of a glowing clock icon and time slot highlighted on the VIP pass.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, close-up of the glowing digital VIP pass highlighting a bright cyan clock icon and an illuminated timestamp bar, crisp vector-3D style, midnight-blue background."
-},
-{
-"clip_id": "C0018",
-"spoken_text": "और ऑर्गेनाइज़र की सीक्रेट मोहर लगी है।",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "An official glowing amber holographic wax seal stamped onto the corner of the pass.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing golden-amber holographic seal stamp pressing onto the corner of the dark VIP pass, radiating crisp cryptographic light rings, deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0007",
-"narration": "गेट पर खड़ा सिक्योरिटी गार्ड हर इंसान के लिए हेड ऑफिस में फोन करके लिस्ट चेक नहीं करता।",
-"word_count": 18,
-"estimated_duration": 7.3,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0019",
-"spoken_text": "गेट पर खड़ा सिक्योरिटी गार्ड हर",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Stylized security guard silhouette standing at the illuminated gate.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, stylized minimalist 3D security guard silhouette with a glowing cyan visor standing beside an illuminated concert gate, deep midnight-blue background."
-},
-{
-"clip_id": "C0020",
-"spoken_text": "इंसान के लिए हेड ऑफिस में",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Distant central headquarters server tower far away from the gate.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, split view showing a small security gate on the left and a tall distant central headquarters tower on the right, deep midnight-blue background, clean visual contrast."
-},
-{
-"clip_id": "C0021",
-"spoken_text": "फोन करके लिस्ट चेक नहीं करता।",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "A glowing red-coral X crossing out a phone connection line to a database list.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, dotted cyan communication line between the gate and distant office tower crossed out by a crisp glowing coral X icon, no central list lookup, midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0008",
-"narration": "वह बस अपनी घड़ी का समय देखता है और यह जांचता है कि टिकट पर लगी मोहर असली है या नहीं।",
-"word_count": 21,
-"estimated_duration": 7.9,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0022",
-"spoken_text": "वह बस अपनी घड़ी का समय",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "The guard checking a glowing cyan wristwatch.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, minimalist 3D hand raising a sleek smartwatch glowing with a bright cyan clock face, deep midnight-blue background, crisp rim lighting."
-},
-{
-"clip_id": "C0023",
-"spoken_text": "देखता है और यह जांचता है कि",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.6,
-"scene_context": "A laser scanner beam inspecting the holographic seal on the ticket.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, crisp cyan scanner beam sweeping across the dark VIP pass, highlighting the glowing amber stamp in high detail, midnight-blue studio background."
-},
-{
-"clip_id": "C0024",
-"spoken_text": "टिकट पर लगी मोहर असली है या नहीं।",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 2.9,
-"scene_context": "Two outcomes: a glowing green-cyan checkmark vs a coral fake seal.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, split comparison card showing a glowing cyan authentic stamp with a checkmark on the left and a cracked coral fake stamp with an X on the right, dark midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0009",
-"narration": "यूट्यूब के सीडीएन सर्वर्स भी बिल्कुल इसी स्मार्ट लॉजिक पर काम करते हैं, जिसे साइन्ड यूआरएल आर्किटेक्चर कहते हैं।",
-"word_count": 19,
-"estimated_duration": 7.7,
-"is_scene_bridge": true,
-"clips": [
-{
-"clip_id": "C0025",
-"spoken_text": "यूट्यूब के सीडीएन सर्वर्स भी बिल्कुल",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "Row of sleek glowing CDN edge server racks replacing the concert gate.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing dark-glass server racks arranged in a sleek arc with clean uppercase label CDN floating above, cyan LED strips, deep midnight-blue background."
-},
-{
-"clip_id": "C0026",
-"spoken_text": "इसी स्मार्ट लॉजिक पर काम करते हैं,",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "Circuit lines connecting the guard analogy to digital server verification.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing cyan logic nodes and golden stamp icon morphing smoothly into a server verification shield, deep midnight-blue background, clean geometric tech art."
-},
-{
-"clip_id": "C0027",
-"spoken_text": "जिसे साइन्ड यूआरएल आर्किटेक्चर कहते हैं।",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "Architectural diagram showing a signed URL token with a glowing seal badge.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek architecture diagram card displaying a glowing white link bar attached to a golden signature badge with uppercase label TOKEN, midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0010",
-"narration": "जब आप यूट्यूब पर किसी वीडियो के प्ले बटन पर क्लिक करते हैं, तो रिक्वेस्ट मेन एपीआई सर्वर पर जाती है।",
-"word_count": 21,
-"estimated_duration": 7.9,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0028",
-"spoken_text": "जब आप यूट्यूब पर किसी वीडियो",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.3,
-"scene_context": "User browser screen showing video thumbnail cards.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek dark-mode browser window floating on deep midnight-blue background showing a highlighted glowing video thumbnail card in the center."
-},
-{
-"clip_id": "C0029",
-"spoken_text": "के प्ले बटन पर क्लिक करते हैं,",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.6,
-"scene_context": "Glowing cyan cursor pressing the bright play button.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, close-up of a glowing cyan mouse cursor pressing a bright coral-red 3D play button, emitting crisp concentric light ripples, midnight-blue studio background."
-},
-{
-"clip_id": "C0030",
-"spoken_text": "तो रिक्वेस्ट मेन एपीआई सर्वर पर जाती है।",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 3.0,
-"scene_context": "Glowing packet flying from user device to the central API server.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, bright cyan data packet traveling along a curved glowing fiber line from a laptop icon on the left to a glowing central server rack labeled API on the right, dark midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0011",
-"narration": "यह मेन सर्वर सबसे पहले चेक करता है कि आप लॉगिन हैं और वीडियो देखने की परमिशन रखते हैं।",
-"word_count": 19,
-"estimated_duration": 7.4,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0031",
-"spoken_text": "यह मेन सर्वर सबसे पहले चेक",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "API server running a glowing diagnostic scan on the incoming request.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, central dark glass server tower scanning a glowing cyan request envelope with vertical laser scan lines, deep midnight-blue background."
-},
-{
-"clip_id": "C0032",
-"spoken_text": "करता है कि आप लॉगिन हैं",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.3,
-"scene_context": "User profile badge and session cookie verified with a cyan glow.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, floating dark glass user profile card with glowing cyan avatar silhouette and verified session badge lighting up, midnight-blue background."
-},
-{
-"clip_id": "C0033",
-"spoken_text": "और वीडियो देखने की परमिशन रखते हैं।",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "Access control gate turning bright cyan-green with an unlocked padlock.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing security shield opening an amber padlock into an unlocked position with a crisp cyan checkmark, deep midnight-blue studio background."
-}
-]
-},
-{
-"beat_id": "B0012",
-"narration": "परमिशन मिलते ही सर्वर आपके लिए एक लंबा और खास वीडियो स्ट्रीम यूआरएल तैयार करना शुरू करता है।",
-"word_count": 18,
-"estimated_duration": 7.3,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0034",
-"spoken_text": "परमिशन मिलते ही सर्वर आपके लिए",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "API server gears and glowing nodes lighting up to build a custom response.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing cyan server core emitting bright amber energy beams into an assembly chamber, deep midnight-blue background, sleek futuristic tech art."
-},
-{
-"clip_id": "C0035",
-"spoken_text": "एक लंबा और खास वीडियो स्ट्रीम",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Long glowing segmented URL bar stretching across the screen.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, long horizontal dark-glass address bar stretching across the frame with glowing cyan and white modular segments snapping into place, midnight-blue background."
-},
-{
-"clip_id": "C0036",
-"spoken_text": "यूआरएल तैयार करना शुरू करता है।",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "Modular query parameter blocks assembling together into a single URL.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, floating glowing digital puzzle blocks connecting smoothly into a sleek long URL ribbon, soft cyan and amber glow, deep midnight-blue studio background."
-}
-]
-},
-{
-"beat_id": "B0013",
-"narration": "इस यूआरएल में सिर्फ वीडियो का पता ही नहीं होता, बल्कि कई खास सिक्योरिटी पैरामीटर्स भी जुड़े होते हैं।",
-"word_count": 19,
-"estimated_duration": 7.5,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0037",
-"spoken_text": "इस यूआरएल में सिर्फ वीडियो का",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Left side of the URL highlighted as the base video file path.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, long dark URL bar with the left base path section glowing crisp white beside a small film-reel icon, midnight-blue background."
-},
-{
-"clip_id": "C0038",
-"spoken_text": "पता ही नहीं होता, बल्कि कई",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Query string expanding to reveal multiple glowing parameter slots.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing URL bar expanding downward into three stacked translucent parameter cards connected by cyan lines, deep midnight-blue studio background."
-},
-{
-"clip_id": "C0039",
-"spoken_text": "खास सिक्योरिटी पैरामीटर्स भी जुड़े होते हैं।",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "Shield icons attached to each query parameter slot.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek row of glowing amber and cyan parameter tags each stamped with a tiny security shield icon, floating on deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0014",
-"narration": "सबसे पहला और ज़रूरी पैरामीटर होता है एक्सपायर टाइमस्टैम्प, जो बताता है कि यह लिंक किस सेकंड तक वैलिड रहेगा।",
-"word_count": 20,
-"estimated_duration": 7.9,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0040",
-"spoken_text": "सबसे पहला और ज़रूरी पैरामीटर होता है",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "The first parameter card popping forward in glowing amber.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, first glowing amber parameter card popping forward in 3D perspective from a URL chain, deep midnight-blue background, sharp focal lighting."
-},
-{
-"clip_id": "C0041",
-"spoken_text": "एक्सपायर टाइमस्टैम्प, जो बताता है कि",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "Parameter card showing a glowing clock icon and uppercase label EXPIRE.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, floating dark glass card displaying a glowing amber clock icon and crisp uppercase label EXPIRE, surrounded by subtle cyan grid lines, midnight-blue background."
-},
-{
-"clip_id": "C0042",
-"spoken_text": "यह लिंक किस सेकंड तक वैलिड रहेगा।",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "Digital timeline bar showing an exact cutoff second marker.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing horizontal timeline bar transitioning from solid cyan valid zone to a sharp coral cutoff barrier at a specific second tick, deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0015",
-"narration": "इसके साथ वीडियो आईडी, आपका आईपी एड्रेस और प्लेबैक क्वालिटी जैसी जानकारी भी इस लिंक के अंदर लिख दी जाती है।",
-"word_count": 21,
-"estimated_duration": 8.1,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0043",
-"spoken_text": "इसके साथ वीडियो आईडी, आपका आईपी",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "Additional glowing badges for Video ID and IP Address.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, two sleek dark UI chips floating side by side—one with a film frame icon and one with a glowing network node icon labeled IP, midnight-blue background."
-},
-{
-"clip_id": "C0044",
-"spoken_text": "एड्रेस और प्लेबैक क्वालिटी जैसी जानकारी भी",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "Quality gear icon and resolution badge joining the parameter cluster.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing cyan settings gear icon and crisp HD quality badge aligning next to network parameter chips, deep midnight-blue studio background."
-},
-{
-"clip_id": "C0045",
-"spoken_text": "इस लिंक के अंदर लिख दी जाती है।",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 2.9,
-"scene_context": "All parameter chips sliding neatly inside the glowing URL ribbon.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing cyan and amber parameter chips sliding cleanly into a transparent URL tube, sealing together smoothly, deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0016",
-"narration": "लेकिन अगर यह एक्सपायरी टाइम लिंक में साफ लिखा है, तो कोई हैकर इसे बदल क्यों नहीं देता?",
-"word_count": 18,
-"estimated_duration": 7.1,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0046",
-"spoken_text": "लेकिन अगर यह एक्सपायरी टाइम लिंक",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Magnifying glass zooming in on the visible EXPIRE parameter.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing glass magnifying lens hovering over the visible amber EXPIRE block inside a URL bar, deep midnight-blue background."
-},
-{
-"clip_id": "C0047",
-"spoken_text": "में साफ लिखा है, तो कोई",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.3,
-"scene_context": "Plain-text number block visible inside a transparent URL bar.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, transparent glass bar revealing bright readable digit blocks in amber light with zero encryption cover, dark midnight-blue studio background."
-},
-{
-"clip_id": "C0048",
-"spoken_text": "हैकर इसे बदल क्यों नहीं देता?",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Shadowy hacker cursor attempting to edit the expiry number upward.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, coral-lit hacker cursor trying to drag an amber clock slider upward to extend time, tension sparks around the parameter, deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0017",
-"narration": "यहीं पर एंट्री होती है एक ताकतवर क्रिप्टोग्राफिक डिजिटल सिग्नेचर की, जो पूरे यूआरएल को लॉक कर देता है।",
-"word_count": 19,
-"estimated_duration": 7.6,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0049",
-"spoken_text": "यहीं पर एंट्री होती है एक",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.3,
-"scene_context": "Dramatic glowing golden seal descending from above.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, radiant amber and cyan cryptographic emblem descending from the top with soft volumetric light beams, deep midnight-blue background."
-},
-{
-"clip_id": "C0050",
-"spoken_text": "ताकतवर क्रिप्टोग्राफिक डिजिटल सिग्नेचर की,",
-"spoken_word_count": 5,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Digital signature badge glowing with intricate geometric key patterns.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, close-up of a sleek golden-amber 3D cryptographic seal badge with intricate circuit patterns and uppercase label SIGN, dark midnight-blue background."
-},
-{
-"clip_id": "C0051",
-"spoken_text": "जो पूरे यूआरएल को लॉक कर देता है।",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 2.9,
-"scene_context": "Cyan energy lock field snapping securely around the entire URL bar.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, golden signature badge snapping onto the end of the URL bar and projecting a glowing cyan protective force-field around every parameter, deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0018",
-"narration": "यूट्यूब का मेन सर्वर इस पूरे यूआरएल डेटा को उठाता है और एक सीक्रेट प्राइवेट की के साथ मिलाता है।",
-"word_count": 20,
-"estimated_duration": 7.7,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0052",
-"spoken_text": "यूट्यूब का मेन सर्वर इस पूरे",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Main server holding the unsigned URL string in a glowing container.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek dark server core holding a glowing cyan URL string card inside an input chamber, deep midnight-blue background."
-},
-{
-"clip_id": "C0053",
-"spoken_text": "यूआरएल डेटा को उठाता है और",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.3,
-"scene_context": "URL data block flowing into a glowing cryptographic mixing funnel.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing cyan URL data block sliding smoothly down a translucent tech funnel toward a central processor, deep midnight-blue background."
-},
-{
-"clip_id": "C0054",
-"spoken_text": "एक सीक्रेट प्राइवेट की के साथ मिलाता है।",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 3.0,
-"scene_context": "A radiant golden private key merging with the cyan URL data inside the processor.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing golden private key icon entering the processor from the side and merging with the cyan URL data block in a bright light flare, midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0019",
-"narration": "यह सीक्रेट की सिर्फ यूट्यूब के सुरक्षित सर्वर्स के पास होती है और कभी बाहर इंटरनेट पर नहीं आती।",
-"word_count": 19,
-"estimated_duration": 7.5,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0055",
-"spoken_text": "यह सीक्रेट की सिर्फ यूट्यूब के",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Golden private key floating inside an armored digital vault.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing golden key floating safely inside a heavy translucent dark-glass vault chamber, soft amber reflections, deep midnight-blue studio background."
-},
-{
-"clip_id": "C0056",
-"spoken_text": "सुरक्षित सर्वर्स के पास होती है",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Key stored securely inside guarded backend server racks.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, fortified row of dark server racks protected by a glowing cyan security perimeter dome, golden key icon visible inside, midnight-blue background."
-},
-{
-"clip_id": "C0057",
-"spoken_text": "और कभी बाहर इंटरनेट पर नहीं आती।",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "Firewall barrier preventing the golden key from exiting to the public internet cloud.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing coral firewall barrier between internal server vault on the left and public internet globe on the right, keeping the golden key safely inside, midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0020",
-"narration": "सर्वर एचएमएसी या एसएचए जैसे हैशिंग अल्गोरिदम की मदद से इस डेटा का एक अनोखा हैश कोड बनाता है।",
-"word_count": 19,
-"estimated_duration": 7.6,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0058",
-"spoken_text": "सर्वर एचएमएसी या एसएचए जैसे हैशिंग",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "Cryptographic hashing engine box labeled HMAC glowing with cyan circuits.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek 3D glowing cryptographic processor cube with crisp uppercase label HMAC, cyan and amber circuit traces, deep midnight-blue background."
-},
-{
-"clip_id": "C0059",
-"spoken_text": "अल्गोरिदम की मदद से इस डेटा",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Complex geometric mathematical gears spinning inside the hashing cube.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, cutaway translucent view of the hashing cube showing glowing mathematical nodes and swirling cyan data streams scrambling cleanly, midnight-blue background."
-},
-{
-"clip_id": "C0060",
-"spoken_text": "का एक अनोखा हैश कोड बनाता है।",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "A compact glowing amber fingerprint hash token emerging from the cube.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, compact glowing amber token shaped like a digital fingerprint emerging from the right side of the hashing cube with uppercase label HASH, midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0021",
-"narration": "इसी छोटे से रैंडम दिखने वाले कोड को यूआरएल के आखिर में सिग्नेचर के रूप में जोड़ दिया जाता है।",
-"word_count": 20,
-"estimated_duration": 7.7,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0061",
-"spoken_text": "इसी छोटे से रैंडम दिखने वाले",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Close-up of the compact scrambled amber signature token.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, close-up of a glowing amber cryptographic chip showing crisp abstract alphanumeric pattern blocks, clean minimalist UI aesthetic, midnight-blue background."
-},
-{
-"clip_id": "C0062",
-"spoken_text": "कोड को यूआरएल के आखिर में",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "The amber signature chip sliding up to the tail end of the cyan URL bar.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing amber signature chip gliding smoothly toward the right tail end of a long cyan URL bar, dotted alignment guides, deep midnight-blue background."
-},
-{
-"clip_id": "C0063",
-"spoken_text": "सिग्नेचर के रूप में जोड़ दिया जाता है।",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 2.9,
-"scene_context": "Signature badge clicking securely onto the end of the URL.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, amber signature badge snapping securely onto the end of the URL bar with a crisp bright light flash and uppercase label SIGN, deep midnight-blue studio background."
-}
-]
-},
-{
-"beat_id": "B0022",
-"narration": "क्रिप्टोग्राफी का नियम है कि अगर आप यूआरएल में एक भी अक्षर या नंबर बदलेंगे, तो यह पूरा सिग्नेचर कोड बिल्कुल बदल जाएगा।",
-"word_count": 23,
-"estimated_duration": 9.4,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0064",
-"spoken_text": "क्रिप्टोग्राफी का नियम है कि अगर",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Visualizing the avalanche effect on a crisp digital balance scale.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing cyan URL input card connected directly to an amber signature output card with tight cryptographic chain links, deep midnight-blue background."
-},
-{
-"clip_id": "C0065",
-"spoken_text": "आप यूआरएल में एक भी अक्षर",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "A single tiny character block highlighted in coral inside the URL.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, zoom-in on a long glowing cyan URL bar where one single tiny digit block flips to bright coral-red, deep midnight-blue studio background."
-},
-{
-"clip_id": "C0066",
-"spoken_text": "या नंबर बदलेंगे, तो यह पूरा",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Shockwave racing from that single flipped digit into the hashing engine.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, bright coral shockwave ripple racing from the single modified digit block through the circuit line into the HMAC processor, midnight-blue background."
-},
-{
-"clip_id": "C0067",
-"spoken_text": "सिग्नेचर कोड बिल्कुल बदल जाएगा।",
-"spoken_word_count": 5,
-"estimated_spoken_duration": 2.2,
-"scene_context": "Original amber signature morphing completely into an unrecognizable coral pattern.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, split comparison showing the original calm amber signature chip on top and a completely scrambled coral signature chip below, deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0023",
-"narration": "अब आपका ब्राउज़र इस साइन्ड यूआरएल को लेकर सीधे वीडियो डेटा लाने के लिए सबसे नजदीकी सीडीएन सर्वर के पास जाता है।",
-"word_count": 22,
-"estimated_duration": 8.4,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0068",
-"spoken_text": "अब आपका ब्राउज़र इस साइन्ड यूआरएल",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "User browser holding the newly minted signed URL token.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek dark browser window on the left glowing with the complete cyan-and-amber signed URL capsule ready to launch, midnight-blue background."
-},
-{
-"clip_id": "C0069",
-"spoken_text": "को लेकर सीधे वीडियो डेटा लाने के लिए",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 2.9,
-"scene_context": "Signed URL packet flying across a glowing global network map.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing cyan and amber signed URL capsule streaking like a comet across a minimalist dark digital network map, deep midnight-blue background."
-},
-{
-"clip_id": "C0070",
-"spoken_text": "सबसे नजदीकी सीडीएन सर्वर के पास जाता है।",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 3.0,
-"scene_context": "Packet arriving at the nearest local CDN edge server rack.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing packet arriving at a nearby edge server rack labeled CDN glowing in crisp cyan while distant servers stay dimmed in the background, midnight-blue scene."
-}
-]
-},
-{
-"beat_id": "B0024",
-"narration": "दुनिया भर में फैले इन सीडीएन सर्वर्स को हर सेकंड करोड़ों वीडियो रिक्वेस्ट्स को बिना देरी सर्व करना होता है।",
-"word_count": 20,
-"estimated_duration": 7.9,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0071",
-"spoken_text": "दुनिया भर में फैले इन सीडीएन",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Minimalist 3D globe dotted with glowing cyan CDN edge nodes.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek dark translucent 3D globe floating in center frame dotted with dozens of bright cyan CDN edge server nodes connected by subtle light arcs, midnight-blue background."
-},
-{
-"clip_id": "C0072",
-"spoken_text": "सर्वर्स को हर सेकंड करोड़ों वीडियो",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "Massive streams of glowing request packets rushing smoothly into a CDN node.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, dense stream of tiny glowing cyan and amber request packets rushing smoothly in parallel lanes toward a sleek CDN server hub, deep midnight-blue background."
-},
-{
-"clip_id": "C0073",
-"spoken_text": "रिक्वेस्ट्स को बिना देरी सर्व करना होता है।",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 3.0,
-"scene_context": "High-speed speedometer needle pinned in the ultra-low latency cyan zone.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek futuristic dark speedometer gauge glowing in crisp cyan showing ultra-fast response beside streaming video frame packets, midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0025",
-"narration": "इसलिए सीडीएन सर्वर्स स्टेटलेस तरीके से काम करते हैं, यानी उन्हें हर बार मेन डेटाबेस से पूछने की ज़रूरत नहीं पड़ती।",
-"word_count": 21,
-"estimated_duration": 8.1,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0074",
-"spoken_text": "इसलिए सीडीएन सर्वर्स स्टेटलेस तरीके से",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "Independent glowing CDN node operating autonomously without external cords.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek self-contained glowing cyan CDN server cube floating independently with an internal verification ring, deep midnight-blue studio background."
-},
-{
-"clip_id": "C0075",
-"spoken_text": "काम करते हैं, यानी उन्हें हर बार",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.6,
-"scene_context": "Requests being verified locally inside the CDN server card.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, incoming request arrows entering a glowing CDN server card and getting instantly checked inside without leaving the box, midnight-blue background."
-},
-{
-"clip_id": "C0076",
-"spoken_text": "मेन डेटाबेस से पूछने की ज़रूरत नहीं पड़ती।",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 3.0,
-"scene_context": "Distant database cylinder disconnected with a clean coral barrier icon.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing CDN cube on the left completely independent from a dimmed distant database cylinder on the right separated by a dashed gap, deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0026",
-"narration": "सीडीएन सर्वर के पास पहले से ही उसी सीक्रेट की की एक कॉपी लोकल मेमोरी में सुरक्षित रखी होती है।",
-"word_count": 20,
-"estimated_duration": 7.7,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0077",
-"spoken_text": "सीडीएन सर्वर के पास पहले से",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Cutaway view inside the CDN server revealing an internal secure vault.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, translucent cutaway view of a sleek CDN server rack revealing an illuminated inner security compartment, deep midnight-blue background."
-},
-{
-"clip_id": "C0078",
-"spoken_text": "ही उसी सीक्रेट की की एक कॉपी",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.6,
-"scene_context": "An identical glowing golden secret key mirrored inside the CDN server.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, two identical glowing golden secret keys shown in sync—one inside the main API vault and its exact mirror copy inside the CDN server, midnight-blue background."
-},
-{
-"clip_id": "C0079",
-"spoken_text": "लोकल मेमोरी में सुरक्षित रखी होती है।",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "Golden key locked safely inside a high-speed local RAM memory chip.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek dark silicon memory chip glowing with cyan traces holding a protected golden key icon inside a glass shield, deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0027",
-"narration": "जैसे ही आपकी रिक्वेस्ट सीडीएन पर पहुंचती है, वह सबसे पहले यूआरएल में लिखा एक्सपायर टाइमस्टैम्प पढ़ता है।",
-"word_count": 18,
-"estimated_duration": 7.3,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0080",
-"spoken_text": "जैसे ही आपकी रिक्वेस्ट सीडीएन पर",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Signed URL packet docking into the CDN server verification slot.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing signed URL capsule sliding cleanly into an illuminated verification dock on a dark CDN server panel, deep midnight-blue background."
-},
-{
-"clip_id": "C0081",
-"spoken_text": "पहुंचती है, वह सबसे पहले यूआरएल में",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.6,
-"scene_context": "CDN scanner isolating step one on the URL inspection card.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, cyan laser scanner focusing directly onto the front parameter section of the docked URL bar, deep midnight-blue background, crisp UI aesthetic."
-},
-{
-"clip_id": "C0082",
-"spoken_text": "लिखा एक्सपायर टाइमस्टैम्प पढ़ता है।",
-"spoken_word_count": 5,
-"estimated_spoken_duration": 2.3,
-"scene_context": "The amber EXPIRE timestamp block lighting up brightly under inspection.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, close-up of the glowing amber EXPIRE block illuminated by a crisp cyan reading beam, clock icon glowing clearly, deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0028",
-"narration": "वह इस एक्सपायर टाइम की तुलना अपने सर्वर की मौजूदा घड़ी के असली समय से करता है।",
-"word_count": 17,
-"estimated_duration": 6.9,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0083",
-"spoken_text": "वह इस एक्सपायर टाइम की तुलना",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "EXPIRE timestamp card placed side-by-side in a digital comparator.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing amber EXPIRE card on the left side of a sleek dark digital comparison screen with a glowing comparison symbol in the center, midnight-blue background."
-},
-{
-"clip_id": "C0084",
-"spoken_text": "अपने सर्वर की मौजूदा घड़ी के",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "High-precision atomic server clock glowing in cyan on the right.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek high-precision digital server clock glowing in crisp cyan on the right side of the comparison screen, deep midnight-blue background."
-},
-{
-"clip_id": "C0085",
-"spoken_text": "असली समय से करता है।",
-"spoken_word_count": 5,
-"estimated_spoken_duration": 2.1,
-"scene_context": "Two clock timelines aligning to check whether time has run out.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, two glowing horizontal time bars—cyan current time and amber expiry deadline—aligning vertically inside a clean comparison UI card, midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0029",
-"narration": "अगर मौजूदा समय एक्सपायर टाइम से आगे निकल चुका है, तो सीडीएन तुरंत फोर ज़ीरो थ्री एरर दिखाकर कनेक्शन वहीं काट देता है।",
-"word_count": 23,
-"estimated_duration": 9.5,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0086",
-"spoken_text": "अगर मौजूदा समय एक्सपायर टाइम से",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Current time needle pushing past the amber expiry barrier.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing cyan time progress bar crossing past the amber expiry line into a flashing coral danger zone, deep midnight-blue background."
-},
-{
-"clip_id": "C0087",
-"spoken_text": "आगे निकल चुका है, तो सीडीएन",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "CDN server panel flashing red-coral alert lights.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, CDN server rack flashing sharp coral warning strips with a glowing uppercase badge EXPIRED popping up, deep midnight-blue background."
-},
-{
-"clip_id": "C0088",
-"spoken_text": "तुरंत फोर ज़ीरो थ्री एरर दिखाकर",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "A large glowing coral 403 error card blocking the path.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, bold dark glass alert card with glowing coral frame and crisp uppercase label 403 blocking the video gateway, midnight-blue background."
-},
-{
-"clip_id": "C0089",
-"spoken_text": "कनेक्शन वहीं काट देता है।",
-"spoken_word_count": 5,
-"estimated_spoken_duration": 2.2,
-"scene_context": "Data stream line cleanly severed with coral sparks at the CDN gate.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing cyan data connection line cleanly snapped shut by a coral laser gate with sparks fading out, deep midnight-blue studio background."
-}
-]
-},
-{
-"beat_id": "B0030",
-"narration": "लेकिन अगर लिंक अभी एक्सपायर नहीं हुआ है, तो सीडीएन सर्वर दूसरा और सबसे ज़रूरी स्टेप शुरू करता है।",
-"word_count": 19,
-"estimated_duration": 7.5,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0090",
-"spoken_text": "लेकिन अगर लिंक अभी एक्सपायर नहीं",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Current time comfortably inside the safe cyan valid window before expiry.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing cyan time progress indicator safely inside the green-cyan valid zone before the amber deadline marker, midnight-blue background."
-},
-{
-"clip_id": "C0091",
-"spoken_text": "हुआ है, तो सीडीएन सर्वर दूसरा",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Step 1 checkmark lighting up and advancing to Step 2 verification.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, clean two-step UI checklist inside the CDN panel with step one checked in cyan and step two lighting up brightly in amber, midnight-blue background."
-},
-{
-"clip_id": "C0092",
-"spoken_text": "और सबसे ज़रूरी स्टेप शुरू करता है।",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "CDN signature verification engine powering up in bright cyan and gold.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek cryptographic verification engine inside the CDN server powering up with radiant cyan and amber circuit rings, deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0031",
-"narration": "सीडीएन सर्वर यूआरएल के डेटा और अपनी सीक्रेट की को मिलाकर खुद एक नया सिग्नेचर हैश कैलकुलेट करता है।",
-"word_count": 19,
-"estimated_duration": 7.5,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0093",
-"spoken_text": "सीडीएन सर्वर यूआरएल के डेटा और",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "CDN extracting the base URL and parameters from the incoming request.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, CDN server pulling the glowing cyan URL parameters segment into its local verification chamber, deep midnight-blue background."
-},
-{
-"clip_id": "C0094",
-"spoken_text": "अपनी सीक्रेट की को मिलाकर खुद",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "CDN combining those URL parameters with its own local golden secret key.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, golden local secret key sliding from CDN memory to merge with the incoming cyan URL parameters inside an HMAC cube, midnight-blue background."
-},
-{
-"clip_id": "C0095",
-"spoken_text": "एक नया सिग्नेचर हैश कैलकुलेट करता है।",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "A freshly computed cyan-gold signature hash emerging from the CDN processor.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, fresh glowing amber signature chip emerging cleanly from the CDN hashing processor with crisp geometric light trails, deep midnight-blue studio background."
-}
-]
-},
-{
-"beat_id": "B0032",
-"narration": "फिर वह अपने बनाए हुए सिग्नेचर को आपके यूआरएल वाले सिग्नेचर से अक्षर दर अक्षर मैच करता है।",
-"word_count": 18,
-"estimated_duration": 7.2,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0096",
-"spoken_text": "फिर वह अपने बनाए हुए सिग्नेचर",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "CDN-computed signature chip hovering on the left side of a comparator.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, freshly calculated glowing amber signature chip positioned on the left slot of a sleek dark comparison dock, midnight-blue background."
-},
-{
-"clip_id": "C0097",
-"spoken_text": "को आपके यूआरएल वाले सिग्नेचर से",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Incoming URL's attached signature chip aligned opposite on the right.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, incoming request signature chip sliding into the right slot directly opposite the CDN-computed chip, glowing cyan alignment grid, midnight-blue background."
-},
-{
-"clip_id": "C0098",
-"spoken_text": "अक्षर दर अक्षर मैच करता है।",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Laser beams matching every tiny block between the two signature chips.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, crisp cyan laser beams linking each individual pattern block between both signature chips one by one in perfect symmetry, deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0033",
-"narration": "अगर किसी ने टाइम बढ़ाने के लिए यूआरएल में जरा सा भी बदलाव किया होगा, तो दोनों सिग्नेचर आपस में मैच नहीं करेंगे।",
-"word_count": 23,
-"estimated_duration": 9.3,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0099",
-"spoken_text": "अगर किसी ने टाइम बढ़ाने के",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.3,
-"scene_context": "Tampered EXPIRE parameter glowing in warning coral.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, dark URL bar showing an edited EXPIRE block glowing with suspicious coral warning outlines and an upward arrow, deep midnight-blue background."
-},
-{
-"clip_id": "C0100",
-"spoken_text": "लिए यूआरएल में जरा सा भी",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.3,
-"scene_context": "Tiny tampered byte triggering an immediate hash mismatch in the CDN.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, single tampered coral digit inside the URL causing the CDN hash generator to flash an alert, crisp vector-3D style, midnight-blue background."
-},
-{
-"clip_id": "C0101",
-"spoken_text": "बदलाव किया होगा, तो दोनों सिग्नेचर",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "Two completely different signature shapes facing each other in the comparator.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, two jagged mismatched signature chips—one amber and one coral—facing each other inside the comparator dock, high contrast, midnight-blue background."
-},
-{
-"clip_id": "C0102",
-"spoken_text": "आपस में मैच नहीं करेंगे।",
-"spoken_word_count": 5,
-"estimated_spoken_duration": 2.2,
-"scene_context": "Bold coral X rejecting the tampered request instantly.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sharp glowing coral X symbol slamming between the two mismatched signature chips, rejecting the request, deep midnight-blue studio background."
-}
-]
-},
-{
-"beat_id": "B0034",
-"narration": "और अगर सिग्नेचर मैच हो गया, तो सीडीएन मान लेता है कि लिंक असली है और स्ट्रीमिंग शुरू कर दी जाती है।",
-"word_count": 22,
-"estimated_duration": 8.9,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0103",
-"spoken_text": "और अगर सिग्नेचर मैच हो गया,",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Two identical golden signature chips locking together with a bright cyan spark.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, two identical golden-amber signature chips aligning seamlessly with a crisp glowing cyan checkmark badge in the center, midnight-blue background."
-},
-{
-"clip_id": "C0104",
-"spoken_text": "तो सीडीएन मान लेता है कि",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.3,
-"scene_context": "CDN security shield glowing green-cyan and opening its data gate.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek CDN security shield turning bright cyan and sliding open like an illuminated futuristic vault door, deep midnight-blue background."
-},
-{
-"clip_id": "C0105",
-"spoken_text": "लिंक असली है और स्ट्रीमिंग शुरू",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Crisp video data packets bursting outward from the open CDN gate.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing stream of crisp cyan video frame packets racing out of the open CDN gate along a high-speed fiber track, deep midnight-blue background."
-},
-{
-"clip_id": "C0106",
-"spoken_text": "कर दी जाती है।",
-"spoken_word_count": 4,
-"estimated_spoken_duration": 1.8,
-"scene_context": "User video player playing crystal-clear video smoothly.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek dark glass video player UI glowing vibrantly with smooth playing video graphics and cyan progress bar, deep midnight-blue studio background."
-}
-]
-},
-{
-"beat_id": "B0035",
-"narration": "अब एक और स्मार्ट सवाल आता है कि क्या होगा अगर कोई एक्सपायर होने से पहले ही यूआरएल चुरा ले?",
-"word_count": 20,
-"estimated_duration": 7.7,
-"is_scene_bridge": true,
-"clips": [
-{
-"clip_id": "C0107",
-"spoken_text": "अब एक और स्मार्ट सवाल आता",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Glowing cyan question mark floating beside an edge-case diagram.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek glowing amber question mark icon hovering over a dark glass system diagram card, crisp rim light, deep midnight-blue background."
-},
-{
-"clip_id": "C0108",
-"spoken_text": "है कि क्या होगा अगर कोई",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.3,
-"scene_context": "A second unauthorized laptop appearing on the network.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, split view showing the legitimate user laptop on top and an unauthorized coral-lit laptop appearing below, deep midnight-blue background."
-},
-{
-"clip_id": "C0109",
-"spoken_text": "एक्सपायर होने से पहले ही यूआरएल चुरा ले?",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 3.0,
-"scene_context": "Unauthorized user copying a still-valid signed URL before the timer finishes.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, unauthorized coral-lit device snatching a glowing still-valid cyan signed URL capsule while the amber timer still shows remaining time, midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0036",
-"narration": "इस खतरे को रोकने के लिए यूट्यूब आपके यूआरएल में आपका आईपी एड्रेस भी जोड़कर साइन कर देता है।",
-"word_count": 19,
-"estimated_duration": 7.5,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0110",
-"spoken_text": "इस खतरे को रोकने के लिए",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.3,
-"scene_context": "Protective cyan shield rising to block link sharing.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing translucent hexagonal security barrier rising sharply in front of the unauthorized device, deep midnight-blue background."
-},
-{
-"clip_id": "C0111",
-"spoken_text": "यूट्यूब आपके यूआरएल में आपका आईपी",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "A glowing IP address chip being embedded inside the URL parameters.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing cyan network badge with crisp uppercase label IP snapping securely inside the URL parameter slots, deep midnight-blue studio background."
-},
-{
-"clip_id": "C0112",
-"spoken_text": "एड्रेस भी जोड़कर साइन कर देता है।",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "The golden cryptographic signature locking the IP badge into the URL.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, golden signature seal locking both the EXPIRE and IP parameter chips permanently inside the glowing URL ribbon, midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0037",
-"narration": "अगर कोई दूसरे नेटवर्क से यही लिंक खोलेगा, तो उसका आईपी एड्रेस मैच न होने पर रिक्वेस्ट ब्लॉक हो जाएगी।",
-"word_count": 20,
-"estimated_duration": 7.9,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0113",
-"spoken_text": "अगर कोई दूसरे नेटवर्क से यही",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Stolen link sent from a completely different coral-lit network node.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, unauthorized device on a separate coral-colored network tower sending the copied signed URL toward the CDN server, deep midnight-blue background."
-},
-{
-"clip_id": "C0114",
-"spoken_text": "लिंक खोलेगा, तो उसका आईपी एड्रेस",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "CDN comparing the requester's coral IP against the signed cyan IP.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, CDN comparison screen showing a mismatch between the signed cyan IP badge and the incoming coral IP badge, midnight-blue background."
-},
-{
-"clip_id": "C0115",
-"spoken_text": "मैच न होने पर रिक्वेस्ट ब्लॉक हो जाएगी।",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 3.0,
-"scene_context": "CDN instantly slamming a coral firewall gate shut on the stolen request.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing coral firewall barrier slamming shut in front of the mismatched request with a crisp 403 shield icon, deep midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0038",
-"narration": "और लंबी मूवी के दौरान प्लेयर बैकग्राउंड में पुराना लिंक एक्सपायर होने से पहले ही नया साइन्ड यूआरएल ले आता है।",
-"word_count": 21,
-"estimated_duration": 8.0,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0116",
-"spoken_text": "और लंबी मूवी के दौरान प्लेयर",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Long movie timeline broken into neat small video chunk segments.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek dark movie player with a long progress timeline cleanly divided into glowing cyan DASH video segment blocks, deep midnight-blue background."
-},
-{
-"clip_id": "C0117",
-"spoken_text": "बैकग्राउंड में पुराना लिंक एक्सपायर होने से",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "Subtle background pipeline activating before the current token expires.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, video player continuing smoothly in foreground while a subtle glowing background data line triggers just before an amber token fades, midnight-blue background."
-},
-{
-"clip_id": "C0118",
-"spoken_text": "पहले ही नया साइन्ड यूआरएल ले आता है।",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 2.9,
-"scene_context": "Fresh glowing cyan signed URL arriving seamlessly to keep playback uninterrupted.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, fresh bright cyan signed URL capsule docking silently into the player from the API server, keeping the video stream flowing without a pause, midnight-blue background."
-}
-]
-},
-{
-"beat_id": "B0039",
-"narration": "सिर्फ कुछ मैथ्स और टाइमस्टैम्प की बदौलत यूट्यूब बिना डेटाबेस स्लो किए करोड़ों वीडियो स्ट्रीम्स को सुरक्षित रखता है।",
-"word_count": 19,
-"estimated_duration": 7.6,
-"is_scene_bridge": true,
-"clips": [
-{
-"clip_id": "C0119",
-"spoken_text": "सिर्फ कुछ मैथ्स और टाइमस्टैम्प की",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "Clean floating mathematical hash symbols and a glowing digital clock.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, minimalist glowing cryptographic key, amber clock icon, and crisp geometric hash symbols floating in harmony, deep midnight-blue background."
-},
-{
-"clip_id": "C0120",
-"spoken_text": "बदौलत यूट्यूब बिना डेटाबेस स्लो किए",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.5,
-"scene_context": "Ultra-fast stateless CDN nodes handling heavy load effortlessly.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek row of glowing cyan CDN servers routing fast smooth data streams effortlessly with zero bottleneck, deep midnight-blue background."
-},
-{
-"clip_id": "C0121",
-"spoken_text": "करोड़ों वीडियो स्ट्रीम्स को सुरक्षित रखता है।",
-"spoken_word_count": 7,
-"estimated_spoken_duration": 2.7,
-"scene_context": "Protective cyan dome covering a glowing global network of video streams.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, radiant translucent cyan security dome shielding a glowing global network of crisp video player streams, deep midnight-blue studio background."
-}
-]
-},
-{
-"beat_id": "B0040",
-"narration": "तो अगली बार जब कोई कॉपी किया लिंक बंद हो जाए, तो समझ जाइए कि उसका क्रिप्टोग्राफिक टाइमर खत्म हो चुका है।",
-"word_count": 22,
-"estimated_duration": 8.3,
-"is_scene_bridge": false,
-"clips": [
-{
-"clip_id": "C0122",
-"spoken_text": "तो अगली बार जब कोई कॉपी",
-"spoken_word_count": 6,
-"estimated_spoken_duration": 2.4,
-"scene_context": "A copied stream URL capsule sitting on a dark glass screen.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, sleek dark glass browser card holding a copied URL ribbon starting to dim softly, deep midnight-blue background."
-},
-{
-"clip_id": "C0123",
-"spoken_text": "किया लिंक बंद हो जाए, तो समझ जाइए",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 2.9,
-"scene_context": "Clean 403 EXPIRED badge appearing calmly on the dark screen.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, clean minimalist dark UI window displaying a glowing coral padlock and crisp uppercase label EXPIRED, deep midnight-blue background."
-},
-{
-"clip_id": "C0124",
-"spoken_text": "कि उसका क्रिप्टोग्राफिक टाइमर खत्म हो चुका है।",
-"spoken_word_count": 8,
-"estimated_spoken_duration": 3.0,
-"scene_context": "A golden digital hourglass and cryptographic seal fading out neatly.",
-"image_prompt": "Clean modern tech-explainer illustration, widescreen 16:9 composition, glowing golden hourglass finishing its final grain of sand beside a fading cyan cryptographic signature ring, deep midnight-blue studio background, crisp editorial finish."
-}
-]
-}
-]
+  "title": "Spring Boot CRUD Masterclass via Express.js Mapping",
+  "topic": "Complete step-by-step guide to building CRUD endpoints in Java Spring Boot by mapping every concept and term to Node.js and Express.js",
+  "aspect_ratio": "16:9",
+  "target_minutes": 10.5,
+  "total_beats": 50,
+  "total_clips": 150,
+  "global_style": {
+    "art_style": "Clean hand-drawn whiteboard explainer illustration style, crisp black ink marker sketches on a bright white whiteboard background, vibrant blue, green, orange, and red marker accents, neat hand-lettered text labels and clean readable code snippets, simple icons, boxes, and directional arrows, bright even lighting, 16:9 widescreen framing.",
+    "negative_prompt": "dark background, photorealistic, 3D render, blurry, messy overlapping scribbles, garbled unreadable text, watermarks, low contrast"
+  },
+  "beats": [
+    {
+      "beat_id": "B0001",
+      "narration": "अगर आपने Node.js और Express से backend सीखना शुरू किया है, तो Java Spring Boot पहली नज़र में थोड़ा डरावना लग सकता है।",
+      "word_count": 23,
+      "estimated_duration": 9.2,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0001",
+          "spoken_text": "अगर आपने Node.js और Express से backend सीखना शुरू किया है,",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "A friendly stick-figure developer smiling next to a green Express.js logo sketch.",
+          "image_prompt": "Hand-drawn whiteboard marker illustration, 16:9 widescreen, bright white background, happy stick-figure developer holding a laptop with green marker text 'Node.js + Express', clean black ink lines."
+        },
+        {
+          "clip_id": "C0002",
+          "spoken_text": "तो Java Spring Boot पहली नज़र में",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Stick-figure looking surprised at a big green Spring Boot leaf logo.",
+          "image_prompt": "Hand-drawn whiteboard marker illustration, 16:9 widescreen, white background, same developer looking shocked at a big sketch labeled 'Java Spring Boot' surrounded by question marks."
+        },
+        {
+          "clip_id": "C0003",
+          "spoken_text": "थोड़ा डरावना लग सकता है।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.0,
+          "scene_context": "Floating annotations like @RestController and @Autowired looking like monsters.",
+          "image_prompt": "Hand-drawn whiteboard sketch, 16:9, white background, red marker doodles of '@RestController', '@Entity', '@Autowired' floating around a nervous stick-figure developer."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0002",
+      "narration": "लेकिन सच मानिए, अंदर से दोनों बिल्कुल एक ही काम करते हैं—Request लेना, Database से बात करना, और JSON Response भेजना।",
+      "word_count": 21,
+      "estimated_duration": 8.4,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0004",
+          "spoken_text": "लेकिन सच मानिए, अंदर से दोनों बिल्कुल एक ही काम करते हैं—",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "An equals sign connecting Express.js and Spring Boot boxes.",
+          "image_prompt": "Whiteboard marker drawing, 16:9, white background, green box 'Express.js' on left, big blue '=' sign in center, green box 'Spring Boot' on right."
+        },
+        {
+          "clip_id": "C0005",
+          "spoken_text": "Request लेना, Database से बात करना,",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Flow arrows from Client to Server to Database cylinder.",
+          "image_prompt": "Whiteboard marker diagram, 16:9, white background, simple boxes connected by orange arrows: 'Client Request' -> 'Backend Server' -> 'Database' cylinder sketch."
+        },
+        {
+          "clip_id": "C0006",
+          "spoken_text": "और JSON Response भेजना।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.6,
+          "scene_context": "Arrow returning a curly-brace JSON block back to the client.",
+          "image_prompt": "Whiteboard sketch, 16:9, white background, green return arrow carrying a card labeled '{ JSON Response }' back to a browser window icon."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0003",
+      "narration": "आज हम Java Spring Boot में एक पूरा CRUD API बनाएंगे और हर एक concept को सीधे Express.js से map करेंगे।",
+      "word_count": 22,
+      "estimated_duration": 8.8,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0007",
+          "spoken_text": "आज हम Java Spring Boot में एक पूरा CRUD API बनाएंगे",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "Whiteboard title showing CRUD blocks: Create, Read, Update, Delete.",
+          "image_prompt": "Whiteboard marker illustration, 16:9, four colorful stacked boxes labeled 'C - Create', 'R - Read', 'U - Update', 'D - Delete' under bold title 'Spring Boot CRUD API'."
+        },
+        {
+          "clip_id": "C0008",
+          "spoken_text": "और हर एक concept को सीधे",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Two columns on whiteboard ready for concept mapping.",
+          "image_prompt": "Whiteboard sketch, 16:9, split screen table with blue marker header 'Express.js' on left and green marker header 'Spring Boot' on right, connecting arrows between rows."
+        },
+        {
+          "clip_id": "C0009",
+          "spoken_text": "Express.js से map करेंगे।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 2.0,
+          "scene_context": "A bridge icon connecting JS and Java logos.",
+          "image_prompt": "Whiteboard marker drawing, 16:9, white background, simple hand-drawn bridge connecting a 'JS' badge on the left to a 'Java' coffee cup doodle on the right."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0004",
+      "narration": "Express एक minimalist toolkit है जहाँ सब कुछ आपको खुद जोड़ना पड़ता है, जबकि Spring Boot एक battery-included structured framework है।",
+      "word_count": 21,
+      "estimated_duration": 8.4,
+      "is_scene_bridge": true,
+      "clips": [
+        {
+          "clip_id": "C0010",
+          "spoken_text": "Express एक minimalist toolkit है जहाँ सब कुछ आपको खुद जोड़ना पड़ता है,",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 5.0,
+          "scene_context": "Empty toolbox with separate loose parts like Router, CORS, Mongoose.",
+          "image_prompt": "Whiteboard sketch, 16:9, open hand-drawn toolbox labeled 'Express (DIY)' with loose floating parts labeled 'Router', 'BodyParser', 'Mongoose'."
+        },
+        {
+          "clip_id": "C0011",
+          "spoken_text": "जबकि Spring Boot एक battery-included",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.0,
+          "scene_context": "A neat pre-assembled Swiss Army knife labeled Spring Boot.",
+          "image_prompt": "Whiteboard marker drawing, 16:9, neatly organized Swiss Army knife sketch labeled 'Spring Boot' with green battery icon showing 'All-in-One'."
+        },
+        {
+          "clip_id": "C0012",
+          "spoken_text": "structured framework है।",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.4,
+          "scene_context": "Clean layered architecture blueprint grid.",
+          "image_prompt": "Whiteboard sketch, 16:9, crisp architectural blueprint grid with neat stacked boxes labeled 'Controller', 'Service', 'Repository'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0005",
+      "narration": "चलिए Step 1, Project Setup से शुरू करते हैं। Express में आप npm init करके package.json बनाते हैं।",
+      "word_count": 18,
+      "estimated_duration": 7.6,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0013",
+          "spoken_text": "चलिए Step 1, Project Setup से शुरू करते हैं।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.8,
+          "scene_context": "Big step badge 'STEP 1: Project Setup' on whiteboard.",
+          "image_prompt": "Whiteboard marker banner, 16:9, white background, bold blue underline reading 'STEP 1: Project Setup' with a hand-drawn rocket doodle."
+        },
+        {
+          "clip_id": "C0014",
+          "spoken_text": "Express में आप npm init करके",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Terminal box sketch showing npm init command.",
+          "image_prompt": "Whiteboard sketch, 16:9, simple black-ink terminal box on left labeled 'Express' showing '$ npm init -y' and '$ npm i express'."
+        },
+        {
+          "clip_id": "C0015",
+          "spoken_text": "package.json बनाते हैं।",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.4,
+          "scene_context": "File icon labeled package.json with dependencies list.",
+          "image_prompt": "Whiteboard drawing, 16:9, paper file icon labeled 'package.json' with bullet lines 'express, mongoose, dotenv'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0006",
+      "narration": "Spring Boot में यही काम start.spring.io यानी Spring Initializr करता है, और package.json की जगह यहाँ pom.xml होता है।",
+      "word_count": 19,
+      "estimated_duration": 8.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0016",
+          "spoken_text": "Spring Boot में यही काम start.spring.io यानी Spring Initializr करता है,",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.2,
+          "scene_context": "Browser sketch of start.spring.io form.",
+          "image_prompt": "Whiteboard sketch, 16:9, browser window labeled 'start.spring.io (Spring Initializr)' with radio buttons 'Maven' and 'Java' checked and a green 'GENERATE' button."
+        },
+        {
+          "clip_id": "C0017",
+          "spoken_text": "और package.json की जगह",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.8,
+          "scene_context": "Side-by-side comparison arrow from package.json to pom.xml.",
+          "image_prompt": "Whiteboard marker sketch, 16:9, left file 'package.json' with an orange arrow pointing right to a new file icon."
+        },
+        {
+          "clip_id": "C0018",
+          "spoken_text": "यहाँ pom.xml होता है।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 2.0,
+          "scene_context": "File icon labeled pom.xml managed by Maven.",
+          "image_prompt": "Whiteboard drawing, 16:9, file icon labeled 'pom.xml (Maven)' showing neat '<dependency>' blocks in blue marker."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0007",
+      "narration": "npm install की तरह Maven आपके लिए pom.xml से तीन मुख्य dependencies खुद डाउनलोड करता है: Spring Web, Spring Data JPA, और Database Driver।",
+      "word_count": 24,
+      "estimated_duration": 9.8,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0019",
+          "spoken_text": "npm install की तरह Maven आपके लिए pom.xml से",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.8,
+          "scene_context": "Maven icon downloading packages like npm.",
+          "image_prompt": "Whiteboard sketch, 16:9, cloud icon dropping green package boxes into a folder labeled 'Maven (like npm install)'."
+        },
+        {
+          "clip_id": "C0020",
+          "spoken_text": "तीन मुख्य dependencies खुद डाउनलोड करता है:",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Three empty slots ready for the 3 dependencies.",
+          "image_prompt": "Whiteboard diagram, 16:9, three numbered boxes '1', '2', '3' under heading 'Core Dependencies'."
+        },
+        {
+          "clip_id": "C0021",
+          "spoken_text": "Spring Web, Spring Data JPA, और Database Driver।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Three labeled dependency boxes mapped to Express equivalents.",
+          "image_prompt": "Whiteboard sketch, 16:9, three labeled boxes: '1. Spring Web (= express)', '2. Spring Data JPA (= mongoose)', '3. H2/Postgres Driver (= db driver)'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0008",
+      "narration": "अब Server Start करना देखते हैं। Express में आप लिखते हैं const app = express() और app.listen(8080)।",
+      "word_count": 17,
+      "estimated_duration": 7.6,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0022",
+          "spoken_text": "अब Server Start करना देखते हैं।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Power button icon next to server sketch.",
+          "image_prompt": "Whiteboard marker drawing, 16:9, big green power button next to text 'Starting the Server'."
+        },
+        {
+          "clip_id": "C0023",
+          "spoken_text": "Express में आप लिखते हैं const app = express()",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.6,
+          "scene_context": "Whiteboard code block showing Express initialization.",
+          "image_prompt": "Whiteboard sketch, 16:9, neat handwritten code box titled 'index.js (Express)' showing 'const app = express();'."
+        },
+        {
+          "clip_id": "C0024",
+          "spoken_text": "और app.listen(8080)।",
+          "spoken_word_count": 2,
+          "estimated_spoken_duration": 1.4,
+          "scene_context": "Highlighted line app.listen(8080) with server running badge.",
+          "image_prompt": "Whiteboard sketch, 16:9, code line 'app.listen(8080);' highlighted in orange marker with an arrow to 'Server Running on 8080'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0009",
+      "narration": "Spring Boot में एक main file होती है जिस पर @SpringBootApplication लिखा होता है, और SpringApplication.run खुद embedded Tomcat server को port 8080 पर चालू कर देता है।",
+      "word_count": 28,
+      "estimated_duration": 11.4,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0025",
+          "spoken_text": "Spring Boot में एक main file होती है जिस पर @SpringBootApplication लिखा होता है,",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 5.2,
+          "scene_context": "Java main file code snippet with @SpringBootApplication.",
+          "image_prompt": "Whiteboard code sketch, 16:9, box titled 'App.java' showing '@SpringBootApplication' in blue marker above 'public class App'."
+        },
+        {
+          "clip_id": "C0026",
+          "spoken_text": "और SpringApplication.run खुद embedded Tomcat server को",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Code line SpringApplication.run launching a Tomcat server box.",
+          "image_prompt": "Whiteboard sketch, 16:9, code line 'SpringApplication.run(App.class, args);' pointing to an engine icon labeled 'Embedded Tomcat Server'."
+        },
+        {
+          "clip_id": "C0027",
+          "spoken_text": "port 8080 पर चालू कर देता है।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Server indicator glowing green at Port 8080.",
+          "image_prompt": "Whiteboard sketch, 16:9, server box with green marker check and label 'Listening on Port 8080 (= app.listen)'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0010",
+      "narration": "यह @ चिन्ह क्या है? इन्हें Java Annotations कहते हैं—ये छोटे-छोटे stickers की तरह हैं जो Spring को बताते हैं कि इस class का role क्या है।",
+      "word_count": 27,
+      "estimated_duration": 10.8,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0028",
+          "spoken_text": "यह @ चिन्ह क्या है? इन्हें Java Annotations कहते हैं—",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Zoomed-in '@' symbol labeled 'Annotation'.",
+          "image_prompt": "Whiteboard marker drawing, 16:9, giant orange '@' symbol in the center with label 'Java Annotations = Metadata Tags'."
+        },
+        {
+          "clip_id": "C0029",
+          "spoken_text": "ये छोटे-छोटे stickers की तरह हैं",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Colorful sticky notes pasted on Java class boxes.",
+          "image_prompt": "Whiteboard sketch, 16:9, yellow and blue sticky-note doodles labeled '@RestController', '@Service', '@Entity' stuck onto class boxes."
+        },
+        {
+          "clip_id": "C0030",
+          "spoken_text": "जो Spring को बताते हैं कि इस class का role क्या है।",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "Spring Boot brain reading the sticky notes on classes.",
+          "image_prompt": "Whiteboard sketch, 16:9, cartoon magnifying glass labeled 'Spring' reading sticky notes on Java classes and nodding."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0011",
+      "narration": "अब समझते हैं Folder Architecture। Express में आप routes, controllers, services और models folders बनाते हैं ताकि code साफ रहे।",
+      "word_count": 20,
+      "estimated_duration": 8.4,
+      "is_scene_bridge": true,
+      "clips": [
+        {
+          "clip_id": "C0031",
+          "spoken_text": "अब समझते हैं Folder Architecture।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Folder tree sketch on whiteboard.",
+          "image_prompt": "Whiteboard marker drawing, 16:9, bold title 'Project Architecture' with neat folder icons below."
+        },
+        {
+          "clip_id": "C0032",
+          "spoken_text": "Express में आप routes, controllers, services और models folders बनाते हैं",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "Express folder structure tree on the left.",
+          "image_prompt": "Whiteboard sketch, 16:9, folder tree titled 'Express MVC' showing folders: '/routes', '/controllers', '/services', '/models'."
+        },
+        {
+          "clip_id": "C0033",
+          "spoken_text": "ताकि code साफ रहे।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.8,
+          "scene_context": "Broom icon sweeping messy code into clean folders.",
+          "image_prompt": "Whiteboard doodle, 16:9, clean green checkmarks next to organized folders, label 'Clean Separation of Concerns'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0012",
+      "narration": "Spring Boot इसी तीन-परत architecture को strictly follow करता है: Controller, Service, और Repository plus Entity।",
+      "word_count": 16,
+      "estimated_duration": 7.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0034",
+          "spoken_text": "Spring Boot इसी तीन-परत architecture को strictly follow करता है:",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.2,
+          "scene_context": "Three-layer stack diagram on whiteboard.",
+          "image_prompt": "Whiteboard diagram, 16:9, three horizontal stacked layers labeled 'Spring Boot 3-Layer Architecture'."
+        },
+        {
+          "clip_id": "C0035",
+          "spoken_text": "Controller, Service, और Repository plus Entity।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Exact mapping of each Spring Boot layer to Express.",
+          "image_prompt": "Whiteboard diagram, 16:9, boxes: 'Controller (= Routes + req/res)', 'Service (= Business Logic)', 'Repository + Entity (= Mongoose Model)'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0013",
+      "narration": "जब कोई HTTP Request आती है, तो वह पहले Controller में जाती है, फिर Service में, फिर Repository से होते हुए Database तक पहुँचती है।",
+      "word_count": 25,
+      "estimated_duration": 10.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0036",
+          "spoken_text": "जब कोई HTTP Request आती है, तो वह पहले Controller में जाती है,",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 5.2,
+          "scene_context": "Arrow from Client entering Controller box.",
+          "image_prompt": "Whiteboard flow diagram, 16:9, orange arrow labeled 'HTTP Request' going from Client icon into box '1. Controller'."
+        },
+        {
+          "clip_id": "C0037",
+          "spoken_text": "फिर Service में,",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.4,
+          "scene_context": "Arrow continuing from Controller to Service box.",
+          "image_prompt": "Whiteboard flow diagram, 16:9, arrow continuing from '1. Controller' into middle box '2. Service (Logic)'."
+        },
+        {
+          "clip_id": "C0038",
+          "spoken_text": "फिर Repository से होते हुए Database तक पहुँचती है।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Arrow going through Repository into Database cylinder.",
+          "image_prompt": "Whiteboard flow diagram, 16:9, arrow going from '2. Service' -> '3. Repository' -> 'Database' cylinder sketch."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0014",
+      "narration": "अब आता है Spring Boot का सबसे ज़रूरी concept जिसे लोग अक्सर मुश्किल समझते हैं: Dependency Injection और IoC Container।",
+      "word_count": 21,
+      "estimated_duration": 8.6,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0039",
+          "spoken_text": "अब आता है Spring Boot का सबसे ज़रूरी concept",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.6,
+          "scene_context": "Lightbulb icon next to heading 'Secret Sauce'.",
+          "image_prompt": "Whiteboard sketch, 16:9, glowing yellow-marker lightbulb doodle above heading 'Most Important Concept'."
+        },
+        {
+          "clip_id": "C0040",
+          "spoken_text": "जिसे लोग अक्सर मुश्किल समझते हैं:",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Confused stick figure scratching head.",
+          "image_prompt": "Whiteboard doodle, 16:9, stick figure scratching head looking at tangled arrows."
+        },
+        {
+          "clip_id": "C0041",
+          "spoken_text": "Dependency Injection और IoC Container।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Big box labeled IoC Container with plug icons.",
+          "image_prompt": "Whiteboard sketch, 16:9, large blue box labeled 'IoC Container & Dependency Injection' with simple puzzle pieces fitting together."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0015",
+      "narration": "Express में आप खुद फाइलें import करते हैं, जैसे const userService = require('./userService')। यानी object या module खुद लाना पड़ता है।",
+      "word_count": 21,
+      "estimated_duration": 8.8,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0042",
+          "spoken_text": "Express में आप खुद फाइलें import करते हैं,",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Developer manually carrying boxes of modules.",
+          "image_prompt": "Whiteboard sketch, 16:9, stick figure carrying heavy boxes labeled 'require()' and 'import' across files."
+        },
+        {
+          "clip_id": "C0043",
+          "spoken_text": "जैसे const userService = require('./userService')।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Express code snippet showing require statement.",
+          "image_prompt": "Whiteboard code block, 16:9, box titled 'Express' showing 'const service = require(\"./productService\");' in black ink."
+        },
+        {
+          "clip_id": "C0044",
+          "spoken_text": "यानी object या module खुद लाना पड़ता है।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Manual wiring lines drawn between files.",
+          "image_prompt": "Whiteboard diagram, 16:9, 'Controller' box manually pulling a rope connected to 'Service' box labeled 'Manual Wiring'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0016",
+      "narration": "Spring Boot में एक IoC Container होता है—इसे एक Smart Warehouse मान लीजिए। जिस class पर @Service या @Repository लगा हो, Spring उसका object खुद बनाकर इस warehouse में रख लेता है, और इन्हें Beans कहते हैं।",
+      "word_count": 37,
+      "estimated_duration": 14.8,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0045",
+          "spoken_text": "Spring Boot में एक IoC Container होता है—इसे एक Smart Warehouse मान लीजिए।",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 5.2,
+          "scene_context": "Big warehouse building sketch labeled IoC Container.",
+          "image_prompt": "Whiteboard marker drawing, 16:9, neat warehouse building outline labeled 'Spring IoC Container (Smart Warehouse)'."
+        },
+        {
+          "clip_id": "C0046",
+          "spoken_text": "जिस class पर @Service या @Repository लगा हो, Spring उसका object खुद बनाकर",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 5.2,
+          "scene_context": "Objects with @Service and @Repository tags automatically created inside warehouse.",
+          "image_prompt": "Whiteboard sketch, 16:9, inside the warehouse box, green robot arm creating object cubes labeled '@Service' and '@Repository'."
+        },
+        {
+          "clip_id": "C0047",
+          "spoken_text": "इस warehouse में रख लेता है, और इन्हें Beans कहते हैं।",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "Objects stored neatly on warehouse shelves labeled Beans.",
+          "image_prompt": "Whiteboard sketch, 16:9, shelves inside the container holding labeled objects with green tags reading 'Spring Beans (Managed Objects)'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0017",
+      "narration": "और जब Controller को Service चाहिए, तो आप बस constructor में उसे मांगते हैं और Spring वह Bean खुद inject कर देता है—यही Dependency Injection है।",
+      "word_count": 27,
+      "estimated_duration": 10.8,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0048",
+          "spoken_text": "और जब Controller को Service चाहिए, तो आप बस constructor में उसे मांगते हैं",
+          "spoken_word_count": 14,
+          "estimated_spoken_duration": 5.6,
+          "scene_context": "Controller constructor code requesting ProductService.",
+          "image_prompt": "Whiteboard code sketch, 16:9, box 'ProductController' showing constructor 'public ProductController(ProductService service)' highlighted in blue."
+        },
+        {
+          "clip_id": "C0049",
+          "spoken_text": "और Spring वह Bean खुद inject कर देता है—",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.6,
+          "scene_context": "IoC Container plugging Service Bean into Controller.",
+          "image_prompt": "Whiteboard sketch, 16:9, arrow from 'IoC Container' plugging a 'Service Bean' puzzle piece directly into 'Controller'."
+        },
+        {
+          "clip_id": "C0050",
+          "spoken_text": "यही Dependency Injection है।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.6,
+          "scene_context": "Clean label 'Dependency Injection (DI)' with checkmark.",
+          "image_prompt": "Whiteboard banner, 16:9, green checkmark next to bold hand-lettered text 'Dependency Injection = No new() needed!'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0018",
+      "narration": "चलिए अब असली code लिखते हैं! हम एक Product CRUD API बनाएंगे जिसमें id, name, और price होगा।",
+      "word_count": 18,
+      "estimated_duration": 7.4,
+      "is_scene_bridge": true,
+      "clips": [
+        {
+          "clip_id": "C0051",
+          "spoken_text": "चलिए अब असली code लिखते हैं!",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Developer rolling up sleeves with marker in hand.",
+          "image_prompt": "Whiteboard doodle, 16:9, enthusiastic stick figure holding a marker next to heading 'Let us Build Product CRUD API!'."
+        },
+        {
+          "clip_id": "C0052",
+          "spoken_text": "हम एक Product CRUD API बनाएंगे जिसमें",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Product card outline drawn on whiteboard.",
+          "image_prompt": "Whiteboard sketch, 16:9, simple shopping-tag card sketch titled 'Product Model'."
+        },
+        {
+          "clip_id": "C0053",
+          "spoken_text": "id, name, और price होगा।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Fields listed inside Product card.",
+          "image_prompt": "Whiteboard sketch, 16:9, card listing fields: 'id: Long', 'name: String', 'price: Double' in neat handwriting."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0019",
+      "narration": "Step 2: Model या Entity बनाना। Express और Mongoose में आप Schema बनाते हैं: new mongoose.Schema({ name: String, price: Number })।",
+      "word_count": 21,
+      "estimated_duration": 8.8,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0054",
+          "spoken_text": "Step 2: Model या Entity बनाना।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Step 2 banner on whiteboard.",
+          "image_prompt": "Whiteboard header, 16:9, bold blue marker title 'STEP 2: Data Model / Entity'."
+        },
+        {
+          "clip_id": "C0055",
+          "spoken_text": "Express और Mongoose में आप Schema बनाते हैं:",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Express left panel heading.",
+          "image_prompt": "Whiteboard split view, 16:9, left side titled 'Express (Mongoose Schema)' with database table doodle."
+        },
+        {
+          "clip_id": "C0056",
+          "spoken_text": "new mongoose.Schema({ name: String, price: Number })।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Mongoose schema code snippet on left.",
+          "image_prompt": "Whiteboard code block, 16:9, left panel code: 'new mongoose.Schema({ name: String, price: Number })'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0020",
+      "narration": "Spring Boot में हम एक Java class बनाते हैं और उस पर @Entity और @Table(name = 'products') लगा देते हैं, जिससे यह सीधे Database table से जुड़ जाती है।",
+      "word_count": 30,
+      "estimated_duration": 12.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0057",
+          "spoken_text": "Spring Boot में हम एक Java class बनाते हैं",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.6,
+          "scene_context": "Right panel showing Product.java class box.",
+          "image_prompt": "Whiteboard code block, 16:9, right side titled 'Spring Boot (Product.java)' showing 'public class Product { ... }'."
+        },
+        {
+          "clip_id": "C0058",
+          "spoken_text": "और उस पर @Entity और @Table(name = 'products') लगा देते हैं,",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "Annotations added above Product class.",
+          "image_prompt": "Whiteboard code block, 16:9, code showing '@Entity' and '@Table(name = \"products\")' in green marker above 'public class Product'."
+        },
+        {
+          "clip_id": "C0059",
+          "spoken_text": "जिससे यह सीधे Database table से जुड़ जाती है।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Arrow mapping Java class directly to a SQL table sketch.",
+          "image_prompt": "Whiteboard diagram, 16:9, arrow from 'Product.java' pointing to a hand-drawn database table grid labeled 'products (id, name, price)'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0021",
+      "narration": "Primary Key के लिए हम id field पर @Id और @GeneratedValue लगाते हैं, जो MongoDB की auto _id या SQL के auto-increment की तरह काम करता है।",
+      "word_count": 26,
+      "estimated_duration": 10.6,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0060",
+          "spoken_text": "Primary Key के लिए हम id field पर",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Key icon pointing to private Long id.",
+          "image_prompt": "Whiteboard sketch, 16:9, golden-orange marker key icon pointing to code line 'private Long id;'."
+        },
+        {
+          "clip_id": "C0061",
+          "spoken_text": "@Id और @GeneratedValue लगाते हैं,",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Code showing @Id and @GeneratedValue(strategy = GenerationType.IDENTITY).",
+          "image_prompt": "Whiteboard code snippet, 16:9, lines '@Id', '@GeneratedValue(strategy = GenerationType.IDENTITY)', 'private Long id;'."
+        },
+        {
+          "clip_id": "C0062",
+          "spoken_text": "जो MongoDB की auto _id या SQL के auto-increment की तरह काम करता है।",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 5.2,
+          "scene_context": "Comparison showing Mongo _id equals @GeneratedValue.",
+          "image_prompt": "Whiteboard diagram, 16:9, 'MongoDB _id / Auto-Increment' mapped with '=' arrow to '@Id + @GeneratedValue'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0022",
+      "narration": "Java में fields private होते हैं, इसलिए Getters और Setters लिखने पड़ते हैं, या फिर Lombok का @Data annotation लगाकर एक लाइन में पूरा boilerplate बचा सकते हैं।",
+      "word_count": 28,
+      "estimated_duration": 11.2,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0063",
+          "spoken_text": "Java में fields private होते हैं, इसलिए Getters और Setters लिखने पड़ते हैं,",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 5.2,
+          "scene_context": "Private fields name and price with getName/setName.",
+          "image_prompt": "Whiteboard code sketch, 16:9, 'private String name; private Double price;' with arrows to 'getName(), setName()'."
+        },
+        {
+          "clip_id": "C0064",
+          "spoken_text": "या फिर Lombok का @Data annotation लगाकर",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Lombok @Data shortcut sticker placed over long code.",
+          "image_prompt": "Whiteboard sketch, 16:9, red-pepper doodle labeled 'Lombok @Data' placed above 'public class Product'."
+        },
+        {
+          "clip_id": "C0065",
+          "spoken_text": "एक लाइन में पूरा boilerplate बचा सकते हैं।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Long lines of getters/setters crossed out neatly.",
+          "image_prompt": "Whiteboard sketch, 16:9, 20 lines of boilerplate code crossed out with green arrow pointing to single '@Data' tag."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0023",
+      "narration": "Step 3: Repository यानी Database Layer। Express में आप लिखते हैं Product.find(), Product.findById(), या product.save()।",
+      "word_count": 16,
+      "estimated_duration": 7.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0066",
+          "spoken_text": "Step 3: Repository यानी Database Layer।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Step 3 banner with database icon.",
+          "image_prompt": "Whiteboard header, 16:9, blue title 'STEP 3: Repository (Database Layer)' beside a database cylinder doodle."
+        },
+        {
+          "clip_id": "C0067",
+          "spoken_text": "Express में आप लिखते हैं Product.find(), Product.findById(), या product.save()।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "Express Mongoose query methods listed on left.",
+          "image_prompt": "Whiteboard code block, 16:9, left box 'Express / Mongoose' listing 'Product.find()', 'Product.findById(id)', 'product.save()'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0024",
+      "narration": "Spring Boot में बस एक interface बनाइए: interface ProductRepository extends JpaRepository<Product, Long>।",
+      "word_count": 13,
+      "estimated_duration": 6.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0068",
+          "spoken_text": "Spring Boot में बस एक interface बनाइए:",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Right panel showing empty Java interface.",
+          "image_prompt": "Whiteboard code block, 16:9, right box titled 'ProductRepository.java' showing 'public interface ProductRepository'."
+        },
+        {
+          "clip_id": "C0069",
+          "spoken_text": "interface ProductRepository extends JpaRepository<Product, Long>।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Full interface declaration with Product and Long highlighted.",
+          "image_prompt": "Whiteboard code snippet, 16:9, 'public interface ProductRepository extends JpaRepository<Product, Long> {}' with '<Product, Long>' circled in orange."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0025",
+      "narration": "यहाँ Product आपकी Entity है और Long उसकी ID का data type है। कमाल की बात—कोई SQL या function लिखने की ज़रूरत नहीं, Spring खुद findAll, findById, save और deleteById दे देता है।",
+      "word_count": 33,
+      "estimated_duration": 13.2,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0070",
+          "spoken_text": "यहाँ Product आपकी Entity है और Long उसकी ID का data type है।",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 5.2,
+          "scene_context": "Arrows labeling <Product, Long> parameters.",
+          "image_prompt": "Whiteboard diagram, 16:9, '<Product, Long>' with blue arrow from 'Product' to 'Entity Class' and orange arrow from 'Long' to 'ID Type'."
+        },
+        {
+          "clip_id": "C0071",
+          "spoken_text": "कमाल की बात—कोई SQL या function लिखने की ज़रूरत नहीं,",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Zero code inside curly braces {} with magic wand icon.",
+          "image_prompt": "Whiteboard doodle, 16:9, empty curly braces '{ }' with a magic wand sketch labeled 'Zero Implementation Code!'."
+        },
+        {
+          "clip_id": "C0072",
+          "spoken_text": "Spring खुद findAll, findById, save और deleteById दे देता है।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Built-in JPA methods popping out of the interface.",
+          "image_prompt": "Whiteboard sketch, 16:9, green boxes popping out of JpaRepository labeled 'findAll()', 'findById()', 'save()', 'deleteById()'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0026",
+      "narration": "Step 4: Service Layer। यह Express के service या helper functions की तरह है जहाँ आपका सारा business logic रहता है।",
+      "word_count": 21,
+      "estimated_duration": 8.6,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0073",
+          "spoken_text": "Step 4: Service Layer।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.8,
+          "scene_context": "Step 4 banner on whiteboard.",
+          "image_prompt": "Whiteboard header, 16:9, bold blue marker title 'STEP 4: Service Layer (Business Logic)'."
+        },
+        {
+          "clip_id": "C0074",
+          "spoken_text": "यह Express के service या helper functions की तरह है",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Express helper function mapped to Spring @Service.",
+          "image_prompt": "Whiteboard mapping, 16:9, 'Express: productService.js' with arrow to 'Spring Boot: @Service ProductService'."
+        },
+        {
+          "clip_id": "C0075",
+          "spoken_text": "जहाँ आपका सारा business logic रहता है।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Gear icons inside Service box representing logic.",
+          "image_prompt": "Whiteboard sketch, 16:9, box labeled 'ProductService' with hand-drawn gears inside and text 'Validations, Rules, Calculations'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0027",
+      "narration": "हम class पर @Service लगाएंगे और constructor के ज़रिए ProductRepository को inject कर लेंगे।",
+      "word_count": 14,
+      "estimated_duration": 6.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0076",
+          "spoken_text": "हम class पर @Service लगाएंगे",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "ProductService class annotated with @Service.",
+          "image_prompt": "Whiteboard code block, 16:9, '@Service' in green above 'public class ProductService {'."
+        },
+        {
+          "clip_id": "C0077",
+          "spoken_text": "और constructor के ज़रिए ProductRepository को inject कर लेंगे।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.8,
+          "scene_context": "Constructor injection code inside ProductService.",
+          "image_prompt": "Whiteboard code snippet, 16:9, 'private final ProductRepository repo;' and 'public ProductService(ProductRepository repo) { this.repo = repo; }'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0028",
+      "narration": "इसके अंदर हम पाँच साफ़ methods बनाएंगे: getAll, getById, create, update और delete—जो सीधे repo के methods को call करेंगे।",
+      "word_count": 21,
+      "estimated_duration": 8.6,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0078",
+          "spoken_text": "इसके अंदर हम पाँच साफ़ methods बनाएंगे:",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "ProductService box showing 5 method slots.",
+          "image_prompt": "Whiteboard sketch, 16:9, 'ProductService' box listing 5 numbered rows inside."
+        },
+        {
+          "clip_id": "C0079",
+          "spoken_text": "getAll, getById, create, update और delete—",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Method names written clearly in blue ink.",
+          "image_prompt": "Whiteboard code list, 16:9, '1. getAll()', '2. getById(id)', '3. create(p)', '4. update(id, p)', '5. delete(id)'."
+        },
+        {
+          "clip_id": "C0080",
+          "spoken_text": "जो सीधे repo के methods को call करेंगे।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Arrows from Service methods calling repo.findAll() and repo.save().",
+          "image_prompt": "Whiteboard diagram, 16:9, arrows from 'ProductService' calling 'repo.findAll()', 'repo.save()', 'repo.deleteById()' on right."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0029",
+      "narration": "अब आता है Step 5, सबसे मज़ेदार हिस्सा: Controller और CRUD Endpoints बनाना!",
+      "word_count": 13,
+      "estimated_duration": 5.8,
+      "is_scene_bridge": true,
+      "clips": [
+        {
+          "clip_id": "C0081",
+          "spoken_text": "अब आता है Step 5, सबसे मज़ेदार हिस्सा:",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Step 5 banner with star doodles.",
+          "image_prompt": "Whiteboard header, 16:9, orange marker banner reading 'STEP 5: Controller & CRUD Endpoints' with star doodles."
+        },
+        {
+          "clip_id": "C0082",
+          "spoken_text": "Controller और CRUD Endpoints बनाना!",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "HTTP verbs GET, POST, PUT, DELETE drawn as route signs.",
+          "image_prompt": "Whiteboard sketch, 16:9, colorful street-sign arrows labeled 'POST', 'GET', 'PUT', 'DELETE' pointing to '/api/products'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0030",
+      "narration": "Express में आप express.Router() बनाकर app.use('/api/products', router) लिखते हैं।",
+      "word_count": 10,
+      "estimated_duration": 4.6,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0083",
+          "spoken_text": "Express में आप express.Router() बनाकर",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Express router setup code on left.",
+          "image_prompt": "Whiteboard code block, 16:9, left box 'Express' showing 'const router = express.Router();'."
+        },
+        {
+          "clip_id": "C0084",
+          "spoken_text": "app.use('/api/products', router) लिखते हैं।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Base route mounting in Express.",
+          "image_prompt": "Whiteboard code block, 16:9, highlighted line 'app.use(\"/api/products\", router);' with label 'Base URL'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0031",
+      "narration": "Spring Boot में हम class के ऊपर @RestController और @RequestMapping('/api/products') लगाते हैं। @RestController का मतलब है कि हर method का return खुद JSON बन जाएगा, बिल्कुल res.json() की तरह।",
+      "word_count": 30,
+      "estimated_duration": 12.4,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0085",
+          "spoken_text": "Spring Boot में हम class के ऊपर @RestController और @RequestMapping('/api/products') लगाते हैं।",
+          "spoken_word_count": 12,
+          "estimated_spoken_duration": 5.0,
+          "scene_context": "ProductController annotated with @RestController and @RequestMapping.",
+          "image_prompt": "Whiteboard code block, 16:9, '@RestController' and '@RequestMapping(\"/api/products\")' in blue above 'public class ProductController'."
+        },
+        {
+          "clip_id": "C0086",
+          "spoken_text": "@RestController का मतलब है कि हर method का return खुद JSON बन जाएगा,",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 5.2,
+          "scene_context": "Java object passing through Jackson converter turning into JSON.",
+          "image_prompt": "Whiteboard sketch, 16:9, 'Java Object' box going through a funnel labeled '@RestController (Jackson)' coming out as '{ \"name\": \"Phone\" }'."
+        },
+        {
+          "clip_id": "C0087",
+          "spoken_text": "बिल्कुल res.json() की तरह।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Mapping @RestController directly to res.json().",
+          "image_prompt": "Whiteboard sketch, 16:9, '@RestController' with double arrow pointing to 'Express: res.json()' with green checkmark."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0032",
+      "narration": "Endpoint 1: CREATE — POST /api/products। Express में आप router.post('/', ...) लिखते हैं और req.body से डेटा निकालते हैं—बेशक express.json() middleware लगाने के बाद।",
+      "word_count": 23,
+      "estimated_duration": 9.8,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0088",
+          "spoken_text": "Endpoint 1: CREATE — POST /api/products।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Badge for Endpoint 1 CREATE.",
+          "image_prompt": "Whiteboard banner, 16:9, green badge 'POST /api/products' next to title '1. CREATE Product'."
+        },
+        {
+          "clip_id": "C0089",
+          "spoken_text": "Express में आप router.post('/', ...) लिखते हैं",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Express POST route code snippet.",
+          "image_prompt": "Whiteboard code block, 16:9, left box 'Express': 'router.post(\"/\", async (req, res) => {'."
+        },
+        {
+          "clip_id": "C0090",
+          "spoken_text": "और req.body से डेटा निकालते हैं—बेशक express.json() middleware लगाने के बाद।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Highlighted req.body and app.use(express.json()).",
+          "image_prompt": "Whiteboard code block, 16:9, 'const data = req.body;' and note 'Needs app.use(express.json())' in orange marker."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0033",
+      "narration": "Spring Boot में हम @PostMapping लगाते हैं और parameter में @RequestBody Product product लिखते हैं। Spring खुद incoming JSON को Product Java Object में बदल देता है।",
+      "word_count": 27,
+      "estimated_duration": 11.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0091",
+          "spoken_text": "Spring Boot में हम @PostMapping लगाते हैं",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Spring Boot @PostMapping annotation.",
+          "image_prompt": "Whiteboard code block, 16:9, right box 'Spring Boot' showing '@PostMapping' in green marker."
+        },
+        {
+          "clip_id": "C0092",
+          "spoken_text": "और parameter में @RequestBody Product product लिखते हैं।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Method signature with @RequestBody Product product.",
+          "image_prompt": "Whiteboard code snippet, 16:9, 'public ResponseEntity<Product> create(@RequestBody Product product)' with '@RequestBody' circled."
+        },
+        {
+          "clip_id": "C0093",
+          "spoken_text": "Spring खुद incoming JSON को Product Java Object में बदल देता है।",
+          "spoken_word_count": 12,
+          "estimated_spoken_duration": 4.8,
+          "scene_context": "JSON payload converting into Product Java object.",
+          "image_prompt": "Whiteboard diagram, 16:9, '{ \"name\": \"Laptop\", \"price\": 999 }' arrow into '@RequestBody (= req.body)' coming out as 'Product Object'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0034",
+      "narration": "और ResponseEntity.status(HttpStatus.CREATED).body(saved) लिखने से Express के res.status(201).json(saved) जैसा exact 201 Created response जाता है।",
+      "word_count": 16,
+      "estimated_duration": 7.4,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0094",
+          "spoken_text": "और ResponseEntity.status(HttpStatus.CREATED).body(saved) लिखने से",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Return statement using ResponseEntity.",
+          "image_prompt": "Whiteboard code snippet, 16:9, 'return ResponseEntity.status(HttpStatus.CREATED).body(saved);' highlighted in green."
+        },
+        {
+          "clip_id": "C0095",
+          "spoken_text": "Express के res.status(201).json(saved) जैसा exact 201 Created response जाता है।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.2,
+          "scene_context": "Mapping ResponseEntity to Express res.status(201).json().",
+          "image_prompt": "Whiteboard comparison, 16:9, 'ResponseEntity.status(201)' '=' 'res.status(201).json()' with output badge '201 Created'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0035",
+      "narration": "Endpoint 2: READ ALL — GET /api/products। Express में router.get('/', ...) से list लाकर res.json(products) भेजते हैं।",
+      "word_count": 16,
+      "estimated_duration": 7.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0096",
+          "spoken_text": "Endpoint 2: READ ALL — GET /api/products।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Blue badge for Endpoint 2 GET all.",
+          "image_prompt": "Whiteboard banner, 16:9, blue badge 'GET /api/products' next to title '2. READ ALL Products'."
+        },
+        {
+          "clip_id": "C0097",
+          "spoken_text": "Express में router.get('/', ...) से list लाकर res.json(products) भेजते हैं।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Express GET all route code.",
+          "image_prompt": "Whiteboard code block, 16:9, left box 'Express': 'router.get(\"/\", async (req, res) => { res.json(await Product.find()); });'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0036",
+      "narration": "Spring Boot में बस @GetMapping लिखें और service.getAll() से List<Product> return कर दें। अगर query parameter जैसे ?name=phone चाहिए, तो Express के req.query.name की जगह यहाँ @RequestParam आता है।",
+      "word_count": 30,
+      "estimated_duration": 12.2,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0098",
+          "spoken_text": "Spring Boot में बस @GetMapping लिखें और service.getAll() से List<Product> return कर दें।",
+          "spoken_word_count": 14,
+          "estimated_spoken_duration": 5.6,
+          "scene_context": "Spring Boot @GetMapping method returning List<Product>.",
+          "image_prompt": "Whiteboard code block, 16:9, right box 'Spring Boot': '@GetMapping' above 'public List<Product> getAll() { return service.getAll(); }'."
+        },
+        {
+          "clip_id": "C0099",
+          "spoken_text": "अगर query parameter जैसे ?name=phone चाहिए,",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "URL bar showing ?name=phone query parameter.",
+          "image_prompt": "Whiteboard sketch, 16:9, URL bar '/api/products?name=phone' with '?name=phone' underlined in orange."
+        },
+        {
+          "clip_id": "C0100",
+          "spoken_text": "तो Express के req.query.name की जगह यहाँ @RequestParam आता है।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Mapping req.query to @RequestParam.",
+          "image_prompt": "Whiteboard mapping, 16:9, 'Express: req.query.name' -> 'Spring: @RequestParam(required = false) String name'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0037",
+      "narration": "Endpoint 3: READ ONE — GET /api/products/{id}। Express में आप /:id और req.params.id इस्तेमाल करते हैं।",
+      "word_count": 16,
+      "estimated_duration": 7.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0101",
+          "spoken_text": "Endpoint 3: READ ONE — GET /api/products/{id}।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Badge for Endpoint 3 GET by ID.",
+          "image_prompt": "Whiteboard banner, 16:9, blue badge 'GET /api/products/{id}' next to title '3. READ ONE Product'."
+        },
+        {
+          "clip_id": "C0102",
+          "spoken_text": "Express में आप /:id और req.params.id इस्तेमाल करते हैं।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Express route with /:id and req.params.id.",
+          "image_prompt": "Whiteboard code block, 16:9, left box 'Express': 'router.get(\"/:id\", ... const id = req.params.id;)'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0038",
+      "narration": "Spring Boot में curly braces में {id} लिखते हैं: @GetMapping('/{id}') और parameter में @PathVariable Long id लगाते हैं। यानी Express का req.params बराबर Spring का @PathVariable!",
+      "word_count": 26,
+      "estimated_duration": 10.8,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0103",
+          "spoken_text": "Spring Boot में curly braces में {id} लिखते हैं: @GetMapping('/{id}')",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.2,
+          "scene_context": "Spring @GetMapping('/{id}') annotation.",
+          "image_prompt": "Whiteboard code block, 16:9, '@GetMapping(\"/{id}\")' with '{id}' highlighted in orange marker."
+        },
+        {
+          "clip_id": "C0104",
+          "spoken_text": "और parameter में @PathVariable Long id लगाते हैं।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Method signature showing @PathVariable Long id.",
+          "image_prompt": "Whiteboard code snippet, 16:9, 'public ResponseEntity<Product> getOne(@PathVariable Long id)' with arrow from '{id}' to 'Long id'."
+        },
+        {
+          "clip_id": "C0105",
+          "spoken_text": "यानी Express का req.params बराबर Spring का @PathVariable!",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Clear equation box: req.params = @PathVariable.",
+          "image_prompt": "Whiteboard summary box, 16:9, green box reading 'Express: req.params.id  ===  Spring: @PathVariable Long id'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0039",
+      "narration": "ध्यान दें कि findById हमें Optional<Product> देता है, ताकि अगर product ना मिले तो null crash ना हो और हम आराम से 404 Not Found भेज सकें।",
+      "word_count": 27,
+      "estimated_duration": 11.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0106",
+          "spoken_text": "ध्यान दें कि findById हमें Optional<Product> देता है,",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Gift box labeled Optional<Product> that may hold item or be empty.",
+          "image_prompt": "Whiteboard doodle, 16:9, hand-drawn box labeled 'Optional<Product>' showing two possibilities: 'Present' or 'Empty'."
+        },
+        {
+          "clip_id": "C0107",
+          "spoken_text": "ताकि अगर product ना मिले तो null crash ना हो",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Shield protecting app from NullPointerException.",
+          "image_prompt": "Whiteboard sketch, 16:9, shield blocking a red lightning bolt labeled 'NullPointerException Crash'."
+        },
+        {
+          "clip_id": "C0108",
+          "spoken_text": "और हम आराम से 404 Not Found भेज सकें।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.6,
+          "scene_context": "Code showing .orElseThrow() returning 404.",
+          "image_prompt": "Whiteboard code snippet, 16:9, 'repo.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());' with '404' badge."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0040",
+      "narration": "Endpoint 4: UPDATE — PUT /api/products/{id}। यहाँ हमें दोनों चीज़ें चाहिए: किसको update करना है (@PathVariable) और नया डेटा क्या है (@RequestBody)।",
+      "word_count": 22,
+      "estimated_duration": 9.4,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0109",
+          "spoken_text": "Endpoint 4: UPDATE — PUT /api/products/{id}।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Orange badge for Endpoint 4 UPDATE.",
+          "image_prompt": "Whiteboard banner, 16:9, orange badge 'PUT /api/products/{id}' next to title '4. UPDATE Product'."
+        },
+        {
+          "clip_id": "C0110",
+          "spoken_text": "यहाँ हमें दोनों चीज़ें चाहिए: किसको update करना है (@PathVariable)",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.2,
+          "scene_context": "PUT method signature highlighting @PathVariable Long id.",
+          "image_prompt": "Whiteboard code block, 16:9, '@PutMapping(\"/{id}\")' above 'update(@PathVariable Long id, ...)' with ID underlined."
+        },
+        {
+          "clip_id": "C0111",
+          "spoken_text": "और नया डेटा क्या है (@RequestBody)।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Second parameter @RequestBody Product data highlighted.",
+          "image_prompt": "Whiteboard code block, 16:9, full signature 'update(@PathVariable Long id, @RequestBody Product data)' mapped to 'req.params.id + req.body'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0041",
+      "narration": "Service में हम पुराना product ढूंढते हैं, उसका name और price update करते हैं, और फिर repo.save(existing) चलाते हैं। JPA खुद SQL UPDATE query चला देता है।",
+      "word_count": 27,
+      "estimated_duration": 11.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0112",
+          "spoken_text": "Service में हम पुराना product ढूंढते हैं, उसका name और price update करते हैं,",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 5.2,
+          "scene_context": "Service update steps setting name and price on existing entity.",
+          "image_prompt": "Whiteboard code block, 16:9, 'existing.setName(data.getName());' and 'existing.setPrice(data.getPrice());'."
+        },
+        {
+          "clip_id": "C0113",
+          "spoken_text": "और फिर repo.save(existing) चलाते हैं।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Highlighted repo.save(existing) call.",
+          "image_prompt": "Whiteboard code snippet, 16:9, 'return repo.save(existing);' circled in green marker."
+        },
+        {
+          "clip_id": "C0114",
+          "spoken_text": "JPA खुद SQL UPDATE query चला देता है।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.6,
+          "scene_context": "JPA translating save() into SQL UPDATE command.",
+          "image_prompt": "Whiteboard diagram, 16:9, 'repo.save(existing)' arrow into 'JPA' coming out as 'UPDATE products SET ... WHERE id=?'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0042",
+      "narration": "Endpoint 5: DELETE — DELETE /api/products/{id}। Express के router.delete('/:id') की तरह यहाँ @DeleteMapping('/{id}') लिखकर repo.deleteById(id) call करते हैं और 204 No Content लौटाते हैं।",
+      "word_count": 24,
+      "estimated_duration": 10.2,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0115",
+          "spoken_text": "Endpoint 5: DELETE — DELETE /api/products/{id}।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Red badge for Endpoint 5 DELETE.",
+          "image_prompt": "Whiteboard banner, 16:9, red badge 'DELETE /api/products/{id}' next to title '5. DELETE Product'."
+        },
+        {
+          "clip_id": "C0116",
+          "spoken_text": "Express के router.delete('/:id') की तरह यहाँ @DeleteMapping('/{id}') लिखकर",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.2,
+          "scene_context": "Side-by-side Express delete vs Spring @DeleteMapping.",
+          "image_prompt": "Whiteboard comparison, 16:9, left 'Express: router.delete(\"/:id\")' vs right 'Spring: @DeleteMapping(\"/{id}\")'."
+        },
+        {
+          "clip_id": "C0117",
+          "spoken_text": "repo.deleteById(id) call करते हैं और 204 No Content लौटाते हैं।",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Spring delete method returning ResponseEntity.noContent().build().",
+          "image_prompt": "Whiteboard code block, 16:9, 'service.delete(id); return ResponseEntity.noContent().build();' with red trash icon and '204 No Content'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0043",
+      "narration": "बधाई हो, बेसिक CRUD तैयार है! लेकिन real-world apps में दो और सुपर-इंपॉर्टेंट चीज़ें होती हैं: Validation और Global Error Handling।",
+      "word_count": 20,
+      "estimated_duration": 8.2,
+      "is_scene_bridge": true,
+      "clips": [
+        {
+          "clip_id": "C0118",
+          "spoken_text": "बधाई हो, बेसिक CRUD तैयार है!",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "All 5 CRUD endpoints checked off with green ticks.",
+          "image_prompt": "Whiteboard celebration sketch, 16:9, confetti doodles around checklist: 'POST', 'GET ALL', 'GET ONE', 'PUT', 'DELETE' all checked green."
+        },
+        {
+          "clip_id": "C0119",
+          "spoken_text": "लेकिन real-world apps में दो और सुपर-इंपॉर्टेंट चीज़ें होती हैं:",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Road sign pointing to Production Ready features.",
+          "image_prompt": "Whiteboard sketch, 16:9, signpost labeled 'Production Ready Upgrades' with two branching arrows."
+        },
+        {
+          "clip_id": "C0120",
+          "spoken_text": "Validation और Global Error Handling।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 1.8,
+          "scene_context": "Two shields labeled Validation and Global Error Handling.",
+          "image_prompt": "Whiteboard sketch, 16:9, two sturdy shields labeled '1. Validation & DTO' and '2. Global Error Handling'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0044",
+      "narration": "Express में आप Joi या Zod से input check करते हैं। Spring Boot में हम एक DTO class बनाते हैं और उस पर @NotBlank या @Positive लगाकर controller में @Valid लिख देते हैं।",
+      "word_count": 33,
+      "estimated_duration": 13.2,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0121",
+          "spoken_text": "Express में आप Joi या Zod से input check करते हैं।",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "Express validation with Joi/Zod icon on left.",
+          "image_prompt": "Whiteboard sketch, 16:9, left side 'Express: Joi / Zod Schema' checking incoming JSON at gate."
+        },
+        {
+          "clip_id": "C0122",
+          "spoken_text": "Spring Boot में हम एक DTO class बनाते हैं और उस पर @NotBlank या @Positive लगाकर",
+          "spoken_word_count": 16,
+          "estimated_spoken_duration": 6.4,
+          "scene_context": "ProductDTO class with @NotBlank and @Positive annotations.",
+          "image_prompt": "Whiteboard code block, 16:9, 'class ProductDTO { @NotBlank String name; @Positive Double price; }' in blue ink."
+        },
+        {
+          "clip_id": "C0123",
+          "spoken_text": "controller में @Valid लिख देते हैं।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Controller parameter using @Valid @RequestBody.",
+          "image_prompt": "Whiteboard code snippet, 16:9, 'create(@Valid @RequestBody ProductDTO dto)' with '@Valid' highlighted in green."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0045",
+      "narration": "DTO यानी Data Transfer Object—यह आपकी Database Entity को बाहर expose होने से बचाता है और गलत डेटा आने पर खुद 400 Bad Request भेज देता है।",
+      "word_count": 26,
+      "estimated_duration": 10.6,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0124",
+          "spoken_text": "DTO यानी Data Transfer Object—",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Envelope icon labeled DTO (Data Transfer Object).",
+          "image_prompt": "Whiteboard sketch, 16:9, sealed envelope sketch labeled 'DTO = Data Transfer Object'."
+        },
+        {
+          "clip_id": "C0125",
+          "spoken_text": "यह आपकी Database Entity को बाहर expose होने से बचाता है",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "Security barrier between Client DTO and internal Database Entity.",
+          "image_prompt": "Whiteboard diagram, 16:9, 'Client' <-> 'ProductDTO (Safe)' | wall | 'Product Entity (DB Internal)'."
+        },
+        {
+          "clip_id": "C0126",
+          "spoken_text": "और गलत डेटा आने पर खुद 400 Bad Request भेज देता है।",
+          "spoken_word_count": 12,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Bouncer rejecting negative price with 400 Bad Request.",
+          "image_prompt": "Whiteboard doodle, 16:9, bouncer holding stop sign '400 Bad Request' blocking '{ price: -50 }'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0046",
+      "narration": "Global Error Handling के लिए Express में आप आखिर में (err, req, res, next) middleware लगाते हैं। Spring Boot में यही काम @RestControllerAdvice और @ExceptionHandler करते हैं।",
+      "word_count": 26,
+      "estimated_duration": 10.8,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0127",
+          "spoken_text": "Global Error Handling के लिए Express में आप आखिर में (err, req, res, next) middleware लगाते हैं।",
+          "spoken_word_count": 16,
+          "estimated_spoken_duration": 6.4,
+          "scene_context": "Express error-handling middleware code on left.",
+          "image_prompt": "Whiteboard code block, 16:9, left side 'Express': 'app.use((err, req, res, next) => res.status(500)...)'."
+        },
+        {
+          "clip_id": "C0128",
+          "spoken_text": "Spring Boot में यही काम @RestControllerAdvice और @ExceptionHandler करते हैं।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "Spring GlobalExceptionHandler class with @RestControllerAdvice.",
+          "image_prompt": "Whiteboard code block, 16:9, right side 'Spring Boot': '@RestControllerAdvice' and '@ExceptionHandler(NotFoundException.class)' catching errors neatly."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0047",
+      "narration": "अब बात Configuration की। Express में आपके पास .env फ़ाइल होती है PORT और DB_URL के लिए।",
+      "word_count": 17,
+      "estimated_duration": 7.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0129",
+          "spoken_text": "अब बात Configuration की।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.8,
+          "scene_context": "Gear and wrench icon labeled Configuration.",
+          "image_prompt": "Whiteboard sketch, 16:9, wrench and gear doodle next to heading 'Configuration & Environment'."
+        },
+        {
+          "clip_id": "C0130",
+          "spoken_text": "Express में आपके पास .env फ़ाइल होती है PORT और DB_URL के लिए।",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 5.2,
+          "scene_context": "File sketch of .env with PORT and DB_URL.",
+          "image_prompt": "Whiteboard file sketch, 16:9, left file '.env' containing 'PORT=8080' and 'DB_URL=mongodb://...'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0048",
+      "narration": "Spring Boot में उसकी जगह application.properties या application.yml होती है, जहाँ आप server.port, datasource.url और jpa.hibernate.ddl-auto=update सेट करते हैं।",
+      "word_count": 18,
+      "estimated_duration": 8.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0131",
+          "spoken_text": "Spring Boot में उसकी जगह application.properties या application.yml होती है,",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "File sketch of application.properties mapped from .env.",
+          "image_prompt": "Whiteboard sketch, 16:9, arrow from '.env' to right file 'application.properties / .yml'."
+        },
+        {
+          "clip_id": "C0132",
+          "spoken_text": "जहाँ आप server.port, datasource.url और jpa.hibernate.ddl-auto=update सेट करते हैं।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Key-value lines inside application.properties.",
+          "image_prompt": "Whiteboard code block, 16:9, lines: 'server.port=8080', 'spring.datasource.url=...', 'spring.jpa.hibernate.ddl-auto=update'."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0049",
+      "narration": "एक बार ऐप रन करने के बाद आप Postman से POST, GET, PUT, और DELETE भेजकर टेस्ट कर सकते हैं—रिस्पॉन्स बिल्कुल Express API जैसा ही आएगा।",
+      "word_count": 26,
+      "estimated_duration": 10.6,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0133",
+          "spoken_text": "एक बार ऐप रन करने के बाद आप Postman से",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Postman client window sketch sending HTTP request.",
+          "image_prompt": "Whiteboard sketch, 16:9, browser/Postman card sending 'POST http://localhost:8080/api/products' with JSON body."
+        },
+        {
+          "clip_id": "C0134",
+          "spoken_text": "POST, GET, PUT, और DELETE भेजकर टेस्ट कर सकते हैं—",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "JSON response card returning 201 Created.",
+          "image_prompt": "Whiteboard sketch, 16:9, response card showing '201 Created' and '{ \"id\": 1, \"name\": \"Laptop\", \"price\": 999 }'."
+        },
+        {
+          "clip_id": "C0135",
+          "spoken_text": "रिस्पॉन्स बिल्कुल Express API जैसा ही आएगा।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Client unable to tell Express and Spring Boot JSON apart.",
+          "image_prompt": "Whiteboard doodle, 16:9, two identical JSON cards side by side labeled 'From Express' and 'From Spring Boot' with '=' sign."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0050",
+      "narration": "तो यह रही आपकी पूरी Express-to-Spring Boot Cheatsheet! अगली बार जब भी Spring Boot देखें, बस इसे Express के नज़रों से पढ़ें और कोड करना शुरू कर दें!",
+      "word_count": 28,
+      "estimated_duration": 12.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0136",
+          "spoken_text": "तो यह रही आपकी पूरी Express-to-Spring Boot Cheatsheet!",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Full recap cheatsheet table Part 1 on whiteboard.",
+          "image_prompt": "Whiteboard table, 16:9, titled 'Express -> Spring Boot Cheatsheet' rows: 'package.json -> pom.xml', 'Mongoose -> Entity + JPA', 'req.body -> @RequestBody'."
+        },
+        {
+          "clip_id": "C0137",
+          "spoken_text": "अगली बार जब भी Spring Boot देखें, बस इसे Express के नज़रों से पढ़ें",
+          "spoken_word_count": 14,
+          "estimated_spoken_duration": 5.6,
+          "scene_context": "Cheatsheet Part 2 showing params, routes, and config.",
+          "image_prompt": "Whiteboard table, 16:9, rows: 'req.params -> @PathVariable', 'req.query -> @RequestParam', 'res.json() -> @RestController', '.env -> application.properties'."
+        },
+        {
+          "clip_id": "C0138",
+          "spoken_text": "और कोड करना शुरू कर दें!",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Happy developer coding confidently on laptop.",
+          "image_prompt": "Whiteboard doodle, 16:9, smiling stick-figure developer giving thumbs up next to 'Happy Coding in Spring Boot!'."
+        }
+      ]
+    }
+  ]
 }

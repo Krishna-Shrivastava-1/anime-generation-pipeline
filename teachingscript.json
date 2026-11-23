@@ -1,1662 +1,320 @@
 {
-  "title": "RAG Explained: How Retrieval-Augmented Generation Works & Its Types",
-  "topic": "Interactive and beginner-friendly explanation of RAG (Retrieval-Augmented Generation), its complete indexing and query pipeline, and all major RAG types (Naive, Advanced, Modular, Agentic, GraphRAG, Multimodal).",
-  "aspect_ratio": "16:9",
-  "target_minutes": 10.4,
-  "total_beats": 50,
-  "total_clips": 150,
+  "title": "Law 1 of 48 Laws of Power: Never Outshine the Master",
+  "topic": "YouTube Short explaining Law 1 of The 48 Laws of Power (Never Outshine the Master) in Hindi through the story of Nicolas Fouquet and King Louis XIV, with modern corporate takeaway.",
+  "aspect_ratio": "9:16",
+  "target_minutes": 1.2,
+  "total_beats": 12,
+  "total_clips": 25,
   "global_style": {
-    "art_style": "Clean hand-drawn whiteboard explainer illustration style, crisp black ink marker sketches on a bright white whiteboard background, vibrant blue, green, orange, and red marker highlights, neat hand-lettered labels and simple diagrams, friendly stick figures, boxes, and directional arrows, bright even studio lighting, 16:9 widescreen framing.",
-    "negative_prompt": "dark background, photorealistic, 3D render, blurry, messy overlapping scribbles, garbled unreadable text, watermarks, low contrast"
+    "art_style": "High-detail realistic anime illustration style, cinematic dark-fantasy and modern-thriller aesthetic inspired by Ufotable and Makoto Shinkai, dramatic chiaroscuro lighting, rich shadows with glowing gold and crimson highlights, sharp expressive eyes, atmospheric dust particles, 9:16 vertical portrait framing.",
+    "negative_prompt": "cartoonish chibi, bright flat colors, blurry, distorted faces, extra fingers, garbled text, watermarks, horizontal framing, low resolution"
   },
   "beats": [
     {
       "beat_id": "B0001",
-      "narration": "Quick question for you: have you ever asked an AI a very specific question, and it answered with total confidence—except every single word was completely made up?",
-      "word_count": 28,
-      "estimated_duration": 11.4,
+      "narration": "एक शानदार पार्टी ने एक इंसान की ज़िंदगी बर्बाद कर दी— वो भी एक रात में।",
+      "word_count": 15,
+      "estimated_duration": 5.2,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0001",
-          "spoken_text": "Quick question for you: have you ever asked an AI a very specific question,",
-          "spoken_word_count": 14,
-          "estimated_spoken_duration": 5.4,
-          "scene_context": "Stick figure typing a question to a smiling robot on a whiteboard.",
-          "image_prompt": "Hand-drawn whiteboard marker illustration, 16:9 widescreen, bright white background, stick-figure user holding a question mark talking to a friendly robot sketch labeled 'LLM'."
+          "spoken_text": "एक शानदार पार्टी ने एक इंसान की ज़िंदगी बर्बाद कर दी—",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Close-up of a crystal champagne glass shattering in slow motion against dark palace shadows.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, dramatic close-up of a glowing crystal champagne glass shattering in mid-air, golden droplets suspended against dark moody palace chandeliers, intense cinematic lighting."
         },
         {
           "clip_id": "C0002",
-          "spoken_text": "and it answered with total confidence—",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Robot giving a big thumbs up with a polished speech bubble.",
-          "image_prompt": "Whiteboard marker drawing, 16:9, smiling robot giving a confident thumbs up beside a neat speech bubble labeled '100% Sure Answer!'."
-        },
-        {
-          "clip_id": "C0003",
-          "spoken_text": "except every single word was completely made up?",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Red buzzer and 'FAKE FACT!' stamp over the speech bubble.",
-          "image_prompt": "Whiteboard sketch, 16:9, red marker stamp reading 'COMPLETELY MADE UP!' stamped over the robot's speech bubble while user looks shocked."
+          "spoken_text": "वो भी एक रात में।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 1.8,
+          "scene_context": "A nobleman's silhouette standing behind heavy iron prison bars at dawn.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, silhouette of a fallen nobleman gripping cold iron prison bars, a single shaft of pale blue moonlight cutting through darkness, high contrast."
         }
       ]
     },
     {
       "beat_id": "B0002",
-      "narration": "Let's test this together. Imagine you own a cozy coffee shop called PixelCafe, and you ask a standard AI: what is PixelCafe's refund policy for spilled coffee?",
-      "word_count": 27,
-      "estimated_duration": 11.2,
+      "narration": "1661 में फ्रांस के फाइनेंस मिनिस्टर फूके ने अपने महल में एक रॉयल पार्टी रखी।",
+      "word_count": 15,
+      "estimated_duration": 5.4,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0004",
-          "spoken_text": "Let's test this together. Imagine you own a cozy coffee shop called PixelCafe,",
-          "spoken_word_count": 13,
-          "estimated_spoken_duration": 5.2,
-          "scene_context": "Cute hand-drawn coffee shop storefront labeled PixelCafe.",
-          "image_prompt": "Whiteboard marker illustration, 16:9, cozy hand-drawn cafe storefront with coffee cup sign labeled 'PixelCafe'."
-        },
-        {
-          "clip_id": "C0005",
-          "spoken_text": "and you ask a standard AI:",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Prompt box arrow pointing into a generic AI brain.",
-          "image_prompt": "Whiteboard sketch, 16:9, prompt box with cursor pointing toward a brain doodle labeled 'Standard LLM'."
-        },
-        {
-          "clip_id": "C0006",
-          "spoken_text": "what is PixelCafe's refund policy for spilled coffee?",
+          "clip_id": "C0003",
+          "spoken_text": "1661 में फ्रांस के फाइनेंस मिनिस्टर फूके ने",
           "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Speech bubble showing spilled coffee icon and question.",
-          "image_prompt": "Whiteboard sketch, 16:9, speech bubble showing spilled coffee cup doodle and text 'PixelCafe refund policy for spilled coffee?'."
+          "estimated_spoken_duration": 2.9,
+          "scene_context": "Sharp-featured 17th-century French minister adjusting his velvet coat.",
+          "image_prompt": "Realistic anime style, 9:16 vertical portrait, proud 17th-century French minister Nicolas Fouquet in rich dark blue velvet coat with gold embroidery, warm candlelight on half his face, sharp confident gaze."
+        },
+        {
+          "clip_id": "C0004",
+          "spoken_text": "अपने महल में एक रॉयल पार्टी रखी।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.5,
+          "scene_context": "Grand illuminated Baroque chateau reflecting in fountains at night.",
+          "image_prompt": "Realistic anime style, 9:16 vertical composition, majestic 17th-century French chateau glowing with hundreds of golden lantern lights, reflecting across dark mirror-like garden fountains at night."
         }
       ]
     },
     {
       "beat_id": "B0003",
-      "narration": "Right away, the AI hits two massive walls: first, it has a frozen knowledge cutoff, and second, it has never seen your private PDFs or company rules.",
-      "word_count": 27,
-      "estimated_duration": 11.4,
+      "narration": "चीफ गेस्ट थे खुद किंग लुईस चौदहवें। फूके राजा को इम्प्रेस करना चाहता था।",
+      "word_count": 14,
+      "estimated_duration": 5.0,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0007",
-          "spoken_text": "Right away, the AI hits two massive walls:",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Robot bumping into two brick walls sketched on whiteboard.",
-          "image_prompt": "Whiteboard doodle, 16:9, cartoon robot hitting two brick wall sketches labeled 'Wall 1' and 'Wall 2'."
-        },
-        {
-          "clip_id": "C0008",
-          "spoken_text": "first, it has a frozen knowledge cutoff,",
+          "clip_id": "C0005",
+          "spoken_text": "चीफ गेस्ट थे खुद किंग लुईस चौदहवें।",
           "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Calendar frozen inside an ice cube.",
-          "image_prompt": "Whiteboard sketch, 16:9, blue-marker ice cube freezing a calendar labeled 'Knowledge Cutoff'."
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Young King Louis XIV stepping through grand palace doors in royal crimson and gold.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, young King Louis XIV entering grand marble halls wearing regal crimson and gold attire, cold unreadable expression, dramatic backlight."
         },
         {
-          "clip_id": "C0009",
-          "spoken_text": "and second, it has never seen your private PDFs or company rules.",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 4.8,
-          "scene_context": "Locked folder labeled Private PDFs separated from the AI.",
-          "image_prompt": "Whiteboard sketch, 16:9, folder with padlock labeled 'Private PDFs & Rules' behind a dotted line away from the AI."
+          "clip_id": "C0006",
+          "spoken_text": "फूके राजा को इम्प्रेस करना चाहता था।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Fouquet bowing slightly with an eager, ambitious glint in his eyes.",
+          "image_prompt": "Realistic anime style, 9:16 vertical close-up, Fouquet bowing respectfully while glancing upward with ambitious, eager eyes bathed in warm golden chandelier glow."
         }
       ]
     },
     {
       "beat_id": "B0004",
-      "narration": "So instead of admitting it doesn't know, it guesses based on patterns—and that confident guessing is what we call an AI hallucination.",
-      "word_count": 22,
-      "estimated_duration": 9.6,
+      "narration": "उसने सोने के बर्तन और आतिशबाज़ी से दिखाया कि उसका महल राजा से भी ज़्यादा अमीर है।",
+      "word_count": 17,
+      "estimated_duration": 6.8,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0010",
-          "spoken_text": "So instead of admitting it doesn't know,",
+          "clip_id": "C0007",
+          "spoken_text": "उसने सोने के बर्तन और आतिशबाज़ी से",
           "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "Robot sweating and hiding an 'I don't know' sign.",
-          "image_prompt": "Whiteboard doodle, 16:9, robot sweating nervously, tossing away a small sign reading 'I don't know'."
+          "estimated_spoken_duration": 2.7,
+          "scene_context": "Extravagant banquet table of solid gold plates with fireworks exploding outside tall windows.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, lavish royal banquet table overflowing with gleaming solid gold plates and goblets, dazzling fireworks bursting outside towering arched windows."
         },
         {
-          "clip_id": "C0011",
-          "spoken_text": "it guesses based on patterns—",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Robot throwing darts blindfolded at words.",
-          "image_prompt": "Whiteboard sketch, 16:9, blindfolded robot tossing a dart at a board of random words labeled 'Next-Word Guessing'."
-        },
-        {
-          "clip_id": "C0012",
-          "spoken_text": "and that confident guessing is what we call an AI hallucination.",
+          "clip_id": "C0008",
+          "spoken_text": "दिखाया कि उसका महल राजा से भी ज़्यादा अमीर है।",
           "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Warning triangle with red label AI Hallucination.",
-          "image_prompt": "Whiteboard banner, 16:9, bold red marker warning triangle beside text 'AI Hallucination = Confident Guessing'."
+          "estimated_spoken_duration": 4.1,
+          "scene_context": "Fouquet standing proudly on a golden balcony overlooking cheering nobles, towering above the scene.",
+          "image_prompt": "Realistic anime style, 9:16 vertical low-angle shot, Fouquet standing triumphantly on an ornate marble balcony bathed in golden firework light, towering above awe-struck nobles below."
         }
       ]
     },
     {
       "beat_id": "B0005",
-      "narration": "Now you might be thinking: wait, why don't we just retrain the AI on our company documents so it remembers everything forever?",
-      "word_count": 22,
-      "estimated_duration": 9.4,
-      "is_scene_bridge": true,
+      "narration": "किंग लुईस चुपचाप मुस्कुराते रहे। लेकिन उनकी आँखों में जलन और अपमान की आग थी।",
+      "word_count": 15,
+      "estimated_duration": 6.2,
+      "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0013",
-          "spoken_text": "Now you might be thinking: wait,",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Stick figure raising a finger with a lightbulb thought bubble.",
-          "image_prompt": "Whiteboard doodle, 16:9, stick figure raising hand with thought bubble showing 'Wait a second...'."
-        },
-        {
-          "clip_id": "C0014",
-          "spoken_text": "why don't we just retrain the AI on our company documents",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.4,
-          "scene_context": "Documents funneling into a training gear box labeled Fine-Tuning.",
-          "image_prompt": "Whiteboard sketch, 16:9, stack of PDFs feeding into gears labeled 'Fine-Tuning / Retraining'."
-        },
-        {
-          "clip_id": "C0015",
-          "spoken_text": "so it remembers everything forever?",
+          "clip_id": "C0009",
+          "spoken_text": "किंग लुईस चुपचाप मुस्कुराते रहे।",
           "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Brain icon stuffed with paper files.",
-          "image_prompt": "Whiteboard sketch, 16:9, AI brain icon crammed full of little paper sheets."
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "King Louis XIV wearing a thin, cold, polite smile in the shadows.",
+          "image_prompt": "Realistic anime style, 9:16 vertical close-up, King Louis XIV standing silently in half-shadow with a calm, ice-cold faint smile on his lips."
+        },
+        {
+          "clip_id": "C0010",
+          "spoken_text": "लेकिन उनकी आँखों में जलन और अपमान की आग थी।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Extreme close-up of the King's eyes reflecting crimson fire with razor-sharp rage.",
+          "image_prompt": "Realistic anime style, 9:16 vertical extreme close-up of King Louis XIV's piercing eyes reflecting flickering crimson firelight, intense suppressed jealousy and cold fury."
         }
       ]
     },
     {
       "beat_id": "B0006",
-      "narration": "Great thought—until you look at the bill. Fine-tuning costs thousands of dollars, takes hours, and if PixelCafe updates its menu tomorrow, your model is already outdated.",
-      "word_count": 26,
-      "estimated_duration": 11.0,
+      "narration": "पार्टी के अगले ही दिन राजा ने फूके को अरेस्ट कर लिया, और उम्रकैद की जेल में डाल दिया।",
+      "word_count": 19,
+      "estimated_duration": 6.6,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0016",
-          "spoken_text": "Great thought—until you look at the bill.",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "Stick figure gasping at a huge dollar sign receipt.",
-          "image_prompt": "Whiteboard doodle, 16:9, stick figure sweating looking at a long receipt with red '$$$' signs."
+          "clip_id": "C0011",
+          "spoken_text": "पार्टी के अगले ही दिन",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.0,
+          "scene_context": "Cold grey morning fog rolling over the silent, empty chateau.",
+          "image_prompt": "Realistic anime style, 9:16 vertical composition, cold misty grey dawn sky over the silent French palace, dying embers and scattered ashes in the courtyard."
         },
         {
-          "clip_id": "C0017",
-          "spoken_text": "Fine-tuning costs thousands of dollars, takes hours,",
+          "clip_id": "C0012",
+          "spoken_text": "राजा ने फूके को अरेस्ट कर लिया,",
           "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Clock spinning fast next to GPU server stack.",
-          "image_prompt": "Whiteboard sketch, 16:9, hourglass and clock next to text 'Slow & Expensive Retraining'."
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Royal musketeer guards clamping iron shackles onto a shocked Fouquet.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, armored royal guards seizing shocked Nicolas Fouquet by the shoulders, heavy iron chains snapping shut in sharp foreground."
         },
         {
-          "clip_id": "C0018",
-          "spoken_text": "and if PixelCafe updates its menu tomorrow, your model is already outdated.",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 4.8,
-          "scene_context": "New menu page appearing while old trained model gets red X.",
-          "image_prompt": "Whiteboard sketch, 16:9, fresh page 'Updated Menu' next to red 'OUTDATED!' stamp on the trained model."
+          "clip_id": "C0013",
+          "spoken_text": "और उम्रकैद की जेल में डाल दिया।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.0,
+          "scene_context": "Heavy dark stone dungeon door slamming shut into pitch darkness.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, massive dark fortress dungeon door closing slowly on Fouquet sitting alone in dim stone cell shadows."
         }
       ]
     },
     {
       "beat_id": "B0007",
-      "narration": "Okay, second idea: what if we just copy-paste our entire 500-page handbook straight into the chat prompt every single time?",
-      "word_count": 20,
-      "estimated_duration": 8.8,
-      "is_scene_bridge": false,
+      "narration": "क्यों? क्योंकि उसने पावर का पहला नियम तोड़ दिया। ताकतवर लोग खुद से ज़्यादा चमकने वाले को बर्दाश्त नहीं करते।",
+      "word_count": 19,
+      "estimated_duration": 6.8,
+      "is_scene_bridge": true,
       "clips": [
         {
-          "clip_id": "C0019",
-          "spoken_text": "Okay, second idea:",
-          "spoken_word_count": 3,
-          "estimated_spoken_duration": 1.6,
-          "scene_context": "Number 2 lightbulb doodle.",
-          "image_prompt": "Whiteboard doodle, 16:9, orange lightbulb labeled 'Idea #2: Copy-Paste Everything!'."
-        },
-        {
-          "clip_id": "C0020",
-          "spoken_text": "what if we just copy-paste our entire 500-page handbook",
+          "clip_id": "C0014",
+          "spoken_text": "क्यों? क्योंकि उसने पावर का पहला नियम तोड़ दिया।",
           "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Giant 500-page book being shoved into a tiny chat prompt box.",
-          "image_prompt": "Whiteboard sketch, 16:9, giant thick book labeled '500 Pages' crammed into a small 'Prompt Box'."
+          "estimated_spoken_duration": 3.3,
+          "scene_context": "A cracked golden chess king piece towering over a shattered knight piece.",
+          "image_prompt": "Realistic anime style, 9:16 vertical macro shot, dark obsidian chessboard with a towering golden King piece casting a razor shadow over a fallen, shattered Knight piece."
         },
         {
-          "clip_id": "C0021",
-          "spoken_text": "straight into the chat prompt every single time?",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Repeated arrows pasting the giant book over and over.",
-          "image_prompt": "Whiteboard diagram, 16:9, loop arrow pasting '500 Pages' repeatedly into chat window labeled 'Every Query'."
+          "clip_id": "C0015",
+          "spoken_text": "ताकतवर लोग खुद से ज़्यादा चमकने वाले को बर्दाश्त नहीं करते।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.5,
+          "scene_context": "A glowing candle flame being snuffed out by a giant shadowed hand.",
+          "image_prompt": "Realistic anime style, 9:16 vertical composition, a bright golden candle flame suddenly crushed by a dark gloved shadow hand, curling smoke rising in silence."
         }
       ]
     },
     {
       "beat_id": "B0008",
-      "narration": "Two problems happen fast: it becomes painfully slow and expensive, and the AI suffers from 'Lost in the Middle'—quietly ignoring key facts buried on page 247.",
-      "word_count": 26,
-      "estimated_duration": 11.2,
+      "narration": "यही है 48 Laws of Power का Law 1: Never Outshine the Master—बॉस से ज़्यादा मत चमको।",
+      "word_count": 17,
+      "estimated_duration": 7.4,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0022",
-          "spoken_text": "Two problems happen fast: it becomes painfully slow and expensive,",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Turtle icon and burning dollar bill next to huge prompt.",
-          "image_prompt": "Whiteboard sketch, 16:9, slow snail doodle and red '$$$' icon beside label 'High Token Cost & Latency'."
-        },
-        {
-          "clip_id": "C0023",
-          "spoken_text": "and the AI suffers from 'Lost in the Middle'—",
+          "clip_id": "C0016",
+          "spoken_text": "यही है 48 Laws of Power का Law 1:",
           "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "U-shaped attention curve dipping in the middle.",
-          "image_prompt": "Whiteboard graph, 16:9, curve high on start and end, dipping low in center labeled 'Lost in the Middle'."
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Dramatic dark leather-bound book glowing with bold golden text 'LAW 1'.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, ancient dark crimson-and-black book resting on dark stone, glowing gold embossed emblem reading 'LAW 1' in sharp focus."
         },
         {
-          "clip_id": "C0024",
-          "spoken_text": "quietly ignoring key facts buried on page 247.",
+          "clip_id": "C0017",
+          "spoken_text": "Never Outshine the Master—बॉस से ज़्यादा मत चमको।",
           "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Important refund rule buried deep in middle pages missed by robot.",
-          "image_prompt": "Whiteboard sketch, 16:9, tiny highlighted note 'Page 247: Refund Rule' buried under messy page doodles."
+          "estimated_spoken_duration": 4.2,
+          "scene_context": "Split visual of a golden sun eclipsing a smaller silver star.",
+          "image_prompt": "Realistic anime style, 9:16 vertical visual metaphor, a radiant golden crown-sun towering in upper frame while a smaller silver star dims respectfully beneath it, moody dark atmosphere."
         }
       ]
     },
     {
       "beat_id": "B0009",
-      "narration": "So if retraining is too rigid and pasting everything is too messy, what is the smart solution? Enter RAG—Retrieval-Augmented Generation!",
-      "word_count": 20,
-      "estimated_duration": 9.0,
-      "is_scene_bridge": true,
+      "narration": "आज के ऑफिस में भी यही होता है। मीटिंग में बॉस को गलत साबित करके हीरो बनोगे,",
+      "word_count": 17,
+      "estimated_duration": 6.6,
+      "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0025",
-          "spoken_text": "So if retraining is too rigid and pasting everything is too messy,",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 4.8,
-          "scene_context": "Two crossed-out boxes: Retraining and Giant Prompt.",
-          "image_prompt": "Whiteboard sketch, 16:9, two boxes with red X marks: 'Retraining' and '500-Page Prompt'."
+          "clip_id": "C0018",
+          "spoken_text": "आज के ऑफिस में भी यही होता है।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Modern glass corporate skyscraper looming in dramatic twilight rain.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, sleek dark glass corporate skyscraper at night in rain, glowing boardroom windows high near the top floor."
         },
         {
-          "clip_id": "C0026",
-          "spoken_text": "what is the smart solution?",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "Spotlight shining on an open space.",
-          "image_prompt": "Whiteboard sketch, 16:9, big blue question mark turning into a bright star."
-        },
-        {
-          "clip_id": "C0027",
-          "spoken_text": "Enter RAG—Retrieval-Augmented Generation!",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 2.2,
-          "scene_context": "Bold hero banner reading RAG.",
-          "image_prompt": "Whiteboard banner, 16:9, bold green and blue hand-lettered title 'RAG: Retrieval-Augmented Generation' with spark doodles."
+          "clip_id": "C0019",
+          "spoken_text": "मीटिंग में बॉस को गलत साबित करके हीरो बनोगे,",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.8,
+          "scene_context": "Confident young employee interrupting his manager in a tense glass boardroom.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, sharp young corporate employee in a dark suit standing confidently at a sleek conference table, pointing at a screen while colleagues watch tensely."
         }
       ]
     },
     {
       "beat_id": "B0010",
-      "narration": "Forget the fancy name for a second. Think of standard AI as taking a closed-book exam—it only has whatever it memorized last year.",
-      "word_count": 23,
-      "estimated_duration": 9.8,
+      "narration": "तो प्रमोशन नहीं, सिर्फ़ उनकी इनसिक्योरिटी मिलेगी। आपका टैलेंट ही आपका दुश्मन बन जाएगा।",
+      "word_count": 14,
+      "estimated_duration": 6.0,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0028",
-          "spoken_text": "Forget the fancy name for a second.",
+          "clip_id": "C0020",
+          "spoken_text": "तो प्रमोशन नहीं, सिर्फ़ उनकी इनसिक्योरिटी मिलेगी।",
           "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Hand waving away complex jargon cloud.",
-          "image_prompt": "Whiteboard doodle, 16:9, simple stick figure wiping away complicated buzzword clouds."
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "The boss sitting at the head of the table, eyes narrowed in silent resentment.",
+          "image_prompt": "Realistic anime style, 9:16 vertical close-up, older corporate boss in dimly lit boardroom clenching his fist subtly on the table, cold shadowed eyes narrowed in silent insecurity."
         },
         {
-          "clip_id": "C0029",
-          "spoken_text": "Think of standard AI as taking a closed-book exam—",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Robot sitting at a school desk with a closed book.",
-          "image_prompt": "Whiteboard sketch, 16:9, robot sitting at a desk with a padlocked textbook labeled 'Closed-Book Exam (Standard LLM)'."
-        },
-        {
-          "clip_id": "C0030",
-          "spoken_text": "it only has whatever it memorized last year.",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Thought bubble showing faded old memories.",
-          "image_prompt": "Whiteboard sketch, 16:9, robot thought bubble showing dusty old sticky notes labeled 'Old Training Data'."
+          "clip_id": "C0021",
+          "spoken_text": "आपका टैलेंट ही आपका दुश्मन बन जाएगा।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Employee standing alone under harsh spotlight while red target-like shadow lines close in.",
+          "image_prompt": "Realistic anime style, 9:16 vertical composition, young employee standing isolated in dark office corridor with sharp crimson shadow streaks behind him, dramatic thriller mood."
         }
       ]
     },
     {
       "beat_id": "B0011",
-      "narration": "RAG turns that into an open-book exam with sticky tabs! Retrieval finds the exact page, Augmented attaches it to your question, and Generation writes the accurate answer.",
-      "word_count": 28,
-      "estimated_duration": 12.0,
+      "narration": "इसलिए क्रेडिट हमेशा ऊपर पास करो, और बॉस को अपनी वजह से बड़ा दिखने दो।",
+      "word_count": 15,
+      "estimated_duration": 6.2,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0031",
-          "spoken_text": "RAG turns that into an open-book exam with sticky tabs!",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Robot smiling over an open book with colorful sticky tabs.",
-          "image_prompt": "Whiteboard sketch, 16:9, happy robot looking at an open binder with colorful sticky tabs labeled 'RAG = Open-Book Exam'."
-        },
-        {
-          "clip_id": "C0032",
-          "spoken_text": "Retrieval finds the exact page, Augmented attaches it to your question,",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.8,
-          "scene_context": "Two boxes: R = Search exact page, A = Attach to prompt.",
-          "image_prompt": "Whiteboard diagram, 16:9, 'R: Retrieval (Find Page)' -> 'A: Augmented (Attach to Prompt)' in blue and orange marker."
-        },
-        {
-          "clip_id": "C0033",
-          "spoken_text": "and Generation writes the accurate answer.",
+          "clip_id": "C0022",
+          "spoken_text": "इसलिए क्रेडिट हमेशा ऊपर पास करो,",
           "spoken_word_count": 6,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "Third box G = Write final grounded answer.",
-          "image_prompt": "Whiteboard diagram, 16:9, third green box 'G: Generation (Write Grounded Answer)' with a checkmark."
+          "estimated_spoken_duration": 2.5,
+          "scene_context": "Strategist employee quietly sliding a glowing presentation file toward his boss.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, calm intelligent employee in a tailored suit subtly sliding a golden-edged report across a dark desk toward his boss with a poised expression."
+        },
+        {
+          "clip_id": "C0023",
+          "spoken_text": "और बॉस को अपनी वजह से बड़ा दिखने दो।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.7,
+          "scene_context": "Boss smiling proudly under boardroom spotlight while the strategist watches calmly from the side.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, boss speaking proudly under warm spotlight on stage while the sharp-eyed strategist watches calmly from the cool blue shadows."
         }
       ]
     },
     {
       "beat_id": "B0012",
-      "narration": "Now, how does this actually work under the hood? Let's build PixelCafe's RAG system together in two clear phases: first offline preparation, then live question answering.",
-      "word_count": 26,
-      "estimated_duration": 11.0,
-      "is_scene_bridge": true,
+      "narration": "जब तक आपका वक्त ना आए, परछाई में खेलो। ऐसे ही पावर रूल्स के लिए फॉलो करो।",
+      "word_count": 17,
+      "estimated_duration": 5.8,
+      "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0034",
-          "spoken_text": "Now, how does this actually work under the hood?",
+          "clip_id": "C0024",
+          "spoken_text": "जब तक आपका वक्त ना आए, परछाई में खेलो।",
           "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.6,
-          "scene_context": "Car hood opening to reveal neat machine gears.",
-          "image_prompt": "Whiteboard doodle, 16:9, lifting a cover labeled 'Under the Hood' to reveal clean pipeline boxes."
-        },
-        {
-          "clip_id": "C0035",
-          "spoken_text": "Let's build PixelCafe's RAG system together in two clear phases:",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Two-phase roadmap drawn on whiteboard.",
-          "image_prompt": "Whiteboard roadmap, 16:9, two big columns: 'Phase 1: Offline Prep' and 'Phase 2: Live Answering'."
-        },
-        {
-          "clip_id": "C0036",
-          "spoken_text": "first offline preparation, then live question answering.",
-          "spoken_word_count": 7,
           "estimated_spoken_duration": 3.2,
-          "scene_context": "Highlighted Phase 1 Indexing and Phase 2 Querying.",
-          "image_prompt": "Whiteboard diagram, 16:9, Phase 1 labeled 'Indexing (Before User Asks)' and Phase 2 labeled 'Querying (Live Chat)'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0013",
-      "narration": "Phase 1 starts before any customer ever types a word. Step 1: Load your data—PDF handbooks, Notion pages, Google Docs, or website FAQs—into clean plain text.",
-      "word_count": 26,
-      "estimated_duration": 11.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0037",
-          "spoken_text": "Phase 1 starts before any customer ever types a word.",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Empty chat window with prep factory running in background.",
-          "image_prompt": "Whiteboard sketch, 16:9, banner 'Phase 1: Indexing Pipeline' with sleeping chat icon on side."
+          "scene_context": "Sharp-eyed protagonist half-lit in golden light stepping quietly out of deep shadow.",
+          "image_prompt": "Realistic anime style, 9:16 vertical extreme close-up, composed strategist half-veiled in deep shadow, one eye catching a sharp golden light glint, unreadable power aura."
         },
         {
-          "clip_id": "C0038",
-          "spoken_text": "Step 1: Load your data—PDF handbooks, Notion pages, Google Docs, or website FAQs—",
-          "spoken_word_count": 13,
-          "estimated_spoken_duration": 5.2,
-          "scene_context": "Icons for PDF, Notion, Docs, and Web flowing into loader.",
-          "image_prompt": "Whiteboard sketch, 16:9, icons labeled 'PDF', 'Notion', 'Docs', 'Web' pointing into box 'Step 1: Document Loader'."
-        },
-        {
-          "clip_id": "C0039",
-          "spoken_text": "into clean plain text.",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 1.6,
-          "scene_context": "Clean text sheet coming out of the loader.",
-          "image_prompt": "Whiteboard sketch, 16:9, neat paper scroll coming out of Document Loader labeled 'Clean Text'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0014",
-      "narration": "Step 2: Chunking! Remember, we don't want to hand the AI a giant 500-page blob. So we grab a pair of scissors and slice the text into small, bite-sized chunks.",
-      "word_count": 30,
-      "estimated_duration": 12.2,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0040",
-          "spoken_text": "Step 2: Chunking! Remember, we don't want to hand the AI a giant 500-page blob.",
-          "spoken_word_count": 15,
-          "estimated_spoken_duration": 5.8,
-          "scene_context": "Step 2 banner showing giant document next to scissors.",
-          "image_prompt": "Whiteboard header, 16:9, title 'Step 2: Chunking' with a pair of hand-drawn scissors next to a tall document."
-        },
-        {
-          "clip_id": "C0041",
-          "spoken_text": "So we grab a pair of scissors and slice the text",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.4,
-          "scene_context": "Scissors cutting long text scroll into neat smaller cards.",
-          "image_prompt": "Whiteboard doodle, 16:9, orange scissors snipping a long paper scroll into uniform small rectangles."
-        },
-        {
-          "clip_id": "C0042",
-          "spoken_text": "into small, bite-sized chunks.",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "Three labeled cards: Chunk 1, Chunk 2, Chunk 3.",
-          "image_prompt": "Whiteboard sketch, 16:9, neat cards labeled 'Chunk 1 (300 words)', 'Chunk 2 (300 words)', 'Chunk 3 (300 words)'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0015",
-      "narration": "Wait—here is a sneaky trap! What if a sentence about spilled coffee gets sliced right in half between Chunk 1 and Chunk 2?",
-      "word_count": 23,
-      "estimated_duration": 9.8,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0043",
-          "spoken_text": "Wait—here is a sneaky trap!",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Red exclamation mark warning next to scissors.",
-          "image_prompt": "Whiteboard doodle, 16:9, red exclamation warning triangle labeled 'Chunking Trap!'."
-        },
-        {
-          "clip_id": "C0044",
-          "spoken_text": "What if a sentence about spilled coffee gets sliced right in half",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 4.8,
-          "scene_context": "Sentence literally cut mid-thought across two boxes.",
-          "image_prompt": "Whiteboard sketch, 16:9, scissors cutting a sentence in half: 'Spilled drinks are...' | '...refunded within 15 min'."
-        },
-        {
-          "clip_id": "C0045",
-          "spoken_text": "between Chunk 1 and Chunk 2?",
-          "spoken_word_count": 6,
+          "clip_id": "C0025",
+          "spoken_text": "ऐसे ही पावर रूल्स के लिए फॉलो करो।",
+          "spoken_word_count": 8,
           "estimated_spoken_duration": 2.6,
-          "scene_context": "Separated Chunk 1 and Chunk 2 losing context.",
-          "image_prompt": "Whiteboard sketch, 16:9, Chunk 1 and Chunk 2 pulled apart with broken meaning arrow between them."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0016",
-      "narration": "That's why we use Chunk Overlap! We repeat the last 50 words of Chunk 1 at the start of Chunk 2, keeping every idea intact across boundaries.",
-      "word_count": 27,
-      "estimated_duration": 11.4,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0046",
-          "spoken_text": "That's why we use Chunk Overlap!",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Overlapping brackets connecting Chunk 1 and Chunk 2.",
-          "image_prompt": "Whiteboard diagram, 16:9, bold green label 'Solution: Chunk Overlap' above two overlapping rectangle frames."
-        },
-        {
-          "clip_id": "C0047",
-          "spoken_text": "We repeat the last 50 words of Chunk 1 at the start of Chunk 2,",
-          "spoken_word_count": 15,
-          "estimated_spoken_duration": 5.8,
-          "scene_context": "Highlighted shared section appearing in both Chunk 1 and Chunk 2.",
-          "image_prompt": "Whiteboard sketch, 16:9, orange shaded overlap strip labeled '50-Word Overlap' shared by Chunk 1 and Chunk 2."
-        },
-        {
-          "clip_id": "C0048",
-          "spoken_text": "keeping every idea intact across boundaries.",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Green checkmark showing complete intact sentence.",
-          "image_prompt": "Whiteboard sketch, 16:9, green checkmark over complete sentence inside Chunk 2."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0017",
-      "narration": "Now Step 3, and this is pure magic: Embeddings! Computers cannot feel the meaning of English words—to a computer, 'refund' and 'money back' look like totally different letters.",
-      "word_count": 28,
-      "estimated_duration": 12.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0049",
-          "spoken_text": "Now Step 3, and this is pure magic: Embeddings!",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 4.0,
-          "scene_context": "Step 3 banner with magic wand and numbers.",
-          "image_prompt": "Whiteboard header, 16:9, blue title 'Step 3: Embeddings (The Meaning Translator)' with spark doodles."
-        },
-        {
-          "clip_id": "C0050",
-          "spoken_text": "Computers cannot feel the meaning of English words—",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Computer monitor staring blankly at text.",
-          "image_prompt": "Whiteboard doodle, 16:9, computer monitor with confused eyes looking at word 'Refund?'."
-        },
-        {
-          "clip_id": "C0051",
-          "spoken_text": "to a computer, 'refund' and 'money back' look like totally different letters.",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 4.6,
-          "scene_context": "Two words 'refund' and 'money back' with not-equals sign.",
-          "image_prompt": "Whiteboard sketch, 16:9, text '\"refund\" != \"money back\" (Zero matching letters!)' in red ink."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0018",
-      "narration": "So we pass each chunk through an Embedding Model, which translates human meaning into a list of numbers called a Vector—like [0.82, -0.14, 0.55].",
-      "word_count": 24,
-      "estimated_duration": 10.6,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0052",
-          "spoken_text": "So we pass each chunk through an Embedding Model,",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Text chunk entering a machine box labeled Embedding Model.",
-          "image_prompt": "Whiteboard diagram, 16:9, 'Chunk 1' arrow entering box labeled 'Embedding Model'."
-        },
-        {
-          "clip_id": "C0053",
-          "spoken_text": "which translates human meaning into a list of numbers",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.6,
-          "scene_context": "Machine outputting glowing array of decimals.",
-          "image_prompt": "Whiteboard diagram, 16:9, arrow exiting Embedding Model turning text into numbers."
-        },
-        {
-          "clip_id": "C0054",
-          "spoken_text": "called a Vector—like [0.82, -0.14, 0.55].",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Number array labeled Vector.",
-          "image_prompt": "Whiteboard sketch, 16:9, bold green array '[0.82, -0.14, 0.55, ...]' labeled 'Vector (Meaning Coordinates)'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0019",
-      "narration": "Think of a Vector like GPS coordinates on a meaning map! On this map, 'coffee' and 'latte' land right next to each other, and 'refund' sits right beside 'money back'.",
-      "word_count": 30,
-      "estimated_duration": 12.4,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0055",
-          "spoken_text": "Think of a Vector like GPS coordinates on a meaning map!",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.4,
-          "scene_context": "2D X-Y coordinate map sketch labeled Meaning Map.",
-          "image_prompt": "Whiteboard sketch, 16:9, simple X-Y graph axis titled 'Meaning Map (Vector Space)' with GPS pin icons."
-        },
-        {
-          "clip_id": "C0056",
-          "spoken_text": "On this map, 'coffee' and 'latte' land right next to each other,",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 4.8,
-          "scene_context": "Two close dots on map labeled coffee and latte.",
-          "image_prompt": "Whiteboard graph, 16:9, two green dots clustered closely together labeled 'coffee' and 'latte' in top-right corner."
-        },
-        {
-          "clip_id": "C0057",
-          "spoken_text": "and 'refund' sits right beside 'money back'.",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Two close dots on opposite corner labeled refund and money back.",
-          "image_prompt": "Whiteboard graph, 16:9, two blue dots clustered closely together labeled 'refund' and 'money back' far from 'coffee'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0020",
-      "narration": "Step 4: Store all these vectors—along with their original text chunks—inside a specialized Vector Database like Pinecone, Chroma, or Qdrant, built for instant similarity search.",
-      "word_count": 25,
-      "estimated_duration": 10.8,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0058",
-          "spoken_text": "Step 4: Store all these vectors—along with their original text chunks—",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.6,
-          "scene_context": "Vectors paired with text cards entering a database cylinder.",
-          "image_prompt": "Whiteboard diagram, 16:9, paired cards '[0.82, -0.14] + Chunk Text' flowing into a tall database cylinder."
-        },
-        {
-          "clip_id": "C0059",
-          "spoken_text": "inside a specialized Vector Database like Pinecone, Chroma, or Qdrant,",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Database cylinder labeled Vector DB with tool names.",
-          "image_prompt": "Whiteboard sketch, 16:9, database cylinder labeled 'Vector Database (Pinecone / Chroma / Qdrant)'."
-        },
-        {
-          "clip_id": "C0060",
-          "spoken_text": "built for instant similarity search.",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "Lightning bolt and magnifying glass on Vector DB.",
-          "image_prompt": "Whiteboard doodle, 16:9, lightning bolt next to magnifying glass on database labeled 'Millisecond Search'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0021",
-      "narration": "Awesome! Phase 1 is complete—your PixelCafe knowledge is indexed and ready. Now let's hit play on Phase 2: what happens the moment a real customer asks a question?",
-      "word_count": 29,
-      "estimated_duration": 11.8,
-      "is_scene_bridge": true,
-      "clips": [
-        {
-          "clip_id": "C0061",
-          "spoken_text": "Awesome! Phase 1 is complete—your PixelCafe knowledge is indexed and ready.",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.6,
-          "scene_context": "Phase 1 box getting a big green checkmark.",
-          "image_prompt": "Whiteboard banner, 16:9, 'Phase 1: Indexing COMPLETE' with big green checkmark."
-        },
-        {
-          "clip_id": "C0062",
-          "spoken_text": "Now let's hit play on Phase 2:",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Green play button labeled Phase 2 Live Query.",
-          "image_prompt": "Whiteboard sketch, 16:9, big green play-button triangle labeled 'Phase 2: Live Query Pipeline'."
-        },
-        {
-          "clip_id": "C0063",
-          "spoken_text": "what happens the moment a real customer asks a question?",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.4,
-          "scene_context": "Customer walking up with a question bubble.",
-          "image_prompt": "Whiteboard doodle, 16:9, stick-figure customer holding a spilled cup typing on phone."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0022",
-      "narration": "A customer types: 'Can I get my money back if I drop my latte?' Notice they didn't use the words 'refund' or 'coffee' at all!",
-      "word_count": 25,
-      "estimated_duration": 10.6,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0064",
-          "spoken_text": "A customer types: 'Can I get my money back if I drop my latte?'",
-          "spoken_word_count": 13,
-          "estimated_spoken_duration": 5.2,
-          "scene_context": "Chat input box showing the customer's exact wording.",
-          "image_prompt": "Whiteboard sketch, 16:9, chat box showing '\"Can I get my money back if I drop my latte?\"'."
-        },
-        {
-          "clip_id": "C0065",
-          "spoken_text": "Notice they didn't use the words",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Magnifying glass highlighting 'money back' and 'latte'.",
-          "image_prompt": "Whiteboard sketch, 16:9, orange circles around words 'money back' and 'latte' in the query."
-        },
-        {
-          "clip_id": "C0066",
-          "spoken_text": "'refund' or 'coffee' at all!",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Crossed out keywords showing old keyword search would fail.",
-          "image_prompt": "Whiteboard doodle, 16:9, note 'No exact match for \"refund\" or \"coffee\"!' with red warning arrow."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0023",
-      "narration": "Step 5: We send the customer's question through the exact same Embedding Model, turning their question into a fresh Query Vector.",
-      "word_count": 21,
-      "estimated_duration": 9.2,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0067",
-          "spoken_text": "Step 5: We send the customer's question through",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "User query entering Embedding Model box.",
-          "image_prompt": "Whiteboard diagram, 16:9, 'User Question' arrow pointing into 'Embedding Model' box."
-        },
-        {
-          "clip_id": "C0068",
-          "spoken_text": "the exact same Embedding Model,",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Note emphasizing 'Same Model as Phase 1!'.",
-          "image_prompt": "Whiteboard sketch, 16:9, green sticker on Embedding Model reading 'Same Model as Phase 1!'."
-        },
-        {
-          "clip_id": "C0069",
-          "spoken_text": "turning their question into a fresh Query Vector.",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Output array labeled Query Vector.",
-          "image_prompt": "Whiteboard sketch, 16:9, output arrow producing '[0.79, -0.12, 0.51]' labeled 'Query Vector'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0024",
-      "narration": "Step 6: Vector Similarity Search! The Vector Database drops that Query Vector onto our meaning map and checks which stored chunks sit closest to it.",
-      "word_count": 25,
-      "estimated_duration": 10.6,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0070",
-          "spoken_text": "Step 6: Vector Similarity Search!",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Step 6 banner with radar target doodle.",
-          "image_prompt": "Whiteboard header, 16:9, blue title 'Step 6: Vector Similarity Search' with radar rings doodle."
-        },
-        {
-          "clip_id": "C0071",
-          "spoken_text": "The Vector Database drops that Query Vector onto our meaning map",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.4,
-          "scene_context": "Orange star pin dropping onto the 2D meaning map.",
-          "image_prompt": "Whiteboard graph, 16:9, bright orange star 'Query Vector' landing on the Meaning Map."
-        },
-        {
-          "clip_id": "C0072",
-          "spoken_text": "and checks which stored chunks sit closest to it.",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Dotted circle around Query Vector finding nearest neighbor dots.",
-          "image_prompt": "Whiteboard graph, 16:9, dashed green circle around orange star capturing 3 closest blue chunk dots."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0025",
-      "narration": "Using math like Cosine Similarity, it instantly grabs the Top-K closest matches—say the Top 3 chunks—matching 'money back' straight to 'Spilled Coffee Refund Policy'!",
-      "word_count": 24,
-      "estimated_duration": 10.4,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0073",
-          "spoken_text": "Using math like Cosine Similarity,",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Small angle between two arrows labeled Cosine Similarity.",
-          "image_prompt": "Whiteboard sketch, 16:9, two vectors with tiny angle between them labeled 'Cosine Similarity (Small Angle = High Match)'."
-        },
-        {
-          "clip_id": "C0074",
-          "spoken_text": "it instantly grabs the Top-K closest matches—say the Top 3 chunks—",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.6,
-          "scene_context": "Three winning chunk cards popping out labeled Top-3.",
-          "image_prompt": "Whiteboard sketch, 16:9, three clean text cards popping out of Vector DB labeled 'Top-K Results (K=3)'."
-        },
-        {
-          "clip_id": "C0075",
-          "spoken_text": "matching 'money back' straight to 'Spilled Coffee Refund Policy'!",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Top chunk showing exact PixelCafe spilled drink policy.",
-          "image_prompt": "Whiteboard card, 16:9, card #1 glowing green reading 'Chunk #12: Spilled drinks replaced or refunded within 15 mins!'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0026",
-      "narration": "Step 7: Prompt Augmentation! Behind the scenes, our app builds a neat prompt sandwich: System Instructions, plus those Top 3 retrieved chunks, plus the user's question.",
-      "word_count": 26,
-      "estimated_duration": 11.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0076",
-          "spoken_text": "Step 7: Prompt Augmentation!",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "Step 7 banner with prompt sandwich doodle.",
-          "image_prompt": "Whiteboard header, 16:9, orange title 'Step 7: Prompt Augmentation (The Prompt Sandwich)'."
-        },
-        {
-          "clip_id": "C0077",
-          "spoken_text": "Behind the scenes, our app builds a neat prompt sandwich:",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Three stacked layers forming a prompt box.",
-          "image_prompt": "Whiteboard sketch, 16:9, three stacked horizontal blocks labeled '1. System Rule', '2. Context', '3. Question'."
-        },
-        {
-          "clip_id": "C0078",
-          "spoken_text": "System Instructions, plus those Top 3 retrieved chunks, plus the user's question.",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 4.8,
-          "scene_context": "Detailed text inside the three stacked prompt blocks.",
-          "image_prompt": "Whiteboard diagram, 16:9, blocks filled with: 'Rule: Use ONLY context below', '+ Top 3 Chunks', '+ User Question'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0027",
-      "narration": "Step 8: Generation! Now the LLM reads only those clean, relevant paragraphs instead of guessing—and replies accurately: 'Yes! PixelCafe replaces or refunds spilled lattes within 15 minutes (Page 4).'",
-      "word_count": 29,
-      "estimated_duration": 12.2,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0079",
-          "spoken_text": "Step 8: Generation! Now the LLM reads only those clean, relevant paragraphs",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 5.0,
-          "scene_context": "Prompt sandwich feeding cleanly into the LLM robot.",
-          "image_prompt": "Whiteboard diagram, 16:9, neat Prompt Sandwich sliding into 'LLM' robot reading with glasses."
-        },
-        {
-          "clip_id": "C0080",
-          "spoken_text": "instead of guessing—and replies accurately:",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Robot smiling with zero hallucinations.",
-          "image_prompt": "Whiteboard sketch, 16:9, happy robot outputting a crisp green answer card labeled 'Grounded Answer'."
-        },
-        {
-          "clip_id": "C0081",
-          "spoken_text": "'Yes! PixelCafe replaces or refunds spilled lattes within 15 minutes (Page 4).'",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 4.8,
-          "scene_context": "Answer bubble with verified citation badge (Page 4).",
-          "image_prompt": "Whiteboard speech bubble, 16:9, text '\"Yes! Free remake or refund within 15 mins.\"' with green badge 'Source: Page 4'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0028",
-      "narration": "Hold on—let's pause and try to break our own system! What happens if a customer asks for an exact espresso machine part code like 'SKU-9941'?",
-      "word_count": 25,
-      "estimated_duration": 10.8,
-      "is_scene_bridge": true,
-      "clips": [
-        {
-          "clip_id": "C0082",
-          "spoken_text": "Hold on—let's pause and try to break our own system!",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Stick figure holding a red stop sign looking curious.",
-          "image_prompt": "Whiteboard doodle, 16:9, stick figure holding a pause sign saying 'Wait... Can we break this?'."
-        },
-        {
-          "clip_id": "C0083",
-          "spoken_text": "What happens if a customer asks for an exact espresso machine part code",
-          "spoken_word_count": 13,
-          "estimated_spoken_duration": 5.2,
-          "scene_context": "Customer typing exact alphanumeric code.",
-          "image_prompt": "Whiteboard sketch, 16:9, chat box with question 'Where is part SKU-9941?'."
-        },
-        {
-          "clip_id": "C0084",
-          "spoken_text": "like 'SKU-9941'?",
-          "spoken_word_count": 2,
-          "estimated_spoken_duration": 1.4,
-          "scene_context": "Zoomed-in code SKU-9941 confusing the semantic vector map.",
-          "image_prompt": "Whiteboard sketch, 16:9, code 'SKU-9941' floating above Meaning Map with confused question marks."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0029",
-      "narration": "Or what if the user types a messy, vague question—or a question that requires connecting clues spread across twenty different documents?",
-      "word_count": 22,
-      "estimated_duration": 9.4,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0085",
-          "spoken_text": "Or what if the user types a messy, vague question—",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Tangled scribble query bubble.",
-          "image_prompt": "Whiteboard doodle, 16:9, messy scribble speech bubble reading 'coffee break policy???'."
-        },
-        {
-          "clip_id": "C0086",
-          "spoken_text": "or a question that requires connecting clues",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Puzzle clues scattered far apart.",
-          "image_prompt": "Whiteboard sketch, 16:9, disconnected puzzle pieces scattered across whiteboard."
-        },
-        {
-          "clip_id": "C0087",
-          "spoken_text": "spread across twenty different documents?",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Stack of 20 documents with red arrows failing to connect.",
-          "image_prompt": "Whiteboard sketch, 16:9, twenty document icons with broken dotted lines between them."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0030",
-      "narration": "Boom—that right there is why simple RAG isn't enough for every job, and why engineers evolved different Types of RAG! Let's explore each one clearly.",
-      "word_count": 25,
-      "estimated_duration": 10.6,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0088",
-          "spoken_text": "Boom—that right there is why simple RAG isn't enough for every job,",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 4.8,
-          "scene_context": "Simple RAG pipe cracking under heavy queries.",
-          "image_prompt": "Whiteboard sketch, 16:9, straight pipeline labeled 'Basic RAG' showing tiny cracks under heavy complex queries."
-        },
-        {
-          "clip_id": "C0089",
-          "spoken_text": "and why engineers evolved different Types of RAG!",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Evolution tree branching into multiple RAG types.",
-          "image_prompt": "Whiteboard banner, 16:9, bold title 'The 5 Major Types of RAG' with branching marker arrows."
-        },
-        {
-          "clip_id": "C0090",
-          "spoken_text": "Let's explore each one clearly.",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Five numbered boxes lined up neatly.",
-          "image_prompt": "Whiteboard sketch, 16:9, five clean numbered boxes '1. Naive', '2. Advanced', '3. Modular', '4. Agentic', '5. GraphRAG'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0031",
-      "narration": "Type 1: Naive RAG—and no, 'naive' isn't an insult! It simply means the clean, straight-line pipeline we just built: Chunk, Embed, Top-K Search, Generate.",
-      "word_count": 24,
-      "estimated_duration": 10.4,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0091",
-          "spoken_text": "Type 1: Naive RAG—and no, 'naive' isn't an insult!",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Badge for Type 1 Naive RAG with friendly smiley.",
-          "image_prompt": "Whiteboard header, 16:9, blue title 'Type 1: Naive RAG (The Classic Pipeline)' with friendly smiley doodle."
-        },
-        {
-          "clip_id": "C0092",
-          "spoken_text": "It simply means the clean, straight-line pipeline we just built:",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Straight one-way arrow connecting 4 basic steps.",
-          "image_prompt": "Whiteboard diagram, 16:9, straight line of boxes: 'Query' -> 'Embed' -> 'Top-K' -> 'LLM'."
-        },
-        {
-          "clip_id": "C0093",
-          "spoken_text": "Chunk, Embed, Top-K Search, Generate.",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Green label noting 'Fast & Easy to Build'.",
-          "image_prompt": "Whiteboard sketch, 16:9, green checkmark label 'Pros: Fast & Simple for Small FAQs'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0032",
-      "narration": "Naive RAG is fantastic for quick prototypes and clean FAQ bots, but it has zero safety checks—if search brings back noisy chunks, the LLM gets confused.",
-      "word_count": 27,
-      "estimated_duration": 11.2,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0094",
-          "spoken_text": "Naive RAG is fantastic for quick prototypes and clean FAQ bots,",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.4,
-          "scene_context": "Rocket icon next to small FAQ chatbot.",
-          "image_prompt": "Whiteboard sketch, 16:9, tiny rocket launching a 'Quick Prototype / FAQ Bot' in green ink."
-        },
-        {
-          "clip_id": "C0095",
-          "spoken_text": "but it has zero safety checks—",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Missing filter gate on the pipeline.",
-          "image_prompt": "Whiteboard doodle, 16:9, open gate with no guard labeled 'No Quality Filter'."
-        },
-        {
-          "clip_id": "C0096",
-          "spoken_text": "if search brings back noisy chunks, the LLM gets confused.",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Trash chunks entering LLM making robot dizzy.",
-          "image_prompt": "Whiteboard sketch, 16:9, messy 'Garbage In' chunks making LLM robot dizzy ('Garbage Out')."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0033",
-      "narration": "So how do we level it up for real production apps? Welcome to Type 2: Advanced RAG! It adds smart upgrades both before and after searching.",
-      "word_count": 26,
-      "estimated_duration": 11.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0097",
-          "spoken_text": "So how do we level it up for real production apps?",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.4,
-          "scene_context": "Up arrow leveling up from Naive to Production.",
-          "image_prompt": "Whiteboard doodle, 16:9, video-game style 'LEVEL UP!' arrow pointing upward."
-        },
-        {
-          "clip_id": "C0098",
-          "spoken_text": "Welcome to Type 2: Advanced RAG!",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Banner for Type 2 Advanced RAG.",
-          "image_prompt": "Whiteboard header, 16:9, orange title 'Type 2: Advanced RAG' with shield and turbo gear doodles."
-        },
-        {
-          "clip_id": "C0099",
-          "spoken_text": "It adds smart upgrades both before and after searching.",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 4.0,
-          "scene_context": "Pipeline showing Pre-Retrieval and Post-Retrieval upgrade boxes.",
-          "image_prompt": "Whiteboard diagram, 16:9, 'Pre-Retrieval Upgrades' -> 'Smart Search' -> 'Post-Retrieval Upgrades' -> 'LLM'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0034",
-      "narration": "Upgrade one, Pre-Retrieval: Query Rewriting! If a user types messy shorthand like 'coffee break rule?', an AI helper rewrites it into a crystal-clear search query first.",
-      "word_count": 26,
-      "estimated_duration": 11.2,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0100",
-          "spoken_text": "Upgrade one, Pre-Retrieval: Query Rewriting!",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Pencil editing a messy query into clean English.",
-          "image_prompt": "Whiteboard header, 16:9, green label 'Upgrade 1: Query Rewriting' with magic pencil icon."
-        },
-        {
-          "clip_id": "C0101",
-          "spoken_text": "If a user types messy shorthand like 'coffee break rule?',",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Messy input bubble 'coffee break rule?'.",
-          "image_prompt": "Whiteboard sketch, 16:9, messy bubble '\"coffee break rule?\"' entering a 'Query Rewriter' box."
-        },
-        {
-          "clip_id": "C0102",
-          "spoken_text": "an AI helper rewrites it into a crystal-clear search query first.",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.6,
-          "scene_context": "Clean expanded query coming out.",
-          "image_prompt": "Whiteboard sketch, 16:9, crisp output bubble '\"What is PixelCafe policy for broken or spilled coffee?\"'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0035",
-      "narration": "Upgrade two: Hybrid Search! Remember our 'SKU-9941' trap? Hybrid Search mixes Vector Search for meaning PLUS classic Keyword Search like BM25 for exact codes and names.",
-      "word_count": 26,
-      "estimated_duration": 11.2,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0103",
-          "spoken_text": "Upgrade two: Hybrid Search! Remember our 'SKU-9941' trap?",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.6,
-          "scene_context": "Badge for Upgrade 2 Hybrid Search solving SKU-9941.",
-          "image_prompt": "Whiteboard header, 16:9, blue title 'Upgrade 2: Hybrid Search' beside badge 'Fixes SKU-9941!'."
-        },
-        {
-          "clip_id": "C0104",
-          "spoken_text": "Hybrid Search mixes Vector Search for meaning",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "Left gear labeled Vector Search (Meaning).",
-          "image_prompt": "Whiteboard diagram, 16:9, green circle 'Vector Search (Meaning)' with '+' sign next to empty slot."
-        },
-        {
-          "clip_id": "C0105",
-          "spoken_text": "PLUS classic Keyword Search like BM25 for exact codes and names.",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.6,
-          "scene_context": "Two circles merging: Vector + BM25 Keyword Search.",
-          "image_prompt": "Whiteboard diagram, 16:9, 'Vector Search (Meaning)' + 'BM25 Keyword Search (Exact Match)' = 'Hybrid Search'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0036",
-      "narration": "Upgrade three, Post-Retrieval: Re-ranking! Instead of trusting the first 3 chunks blindly, we grab Top 20 candidates, then a smart Re-ranker grades them and keeps only the best 3.",
-      "word_count": 29,
-      "estimated_duration": 12.2,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0106",
-          "spoken_text": "Upgrade three, Post-Retrieval: Re-ranking!",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "Trophy and medal doodle for Upgrade 3 Re-ranking.",
-          "image_prompt": "Whiteboard header, 16:9, orange title 'Upgrade 3: Re-ranking (Quality Judge)'."
-        },
-        {
-          "clip_id": "C0107",
-          "spoken_text": "Instead of trusting the first 3 chunks blindly, we grab Top 20 candidates,",
-          "spoken_word_count": 13,
-          "estimated_spoken_duration": 5.2,
-          "scene_context": "20 chunk cards entering a funnel.",
-          "image_prompt": "Whiteboard sketch, 16:9, 20 small cards labeled 'Top 20 Candidates' flowing into a 'Re-ranker Judge' box."
-        },
-        {
-          "clip_id": "C0108",
-          "spoken_text": "then a smart Re-ranker grades them and keeps only the best 3.",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 5.0,
-          "scene_context": "Top 3 golden-starred cards exiting the Re-ranker.",
-          "image_prompt": "Whiteboard sketch, 16:9, Re-ranker outputting only 3 crisp cards stamped with green stars 'Best Top 3'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0037",
-      "narration": "Next up, Type 3: Modular RAG! Picture Lego blocks—instead of one fixed pipeline, you plug in custom blocks like a router, a SQL checker, or web search whenever needed.",
-      "word_count": 29,
-      "estimated_duration": 12.2,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0109",
-          "spoken_text": "Next up, Type 3: Modular RAG! Picture Lego blocks—",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Colorful hand-drawn Lego bricks labeled Modular RAG.",
-          "image_prompt": "Whiteboard sketch, 16:9, colorful Lego brick doodles under title 'Type 3: Modular RAG'."
-        },
-        {
-          "clip_id": "C0110",
-          "spoken_text": "instead of one fixed pipeline, you plug in custom blocks",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Swappable module blocks snapping together.",
-          "image_prompt": "Whiteboard diagram, 16:9, swappable puzzle blocks snapping onto a flexible track."
-        },
-        {
-          "clip_id": "C0111",
-          "spoken_text": "like a router, a SQL checker, or web search whenever needed.",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Blocks labeled Query Router, SQL Tool, Web Search.",
-          "image_prompt": "Whiteboard diagram, 16:9, Lego blocks labeled 'Query Router', 'SQL DB Tool', 'Web Search', 'Vector DB'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0038",
-      "narration": "For example, if a user says 'Hi!', the router skips searching completely and replies instantly. If they ask for live sales numbers, it routes straight to SQL!",
-      "word_count": 27,
-      "estimated_duration": 11.4,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0112",
-          "spoken_text": "For example, if a user says 'Hi!',",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Chat bubble saying 'Hi!' entering Query Router.",
-          "image_prompt": "Whiteboard sketch, 16:9, chat bubble 'Hi!' hitting a traffic-switch labeled 'Query Router'."
-        },
-        {
-          "clip_id": "C0113",
-          "spoken_text": "the router skips searching completely and replies instantly.",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.6,
-          "scene_context": "Green fast-track arrow bypassing Vector DB straight to LLM.",
-          "image_prompt": "Whiteboard diagram, 16:9, green shortcut arrow skipping Vector DB straight to 'LLM Reply: Hello!'."
-        },
-        {
-          "clip_id": "C0114",
-          "spoken_text": "If they ask for live sales numbers, it routes straight to SQL!",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 5.0,
-          "scene_context": "Sales query routing to SQL table icon.",
-          "image_prompt": "Whiteboard diagram, 16:9, arrow for 'Today sales?' routing to blue cylinder labeled 'SQL Database'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0039",
-      "narration": "Now prepare to have your mind blown—Type 4: Agentic RAG! Think of earlier RAG types like following a fixed GPS route with zero U-turns allowed.",
-      "word_count": 25,
-      "estimated_duration": 10.6,
-      "is_scene_bridge": true,
-      "clips": [
-        {
-          "clip_id": "C0115",
-          "spoken_text": "Now prepare to have your mind blown—Type 4: Agentic RAG!",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Banner for Type 4 Agentic RAG with detective magnifying glass.",
-          "image_prompt": "Whiteboard header, 16:9, bold blue title 'Type 4: Agentic RAG' with detective hat and magnifying glass doodle."
-        },
-        {
-          "clip_id": "C0116",
-          "spoken_text": "Think of earlier RAG types like following a fixed GPS route",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.4,
-          "scene_context": "One-way straight road leading toward a dead end.",
-          "image_prompt": "Whiteboard sketch, 16:9, straight one-way arrow road labeled 'Static RAG' with 'No U-Turns' sign."
-        },
-        {
-          "clip_id": "C0117",
-          "spoken_text": "with zero U-turns allowed.",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "Car stuck at dead end because first search failed.",
-          "image_prompt": "Whiteboard doodle, 16:9, tiny car stuck at dead end labeled 'Bad Search = Bad Answer'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0040",
-      "narration": "In Agentic RAG, an AI Agent acts like a smart detective! After searching once, it stops and grades its own results: 'Wait—did these chunks actually answer the question?'",
-      "word_count": 28,
-      "estimated_duration": 11.6,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0118",
-          "spoken_text": "In Agentic RAG, an AI Agent acts like a smart detective!",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.4,
-          "scene_context": "Robot wearing detective hat inspecting retrieved clues.",
-          "image_prompt": "Whiteboard sketch, 16:9, robot wearing detective hat holding a magnifying glass over retrieved chunk cards."
-        },
-        {
-          "clip_id": "C0119",
-          "spoken_text": "After searching once, it stops and grades its own results:",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Self-check loop arrow circling back to Agent brain.",
-          "image_prompt": "Whiteboard diagram, 16:9, circular feedback loop labeled 'Self-Evaluation Step' checking chunk relevance."
-        },
-        {
-          "clip_id": "C0120",
-          "spoken_text": "'Wait—did these chunks actually answer the question?'",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "Speech bubble checking 'Are these chunks helpful?'.",
-          "image_prompt": "Whiteboard sketch, 16:9, detective robot thought bubble: 'Wait... does this actually answer the question?'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0041",
-      "narration": "If the answer is NO, it loops back, rewrites a better search query, checks another tool or database, and only answers once it has rock-solid proof!",
-      "word_count": 26,
-      "estimated_duration": 11.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0121",
-          "spoken_text": "If the answer is NO, it loops back, rewrites a better search query,",
-          "spoken_word_count": 13,
-          "estimated_spoken_duration": 5.2,
-          "scene_context": "Red 'NO' arrow looping back to rewrite query.",
-          "image_prompt": "Whiteboard diagram, 16:9, orange loop arrow labeled 'If NO -> Rewrite & Search Again!'."
-        },
-        {
-          "clip_id": "C0122",
-          "spoken_text": "checks another tool or database,",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Agent choosing between Vector DB, Web Search, and API tool.",
-          "image_prompt": "Whiteboard sketch, 16:9, detective robot picking tools labeled 'Docs', 'Web', 'Calculator'."
-        },
-        {
-          "clip_id": "C0123",
-          "spoken_text": "and only answers once it has rock-solid proof!",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Green 'YES' arrow outputting verified answer.",
-          "image_prompt": "Whiteboard diagram, 16:9, green arrow labeled 'If YES -> Verified Final Answer!' with checkmark."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0042",
-      "narration": "Wait—there's one puzzle Agentic RAG still struggles with! What if a boss asks: 'Across all 500 supplier reports, how are late coffee shipments connected to our roast quality?'",
-      "word_count": 27,
-      "estimated_duration": 11.6,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0124",
-          "spoken_text": "Wait—there's one puzzle Agentic RAG still struggles with!",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.6,
-          "scene_context": "Boss stick figure asking a big-picture global question.",
-          "image_prompt": "Whiteboard sketch, 16:9, manager stick figure pointing at a huge stack of 500 reports."
-        },
-        {
-          "clip_id": "C0125",
-          "spoken_text": "What if a boss asks: 'Across all 500 supplier reports,",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "500 tiny scattered reports on whiteboard.",
-          "image_prompt": "Whiteboard sketch, 16:9, grid of tiny document doodles labeled '500 Supplier Reports'."
-        },
-        {
-          "clip_id": "C0126",
-          "spoken_text": "how are late coffee shipments connected to our roast quality?'",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Top-3 vector chunks failing to see global relationships.",
-          "image_prompt": "Whiteboard sketch, 16:9, note 'Top-3 Chunks miss the Big Picture!' in red marker."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0043",
-      "narration": "Vector search only grabs isolated snippets, so it misses the big picture. Enter Type 5: GraphRAG! It connects entities into a Knowledge Graph—like a detective's string-and-pin wall!",
-      "word_count": 27,
-      "estimated_duration": 11.6,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0127",
-          "spoken_text": "Vector search only grabs isolated snippets, so it misses the big picture.",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 4.8,
-          "scene_context": "Isolated dots with no connecting lines.",
-          "image_prompt": "Whiteboard sketch, 16:9, three isolated dots in circles labeled 'Isolated Chunks (No Connections)'."
-        },
-        {
-          "clip_id": "C0128",
-          "spoken_text": "Enter Type 5: GraphRAG!",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 2.2,
-          "scene_context": "Banner for Type 5 GraphRAG.",
-          "image_prompt": "Whiteboard header, 16:9, green title 'Type 5: GraphRAG (Connecting the Dots)'."
-        },
-        {
-          "clip_id": "C0129",
-          "spoken_text": "It connects entities into a Knowledge Graph—like a detective's string-and-pin wall!",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.6,
-          "scene_context": "Knowledge Graph nodes connected with labeled relationship lines.",
-          "image_prompt": "Whiteboard network diagram, 16:9, nodes 'Supplier A' --(delayed)--> 'Shipment' --(affected)--> 'Roast Quality' drawn like a pinboard."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0044",
-      "narration": "By walking along those relationship lines across hundreds of files, GraphRAG answers big-picture 'connect-the-dots' questions that regular vector databases simply cannot see.",
-      "word_count": 21,
-      "estimated_duration": 9.4,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0130",
-          "spoken_text": "By walking along those relationship lines across hundreds of files,",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Glowing marker path hopping across connected graph nodes.",
-          "image_prompt": "Whiteboard network diagram, 16:9, bright orange marker path tracing across 5 connected graph nodes."
-        },
-        {
-          "clip_id": "C0131",
-          "spoken_text": "GraphRAG answers big-picture 'connect-the-dots' questions",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Bird's-eye view magnifying glass over full graph.",
-          "image_prompt": "Whiteboard sketch, 16:9, big green checkmark next to 'Global Insights & Multi-Hop Reasoning'."
-        },
-        {
-          "clip_id": "C0132",
-          "spoken_text": "that regular vector databases simply cannot see.",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Comparison showing GraphRAG seeing full web vs flat list.",
-          "image_prompt": "Whiteboard split, 16:9, left 'Vector DB: Flat Snippets' vs right 'GraphRAG: Connected Web'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0045",
-      "narration": "And one quick bonus type you'll hear everywhere today: Multimodal RAG! Because real documents aren't just text—they have charts, menu photos, diagrams, and even audio clips.",
-      "word_count": 26,
-      "estimated_duration": 11.2,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0133",
-          "spoken_text": "And one quick bonus type you'll hear everywhere today: Multimodal RAG!",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.6,
-          "scene_context": "Bonus banner for Multimodal RAG.",
-          "image_prompt": "Whiteboard header, 16:9, blue title 'Bonus: Multimodal RAG' with camera, chart, and mic doodles."
-        },
-        {
-          "clip_id": "C0134",
-          "spoken_text": "Because real documents aren't just text—",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Document page containing a bar chart and coffee machine diagram.",
-          "image_prompt": "Whiteboard sketch, 16:9, PDF page doodle containing a bar chart and a coffee machine drawing."
-        },
-        {
-          "clip_id": "C0135",
-          "spoken_text": "they have charts, menu photos, diagrams, and even audio clips.",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.0,
-          "scene_context": "Images, tables, and audio waves converting into unified embeddings.",
-          "image_prompt": "Whiteboard diagram, 16:9, icons for 'Text + Images + Charts + Audio' feeding into 'Multimodal Vector DB'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0046",
-      "narration": "Okay, pause and look at everything we just unlocked! You now understand RAG way better than most engineers—so which type should YOU actually pick for your project?",
-      "word_count": 27,
-      "estimated_duration": 11.4,
-      "is_scene_bridge": true,
-      "clips": [
-        {
-          "clip_id": "C0136",
-          "spoken_text": "Okay, pause and look at everything we just unlocked!",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Stick figure cheering next to unlocked padlock.",
-          "image_prompt": "Whiteboard doodle, 16:9, happy stick figure next to an unlocked padlock labeled 'RAG Mastered!'."
-        },
-        {
-          "clip_id": "C0137",
-          "spoken_text": "You now understand RAG way better than most engineers—",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Gold star badge next to stick figure.",
-          "image_prompt": "Whiteboard sketch, 16:9, stick figure holding a whiteboard pointer smiling."
-        },
-        {
-          "clip_id": "C0138",
-          "spoken_text": "so which type should YOU actually pick for your project?",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Signpost with multiple arrows labeled 'Which RAG to Choose?'.",
-          "image_prompt": "Whiteboard sketch, 16:9, signpost with arrows titled 'Which RAG Should You Build?'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0047",
-      "narration": "Here is your cheat code: building a weekend prototype or simple FAQ bot? Start with Naive RAG. Going live for real paying customers? Use Advanced RAG with Hybrid Search and Re-ranking.",
-      "word_count": 31,
-      "estimated_duration": 13.0,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0139",
-          "spoken_text": "Here is your cheat code:",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.2,
-          "scene_context": "Title 'Quick Decision Cheat Sheet'.",
-          "image_prompt": "Whiteboard header, 16:9, bold title 'RAG Decision Cheat Sheet'."
-        },
-        {
-          "clip_id": "C0140",
-          "spoken_text": "building a weekend prototype or simple FAQ bot? Start with Naive RAG.",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 5.0,
-          "scene_context": "Row 1 mapping Weekend Prototype to Naive RAG.",
-          "image_prompt": "Whiteboard table, 16:9, Row 1: 'Weekend Prototype / FAQ' -> 'Naive RAG' in blue marker."
-        },
-        {
-          "clip_id": "C0141",
-          "spoken_text": "Going live for real paying customers? Use Advanced RAG with Hybrid Search and Re-ranking.",
-          "spoken_word_count": 14,
-          "estimated_spoken_duration": 5.8,
-          "scene_context": "Row 2 mapping Production App to Advanced RAG.",
-          "image_prompt": "Whiteboard table, 16:9, Row 2: 'Production SaaS App' -> 'Advanced RAG (Hybrid + Re-ranker)' in green marker."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0048",
-      "narration": "Need multi-step research that fixes bad searches? Pick Agentic RAG. Mapping deep hidden relationships across thousands of files? Go straight to GraphRAG.",
-      "word_count": 22,
-      "estimated_duration": 9.8,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0142",
-          "spoken_text": "Need multi-step research that fixes bad searches?",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Row 3 showing multi-step research query.",
-          "image_prompt": "Whiteboard table, 16:9, Row 3 left: 'Multi-Step Research / Self-Check' -> orange arrow."
-        },
-        {
-          "clip_id": "C0143",
-          "spoken_text": "Pick Agentic RAG.",
-          "spoken_word_count": 3,
-          "estimated_spoken_duration": 1.6,
-          "scene_context": "Row 3 completed with Agentic RAG.",
-          "image_prompt": "Whiteboard table, 16:9, Row 3 completed: 'Multi-Step Research' -> 'Agentic RAG' in orange marker."
-        },
-        {
-          "clip_id": "C0144",
-          "spoken_text": "Mapping deep hidden relationships across thousands of files? Go straight to GraphRAG.",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 5.0,
-          "scene_context": "Row 4 completed with GraphRAG.",
-          "image_prompt": "Whiteboard table, 16:9, Row 4: 'Deep Relationships / Big Picture' -> 'GraphRAG' in blue marker."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0049",
-      "narration": "Let's do one speedy 10-second recap: Chunk your docs, turn them into meaning Vectors, save them in a Vector DB, fetch the Top matches for any user question, and hand them to the LLM.",
-      "word_count": 33,
-      "estimated_duration": 13.6,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0145",
-          "spoken_text": "Let's do one speedy 10-second recap:",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Stopwatch doodle reading 10-Second Recap.",
-          "image_prompt": "Whiteboard sketch, 16:9, stopwatch doodle beside bold heading '10-Second RAG Recap'."
-        },
-        {
-          "clip_id": "C0146",
-          "spoken_text": "Chunk your docs, turn them into meaning Vectors, save them in a Vector DB,",
-          "spoken_word_count": 14,
-          "estimated_spoken_duration": 5.6,
-          "scene_context": "Flow icons for Chunk -> Embed -> Vector DB.",
-          "image_prompt": "Whiteboard flowchart, 16:9, top row: 'Docs' -> 'Chunks' -> 'Vectors' -> 'Vector DB'."
-        },
-        {
-          "clip_id": "C0147",
-          "spoken_text": "fetch the Top matches for any user question, and hand them to the LLM.",
-          "spoken_word_count": 14,
-          "estimated_spoken_duration": 5.2,
-          "scene_context": "Flow icons for Query -> Top-K -> Prompt -> Grounded Answer.",
-          "image_prompt": "Whiteboard flowchart, 16:9, bottom row: 'User Question' -> 'Top-K Match' -> 'Prompt + Context' -> 'Accurate Answer!'."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0050",
-      "narration": "No retraining, no guessing, and answers you can actually verify! Tell me in the comments which RAG type you want to build first, and let's start building!",
-      "word_count": 27,
-      "estimated_duration": 11.6,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0148",
-          "spoken_text": "No retraining, no guessing, and answers you can actually verify!",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.4,
-          "scene_context": "Three green checkmarks: No Retraining, No Guessing, Verified Citations.",
-          "image_prompt": "Whiteboard sketch, 16:9, three bold green checkmarks: 'No Retraining', 'No Hallucinations', 'Verified Sources'."
-        },
-        {
-          "clip_id": "C0149",
-          "spoken_text": "Tell me in the comments which RAG type you want to build first,",
-          "spoken_word_count": 13,
-          "estimated_spoken_duration": 5.2,
-          "scene_context": "Comment box doodle asking viewers which RAG type they choose.",
-          "image_prompt": "Whiteboard doodle, 16:9, comment speech bubble reading 'Which RAG will YOU build first? Naive / Advanced / Agentic / GraphRAG?'."
-        },
-        {
-          "clip_id": "C0150",
-          "spoken_text": "and let's start building!",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "Stick figure giving thumbs up beside laptop.",
-          "image_prompt": "Whiteboard doodle, 16:9, happy stick figure giving a thumbs up beside laptop sketch and text 'Happy Building!'."
+          "scene_context": "Dark minimalist throne silhouette against glowing gold skyline with subtle subscribe cue.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, lone protagonist standing before floor-to-ceiling city skyline windows at night, holding a golden chess piece, cinematic dark-gold glow."
         }
       ]
     }

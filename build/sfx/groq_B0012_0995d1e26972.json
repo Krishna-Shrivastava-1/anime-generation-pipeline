@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "A scratched metal cab door, a No Parking pole, and the driver seated inside the cab looking at the rearview mirror in dusk light.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "car door creak",
+      "fallback_tag": "metal creak",
+      "sound_type": "ambient",
+      "trigger_word": "ड्राइवर",
+      "target_ms": 4300,
+      "duration_sec": 1.0,
+      "volume": 0.35
+    }
+  ]
+}

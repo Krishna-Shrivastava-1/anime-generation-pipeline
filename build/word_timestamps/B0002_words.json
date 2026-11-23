@@ -1,0 +1,92 @@
+[
+  {
+    "word": "वो",
+    "start_ms": 109,
+    "end_ms": 312
+  },
+  {
+    "word": "एक",
+    "start_ms": 312,
+    "end_ms": 481
+  },
+  {
+    "word": "सोसाइटी",
+    "start_ms": 481,
+    "end_ms": 1174
+  },
+  {
+    "word": "में",
+    "start_ms": 1174,
+    "end_ms": 1495
+  },
+  {
+    "word": "पैसेंजर",
+    "start_ms": 1495,
+    "end_ms": 2187
+  },
+  {
+    "word": "को",
+    "start_ms": 2187,
+    "end_ms": 2390
+  },
+  {
+    "word": "ड्रॉप",
+    "start_ms": 2390,
+    "end_ms": 2703
+  },
+  {
+    "word": "करने",
+    "start_ms": 2703,
+    "end_ms": 3074
+  },
+  {
+    "word": "आया",
+    "start_ms": 3074,
+    "end_ms": 3361
+  },
+  {
+    "word": "था।",
+    "start_ms": 3361,
+    "end_ms": 3649
+  },
+  {
+    "word": "ड्राइवर",
+    "start_ms": 3649,
+    "end_ms": 4164
+  },
+  {
+    "word": "अभी",
+    "start_ms": 4164,
+    "end_ms": 4451
+  },
+  {
+    "word": "कार",
+    "start_ms": 4451,
+    "end_ms": 4738
+  },
+  {
+    "word": "के",
+    "start_ms": 4738,
+    "end_ms": 4941
+  },
+  {
+    "word": "अंदर",
+    "start_ms": 4941,
+    "end_ms": 5313
+  },
+  {
+    "word": "ही",
+    "start_ms": 5313,
+    "end_ms": 5515
+  },
+  {
+    "word": "बैठा",
+    "start_ms": 5515,
+    "end_ms": 5921
+  },
+  {
+    "word": "था,",
+    "start_ms": 5921,
+    "end_ms": 6144
+  }
+]

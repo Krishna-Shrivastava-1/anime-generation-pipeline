@@ -1,320 +1,378 @@
 {
-  "title": "No Parking vs Kid's Mistake: Cab Driver's Emotional Evening Story",
-  "topic": "A dramatic evening incident inside a residential society where a kid scratches a cab's side door in a no-parking zone, the mother defends her child and refuses to pay, leaving viewers with a moral dilemma.",
+  "title": "घड़े वाला राजा: 300 घड़ों ने कैसे हराई 10,000 की सेना",
+  "topic": "Hindi YouTube Short telling the medieval siege story of The Pot King who bought 300 clay pots, kept them warm overnight, and unleashed 3 million angry bees on 10,000 climbing soldiers at dawn.",
   "aspect_ratio": "9:16",
-  "target_minutes": 1.3,
-  "total_beats": 12,
-  "total_clips": 25,
+  "target_minutes": 1.4,
+  "total_beats": 14,
+  "total_clips": 30,
   "global_style": {
-    "art_style": "High-detail realistic anime illustration style inspired by Makoto Shinkai, set in an Indian residential society during warm golden-orange evening twilight shifting to dusk, glowing yellow streetlights, crisp character expressions, cinematic depth of field, 9:16 vertical portrait framing.",
-    "negative_prompt": "cartoonish chibi, flat colors, blurry, distorted faces, extra limbs, garbled unreadable text, horizontal framing, bright midday sun, watermarks"
+    "art_style": "High-detail realistic anime illustration style inspired by Vinland Saga and Ufotable dark medieval fantasy, gritty stone castle architecture, weathered steel armor, flickering torchlight, atmospheric frost and golden dawn light, sharp expressive faces, 9:16 vertical portrait framing.",
+    "negative_prompt": "cartoonish chibi, bright flat colors, modern clothing, blurry, distorted faces, extra fingers, garbled text, horizontal framing, watermarks"
   },
   "beats": [
     {
       "beat_id": "B0001",
-      "narration": "शाम के वक्त एक कैब ड्राइवर के साथ कुछ ऐसा हुआ, जो आपको सोचने पर मजबूर कर देगा।",
-      "word_count": 17,
-      "estimated_duration": 5.2,
+      "narration": "राजा ने पूरे राज्य के सारे मिट्टी के घड़े खरीद लिए— पूरे तीन सौ घड़े— क्योंकि दस हज़ार सैनिकों की सेना दीवारों से बस दो दिन दूर थी।",
+      "word_count": 27,
+      "estimated_duration": 8.6,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0001",
-          "spoken_text": "शाम के वक्त एक कैब ड्राइवर के साथ कुछ ऐसा हुआ,",
+          "spoken_text": "राजा ने पूरे राज्य के सारे मिट्टी के घड़े खरीद लिए—",
           "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.3,
-          "scene_context": "Warm evening view of a white sedan taxi parked inside a modern Indian apartment society.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, warm golden sunset light inside a modern Indian apartment society driveway, a clean white sedan cab with yellow license plate parked under glowing evening streetlights."
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Weathered medieval king paying gold coins at a market stall stacked with terracotta clay pots.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, stern older medieval king with iron-grey beard and dark fur-lined crimson cloak handing gold coins to a potter beside towering stacks of brown clay pots."
         },
         {
           "clip_id": "C0002",
-          "spoken_text": "जो आपको सोचने पर मजबूर कर देगा।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 1.9,
-          "scene_context": "Close-up of a long sharp scratch reflection on the white car door in evening light.",
-          "image_prompt": "Realistic anime style, 9:16 vertical close-up, dramatic shot of a long deep metallic scratch along a white car side door catching orange sunset reflections, tense cinematic mood."
+          "spoken_text": "पूरे तीन सौ घड़े—",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.4,
+          "scene_context": "Rows upon rows of 300 earthen clay pots lined across the stone castle courtyard.",
+          "image_prompt": "Realistic anime style, 9:16 vertical high-angle shot, hundreds of round terracotta clay pots arranged in dense neat rows covering a grey stone medieval castle courtyard."
+        },
+        {
+          "clip_id": "C0003",
+          "spoken_text": "क्योंकि दस हज़ार सैनिकों की सेना दीवारों से बस दो दिन दूर थी।",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Massive dark enemy army of 10,000 soldiers marching across misty distant hills toward the fortress.",
+          "image_prompt": "Realistic anime style, 9:16 vertical wide cinematic shot, colossal sea of 10,000 dark-armored soldiers and banners marching through dusty dusk valleys toward towering stone castle walls on the horizon."
         }
       ]
     },
     {
       "beat_id": "B0002",
-      "narration": "वो एक सोसाइटी में पैसेंजर को ड्रॉप करने आया था। ड्राइवर अभी कार के अंदर ही बैठा था,",
-      "word_count": 17,
-      "estimated_duration": 6.6,
+      "narration": "उसके शूरवीर अपना कवच बांध रहे थे, और राजा आँगन में बैठकर घड़े गिन रहा था।",
+      "word_count": 16,
+      "estimated_duration": 5.2,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0003",
-          "spoken_text": "वो एक सोसाइटी में पैसेंजर को ड्रॉप करने आया था।",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Passenger with a backpack walking away toward an apartment tower at dusk.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, evening twilight in an Indian gated society, a passenger with a bag walking toward residential apartment lobby away from a white cab."
+          "clip_id": "C0004",
+          "spoken_text": "उसके शूरवीर अपना कवच बांध रहे थे,",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Castle knights strapping on heavy steel pauldrons and sharpening swords by torchlight.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, grim medieval knights in a stone armory tightening heavy steel chestplates and strapping sword belts under flickering orange torchlight."
         },
         {
-          "clip_id": "C0004",
-          "spoken_text": "ड्राइवर अभी कार के अंदर ही बैठा था,",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Mid-30s Indian cab driver in light-blue shirt sitting inside the driver's seat checking his phone.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, inside a cab at evening, a mid-30s Indian cab driver with short black hair and light-blue collared shirt sitting in the driver seat checking his ride app on phone."
+          "clip_id": "C0005",
+          "spoken_text": "और राजा आँगन में बैठकर घड़े गिन रहा था।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "The king kneeling calmly in the courtyard tapping and counting each clay pot one by one.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, older bearded king in crimson cloak crouched on stone cobblestones carefully counting rows of clay pots while knights watch in confusion behind him."
         }
       ]
     },
     {
       "beat_id": "B0003",
-      "narration": "और कार एक No Parking ज़ोन के पास खड़ी थी।",
-      "word_count": 9,
-      "estimated_duration": 3.4,
+      "narration": "सेनापति ने पूछा—\"हम उनसे लड़ने वाले हैं या उनका अचार डालेंगे?\" लेकिन रसोइया खुश था—आखिरकार जैम रखने के लिए इतने मर्तबान मिल गए।",
+      "word_count": 23,
+      "estimated_duration": 7.6,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0005",
-          "spoken_text": "और कार एक No Parking ज़ोन के पास खड़ी थी।",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Red 'NO PARKING' sign pole visible right beside the parked white cab in evening light.",
-          "image_prompt": "Realistic anime style, 9:16 vertical composition, crisp red and white 'NO PARKING' pole standing beside a white cab on a society curb, warm amber dusk shadows stretching across the pavement."
+          "clip_id": "C0006",
+          "spoken_text": "सेनापति ने पूछा—\"हम उनसे लड़ने वाले हैं या उनका अचार डालेंगे?\"",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 3.8,
+          "scene_context": "Scarred grizzled general in full plate armor staring skeptically at the clay pots.",
+          "image_prompt": "Realistic anime style, 9:16 vertical portrait, grizzled battle-scarred general in dented steel armor gesturing skeptically toward rows of clay pots with a bewildered sarcastic frown."
+        },
+        {
+          "clip_id": "C0007",
+          "spoken_text": "लेकिन रसोइया खुश था—आखिरकार जैम रखने के लिए इतने मर्तबान मिल गए।",
+          "spoken_word_count": 12,
+          "estimated_spoken_duration": 3.8,
+          "scene_context": "Plump cheerful castle cook in flour-dusted apron beaming with joy holding a wooden spoon.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, cheerful plump medieval castle cook wearing a flour-stained white apron, eyes sparkling excitedly as he holds a wooden ladle and gazes at the clay pots."
         }
       ]
     },
     {
       "beat_id": "B0004",
-      "narration": "तभी एक बच्चा अपनी छोटी साइकिल-रिक्शा चलाते हुए आया— और गलती से या जानबूझकर कार के साइड डोर पर एक लंबी खरोंच मार दी।",
+      "narration": "फिर राजा ने हर ढक्कन में नौ छोटे छेद किए, ढकी हुई गाड़ी से हर घड़े को भरा, और मोम से सील कर दिया।",
       "word_count": 24,
-      "estimated_duration": 8.8,
+      "estimated_duration": 8.0,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0006",
-          "spoken_text": "तभी एक बच्चा अपनी छोटी साइकिल-रिक्शा चलाते हुए आया—",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "A 10-year-old boy in casual t-shirt pedaling a small three-wheeled kids rickshaw-tricycle fast along the driveway.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, a mischievous 10-year-old Indian boy in a red t-shirt and shorts pedaling a small metal three-wheeled kids pedal rickshaw quickly toward the white cab at dusk."
-        },
-        {
-          "clip_id": "C0007",
-          "spoken_text": "और गलती से या जानबूझकर कार के साइड डोर पर",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Metal edge of the kid's tricycle handlebar scraping right against the cab's side door.",
-          "image_prompt": "Realistic anime style, 9:16 vertical action close-up, metal handlebar edge of the kids pedal rickshaw scraping sharply against the white cab side door, tiny bright friction sparks in twilight."
-        },
-        {
           "clip_id": "C0008",
-          "spoken_text": "एक लंबी खरोंच मार दी।",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.2,
-          "scene_context": "Fresh ugly deep scratch stretching all across the passenger-side door.",
-          "image_prompt": "Realistic anime style, 9:16 vertical macro shot, a fresh deep jagged scratch line stretching across the white car door down to bare metal, dramatic evening lighting."
+          "spoken_text": "फिर राजा ने हर ढक्कन में नौ छोटे छेद किए,",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Close-up of the king's weathered hands piercing nine small holes into a clay lid with an iron awl.",
+          "image_prompt": "Realistic anime style, 9:16 vertical close-up, weathered royal hands using a sharp iron spike to carefully punch nine tiny neat breathing holes into a terracotta pot lid."
+        },
+        {
+          "clip_id": "C0009",
+          "spoken_text": "ढकी हुई गाड़ी से हर घड़े को भरा,",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "King carefully transferring something hidden out of a heavily draped wooden wagon into the pots.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, mysterious wooden cart draped in thick dark canvas tarps, the king reaching discreetly inside to fill an open clay pot in deep shadows."
+        },
+        {
+          "clip_id": "C0010",
+          "spoken_text": "और मोम से सील कर दिया।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.0,
+          "scene_context": "Melted amber beeswax dripping around the rim of the pierced lid to seal it shut.",
+          "image_prompt": "Realistic anime style, 9:16 vertical macro shot, thick golden-amber molten wax poured carefully around the rim of a perforated clay pot lid, glowing warmly in torchlight."
         }
       ]
     },
     {
       "beat_id": "B0005",
-      "narration": "आवाज़ सुनकर ड्राइवर बाहर निकला। दरवाज़े पर लंबी खरोंच देखकर उसका दिल बैठ गया।",
-      "word_count": 13,
-      "estimated_duration": 5.8,
+      "narration": "उस गाड़ी के अंदर क्या था? सेनापति तक को नहीं पता था।",
+      "word_count": 12,
+      "estimated_duration": 3.6,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0009",
-          "spoken_text": "आवाज़ सुनकर ड्राइवर बाहर निकला।",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.2,
-          "scene_context": "Cab driver stepping out quickly in alarm under yellow society streetlights.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, Indian cab driver in light-blue shirt stepping out of his cab rapidly with a shocked expression, warm dusk sky behind apartment buildings."
-        },
-        {
-          "clip_id": "C0010",
-          "spoken_text": "दरवाज़े पर लंबी खरोंच देखकर उसका दिल बैठ गया।",
-          "spoken_word_count": 8,
+          "clip_id": "C0011",
+          "spoken_text": "उस गाड़ी के अंदर क्या था? सेनापति तक को नहीं पता था।",
+          "spoken_word_count": 12,
           "estimated_spoken_duration": 3.6,
-          "scene_context": "Cab driver crouching down in disbelief, gently touching the fresh scratch on his car door.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, heartbroken cab driver crouching beside his damaged car door, fingers hovering over the long scratch, worried exhausted eyes."
+          "scene_context": "General peering suspiciously from the shadows at the tightly covered wagon.",
+          "image_prompt": "Realistic anime style, 9:16 vertical dramatic shot, armored general standing in courtyard shadow squinting suspiciously at the canvas-draped cart with faint buzzing mystery in the air."
         }
       ]
     },
     {
       "beat_id": "B0006",
-      "narration": "उसने शांत आवाज़ में बच्चे की मम्मी को बुलाया और उन्हें नुकसान दिखाया।",
-      "word_count": 12,
-      "estimated_duration": 5.2,
+      "narration": "एक सिपाही ने हिलाकर देखने के लिए एक घड़ा उठाया— तो राजा ने उसकी कलाई इतनी ज़ोर से पकड़ी कि उसका हेलमेट नीचे गिर गया।",
+      "word_count": 25,
+      "estimated_duration": 7.8,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0011",
-          "spoken_text": "उसने शांत आवाज़ में बच्चे की मम्मी को बुलाया",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "Driver politely speaking to a woman in an evening kurti standing nearby with her boy.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, polite Indian cab driver speaking calmly to a middle-aged Indian woman wearing a purple kurti standing beside the 10-year-old boy on the society walkway."
+          "clip_id": "C0012",
+          "spoken_text": "एक सिपाही ने हिलाकर देखने के लिए एक घड़ा उठाया—",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Young curious castle guard lifting one sealed clay pot curiously near his ear.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, young nervous castle guard in iron kettle helmet lifting a wax-sealed clay pot up near his ear about to shake it."
         },
         {
-          "clip_id": "C0012",
-          "spoken_text": "और उन्हें नुकसान दिखाया।",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 2.2,
-          "scene_context": "Driver pointing respectfully toward the long scratch on the car door.",
-          "image_prompt": "Realistic anime style, 9:16 vertical composition, cab driver gesturing respectfully toward the scratched white car door while the mother looks over with a cold unbothered expression."
+          "clip_id": "C0013",
+          "spoken_text": "तो राजा ने उसकी कलाई इतनी ज़ोर से पकड़ी",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "King lunging in and clamping an iron grip onto the shocked guard's wrist.",
+          "image_prompt": "Realistic anime style, 9:16 vertical intense close-up, furious king gripping the guard's armored wrist with iron force, fierce razor-sharp eyes warning him silently."
+        },
+        {
+          "clip_id": "C0014",
+          "spoken_text": "कि उसका हेलमेट नीचे गिर गया।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 1.8,
+          "scene_context": "Steel kettle helmet clattering onto the stone courtyard floor in slow motion.",
+          "image_prompt": "Realistic anime style, 9:16 vertical low-angle shot, round iron guard helmet tumbling and clattering hard against grey stone cobblestones in sharp foreground."
         }
       ]
     },
     {
       "beat_id": "B0007",
-      "narration": "लेकिन गलती मानने की जगह, मम्मी भड़क गईं। वो तेज़ आवाज़ में अपने बच्चे को डिफेंड करने लगीं।",
-      "word_count": 17,
-      "estimated_duration": 7.4,
-      "is_scene_bridge": false,
+      "narration": "शाम ढलते-ढलते सब उसे 'घड़े वाला राजा' बुलाने लगे।",
+      "word_count": 9,
+      "estimated_duration": 3.2,
+      "is_scene_bridge": true,
       "clips": [
         {
-          "clip_id": "C0013",
-          "spoken_text": "लेकिन गलती मानने की जगह, मम्मी भड़क गईं।",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "The mother's eyes narrowing angrily as she raises a hand in a sharp defensive gesture.",
-          "image_prompt": "Realistic anime style, 9:16 vertical close-up, angry Indian mother in purple kurti with raised hand and fierce defensive frown, harsh evening streetlight shadows across her face."
-        },
-        {
-          "clip_id": "C0014",
-          "spoken_text": "वो तेज़ आवाज़ में अपने बच्चे को डिफेंड करने लगीं।",
+          "clip_id": "C0015",
+          "spoken_text": "शाम ढलते-ढलते सब उसे 'घड़े वाला राजा' बुलाने लगे।",
           "spoken_word_count": 9,
-          "estimated_spoken_duration": 4.2,
-          "scene_context": "Mother stepping protectively in front of her boy while shouting at the silent cab driver.",
-          "image_prompt": "Realistic anime style, 9:16 vertical dramatic shot, angry mother standing protectively in front of her quiet 10-year-old son, shouting loudly and pointing at the stunned cab driver."
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Soldiers whispering and snickering behind the king's back at blood-orange sunset.",
+          "image_prompt": "Realistic anime style, 9:16 vertical composition, blood-orange sunset over castle battlements, guards whispering in shadows while the lone king stands silhouetted beside his 300 pots."
         }
       ]
     },
     {
       "beat_id": "B0008",
-      "narration": "बोलीं—\"बच्चा तो नादान है, गलती तुम्हारी है! तुमने No Parking में कार खड़ी ही क्यों की?\"",
-      "word_count": 16,
-      "estimated_duration": 6.6,
+      "narration": "उस रात कड़ाके की ठंड पड़ी, तो वो सारे घड़े खींचकर बड़े हॉल में ले आया और मुर्गी की तरह उनके बीच सो गया।",
+      "word_count": 24,
+      "estimated_duration": 8.0,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0015",
-          "spoken_text": "बोलीं—\"बच्चा तो नादान है, गलती तुम्हारी है!",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "Mother pointing accusingly straight at the cab driver's chest.",
-          "image_prompt": "Realistic anime style, 9:16 vertical close-up, mother pointing an accusing finger aggressively toward the camera while shielding her son behind her arm, tense evening lighting."
+          "clip_id": "C0016",
+          "spoken_text": "उस रात कड़ाके की ठंड पड़ी,",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Icy blue frost crystals creeping across castle battlements under biting winter moonlight.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, freezing blue midnight frost and icicles forming rapidly across medieval stone parapets under a cold silver moon."
         },
         {
-          "clip_id": "C0016",
-          "spoken_text": "तुमने No Parking में कार खड़ी ही क्यों की?\"",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.6,
-          "scene_context": "Mother pointing sharply toward the red No Parking sign pole behind the cab.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, mother pointing angrily toward the red 'NO PARKING' sign behind the white cab, dramatic low-angle composition at dusk."
+          "clip_id": "C0017",
+          "spoken_text": "तो वो सारे घड़े खींचकर बड़े हॉल में ले आया",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "King straining alone carrying heavy clay pots inside into a roaring hearth-lit great hall.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, exhausted king hauling clay pots indoors into a grand stone great hall lit by roaring warm hearth fires."
+        },
+        {
+          "clip_id": "C0018",
+          "spoken_text": "और मुर्गी की तरह उनके बीच सो गया।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "King curled on the stone floor wrapped in fur cloaks amidst 300 warm glowing clay pots near the fireplace.",
+          "image_prompt": "Realistic anime style, 9:16 vertical overhead shot, older king curled in heavy fur cloaks sleeping peacefully on stone floor nestled directly among 300 clay pots beside glowing hearth embers."
         }
       ]
     },
     {
       "beat_id": "B0009",
-      "narration": "ड्राइवर ने रिक्वेस्ट की—\"मैडम, मैं तो बस निकल ही रहा था, इसे ठीक करवाने में हज़ारों लगेंगे।\"",
-      "word_count": 17,
-      "estimated_duration": 6.8,
+      "narration": "अगर वो ठंडे पड़ गए, तो पूरा प्लान खत्म।",
+      "word_count": 9,
+      "estimated_duration": 3.0,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0017",
-          "spoken_text": "ड्राइवर ने रिक्वेस्ट की—\"मैडम, मैं तो बस निकल ही रहा था,",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 4.0,
-          "scene_context": "Cab driver folding his hands humbly, pleading respectfully.",
-          "image_prompt": "Realistic anime style, 9:16 vertical portrait, humble Indian cab driver folding his hands together in polite desperation, soft warm streetlight illuminating his tired honest face."
-        },
-        {
-          "clip_id": "C0018",
-          "spoken_text": "इसे ठीक करवाने में हज़ारों लगेंगे।\"",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Driver gesturing back at the long deep scratch while looking worried about repair costs.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, worried cab driver glancing back at the damaged side door of his taxi, lonely evening atmosphere."
+          "clip_id": "C0019",
+          "spoken_text": "अगर वो ठंडे पड़ गए, तो पूरा प्लान खत्म।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Close-up of warm firelight reflecting gently off the perforated lid of one clay pot.",
+          "image_prompt": "Realistic anime style, 9:16 vertical macro close-up, warm orange firelight flickering across a wax-sealed clay pot lid with nine tiny dark holes, ominous tension."
         }
       ]
     },
     {
       "beat_id": "B0010",
-      "narration": "लेकिन उन्होंने एक ना सुनी। रिपेयर का एक रुपया भी देने से साफ मना कर दिया, और बच्चे को लेकर अंदर चली गईं।",
-      "word_count": 21,
-      "estimated_duration": 8.4,
-      "is_scene_bridge": false,
+      "narration": "सुबह होते ही दीवारों पर सीढ़ियाँ टिक गईं और दस हज़ार दुश्मन ऊपर चढ़ने लगे।",
+      "word_count": 15,
+      "estimated_duration": 5.0,
+      "is_scene_bridge": true,
       "clips": [
         {
-          "clip_id": "C0019",
-          "spoken_text": "लेकिन उन्होंने एक ना सुनी।",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.2,
-          "scene_context": "Mother turning her face away coldly with arms crossed.",
-          "image_prompt": "Realistic anime style, 9:16 vertical close-up, mother crossing her arms and turning her head away coldly with an arrogant, dismissive expression."
-        },
-        {
           "clip_id": "C0020",
-          "spoken_text": "रिपेयर का एक रुपया भी देने से साफ मना कर दिया,",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.6,
-          "scene_context": "Mother gesturing 'No' firmly with her hand, refusing any compensation.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, mother waving a firm dismissive 'No' hand gesture as she turns away from the cab driver."
+          "spoken_text": "सुबह होते ही दीवारों पर सीढ़ियाँ टिक गईं",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Dozens of massive iron-hooked wooden siege ladders slamming against the stone castle parapet at sunrise.",
+          "image_prompt": "Realistic anime style, 9:16 vertical action shot, heavy iron-hooked wooden siege ladders slamming violently onto medieval stone wall battlements at golden sunrise."
         },
         {
           "clip_id": "C0021",
-          "spoken_text": "और बच्चे को लेकर अंदर चली गईं।",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Mother walking away holding her boy's hand into the brightly lit apartment building lobby.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot from behind, mother holding her son's hand and walking briskly into a bright residential glass lobby, leaving the dark driveway behind."
+          "spoken_text": "और दस हज़ार दुश्मन ऊपर चढ़ने लगे।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Looking down the sheer wall as endless waves of armored enemy soldiers swarm up the ladders.",
+          "image_prompt": "Realistic anime style, 9:16 vertical dizzying high-angle view looking down the stone fortress wall crowded with hundreds of armored enemy soldiers climbing wooden ladders."
         }
       ]
     },
     {
       "beat_id": "B0011",
-      "narration": "ढलती शाम में वो ड्राइवर अकेला खड़ा, उदास आँखों से उस खरोंच को देखता रह गया।",
-      "word_count": 15,
-      "estimated_duration": 6.2,
-      "is_scene_bridge": true,
+      "narration": "राजा के दरबारी डर से चीख रहे थे, लेकिन राजा तब तक इंतज़ार करता रहा जब तक पहले हेलमेट हाथ से खटखटाने जितने पास ना आ गए।",
+      "word_count": 27,
+      "estimated_duration": 8.4,
+      "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0022",
-          "spoken_text": "ढलती शाम में वो ड्राइवर अकेला खड़ा,",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Wide vertical shot of the cab driver standing all alone next to his car under dim blue-purple dusk.",
-          "image_prompt": "Realistic anime style, 9:16 vertical wide shot, lonely Indian cab driver standing silently beside his white taxi under deep blue-purple twilight sky and single glowing yellow streetlamp."
+          "spoken_text": "राजा के दरबारी डर से चीख रहे थे,",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Panicked noble lords shouting wildly and drawing swords along the castle ramparts.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, terrified armored castle lords screaming and waving swords in chaos along the stone battlements at dawn."
         },
         {
           "clip_id": "C0023",
-          "spoken_text": "उदास आँखों से उस खरोंच को देखता रह गया।",
-          "spoken_word_count": 8,
+          "spoken_text": "लेकिन राजा तब तक इंतज़ार करता रहा जब तक पहले हेलमेट",
+          "spoken_word_count": 11,
           "estimated_spoken_duration": 3.4,
-          "scene_context": "Close-up of the driver's sad, glistening eyes reflecting the scratched car door.",
-          "image_prompt": "Realistic anime style, 9:16 vertical emotional close-up, cab driver's sad tired eyes staring down silently, heavy quiet heartbreak in evening dusk light."
+          "scene_context": "The king standing ice-calm at the edge beside lined-up clay pots, eyes locked downward.",
+          "image_prompt": "Realistic anime style, 9:16 vertical portrait, ice-calm bearded king standing at the battlement edge with his boot poised behind a clay pot, sharp cold focus in sunrise light."
+        },
+        {
+          "clip_id": "C0024",
+          "spoken_text": "हाथ से खटखटाने जितने पास ना आ गए।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Close-up of enemy iron helmets cresting just below the stone wall ledge.",
+          "image_prompt": "Realistic anime style, 9:16 vertical close-up, steel helmets and fierce eyes of climbing enemy soldiers rising just inches below the stone wall edge."
         }
       ]
     },
     {
       "beat_id": "B0012",
-      "narration": "क्या ये इंसाफ था? कमेंट में अपनी राय बताओ— और अगर आप इस ड्राइवर की जगह होते, तो क्या करते?",
-      "word_count": 19,
-      "estimated_duration": 8.0,
+      "narration": "फिर उसने पहला घड़ा दीवार से नीचे धकेल दिया।",
+      "word_count": 9,
+      "estimated_duration": 3.0,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0024",
-          "spoken_text": "क्या ये इंसाफ था? कमेंट में अपनी राय बताओ—",
+          "clip_id": "C0025",
+          "spoken_text": "फिर उसने पहला घड़ा दीवार से नीचे धकेल दिया।",
           "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.6,
-          "scene_context": "Split-tone dramatic frame showing the scratched cab door and the No Parking pole in dusk shadows.",
-          "image_prompt": "Realistic anime style, 9:16 vertical dramatic composition, deep evening twilight framing the scratched white cab door on one side and the red No Parking sign on the other, moody storytelling atmosphere."
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "King's heavy leather boot kicking a sealed clay pot plummeting off the stone ledge.",
+          "image_prompt": "Realistic anime style, 9:16 vertical dynamic action shot, king's heavy boot kicking a clay pot off the castle ledge, pot tumbling downward toward climbing soldiers below."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0013",
+      "narration": "तीन सौ घड़े सीधे तीन सौ हेलमेट पर फूटे— और अंदर से निकलीं तीस लाख गुस्साई मधुमक्खियाँ!",
+      "word_count": 17,
+      "estimated_duration": 6.0,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0026",
+          "spoken_text": "तीन सौ घड़े सीधे तीन सौ हेलमेट पर फूटे—",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Clay pots shattering into golden shards right on top of enemy iron helmets.",
+          "image_prompt": "Realistic anime style, 9:16 vertical explosive action frame, clay pots shattering violently on top of enemy steel helmets in mid-climb, terracotta shards and wax flying."
         },
         {
-          "clip_id": "C0025",
-          "spoken_text": "और अगर आप इस ड्राइवर की जगह होते, तो क्या करते?",
+          "clip_id": "C0027",
+          "spoken_text": "और अंदर से निकलीं तीस लाख गुस्साई मधुमक्खियाँ!",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Massive dark-gold swirling storm of millions of furious honeybees erupting out of broken pots.",
+          "image_prompt": "Realistic anime style, 9:16 vertical dramatic swarm shot, immense swirling golden-black cloud of millions of furious bees bursting out of shattered pots glowing against sunrise rays."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0014",
+      "narration": "क्योंकि ठंडी मधुमक्खी उड़ नहीं सकती— और दस हज़ार सैनिक एक भी मक्खी भगाने के लिए अपनी सीढ़ी से हाथ नहीं छोड़ सकते थे।",
+      "word_count": 24,
+      "estimated_duration": 8.2,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0028",
+          "spoken_text": "क्योंकि ठंडी मधुमक्खी उड़ नहीं सकती—",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Macro shot of warm furious bees with glowing wings buzzing aggressively out of the warm pot.",
+          "image_prompt": "Realistic anime style, 9:16 vertical macro close-up, sharp detailed honeybees with translucent golden-lit wings swarming furiously out of warm clay shards in sunrise light."
+        },
+        {
+          "clip_id": "C0029",
+          "spoken_text": "और दस हज़ार सैनिक एक भी मक्खी भगाने के लिए",
           "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.4,
-          "scene_context": "Driver sitting quietly inside his cab looking into the rearview mirror as evening deepens.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, cab driver sitting back inside his dark car, looking thoughtfully into the rearview mirror illuminated by warm city evening lights."
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Enemy soldiers clutching wooden ladder rungs desperately with both hands while bees swarm their faces.",
+          "image_prompt": "Realistic anime style, 9:16 vertical dramatic shot, panicked enemy soldiers clinging desperately with white knuckles to high wooden ladder rungs as swarms of bees engulf their helmets."
+        },
+        {
+          "clip_id": "C0030",
+          "spoken_text": "अपनी सीढ़ी से हाथ नहीं छोड़ सकते थे।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Chaos along the entire wall as ladders topple while the king watches calmly from above.",
+          "image_prompt": "Realistic anime style, 9:16 vertical epic finale shot, siege ladders tipping and enemy army collapsing in chaotic bee clouds below while the Pot King stands victorious on the sunlit wall above."
         }
       ]
     }

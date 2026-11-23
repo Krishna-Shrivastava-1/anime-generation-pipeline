@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "A white sedan taxi parked, with a close‑up of a metallic car door showing a sharp scratch.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "metal scrape",
+      "fallback_tag": "metal scratch",
+      "sound_type": "transient",
+      "trigger_word": "हुआ,",
+      "target_ms": 3000,
+      "duration_sec": 0.8,
+      "volume": 0.35
+    }
+  ]
+}

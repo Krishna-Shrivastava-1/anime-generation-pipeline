@@ -1707,19 +1707,19 @@
 
 
 
-
-# Run interactively (prompts for Language, Accent, Gender, Voice, and Subtitles):
+# Run interactively (prompts for Language, Accent, Gender, Voice, Subtitles, and SFX):
 #   python teacherassemble.py teachingscript.json
 #   python teacherassemble.py teachingscript.json -a 9:16 -b bgm.mp3 -o final_video.mp4
 #
 # Or pass flags directly + -y to skip prompts:
-#   python teacherassemble.py teachingscript.json --lang en --accent us --gender male --subtitle en -y
-#   python teacherassemble.py teachingscript.json --lang hi --accent hindi --gender female --subtitle none -y
+#   python teacherassemble.py teachingscript.json --lang en --accent us --gender male --subtitle en --sfx -y
+#   python teacherassemble.py teachingscript.json --lang hi --accent hindi --gender female --subtitle none --no-sfx -y
 
 import argparse
 import hashlib
 import json
 import math
+import os
 import random
 import re
 import shutil
@@ -1750,6 +1750,21 @@ try:
 except ImportError:
     GoogleTranslator = None
 
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    load_dotenv = None
+
+try:
+    import requests
+except ImportError:
+    requests = None
+
+try:
+    from groq import Groq
+except ImportError:
+    Groq = None
+
 
 # ============================================================
 # CONFIGURATION
@@ -1771,12 +1786,22 @@ FPS = 30
 VIDEO_ZOOM = 1.08         # Subtle zoom + smooth alternating pan across each image
 BGM_VOLUME = 0.12         # Used only if --bgm is passed
 
+# Groq + Freesound SFX controls
+SFX_MIN_DUR = 0.2
+SFX_MAX_DUR = 6.0
+SFX_MASTER_VOLUME = 0.72
+GROQ_MODEL_DEFAULT = "openai/gpt-oss-120b"
+
 IMAGE_EXTENSIONS = (".png", ".jpg", ".jpeg", ".webp")
 
 BASE_DIR = Path(__file__).resolve().parent
 MODELS_DIR = BASE_DIR / "models"
 CACHE_DIR = BASE_DIR / "tts_cache"
-DEFAULT_FRAMES_DIR = BASE_DIR / "build" / "frames"
+BUILD_DIR = BASE_DIR / "build"
+DEFAULT_FRAMES_DIR = BUILD_DIR / "frames"
+SFX_DIR = BUILD_DIR / "sfx"
+PROCESSED_SFX_DIR = BUILD_DIR / "processed_sfx"
+TIMESTAMPS_DIR = BUILD_DIR / "word_timestamps"
 TRANSLATION_CACHE_FILE = BASE_DIR / "translation_cache.json"
 
 _KOKORO_INSTANCE = None
@@ -1850,8 +1875,24 @@ ACRONYM_MAP = {
 
 
 # ============================================================
-# HELPERS
+# HELPERS & ENV LOADER
 # ============================================================
+
+def load_env_vars():
+    if load_dotenv is not None:
+        load_dotenv()
+    env_path = BASE_DIR / ".env"
+    if env_path.exists():
+        for line in env_path.read_text(encoding="utf-8", errors="ignore").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            k, v = line.split("=", 1)
+            k = k.strip()
+            v = v.strip().strip('"').strip("'")
+            if k and k not in os.environ:
+                os.environ[k] = v
+
 
 def run_cmd(command):
     result = subprocess.run(
@@ -1922,6 +1963,19 @@ def get_beat_raw_narration(beat):
     )
 
 
+def get_beat_visual_context(beat):
+    parts = []
+    for key in ("prompt_action", "scene_context", "visual_context"):
+        val = beat.get(key)
+        if isinstance(val, str) and val.strip():
+            parts.append(val.strip())
+    for clip in beat.get("clips") or []:
+        sc = (clip.get("scene_context") or clip.get("prompt_action") or "").strip()
+        if sc:
+            parts.append(sc)
+    return " | ".join(dict.fromkeys(parts))
+
+
 def detect_script_language(beats):
     sample_text = " ".join(get_beat_raw_narration(bt) for bt in beats[:5])
     return "hi" if has_devanagari(sample_text) else "en"
@@ -1956,13 +2010,6 @@ def detect_aspect_ratio_from_image(img_path):
 
 
 def resolve_clip_image(clip, beat_id, clip_id, frames_dir):
-    """
-    Finds the generated image in `frames_dir`:
-      1. Explicit `image` / `image_path` / `frame` key on clip
-      2. {frames_dir}/{beat_id}_{clip_id}.{ext}
-      3. {frames_dir}/{clip_id}.{ext}
-      4. {frames_dir}/{beat_id}.{ext}
-    """
     for key in ("image", "image_path", "frame"):
         val = clip.get(key)
         if val:
@@ -2011,12 +2058,6 @@ def _save_translation_cache(cache):
 
 
 def translate_text(text, src, tgt, allow_network=True):
-    """
-    Translates text between 'hi' and 'en' using translation_cache.json.
-    - Never translates if text is already in target script.
-    - Never caches failed translations.
-    - Respects 429 rate-limit cooldown and falls back cleanly to original text.
-    """
     global _TRANSLATION_COOLDOWN_UNTIL
 
     text = " ".join(text.strip().split())
@@ -2030,7 +2071,6 @@ def translate_text(text, src, tgt, allow_network=True):
 
     if cache_key in cache:
         cached_val = cache[cache_key]
-        # Guard against previously poisoned failed entries (e.g., Hindi stored as English)
         if not (src == "hi" and tgt == "en" and has_devanagari(cached_val)):
             return cached_val
 
@@ -2078,9 +2118,8 @@ def translate_text(text, src, tgt, allow_network=True):
 
     if not translated:
         if last_err and ("429" in str(last_err) or "too many" in str(last_err).lower()):
-            # Enter brief 60s cooldown so we don't spam 429 on every remaining line
             _TRANSLATION_COOLDOWN_UNTIL = time.time() + 60.0
-            print(f"      [Warning] Google Translate rate-limited (429); falling back to original text for remaining lines.")
+            print("      [Warning] Google Translate rate-limited (429); falling back to original text for remaining lines.")
         elif last_err:
             print(f"      [Warning] Translation failed ({last_err}); falling back to original text.")
         return text
@@ -2088,7 +2127,7 @@ def translate_text(text, src, tgt, allow_network=True):
     translated = " ".join(translated.strip().split())
     cache[cache_key] = translated
     _save_translation_cache(cache)
-    time.sleep(0.20)  # Gentle pacing to avoid triggering 429
+    time.sleep(0.20)
     return translated
 
 
@@ -2097,19 +2136,12 @@ def ensure_english_text(text, allow_network=True):
 
 
 def resolve_subtitle_text(raw_narration, subtitle_mode):
-    """
-    Returns the subtitle string for a beat according to subtitle_mode:
-      - 'none': ""
-      - 'hi':   raw_narration directly if Hindi, else translates en->hi (with fallback to original)
-      - 'en':   raw_narration directly if English, else translates hi->en (with fallback to Hindi)
-    """
     if subtitle_mode == "none":
         return ""
     if subtitle_mode == "hi":
         if has_devanagari(raw_narration):
             return raw_narration
         return translate_text(raw_narration, src="en", tgt="hi")
-    # subtitle_mode == "en"
     if not has_devanagari(raw_narration):
         return raw_narration
     return translate_text(raw_narration, src="hi", tgt="en")
@@ -2120,10 +2152,6 @@ def resolve_subtitle_text(raw_narration, subtitle_mode):
 # ============================================================
 
 def normalize_text_for_tts(text, lang="en"):
-    """
-    Cleans Hindi/English + code/tech tokens so Kokoro doesn't insert fake breaks
-    on 'Node.js', stumble on '@RestController', or mumble CamelCase & acronyms.
-    """
     orig = " ".join(text.strip().split())
     if not orig:
         return orig
@@ -2356,20 +2384,53 @@ def save_wav(path, samples, sample_rate):
         wf.writeframes(pcm16.tobytes())
 
 
-def load_wav(path):
+def load_audio_mono(path, target_sr=None, temp_dir=None):
+    """Loads WAV/MP3/FLAC/OGG as mono float32; falls back to FFmpeg if soundfile cannot decode MP3."""
+    path = Path(path)
+    samples = None
+    sr = None
+
     if sf is not None:
-        samples, sr = sf.read(str(path), dtype="float32")
-        if samples.ndim > 1:
-            samples = np.mean(samples, axis=1)
-        return samples.astype(np.float32), int(sr)
-    with wave.open(str(path), "rb") as wf:
-        sr = wf.getframerate()
-        nch = wf.getnchannels()
-        frames = wf.readframes(wf.getnframes())
-    pcm = np.frombuffer(frames, dtype=np.int16).astype(np.float32) / 32768.0
-    if nch > 1:
-        pcm = pcm.reshape(-1, nch).mean(axis=1)
-    return pcm, int(sr)
+        try:
+            data, file_sr = sf.read(str(path), dtype="float32")
+            if data.ndim > 1:
+                data = np.mean(data, axis=1)
+            samples, sr = data.astype(np.float32), int(file_sr)
+        except Exception:
+            samples = None
+
+    if samples is None and path.suffix.lower() == ".wav":
+        with wave.open(str(path), "rb") as wf:
+            sr = wf.getframerate()
+            nch = wf.getnchannels()
+            frames = wf.readframes(wf.getnframes())
+        pcm = np.frombuffer(frames, dtype=np.int16).astype(np.float32) / 32768.0
+        if nch > 1:
+            pcm = pcm.reshape(-1, nch).mean(axis=1)
+        samples = pcm
+
+    if samples is None:
+        tmp_wav = (Path(temp_dir) if temp_dir else path.parent) / f".dec_{path.stem}.wav"
+        dec_sr = int(target_sr or 24000)
+        run_cmd([
+            "ffmpeg", "-y", "-i", str(path),
+            "-vn", "-ac", "1", "-ar", str(dec_sr), "-c:a", "pcm_s16le",
+            str(tmp_wav)
+        ])
+        try:
+            return load_audio_mono(tmp_wav, target_sr=target_sr)
+        finally:
+            if tmp_wav.exists():
+                tmp_wav.unlink(missing_ok=True)
+
+    if target_sr is not None and sr != target_sr and samples.size > 0:
+        old_x = np.linspace(0.0, 1.0, samples.size)
+        new_len = max(1, int(round(samples.size * target_sr / sr)))
+        new_x = np.linspace(0.0, 1.0, new_len)
+        samples = np.interp(new_x, old_x, samples).astype(np.float32)
+        sr = int(target_sr)
+
+    return samples, int(sr)
 
 
 def apply_cosine_fades(samples, sr, fade_in_ms=8, fade_out_ms=12):
@@ -2575,15 +2636,12 @@ def group_beats_for_tts(beats, narration_lang="en", subtitle_mode="en"):
             beat_id = beat.get("beat_id", f"B{idx + 1:04d}")
             raise ValueError(f"{beat_id}: missing narration.")
 
-        # Resolve spoken narration directly from script (translate only if Hindi script + EN audio)
         if narration_lang == "en":
             spoken_source = ensure_english_text(raw_narration)
         else:
             spoken_source = raw_narration
 
-        # Resolve subtitle text (if subtitle_mode == 'en' and translation fails, falls back to Hindi!)
         subtitle_text = resolve_subtitle_text(raw_narration, subtitle_mode=subtitle_mode)
-
         norm_text = normalize_text_for_tts(spoken_source, lang=narration_lang)
         added_len = len(norm_text) + (1 if current_group else 0)
 
@@ -2599,6 +2657,7 @@ def group_beats_for_tts(beats, narration_lang="en", subtitle_mode="en"):
             "beat_index": idx + 1,
             "beat": beat,
             "raw_narration": raw_narration,
+            "spoken_source": spoken_source,
             "subtitle_text": subtitle_text,
             "norm_text": norm_text,
             "is_bridge": bool(beat.get("is_scene_bridge", False)),
@@ -2691,20 +2750,18 @@ def prepare_all_beats_audio(beats, temp_dir, narration_lang, subtitle_mode, voic
     beat_audio_plans = []
     master_chunks = []
     master_sr = None
+    timeline_cursor_s = 0.0
 
     for group in groups:
         group_results = synthesize_group_and_cache(
             group, voice=voice, tts_lang=tts_lang, speed=speed, use_cache=use_cache
         )
         for item, (wav_path, raw_dur, pause_after_s) in zip(group, group_results):
-            samples, sr = load_wav(wav_path)
+            samples, sr = load_audio_mono(wav_path)
             if master_sr is None:
                 master_sr = sr
             elif sr != master_sr:
-                old_x = np.linspace(0.0, 1.0, samples.size)
-                new_len = int(round(samples.size * master_sr / sr))
-                new_x = np.linspace(0.0, 1.0, new_len)
-                samples = np.interp(new_x, old_x, samples).astype(np.float32)
+                samples, _ = load_audio_mono(wav_path, target_sr=master_sr)
 
             exact_speech_dur = samples.size / master_sr
             total_target_dur = exact_speech_dur + pause_after_s
@@ -2725,19 +2782,435 @@ def prepare_all_beats_audio(beats, temp_dir, narration_lang, subtitle_mode, voic
                 "beat_index": item["beat_index"],
                 "beat": item["beat"],
                 "raw_narration": item["raw_narration"],
+                "spoken_source": item["spoken_source"],
                 "subtitle_text": item["subtitle_text"],
                 "speech_samples": samples,
                 "sample_rate": master_sr,
                 "speech_dur": exact_speech_dur,
+                "beat_start_s": timeline_cursor_s,
                 "num_frames": num_frames,
                 "frame_dur": frame_aligned_dur,
             })
+            timeline_cursor_s += frame_aligned_dur
 
     master_samples = np.concatenate(master_chunks)
     master_wav_path = Path(temp_dir) / "master_narration.wav"
     save_wav(master_wav_path, master_samples, master_sr)
 
-    return beat_audio_plans, master_wav_path
+    return beat_audio_plans, master_wav_path, master_samples.size, master_sr
+
+
+# ============================================================
+# GROQ SOUND DIRECTOR + FREESOUND FOLEY SFX PIPELINE
+# ============================================================
+
+def calculate_word_weight(word):
+    matras = set("ाीूेैोौौंः")
+    short_vowels = set("िु")
+    virama = "्"
+
+    weight = 0.0
+    for ch in word:
+        if ch in matras:
+            weight += 1.4
+        elif ch in short_vowels:
+            weight += 0.8
+        elif ch == virama:
+            weight -= 0.3
+        elif "\u0900" <= ch <= "\u097F":
+            weight += 1.0
+        elif ch.isalnum():
+            weight += 0.65
+        else:
+            weight += 0.25
+    return max(0.6, weight)
+
+
+def align_ground_truth_to_samples(data, sr, ground_truth_text, output_json=None):
+    data = np.asarray(data, dtype=np.float32)
+    if data.size == 0:
+        return []
+
+    total_duration_sec = len(data) / float(sr)
+    clean_text = re.sub(r'["“”‘’\']', "", ground_truth_text)
+    clean_text = clean_text.replace("...", "…")
+    raw_words = [w.strip() for w in re.split(r"\s+", clean_text) if w.strip()]
+    if not raw_words:
+        return []
+
+    frame_len = max(1, int(sr * 0.02))
+    hop_len = max(1, int(sr * 0.01))
+    if len(data) > frame_len:
+        frames = [data[i:i + frame_len] for i in range(0, len(data) - frame_len, hop_len)]
+        rms = np.array([np.sqrt(np.mean(f ** 2)) for f in frames])
+        threshold = np.max(rms) * 0.05
+        active_indices = np.where(rms > threshold)[0]
+    else:
+        active_indices = np.array([], dtype=np.int64)
+
+    if len(active_indices) > 0:
+        speech_start_sec = max(0.0, (active_indices[0] * hop_len) / sr - 0.04)
+        speech_end_sec = min(total_duration_sec, (active_indices[-1] * hop_len) / sr + 0.06)
+    else:
+        speech_start_sec = 0.0
+        speech_end_sec = total_duration_sec
+
+    usable_duration = max(0.05, speech_end_sec - speech_start_sec)
+    weights = [calculate_word_weight(w) for w in raw_words]
+    total_weight = sum(weights)
+
+    words_timeline = []
+    current_time = speech_start_sec
+    for word, weight in zip(raw_words, weights):
+        word_dur = (weight / total_weight) * usable_duration
+        words_timeline.append({
+            "word": word,
+            "start_ms": int(current_time * 1000),
+            "end_ms": int((current_time + word_dur) * 1000),
+        })
+        current_time += word_dur
+
+    if output_json is not None:
+        Path(output_json).write_text(
+            json.dumps(words_timeline, ensure_ascii=False, indent=2),
+            encoding="utf-8"
+        )
+    return words_timeline
+
+
+class FreesoundAudioAPI:
+    BASE_URL = "https://freesound.org/apiv2/search/text/"
+    NEGATIVE_TAG_FILTER = "-tag:music -tag:beat -tag:loop -tag:song -tag:synth -tag:electronic"
+
+    @classmethod
+    def clean_query_term(cls, term):
+        cleaned = re.sub(r"[^a-zA-Z0-9\s]", " ", str(term or ""))
+        return " ".join(cleaned.split())
+
+    @classmethod
+    def search_and_download(cls, query, fallback_query="", api_key=None):
+        if requests is None:
+            raise RuntimeError("`requests` is required for Freesound SFX. Install with: pip install requests")
+        api_key = api_key or os.getenv("FREESOUND_API_KEY")
+        if not api_key:
+            raise RuntimeError("FREESOUND_API_KEY is not set.")
+
+        headers = {
+            "Authorization": f"Token {api_key}",
+            "User-Agent": "TeacherAssembleFoleyBot/4.0",
+        }
+        SFX_DIR.mkdir(parents=True, exist_ok=True)
+
+        q_clean = cls.clean_query_term(query)
+        fb_clean = cls.clean_query_term(fallback_query)
+        if not q_clean and not fb_clean:
+            return None
+
+        slug = re.sub(r"[^a-zA-Z0-9_-]", "_", (q_clean or fb_clean).strip().lower())
+        cached_files = list(SFX_DIR.glob(f"{slug}_*.mp3"))
+        if cached_files and cached_files[0].stat().st_size > 1024:
+            return cached_files[0]
+
+        queries_to_try = [q_clean]
+        if fb_clean and fb_clean != q_clean:
+            queries_to_try.append(fb_clean)
+        words = q_clean.split()
+        if len(words) >= 2:
+            queries_to_try.append(f"{words[0]} {words[1]}")
+
+        for attempt_query in queries_to_try:
+            if not attempt_query.strip():
+                continue
+
+            params = {
+                "query": attempt_query,
+                "filter": f"duration:[{SFX_MIN_DUR} TO {SFX_MAX_DUR}] {cls.NEGATIVE_TAG_FILTER}",
+                "sort": "score",
+                "fields": "id,name,previews,duration,num_downloads,rating_avg",
+                "page_size": 5,
+            }
+
+            try:
+                resp = requests.get(cls.BASE_URL, headers=headers, params=params, timeout=10)
+                if resp.status_code != 200:
+                    continue
+
+                results = resp.json().get("results", [])
+                if not results:
+                    params["filter"] = f"duration:[{SFX_MIN_DUR} TO {SFX_MAX_DUR}]"
+                    params["sort"] = "rating_desc"
+                    resp = requests.get(cls.BASE_URL, headers=headers, params=params, timeout=10)
+                    results = resp.json().get("results", []) if resp.status_code == 200 else []
+
+                if results:
+                    chosen = results[0]
+                    sound_id = chosen["id"]
+                    previews = chosen.get("previews", {})
+                    download_url = previews.get("preview-hq-mp3") or previews.get("preview-lq-mp3")
+                    if not download_url:
+                        continue
+
+                    target_file = SFX_DIR / f"{slug}_{sound_id}.mp3"
+                    print(f"      Downloading Freesound #{sound_id} ('{chosen.get('name', '')[:35]}') for '{attempt_query}'...")
+                    audio_resp = requests.get(download_url, headers=headers, timeout=15)
+                    if audio_resp.status_code == 200 and len(audio_resp.content) > 1024:
+                        target_file.write_bytes(audio_resp.content)
+                        print(f"      Saved SFX: {target_file.name}")
+                        return target_file
+            except Exception as e:
+                print(f"      [Warning] Freesound lookup failed for '{attempt_query}': {e}")
+
+        print(f"      [Warning] Freesound: No sounds found for queries: {queries_to_try}")
+        return None
+
+
+def detect_audio_transient_onset(data, sr):
+    if len(data) == 0:
+        return 0.0
+    peak = np.max(np.abs(data)) + 1e-9
+    norm_data = np.abs(data) / peak
+    win = max(1, int(sr * 0.01))
+    energy = np.convolve(norm_data ** 2, np.ones(win) / win, mode="same")
+    max_e = np.max(energy)
+    if max_e < 1e-4:
+        return 0.0
+    threshold = max_e * 0.08
+    indices = np.where(energy >= threshold)[0]
+    if len(indices) == 0:
+        return 0.0
+    return min(indices[0] / float(sr), 1.2)
+
+
+def process_sfx_audio(raw_sfx_path, sound_type, max_duration_sec, output_path, target_sr, temp_dir=None):
+    data, sr = load_audio_mono(raw_sfx_path, target_sr=target_sr, temp_dir=temp_dir)
+    if data.size == 0:
+        return np.zeros(0, dtype=np.float32), 0.0
+
+    duration_sec = len(data) / float(sr)
+    onset_sec = detect_audio_transient_onset(data, sr)
+
+    if sound_type == "transient":
+        if duration_sec > max_duration_sec + 0.8:
+            target_samples = int((max_duration_sec + 0.6) * sr)
+            data = data[:target_samples]
+            fade = min(int(sr * 0.1), len(data) // 4)
+            if fade > 0:
+                data[-fade:] *= 0.5 * (1 + np.cos(np.linspace(0, np.pi, fade)))
+    else:
+        target_samples = int(max_duration_sec * sr)
+        if len(data) > target_samples:
+            data = data[:target_samples]
+            fade = min(int(sr * 0.15), len(data) // 4)
+            if fade > 0:
+                data[-fade:] *= 0.5 * (1 + np.cos(np.linspace(0, np.pi, fade)))
+
+    data = apply_cosine_fades(data, sr, fade_in_ms=5, fade_out_ms=25)
+    save_wav(output_path, data, sr)
+    return data, onset_sec
+
+
+def query_groq_sound_director(groq_client, groq_model, beat_id, visual_context, narration_text, words_timeline):
+    cache_sig = hashlib.md5(
+        json.dumps(
+            {
+                "v": "groq_sfx_v1",
+                "model": groq_model,
+                "visual": visual_context,
+                "text": narration_text,
+                "words": len(words_timeline),
+                "dur_ms": words_timeline[-1]["end_ms"] if words_timeline else 0,
+            },
+            ensure_ascii=False,
+        ).encode("utf-8")
+    ).hexdigest()
+    SFX_DIR.mkdir(parents=True, exist_ok=True)
+    cache_file = SFX_DIR / f"groq_{beat_id}_{cache_sig[:12]}.json"
+    if cache_file.exists():
+        try:
+            cached = json.loads(cache_file.read_text(encoding="utf-8"))
+            if cached.get("scene_analysis"):
+                print(f"   Scene Foley Context (cached): {cached['scene_analysis']}")
+            return cached.get("sfx_cues", [])
+        except Exception:
+            pass
+
+    system_instruction = (
+        "You are a realistic Foley & Explainer Sound Editor. Your job is to select subtle, grounded sound effects "
+        "that accurately match the LITERAL objects, actions, or UI/whiteboard interactions happening in the narration.\n\n"
+        "STRICT REALISM & MATCHING RULES:\n"
+        "1. GROUND TO LITERAL OBJECTS/ACTIONS: If the scene mentions a bottle, glass, water, cup, book, door, keyboard, "
+        "whiteboard drawing, click, notification, or data transfer, choose sounds specifically matching those actions.\n"
+        "2. ABSOLUTELY NO UNPROMPTED DRAMATIC SFX: NEVER output 'car crash', 'explosion', 'gunshot', or 'cinematic hit' "
+        "unless a vehicle crash or weapon is explicitly mentioned in the text.\n"
+        "3. QUERY FORMAT FOR FREESOUND:\n"
+        "   - Use 2-3 precise natural English words describing the exact material/object and action.\n"
+        "   - Good story Foley: 'glass bottle clink', 'pouring water', 'footsteps wood', 'paper turn', 'door creak'\n"
+        "   - Good explainer/tech Foley: 'marker whiteboard draw', 'keyboard typing', 'mouse click', 'subtle UI pop', 'server hum'\n"
+        "   - Bad: 'smash', 'break', 'dramatic_impact_cinematic_boom'\n"
+        "4. DENSITY: Output between 0 and 2 tasteful cues. Keep volume subtle (0.25 to 0.55) so voiceover stays crystal clear. "
+        "If no distinct sound cue fits naturally, return an empty list [].\n\n"
+        "Return strictly a JSON object with this schema:\n"
+        "{\n"
+        '  "scene_analysis": "One sentence explaining physical/visual objects present",\n'
+        '  "sfx_cues": [\n'
+        "    {\n"
+        '      "freesound_tag": "glass bottle clink",\n'
+        '      "fallback_tag": "glass impact",\n'
+        '      "sound_type": "transient",\n'
+        '      "trigger_word": "word from the timeline",\n'
+        '      "target_ms": 1200,\n'
+        '      "duration_sec": 1.5,\n'
+        '      "volume": 0.45\n'
+        "    }\n"
+        "  ]\n"
+        "}"
+    )
+
+    user_content = f"""
+Beat ID: {beat_id}
+Visual Context: {visual_context if visual_context else 'Explainer / story scene'}
+Spoken Narration: {narration_text}
+
+Word-by-word Timestamps (ms):
+{json.dumps(words_timeline, ensure_ascii=False)}
+
+Identify literal physical materials, actions, or UI/whiteboard cues and select 0 to 2 matching sound cues.
+"""
+
+    try:
+        completion = groq_client.chat.completions.create(
+            model=groq_model,
+            messages=[
+                {"role": "system", "content": system_instruction},
+                {"role": "user", "content": user_content},
+            ],
+            response_format={"type": "json_object"},
+            temperature=0.1,
+            max_tokens=600,
+        )
+        data = json.loads(completion.choices[0].message.content)
+        analysis = data.get("scene_analysis", "")
+        if analysis:
+            print(f"   Scene Foley Context: {analysis}")
+        cache_file.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+        return data.get("sfx_cues", [])
+    except Exception as e:
+        print(f"   [Warning] Groq Sound Director error on {beat_id}: {e}")
+        return []
+
+
+def validate_sfx_dependencies():
+    load_env_vars()
+    missing_pkgs = []
+    if Groq is None:
+        missing_pkgs.append("groq")
+    if requests is None:
+        missing_pkgs.append("requests")
+    if missing_pkgs:
+        raise RuntimeError(
+            f"Missing packages for SFX mode: {', '.join(missing_pkgs)}. "
+            f"Install with: pip install {' '.join(missing_pkgs)} python-dotenv"
+        )
+
+    groq_key = os.getenv("GROQ_API_KEY")
+    freesound_key = os.getenv("FREESOUND_API_KEY")
+    if not groq_key:
+        raise RuntimeError("GROQ_API_KEY is not set! Add it to .env or environment variables.")
+    if not freesound_key:
+        raise RuntimeError("FREESOUND_API_KEY is not set! Add it to .env or environment variables.")
+
+    return Groq(api_key=groq_key), freesound_key, os.getenv("GROQ_MODEL", GROQ_MODEL_DEFAULT)
+
+
+def build_master_sfx_track(beat_audio_plans, total_samples, sample_rate, temp_dir):
+    groq_client, freesound_key, groq_model = validate_sfx_dependencies()
+    SFX_DIR.mkdir(parents=True, exist_ok=True)
+    PROCESSED_SFX_DIR.mkdir(parents=True, exist_ok=True)
+    TIMESTAMPS_DIR.mkdir(parents=True, exist_ok=True)
+
+    master_sfx = np.zeros(total_samples, dtype=np.float32)
+    total_attached = 0
+
+    print(f"\nDirecting Grounded Foley SFX (Groq: {groq_model} + Freesound API)...")
+    for plan in beat_audio_plans:
+        beat = plan["beat"]
+        beat_id = beat.get("beat_id", f"B{plan['beat_index']:04d}")
+        visual_context = get_beat_visual_context(beat)
+        spoken_text = plan["spoken_source"]
+
+        ts_file = TIMESTAMPS_DIR / f"{beat_id}_words.json"
+        words_timeline = align_ground_truth_to_samples(
+            data=plan["speech_samples"],
+            sr=plan["sample_rate"],
+            ground_truth_text=spoken_text,
+            output_json=ts_file,
+        )
+
+        sfx_cues = query_groq_sound_director(
+            groq_client=groq_client,
+            groq_model=groq_model,
+            beat_id=beat_id,
+            visual_context=visual_context,
+            narration_text=spoken_text,
+            words_timeline=words_timeline,
+        )
+        if not sfx_cues:
+            continue
+
+        print(f"   [{beat_id}] Foley cues chosen: {len(sfx_cues)}")
+        for sfx_idx, cue in enumerate(sfx_cues):
+            tag = cue.get("freesound_tag", "")
+            fallback = cue.get("fallback_tag", "")
+            sound_type = cue.get("sound_type", "transient")
+            target_ms = float(cue.get("target_ms", 0))
+            duration_sec = min(SFX_MAX_DUR, max(SFX_MIN_DUR, float(cue.get("duration_sec", 2.0))))
+            volume = float(np.clip(float(cue.get("volume", 0.45)), 0.05, 0.85))
+
+            raw_sfx = FreesoundAudioAPI.search_and_download(tag, fallback, api_key=freesound_key)
+            if not raw_sfx:
+                continue
+
+            processed_sfx_path = PROCESSED_SFX_DIR / f"{beat_id}_sfx_{sfx_idx}.wav"
+            sfx_samples, onset_sec = process_sfx_audio(
+                raw_sfx_path=raw_sfx,
+                sound_type=sound_type,
+                max_duration_sec=duration_sec,
+                output_path=processed_sfx_path,
+                target_sr=sample_rate,
+                temp_dir=temp_dir,
+            )
+            if sfx_samples.size == 0:
+                continue
+
+            target_impact_time = plan["beat_start_s"] + (target_ms / 1000.0)
+            sfx_start_time = max(0.0, target_impact_time - onset_sec)
+            start_idx = int(round(sfx_start_time * sample_rate))
+            if start_idx >= total_samples:
+                continue
+
+            end_idx = min(total_samples, start_idx + sfx_samples.size)
+            copy_len = end_idx - start_idx
+            if copy_len > 0:
+                master_sfx[start_idx:end_idx] += sfx_samples[:copy_len] * volume
+                total_attached += 1
+                print(
+                    f"      Attached '{tag}' @ {sfx_start_time:.2f}s "
+                    f"(onset: -{onset_sec * 1000:.0f}ms, vol={volume:.2f})"
+                )
+
+    if total_attached == 0:
+        print("No SFX attached; continuing with voiceover only.")
+        return None
+
+    # Soft-limit any overlapping SFX peaks before final FFmpeg mux
+    peak = float(np.max(np.abs(master_sfx)))
+    if peak > 0.92:
+        master_sfx = (np.tanh(master_sfx * 0.95) / np.tanh(0.95) * 0.92).astype(np.float32)
+
+    master_sfx_path = Path(temp_dir) / "master_sfx.wav"
+    save_wav(master_sfx_path, master_sfx, sample_rate)
+    print(f"Mixed {total_attached} SFX cues into {master_sfx_path.name}.")
+    return master_sfx_path
 
 
 # ============================================================
@@ -2853,7 +3326,6 @@ def can_pillow_shape_text(text):
     if Image is None:
         return False
     if has_devanagari(text):
-        # Complex Hindi matras require libraqm in Pillow; otherwise FFmpeg libass shapes them cleanly
         return bool(pil_features is not None and pil_features.check("raqm"))
     return True
 
@@ -3065,7 +3537,7 @@ def concat_video_only(segment_files, output_file, temp_dir):
     return output_file
 
 
-def mux_final_video(master_video_path, master_audio_path, output_file, bgm_path=None):
+def mux_final_video(master_video_path, master_audio_path, output_file, sfx_audio_path=None, bgm_path=None):
     output_file = Path(output_file)
     command = [
         "ffmpeg", "-y",
@@ -3073,28 +3545,48 @@ def mux_final_video(master_video_path, master_audio_path, output_file, bgm_path=
         "-i", str(master_audio_path),
     ]
 
-    voice_chain = (
+    next_idx = 2
+    filter_parts = [
         "[1:a]aresample=44100,"
         "highpass=f=75,"
         "acompressor=threshold=-18dB:ratio=2.0:attack=15:release=180:makeup=1.4,"
-        f"volume={VOICE_VOLUME}"
-    )
+        f"volume={VOICE_VOLUME}[v_pre]"
+    ]
 
-    if bgm_path is not None and Path(bgm_path).exists():
+    has_sfx = sfx_audio_path is not None and Path(sfx_audio_path).exists()
+    has_bgm = bgm_path is not None and Path(bgm_path).exists()
+
+    if has_bgm:
+        filter_parts.append("[v_pre]asplit=2[v_mix][v_sc]")
+        voice_label = "[v_mix]"
+    else:
+        voice_label = "[v_pre]"
+
+    mix_inputs = [voice_label]
+
+    if has_sfx:
+        command.extend(["-i", str(sfx_audio_path)])
+        filter_parts.append(f"[{next_idx}:a]aresample=44100,volume={SFX_MASTER_VOLUME}[sfx]")
+        mix_inputs.append("[sfx]")
+        next_idx += 1
+
+    if has_bgm:
         command.extend(["-stream_loop", "-1", "-i", str(bgm_path)])
-        filter_complex = (
-            f"{voice_chain}[v_pre];"
-            "[v_pre]asplit=2[v_mix][v_sc];"
-            f"[2:a]aresample=44100,volume={BGM_VOLUME}[bgm_raw];"
-            "[bgm_raw][v_sc]sidechaincompress=threshold=0.02:ratio=2.8:attack=90:release=480[bgm];"
-            "[v_mix][bgm]amix=inputs=2:duration=first:dropout_transition=2:normalize=0,"
+        filter_parts.append(f"[{next_idx}:a]aresample=44100,volume={BGM_VOLUME}[bgm_raw]")
+        filter_parts.append("[bgm_raw][v_sc]sidechaincompress=threshold=0.02:ratio=2.8:attack=90:release=480[bgm]")
+        mix_inputs.append("[bgm]")
+        next_idx += 1
+
+    if len(mix_inputs) == 1:
+        filter_parts.append(f"{voice_label}alimiter=limit=0.95[aout]")
+    else:
+        filter_parts.append(
+            f"{''.join(mix_inputs)}amix=inputs={len(mix_inputs)}:duration=first:dropout_transition=2:normalize=0,"
             "alimiter=limit=0.95[aout]"
         )
-    else:
-        filter_complex = f"{voice_chain},alimiter=limit=0.95[aout]"
 
     command.extend([
-        "-filter_complex", filter_complex,
+        "-filter_complex", ";".join(filter_parts),
         "-map", "0:v:0", "-map", "[aout]",
         "-c:v", "copy",
         "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2",
@@ -3272,13 +3764,17 @@ def resolve_interactive_options(args, detected_script_lang):
     gender = args.gender
     voice = args.voice
     subtitle_mode = normalize_subtitle_arg(args.subtitle) if args.subtitle is not None else None
+    use_sfx = args.sfx
 
     default_lang = detected_script_lang
     default_accent = "hindi" if default_lang == "hi" else "us"
 
-    if can_prompt and (lang is None or subtitle_mode is None or (voice is None and (accent is None or gender is None))):
+    if can_prompt and (
+        lang is None or subtitle_mode is None or use_sfx is None
+        or (voice is None and (accent is None or gender is None))
+    ):
         detected_label = "Hindi" if detected_script_lang == "hi" else "English"
-        print("\n=== Audio & Subtitle Setup ===")
+        print("\n=== Audio, Subtitle & SFX Setup ===")
         print(f"Detected script narration: {detected_label}")
 
     if lang is None:
@@ -3364,7 +3860,20 @@ def resolve_interactive_options(args, detected_script_lang):
         else:
             subtitle_mode = detected_script_lang
 
-    return lang, gender, accent, voice, subtitle_mode
+    if use_sfx is None:
+        if can_prompt:
+            print("\n6) Sound Effects (Groq AI Director + Freesound API):")
+            print("   [1] No (Voice + optional BGM only)")
+            print("   [2] Yes (Add grounded Foley/SFX via Groq + Freesound)")
+            use_sfx = _ask_choice(
+                "   Add sound effects? [1/2, default=1]: ",
+                {"1": False, "n": False, "no": False, "false": False, "2": True, "y": True, "yes": True, "true": True},
+                False,
+            )
+        else:
+            use_sfx = False
+
+    return lang, gender, accent, voice, subtitle_mode, use_sfx
 
 
 def run_assembly(
@@ -3378,11 +3887,13 @@ def run_assembly(
     accent=None,
     voice=None,
     subtitle=None,
+    sfx=None,
     speed=TTS_SPEED,
     yes=False,
     no_cache=False,
 ):
     check_dependencies()
+    load_env_vars()
 
     json_path = Path(json_path).resolve()
     if not json_path.exists():
@@ -3401,11 +3912,14 @@ def run_assembly(
     get_kokoro()
 
     dummy_args = argparse.Namespace(
-        lang=lang, gender=gender, accent=accent, voice=voice, subtitle=subtitle, yes=yes
+        lang=lang, gender=gender, accent=accent, voice=voice, subtitle=subtitle, sfx=sfx, yes=yes
     )
-    narration_lang, chosen_gender, chosen_accent, chosen_voice, subtitle_mode = resolve_interactive_options(
+    narration_lang, chosen_gender, chosen_accent, chosen_voice, subtitle_mode, use_sfx = resolve_interactive_options(
         dummy_args, detected_script_lang=detected_script_lang
     )
+
+    if use_sfx:
+        validate_sfx_dependencies()
 
     if aspect_ratio == "auto":
         meta_ar = story_data.get("aspect_ratio") or story_data.get("project_meta", {}).get("aspect_ratio")
@@ -3447,12 +3961,13 @@ def run_assembly(
         print(
             f"\nTitle: {title} | Beats: {len(beats)} | Aspect: {aspect_ratio} ({profile['width']}x{profile['height']}) "
             f"| Audio: {narration_lang.upper()} ({chosen_gender}, {chosen_accent} accent -> {selected_voice}, {tts_lang}) @ {speed}x "
-            f"| Subtitles: {subtitle_mode.upper()} | Output: {final_output.name}"
+            f"| Subtitles: {subtitle_mode.upper()} | SFX: {'Groq+Freesound' if use_sfx else 'OFF'} "
+            f"| Output: {final_output.name}"
         )
         if subtitle_mode != "none" and Image is None:
             print("[Note] Install Pillow (`pip install pillow`) for RDR2-style sketchy subtitles.")
 
-        beat_audio_plans, master_wav_path = prepare_all_beats_audio(
+        beat_audio_plans, master_wav_path, total_samples, master_sr = prepare_all_beats_audio(
             beats,
             temp_dir=temp_dir,
             narration_lang=narration_lang,
@@ -3462,6 +3977,15 @@ def run_assembly(
             speed=speed,
             use_cache=not no_cache,
         )
+
+        sfx_wav_path = None
+        if use_sfx:
+            sfx_wav_path = build_master_sfx_track(
+                beat_audio_plans,
+                total_samples=total_samples,
+                sample_rate=master_sr,
+                temp_dir=temp_dir,
+            )
 
         beat_video_outputs, motion_counter = [], 0
         for plan in beat_audio_plans:
@@ -3479,7 +4003,13 @@ def run_assembly(
         print("\nAssembling master video + continuous audio...")
         master_video_path = temp_dir / "master_video.mp4"
         concat_video_only(beat_video_outputs, master_video_path, temp_dir=temp_dir)
-        mux_final_video(master_video_path, master_wav_path, final_output, bgm_path=bgm_path)
+        mux_final_video(
+            master_video_path,
+            master_wav_path,
+            final_output,
+            sfx_audio_path=sfx_wav_path,
+            bgm_path=bgm_path,
+        )
 
         actual_total = get_duration(final_output)
         print(f"Done: {final_output} ({actual_total:.2f}s / {actual_total / 60:.2f} min)")
@@ -3491,7 +4021,7 @@ def run_assembly(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Assemble explainer video from generated images + beat/clip JSON with fluent Kokoro TTS and subtitles."
+        description="Assemble explainer video from generated images + beat/clip JSON with fluent Kokoro TTS, subtitles, and optional Groq+Freesound SFX."
     )
     parser.add_argument("json_path", help="Path to story JSON (with beats[] and clips[])")
     parser.add_argument("-f", "--frames-dir", default=None, help="Directory with generated images (default: build/frames)")
@@ -3503,6 +4033,9 @@ if __name__ == "__main__":
     parser.add_argument("--accent", choices=["us", "hindi", "uk"], default=None, help="Voice accent: 'us', 'hindi', or 'uk' (prompted if omitted)")
     parser.add_argument("--voice", default=None, help="Optional explicit Kokoro voice ID override (e.g. af_heart, am_michael, hf_alpha)")
     parser.add_argument("-s", "--subtitle", choices=["en", "hi", "english", "hindi", "none", "off"], default=None, help="Subtitle language: 'en', 'hi', or 'none' (prompted if omitted)")
+    sfx_group = parser.add_mutually_exclusive_group()
+    sfx_group.add_argument("--sfx", dest="sfx", action="store_true", default=None, help="Enable Groq + Freesound SFX")
+    sfx_group.add_argument("--no-sfx", dest="sfx", action="store_false", help="Disable SFX")
     parser.add_argument("--speed", type=float, default=TTS_SPEED, help=f"TTS speed (default: {TTS_SPEED})")
     parser.add_argument("-y", "--yes", action="store_true", help="Skip interactive prompts and use defaults for omitted options")
     parser.add_argument("--no-cache", action="store_true", help="Force fresh TTS generation instead of reusing tts_cache")
@@ -3519,6 +4052,7 @@ if __name__ == "__main__":
         accent=args.accent,
         voice=args.voice,
         subtitle=args.subtitle,
+        sfx=args.sfx,
         speed=args.speed,
         yes=args.yes,
         no_cache=args.no_cache,

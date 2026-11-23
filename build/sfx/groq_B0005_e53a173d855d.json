@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "Cab driver steps onto pavement and crouches to feel a fresh metal scratch on his car door",
+  "sfx_cues": [
+    {
+      "freesound_tag": "footsteps concrete",
+      "fallback_tag": "footstep",
+      "sound_type": "transient",
+      "trigger_word": "बाहर",
+      "target_ms": 1300,
+      "duration_sec": 0.8,
+      "volume": 0.35
+    },
+    {
+      "freesound_tag": "metal scratch",
+      "fallback_tag": "metal scrape",
+      "sound_type": "transient",
+      "trigger_word": "खरोंच",
+      "target_ms": 3300,
+      "duration_sec": 1.0,
+      "volume": 0.45
+    }
+  ]
+}

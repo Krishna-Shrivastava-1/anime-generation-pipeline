@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "A driver points at a long scratch on a metal car door while speaking to a woman in a kurti and her boy.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "metal door creak",
+      "fallback_tag": "metal creak",
+      "sound_type": "transient",
+      "trigger_word": "नुकसान",
+      "target_ms": 3300,
+      "duration_sec": 0.8,
+      "volume": 0.35
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "A child on a metal-handled three‑wheel tricycle scrapes the metal handlebar against the car’s side door, creating a metal‑on‑paint scratch while the wheels roll on the driveway.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "metal scrape door",
+      "fallback_tag": "metal scrape",
+      "sound_type": "transient",
+      "trigger_word": "खरोंच",
+      "target_ms": 7068,
+      "duration_sec": 0.8,
+      "volume": 0.42
+    },
+    {
+      "freesound_tag": "rubber tire rolling",
+      "fallback_tag": "tire rolling",
+      "sound_type": "continuous",
+      "trigger_word": "साइकिल-रिक्शा",
+      "target_ms": 1560,
+      "duration_sec": 1.2,
+      "volume": 0.35
+    }
+  ]
+}

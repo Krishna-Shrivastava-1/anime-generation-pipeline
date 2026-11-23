@@ -1,0 +1,92 @@
+[
+  {
+    "word": "शाम",
+    "start_ms": 10,
+    "end_ms": 309
+  },
+  {
+    "word": "के",
+    "start_ms": 309,
+    "end_ms": 521
+  },
+  {
+    "word": "वक्त",
+    "start_ms": 521,
+    "end_ms": 759
+  },
+  {
+    "word": "एक",
+    "start_ms": 759,
+    "end_ms": 935
+  },
+  {
+    "word": "कैब",
+    "start_ms": 935,
+    "end_ms": 1235
+  },
+  {
+    "word": "ड्राइवर",
+    "start_ms": 1235,
+    "end_ms": 1772
+  },
+  {
+    "word": "के",
+    "start_ms": 1772,
+    "end_ms": 1984
+  },
+  {
+    "word": "साथ",
+    "start_ms": 1984,
+    "end_ms": 2284
+  },
+  {
+    "word": "कुछ",
+    "start_ms": 2284,
+    "end_ms": 2530
+  },
+  {
+    "word": "ऐसा",
+    "start_ms": 2530,
+    "end_ms": 2830
+  },
+  {
+    "word": "हुआ,",
+    "start_ms": 2830,
+    "end_ms": 3099
+  },
+  {
+    "word": "जो",
+    "start_ms": 3099,
+    "end_ms": 3311
+  },
+  {
+    "word": "आपको",
+    "start_ms": 3311,
+    "end_ms": 3698
+  },
+  {
+    "word": "सोचने",
+    "start_ms": 3698,
+    "end_ms": 4210
+  },
+  {
+    "word": "पर",
+    "start_ms": 4210,
+    "end_ms": 4386
+  },
+  {
+    "word": "मजबूर",
+    "start_ms": 4386,
+    "end_ms": 4862
+  },
+  {
+    "word": "कर",
+    "start_ms": 4862,
+    "end_ms": 5038
+  },
+  {
+    "word": "देगा।",
+    "start_ms": 5038,
+    "end_ms": 5550
+  }
+]

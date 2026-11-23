@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "Mother raises her hand sharply and steps in front of her son, moving her clothing and foot on the floor.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "cloth rustle",
+      "fallback_tag": "fabric swish",
+      "sound_type": "transient",
+      "trigger_word": "भड़क",
+      "target_ms": 1900,
+      "duration_sec": 0.8,
+      "volume": 0.42
+    }
+  ]
+}

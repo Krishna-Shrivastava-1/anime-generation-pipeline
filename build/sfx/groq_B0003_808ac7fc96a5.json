@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "Red No Parking sign pole beside a parked white cab in evening light.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "car engine idle",
+      "fallback_tag": "engine hum",
+      "sound_type": "ambient",
+      "trigger_word": "कार",
+      "target_ms": 179,
+      "duration_sec": 1.5,
+      "volume": 0.35
+    }
+  ]
+}

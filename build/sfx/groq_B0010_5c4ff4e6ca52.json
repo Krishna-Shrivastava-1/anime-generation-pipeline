@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "Mother gestures 'No' and walks away holding her child's hand across a lobby floor.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "footsteps marble",
+      "fallback_tag": "footsteps stone",
+      "sound_type": "transient",
+      "trigger_word": "चली",
+      "target_ms": 6900,
+      "duration_sec": 1.2,
+      "volume": 0.42
+    }
+  ]
+}

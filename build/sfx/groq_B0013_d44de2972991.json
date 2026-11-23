@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "Clay pots shatter on iron helmets while a swarm of honeybees erupts.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "clay pot break",
+      "fallback_tag": "ceramic break",
+      "sound_type": "transient",
+      "trigger_word": "घड़े",
+      "target_ms": 800,
+      "duration_sec": 0.8,
+      "volume": 0.4
+    },
+    {
+      "freesound_tag": "honey bee swarm",
+      "fallback_tag": "bee buzz",
+      "sound_type": "ambient",
+      "trigger_word": "मधुमक्खियाँ!",
+      "target_ms": 5600,
+      "duration_sec": 2.0,
+      "volume": 0.35
+    }
+  ]
+}

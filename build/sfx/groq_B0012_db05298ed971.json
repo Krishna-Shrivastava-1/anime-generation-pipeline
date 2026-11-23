@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "King's leather boot kicks a sealed clay pot that falls off a stone ledge.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "leather boot kick",
+      "fallback_tag": "boot impact",
+      "sound_type": "transient",
+      "trigger_word": "घड़ा",
+      "target_ms": 1000,
+      "duration_sec": 0.8,
+      "volume": 0.45
+    },
+    {
+      "freesound_tag": "clay pot thud",
+      "fallback_tag": "pot impact",
+      "sound_type": "impact",
+      "trigger_word": "नीचे",
+      "target_ms": 2000,
+      "duration_sec": 1.0,
+      "volume": 0.4
+    }
+  ]
+}

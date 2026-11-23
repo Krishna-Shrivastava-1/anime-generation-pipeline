@@ -101,3 +101,9 @@ Return ONLY raw, valid JSON (no markdown fences, no commentary before or after):
   2. Core Mental Model (simple analogy + how it works step by step)
   3. Under-the-Hood Mechanics (UI / architecture / security / edge cases)
   4. Real-world Takeaway (crisp ending beat)
+
+
+
+
+  image generation prompt master
+  Create a vertical 9:16 hand-drawn 2D cartoon scene. On a castle wall in the foreground, several cute medieval defenders stand looking anxiously toward a huge army advancing across the distant plain. Give the defenders compact, charming proportions: large round white faces, small torsos, and short but clearly shaped arms and legs—about 2.5 to 3 heads tall. They should look small and cute, but not squat or extremely chibi. Dress them in simple colorful helmets, tunics, and shields, with expressive eyes and brows. Make the distant army look vast by showing thousands of tiny figures stretching toward the horizon. Use bold, slightly uneven dark outlines, flat muted colors, subtle shading, and a playful independent web-animation feel. Add castle towers, banners, grass, distant hills, and a pale sky. No text, logos, or watermarks.

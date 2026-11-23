@@ -1,102 +1,47 @@
 [
   {
-    "word": "क्या",
-    "start_ms": 10,
-    "end_ms": 300
+    "word": "फिर",
+    "start_ms": 100,
+    "end_ms": 310
   },
   {
-    "word": "ये",
-    "start_ms": 300,
-    "end_ms": 525
+    "word": "उसने",
+    "start_ms": 310,
+    "end_ms": 640
   },
   {
-    "word": "इंसाफ",
-    "start_ms": 525,
-    "end_ms": 1069
+    "word": "पहला",
+    "start_ms": 640,
+    "end_ms": 971
   },
   {
-    "word": "था?",
-    "start_ms": 1069,
-    "end_ms": 1317
+    "word": "घड़ा",
+    "start_ms": 971,
+    "end_ms": 1302
   },
   {
-    "word": "कमेंट",
-    "start_ms": 1317,
-    "end_ms": 1861
+    "word": "दीवार",
+    "start_ms": 1302,
+    "end_ms": 1737
   },
   {
-    "word": "में",
-    "start_ms": 1861,
-    "end_ms": 2217
+    "word": "से",
+    "start_ms": 1737,
+    "end_ms": 1918
   },
   {
-    "word": "अपनी",
-    "start_ms": 2217,
-    "end_ms": 2629
+    "word": "नीचे",
+    "start_ms": 1918,
+    "end_ms": 2278
   },
   {
-    "word": "राय",
-    "start_ms": 2629,
-    "end_ms": 2948
+    "word": "धकेल",
+    "start_ms": 2278,
+    "end_ms": 2609
   },
   {
-    "word": "बताओ—",
-    "start_ms": 2948,
-    "end_ms": 3384
-  },
-  {
-    "word": "और",
-    "start_ms": 3384,
-    "end_ms": 3571
-  },
-  {
-    "word": "अगर",
-    "start_ms": 3571,
-    "end_ms": 3852
-  },
-  {
-    "word": "आप",
-    "start_ms": 3852,
-    "end_ms": 4040
-  },
-  {
-    "word": "इस",
-    "start_ms": 4040,
-    "end_ms": 4227
-  },
-  {
-    "word": "ड्राइवर",
-    "start_ms": 4227,
-    "end_ms": 4799
-  },
-  {
-    "word": "की",
-    "start_ms": 4799,
-    "end_ms": 5024
-  },
-  {
-    "word": "जगह",
-    "start_ms": 5024,
-    "end_ms": 5305
-  },
-  {
-    "word": "होते,",
-    "start_ms": 5305,
-    "end_ms": 5778
-  },
-  {
-    "word": "तो",
-    "start_ms": 5778,
-    "end_ms": 6003
-  },
-  {
-    "word": "क्या",
-    "start_ms": 6003,
-    "end_ms": 6294
-  },
-  {
-    "word": "करते?",
-    "start_ms": 6294,
-    "end_ms": 6730
+    "word": "दिया।",
+    "start_ms": 2609,
+    "end_ms": 3000
   }
 ]

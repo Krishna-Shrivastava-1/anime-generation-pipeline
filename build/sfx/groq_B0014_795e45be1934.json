@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "Bees buzzing from a warm pot and soldiers gripping wooden ladder rungs while ladders topple.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "bee buzz",
+      "fallback_tag": "bee hum",
+      "sound_type": "continuous",
+      "trigger_word": "मधुमक्खियाँ",
+      "target_ms": 3486,
+      "duration_sec": 1.2,
+      "volume": 0.35
+    }
+  ]
+}

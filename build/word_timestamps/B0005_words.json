@@ -1,72 +1,67 @@
 [
   {
-    "word": "आवाज़",
-    "start_ms": 0,
-    "end_ms": 423
+    "word": "उस",
+    "start_ms": 120,
+    "end_ms": 274
   },
   {
-    "word": "सुनकर",
-    "start_ms": 423,
-    "end_ms": 800
+    "word": "ढकी",
+    "start_ms": 274,
+    "end_ms": 538
   },
   {
-    "word": "ड्राइवर",
-    "start_ms": 800,
-    "end_ms": 1278
+    "word": "हुई",
+    "start_ms": 538,
+    "end_ms": 754
   },
   {
-    "word": "बाहर",
-    "start_ms": 1278,
-    "end_ms": 1623
+    "word": "गाड़ी",
+    "start_ms": 754,
+    "end_ms": 1204
   },
   {
-    "word": "निकला।",
-    "start_ms": 1623,
-    "end_ms": 2109
+    "word": "में",
+    "start_ms": 1204,
+    "end_ms": 1498
   },
   {
-    "word": "दरवाज़े",
-    "start_ms": 2109,
-    "end_ms": 2721
+    "word": "क्या",
+    "start_ms": 1498,
+    "end_ms": 1738
   },
   {
-    "word": "पर",
-    "start_ms": 2721,
-    "end_ms": 2878
+    "word": "था?",
+    "start_ms": 1738,
+    "end_ms": 1943
   },
   {
-    "word": "लंबी",
-    "start_ms": 2878,
-    "end_ms": 3255
+    "word": "सेनापति",
+    "start_ms": 1943,
+    "end_ms": 2532
   },
   {
-    "word": "खरोंच",
-    "start_ms": 3255,
-    "end_ms": 3709
+    "word": "तक",
+    "start_ms": 2532,
+    "end_ms": 2686
   },
   {
-    "word": "देखकर",
-    "start_ms": 3709,
-    "end_ms": 4133
+    "word": "को",
+    "start_ms": 2686,
+    "end_ms": 2872
   },
   {
-    "word": "उसका",
-    "start_ms": 4133,
-    "end_ms": 4478
+    "word": "भनक",
+    "start_ms": 2872,
+    "end_ms": 3105
   },
   {
-    "word": "दिल",
-    "start_ms": 4478,
-    "end_ms": 4698
+    "word": "नहीं",
+    "start_ms": 3105,
+    "end_ms": 3476
   },
   {
-    "word": "बैठ",
-    "start_ms": 4698,
-    "end_ms": 4964
-  },
-  {
-    "word": "गया।",
-    "start_ms": 4964,
-    "end_ms": 5309
+    "word": "थी।",
+    "start_ms": 3476,
+    "end_ms": 3740
   }
 ]

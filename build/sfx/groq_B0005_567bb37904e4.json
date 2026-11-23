@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "A person peeks from the shadows at a tightly covered wagon, involving a canvas cover and wooden wheels on a dirt ground.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "canvas rustle",
+      "fallback_tag": "cloth rustle",
+      "sound_type": "ambient",
+      "trigger_word": "गाड़ी",
+      "target_ms": 800,
+      "duration_sec": 1.0,
+      "volume": 0.35
+    }
+  ]
+}

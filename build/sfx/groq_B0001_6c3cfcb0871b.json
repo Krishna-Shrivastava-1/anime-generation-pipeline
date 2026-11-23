@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "King handling gold coins and terracotta clay pots in a stone courtyard market",
+  "sfx_cues": [
+    {
+      "freesound_tag": "gold coin clink",
+      "fallback_tag": "coin metal",
+      "sound_type": "transient",
+      "trigger_word": "खरीद",
+      "target_ms": 3111,
+      "duration_sec": 0.8,
+      "volume": 0.4
+    },
+    {
+      "freesound_tag": "clay pot clink",
+      "fallback_tag": "pot ceramic",
+      "sound_type": "transient",
+      "trigger_word": "घड़े",
+      "target_ms": 2719,
+      "duration_sec": 1.0,
+      "volume": 0.35
+    }
+  ]
+}

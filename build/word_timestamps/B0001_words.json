@@ -1,92 +1,132 @@
 [
   {
-    "word": "शाम",
-    "start_ms": 10,
-    "end_ms": 309
+    "word": "राजा",
+    "start_ms": 0,
+    "end_ms": 426
+  },
+  {
+    "word": "ने",
+    "start_ms": 426,
+    "end_ms": 639
+  },
+  {
+    "word": "पूरे",
+    "start_ms": 639,
+    "end_ms": 1066
+  },
+  {
+    "word": "राज्य",
+    "start_ms": 1066,
+    "end_ms": 1431
   },
   {
     "word": "के",
-    "start_ms": 309,
-    "end_ms": 521
+    "start_ms": 1431,
+    "end_ms": 1644
   },
   {
-    "word": "वक्त",
-    "start_ms": 521,
-    "end_ms": 759
-  },
-  {
-    "word": "एक",
-    "start_ms": 759,
-    "end_ms": 935
-  },
-  {
-    "word": "कैब",
-    "start_ms": 935,
-    "end_ms": 1235
-  },
-  {
-    "word": "ड्राइवर",
-    "start_ms": 1235,
-    "end_ms": 1772
+    "word": "मिट्टी",
+    "start_ms": 1644,
+    "end_ms": 2079
   },
   {
     "word": "के",
-    "start_ms": 1772,
-    "end_ms": 1984
+    "start_ms": 2079,
+    "end_ms": 2293
   },
   {
-    "word": "साथ",
-    "start_ms": 1984,
-    "end_ms": 2284
+    "word": "सारे",
+    "start_ms": 2293,
+    "end_ms": 2719
   },
   {
-    "word": "कुछ",
-    "start_ms": 2284,
-    "end_ms": 2530
+    "word": "घड़े",
+    "start_ms": 2719,
+    "end_ms": 3111
   },
   {
-    "word": "ऐसा",
-    "start_ms": 2530,
-    "end_ms": 2830
+    "word": "खरीद",
+    "start_ms": 3111,
+    "end_ms": 3502
   },
   {
-    "word": "हुआ,",
-    "start_ms": 2830,
-    "end_ms": 3099
+    "word": "लिए—",
+    "start_ms": 3502,
+    "end_ms": 3773
   },
   {
-    "word": "जो",
-    "start_ms": 3099,
-    "end_ms": 3311
+    "word": "पूरे",
+    "start_ms": 3773,
+    "end_ms": 4199
   },
   {
-    "word": "आपको",
-    "start_ms": 3311,
-    "end_ms": 3698
+    "word": "300",
+    "start_ms": 4199,
+    "end_ms": 4373
   },
   {
-    "word": "सोचने",
-    "start_ms": 3698,
-    "end_ms": 4210
+    "word": "घड़े—",
+    "start_ms": 4373,
+    "end_ms": 4786
   },
   {
-    "word": "पर",
-    "start_ms": 4210,
-    "end_ms": 4386
+    "word": "क्योंकि",
+    "start_ms": 4786,
+    "end_ms": 5346
   },
   {
-    "word": "मजबूर",
-    "start_ms": 4386,
-    "end_ms": 4862
+    "word": "10,000",
+    "start_ms": 5346,
+    "end_ms": 5657
   },
   {
-    "word": "कर",
-    "start_ms": 4862,
-    "end_ms": 5038
+    "word": "सैनिकों",
+    "start_ms": 5657,
+    "end_ms": 6368
   },
   {
-    "word": "देगा।",
-    "start_ms": 5038,
-    "end_ms": 5550
+    "word": "की",
+    "start_ms": 6368,
+    "end_ms": 6582
+  },
+  {
+    "word": "सेना",
+    "start_ms": 6582,
+    "end_ms": 7008
+  },
+  {
+    "word": "किले",
+    "start_ms": 7008,
+    "end_ms": 7382
+  },
+  {
+    "word": "से",
+    "start_ms": 7382,
+    "end_ms": 7595
+  },
+  {
+    "word": "बस",
+    "start_ms": 7595,
+    "end_ms": 7773
+  },
+  {
+    "word": "दो",
+    "start_ms": 7773,
+    "end_ms": 7986
+  },
+  {
+    "word": "दिन",
+    "start_ms": 7986,
+    "end_ms": 8235
+  },
+  {
+    "word": "दूर",
+    "start_ms": 8235,
+    "end_ms": 8537
+  },
+  {
+    "word": "थी।",
+    "start_ms": 8537,
+    "end_ms": 8839
   }
 ]

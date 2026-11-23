@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "A sealed clay pot is lifted, an iron grip clamps a guard's wrist, and a steel helmet crashes onto a stone courtyard floor.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "clay pot clink",
+      "fallback_tag": "ceramic clink",
+      "sound_type": "transient",
+      "trigger_word": "घड़ा",
+      "target_ms": 3000,
+      "duration_sec": 0.8,
+      "volume": 0.35
+    }
+  ]
+}

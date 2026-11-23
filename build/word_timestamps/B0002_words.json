@@ -1,92 +1,97 @@
 [
   {
-    "word": "वो",
+    "word": "उसके",
     "start_ms": 109,
-    "end_ms": 312
+    "end_ms": 518
   },
   {
-    "word": "एक",
-    "start_ms": 312,
-    "end_ms": 481
+    "word": "शूरवीर",
+    "start_ms": 518,
+    "end_ms": 1149
   },
   {
-    "word": "सोसाइटी",
-    "start_ms": 481,
-    "end_ms": 1174
-  },
-  {
-    "word": "में",
-    "start_ms": 1174,
-    "end_ms": 1495
-  },
-  {
-    "word": "पैसेंजर",
-    "start_ms": 1495,
-    "end_ms": 2187
-  },
-  {
-    "word": "को",
-    "start_ms": 2187,
-    "end_ms": 2390
-  },
-  {
-    "word": "ड्रॉप",
-    "start_ms": 2390,
-    "end_ms": 2703
-  },
-  {
-    "word": "करने",
-    "start_ms": 2703,
-    "end_ms": 3074
-  },
-  {
-    "word": "आया",
-    "start_ms": 3074,
-    "end_ms": 3361
-  },
-  {
-    "word": "था।",
-    "start_ms": 3361,
-    "end_ms": 3649
-  },
-  {
-    "word": "ड्राइवर",
-    "start_ms": 3649,
-    "end_ms": 4164
-  },
-  {
-    "word": "अभी",
-    "start_ms": 4164,
-    "end_ms": 4451
-  },
-  {
-    "word": "कार",
-    "start_ms": 4451,
-    "end_ms": 4738
+    "word": "जंग",
+    "start_ms": 1149,
+    "end_ms": 1465
   },
   {
     "word": "के",
-    "start_ms": 4738,
-    "end_ms": 4941
+    "start_ms": 1465,
+    "end_ms": 1687
   },
   {
-    "word": "अंदर",
-    "start_ms": 4941,
-    "end_ms": 5313
+    "word": "लिए",
+    "start_ms": 1687,
+    "end_ms": 1947
   },
   {
-    "word": "ही",
-    "start_ms": 5313,
-    "end_ms": 5515
+    "word": "अपना",
+    "start_ms": 1947,
+    "end_ms": 2356
   },
   {
-    "word": "बैठा",
-    "start_ms": 5515,
-    "end_ms": 5921
+    "word": "कवच",
+    "start_ms": 2356,
+    "end_ms": 2634
   },
   {
-    "word": "था,",
-    "start_ms": 5921,
-    "end_ms": 6144
+    "word": "पहन",
+    "start_ms": 2634,
+    "end_ms": 2912
+  },
+  {
+    "word": "रहे",
+    "start_ms": 2912,
+    "end_ms": 3228
+  },
+  {
+    "word": "थे,",
+    "start_ms": 3228,
+    "end_ms": 3474
+  },
+  {
+    "word": "और",
+    "start_ms": 3474,
+    "end_ms": 3660
+  },
+  {
+    "word": "राजा",
+    "start_ms": 3660,
+    "end_ms": 4105
+  },
+  {
+    "word": "आँगन",
+    "start_ms": 4105,
+    "end_ms": 4476
+  },
+  {
+    "word": "में",
+    "start_ms": 4476,
+    "end_ms": 4829
+  },
+  {
+    "word": "बैठकर",
+    "start_ms": 4829,
+    "end_ms": 5330
+  },
+  {
+    "word": "घड़े",
+    "start_ms": 5330,
+    "end_ms": 5739
+  },
+  {
+    "word": "गिन",
+    "start_ms": 5739,
+    "end_ms": 5998
+  },
+  {
+    "word": "रहा",
+    "start_ms": 5998,
+    "end_ms": 6314
+  },
+  {
+    "word": "था।",
+    "start_ms": 6314,
+    "end_ms": 6629
   }
 ]

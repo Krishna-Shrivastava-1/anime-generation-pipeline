@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "King carries heavy clay pots across a stone floor while wrapped in fur cloaks and settles among many warm clay pots near a roaring fireplace.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "clay pot clink",
+      "fallback_tag": "clay pot",
+      "sound_type": "transient",
+      "trigger_word": "घड़े",
+      "target_ms": 2564,
+      "duration_sec": 1.0,
+      "volume": 0.45
+    },
+    {
+      "freesound_tag": "fire crackle",
+      "fallback_tag": "fire",
+      "sound_type": "ambient",
+      "trigger_word": "हॉल",
+      "target_ms": 3805,
+      "duration_sec": 2.0,
+      "volume": 0.35
+    }
+  ]
+}

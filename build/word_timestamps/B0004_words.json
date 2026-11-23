@@ -1,122 +1,137 @@
 [
   {
-    "word": "तभी",
+    "word": "फिर",
     "start_ms": 0,
-    "end_ms": 283
+    "end_ms": 222
+  },
+  {
+    "word": "राजा",
+    "start_ms": 222,
+    "end_ms": 603
+  },
+  {
+    "word": "ने",
+    "start_ms": 603,
+    "end_ms": 794
+  },
+  {
+    "word": "हर",
+    "start_ms": 794,
+    "end_ms": 952
+  },
+  {
+    "word": "ढक्कन",
+    "start_ms": 952,
+    "end_ms": 1246
+  },
+  {
+    "word": "में",
+    "start_ms": 1246,
+    "end_ms": 1548
+  },
+  {
+    "word": "नौ",
+    "start_ms": 1548,
+    "end_ms": 1738
+  },
+  {
+    "word": "छोटे-छोटे",
+    "start_ms": 1738,
+    "end_ms": 2521
+  },
+  {
+    "word": "छेद",
+    "start_ms": 2521,
+    "end_ms": 2791
+  },
+  {
+    "word": "किए,",
+    "start_ms": 2791,
+    "end_ms": 3033
   },
   {
     "word": "एक",
-    "start_ms": 283,
-    "end_ms": 450
+    "start_ms": 3033,
+    "end_ms": 3192
   },
   {
-    "word": "बच्चा",
-    "start_ms": 450,
-    "end_ms": 792
-  },
-  {
-    "word": "अपनी",
-    "start_ms": 792,
-    "end_ms": 1160
-  },
-  {
-    "word": "छोटी",
-    "start_ms": 1160,
-    "end_ms": 1560
-  },
-  {
-    "word": "साइकिल-रिक्शा",
-    "start_ms": 1560,
-    "end_ms": 2507
-  },
-  {
-    "word": "चलाते",
-    "start_ms": 2507,
-    "end_ms": 2991
-  },
-  {
-    "word": "हुए",
-    "start_ms": 2991,
-    "end_ms": 3225
-  },
-  {
-    "word": "आया—",
-    "start_ms": 3225,
-    "end_ms": 3530
-  },
-  {
-    "word": "और",
-    "start_ms": 3530,
-    "end_ms": 3696
-  },
-  {
-    "word": "गलती",
-    "start_ms": 3696,
-    "end_ms": 4064
+    "word": "कपड़े",
+    "start_ms": 3192,
+    "end_ms": 3620
   },
   {
     "word": "से",
-    "start_ms": 4064,
-    "end_ms": 4264
+    "start_ms": 3620,
+    "end_ms": 3811
   },
   {
-    "word": "या",
-    "start_ms": 4264,
-    "end_ms": 4464
+    "word": "ढकी",
+    "start_ms": 3811,
+    "end_ms": 4081
   },
   {
-    "word": "जानबूझकर",
-    "start_ms": 4464,
-    "end_ms": 5199
+    "word": "गाड़ी",
+    "start_ms": 4081,
+    "end_ms": 4541
   },
   {
-    "word": "कार",
-    "start_ms": 5199,
-    "end_ms": 5482
+    "word": "से",
+    "start_ms": 4541,
+    "end_ms": 4732
   },
   {
-    "word": "के",
-    "start_ms": 5482,
-    "end_ms": 5683
+    "word": "हर",
+    "start_ms": 4732,
+    "end_ms": 4891
   },
   {
-    "word": "साइड",
-    "start_ms": 5683,
-    "end_ms": 6050
+    "word": "घड़े",
+    "start_ms": 4891,
+    "end_ms": 5240
   },
   {
-    "word": "डोर",
-    "start_ms": 6050,
-    "end_ms": 6334
+    "word": "को",
+    "start_ms": 5240,
+    "end_ms": 5431
   },
   {
-    "word": "पर",
-    "start_ms": 6334,
-    "end_ms": 6501
+    "word": "भरा,",
+    "start_ms": 5431,
+    "end_ms": 5721
   },
   {
-    "word": "एक",
-    "start_ms": 6501,
-    "end_ms": 6667
+    "word": "और",
+    "start_ms": 5721,
+    "end_ms": 5879
   },
   {
-    "word": "लंबी",
-    "start_ms": 6667,
-    "end_ms": 7068
+    "word": "मोम",
+    "start_ms": 5879,
+    "end_ms": 6149
   },
   {
-    "word": "खरोंच",
-    "start_ms": 7068,
-    "end_ms": 7552
+    "word": "पिघलाकर",
+    "start_ms": 6149,
+    "end_ms": 6721
   },
   {
-    "word": "मार",
-    "start_ms": 7552,
-    "end_ms": 7836
+    "word": "उन्हें",
+    "start_ms": 6721,
+    "end_ms": 7158
   },
   {
-    "word": "दी।",
-    "start_ms": 7836,
-    "end_ms": 8120
+    "word": "सील",
+    "start_ms": 7158,
+    "end_ms": 7428
+  },
+  {
+    "word": "कर",
+    "start_ms": 7428,
+    "end_ms": 7587
+  },
+  {
+    "word": "दिया।",
+    "start_ms": 7587,
+    "end_ms": 7999
   }
 ]

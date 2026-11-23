@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "King's weathered hands pierce a clay lid with an iron awl, then melt amber beeswax that drips around the rim to seal it.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "metal tool tap",
+      "fallback_tag": "metal impact",
+      "sound_type": "transient",
+      "trigger_word": "छेद",
+      "target_ms": 2521,
+      "duration_sec": 0.8,
+      "volume": 0.42
+    }
+  ]
+}

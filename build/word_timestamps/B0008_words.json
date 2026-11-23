@@ -1,82 +1,137 @@
 [
   {
-    "word": "बोलीं—बच्चा",
+    "word": "उस",
     "start_ms": 0,
-    "end_ms": 964
+    "end_ms": 159
+  },
+  {
+    "word": "रात",
+    "start_ms": 159,
+    "end_ms": 429
+  },
+  {
+    "word": "कड़ाके",
+    "start_ms": 429,
+    "end_ms": 970
+  },
+  {
+    "word": "की",
+    "start_ms": 970,
+    "end_ms": 1161
+  },
+  {
+    "word": "ठंड",
+    "start_ms": 1161,
+    "end_ms": 1431
+  },
+  {
+    "word": "पड़ी,",
+    "start_ms": 1431,
+    "end_ms": 1801
   },
   {
     "word": "तो",
-    "start_ms": 964,
-    "end_ms": 1183
+    "start_ms": 1801,
+    "end_ms": 1992
   },
   {
-    "word": "नादान",
-    "start_ms": 1183,
-    "end_ms": 1713
+    "word": "वो",
+    "start_ms": 1992,
+    "end_ms": 2182
   },
   {
-    "word": "है,",
-    "start_ms": 1713,
-    "end_ms": 1955
+    "word": "सारे",
+    "start_ms": 2182,
+    "end_ms": 2564
   },
   {
-    "word": "गलती",
-    "start_ms": 1955,
-    "end_ms": 2357
+    "word": "घड़े",
+    "start_ms": 2564,
+    "end_ms": 2914
   },
   {
-    "word": "तुम्हारी",
-    "start_ms": 2357,
-    "end_ms": 3025
+    "word": "खींचकर",
+    "start_ms": 2914,
+    "end_ms": 3455
   },
   {
-    "word": "है!",
-    "start_ms": 3025,
-    "end_ms": 3267
+    "word": "बड़े",
+    "start_ms": 3455,
+    "end_ms": 3805
   },
   {
-    "word": "तुमने",
-    "start_ms": 3267,
-    "end_ms": 3742
-  },
-  {
-    "word": "No",
-    "start_ms": 3742,
-    "end_ms": 3861
-  },
-  {
-    "word": "Parking",
-    "start_ms": 3861,
-    "end_ms": 4277
+    "word": "हॉल",
+    "start_ms": 3805,
+    "end_ms": 4043
   },
   {
     "word": "में",
-    "start_ms": 4277,
-    "end_ms": 4624
+    "start_ms": 4043,
+    "end_ms": 4345
   },
   {
-    "word": "कार",
-    "start_ms": 4624,
-    "end_ms": 4935
+    "word": "ले",
+    "start_ms": 4345,
+    "end_ms": 4536
   },
   {
-    "word": "खड़ी",
-    "start_ms": 4935,
-    "end_ms": 5337
+    "word": "आया",
+    "start_ms": 4536,
+    "end_ms": 4807
   },
   {
-    "word": "ही",
-    "start_ms": 5337,
-    "end_ms": 5556
+    "word": "और",
+    "start_ms": 4807,
+    "end_ms": 4966
   },
   {
-    "word": "क्यों",
-    "start_ms": 5556,
-    "end_ms": 5967
+    "word": "अंडों",
+    "start_ms": 4966,
+    "end_ms": 5459
   },
   {
-    "word": "की?",
-    "start_ms": 5967,
-    "end_ms": 6210
+    "word": "पर",
+    "start_ms": 5459,
+    "end_ms": 5618
+  },
+  {
+    "word": "बैठी",
+    "start_ms": 5618,
+    "end_ms": 5999
+  },
+  {
+    "word": "मुर्गी",
+    "start_ms": 5999,
+    "end_ms": 6389
+  },
+  {
+    "word": "की",
+    "start_ms": 6389,
+    "end_ms": 6580
+  },
+  {
+    "word": "तरह",
+    "start_ms": 6580,
+    "end_ms": 6818
+  },
+  {
+    "word": "उनके",
+    "start_ms": 6818,
+    "end_ms": 7168
+  },
+  {
+    "word": "बीच",
+    "start_ms": 7168,
+    "end_ms": 7439
+  },
+  {
+    "word": "सो",
+    "start_ms": 7439,
+    "end_ms": 7630
+  },
+  {
+    "word": "गया।",
+    "start_ms": 7630,
+    "end_ms": 7980
   }
 ]

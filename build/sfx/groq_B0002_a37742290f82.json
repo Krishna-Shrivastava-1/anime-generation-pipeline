@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "Knights are strapping heavy steel armor and sharpening swords by torchlight, while the king kneels in the courtyard counting clay pots.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "metal armor clank",
+      "fallback_tag": "metal clank",
+      "sound_type": "transient",
+      "trigger_word": "कवच",
+      "target_ms": 2400,
+      "duration_sec": 0.8,
+      "volume": 0.4
+    },
+    {
+      "freesound_tag": "clay pot tap",
+      "fallback_tag": "clay tap",
+      "sound_type": "transient",
+      "trigger_word": "घड़े",
+      "target_ms": 5400,
+      "duration_sec": 0.6,
+      "volume": 0.35
+    }
+  ]
+}

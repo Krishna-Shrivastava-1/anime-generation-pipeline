@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "Close-up of a clay pot with a perforated lid illuminated by warm firelight.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "fire crackle",
+      "fallback_tag": "fire",
+      "sound_type": "ambient",
+      "trigger_word": "घड़े",
+      "target_ms": 515,
+      "duration_sec": 1.2,
+      "volume": 0.35
+    }
+  ]
+}

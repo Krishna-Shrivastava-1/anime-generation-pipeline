@@ -1,378 +1,337 @@
 {
-  "title": "घड़े वाला राजा: 300 घड़ों ने कैसे हराई 10,000 की सेना",
-  "topic": "Hindi YouTube Short telling the medieval siege story of The Pot King who bought 300 clay pots, kept them warm overnight, and unleashed 3 million angry bees on 10,000 climbing soldiers at dawn.",
+  "title": "एक अकेला सिपाही और रोम का पुल: 508 BC की अविश्वसनीय कहानी",
+  "topic": "Fluent, dramatic Hindi YouTube Short telling the 508 BC story of Horatius defending Rome's sole wooden bridge alone against the Etruscan army, paired with a charming hand-drawn 2D indie web-animation style.",
   "aspect_ratio": "9:16",
   "target_minutes": 1.4,
-  "total_beats": 14,
-  "total_clips": 30,
+  "total_beats": 13,
+  "total_clips": 26,
   "global_style": {
-    "art_style": "High-detail realistic anime illustration style inspired by Vinland Saga and Ufotable dark medieval fantasy, gritty stone castle architecture, weathered steel armor, flickering torchlight, atmospheric frost and golden dawn light, sharp expressive faces, 9:16 vertical portrait framing.",
-    "negative_prompt": "cartoonish chibi, bright flat colors, modern clothing, blurry, distorted faces, extra fingers, garbled text, horizontal framing, watermarks"
+    "art_style": "Vertical 9:16 hand-drawn 2D cartoon scene with a playful independent web-animation feel. Compact, charming character proportions: large round white faces, small torsos, and short clearly shaped arms and legs—about 2.5 to 3 heads tall (small and cute, not squat or extremely chibi)—dressed in simple colorful helmets, tunics, and shields with expressive eyes and brows. Bold slightly uneven dark outlines, flat muted colors, subtle shading, castle towers, banners, grass, distant hills, and a pale sky. Zero text, logos, or watermarks.",
+    "negative_prompt": "realistic anime, 3D render, photorealistic, extremely squat chibi, tall realistic proportions, text, letters, logos, watermarks, blurry, cluttered messy lines"
   },
   "beats": [
     {
       "beat_id": "B0001",
-      "narration": "राजा ने पूरे राज्य के सारे मिट्टी के घड़े खरीद लिए— पूरे तीन सौ घड़े— क्योंकि दस हज़ार सैनिकों की सेना दीवारों से बस दो दिन दूर थी।",
-      "word_count": 27,
-      "estimated_duration": 8.6,
+      "narration": "कल्पना कीजिए—रोम की पूरी सेना हारकर भाग रही है, और पूरे शहर को बचाने के लिए पुल पर सिर्फ़ आप अकेले खड़े हैं।",
+      "word_count": 22,
+      "estimated_duration": 6.8,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0001",
-          "spoken_text": "राजा ने पूरे राज्य के सारे मिट्टी के घड़े खरीद लिए—",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Weathered medieval king paying gold coins at a market stall stacked with terracotta clay pots.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, stern older medieval king with iron-grey beard and dark fur-lined crimson cloak handing gold coins to a potter beside towering stacks of brown clay pots."
+          "spoken_text": "कल्पना कीजिए—रोम की पूरी सेना हारकर भाग रही है,",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Cute compact Roman soldiers with panicked eyes running across a grassy plain toward Rome's towers.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, dozens of cute 2.5-to-3-head-tall Roman soldiers with large round white faces, small torsos, short shaped limbs, panicked wide eyes, red tunics, and bronze helmets fleeing across green grass toward distant castle towers and red banners under a pale sky, bold slightly uneven dark outlines, flat muted colors, subtle shading, playful independent web-animation feel, no text, logos, or watermarks."
         },
         {
           "clip_id": "C0002",
-          "spoken_text": "पूरे तीन सौ घड़े—",
-          "spoken_word_count": 4,
-          "estimated_spoken_duration": 1.4,
-          "scene_context": "Rows upon rows of 300 earthen clay pots lined across the stone castle courtyard.",
-          "image_prompt": "Realistic anime style, 9:16 vertical high-angle shot, hundreds of round terracotta clay pots arranged in dense neat rows covering a grey stone medieval castle courtyard."
-        },
-        {
-          "clip_id": "C0003",
-          "spoken_text": "क्योंकि दस हज़ार सैनिकों की सेना दीवारों से बस दो दिन दूर थी।",
+          "spoken_text": "और पूरे शहर को बचाने के लिए पुल पर सिर्फ़ आप अकेले खड़े हैं।",
           "spoken_word_count": 13,
-          "estimated_spoken_duration": 4.0,
-          "scene_context": "Massive dark enemy army of 10,000 soldiers marching across misty distant hills toward the fortress.",
-          "image_prompt": "Realistic anime style, 9:16 vertical wide cinematic shot, colossal sea of 10,000 dark-armored soldiers and banners marching through dusty dusk valleys toward towering stone castle walls on the horizon."
+          "estimated_spoken_duration": 3.8,
+          "scene_context": "One brave compact Roman guard standing firm on a narrow wooden bridge in front of Rome's stone walls.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, one determined cute 3-head-tall Roman guard with large round white face, expressive furrowed brows, bronze helmet, red tunic, and tall wooden shield standing alone on a narrow wooden bridge with Roman castle towers, banners, and distant hills behind him, bold uneven dark outlines, flat muted colors, subtle shading, pale sky, no text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0002",
-      "narration": "उसके शूरवीर अपना कवच बांध रहे थे, और राजा आँगन में बैठकर घड़े गिन रहा था।",
-      "word_count": 16,
-      "estimated_duration": 5.2,
+      "narration": "508 BC में एट्रस्कन राजा ने रोम की सेना को बुरी तरह हरा दिया। शहर में घुसने का सिर्फ़ एक पतला लकड़ी का पुल था, और उस पर सिर्फ़ आप तैनात थे।",
+      "word_count": 31,
+      "estimated_duration": 9.0,
       "is_scene_bridge": false,
       "clips": [
         {
+          "clip_id": "C0003",
+          "spoken_text": "508 BC में एट्रस्कन राजा ने रोम की सेना को बुरी तरह हरा दिया।",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 3.6,
+          "scene_context": "Castle defenders looking anxiously from a foreground wall toward a massive advancing army of tiny figures.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, on a stone wall in the foreground, several cute 2.5-to-3-head-tall Roman defenders with large round white faces, expressive anxious eyes, colorful helmets, tunics, and shields looking toward thousands of tiny enemy figures stretching toward distant hills on the horizon, bold slightly uneven dark outlines, flat muted colors, subtle shading, castle towers, banners, grass, pale sky, no text, logos, or watermarks."
+        },
+        {
           "clip_id": "C0004",
-          "spoken_text": "उसके शूरवीर अपना कवच बांध रहे थे,",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Castle knights strapping on heavy steel pauldrons and sharpening swords by torchlight.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, grim medieval knights in a stone armory tightening heavy steel chestplates and strapping sword belts under flickering orange torchlight."
+          "spoken_text": "शहर में घुसने का सिर्फ़ एक पतला लकड़ी का पुल था,",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "A single narrow wooden bridge crossing a muted blue river into the walled city.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, angled high view of a single narrow wooden plank bridge spanning a calm muted blue river between grassy banks, stone castle towers with waving banners guarding the city entrance, distant rolling hills, pale sky, bold uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
         },
         {
           "clip_id": "C0005",
-          "spoken_text": "और राजा आँगन में बैठकर घड़े गिन रहा था।",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "The king kneeling calmly in the courtyard tapping and counting each clay pot one by one.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, older bearded king in crimson cloak crouched on stone cobblestones carefully counting rows of clay pots while knights watch in confusion behind him."
+          "spoken_text": "और उस पर सिर्फ़ आप तैनात थे।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Close charming view of the lone compact Roman guard gripping his shield and spear at the bridge.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cute 2.5-to-3-head-tall Roman guard with large round white face, determined brows, simple bronze helmet, red tunic, and round wooden shield standing watch at the bridge edge, castle wall and grass in background, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0003",
-      "narration": "सेनापति ने पूछा—\"हम उनसे लड़ने वाले हैं या उनका अचार डालेंगे?\" लेकिन रसोइया खुश था—आखिरकार जैम रखने के लिए इतने मर्तबान मिल गए।",
-      "word_count": 23,
-      "estimated_duration": 7.6,
+      "narration": "अगर दुश्मन पुल पार कर गया, तो पूरा रोम तबाह हो जाएगा। आपने भागते सिपाहियों को पकड़ा और चिल्लाकर कहा—\"मेरे पीछे से ये पुल काटकर गिरा दो!\"",
+      "word_count": 27,
+      "estimated_duration": 8.2,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0006",
-          "spoken_text": "सेनापति ने पूछा—\"हम उनसे लड़ने वाले हैं या उनका अचार डालेंगे?\"",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Scarred grizzled general in full plate armor staring skeptically at the clay pots.",
-          "image_prompt": "Realistic anime style, 9:16 vertical portrait, grizzled battle-scarred general in dented steel armor gesturing skeptically toward rows of clay pots with a bewildered sarcastic frown."
+          "spoken_text": "अगर दुश्मन पुल पार कर गया, तो पूरा रोम तबाह हो जाएगा।",
+          "spoken_word_count": 12,
+          "estimated_spoken_duration": 3.6,
+          "scene_context": "Worried compact defenders on the city wall watching thousands of tiny enemy soldiers march closer.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, on a castle wall in the foreground, cute 2.5-head-tall Roman defenders with wide worried eyes and small shields staring down at a vast sea of tiny enemy figures marching across grassy plains toward the wooden bridge, castle towers, banners, pale sky, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
         },
         {
           "clip_id": "C0007",
-          "spoken_text": "लेकिन रसोइया खुश था—आखिरकार जैम रखने के लिए इतने मर्तबान मिल गए।",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Plump cheerful castle cook in flour-dusted apron beaming with joy holding a wooden spoon.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, cheerful plump medieval castle cook wearing a flour-stained white apron, eyes sparkling excitedly as he holds a wooden ladle and gazes at the clay pots."
+          "spoken_text": "आपने भागते सिपाहियों को पकड़ा और चिल्लाकर कहा—\"मेरे पीछे से ये पुल काटकर गिरा दो!\"",
+          "spoken_word_count": 15,
+          "estimated_spoken_duration": 4.6,
+          "scene_context": "The hero grabbing fleeing soldiers by their tunics and pointing urgently at the wooden bridge beams.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, brave cute 3-head-tall Roman guard with large round white face and shouting mouth grabbing two scared fleeing Roman soldiers by their tunics while pointing sharply at the wooden bridge beams behind him, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0004",
-      "narration": "फिर राजा ने हर ढक्कन में नौ छोटे छेद किए, ढकी हुई गाड़ी से हर घड़े को भरा, और मोम से सील कर दिया।",
-      "word_count": 24,
-      "estimated_duration": 8.0,
+      "narration": "फिर आप अकेले पुल के उस पार पहुँच गए—पूरी सेना के सामने। आपकी हिम्मत देख शर्म से दो अफसर लौटकर आपके साथ खड़े हो गए।",
+      "word_count": 25,
+      "estimated_duration": 7.4,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0008",
-          "spoken_text": "फिर राजा ने हर ढक्कन में नौ छोटे छेद किए,",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Close-up of the king's weathered hands piercing nine small holes into a clay lid with an iron awl.",
-          "image_prompt": "Realistic anime style, 9:16 vertical close-up, weathered royal hands using a sharp iron spike to carefully punch nine tiny neat breathing holes into a terracotta pot lid."
+          "spoken_text": "फिर आप अकेले पुल के उस पार पहुँच गए—पूरी सेना के सामने।",
+          "spoken_word_count": 12,
+          "estimated_spoken_duration": 3.6,
+          "scene_context": "One tiny cute defender standing defiantly at the far end of the bridge facing thousands of tiny enemies.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, lone cute 2.5-head-tall Roman guard with large round white face and colorful shield standing firmly at the far end of the wooden bridge facing thousands of tiny enemy soldiers stretching across distant grassy hills under a pale sky, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
         },
         {
           "clip_id": "C0009",
-          "spoken_text": "ढकी हुई गाड़ी से हर घड़े को भरा,",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "King carefully transferring something hidden out of a heavily draped wooden wagon into the pots.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, mysterious wooden cart draped in thick dark canvas tarps, the king reaching discreetly inside to fill an open clay pot in deep shadows."
-        },
-        {
-          "clip_id": "C0010",
-          "spoken_text": "और मोम से सील कर दिया।",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "Melted amber beeswax dripping around the rim of the pierced lid to seal it shut.",
-          "image_prompt": "Realistic anime style, 9:16 vertical macro shot, thick golden-amber molten wax poured carefully around the rim of a perforated clay pot lid, glowing warmly in torchlight."
+          "spoken_text": "आपकी हिम्मत देख शर्म से दो अफसर लौटकर आपके साथ खड़े हो गए।",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 3.8,
+          "scene_context": "Two ashamed Roman officers in plumed helmets rushing back to stand shoulder-to-shoulder with the hero.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, two cute 3-head-tall Roman officers with large round white faces, sheepish rosy cheeks, plumed helmets, and colorful shields hurrying back onto the narrow wooden bridge to stand beside the brave guard, castle towers in distance, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0005",
-      "narration": "उस गाड़ी के अंदर क्या था? सेनापति तक को नहीं पता था।",
-      "word_count": 12,
-      "estimated_duration": 3.6,
+      "narration": "पुल इतना तंग था कि दुश्मन बस कुछ ही सैनिक भेज पा रहा था, और पीछे कुल्हाड़ियों से पुल काटा जा रहा था।",
+      "word_count": 23,
+      "estimated_duration": 6.8,
       "is_scene_bridge": false,
       "clips": [
         {
+          "clip_id": "C0010",
+          "spoken_text": "पुल इतना तंग था कि दुश्मन बस कुछ ही सैनिक भेज पा रहा था,",
+          "spoken_word_count": 14,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Three cute defenders locking shields across the narrow bridge blocking a crowded bottleneck of enemy soldiers.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, three cute 2.5-to-3-head-tall Roman defenders holding shields side-by-side across the narrow wooden bridge, blocking a tight bottleneck of crowded blue-tunic enemy soldiers in front while thousands wait on the distant plain, bold uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
+        },
+        {
           "clip_id": "C0011",
-          "spoken_text": "उस गाड़ी के अंदर क्या था? सेनापति तक को नहीं पता था।",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 3.6,
-          "scene_context": "General peering suspiciously from the shadows at the tightly covered wagon.",
-          "image_prompt": "Realistic anime style, 9:16 vertical dramatic shot, armored general standing in courtyard shadow squinting suspiciously at the canvas-draped cart with faint buzzing mystery in the air."
+          "spoken_text": "और पीछे कुल्हाड़ियों से पुल काटा जा रहा था।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Roman soldiers behind the defenders swinging axes into the wooden bridge posts with flying chips.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cute compact Roman soldiers behind the bridge swinging small hand axes into thick wooden bridge beams as cartoon woodchips fly over the river, castle walls and banners behind, bold slightly uneven dark outlines, flat muted colors, no text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0006",
-      "narration": "एक सिपाही ने हिलाकर देखने के लिए एक घड़ा उठाया— तो राजा ने उसकी कलाई इतनी ज़ोर से पकड़ी कि उसका हेलमेट नीचे गिर गया।",
-      "word_count": 25,
-      "estimated_duration": 7.8,
+      "narration": "जब पुल गिरने वाला था, आपने उन दोनों को भी वापस भेज दिया। अब उस पुल पर आप बिल्कुल अकेले थे।",
+      "word_count": 21,
+      "estimated_duration": 6.4,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0012",
-          "spoken_text": "एक सिपाही ने हिलाकर देखने के लिए एक घड़ा उठाया—",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Young curious castle guard lifting one sealed clay pot curiously near his ear.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, young nervous castle guard in iron kettle helmet lifting a wax-sealed clay pot up near his ear about to shake it."
+          "spoken_text": "जब पुल गिरने वाला था, आपने उन दोनों को भी वापस भेज दिया।",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 3.8,
+          "scene_context": "Cracking wooden planks wobbling as the hero urges the two officers back across toward Rome.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cracked wooden bridge planks wobbling above the river as the cute brave Roman guard waves the two reluctant officers safely back toward the castle towers and grassy bank, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
         },
         {
           "clip_id": "C0013",
-          "spoken_text": "तो राजा ने उसकी कलाई इतनी ज़ोर से पकड़ी",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "King lunging in and clamping an iron grip onto the shocked guard's wrist.",
-          "image_prompt": "Realistic anime style, 9:16 vertical intense close-up, furious king gripping the guard's armored wrist with iron force, fierce razor-sharp eyes warning him silently."
-        },
-        {
-          "clip_id": "C0014",
-          "spoken_text": "कि उसका हेलमेट नीचे गिर गया।",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 1.8,
-          "scene_context": "Steel kettle helmet clattering onto the stone courtyard floor in slow motion.",
-          "image_prompt": "Realistic anime style, 9:16 vertical low-angle shot, round iron guard helmet tumbling and clattering hard against grey stone cobblestones in sharp foreground."
+          "spoken_text": "अब उस पुल पर आप बिल्कुल अकेले थे।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Close charming shot of the small brave guard standing completely alone on the creaking bridge.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, single cute 2.5-to-3-head-tall Roman guard with large round white face, expressive determined eyebrows, colorful shield, and dented helmet standing completely alone on the splintering bridge beneath a pale sky, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0007",
-      "narration": "शाम ढलते-ढलते सब उसे 'घड़े वाला राजा' बुलाने लगे।",
-      "word_count": 9,
-      "estimated_duration": 3.2,
-      "is_scene_bridge": true,
+      "narration": "आपने दुश्मनों को ललकारा—\"तुम राजाओं के गुलाम हो, दूसरों की आज़ादी छीनने चले हो!\"",
+      "word_count": 14,
+      "estimated_duration": 4.4,
+      "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0015",
-          "spoken_text": "शाम ढलते-ढलते सब उसे 'घड़े वाला राजा' बुलाने लगे।",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Soldiers whispering and snickering behind the king's back at blood-orange sunset.",
-          "image_prompt": "Realistic anime style, 9:16 vertical composition, blood-orange sunset over castle battlements, guards whispering in shadows while the lone king stands silhouetted beside his 300 pots."
+          "clip_id": "C0014",
+          "spoken_text": "आपने दुश्मनों को ललकारा—\"तुम राजाओं के गुलाम हो, दूसरों की आज़ादी छीनने चले हो!\"",
+          "spoken_word_count": 14,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "Hero raising his sword and shouting boldly across at the vast enemy ranks.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, brave cute 3-head-tall Roman guard raising his short sword and shouting fearlessly at thousands of tiny blue-armored enemy soldiers lined across the distant grassy hills, bold slightly uneven dark outlines, flat muted colors, subtle shading, pale sky, no text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0008",
-      "narration": "उस रात कड़ाके की ठंड पड़ी, तो वो सारे घड़े खींचकर बड़े हॉल में ले आया और मुर्गी की तरह उनके बीच सो गया।",
-      "word_count": 24,
-      "estimated_duration": 8.0,
+      "narration": "बौखलाए दुश्मनों ने तीर और भालों की बारिश कर दी, लेकिन हर वार आपकी ढाल में ही आकर अटक गया।",
+      "word_count": 20,
+      "estimated_duration": 6.4,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0016",
-          "spoken_text": "उस रात कड़ाके की ठंड पड़ी,",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.2,
-          "scene_context": "Icy blue frost crystals creeping across castle battlements under biting winter moonlight.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, freezing blue midnight frost and icicles forming rapidly across medieval stone parapets under a cold silver moon."
-        },
-        {
-          "clip_id": "C0017",
-          "spoken_text": "तो वो सारे घड़े खींचकर बड़े हॉल में ले आया",
+          "clip_id": "C0015",
+          "spoken_text": "बौखलाए दुश्मनों ने तीर और भालों की बारिश कर दी,",
           "spoken_word_count": 10,
           "estimated_spoken_duration": 3.2,
-          "scene_context": "King straining alone carrying heavy clay pots inside into a roaring hearth-lit great hall.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, exhausted king hauling clay pots indoors into a grand stone great hall lit by roaring warm hearth fires."
+          "scene_context": "Arcs of tiny cartoon arrows and spears flying across the pale sky toward the lone guard on the bridge.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, swarms of simple cartoon arrows and spears arcing across a pale sky from distant hills toward the tiny lone Roman guard on the wooden river bridge, castle towers on the left, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
         },
         {
-          "clip_id": "C0018",
-          "spoken_text": "और मुर्गी की तरह उनके बीच सो गया।",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "King curled on the stone floor wrapped in fur cloaks amidst 300 warm glowing clay pots near the fireplace.",
-          "image_prompt": "Realistic anime style, 9:16 vertical overhead shot, older king curled in heavy fur cloaks sleeping peacefully on stone floor nestled directly among 300 clay pots beside glowing hearth embers."
+          "clip_id": "C0016",
+          "spoken_text": "लेकिन हर वार आपकी ढाल में ही आकर अटक गया।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Cute guard peeking calmly from behind a wooden shield bristling with stuck arrows and spears.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cute 2.5-head-tall Roman guard with large round white face and cheeky confident brows peeking behind a large colorful shield stuck full of cartoon spears and arrows, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0009",
-      "narration": "अगर वो ठंडे पड़ गए, तो पूरा प्लान खत्म।",
-      "word_count": 9,
-      "estimated_duration": 3.0,
+      "narration": "तभी धड़ाम से पीछे का पुल नदी में जा गिरा, और दुश्मन सेना आपकी तरफ़ दौड़ पड़ी।",
+      "word_count": 17,
+      "estimated_duration": 5.6,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0019",
-          "spoken_text": "अगर वो ठंडे पड़ गए, तो पूरा प्लान खत्म।",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "Close-up of warm firelight reflecting gently off the perforated lid of one clay pot.",
-          "image_prompt": "Realistic anime style, 9:16 vertical macro close-up, warm orange firelight flickering across a wax-sealed clay pot lid with nine tiny dark holes, ominous tension."
+          "clip_id": "C0017",
+          "spoken_text": "तभी धड़ाम से पीछे का पुल नदी में जा गिरा,",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Broken wooden bridge collapsing into big cartoon splashes in the river behind the hero.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, wooden bridge behind the Roman guard snapping apart and crashing down into playful white splashes in the muted blue river, castle walls and banners on the far bank, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0018",
+          "spoken_text": "और दुश्मन सेना आपकी तरफ़ दौड़ पड़ी।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Angry compact enemy soldiers charging onto the broken bridge stub toward the trapped hero.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, angry cute 2.5-to-3-head-tall blue-armored enemy soldiers with fierce eyebrows charging with raised spears toward the lone Roman guard standing at the broken edge of the bridge, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0010",
-      "narration": "सुबह होते ही दीवारों पर सीढ़ियाँ टिक गईं और दस हज़ार दुश्मन ऊपर चढ़ने लगे।",
-      "word_count": 15,
-      "estimated_duration": 5.0,
-      "is_scene_bridge": true,
+      "narration": "बिना एक पल सोचे, आप भारी कवच पहने हुए ही नदी में कूद पड़े और रोम के किनारे की तरफ़ तैरने लगे।",
+      "word_count": 21,
+      "estimated_duration": 6.4,
+      "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0020",
-          "spoken_text": "सुबह होते ही दीवारों पर सीढ़ियाँ टिक गईं",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Dozens of massive iron-hooked wooden siege ladders slamming against the stone castle parapet at sunrise.",
-          "image_prompt": "Realistic anime style, 9:16 vertical action shot, heavy iron-hooked wooden siege ladders slamming violently onto medieval stone wall battlements at golden sunrise."
+          "clip_id": "C0019",
+          "spoken_text": "बिना एक पल सोचे, आप भारी कवच पहने हुए ही नदी में कूद पड़े",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 3.8,
+          "scene_context": "Hero leaping dramatically off the broken bridge plank in full armor while enemies watch in surprise.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cute 3-head-tall Roman guard in bronze armor, helmet, and red tunic leaping bravely off the broken wooden bridge down toward the blue river while shocked compact enemy soldiers peer over the edge, bold slightly uneven dark outlines, flat muted colors, no text, logos, or watermarks."
         },
         {
-          "clip_id": "C0021",
-          "spoken_text": "और दस हज़ार दुश्मन ऊपर चढ़ने लगे।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Looking down the sheer wall as endless waves of armored enemy soldiers swarm up the ladders.",
-          "image_prompt": "Realistic anime style, 9:16 vertical dizzying high-angle view looking down the stone fortress wall crowded with hundreds of armored enemy soldiers climbing wooden ladders."
+          "clip_id": "C0020",
+          "spoken_text": "और रोम के किनारे की तरफ़ तैरने लगे।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Cute round-faced hero paddling fiercely across muted blue river ripples toward Rome's grassy bank.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cute Roman guard with large round white face and bronze helmet paddling hard with short shaped arms across wavy muted blue river water toward grassy banks and Roman castle towers, bold uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0011",
-      "narration": "राजा के दरबारी डर से चीख रहे थे, लेकिन राजा तब तक इंतज़ार करता रहा जब तक पहले हेलमेट हाथ से खटखटाने जितने पास ना आ गए।",
-      "word_count": 27,
-      "estimated_duration": 8.4,
+      "narration": "चारों तरफ़ पानी में तीर और भाले गिरते रहे, फिर भी आप ज़िंदा दूसरे किनारे पर पहुँच ही गए।",
+      "word_count": 19,
+      "estimated_duration": 5.8,
       "is_scene_bridge": false,
       "clips": [
         {
+          "clip_id": "C0021",
+          "spoken_text": "चारों तरफ़ पानी में तीर और भाले गिरते रहे,",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Tall cartoon water splashes around the swimming hero as arrows and spears miss him.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, white cartoon water splashes bursting around the swimming cute Roman guard as arrows and spears plunge harmlessly into the blue river, pale sky above, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
+        },
+        {
           "clip_id": "C0022",
-          "spoken_text": "राजा के दरबारी डर से चीख रहे थे,",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Panicked noble lords shouting wildly and drawing swords along the castle ramparts.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, terrified armored castle lords screaming and waving swords in chaos along the stone battlements at dawn."
-        },
-        {
-          "clip_id": "C0023",
-          "spoken_text": "लेकिन राजा तब तक इंतज़ार करता रहा जब तक पहले हेलमेट",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "The king standing ice-calm at the edge beside lined-up clay pots, eyes locked downward.",
-          "image_prompt": "Realistic anime style, 9:16 vertical portrait, ice-calm bearded king standing at the battlement edge with his boot poised behind a clay pot, sharp cold focus in sunrise light."
-        },
-        {
-          "clip_id": "C0024",
-          "spoken_text": "हाथ से खटखटाने जितने पास ना आ गए।",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Close-up of enemy iron helmets cresting just below the stone wall ledge.",
-          "image_prompt": "Realistic anime style, 9:16 vertical close-up, steel helmets and fierce eyes of climbing enemy soldiers rising just inches below the stone wall edge."
+          "spoken_text": "फिर भी आप ज़िंदा दूसरे किनारे पर पहुँच ही गए।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Wet cheering hero pulled up onto the grassy Roman bank by relieved defenders below the castle walls.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, dripping wet cute 2.5-to-3-head-tall Roman guard being pulled onto the grassy riverbank by cheering compact Roman defenders in colorful tunics beside castle towers and banners, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0012",
-      "narration": "फिर उसने पहला घड़ा दीवार से नीचे धकेल दिया।",
-      "word_count": 9,
-      "estimated_duration": 3.0,
+      "narration": "रोम ने आपकी मूर्ति बनवाई और इनाम में उतनी ज़मीन दी, जितनी आप एक दिन में हल चलाकर नाप सकें।",
+      "word_count": 20,
+      "estimated_duration": 6.2,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0025",
-          "spoken_text": "फिर उसने पहला घड़ा दीवार से नीचे धकेल दिया।",
+          "clip_id": "C0023",
+          "spoken_text": "रोम ने आपकी मूर्ति बनवाई और इनाम में उतनी ज़मीन दी,",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Hero beaming proudly beside a cute stone statue of himself surrounded by cheering townsfolk.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, proud cute 2.5-head-tall Roman hero with blushing happy cheeks standing next to a bronze-and-stone statue of himself with cheering compact townsfolk, castle towers, and banners behind under a pale sky, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0024",
+          "spoken_text": "जितनी आप एक दिन में हल चलाकर नाप सकें।",
           "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "King's heavy leather boot kicking a sealed clay pot plummeting off the stone ledge.",
-          "image_prompt": "Realistic anime style, 9:16 vertical dynamic action shot, king's heavy boot kicking a clay pot off the castle ledge, pot tumbling downward toward climbing soldiers below."
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Hero cheerfully guiding a wooden plow behind an ox across wide green hills.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cheerful cute 3-head-tall Roman hero in a simple tunic guiding a wooden plow behind a friendly muted-brown cartoon ox across wide rolling green grass hills beneath a pale sky, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0013",
-      "narration": "तीन सौ घड़े सीधे तीन सौ हेलमेट पर फूटे— और अंदर से निकलीं तीस लाख गुस्साई मधुमक्खियाँ!",
-      "word_count": 17,
-      "estimated_duration": 6.0,
+      "narration": "कमाल की बात—खुद रोमन इतिहासकार ने भी लिखा कि ये कहानी सच होने के लिए कुछ ज़्यादा ही फिल्मी लगती है!",
+      "word_count": 21,
+      "estimated_duration": 6.4,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0026",
-          "spoken_text": "तीन सौ घड़े सीधे तीन सौ हेलमेट पर फूटे—",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "Clay pots shattering into golden shards right on top of enemy iron helmets.",
-          "image_prompt": "Realistic anime style, 9:16 vertical explosive action frame, clay pots shattering violently on top of enemy steel helmets in mid-climb, terracotta shards and wax flying."
-        },
-        {
-          "clip_id": "C0027",
-          "spoken_text": "और अंदर से निकलीं तीस लाख गुस्साई मधुमक्खियाँ!",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "Massive dark-gold swirling storm of millions of furious honeybees erupting out of broken pots.",
-          "image_prompt": "Realistic anime style, 9:16 vertical dramatic swarm shot, immense swirling golden-black cloud of millions of furious bees bursting out of shattered pots glowing against sunrise rays."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0014",
-      "narration": "क्योंकि ठंडी मधुमक्खी उड़ नहीं सकती— और दस हज़ार सैनिक एक भी मक्खी भगाने के लिए अपनी सीढ़ी से हाथ नहीं छोड़ सकते थे।",
-      "word_count": 24,
-      "estimated_duration": 8.2,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0028",
-          "spoken_text": "क्योंकि ठंडी मधुमक्खी उड़ नहीं सकती—",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Macro shot of warm furious bees with glowing wings buzzing aggressively out of the warm pot.",
-          "image_prompt": "Realistic anime style, 9:16 vertical macro close-up, sharp detailed honeybees with translucent golden-lit wings swarming furiously out of warm clay shards in sunrise light."
-        },
-        {
-          "clip_id": "C0029",
-          "spoken_text": "और दस हज़ार सैनिक एक भी मक्खी भगाने के लिए",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Enemy soldiers clutching wooden ladder rungs desperately with both hands while bees swarm their faces.",
-          "image_prompt": "Realistic anime style, 9:16 vertical dramatic shot, panicked enemy soldiers clinging desperately with white knuckles to high wooden ladder rungs as swarms of bees engulf their helmets."
-        },
-        {
-          "clip_id": "C0030",
-          "spoken_text": "अपनी सीढ़ी से हाथ नहीं छोड़ सकते थे।",
+          "clip_id": "C0025",
+          "spoken_text": "कमाल की बात—खुद रोमन इतिहासकार ने भी लिखा",
           "spoken_word_count": 8,
           "estimated_spoken_duration": 2.6,
-          "scene_context": "Chaos along the entire wall as ladders topple while the king watches calmly from above.",
-          "image_prompt": "Realistic anime style, 9:16 vertical epic finale shot, siege ladders tipping and enemy army collapsing in chaotic bee clouds below while the Pot King stands victorious on the sunlit wall above."
+          "scene_context": "Cute Roman historian in white toga writing briskly on a parchment scroll with a quill.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cute 3-head-tall Roman historian with large round white face, expressive brows, and white toga writing with a feather quill on a blank scroll at a simple wooden desk, castle window with pale sky behind, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0026",
+          "spoken_text": "कि ये कहानी सच होने के लिए कुछ ज़्यादा ही फिल्मी लगती है!",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 3.8,
+          "scene_context": "Same historian raising one eyebrow and shrugging playfully beside his blank scroll.",
+          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, same cute 3-head-tall Roman historian in white toga raising one eyebrow with a cheeky skeptical smirk and shrugging both short shaped arms beside his unrolled blank scroll, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
         }
       ]
     }

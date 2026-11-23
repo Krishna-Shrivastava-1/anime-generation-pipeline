@@ -1,52 +1,127 @@
 [
   {
-    "word": "और",
-    "start_ms": 0,
-    "end_ms": 179
+    "word": "सेनापति",
+    "start_ms": 160,
+    "end_ms": 865
   },
   {
-    "word": "कार",
-    "start_ms": 179,
-    "end_ms": 485
+    "word": "ने",
+    "start_ms": 865,
+    "end_ms": 1088
   },
   {
-    "word": "एक",
-    "start_ms": 485,
-    "end_ms": 665
+    "word": "तंज",
+    "start_ms": 1088,
+    "end_ms": 1404
   },
   {
-    "word": "No",
-    "start_ms": 665,
-    "end_ms": 782
+    "word": "कसा—हम",
+    "start_ms": 1404,
+    "end_ms": 1928
   },
   {
-    "word": "Parking",
-    "start_ms": 782,
-    "end_ms": 1191
+    "word": "उनसे",
+    "start_ms": 1928,
+    "end_ms": 2337
   },
   {
-    "word": "ज़ोन",
-    "start_ms": 1191,
-    "end_ms": 1587
+    "word": "लड़ने",
+    "start_ms": 2337,
+    "end_ms": 2838
+  },
+  {
+    "word": "वाले",
+    "start_ms": 2838,
+    "end_ms": 3284
+  },
+  {
+    "word": "हैं",
+    "start_ms": 3284,
+    "end_ms": 3637
+  },
+  {
+    "word": "या",
+    "start_ms": 3637,
+    "end_ms": 3860
+  },
+  {
+    "word": "उनका",
+    "start_ms": 3860,
+    "end_ms": 4268
+  },
+  {
+    "word": "अचार",
+    "start_ms": 4268,
+    "end_ms": 4677
+  },
+  {
+    "word": "डालेंगे?",
+    "start_ms": 4677,
+    "end_ms": 5499
+  },
+  {
+    "word": "लेकिन",
+    "start_ms": 5499,
+    "end_ms": 5982
+  },
+  {
+    "word": "रसोइया",
+    "start_ms": 5982,
+    "end_ms": 6613
+  },
+  {
+    "word": "बड़ा",
+    "start_ms": 6613,
+    "end_ms": 7022
+  },
+  {
+    "word": "खुश",
+    "start_ms": 7022,
+    "end_ms": 7282
+  },
+  {
+    "word": "था—आखिरकार",
+    "start_ms": 7282,
+    "end_ms": 8196
+  },
+  {
+    "word": "जैम",
+    "start_ms": 8196,
+    "end_ms": 8512
+  },
+  {
+    "word": "रखने",
+    "start_ms": 8512,
+    "end_ms": 8921
   },
   {
     "word": "के",
-    "start_ms": 1587,
-    "end_ms": 1802
+    "start_ms": 8921,
+    "end_ms": 9143
   },
   {
-    "word": "पास",
-    "start_ms": 1802,
-    "end_ms": 2108
+    "word": "लिए",
+    "start_ms": 9143,
+    "end_ms": 9403
   },
   {
-    "word": "खड़ी",
-    "start_ms": 2108,
-    "end_ms": 2504
+    "word": "इतने",
+    "start_ms": 9403,
+    "end_ms": 9812
   },
   {
-    "word": "थी।",
-    "start_ms": 2504,
-    "end_ms": 2809
+    "word": "घड़े",
+    "start_ms": 9812,
+    "end_ms": 10221
+  },
+  {
+    "word": "मिल",
+    "start_ms": 10221,
+    "end_ms": 10481
+  },
+  {
+    "word": "गए!",
+    "start_ms": 10481,
+    "end_ms": 10690
   }
 ]

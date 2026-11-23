@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "A scarred general in metal plate armor stands before clay pots while a flour‑dusted cook holds a wooden spoon.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "clay pot clink",
+      "fallback_tag": "clay pot hit",
+      "sound_type": "transient",
+      "trigger_word": "घड़े",
+      "target_ms": 9812,
+      "duration_sec": 0.8,
+      "volume": 0.42
+    },
+    {
+      "freesound_tag": "wooden spoon tap",
+      "fallback_tag": "wood spoon hit",
+      "sound_type": "transient",
+      "trigger_word": "जैम",
+      "target_ms": 8196,
+      "duration_sec": 0.6,
+      "volume": 0.38
+    }
+  ]
+}

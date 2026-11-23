@@ -1,14 +1,10 @@
 
-
-# # Examples:
-# #   Hindi female (default):
-# #     python teacherassemble.py teachingscript.json
-# #   English in the SAME Hindi accent (male) using translation_cache.json:
-# #     python teacherassemble.py teachingscript.json --lang en --gender male --accent hindi
-# #   English in the SAME Hindi accent (female) + 9:16 + BGM:
-# #     python teacherassemble.py teachingscript.json --lang en --gender female -a 9:16 -b bgm.mp3 -o final_video.mp4
-# #   Hindi male:
-# #     python teacherassemble.py teachingscript.json --lang hi --gender male
+# # Run interactively (prompts for Language, Accent, Gender, and Voice):
+# #   python teacherassemble.py teachingscript.json
+# #   python teacherassemble.py teachingscript.json -a 9:16 -b bgm.mp3 -o final_video.mp4
+# #
+# # Or pass flags directly + -y to skip prompts:
+# #   python teacherassemble.py teachingscript.json --lang en --accent us --gender male -y
 
 # import argparse
 # import hashlib
@@ -18,6 +14,7 @@
 # import re
 # import shutil
 # import subprocess
+# import sys
 # import urllib.parse
 # import urllib.request
 # import wave
@@ -46,9 +43,9 @@
 # # CONFIGURATION
 # # ============================================================
 
-# DEFAULT_LANG = "hi"       # "hi" or "en"
+# DEFAULT_LANG = "en"       # "en" or "hi" (auto-detected from script if omitted)
 # DEFAULT_GENDER = "female" # "female" or "male"
-# DEFAULT_ACCENT = "hindi"  # "hindi" (keeps Indian/Hindi accent even in English), "us", or "uk"
+# DEFAULT_ACCENT = "us"     # "us", "hindi", or "uk"
 # TTS_SPEED = 1.02          # Natural conversational pace
 # VOICE_VOLUME = 0.96
 
@@ -75,13 +72,13 @@
 # _PHONEMIZER_PATCHED = False
 
 # VOICE_PRESETS = {
-#     "hindi": {
-#         "female": ["hf_alpha", "hf_beta"],
-#         "male": ["hm_omega", "hm_psi"],
-#     },
 #     "us": {
 #         "female": ["af_heart", "af_bella", "af_sarah", "af_nicole"],
 #         "male": ["am_michael", "am_adam", "am_fenrir", "am_onyx"],
+#     },
+#     "hindi": {
+#         "female": ["hf_alpha", "hf_beta"],
+#         "male": ["hm_omega", "hm_psi"],
 #     },
 #     "uk": {
 #         "female": ["bf_emma", "bf_isabella", "bf_alice"],
@@ -90,6 +87,15 @@
 # }
 
 # ACRONYM_MAP = {
+#     "AI": "A I",
+#     "ML": "M L",
+#     "LLM": "L L M",
+#     "LLMs": "L L Ms",
+#     "NLP": "N L P",
+#     "PDF": "P D F",
+#     "PDFs": "P D Fs",
+#     "GPU": "G P U",
+#     "GPUs": "G P Us",
 #     "API": "A P I",
 #     "APIs": "A P Is",
 #     "URL": "U R L",
@@ -170,6 +176,10 @@
 #     return re.sub(r"\s+", "_", cleaned).strip("_") or "story"
 
 
+# def has_devanagari(text):
+#     return any("\u0900" <= ch <= "\u097f" for ch in text)
+
+
 # def load_story_json(json_path):
 #     raw_text = json_path.read_text(encoding="utf-8-sig")
 #     try:
@@ -188,6 +198,20 @@
 #         for bt in sc.get("beats", []):
 #             beats.append(bt)
 #     return beats
+
+
+# def get_beat_raw_narration(beat):
+#     clips = beat.get("clips") or []
+#     return (
+#         beat.get("narration", "").strip()
+#         or beat.get("narration_text", "").strip()
+#         or " ".join(c.get("spoken_text", "").strip() for c in clips if c.get("spoken_text", "").strip())
+#     )
+
+
+# def detect_script_language(beats):
+#     sample_text = " ".join(get_beat_raw_narration(bt) for bt in beats[:5])
+#     return "hi" if has_devanagari(sample_text) else "en"
 
 
 # def get_render_profile(aspect_ratio):
@@ -220,7 +244,7 @@
 
 # def resolve_clip_image(clip, beat_id, clip_id, frames_dir):
 #     """
-#     Finds the generated image in `frames_dir` (e.g. after `git pull`):
+#     Finds the generated image in `frames_dir`:
 #       1. Explicit `image` / `image_path` / `frame` key on clip
 #       2. {frames_dir}/{beat_id}_{clip_id}.{ext}
 #       3. {frames_dir}/{clip_id}.{ext}
@@ -248,7 +272,7 @@
 
 
 # # ============================================================
-# # TRANSLATION (HINDI -> ENGLISH via translation_cache.json)
+# # TRANSLATION (ONLY WHEN SCRIPT CONTAINS HINDI)
 # # ============================================================
 
 # def _get_translation_cache():
@@ -266,9 +290,10 @@
 #     return _TRANSLATION_CACHE
 
 
-# def translate_hi_to_en(text):
+# def ensure_english_text(text):
+#     """Returns text directly if already English; translates only if Devanagari Hindi is present."""
 #     text = " ".join(text.strip().split())
-#     if not text or all(ord(ch) < 128 for ch in text):
+#     if not text or not has_devanagari(text):
 #         return text
 
 #     cache = _get_translation_cache()
@@ -306,10 +331,10 @@
 
 
 # # ============================================================
-# # HINGLISH & TECH TEXT NORMALIZATION FOR NATURAL TTS
+# # TEXT NORMALIZATION FOR NATURAL TTS
 # # ============================================================
 
-# def normalize_text_for_tts(text, lang="hi"):
+# def normalize_text_for_tts(text, lang="en"):
 #     """
 #     Cleans Hindi/English + code/tech tokens so Kokoro doesn't insert fake breaks
 #     on 'Node.js', stumble on '@RestController', or mumble CamelCase & acronyms.
@@ -319,8 +344,13 @@
 #         return orig
 
 #     s = orig
-#     # Strip backticks / markdown emphasis and empty call parens
+#     # Normalize curly quotes & typographic punctuation
+#     s = s.replace("\u2019", "'").replace("\u2018", "'")
+#     s = s.replace("\u201c", "").replace("\u201d", "").replace('"', "")
 #     s = s.replace("`", "").replace("*", "").replace("()", "")
+
+#     # '&' -> spoken word
+#     s = re.sub(r"\s*&\s*", " aur " if lang == "hi" else " and ", s)
 
 #     # Arrows / dashes / parens -> brief natural comma pauses
 #     s = s.replace("->", ", ").replace("=>", ", ")
@@ -510,6 +540,25 @@
 #     return set()
 
 
+# def get_voices_for_profile(accent, gender):
+#     kokoro = get_kokoro()
+#     available = get_available_voices(kokoro)
+#     candidates = list(VOICE_PRESETS[accent][gender])
+
+#     if not available:
+#         return candidates
+
+#     filtered = [v for v in candidates if v in available]
+#     prefix = f"{'h' if accent == 'hindi' else ('b' if accent == 'uk' else 'a')}{'f' if gender == 'female' else 'm'}_"
+#     extra = sorted(v for v in available if v.startswith(prefix) and v not in filtered)
+#     combined = filtered + extra
+#     if combined:
+#         return combined
+
+#     any_gender = sorted(v for v in available if len(v) > 2 and v[1] == ("f" if gender == "female" else "m"))
+#     return any_gender or sorted(available)
+
+
 # def resolve_voice_and_tts_lang(narration_lang, gender, accent, explicit_voice=None):
 #     kokoro = get_kokoro()
 #     available = get_available_voices(kokoro)
@@ -527,20 +576,7 @@
 #             )
 #         return explicit_voice, tts_lang
 
-#     candidates = VOICE_PRESETS[accent][gender]
-#     if available:
-#         for v in candidates:
-#             if v in available:
-#                 return v, tts_lang
-#         # Fallback within same gender prefix if custom voices file
-#         prefix = f"{'h' if accent == 'hindi' else ('b' if accent == 'uk' else 'a')}{'f' if gender == 'female' else 'm'}_"
-#         matched = sorted(v for v in available if v.startswith(prefix))
-#         if matched:
-#             return matched[0], tts_lang
-#         any_gender = sorted(v for v in available if len(v) > 2 and v[1] == ("f" if gender == "female" else "m"))
-#         if any_gender:
-#             return any_gender[0], tts_lang
-
+#     candidates = get_voices_for_profile(accent, gender)
 #     return candidates[0], tts_lang
 
 
@@ -766,24 +802,26 @@
 #     return best_splits
 
 
-# def group_beats_for_tts(beats, narration_lang="hi"):
+# def group_beats_for_tts(beats, narration_lang="en"):
 #     groups = []
 #     current_group = []
 #     current_chars = 0
 
 #     for idx, beat in enumerate(beats):
-#         clips = beat.get("clips") or []
-#         raw_narration_hi = (
-#             beat.get("narration", "").strip()
-#             or beat.get("narration_text", "").strip()
-#             or " ".join(c.get("spoken_text", "").strip() for c in clips if c.get("spoken_text", "").strip())
-#         )
-#         if not raw_narration_hi:
+#         raw_narration = get_beat_raw_narration(beat)
+#         if not raw_narration:
 #             beat_id = beat.get("beat_id", f"B{idx + 1:04d}")
 #             raise ValueError(f"{beat_id}: missing narration.")
 
-#         english_narration = translate_hi_to_en(raw_narration_hi)
-#         spoken_source = english_narration if narration_lang == "en" else raw_narration_hi
+#         # Subtitle / English text uses script narration directly if already English
+#         subtitle_text = ensure_english_text(raw_narration)
+
+#         # Spoken narration comes directly from the script (only translates Hindi->English if Hindi script + EN audio)
+#         if narration_lang == "en":
+#             spoken_source = subtitle_text
+#         else:
+#             spoken_source = raw_narration
+
 #         norm_text = normalize_text_for_tts(spoken_source, lang=narration_lang)
 #         added_len = len(norm_text) + (1 if current_group else 0)
 
@@ -798,8 +836,8 @@
 #         current_group.append({
 #             "beat_index": idx + 1,
 #             "beat": beat,
-#             "raw_narration_hi": raw_narration_hi,
-#             "english_narration": english_narration,
+#             "raw_narration": raw_narration,
+#             "subtitle_text": subtitle_text,
 #             "norm_text": norm_text,
 #             "is_bridge": bool(beat.get("is_scene_bridge", False)),
 #         })
@@ -816,11 +854,11 @@
 #     return groups
 
 
-# def synthesize_group_and_cache(group, voice, tts_lang, speed=TTS_SPEED):
+# def synthesize_group_and_cache(group, voice, tts_lang, speed=TTS_SPEED, use_cache=True):
 #     CACHE_DIR.mkdir(parents=True, exist_ok=True)
 #     sig_payload = json.dumps(
 #         {
-#             "v": "v5_fluent",
+#             "v": "v6_fluent",
 #             "voice": voice,
 #             "lang": tts_lang,
 #             "speed": speed,
@@ -831,7 +869,7 @@
 #     group_key = hashlib.md5(sig_payload.encode("utf-8")).hexdigest()
 #     cached_paths = [CACHE_DIR / f"{group_key}_{i:02d}.wav" for i in range(len(group))]
 
-#     all_cached = all(p.exists() and p.stat().st_size > 0 for p in cached_paths)
+#     all_cached = use_cache and all(p.exists() and p.stat().st_size > 0 for p in cached_paths)
 #     if not all_cached:
 #         norm_texts = [item["norm_text"] for item in group]
 #         beat_samples_list = None
@@ -881,7 +919,7 @@
 #     return results
 
 
-# def prepare_all_beats_audio(beats, temp_dir, narration_lang, voice, tts_lang, speed=TTS_SPEED):
+# def prepare_all_beats_audio(beats, temp_dir, narration_lang, voice, tts_lang, speed=TTS_SPEED, use_cache=True):
 #     groups = group_beats_for_tts(beats, narration_lang=narration_lang)
 #     print(f"Synthesizing fluent narration ({narration_lang.upper()} | {voice} | {tts_lang}) across {len(beats)} beats in {len(groups)} groups...")
 
@@ -890,7 +928,9 @@
 #     master_sr = None
 
 #     for group in groups:
-#         group_results = synthesize_group_and_cache(group, voice=voice, tts_lang=tts_lang, speed=speed)
+#         group_results = synthesize_group_and_cache(
+#             group, voice=voice, tts_lang=tts_lang, speed=speed, use_cache=use_cache
+#         )
 #         for item, (wav_path, raw_dur, pause_after_s) in zip(group, group_results):
 #             samples, sr = load_wav(wav_path)
 #             if master_sr is None:
@@ -919,8 +959,8 @@
 #             beat_audio_plans.append({
 #                 "beat_index": item["beat_index"],
 #                 "beat": item["beat"],
-#                 "raw_narration_hi": item["raw_narration_hi"],
-#                 "english_narration": item["english_narration"],
+#                 "raw_narration": item["raw_narration"],
+#                 "subtitle_text": item["subtitle_text"],
 #                 "speech_samples": samples,
 #                 "sample_rate": master_sr,
 #                 "speech_dur": exact_speech_dur,
@@ -1274,11 +1314,12 @@
 # # ============================================================
 
 # def compute_clip_target_frames(
-#     clips, speech_samples, sr, speech_dur, total_beat_frames, narration_lang="hi"
+#     clips, speech_samples, sr, speech_dur, total_beat_frames, narration_lang="en"
 # ):
 #     """
 #     Allocates integer frames across clips so image segments track the spoken clauses:
-#       1. Weights each clip by its English translation (when --lang en) or Hindi spoken_text.
+#       1. Weights each clip by its spoken text (directly from clip if already English,
+#          or translated if clip spoken_text is Hindi and --lang en).
 #       2. Snaps internal clip cut timestamps to nearby natural pause/comma valleys
 #          in the beat's actual audio waveform so images change cleanly between clauses.
 #     """
@@ -1292,7 +1333,7 @@
 #         if narration_lang == "en":
 #             en_txt = (clip.get("spoken_text_en") or clip.get("english_text") or "").strip()
 #             if not en_txt and clip.get("spoken_text", "").strip():
-#                 en_txt = translate_hi_to_en(clip["spoken_text"].strip())
+#                 en_txt = ensure_english_text(clip["spoken_text"].strip())
 #             if en_txt:
 #                 weights.append(estimate_spoken_weight(en_txt))
 #                 continue
@@ -1314,7 +1355,6 @@
 #         cum_w += w
 #         expected_cuts_s.append(speech_dur * (cum_w / total_w))
 
-#     # Snap cut points to natural micro-pauses (commas/clause breaks) if present nearby
 #     pauses, _, _ = find_quiet_pauses(speech_samples, sr, min_pause_s=0.045)
 #     pause_times = [mid / sr for mid, _ in pauses]
 
@@ -1326,7 +1366,6 @@
 #         max_t = speech_dur - remaining * 0.30
 #         best_t = min(max(exp_t, min_t), max_t)
 
-#         # Look for closest quiet pause within +/- 0.45s of expected clause boundary
 #         nearby = [pt for pt in pause_times if min_t <= pt <= max_t and abs(pt - exp_t) <= 0.45]
 #         if nearby:
 #             best_t = min(nearby, key=lambda pt: abs(pt - exp_t))
@@ -1334,7 +1373,6 @@
 #         snapped_cuts_s.append(best_t)
 #         prev_t = best_t
 
-#     # Convert snapped timestamps to integer frames summing to total_beat_frames
 #     cut_frames = [int(round(t * FPS)) for t in snapped_cuts_s]
 #     frames_list = []
 #     prev_f = 0
@@ -1353,21 +1391,21 @@
 # def render_beat_video(plan, frames_dir, temp_dir, profile, motion_counter, narration_lang):
 #     beat_index = plan["beat_index"]
 #     beat = plan["beat"]
-#     raw_narration_hi = plan["raw_narration_hi"]
-#     english_narration = plan["english_narration"]
+#     raw_narration = plan["raw_narration"]
+#     subtitle_text = plan["subtitle_text"]
 #     speech_dur = plan["speech_dur"]
 #     total_frames = plan["num_frames"]
 
 #     beat_id = beat.get("beat_id", f"B{beat_index:04d}")
-#     clips = beat.get("clips") or [{"clip_id": f"{beat_id}_C0001", "spoken_text": raw_narration_hi}]
+#     clips = beat.get("clips") or [{"clip_id": f"{beat_id}_C0001", "spoken_text": raw_narration}]
 
-#     preview_txt = english_narration if narration_lang == "en" else raw_narration_hi
+#     preview_txt = subtitle_text if narration_lang == "en" else raw_narration
 #     print(f"\n[{beat_id}] ({speech_dur:.2f}s speech / {total_frames / FPS:.2f}s total) {preview_txt}")
 #     beat_dir = temp_dir / beat_id
 #     beat_dir.mkdir(parents=True, exist_ok=True)
 
 #     timed_cues = build_timed_subtitle_cues(
-#         english_narration, speech_dur, max_chars_cue=profile["sub_max_chars_cue"]
+#         subtitle_text, speech_dur, max_chars_cue=profile["sub_max_chars_cue"]
 #     )
 #     clip_frames_list = compute_clip_target_frames(
 #         clips,
@@ -1378,7 +1416,7 @@
 #         narration_lang=narration_lang,
 #     )
 
-#     print(f"      Clips: {len(clips)} | Sub: {english_narration[:70]}...")
+#     print(f"      Clips: {len(clips)} | Sub: {subtitle_text[:70]}...")
 
 #     clip_segments = []
 #     for idx, (clip, n_frames) in enumerate(zip(clips, clip_frames_list), start=1):
@@ -1411,20 +1449,119 @@
 #     raise ValueError(f"Unsupported language '{val}'. Choose 'hi' or 'en'.")
 
 
+# def _ask_choice(prompt_text, mapping, default_val):
+#     while True:
+#         raw = input(prompt_text).strip().lower()
+#         if not raw:
+#             return default_val
+#         if raw in mapping:
+#             return mapping[raw]
+#         print(f"   Invalid choice '{raw}'. Valid options: {', '.join(sorted(mapping.keys()))}")
+
+
+# def resolve_interactive_options(args, detected_script_lang):
+#     """
+#     Prompts interactively for Language, Accent (US / Hindi / UK), Gender, and Voice
+#     so every combination (e.g. English + US, English + Hindi accent, Hindi + US accent,
+#     Hindi + Hindi accent) is cleanly selectable without memorizing CLI flags.
+#     """
+#     can_prompt = sys.stdin.isatty() and not args.yes
+
+#     lang = normalize_lang_arg(args.lang) if args.lang is not None else None
+#     accent = args.accent
+#     gender = args.gender
+#     voice = args.voice
+
+#     default_lang = detected_script_lang
+#     default_accent = "hindi" if default_lang == "hi" else "us"
+
+#     if can_prompt and (lang is None or (voice is None and (accent is None or gender is None))):
+#         detected_label = "Hindi" if detected_script_lang == "hi" else "English"
+#         print("\n=== Audio & Voice Setup ===")
+#         print(f"Detected script narration: {detected_label}")
+
+#     if lang is None:
+#         if can_prompt:
+#             def_num = "1" if default_lang == "en" else "2"
+#             print("\n1) Audio Language (Script reading / TTS mode):")
+#             print("   [1] English")
+#             print("   [2] Hindi")
+#             lang = _ask_choice(
+#                 f"   Choose language [1/2, default={def_num}]: ",
+#                 {"1": "en", "en": "en", "eng": "en", "english": "en", "2": "hi", "hi": "hi", "hindi": "hi"},
+#                 default_lang,
+#             )
+#         else:
+#             lang = default_lang
+
+#     if accent is None:
+#         if can_prompt and voice is None:
+#             def_acc = "2" if lang == "hi" else "1"
+#             print("\n2) Voice Accent:")
+#             print("   [1] US Accent (American)")
+#             print("   [2] Hindi / Indian Accent")
+#             print("   [3] UK Accent (British)")
+#             accent = _ask_choice(
+#                 f"   Choose accent [1/2/3, default={def_acc}]: ",
+#                 {
+#                     "1": "us", "us": "us", "american": "us",
+#                     "2": "hindi", "hi": "hindi", "hindi": "hindi", "indian": "hindi",
+#                     "3": "uk", "uk": "uk", "british": "uk",
+#                 },
+#                 "hindi" if lang == "hi" else "us",
+#             )
+#         else:
+#             accent = "hindi" if lang == "hi" else default_accent
+
+#     if gender is None:
+#         if can_prompt and voice is None:
+#             print("\n3) Narrator Gender:")
+#             print("   [1] Female")
+#             print("   [2] Male")
+#             gender = _ask_choice(
+#                 "   Choose gender [1/2, default=1]: ",
+#                 {"1": "female", "f": "female", "female": "female", "2": "male", "m": "male", "male": "male"},
+#                 DEFAULT_GENDER,
+#             )
+#         else:
+#             gender = DEFAULT_GENDER
+
+#     if voice is None and can_prompt:
+#         voice_choices = get_voices_for_profile(accent, gender)
+#         if len(voice_choices) > 1:
+#             print(f"\n4) Voice ({accent.upper()} / {gender.capitalize()}):")
+#             mapping = {}
+#             for i, v in enumerate(voice_choices[:6], start=1):
+#                 tag = " (default)" if i == 1 else ""
+#                 print(f"   [{i}] {v}{tag}")
+#                 mapping[str(i)] = v
+#                 mapping[v.lower()] = v
+#             voice = _ask_choice(
+#                 f"   Choose voice [1-{min(6, len(voice_choices))}, default=1]: ",
+#                 mapping,
+#                 voice_choices[0],
+#             )
+#         elif voice_choices:
+#             voice = voice_choices[0]
+
+#     return lang, gender, accent, voice
+
+
 # def run_assembly(
 #     json_path,
 #     frames_dir=None,
 #     output_path=None,
 #     aspect_ratio="auto",
 #     bgm_path=None,
-#     lang=DEFAULT_LANG,
-#     gender=DEFAULT_GENDER,
-#     accent=DEFAULT_ACCENT,
+#     lang=None,
+#     gender=None,
+#     accent=None,
 #     voice=None,
 #     speed=TTS_SPEED,
+#     yes=False,
+#     no_cache=False,
 # ):
 #     check_dependencies()
-#     narration_lang = normalize_lang_arg(lang)
 
 #     json_path = Path(json_path).resolve()
 #     if not json_path.exists():
@@ -1438,6 +1575,17 @@
 #     beats = extract_beats(story_data)
 #     if not beats:
 #         raise ValueError("No beats found in story JSON.")
+
+#     detected_script_lang = detect_script_language(beats)
+
+#     # Load Kokoro upfront so voice selection menu reflects voices actually in voices-*.bin
+#     get_kokoro()
+
+#     # Resolve options interactively when running from terminal unless passed via CLI
+#     dummy_args = argparse.Namespace(lang=lang, gender=gender, accent=accent, voice=voice, yes=yes)
+#     narration_lang, chosen_gender, chosen_accent, chosen_voice = resolve_interactive_options(
+#         dummy_args, detected_script_lang=detected_script_lang
+#     )
 
 #     if aspect_ratio == "auto":
 #         meta_ar = story_data.get("aspect_ratio") or story_data.get("project_meta", {}).get("aspect_ratio")
@@ -1469,17 +1617,16 @@
 #     temp_dir.mkdir(parents=True, exist_ok=True)
 
 #     try:
-#         get_kokoro()
 #         selected_voice, tts_lang = resolve_voice_and_tts_lang(
 #             narration_lang=narration_lang,
-#             gender=gender,
-#             accent=accent,
-#             explicit_voice=voice,
+#             gender=chosen_gender,
+#             accent=chosen_accent,
+#             explicit_voice=chosen_voice,
 #         )
 
 #         print(
-#             f"Title: {title} | Beats: {len(beats)} | Aspect: {aspect_ratio} ({profile['width']}x{profile['height']}) "
-#             f"| Audio: {narration_lang.upper()} ({gender}, {accent} accent -> {selected_voice}, {tts_lang}) @ {speed}x "
+#             f"\nTitle: {title} | Beats: {len(beats)} | Aspect: {aspect_ratio} ({profile['width']}x{profile['height']}) "
+#             f"| Audio: {narration_lang.upper()} ({chosen_gender}, {chosen_accent} accent -> {selected_voice}, {tts_lang}) @ {speed}x "
 #             f"| Output: {final_output.name}"
 #         )
 #         if Image is None:
@@ -1492,6 +1639,7 @@
 #             voice=selected_voice,
 #             tts_lang=tts_lang,
 #             speed=speed,
+#             use_cache=not no_cache,
 #         )
 
 #         beat_video_outputs, motion_counter = [], 0
@@ -1523,12 +1671,15 @@
 #     parser.add_argument("-o", "--output", default=None, help="Optional output MP4 path")
 #     parser.add_argument("-a", "--aspect-ratio", choices=["auto", "9:16", "16:9"], default="auto", help="Target aspect ratio")
 #     parser.add_argument("-b", "--bgm", default=None, help="Optional background music audio file (looped softly)")
-#     parser.add_argument("-l", "--lang", choices=["hi", "en", "hindi", "english"], default=DEFAULT_LANG, help="Narration audio language: Hindi ('hi') or English from translation_cache ('en')")
-#     parser.add_argument("-g", "--gender", choices=["female", "male"], default=DEFAULT_GENDER, help="Narrator voice gender (default: female)")
-#     parser.add_argument("--accent", choices=["hindi", "us", "uk"], default=DEFAULT_ACCENT, help="Speaker accent: 'hindi' keeps Indian/Hindi accent even for English audio (default: hindi)")
-#     parser.add_argument("--voice", default=None, help="Optional explicit Kokoro voice ID override (e.g. hf_alpha, hf_beta, hm_omega, hm_psi)")
+#     parser.add_argument("-l", "--lang", choices=["hi", "en", "hindi", "english"], default=None, help="Audio language (prompted if omitted)")
+#     parser.add_argument("-g", "--gender", choices=["female", "male"], default=None, help="Narrator gender (prompted if omitted)")
+#     parser.add_argument("--accent", choices=["us", "hindi", "uk"], default=None, help="Voice accent: 'us', 'hindi', or 'uk' (prompted if omitted)")
+#     parser.add_argument("--voice", default=None, help="Optional explicit Kokoro voice ID override (e.g. af_heart, am_michael, hf_alpha)")
 #     parser.add_argument("--speed", type=float, default=TTS_SPEED, help=f"TTS speed (default: {TTS_SPEED})")
+#     parser.add_argument("-y", "--yes", action="store_true", help="Skip interactive prompts and use defaults for omitted options")
+#     parser.add_argument("--no-cache", action="store_true", help="Force fresh TTS generation instead of reusing tts_cache")
 #     args = parser.parse_args()
+
 #     run_assembly(
 #         args.json_path,
 #         frames_dir=args.frames_dir,
@@ -1540,6 +1691,8 @@
 #         accent=args.accent,
 #         voice=args.voice,
 #         speed=args.speed,
+#         yes=args.yes,
+#         no_cache=args.no_cache,
 #     )
 
 
@@ -1555,21 +1708,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
-# Run interactively (prompts for Language, Accent, Gender, and Voice):
+# Run interactively (prompts for Language, Accent, Gender, Voice, and Subtitles):
 #   python teacherassemble.py teachingscript.json
 #   python teacherassemble.py teachingscript.json -a 9:16 -b bgm.mp3 -o final_video.mp4
 #
 # Or pass flags directly + -y to skip prompts:
-#   python teacherassemble.py teachingscript.json --lang en --accent us --gender male -y
+#   python teacherassemble.py teachingscript.json --lang en --accent us --gender male --subtitle en -y
+#   python teacherassemble.py teachingscript.json --lang hi --accent hindi --gender female --subtitle none -y
 
 import argparse
 import hashlib
@@ -1580,6 +1725,8 @@ import re
 import shutil
 import subprocess
 import sys
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import wave
@@ -1594,9 +1741,9 @@ except ImportError:
     sf = None
 
 try:
-    from PIL import Image, ImageDraw, ImageFont
+    from PIL import Image, ImageDraw, ImageFont, features as pil_features
 except ImportError:
-    Image = ImageDraw = ImageFont = None
+    Image = ImageDraw = ImageFont = pil_features = None
 
 try:
     from deep_translator import GoogleTranslator
@@ -1635,6 +1782,7 @@ TRANSLATION_CACHE_FILE = BASE_DIR / "translation_cache.json"
 _KOKORO_INSTANCE = None
 _TRANSLATION_CACHE = None
 _PHONEMIZER_PATCHED = False
+_TRANSLATION_COOLDOWN_UNTIL = 0.0
 
 VOICE_PRESETS = {
     "us": {
@@ -1837,7 +1985,7 @@ def resolve_clip_image(clip, beat_id, clip_id, frames_dir):
 
 
 # ============================================================
-# TRANSLATION (ONLY WHEN SCRIPT CONTAINS HINDI)
+# TRANSLATION WITH 429 RATE-LIMIT HANDLING & HINDI FALLBACK
 # ============================================================
 
 def _get_translation_cache():
@@ -1855,44 +2003,116 @@ def _get_translation_cache():
     return _TRANSLATION_CACHE
 
 
-def ensure_english_text(text):
-    """Returns text directly if already English; translates only if Devanagari Hindi is present."""
-    text = " ".join(text.strip().split())
-    if not text or not has_devanagari(text):
-        return text
-
-    cache = _get_translation_cache()
-    if text in cache:
-        return cache[text]
-
-    translated = None
-    if GoogleTranslator is not None:
-        try:
-            translated = GoogleTranslator(source="hi", target="en").translate(text)
-        except Exception:
-            translated = None
-
-    if not translated:
-        try:
-            url = (
-                "https://translate.googleapis.com/translate_a/single"
-                "?client=gtx&sl=hi&tl=en&dt=t&q=" + urllib.parse.quote(text)
-            )
-            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-            with urllib.request.urlopen(req, timeout=15) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-                translated = "".join(part[0] for part in data[0] if part and part[0])
-        except Exception as exc:
-            print(f"      [Warning] Translation failed ({exc}); using original text.")
-            translated = text
-
-    translated = " ".join(translated.strip().split())
-    cache[text] = translated
+def _save_translation_cache(cache):
     TRANSLATION_CACHE_FILE.write_text(
         json.dumps(cache, ensure_ascii=False, indent=2),
         encoding="utf-8"
     )
+
+
+def translate_text(text, src, tgt, allow_network=True):
+    """
+    Translates text between 'hi' and 'en' using translation_cache.json.
+    - Never translates if text is already in target script.
+    - Never caches failed translations.
+    - Respects 429 rate-limit cooldown and falls back cleanly to original text.
+    """
+    global _TRANSLATION_COOLDOWN_UNTIL
+
+    text = " ".join(text.strip().split())
+    if not text or src == tgt:
+        return text
+    if src == "hi" and tgt == "en" and not has_devanagari(text):
+        return text
+
+    cache = _get_translation_cache()
+    cache_key = text if (src == "hi" and tgt == "en") else f"{src}->{tgt}::{text}"
+
+    if cache_key in cache:
+        cached_val = cache[cache_key]
+        # Guard against previously poisoned failed entries (e.g., Hindi stored as English)
+        if not (src == "hi" and tgt == "en" and has_devanagari(cached_val)):
+            return cached_val
+
+    if not allow_network or time.time() < _TRANSLATION_COOLDOWN_UNTIL:
+        return text
+
+    translated = None
+    last_err = None
+
+    for attempt in range(2):
+        if GoogleTranslator is not None:
+            try:
+                res = GoogleTranslator(source=src, target=tgt).translate(text)
+                if res and res.strip():
+                    translated = res
+                    break
+            except Exception as exc:
+                last_err = exc
+                if "429" in str(exc) or "too many" in str(exc).lower():
+                    time.sleep(1.5 * (attempt + 1))
+                    continue
+
+        if not translated:
+            try:
+                url = (
+                    "https://translate.googleapis.com/translate_a/single"
+                    f"?client=gtx&sl={src}&tl={tgt}&dt=t&q=" + urllib.parse.quote(text)
+                )
+                req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+                with urllib.request.urlopen(req, timeout=15) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    res = "".join(part[0] for part in data[0] if part and part[0])
+                    if res and res.strip():
+                        translated = res
+                        break
+            except urllib.error.HTTPError as exc:
+                last_err = exc
+                if exc.code == 429:
+                    time.sleep(1.5 * (attempt + 1))
+                    continue
+                break
+            except Exception as exc:
+                last_err = exc
+                break
+
+    if not translated:
+        if last_err and ("429" in str(last_err) or "too many" in str(last_err).lower()):
+            # Enter brief 60s cooldown so we don't spam 429 on every remaining line
+            _TRANSLATION_COOLDOWN_UNTIL = time.time() + 60.0
+            print(f"      [Warning] Google Translate rate-limited (429); falling back to original text for remaining lines.")
+        elif last_err:
+            print(f"      [Warning] Translation failed ({last_err}); falling back to original text.")
+        return text
+
+    translated = " ".join(translated.strip().split())
+    cache[cache_key] = translated
+    _save_translation_cache(cache)
+    time.sleep(0.20)  # Gentle pacing to avoid triggering 429
     return translated
+
+
+def ensure_english_text(text, allow_network=True):
+    return translate_text(text, src="hi", tgt="en", allow_network=allow_network)
+
+
+def resolve_subtitle_text(raw_narration, subtitle_mode):
+    """
+    Returns the subtitle string for a beat according to subtitle_mode:
+      - 'none': ""
+      - 'hi':   raw_narration directly if Hindi, else translates en->hi (with fallback to original)
+      - 'en':   raw_narration directly if English, else translates hi->en (with fallback to Hindi)
+    """
+    if subtitle_mode == "none":
+        return ""
+    if subtitle_mode == "hi":
+        if has_devanagari(raw_narration):
+            return raw_narration
+        return translate_text(raw_narration, src="en", tgt="hi")
+    # subtitle_mode == "en"
+    if not has_devanagari(raw_narration):
+        return raw_narration
+    return translate_text(raw_narration, src="hi", tgt="en")
 
 
 # ============================================================
@@ -1909,27 +2129,20 @@ def normalize_text_for_tts(text, lang="en"):
         return orig
 
     s = orig
-    # Normalize curly quotes & typographic punctuation
     s = s.replace("\u2019", "'").replace("\u2018", "'")
     s = s.replace("\u201c", "").replace("\u201d", "").replace('"', "")
     s = s.replace("`", "").replace("*", "").replace("()", "")
 
-    # '&' -> spoken word
     s = re.sub(r"\s*&\s*", " aur " if lang == "hi" else " and ", s)
 
-    # Arrows / dashes / parens -> brief natural comma pauses
     s = s.replace("->", ", ").replace("=>", ", ")
     s = re.sub(r"[—–]+", ", ", s)
     s = re.sub(r"\s+-\s+", ", ", s)
     s = re.sub(r"\(([^)]+)\)", r", \1, ", s)
 
-    # Annotations like @RestController -> at RestController
     s = re.sub(r"@([A-Za-z_]\w*)", r"at \1", s)
-
-    # Underscore identifiers like user_id -> user id
     s = re.sub(r"([A-Za-z0-9])_([A-Za-z0-9])", r"\1 \2", s)
 
-    # File/framework extensions: Node.js -> Node JS, package.json -> package JSON
     s = re.sub(
         r"\b([A-Za-z][A-Za-z0-9-]*)\.(js|ts|jsx|tsx|json|html|css|xml|yml|yaml|sql|py|java|md)\b",
         lambda m: f"{m.group(1)} {m.group(2).upper()}",
@@ -1937,25 +2150,19 @@ def normalize_text_for_tts(text, lang="en"):
         flags=re.IGNORECASE,
     )
 
-    # Code dot notation: app.get / req.params.id -> app dot get / req dot params dot id
     while re.search(r"([A-Za-z_][A-Za-z0-9_]*)\.([A-Za-z_][A-Za-z0-9_]*)", s):
         s = re.sub(r"([A-Za-z_][A-Za-z0-9_]*)\.([A-Za-z_][A-Za-z0-9_]*)", r"\1 dot \2", s)
 
-    # Slashes between words: GET/POST -> GET, POST
     s = re.sub(r"([A-Za-z0-9]+)/([A-Za-z0-9]+)", r"\1, \2", s)
 
-    # Split CamelCase / PascalCase so Kokoro pronounces words fluidly
     s = re.sub(r"([a-z])([A-Z])", r"\1 \2", s)
     s = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1 \2", s)
 
-    # Expand uppercase technical acronyms cleanly
     s = re.sub(r"\b[A-Za-z]{2,6}\b", lambda m: ACRONYM_MAP.get(m.group(0), m.group(0)), s)
 
-    # Replace Devanagari Danda with ASCII period for cleaner espeak sentence pauses
     if lang == "hi":
         s = s.replace("॥", ".").replace("।", ".")
 
-    # Clean repeated commas/spaces
     s = re.sub(r"\s*,\s*(,\s*)+", ", ", s)
     s = re.sub(r"\s+([,।.!?])", r"\1", s)
     s = " ".join(s.split()).strip(" ,")
@@ -1970,7 +2177,6 @@ def normalize_text_for_tts(text, lang="en"):
 
 
 def estimate_spoken_weight(text):
-    """Estimates relative speaking duration for Hindi/English + punctuation."""
     w = 0.0
     for ch in text:
         if ch.isspace():
@@ -1993,10 +2199,6 @@ def estimate_spoken_weight(text):
 # ============================================================
 
 def _strip_lang_flags(phonemes):
-    """
-    Removes espeak-ng language-switch markers like (hi), (en), (en-us).
-    Without this, kokoro-onnx drops '(' and ')' and literally speaks 'hi' as 'hee'.
-    """
     if isinstance(phonemes, str):
         cleaned = re.sub(r"\([A-Za-z0-9_-]{1,14}\)", " ", phonemes)
         return re.sub(r"\s+", " ", cleaned).strip()
@@ -2006,10 +2208,6 @@ def _strip_lang_flags(phonemes):
 
 
 def patch_kokoro_phonemizer(kokoro):
-    """
-    Patches phonemizer / EspeakBackend / tokenizer.phonemize so (hi) and (en)
-    language switch markers never leak into Kokoro's phoneme tokens as 'hee'.
-    """
     global _PHONEMIZER_PATCHED
     if _PHONEMIZER_PATCHED:
         return
@@ -2271,7 +2469,6 @@ def synthesize_text_raw(text, voice, tts_lang, speed=TTS_SPEED):
 
 
 def find_quiet_pauses(samples, sr, min_pause_s=0.055):
-    """Detects quiet pause midpoints inside a waveform."""
     n = samples.size
     win = max(1, int(0.020 * sr))
     hop = max(1, int(0.005 * sr))
@@ -2367,7 +2564,7 @@ def find_natural_split_points(samples, sr, norm_texts):
     return best_splits
 
 
-def group_beats_for_tts(beats, narration_lang="en"):
+def group_beats_for_tts(beats, narration_lang="en", subtitle_mode="en"):
     groups = []
     current_group = []
     current_chars = 0
@@ -2378,14 +2575,14 @@ def group_beats_for_tts(beats, narration_lang="en"):
             beat_id = beat.get("beat_id", f"B{idx + 1:04d}")
             raise ValueError(f"{beat_id}: missing narration.")
 
-        # Subtitle / English text uses script narration directly if already English
-        subtitle_text = ensure_english_text(raw_narration)
-
-        # Spoken narration comes directly from the script (only translates Hindi->English if Hindi script + EN audio)
+        # Resolve spoken narration directly from script (translate only if Hindi script + EN audio)
         if narration_lang == "en":
-            spoken_source = subtitle_text
+            spoken_source = ensure_english_text(raw_narration)
         else:
             spoken_source = raw_narration
+
+        # Resolve subtitle text (if subtitle_mode == 'en' and translation fails, falls back to Hindi!)
+        subtitle_text = resolve_subtitle_text(raw_narration, subtitle_mode=subtitle_mode)
 
         norm_text = normalize_text_for_tts(spoken_source, lang=narration_lang)
         added_len = len(norm_text) + (1 if current_group else 0)
@@ -2484,9 +2681,12 @@ def synthesize_group_and_cache(group, voice, tts_lang, speed=TTS_SPEED, use_cach
     return results
 
 
-def prepare_all_beats_audio(beats, temp_dir, narration_lang, voice, tts_lang, speed=TTS_SPEED, use_cache=True):
-    groups = group_beats_for_tts(beats, narration_lang=narration_lang)
-    print(f"Synthesizing fluent narration ({narration_lang.upper()} | {voice} | {tts_lang}) across {len(beats)} beats in {len(groups)} groups...")
+def prepare_all_beats_audio(beats, temp_dir, narration_lang, subtitle_mode, voice, tts_lang, speed=TTS_SPEED, use_cache=True):
+    groups = group_beats_for_tts(beats, narration_lang=narration_lang, subtitle_mode=subtitle_mode)
+    print(
+        f"Synthesizing fluent narration ({narration_lang.upper()} | {voice} | {tts_lang} | sub={subtitle_mode.upper()}) "
+        f"across {len(beats)} beats in {len(groups)} groups..."
+    )
 
     beat_audio_plans = []
     master_chunks = []
@@ -2541,16 +2741,16 @@ def prepare_all_beats_audio(beats, temp_dir, narration_lang, voice, tts_lang, sp
 
 
 # ============================================================
-# RDR2-STYLE ENGLISH SUBTITLES
+# RDR2-STYLE SUBTITLES (ENGLISH & HINDI DEVANAGARI SUPPORT)
 # ============================================================
 
-def split_english_into_cues(text, max_chars=74):
+def split_text_into_cues(text, max_chars=74):
     text = " ".join(text.strip().split())
     if not text:
         return []
 
     cues = []
-    for sentence in re.split(r"(?<=[.!?])\s+", text):
+    for sentence in re.split(r"(?<=[।.!?])\s+", text):
         current, current_len = [], 0
         for word in sentence.split():
             added = len(word) + (1 if current else 0)
@@ -2569,15 +2769,15 @@ def split_english_into_cues(text, max_chars=74):
     return cues
 
 
-def build_timed_subtitle_cues(english_text, total_duration, max_chars_cue=74):
-    chunks = split_english_into_cues(english_text, max_chars=max_chars_cue)
+def build_timed_subtitle_cues(sub_text, total_duration, max_chars_cue=74):
+    chunks = split_text_into_cues(sub_text, max_chars=max_chars_cue)
     if not chunks:
         return []
 
     weights = [
         max(
-            sum(1 for c in ch if not c.isspace() and c not in ".,!?;:")
-            + sum(2.5 if c in ".!?" else 1.2 for c in ch if c in ".,!?;:"),
+            sum(1 for c in ch if not c.isspace() and c not in "।.,!?;:")
+            + sum(2.5 if c in "।.!?" else 1.2 for c in ch if c in "।.,!?;:"),
             1.0
         )
         for ch in chunks
@@ -2612,27 +2812,55 @@ def wrap_subtitle_lines(text, max_line_chars=48):
     return lines[:3]
 
 
-def find_subtitle_font(size):
-    for path in [
-        "C:/Windows/Fonts/georgia.ttf",
-        "C:/Windows/Fonts/times.ttf",
-        "C:/Windows/Fonts/segoeui.ttf",
-        "C:/Windows/Fonts/arial.ttf",
-        "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf",
-        "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
-        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
-    ]:
+def find_subtitle_font(size, prefer_devanagari=False):
+    if prefer_devanagari:
+        font_paths = [
+            "C:/Windows/Fonts/Nirmala.ttc",
+            "C:/Windows/Fonts/NirmalaS.ttf",
+            "C:/Windows/Fonts/mangal.ttf",
+            "C:/Windows/Fonts/aparaj.ttf",
+            "C:/Windows/Fonts/kokila.ttf",
+            "/usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf",
+            "/usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf",
+            "/usr/share/fonts/truetype/lohit-devanagari/Lohit-Devanagari.ttf",
+            "/usr/share/fonts/truetype/freefont/FreeSans.ttf",
+            "/System/Library/Fonts/Kohinoor.ttc",
+            "/System/Library/Fonts/Supplemental/DevanagariMT.ttc",
+        ]
+    else:
+        font_paths = [
+            "C:/Windows/Fonts/georgia.ttf",
+            "C:/Windows/Fonts/times.ttf",
+            "C:/Windows/Fonts/segoeui.ttf",
+            "C:/Windows/Fonts/arial.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        ]
+
+    for path in font_paths:
         if Path(path).exists():
             try:
+                if prefer_devanagari and pil_features is not None and pil_features.check("raqm"):
+                    return ImageFont.truetype(path, size, layout_engine=ImageFont.Layout.RAQM)
                 return ImageFont.truetype(path, size)
             except Exception:
                 pass
     return ImageFont.load_default()
 
 
+def can_pillow_shape_text(text):
+    if Image is None:
+        return False
+    if has_devanagari(text):
+        # Complex Hindi matras require libraqm in Pillow; otherwise FFmpeg libass shapes them cleanly
+        return bool(pil_features is not None and pil_features.check("raqm"))
+    return True
+
+
 def render_rdr2_subtitle_png(text, output_path, profile, seed_value=0):
     font_size = profile["sub_font_size"]
-    font = find_subtitle_font(font_size)
+    font = find_subtitle_font(font_size, prefer_devanagari=has_devanagari(text))
     lines = wrap_subtitle_lines(text, max_line_chars=profile["sub_max_chars_line"])
 
     probe = ImageDraw.Draw(Image.new("RGBA", (10, 10), (0, 0, 0, 0)))
@@ -2701,7 +2929,7 @@ def render_rdr2_subtitle_png(text, output_path, profile, seed_value=0):
     return output_path
 
 
-def write_fallback_ass(timed_cues, ass_path, profile):
+def write_fallback_ass(timed_cues, ass_path, profile, is_hindi=False):
     def fmt(sec):
         cs = max(0, int(round(sec * 100)))
         s, cs = divmod(cs, 100)
@@ -2709,6 +2937,7 @@ def write_fallback_ass(timed_cues, ass_path, profile):
         h, m = divmod(m, 60)
         return f"{h}:{m:02d}:{s:02d}.{cs:02d}"
 
+    font_name = "Nirmala UI" if is_hindi else "Georgia"
     lines = [
         "[Script Info]\nScriptType: v4.00+\n"
         f"PlayResX: {profile['width']}\nPlayResY: {profile['height']}\n\n"
@@ -2716,7 +2945,7 @@ def write_fallback_ass(timed_cues, ass_path, profile):
         "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, "
         "BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, "
         "BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n"
-        f"Style: Default,Georgia,{profile['sub_font_size']},&H00F5F5F5,&H000000FF,&H26080808,"
+        f"Style: Default,{font_name},{profile['sub_font_size']},&H00F5F5F5,&H000000FF,&H26080808,"
         f"&H26080808,0,0,0,0,100,100,0,0,3,14,0,2,60,60,{profile['sub_bottom_margin']},1\n\n"
         "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
     ]
@@ -2783,7 +3012,8 @@ def overlay_beat_subtitles(beat_video_path, num_frames, timed_cues, beat_dir, be
     filter_parts = [f"[0:v]fps={FPS},setpts=PTS-STARTPTS[v0]"]
     last_v = "v0"
 
-    if Image is not None:
+    joined_sub = " ".join(txt for _, _, txt in timed_cues)
+    if can_pillow_shape_text(joined_sub):
         for idx, (st, et, txt) in enumerate(timed_cues):
             png_path = beat_dir / f"{beat_id}_sub_{idx:03d}.png"
             seed = int(hashlib.md5(f"{beat_id}_{idx}_{txt}".encode("utf-8")).hexdigest()[:8], 16)
@@ -2801,7 +3031,9 @@ def overlay_beat_subtitles(beat_video_path, num_frames, timed_cues, beat_dir, be
             )
             last_v = next_v
     else:
-        ass_path = write_fallback_ass(timed_cues, beat_dir / f"{beat_id}_sub.ass", profile=profile)
+        ass_path = write_fallback_ass(
+            timed_cues, beat_dir / f"{beat_id}_sub.ass", profile=profile, is_hindi=has_devanagari(joined_sub)
+        )
         escaped = str(ass_path.resolve()).replace("\\", "/").replace(":", "\\:")
         filter_parts.append(f"[{last_v}]ass='{escaped}'[v_sub]")
         last_v = "v_sub"
@@ -2881,13 +3113,6 @@ def mux_final_video(master_video_path, master_audio_path, output_file, bgm_path=
 def compute_clip_target_frames(
     clips, speech_samples, sr, speech_dur, total_beat_frames, narration_lang="en"
 ):
-    """
-    Allocates integer frames across clips so image segments track the spoken clauses:
-      1. Weights each clip by its spoken text (directly from clip if already English,
-         or translated if clip spoken_text is Hindi and --lang en).
-      2. Snaps internal clip cut timestamps to nearby natural pause/comma valleys
-         in the beat's actual audio waveform so images change cleanly between clauses.
-    """
     speech_frames = max(len(clips), min(total_beat_frames, int(round(speech_dur * FPS))))
     pause_frames = max(0, total_beat_frames - speech_frames)
     if len(clips) == 1:
@@ -2953,7 +3178,7 @@ def compute_clip_target_frames(
     return frames_list
 
 
-def render_beat_video(plan, frames_dir, temp_dir, profile, motion_counter, narration_lang):
+def render_beat_video(plan, frames_dir, temp_dir, profile, motion_counter, narration_lang, subtitle_mode):
     beat_index = plan["beat_index"]
     beat = plan["beat"]
     raw_narration = plan["raw_narration"]
@@ -2964,14 +3189,20 @@ def render_beat_video(plan, frames_dir, temp_dir, profile, motion_counter, narra
     beat_id = beat.get("beat_id", f"B{beat_index:04d}")
     clips = beat.get("clips") or [{"clip_id": f"{beat_id}_C0001", "spoken_text": raw_narration}]
 
-    preview_txt = subtitle_text if narration_lang == "en" else raw_narration
+    preview_txt = raw_narration if narration_lang == "hi" else (subtitle_text or raw_narration)
     print(f"\n[{beat_id}] ({speech_dur:.2f}s speech / {total_frames / FPS:.2f}s total) {preview_txt}")
     beat_dir = temp_dir / beat_id
     beat_dir.mkdir(parents=True, exist_ok=True)
 
-    timed_cues = build_timed_subtitle_cues(
-        subtitle_text, speech_dur, max_chars_cue=profile["sub_max_chars_cue"]
-    )
+    if subtitle_mode == "none" or not subtitle_text:
+        timed_cues = []
+        print(f"      Clips: {len(clips)} | Sub: (none)")
+    else:
+        timed_cues = build_timed_subtitle_cues(
+            subtitle_text, speech_dur, max_chars_cue=profile["sub_max_chars_cue"]
+        )
+        print(f"      Clips: {len(clips)} | Sub ({subtitle_mode}): {subtitle_text[:70]}...")
+
     clip_frames_list = compute_clip_target_frames(
         clips,
         plan["speech_samples"],
@@ -2980,8 +3211,6 @@ def render_beat_video(plan, frames_dir, temp_dir, profile, motion_counter, narra
         total_frames,
         narration_lang=narration_lang,
     )
-
-    print(f"      Clips: {len(clips)} | Sub: {subtitle_text[:70]}...")
 
     clip_segments = []
     for idx, (clip, n_frames) in enumerate(zip(clips, clip_frames_list), start=1):
@@ -3014,6 +3243,17 @@ def normalize_lang_arg(val):
     raise ValueError(f"Unsupported language '{val}'. Choose 'hi' or 'en'.")
 
 
+def normalize_subtitle_arg(val):
+    v = val.strip().lower()
+    if v in ("en", "eng", "english"):
+        return "en"
+    if v in ("hi", "hindi"):
+        return "hi"
+    if v in ("none", "no", "off", "false", "0"):
+        return "none"
+    raise ValueError(f"Unsupported subtitle option '{val}'. Choose 'en', 'hi', or 'none'.")
+
+
 def _ask_choice(prompt_text, mapping, default_val):
     while True:
         raw = input(prompt_text).strip().lower()
@@ -3025,24 +3265,20 @@ def _ask_choice(prompt_text, mapping, default_val):
 
 
 def resolve_interactive_options(args, detected_script_lang):
-    """
-    Prompts interactively for Language, Accent (US / Hindi / UK), Gender, and Voice
-    so every combination (e.g. English + US, English + Hindi accent, Hindi + US accent,
-    Hindi + Hindi accent) is cleanly selectable without memorizing CLI flags.
-    """
     can_prompt = sys.stdin.isatty() and not args.yes
 
     lang = normalize_lang_arg(args.lang) if args.lang is not None else None
     accent = args.accent
     gender = args.gender
     voice = args.voice
+    subtitle_mode = normalize_subtitle_arg(args.subtitle) if args.subtitle is not None else None
 
     default_lang = detected_script_lang
     default_accent = "hindi" if default_lang == "hi" else "us"
 
-    if can_prompt and (lang is None or (voice is None and (accent is None or gender is None))):
+    if can_prompt and (lang is None or subtitle_mode is None or (voice is None and (accent is None or gender is None))):
         detected_label = "Hindi" if detected_script_lang == "hi" else "English"
-        print("\n=== Audio & Voice Setup ===")
+        print("\n=== Audio & Subtitle Setup ===")
         print(f"Detected script narration: {detected_label}")
 
     if lang is None:
@@ -3109,7 +3345,26 @@ def resolve_interactive_options(args, detected_script_lang):
         elif voice_choices:
             voice = voice_choices[0]
 
-    return lang, gender, accent, voice
+    if subtitle_mode is None:
+        if can_prompt:
+            def_sub = "1" if detected_script_lang == "en" else "2"
+            print("\n5) Subtitles:")
+            print("   [1] English (if Hindi script & translation fails, falls back to Hindi)")
+            print("   [2] Hindi")
+            print("   [3] None (No subtitles)")
+            subtitle_mode = _ask_choice(
+                f"   Choose subtitles [1/2/3, default={def_sub}]: ",
+                {
+                    "1": "en", "en": "en", "eng": "en", "english": "en",
+                    "2": "hi", "hi": "hi", "hindi": "hi",
+                    "3": "none", "none": "none", "no": "none", "off": "none",
+                },
+                detected_script_lang,
+            )
+        else:
+            subtitle_mode = detected_script_lang
+
+    return lang, gender, accent, voice, subtitle_mode
 
 
 def run_assembly(
@@ -3122,6 +3377,7 @@ def run_assembly(
     gender=None,
     accent=None,
     voice=None,
+    subtitle=None,
     speed=TTS_SPEED,
     yes=False,
     no_cache=False,
@@ -3142,13 +3398,12 @@ def run_assembly(
         raise ValueError("No beats found in story JSON.")
 
     detected_script_lang = detect_script_language(beats)
-
-    # Load Kokoro upfront so voice selection menu reflects voices actually in voices-*.bin
     get_kokoro()
 
-    # Resolve options interactively when running from terminal unless passed via CLI
-    dummy_args = argparse.Namespace(lang=lang, gender=gender, accent=accent, voice=voice, yes=yes)
-    narration_lang, chosen_gender, chosen_accent, chosen_voice = resolve_interactive_options(
+    dummy_args = argparse.Namespace(
+        lang=lang, gender=gender, accent=accent, voice=voice, subtitle=subtitle, yes=yes
+    )
+    narration_lang, chosen_gender, chosen_accent, chosen_voice, subtitle_mode = resolve_interactive_options(
         dummy_args, detected_script_lang=detected_script_lang
     )
 
@@ -3192,15 +3447,16 @@ def run_assembly(
         print(
             f"\nTitle: {title} | Beats: {len(beats)} | Aspect: {aspect_ratio} ({profile['width']}x{profile['height']}) "
             f"| Audio: {narration_lang.upper()} ({chosen_gender}, {chosen_accent} accent -> {selected_voice}, {tts_lang}) @ {speed}x "
-            f"| Output: {final_output.name}"
+            f"| Subtitles: {subtitle_mode.upper()} | Output: {final_output.name}"
         )
-        if Image is None:
+        if subtitle_mode != "none" and Image is None:
             print("[Note] Install Pillow (`pip install pillow`) for RDR2-style sketchy subtitles.")
 
         beat_audio_plans, master_wav_path = prepare_all_beats_audio(
             beats,
             temp_dir=temp_dir,
             narration_lang=narration_lang,
+            subtitle_mode=subtitle_mode,
             voice=selected_voice,
             tts_lang=tts_lang,
             speed=speed,
@@ -3210,7 +3466,13 @@ def run_assembly(
         beat_video_outputs, motion_counter = [], 0
         for plan in beat_audio_plans:
             out_vid, motion_counter = render_beat_video(
-                plan, frames_dir, temp_dir, profile, motion_counter, narration_lang=narration_lang
+                plan,
+                frames_dir,
+                temp_dir,
+                profile,
+                motion_counter,
+                narration_lang=narration_lang,
+                subtitle_mode=subtitle_mode,
             )
             beat_video_outputs.append(out_vid)
 
@@ -3229,7 +3491,7 @@ def run_assembly(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Assemble explainer video from generated images + beat/clip JSON with fluent Kokoro TTS and RDR2 subtitles."
+        description="Assemble explainer video from generated images + beat/clip JSON with fluent Kokoro TTS and subtitles."
     )
     parser.add_argument("json_path", help="Path to story JSON (with beats[] and clips[])")
     parser.add_argument("-f", "--frames-dir", default=None, help="Directory with generated images (default: build/frames)")
@@ -3240,6 +3502,7 @@ if __name__ == "__main__":
     parser.add_argument("-g", "--gender", choices=["female", "male"], default=None, help="Narrator gender (prompted if omitted)")
     parser.add_argument("--accent", choices=["us", "hindi", "uk"], default=None, help="Voice accent: 'us', 'hindi', or 'uk' (prompted if omitted)")
     parser.add_argument("--voice", default=None, help="Optional explicit Kokoro voice ID override (e.g. af_heart, am_michael, hf_alpha)")
+    parser.add_argument("-s", "--subtitle", choices=["en", "hi", "english", "hindi", "none", "off"], default=None, help="Subtitle language: 'en', 'hi', or 'none' (prompted if omitted)")
     parser.add_argument("--speed", type=float, default=TTS_SPEED, help=f"TTS speed (default: {TTS_SPEED})")
     parser.add_argument("-y", "--yes", action="store_true", help="Skip interactive prompts and use defaults for omitted options")
     parser.add_argument("--no-cache", action="store_true", help="Force fresh TTS generation instead of reusing tts_cache")
@@ -3255,6 +3518,7 @@ if __name__ == "__main__":
         gender=args.gender,
         accent=args.accent,
         voice=args.voice,
+        subtitle=args.subtitle,
         speed=args.speed,
         yes=args.yes,
         no_cache=args.no_cache,

@@ -1,320 +1,320 @@
 {
-  "title": "Law 1 of 48 Laws of Power: Never Outshine the Master",
-  "topic": "YouTube Short explaining Law 1 of The 48 Laws of Power (Never Outshine the Master) in Hindi through the story of Nicolas Fouquet and King Louis XIV, with modern corporate takeaway.",
+  "title": "No Parking vs Kid's Mistake: Cab Driver's Emotional Evening Story",
+  "topic": "A dramatic evening incident inside a residential society where a kid scratches a cab's side door in a no-parking zone, the mother defends her child and refuses to pay, leaving viewers with a moral dilemma.",
   "aspect_ratio": "9:16",
-  "target_minutes": 1.2,
+  "target_minutes": 1.3,
   "total_beats": 12,
   "total_clips": 25,
   "global_style": {
-    "art_style": "High-detail realistic anime illustration style, cinematic dark-fantasy and modern-thriller aesthetic inspired by Ufotable and Makoto Shinkai, dramatic chiaroscuro lighting, rich shadows with glowing gold and crimson highlights, sharp expressive eyes, atmospheric dust particles, 9:16 vertical portrait framing.",
-    "negative_prompt": "cartoonish chibi, bright flat colors, blurry, distorted faces, extra fingers, garbled text, watermarks, horizontal framing, low resolution"
+    "art_style": "High-detail realistic anime illustration style inspired by Makoto Shinkai, set in an Indian residential society during warm golden-orange evening twilight shifting to dusk, glowing yellow streetlights, crisp character expressions, cinematic depth of field, 9:16 vertical portrait framing.",
+    "negative_prompt": "cartoonish chibi, flat colors, blurry, distorted faces, extra limbs, garbled unreadable text, horizontal framing, bright midday sun, watermarks"
   },
   "beats": [
     {
       "beat_id": "B0001",
-      "narration": "एक शानदार पार्टी ने एक इंसान की ज़िंदगी बर्बाद कर दी— वो भी एक रात में।",
-      "word_count": 15,
+      "narration": "शाम के वक्त एक कैब ड्राइवर के साथ कुछ ऐसा हुआ, जो आपको सोचने पर मजबूर कर देगा।",
+      "word_count": 17,
       "estimated_duration": 5.2,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0001",
-          "spoken_text": "एक शानदार पार्टी ने एक इंसान की ज़िंदगी बर्बाद कर दी—",
+          "spoken_text": "शाम के वक्त एक कैब ड्राइवर के साथ कुछ ऐसा हुआ,",
           "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Close-up of a crystal champagne glass shattering in slow motion against dark palace shadows.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, dramatic close-up of a glowing crystal champagne glass shattering in mid-air, golden droplets suspended against dark moody palace chandeliers, intense cinematic lighting."
+          "estimated_spoken_duration": 3.3,
+          "scene_context": "Warm evening view of a white sedan taxi parked inside a modern Indian apartment society.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, warm golden sunset light inside a modern Indian apartment society driveway, a clean white sedan cab with yellow license plate parked under glowing evening streetlights."
         },
         {
           "clip_id": "C0002",
-          "spoken_text": "वो भी एक रात में।",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 1.8,
-          "scene_context": "A nobleman's silhouette standing behind heavy iron prison bars at dawn.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, silhouette of a fallen nobleman gripping cold iron prison bars, a single shaft of pale blue moonlight cutting through darkness, high contrast."
+          "spoken_text": "जो आपको सोचने पर मजबूर कर देगा।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 1.9,
+          "scene_context": "Close-up of a long sharp scratch reflection on the white car door in evening light.",
+          "image_prompt": "Realistic anime style, 9:16 vertical close-up, dramatic shot of a long deep metallic scratch along a white car side door catching orange sunset reflections, tense cinematic mood."
         }
       ]
     },
     {
       "beat_id": "B0002",
-      "narration": "1661 में फ्रांस के फाइनेंस मिनिस्टर फूके ने अपने महल में एक रॉयल पार्टी रखी।",
-      "word_count": 15,
-      "estimated_duration": 5.4,
+      "narration": "वो एक सोसाइटी में पैसेंजर को ड्रॉप करने आया था। ड्राइवर अभी कार के अंदर ही बैठा था,",
+      "word_count": 17,
+      "estimated_duration": 6.6,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0003",
-          "spoken_text": "1661 में फ्रांस के फाइनेंस मिनिस्टर फूके ने",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.9,
-          "scene_context": "Sharp-featured 17th-century French minister adjusting his velvet coat.",
-          "image_prompt": "Realistic anime style, 9:16 vertical portrait, proud 17th-century French minister Nicolas Fouquet in rich dark blue velvet coat with gold embroidery, warm candlelight on half his face, sharp confident gaze."
+          "spoken_text": "वो एक सोसाइटी में पैसेंजर को ड्रॉप करने आया था।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Passenger with a backpack walking away toward an apartment tower at dusk.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, evening twilight in an Indian gated society, a passenger with a bag walking toward residential apartment lobby away from a white cab."
         },
         {
           "clip_id": "C0004",
-          "spoken_text": "अपने महल में एक रॉयल पार्टी रखी।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.5,
-          "scene_context": "Grand illuminated Baroque chateau reflecting in fountains at night.",
-          "image_prompt": "Realistic anime style, 9:16 vertical composition, majestic 17th-century French chateau glowing with hundreds of golden lantern lights, reflecting across dark mirror-like garden fountains at night."
+          "spoken_text": "ड्राइवर अभी कार के अंदर ही बैठा था,",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Mid-30s Indian cab driver in light-blue shirt sitting inside the driver's seat checking his phone.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, inside a cab at evening, a mid-30s Indian cab driver with short black hair and light-blue collared shirt sitting in the driver seat checking his ride app on phone."
         }
       ]
     },
     {
       "beat_id": "B0003",
-      "narration": "चीफ गेस्ट थे खुद किंग लुईस चौदहवें। फूके राजा को इम्प्रेस करना चाहता था।",
-      "word_count": 14,
-      "estimated_duration": 5.0,
+      "narration": "और कार एक No Parking ज़ोन के पास खड़ी थी।",
+      "word_count": 9,
+      "estimated_duration": 3.4,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0005",
-          "spoken_text": "चीफ गेस्ट थे खुद किंग लुईस चौदहवें।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Young King Louis XIV stepping through grand palace doors in royal crimson and gold.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, young King Louis XIV entering grand marble halls wearing regal crimson and gold attire, cold unreadable expression, dramatic backlight."
-        },
-        {
-          "clip_id": "C0006",
-          "spoken_text": "फूके राजा को इम्प्रेस करना चाहता था।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Fouquet bowing slightly with an eager, ambitious glint in his eyes.",
-          "image_prompt": "Realistic anime style, 9:16 vertical close-up, Fouquet bowing respectfully while glancing upward with ambitious, eager eyes bathed in warm golden chandelier glow."
+          "spoken_text": "और कार एक No Parking ज़ोन के पास खड़ी थी।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Red 'NO PARKING' sign pole visible right beside the parked white cab in evening light.",
+          "image_prompt": "Realistic anime style, 9:16 vertical composition, crisp red and white 'NO PARKING' pole standing beside a white cab on a society curb, warm amber dusk shadows stretching across the pavement."
         }
       ]
     },
     {
       "beat_id": "B0004",
-      "narration": "उसने सोने के बर्तन और आतिशबाज़ी से दिखाया कि उसका महल राजा से भी ज़्यादा अमीर है।",
-      "word_count": 17,
-      "estimated_duration": 6.8,
+      "narration": "तभी एक बच्चा अपनी छोटी साइकिल-रिक्शा चलाते हुए आया— और गलती से या जानबूझकर कार के साइड डोर पर एक लंबी खरोंच मार दी।",
+      "word_count": 24,
+      "estimated_duration": 8.8,
       "is_scene_bridge": false,
       "clips": [
         {
+          "clip_id": "C0006",
+          "spoken_text": "तभी एक बच्चा अपनी छोटी साइकिल-रिक्शा चलाते हुए आया—",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "A 10-year-old boy in casual t-shirt pedaling a small three-wheeled kids rickshaw-tricycle fast along the driveway.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, a mischievous 10-year-old Indian boy in a red t-shirt and shorts pedaling a small metal three-wheeled kids pedal rickshaw quickly toward the white cab at dusk."
+        },
+        {
           "clip_id": "C0007",
-          "spoken_text": "उसने सोने के बर्तन और आतिशबाज़ी से",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.7,
-          "scene_context": "Extravagant banquet table of solid gold plates with fireworks exploding outside tall windows.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, lavish royal banquet table overflowing with gleaming solid gold plates and goblets, dazzling fireworks bursting outside towering arched windows."
+          "spoken_text": "और गलती से या जानबूझकर कार के साइड डोर पर",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Metal edge of the kid's tricycle handlebar scraping right against the cab's side door.",
+          "image_prompt": "Realistic anime style, 9:16 vertical action close-up, metal handlebar edge of the kids pedal rickshaw scraping sharply against the white cab side door, tiny bright friction sparks in twilight."
         },
         {
           "clip_id": "C0008",
-          "spoken_text": "दिखाया कि उसका महल राजा से भी ज़्यादा अमीर है।",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.1,
-          "scene_context": "Fouquet standing proudly on a golden balcony overlooking cheering nobles, towering above the scene.",
-          "image_prompt": "Realistic anime style, 9:16 vertical low-angle shot, Fouquet standing triumphantly on an ornate marble balcony bathed in golden firework light, towering above awe-struck nobles below."
+          "spoken_text": "एक लंबी खरोंच मार दी।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Fresh ugly deep scratch stretching all across the passenger-side door.",
+          "image_prompt": "Realistic anime style, 9:16 vertical macro shot, a fresh deep jagged scratch line stretching across the white car door down to bare metal, dramatic evening lighting."
         }
       ]
     },
     {
       "beat_id": "B0005",
-      "narration": "किंग लुईस चुपचाप मुस्कुराते रहे। लेकिन उनकी आँखों में जलन और अपमान की आग थी।",
-      "word_count": 15,
-      "estimated_duration": 6.2,
+      "narration": "आवाज़ सुनकर ड्राइवर बाहर निकला। दरवाज़े पर लंबी खरोंच देखकर उसका दिल बैठ गया।",
+      "word_count": 13,
+      "estimated_duration": 5.8,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0009",
-          "spoken_text": "किंग लुईस चुपचाप मुस्कुराते रहे।",
+          "spoken_text": "आवाज़ सुनकर ड्राइवर बाहर निकला।",
           "spoken_word_count": 5,
           "estimated_spoken_duration": 2.2,
-          "scene_context": "King Louis XIV wearing a thin, cold, polite smile in the shadows.",
-          "image_prompt": "Realistic anime style, 9:16 vertical close-up, King Louis XIV standing silently in half-shadow with a calm, ice-cold faint smile on his lips."
+          "scene_context": "Cab driver stepping out quickly in alarm under yellow society streetlights.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, Indian cab driver in light-blue shirt stepping out of his cab rapidly with a shocked expression, warm dusk sky behind apartment buildings."
         },
         {
           "clip_id": "C0010",
-          "spoken_text": "लेकिन उनकी आँखों में जलन और अपमान की आग थी।",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 4.0,
-          "scene_context": "Extreme close-up of the King's eyes reflecting crimson fire with razor-sharp rage.",
-          "image_prompt": "Realistic anime style, 9:16 vertical extreme close-up of King Louis XIV's piercing eyes reflecting flickering crimson firelight, intense suppressed jealousy and cold fury."
+          "spoken_text": "दरवाज़े पर लंबी खरोंच देखकर उसका दिल बैठ गया।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.6,
+          "scene_context": "Cab driver crouching down in disbelief, gently touching the fresh scratch on his car door.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, heartbroken cab driver crouching beside his damaged car door, fingers hovering over the long scratch, worried exhausted eyes."
         }
       ]
     },
     {
       "beat_id": "B0006",
-      "narration": "पार्टी के अगले ही दिन राजा ने फूके को अरेस्ट कर लिया, और उम्रकैद की जेल में डाल दिया।",
-      "word_count": 19,
-      "estimated_duration": 6.6,
+      "narration": "उसने शांत आवाज़ में बच्चे की मम्मी को बुलाया और उन्हें नुकसान दिखाया।",
+      "word_count": 12,
+      "estimated_duration": 5.2,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0011",
-          "spoken_text": "पार्टी के अगले ही दिन",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "Cold grey morning fog rolling over the silent, empty chateau.",
-          "image_prompt": "Realistic anime style, 9:16 vertical composition, cold misty grey dawn sky over the silent French palace, dying embers and scattered ashes in the courtyard."
+          "spoken_text": "उसने शांत आवाज़ में बच्चे की मम्मी को बुलाया",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Driver politely speaking to a woman in an evening kurti standing nearby with her boy.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, polite Indian cab driver speaking calmly to a middle-aged Indian woman wearing a purple kurti standing beside the 10-year-old boy on the society walkway."
         },
         {
           "clip_id": "C0012",
-          "spoken_text": "राजा ने फूके को अरेस्ट कर लिया,",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Royal musketeer guards clamping iron shackles onto a shocked Fouquet.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, armored royal guards seizing shocked Nicolas Fouquet by the shoulders, heavy iron chains snapping shut in sharp foreground."
-        },
-        {
-          "clip_id": "C0013",
-          "spoken_text": "और उम्रकैद की जेल में डाल दिया।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "Heavy dark stone dungeon door slamming shut into pitch darkness.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, massive dark fortress dungeon door closing slowly on Fouquet sitting alone in dim stone cell shadows."
+          "spoken_text": "और उन्हें नुकसान दिखाया।",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Driver pointing respectfully toward the long scratch on the car door.",
+          "image_prompt": "Realistic anime style, 9:16 vertical composition, cab driver gesturing respectfully toward the scratched white car door while the mother looks over with a cold unbothered expression."
         }
       ]
     },
     {
       "beat_id": "B0007",
-      "narration": "क्यों? क्योंकि उसने पावर का पहला नियम तोड़ दिया। ताकतवर लोग खुद से ज़्यादा चमकने वाले को बर्दाश्त नहीं करते।",
-      "word_count": 19,
-      "estimated_duration": 6.8,
-      "is_scene_bridge": true,
-      "clips": [
-        {
-          "clip_id": "C0014",
-          "spoken_text": "क्यों? क्योंकि उसने पावर का पहला नियम तोड़ दिया।",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.3,
-          "scene_context": "A cracked golden chess king piece towering over a shattered knight piece.",
-          "image_prompt": "Realistic anime style, 9:16 vertical macro shot, dark obsidian chessboard with a towering golden King piece casting a razor shadow over a fallen, shattered Knight piece."
-        },
-        {
-          "clip_id": "C0015",
-          "spoken_text": "ताकतवर लोग खुद से ज़्यादा चमकने वाले को बर्दाश्त नहीं करते।",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.5,
-          "scene_context": "A glowing candle flame being snuffed out by a giant shadowed hand.",
-          "image_prompt": "Realistic anime style, 9:16 vertical composition, a bright golden candle flame suddenly crushed by a dark gloved shadow hand, curling smoke rising in silence."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0008",
-      "narration": "यही है 48 Laws of Power का Law 1: Never Outshine the Master—बॉस से ज़्यादा मत चमको।",
+      "narration": "लेकिन गलती मानने की जगह, मम्मी भड़क गईं। वो तेज़ आवाज़ में अपने बच्चे को डिफेंड करने लगीं।",
       "word_count": 17,
       "estimated_duration": 7.4,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0016",
-          "spoken_text": "यही है 48 Laws of Power का Law 1:",
-          "spoken_word_count": 9,
+          "clip_id": "C0013",
+          "spoken_text": "लेकिन गलती मानने की जगह, मम्मी भड़क गईं।",
+          "spoken_word_count": 8,
           "estimated_spoken_duration": 3.2,
-          "scene_context": "Dramatic dark leather-bound book glowing with bold golden text 'LAW 1'.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, ancient dark crimson-and-black book resting on dark stone, glowing gold embossed emblem reading 'LAW 1' in sharp focus."
+          "scene_context": "The mother's eyes narrowing angrily as she raises a hand in a sharp defensive gesture.",
+          "image_prompt": "Realistic anime style, 9:16 vertical close-up, angry Indian mother in purple kurti with raised hand and fierce defensive frown, harsh evening streetlight shadows across her face."
         },
         {
-          "clip_id": "C0017",
-          "spoken_text": "Never Outshine the Master—बॉस से ज़्यादा मत चमको।",
-          "spoken_word_count": 8,
+          "clip_id": "C0014",
+          "spoken_text": "वो तेज़ आवाज़ में अपने बच्चे को डिफेंड करने लगीं।",
+          "spoken_word_count": 9,
           "estimated_spoken_duration": 4.2,
-          "scene_context": "Split visual of a golden sun eclipsing a smaller silver star.",
-          "image_prompt": "Realistic anime style, 9:16 vertical visual metaphor, a radiant golden crown-sun towering in upper frame while a smaller silver star dims respectfully beneath it, moody dark atmosphere."
+          "scene_context": "Mother stepping protectively in front of her boy while shouting at the silent cab driver.",
+          "image_prompt": "Realistic anime style, 9:16 vertical dramatic shot, angry mother standing protectively in front of her quiet 10-year-old son, shouting loudly and pointing at the stunned cab driver."
+        }
+      ]
+    },
+    {
+      "beat_id": "B0008",
+      "narration": "बोलीं—\"बच्चा तो नादान है, गलती तुम्हारी है! तुमने No Parking में कार खड़ी ही क्यों की?\"",
+      "word_count": 16,
+      "estimated_duration": 6.6,
+      "is_scene_bridge": false,
+      "clips": [
+        {
+          "clip_id": "C0015",
+          "spoken_text": "बोलीं—\"बच्चा तो नादान है, गलती तुम्हारी है!",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Mother pointing accusingly straight at the cab driver's chest.",
+          "image_prompt": "Realistic anime style, 9:16 vertical close-up, mother pointing an accusing finger aggressively toward the camera while shielding her son behind her arm, tense evening lighting."
+        },
+        {
+          "clip_id": "C0016",
+          "spoken_text": "तुमने No Parking में कार खड़ी ही क्यों की?\"",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.6,
+          "scene_context": "Mother pointing sharply toward the red No Parking sign pole behind the cab.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, mother pointing angrily toward the red 'NO PARKING' sign behind the white cab, dramatic low-angle composition at dusk."
         }
       ]
     },
     {
       "beat_id": "B0009",
-      "narration": "आज के ऑफिस में भी यही होता है। मीटिंग में बॉस को गलत साबित करके हीरो बनोगे,",
+      "narration": "ड्राइवर ने रिक्वेस्ट की—\"मैडम, मैं तो बस निकल ही रहा था, इसे ठीक करवाने में हज़ारों लगेंगे।\"",
       "word_count": 17,
-      "estimated_duration": 6.6,
+      "estimated_duration": 6.8,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0018",
-          "spoken_text": "आज के ऑफिस में भी यही होता है।",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Modern glass corporate skyscraper looming in dramatic twilight rain.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, sleek dark glass corporate skyscraper at night in rain, glowing boardroom windows high near the top floor."
+          "clip_id": "C0017",
+          "spoken_text": "ड्राइवर ने रिक्वेस्ट की—\"मैडम, मैं तो बस निकल ही रहा था,",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 4.0,
+          "scene_context": "Cab driver folding his hands humbly, pleading respectfully.",
+          "image_prompt": "Realistic anime style, 9:16 vertical portrait, humble Indian cab driver folding his hands together in polite desperation, soft warm streetlight illuminating his tired honest face."
         },
         {
-          "clip_id": "C0019",
-          "spoken_text": "मीटिंग में बॉस को गलत साबित करके हीरो बनोगे,",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Confident young employee interrupting his manager in a tense glass boardroom.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, sharp young corporate employee in a dark suit standing confidently at a sleek conference table, pointing at a screen while colleagues watch tensely."
+          "clip_id": "C0018",
+          "spoken_text": "इसे ठीक करवाने में हज़ारों लगेंगे।\"",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Driver gesturing back at the long deep scratch while looking worried about repair costs.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, worried cab driver glancing back at the damaged side door of his taxi, lonely evening atmosphere."
         }
       ]
     },
     {
       "beat_id": "B0010",
-      "narration": "तो प्रमोशन नहीं, सिर्फ़ उनकी इनसिक्योरिटी मिलेगी। आपका टैलेंट ही आपका दुश्मन बन जाएगा।",
-      "word_count": 14,
-      "estimated_duration": 6.0,
+      "narration": "लेकिन उन्होंने एक ना सुनी। रिपेयर का एक रुपया भी देने से साफ मना कर दिया, और बच्चे को लेकर अंदर चली गईं।",
+      "word_count": 21,
+      "estimated_duration": 8.4,
       "is_scene_bridge": false,
       "clips": [
         {
+          "clip_id": "C0019",
+          "spoken_text": "लेकिन उन्होंने एक ना सुनी।",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Mother turning her face away coldly with arms crossed.",
+          "image_prompt": "Realistic anime style, 9:16 vertical close-up, mother crossing her arms and turning her head away coldly with an arrogant, dismissive expression."
+        },
+        {
           "clip_id": "C0020",
-          "spoken_text": "तो प्रमोशन नहीं, सिर्फ़ उनकी इनसिक्योरिटी मिलेगी।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "The boss sitting at the head of the table, eyes narrowed in silent resentment.",
-          "image_prompt": "Realistic anime style, 9:16 vertical close-up, older corporate boss in dimly lit boardroom clenching his fist subtly on the table, cold shadowed eyes narrowed in silent insecurity."
+          "spoken_text": "रिपेयर का एक रुपया भी देने से साफ मना कर दिया,",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.6,
+          "scene_context": "Mother gesturing 'No' firmly with her hand, refusing any compensation.",
+          "image_prompt": "Realistic anime style, 9:16 vertical framing, mother waving a firm dismissive 'No' hand gesture as she turns away from the cab driver."
         },
         {
           "clip_id": "C0021",
-          "spoken_text": "आपका टैलेंट ही आपका दुश्मन बन जाएगा।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "Employee standing alone under harsh spotlight while red target-like shadow lines close in.",
-          "image_prompt": "Realistic anime style, 9:16 vertical composition, young employee standing isolated in dark office corridor with sharp crimson shadow streaks behind him, dramatic thriller mood."
+          "spoken_text": "और बच्चे को लेकर अंदर चली गईं।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Mother walking away holding her boy's hand into the brightly lit apartment building lobby.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot from behind, mother holding her son's hand and walking briskly into a bright residential glass lobby, leaving the dark driveway behind."
         }
       ]
     },
     {
       "beat_id": "B0011",
-      "narration": "इसलिए क्रेडिट हमेशा ऊपर पास करो, और बॉस को अपनी वजह से बड़ा दिखने दो।",
+      "narration": "ढलती शाम में वो ड्राइवर अकेला खड़ा, उदास आँखों से उस खरोंच को देखता रह गया।",
       "word_count": 15,
       "estimated_duration": 6.2,
-      "is_scene_bridge": false,
+      "is_scene_bridge": true,
       "clips": [
         {
           "clip_id": "C0022",
-          "spoken_text": "इसलिए क्रेडिट हमेशा ऊपर पास करो,",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.5,
-          "scene_context": "Strategist employee quietly sliding a glowing presentation file toward his boss.",
-          "image_prompt": "Realistic anime style, 9:16 vertical shot, calm intelligent employee in a tailored suit subtly sliding a golden-edged report across a dark desk toward his boss with a poised expression."
+          "spoken_text": "ढलती शाम में वो ड्राइवर अकेला खड़ा,",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.8,
+          "scene_context": "Wide vertical shot of the cab driver standing all alone next to his car under dim blue-purple dusk.",
+          "image_prompt": "Realistic anime style, 9:16 vertical wide shot, lonely Indian cab driver standing silently beside his white taxi under deep blue-purple twilight sky and single glowing yellow streetlamp."
         },
         {
           "clip_id": "C0023",
-          "spoken_text": "और बॉस को अपनी वजह से बड़ा दिखने दो।",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.7,
-          "scene_context": "Boss smiling proudly under boardroom spotlight while the strategist watches calmly from the side.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, boss speaking proudly under warm spotlight on stage while the sharp-eyed strategist watches calmly from the cool blue shadows."
+          "spoken_text": "उदास आँखों से उस खरोंच को देखता रह गया।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Close-up of the driver's sad, glistening eyes reflecting the scratched car door.",
+          "image_prompt": "Realistic anime style, 9:16 vertical emotional close-up, cab driver's sad tired eyes staring down silently, heavy quiet heartbreak in evening dusk light."
         }
       ]
     },
     {
       "beat_id": "B0012",
-      "narration": "जब तक आपका वक्त ना आए, परछाई में खेलो। ऐसे ही पावर रूल्स के लिए फॉलो करो।",
-      "word_count": 17,
-      "estimated_duration": 5.8,
+      "narration": "क्या ये इंसाफ था? कमेंट में अपनी राय बताओ— और अगर आप इस ड्राइवर की जगह होते, तो क्या करते?",
+      "word_count": 19,
+      "estimated_duration": 8.0,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0024",
-          "spoken_text": "जब तक आपका वक्त ना आए, परछाई में खेलो।",
+          "spoken_text": "क्या ये इंसाफ था? कमेंट में अपनी राय बताओ—",
           "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Sharp-eyed protagonist half-lit in golden light stepping quietly out of deep shadow.",
-          "image_prompt": "Realistic anime style, 9:16 vertical extreme close-up, composed strategist half-veiled in deep shadow, one eye catching a sharp golden light glint, unreadable power aura."
+          "estimated_spoken_duration": 3.6,
+          "scene_context": "Split-tone dramatic frame showing the scratched cab door and the No Parking pole in dusk shadows.",
+          "image_prompt": "Realistic anime style, 9:16 vertical dramatic composition, deep evening twilight framing the scratched white cab door on one side and the red No Parking sign on the other, moody storytelling atmosphere."
         },
         {
           "clip_id": "C0025",
-          "spoken_text": "ऐसे ही पावर रूल्स के लिए फॉलो करो।",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Dark minimalist throne silhouette against glowing gold skyline with subtle subscribe cue.",
-          "image_prompt": "Realistic anime style, 9:16 vertical framing, lone protagonist standing before floor-to-ceiling city skyline windows at night, holding a golden chess piece, cinematic dark-gold glow."
+          "spoken_text": "और अगर आप इस ड्राइवर की जगह होते, तो क्या करते?",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "Driver sitting quietly inside his cab looking into the rearview mirror as evening deepens.",
+          "image_prompt": "Realistic anime style, 9:16 vertical shot, cab driver sitting back inside his dark car, looking thoughtfully into the rearview mirror illuminated by warm city evening lights."
         }
       ]
     }

@@ -1,337 +1,318 @@
 {
-  "title": "एक अकेला सिपाही और रोम का पुल: 508 BC की अविश्वसनीय कहानी",
-  "topic": "Fluent, dramatic Hindi YouTube Short telling the 508 BC story of Horatius defending Rome's sole wooden bridge alone against the Etruscan army, paired with a charming hand-drawn 2D indie web-animation style.",
+  "title": "20 रुपये का 'सच्चा सौदा': गुरु नानक देव जी की अनमोल कहानी",
+  "topic": "Conversational, inspiring Hindi YouTube Short under 90 seconds telling the life story and core teachings of Guru Nanak Dev Ji, paired with a rich cinematic historical film art style.",
   "aspect_ratio": "9:16",
   "target_minutes": 1.4,
-  "total_beats": 13,
-  "total_clips": 26,
+  "total_beats": 10,
+  "total_clips": 27,
   "global_style": {
-    "art_style": "Vertical 9:16 hand-drawn 2D cartoon scene with a playful independent web-animation feel. Compact, charming character proportions: large round white faces, small torsos, and short clearly shaped arms and legs—about 2.5 to 3 heads tall (small and cute, not squat or extremely chibi)—dressed in simple colorful helmets, tunics, and shields with expressive eyes and brows. Bold slightly uneven dark outlines, flat muted colors, subtle shading, castle towers, banners, grass, distant hills, and a pale sky. Zero text, logos, or watermarks.",
-    "negative_prompt": "realistic anime, 3D render, photorealistic, extremely squat chibi, tall realistic proportions, text, letters, logos, watermarks, blurry, cluttered messy lines"
+    "art_style": "Vertical 9:16 photorealistic cinematic historical film still, shot on 35mm anamorphic lens, shallow depth of field, warm golden-hour sunlight, atmospheric dust motes and soft volumetric light rays, authentic 15th-to-16th century Punjab and South Asian rural and spiritual architecture, natural earthy textures, serene and deeply respectful mood, rich film color grading. Zero text, logos, or watermarks.",
+    "negative_prompt": "cartoon, 2D illustration, anime, chibi, 3D render, CGI look, modern clothing, modern buildings, harsh neon colors, text, letters, logos, watermarks, blurry, distorted faces"
   },
   "beats": [
     {
       "beat_id": "B0001",
-      "narration": "कल्पना कीजिए—रोम की पूरी सेना हारकर भाग रही है, और पूरे शहर को बचाने के लिए पुल पर सिर्फ़ आप अकेले खड़े हैं।",
-      "word_count": 22,
-      "estimated_duration": 6.8,
+      "narration": "एक दिन नन्हे नानक को उनके पिता ने 20 रुपये दिए, कि जाओ, कोई सच्चा व्यापार करके आओ— लेकिन उन्होंने जो किया, उसने इतिहास बदल दिया।",
+      "word_count": 26,
+      "estimated_duration": 8.3,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0001",
-          "spoken_text": "कल्पना कीजिए—रोम की पूरी सेना हारकर भाग रही है,",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "Cute compact Roman soldiers with panicked eyes running across a grassy plain toward Rome's towers.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, dozens of cute 2.5-to-3-head-tall Roman soldiers with large round white faces, small torsos, short shaped limbs, panicked wide eyes, red tunics, and bronze helmets fleeing across green grass toward distant castle towers and red banners under a pale sky, bold slightly uneven dark outlines, flat muted colors, subtle shading, playful independent web-animation feel, no text, logos, or watermarks."
+          "spoken_text": "एक दिन नन्हे नानक को उनके पिता ने 20 रुपये दिए,",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 3.5,
+          "scene_context": "Close cinematic shot of a father in 15th-century Punjabi attire placing old silver coins into young Nanak's gentle hands.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic historical film still, close-up of weathered hands of a 15th-century Punjabi father placing antique silver coins into the open palms of young boy Guru Nanak wearing simple cream cotton clothes, warm courtyard sunlight filtering through wooden eaves, soft golden dust motes, shallow depth of field, 35mm film grain, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0002",
-          "spoken_text": "और पूरे शहर को बचाने के लिए पुल पर सिर्फ़ आप अकेले खड़े हैं।",
-          "spoken_word_count": 13,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "One brave compact Roman guard standing firm on a narrow wooden bridge in front of Rome's stone walls.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, one determined cute 3-head-tall Roman guard with large round white face, expressive furrowed brows, bronze helmet, red tunic, and tall wooden shield standing alone on a narrow wooden bridge with Roman castle towers, banners, and distant hills behind him, bold uneven dark outlines, flat muted colors, subtle shading, pale sky, no text, logos, or watermarks."
+          "spoken_text": "कि जाओ, कोई सच्चा व्यापार करके आओ—",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.3,
+          "scene_context": "Young Nanak walking along a sunlit village dirt path bordered by lush mustard fields.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, over-the-shoulder view of young boy Guru Nanak in simple traditional Punjabi tunic walking peacefully along a sunlit dirt village path lined with green fields and mud-brick homes in 15th-century Punjab, golden hour rim lighting, volumetric sunbeams, natural earthy tones, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0003",
+          "spoken_text": "लेकिन उन्होंने जो किया, उसने इतिहास बदल दिया।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.5,
+          "scene_context": "Serene side profile of young Nanak looking thoughtfully toward the horizon bathed in warm golden light.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, serene side profile of young boy Guru Nanak with a calm compassionate expression gazing toward a sunlit village grove, soft golden-hour glow illuminating his face, atmospheric haze, shallow depth of field, rich cinematic film grading, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0002",
-      "narration": "508 BC में एट्रस्कन राजा ने रोम की सेना को बुरी तरह हरा दिया। शहर में घुसने का सिर्फ़ एक पतला लकड़ी का पुल था, और उस पर सिर्फ़ आप तैनात थे।",
-      "word_count": 31,
-      "estimated_duration": 9.0,
+      "narration": "रास्ते में उन्हें कुछ भूखे साधु मिले। नानक जी ने बिना सोचे उन 20 रुपयों से सबको खाना खिला दिया, और इसे ही 'सच्चा सौदा' कहा।",
+      "word_count": 26,
+      "estimated_duration": 8.0,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0003",
-          "spoken_text": "508 BC में एट्रस्कन राजा ने रोम की सेना को बुरी तरह हरा दिया।",
-          "spoken_word_count": 13,
-          "estimated_spoken_duration": 3.6,
-          "scene_context": "Castle defenders looking anxiously from a foreground wall toward a massive advancing army of tiny figures.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, on a stone wall in the foreground, several cute 2.5-to-3-head-tall Roman defenders with large round white faces, expressive anxious eyes, colorful helmets, tunics, and shields looking toward thousands of tiny enemy figures stretching toward distant hills on the horizon, bold slightly uneven dark outlines, flat muted colors, subtle shading, castle towers, banners, grass, pale sky, no text, logos, or watermarks."
-        },
-        {
           "clip_id": "C0004",
-          "spoken_text": "शहर में घुसने का सिर्फ़ एक पतला लकड़ी का पुल था,",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "A single narrow wooden bridge crossing a muted blue river into the walled city.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, angled high view of a single narrow wooden plank bridge spanning a calm muted blue river between grassy banks, stone castle towers with waving banners guarding the city entrance, distant rolling hills, pale sky, bold uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
+          "spoken_text": "रास्ते में उन्हें कुछ भूखे साधु मिले।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.3,
+          "scene_context": "Wandering ascetics resting tiredly under the shade of a massive ancient banyan tree.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, weary wandering ascetics in tattered ochre robes resting silently under the sprawling roots and dappled shade of an ancient banyan tree in rural 15th-century India, soft natural light shafts piercing the leaves, evocative storytelling frame, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0005",
-          "spoken_text": "और उस पर सिर्फ़ आप तैनात थे।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.2,
-          "scene_context": "Close charming view of the lone compact Roman guard gripping his shield and spear at the bridge.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cute 2.5-to-3-head-tall Roman guard with large round white face, determined brows, simple bronze helmet, red tunic, and round wooden shield standing watch at the bridge edge, castle wall and grass in background, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
+          "spoken_text": "नानक जी ने बिना सोचे उन 20 रुपयों से सबको खाना खिला दिया,",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 3.7,
+          "scene_context": "Young Nanak humbly serving warm simple food on leaf plates to the grateful ascetics.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic historical film still, young boy Guru Nanak humbly serving fresh warm flatbread and lentils on traditional green leaf plates to seated hungry ascetics under a banyan tree, warm golden light, rising gentle steam from food, deep compassion and gratitude, shallow depth of field, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0006",
+          "spoken_text": "और इसे ही 'सच्चा सौदा' कहा।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.0,
+          "scene_context": "Wide peaceful shot of everyone eating together harmoniously under the golden canopy.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic wide shot, ascetics eating peacefully together on woven mats beneath a grand banyan tree while young Guru Nanak stands serenely nearby bathed in warm sunset glow, volumetric light rays, timeless spiritual atmosphere, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0003",
-      "narration": "अगर दुश्मन पुल पार कर गया, तो पूरा रोम तबाह हो जाएगा। आपने भागते सिपाहियों को पकड़ा और चिल्लाकर कहा—\"मेरे पीछे से ये पुल काटकर गिरा दो!\"",
-      "word_count": 27,
-      "estimated_duration": 8.2,
+      "narration": "1469 में तलवंडी में जन्मे गुरु नानक देव जी बचपन से ही अलग थे। वे अंधविश्वास और ऊंच-नीच को कभी नहीं मानते थे।",
+      "word_count": 23,
+      "estimated_duration": 7.2,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0006",
-          "spoken_text": "अगर दुश्मन पुल पार कर गया, तो पूरा रोम तबाह हो जाएगा।",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 3.6,
-          "scene_context": "Worried compact defenders on the city wall watching thousands of tiny enemy soldiers march closer.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, on a castle wall in the foreground, cute 2.5-head-tall Roman defenders with wide worried eyes and small shields staring down at a vast sea of tiny enemy figures marching across grassy plains toward the wooden bridge, castle towers, banners, pale sky, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
+          "clip_id": "C0007",
+          "spoken_text": "1469 में तलवंडी में जन्मे गुरु नानक देव जी बचपन से ही अलग थे।",
+          "spoken_word_count": 14,
+          "estimated_spoken_duration": 4.3,
+          "scene_context": "Atmospheric wide shot of historic 15th-century Talwandi village at peaceful dawn.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic wide shot of historic 15th-century Talwandi village in Punjab at peaceful dawn, mud-brick houses, wooden doorways, distant palm and neem trees, gentle morning mist rising from fields, golden sunrise glow, authentic period detail, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0007",
-          "spoken_text": "आपने भागते सिपाहियों को पकड़ा और चिल्लाकर कहा—\"मेरे पीछे से ये पुल काटकर गिरा दो!\"",
-          "spoken_word_count": 15,
-          "estimated_spoken_duration": 4.6,
-          "scene_context": "The hero grabbing fleeing soldiers by their tunics and pointing urgently at the wooden bridge beams.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, brave cute 3-head-tall Roman guard with large round white face and shouting mouth grabbing two scared fleeing Roman soldiers by their tunics while pointing sharply at the wooden bridge beams behind him, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
+          "clip_id": "C0008",
+          "spoken_text": "वे अंधविश्वास और ऊंच-नीच को कभी नहीं मानते थे।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 2.9,
+          "scene_context": "Young Nanak sitting calmly in nature, reflecting deeply while villagers of all backgrounds pass by in harmony.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, serene young Guru Nanak seated peacefully beside a rustic village well while diverse villagers of different walks of life interact warmly in the soft-focus background, golden hour lighting, 35mm film aesthetic, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0004",
-      "narration": "फिर आप अकेले पुल के उस पार पहुँच गए—पूरी सेना के सामने। आपकी हिम्मत देख शर्म से दो अफसर लौटकर आपके साथ खड़े हो गए।",
+      "narration": "जवानी में जब वे सुल्तानपुर लोधी में काम करते थे, एक सुबह वे वेईं नदी में नहाने उतरे— और पूरे तीन दिन तक गायब रहे।",
       "word_count": 25,
-      "estimated_duration": 7.4,
+      "estimated_duration": 7.9,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0008",
-          "spoken_text": "फिर आप अकेले पुल के उस पार पहुँच गए—पूरी सेना के सामने।",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 3.6,
-          "scene_context": "One tiny cute defender standing defiantly at the far end of the bridge facing thousands of tiny enemies.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, lone cute 2.5-head-tall Roman guard with large round white face and colorful shield standing firmly at the far end of the wooden bridge facing thousands of tiny enemy soldiers stretching across distant grassy hills under a pale sky, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
+          "clip_id": "C0009",
+          "spoken_text": "जवानी में जब वे सुल्तानपुर लोधी में काम करते थे,",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Grown-up Guru Nanak Dev Ji working honestly with brass scales at a historic grain storehouse.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic historical film still, serene bearded Guru Nanak Dev Ji in simple white robe and turban carefully weighing grain with antique brass balance scales inside a rustic 15th-century Sultanpur Lodhi storehouse, warm lantern light and sunbeams through wooden lattice, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0009",
-          "spoken_text": "आपकी हिम्मत देख शर्म से दो अफसर लौटकर आपके साथ खड़े हो गए।",
-          "spoken_word_count": 13,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Two ashamed Roman officers in plumed helmets rushing back to stand shoulder-to-shoulder with the hero.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, two cute 3-head-tall Roman officers with large round white faces, sheepish rosy cheeks, plumed helmets, and colorful shields hurrying back onto the narrow wooden bridge to stand beside the brave guard, castle towers in distance, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
+          "clip_id": "C0010",
+          "spoken_text": "एक सुबह वे वेईं नदी में नहाने उतरे—",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.5,
+          "scene_context": "Misty early morning riverbanks of Kali Bein with calm reflective water and soft dawn light.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic shot, peaceful misty dawn over the calm flowing waters of Kali Bein river in Punjab, Guru Nanak Dev Ji seen respectfully in distant silhouette stepping toward the tranquil riverbank, ethereal morning fog and golden-blue twilight sky, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0011",
+          "spoken_text": "और पूरे तीन दिन तक गायब रहे।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.2,
+          "scene_context": "Anxious villagers searching along the quiet misty riverbank holding earthen lamps.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, concerned 15th-century villagers holding glowing earthen oil lamps standing along the misty quiet banks of Kali Bein river at dusk, gentle ripples on dark reflective water, dramatic moody lighting, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0005",
-      "narration": "पुल इतना तंग था कि दुश्मन बस कुछ ही सैनिक भेज पा रहा था, और पीछे कुल्हाड़ियों से पुल काटा जा रहा था।",
-      "word_count": 23,
-      "estimated_duration": 6.8,
+      "narration": "जब वे लौटे, तो उनके चेहरे पर एक अद्भुत तेज था। उन्होंने पहला संदेश दिया: 'न कोई हिंदू, न मुसलमान, हम सब एक ही ईश्वर की संतान हैं।'",
+      "word_count": 28,
+      "estimated_duration": 8.7,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0010",
-          "spoken_text": "पुल इतना तंग था कि दुश्मन बस कुछ ही सैनिक भेज पा रहा था,",
-          "spoken_word_count": 14,
-          "estimated_spoken_duration": 4.0,
-          "scene_context": "Three cute defenders locking shields across the narrow bridge blocking a crowded bottleneck of enemy soldiers.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, three cute 2.5-to-3-head-tall Roman defenders holding shields side-by-side across the narrow wooden bridge, blocking a tight bottleneck of crowded blue-tunic enemy soldiers in front while thousands wait on the distant plain, bold uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
+          "clip_id": "C0012",
+          "spoken_text": "जब वे लौटे, तो उनके चेहरे पर एक अद्भुत तेज था।",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 3.5,
+          "scene_context": "Respectful backlit portrait of Guru Nanak Dev Ji emerging near the river bathed in radiant golden morning light.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic portrait, deeply respectful serene Guru Nanak Dev Ji in simple white robe and turban standing by the sunlit river mist, warm heavenly golden backlight forming a soft natural glow around him, calm radiant expression, shallow depth of field, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0011",
-          "spoken_text": "और पीछे कुल्हाड़ियों से पुल काटा जा रहा था।",
+          "clip_id": "C0013",
+          "spoken_text": "उन्होंने पहला संदेश दिया: 'न कोई हिंदू, न मुसलमान,",
           "spoken_word_count": 9,
           "estimated_spoken_duration": 2.8,
-          "scene_context": "Roman soldiers behind the defenders swinging axes into the wooden bridge posts with flying chips.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cute compact Roman soldiers behind the bridge swinging small hand axes into thick wooden bridge beams as cartoon woodchips fly over the river, castle walls and banners behind, bold slightly uneven dark outlines, flat muted colors, no text, logos, or watermarks."
+          "scene_context": "A diverse crowd of 15th-century people listening in hushed awe as Guru Nanak speaks.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, over-the-shoulder angle behind Guru Nanak Dev Ji looking out at a captivated crowd of ordinary 15th-century villagers—wearing diverse traditional turbans, caps, and shawls—listening in hushed reverence under warm golden light, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0014",
+          "spoken_text": "हम सब एक ही ईश्वर की संतान हैं।'",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Sunbeams breaking dramatically through clouds above a serene river landscape symbolizing unity.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic landscape shot, radiant golden sunbeams breaking through parting morning clouds over tranquil green Punjab plains and calm river waters, symbolizing universal oneness and peace, rich 35mm cinematic color grading, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0006",
-      "narration": "जब पुल गिरने वाला था, आपने उन दोनों को भी वापस भेज दिया। अब उस पुल पर आप बिल्कुल अकेले थे।",
-      "word_count": 21,
-      "estimated_duration": 6.4,
+      "narration": "इसके बाद उन्होंने घर छोड़ा और अपने साथी भाई मरदाना के साथ पैदल ही हजारों मील की चार लंबी यात्राएं कीं, जिन्हें 'उदासियां' कहा जाता है।",
+      "word_count": 26,
+      "estimated_duration": 8.2,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0012",
-          "spoken_text": "जब पुल गिरने वाला था, आपने उन दोनों को भी वापस भेज दिया।",
-          "spoken_word_count": 13,
+          "clip_id": "C0015",
+          "spoken_text": "इसके बाद उन्होंने घर छोड़ा और अपने साथी भाई मरदाना के साथ",
+          "spoken_word_count": 12,
           "estimated_spoken_duration": 3.8,
-          "scene_context": "Cracking wooden planks wobbling as the hero urges the two officers back across toward Rome.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cracked wooden bridge planks wobbling above the river as the cute brave Roman guard waves the two reluctant officers safely back toward the castle towers and grassy bank, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
+          "scene_context": "Guru Nanak Dev Ji walking beside loyal companion Bhai Mardana carrying a wooden rabab string instrument.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, Guru Nanak Dev Ji walking serenely along a dusty winding trail beside his devoted companion Bhai Mardana who gently holds a traditional wooden rabab string instrument, warm afternoon sun, authentic 16th-century traveler robes, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0013",
-          "spoken_text": "अब उस पुल पर आप बिल्कुल अकेले थे।",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Close charming shot of the small brave guard standing completely alone on the creaking bridge.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, single cute 2.5-to-3-head-tall Roman guard with large round white face, expressive determined eyebrows, colorful shield, and dented helmet standing completely alone on the splintering bridge beneath a pale sky, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
+          "clip_id": "C0016",
+          "spoken_text": "पैदल ही हजारों मील की चार लंबी यात्राएं कीं, जिन्हें 'उदासियां' कहा जाता है।",
+          "spoken_word_count": 14,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "Sweeping cinematic shot of two travelers crossing majestic mountain passes and vast desert horizons.",
+          "image_prompt": "Vertical 9:16 photorealistic epic cinematic wide shot, two tiny robed travelers—Guru Nanak Dev Ji and Bhai Mardana—walking on foot across a vast dramatic mountain pass with snow-capped Himalayan peaks glowing in warm sunset light, sweeping scale, atmospheric mist, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0007",
-      "narration": "आपने दुश्मनों को ललकारा—\"तुम राजाओं के गुलाम हो, दूसरों की आज़ादी छीनने चले हो!\"",
-      "word_count": 14,
-      "estimated_duration": 4.4,
+      "narration": "जहां भी वे गए, उन्होंने अमीरी-गरीबी का भेद मिटाया। एक बार उन्होंने घमंडी अमीर की रोटी छोड़कर गरीब भाई लालो की सूखी रोटी चुनी, क्योंकि उसमें ईमानदारी की कमाई थी।",
+      "word_count": 30,
+      "estimated_duration": 9.6,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0014",
-          "spoken_text": "आपने दुश्मनों को ललकारा—\"तुम राजाओं के गुलाम हो, दूसरों की आज़ादी छीनने चले हो!\"",
-          "spoken_word_count": 14,
-          "estimated_spoken_duration": 4.4,
-          "scene_context": "Hero raising his sword and shouting boldly across at the vast enemy ranks.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, brave cute 3-head-tall Roman guard raising his short sword and shouting fearlessly at thousands of tiny blue-armored enemy soldiers lined across the distant grassy hills, bold slightly uneven dark outlines, flat muted colors, subtle shading, pale sky, no text, logos, or watermarks."
+          "clip_id": "C0017",
+          "spoken_text": "जहां भी वे गए, उन्होंने अमीरी-गरीबी का भेद मिटाया।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 2.9,
+          "scene_context": "Guru Nanak sitting humbly on the earthen floor inside a simple carpenter's workshop.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, Guru Nanak Dev Ji seated respectfully on a woven mat inside the humble mud-walled home of a poor carpenter, warm oil lamp glow illuminating wood shavings and simple hand tools, intimate human warmth, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0018",
+          "spoken_text": "एक बार उन्होंने घमंडी अमीर की रोटी छोड़कर गरीब भाई लालो की सूखी रोटी चुनी,",
+          "spoken_word_count": 15,
+          "estimated_spoken_duration": 4.7,
+          "scene_context": "Dramatic cinematic close-up of coarse millet flatbread held gently beside ornate rich food.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic close-up, gentle weathered hands holding a simple coarse millet roti over a rustic clay plate, contrasted softly in blurred background against an ornate brass platter of rich feast food, dramatic warm directional chiaroscuro lighting, 35mm film aesthetic, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0019",
+          "spoken_text": "क्योंकि उसमें ईमानदारी की कमाई थी।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.0,
+          "scene_context": "Humble carpenter Bhai Lalo with folded hands and glistening eyes of deep gratitude.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic portrait, humble elderly 16th-century Punjabi carpenter Bhai Lalo with coarse clothes, gentle weathered face, and folded hands filled with quiet dignity and gratitude in soft warm firelight, shallow depth of field, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0008",
-      "narration": "बौखलाए दुश्मनों ने तीर और भालों की बारिश कर दी, लेकिन हर वार आपकी ढाल में ही आकर अटक गया।",
-      "word_count": 20,
-      "estimated_duration": 6.4,
+      "narration": "आखिर में वे करतारपुर में बसे। वहां उन्होंने 'लंगर' और 'पंगत' की शुरुआत की, जहां राजा हो या रंक, सब एक साथ बैठकर खाना खाते थे।",
+      "word_count": 26,
+      "estimated_duration": 8.3,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0015",
-          "spoken_text": "बौखलाए दुश्मनों ने तीर और भालों की बारिश कर दी,",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Arcs of tiny cartoon arrows and spears flying across the pale sky toward the lone guard on the bridge.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, swarms of simple cartoon arrows and spears arcing across a pale sky from distant hills toward the tiny lone Roman guard on the wooden river bridge, castle towers on the left, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
+          "clip_id": "C0020",
+          "spoken_text": "आखिर में वे करतारपुर में बसे।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.0,
+          "scene_context": "Peaceful golden-hour view of Kartarpur settlement beside the Ravi river with lush green fields.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic wide shot of 16th-century Kartarpur settlement beside the calm Ravi river, green agricultural fields, simple brick and mud courtyard structures bathed in warm golden-hour sunlight, peaceful thriving community atmosphere, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0016",
-          "spoken_text": "लेकिन हर वार आपकी ढाल में ही आकर अटक गया।",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Cute guard peeking calmly from behind a wooden shield bristling with stuck arrows and spears.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cute 2.5-head-tall Roman guard with large round white face and cheeky confident brows peeking behind a large colorful shield stuck full of cartoon spears and arrows, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
+          "clip_id": "C0021",
+          "spoken_text": "वहां उन्होंने 'लंगर' और 'पंगत' की शुरुआत की,",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Community kitchen with glowing clay hearths, steaming brass pots, and volunteers baking bread together.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still inside a bustling 16th-century community Langar kitchen, glowing clay hearths, volunteers working harmoniously kneading dough and baking flatbreads, warm steam rising through shafts of afternoon sunlight, rich earthy colors, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0022",
+          "spoken_text": "जहां राजा हो या रंक, सब एक साथ बैठकर खाना खाते थे।",
+          "spoken_word_count": 12,
+          "estimated_spoken_duration": 3.7,
+          "scene_context": "Long rows of richly dressed nobles and simple villagers seated side by side sharing a meal.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic high-angle shot of long neat rows of diverse people—wealthy nobles in silk tunics seated shoulder-to-shoulder with humble farmers on woven mats on the ground—sharing warm Langar meals together in harmony, golden courtyard lighting, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0009",
-      "narration": "तभी धड़ाम से पीछे का पुल नदी में जा गिरा, और दुश्मन सेना आपकी तरफ़ दौड़ पड़ी।",
-      "word_count": 17,
-      "estimated_duration": 5.6,
+      "narration": "उन्होंने दुनिया को जीने के तीन आसान सूत्र दिए: नाम जपो, यानी ईश्वर को याद रखो; किरत करो, यानी ईमानदारी से मेहनत करो; और वंड छको, यानी बांटकर खाओ।",
+      "word_count": 29,
+      "estimated_duration": 9.4,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0017",
-          "spoken_text": "तभी धड़ाम से पीछे का पुल नदी में जा गिरा,",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Broken wooden bridge collapsing into big cartoon splashes in the river behind the hero.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, wooden bridge behind the Roman guard snapping apart and crashing down into playful white splashes in the muted blue river, castle walls and banners on the far bank, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
+          "clip_id": "C0023",
+          "spoken_text": "उन्होंने दुनिया को जीने के तीन आसान सूत्र दिए:",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 2.9,
+          "scene_context": "Guru Nanak Dev Ji meditating serenely at dusk while Bhai Mardana gently plays the rabab nearby.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, Guru Nanak Dev Ji seated peacefully in meditation under a courtyard tree at twilight while Bhai Mardana softly plays the rabab beside him, warm glowing oil lamps in the background, deeply serene spiritual atmosphere, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0018",
-          "spoken_text": "और दुश्मन सेना आपकी तरफ़ दौड़ पड़ी।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Angry compact enemy soldiers charging onto the broken bridge stub toward the trapped hero.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, angry cute 2.5-to-3-head-tall blue-armored enemy soldiers with fierce eyebrows charging with raised spears toward the lone Roman guard standing at the broken edge of the bridge, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
+          "clip_id": "C0024",
+          "spoken_text": "नाम जपो, यानी ईश्वर को याद रखो; किरत करो, यानी ईमानदारी से मेहनत करो;",
+          "spoken_word_count": 14,
+          "estimated_spoken_duration": 4.5,
+          "scene_context": "Guru Nanak working peacefully alongside farmers sowing seeds in sunlit golden fields.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, Guru Nanak Dev Ji and humble farmers working honestly together tilling rich soil and sowing golden wheat seeds in morning sunlight, warm dust particles in the air, dignity of labor, 35mm film aesthetic, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0025",
+          "spoken_text": "और वंड छको, यानी बांटकर खाओ।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.0,
+          "scene_context": "Close warm shot of hands sharing fresh bread and water kindly with another person.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic close-up, warm hands breaking fresh flatbread and sharing it gently into another person's outstretched hands in soft golden sunlight, blurred smiling background, heartfelt warmth and brotherhood, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0010",
-      "narration": "बिना एक पल सोचे, आप भारी कवच पहने हुए ही नदी में कूद पड़े और रोम के किनारे की तरफ़ तैरने लगे।",
-      "word_count": 21,
-      "estimated_duration": 6.4,
+      "narration": "550 साल बाद भी उनकी यह शिक्षा करोड़ों लोगों को रास्ता दिखा रही है। अगर यह कहानी दिल को छू गई, तो कमेंट में 'वाहेगुरु' जरूर लिखें।",
+      "word_count": 27,
+      "estimated_duration": 8.4,
       "is_scene_bridge": false,
       "clips": [
-        {
-          "clip_id": "C0019",
-          "spoken_text": "बिना एक पल सोचे, आप भारी कवच पहने हुए ही नदी में कूद पड़े",
-          "spoken_word_count": 13,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Hero leaping dramatically off the broken bridge plank in full armor while enemies watch in surprise.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cute 3-head-tall Roman guard in bronze armor, helmet, and red tunic leaping bravely off the broken wooden bridge down toward the blue river while shocked compact enemy soldiers peer over the edge, bold slightly uneven dark outlines, flat muted colors, no text, logos, or watermarks."
-        },
-        {
-          "clip_id": "C0020",
-          "spoken_text": "और रोम के किनारे की तरफ़ तैरने लगे।",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Cute round-faced hero paddling fiercely across muted blue river ripples toward Rome's grassy bank.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cute Roman guard with large round white face and bronze helmet paddling hard with short shaped arms across wavy muted blue river water toward grassy banks and Roman castle towers, bold uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0011",
-      "narration": "चारों तरफ़ पानी में तीर और भाले गिरते रहे, फिर भी आप ज़िंदा दूसरे किनारे पर पहुँच ही गए।",
-      "word_count": 19,
-      "estimated_duration": 5.8,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0021",
-          "spoken_text": "चारों तरफ़ पानी में तीर और भाले गिरते रहे,",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Tall cartoon water splashes around the swimming hero as arrows and spears miss him.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, white cartoon water splashes bursting around the swimming cute Roman guard as arrows and spears plunge harmlessly into the blue river, pale sky above, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
-        },
-        {
-          "clip_id": "C0022",
-          "spoken_text": "फिर भी आप ज़िंदा दूसरे किनारे पर पहुँच ही गए।",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.0,
-          "scene_context": "Wet cheering hero pulled up onto the grassy Roman bank by relieved defenders below the castle walls.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, dripping wet cute 2.5-to-3-head-tall Roman guard being pulled onto the grassy riverbank by cheering compact Roman defenders in colorful tunics beside castle towers and banners, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0012",
-      "narration": "रोम ने आपकी मूर्ति बनवाई और इनाम में उतनी ज़मीन दी, जितनी आप एक दिन में हल चलाकर नाप सकें।",
-      "word_count": 20,
-      "estimated_duration": 6.2,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0023",
-          "spoken_text": "रोम ने आपकी मूर्ति बनवाई और इनाम में उतनी ज़मीन दी,",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Hero beaming proudly beside a cute stone statue of himself surrounded by cheering townsfolk.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, proud cute 2.5-head-tall Roman hero with blushing happy cheeks standing next to a bronze-and-stone statue of himself with cheering compact townsfolk, castle towers, and banners behind under a pale sky, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
-        },
-        {
-          "clip_id": "C0024",
-          "spoken_text": "जितनी आप एक दिन में हल चलाकर नाप सकें।",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "Hero cheerfully guiding a wooden plow behind an ox across wide green hills.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cheerful cute 3-head-tall Roman hero in a simple tunic guiding a wooden plow behind a friendly muted-brown cartoon ox across wide rolling green grass hills beneath a pale sky, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0013",
-      "narration": "कमाल की बात—खुद रोमन इतिहासकार ने भी लिखा कि ये कहानी सच होने के लिए कुछ ज़्यादा ही फिल्मी लगती है!",
-      "word_count": 21,
-      "estimated_duration": 6.4,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0025",
-          "spoken_text": "कमाल की बात—खुद रोमन इतिहासकार ने भी लिखा",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Cute Roman historian in white toga writing briskly on a parchment scroll with a quill.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, cute 3-head-tall Roman historian with large round white face, expressive brows, and white toga writing with a feather quill on a blank scroll at a simple wooden desk, castle window with pale sky behind, bold uneven dark outlines, flat muted colors, no text, logos, or watermarks."
-        },
         {
           "clip_id": "C0026",
-          "spoken_text": "कि ये कहानी सच होने के लिए कुछ ज़्यादा ही फिल्मी लगती है!",
+          "spoken_text": "550 साल बाद भी उनकी यह शिक्षा करोड़ों लोगों को रास्ता दिखा रही है।",
+          "spoken_word_count": 14,
+          "estimated_spoken_duration": 4.3,
+          "scene_context": "Majestic modern golden-hour view of a grand serene Gurudwara reflecting in calm sacred water.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic wide shot of a majestic white marble Sikh Gurudwara with golden domes reflecting peacefully in still sacred sarovar water at golden sunset, tiny silhouettes of devotees walking calmly along the marble parikrama, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0027",
+          "spoken_text": "अगर यह कहानी दिल को छू गई, तो कमेंट में 'वाहेगुरु' जरूर लिखें।",
           "spoken_word_count": 13,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Same historian raising one eyebrow and shrugging playfully beside his blank scroll.",
-          "image_prompt": "Vertical 9:16 hand-drawn 2D cartoon scene, same cute 3-head-tall Roman historian in white toga raising one eyebrow with a cheeky skeptical smirk and shrugging both short shaped arms beside his unrolled blank scroll, bold slightly uneven dark outlines, flat muted colors, subtle shading, no text, logos, or watermarks."
+          "estimated_spoken_duration": 4.1,
+          "scene_context": "Warm glowing earthen diyas floating peacefully on calm dark water at twilight.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic close-up, dozens of warm glowing earthen oil diyas gently floating across tranquil reflective water at twilight, soft bokeh golden lights in the background, peaceful meditative closing frame, zero text, logos, or watermarks."
         }
       ]
     }

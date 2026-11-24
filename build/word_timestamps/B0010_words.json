@@ -1,87 +1,112 @@
 [
   {
-    "word": "सुबह",
-    "start_ms": 109,
-    "end_ms": 435
+    "word": "बिना",
+    "start_ms": 0,
+    "end_ms": 334
   },
   {
-    "word": "होते",
-    "start_ms": 435,
-    "end_ms": 846
+    "word": "एक",
+    "start_ms": 334,
+    "end_ms": 493
+  },
+  {
+    "word": "पल",
+    "start_ms": 493,
+    "end_ms": 652
+  },
+  {
+    "word": "सोचे,",
+    "start_ms": 652,
+    "end_ms": 1054
+  },
+  {
+    "word": "आप",
+    "start_ms": 1054,
+    "end_ms": 1213
+  },
+  {
+    "word": "भारी",
+    "start_ms": 1213,
+    "end_ms": 1595
+  },
+  {
+    "word": "कवच",
+    "start_ms": 1595,
+    "end_ms": 1834
+  },
+  {
+    "word": "पहने",
+    "start_ms": 1834,
+    "end_ms": 2184
+  },
+  {
+    "word": "हुए",
+    "start_ms": 2184,
+    "end_ms": 2407
   },
   {
     "word": "ही",
-    "start_ms": 846,
-    "end_ms": 1052
+    "start_ms": 2407,
+    "end_ms": 2598
   },
   {
-    "word": "किले",
-    "start_ms": 1052,
-    "end_ms": 1411
+    "word": "नदी",
+    "start_ms": 2598,
+    "end_ms": 2869
   },
   {
-    "word": "की",
-    "start_ms": 1411,
-    "end_ms": 1617
+    "word": "में",
+    "start_ms": 2869,
+    "end_ms": 3171
   },
   {
-    "word": "दीवारों",
-    "start_ms": 1617,
-    "end_ms": 2354
+    "word": "कूद",
+    "start_ms": 3171,
+    "end_ms": 3442
   },
   {
-    "word": "पर",
-    "start_ms": 2354,
-    "end_ms": 2525
-  },
-  {
-    "word": "सीढ़ियाँ",
-    "start_ms": 2525,
-    "end_ms": 3262
-  },
-  {
-    "word": "टिक",
-    "start_ms": 3262,
-    "end_ms": 3501
-  },
-  {
-    "word": "गईं",
-    "start_ms": 3501,
-    "end_ms": 3793
+    "word": "पड़े",
+    "start_ms": 3442,
+    "end_ms": 3792
   },
   {
     "word": "और",
-    "start_ms": 3793,
-    "end_ms": 3964
+    "start_ms": 3792,
+    "end_ms": 3951
   },
   {
-    "word": "दस",
-    "start_ms": 3964,
-    "end_ms": 4135
+    "word": "रोम",
+    "start_ms": 3951,
+    "end_ms": 4222
   },
   {
-    "word": "हज़ार",
-    "start_ms": 4135,
-    "end_ms": 4598
+    "word": "के",
+    "start_ms": 4222,
+    "end_ms": 4413
   },
   {
-    "word": "दुश्मन",
-    "start_ms": 4598,
-    "end_ms": 4983
+    "word": "किनारे",
+    "start_ms": 4413,
+    "end_ms": 4938
   },
   {
-    "word": "ऊपर",
-    "start_ms": 4983,
-    "end_ms": 5240
+    "word": "की",
+    "start_ms": 4938,
+    "end_ms": 5129
   },
   {
-    "word": "चढ़ने",
-    "start_ms": 5240,
-    "end_ms": 5703
+    "word": "तरफ़",
+    "start_ms": 5129,
+    "end_ms": 5448
+  },
+  {
+    "word": "तैरने",
+    "start_ms": 5448,
+    "end_ms": 5909
   },
   {
     "word": "लगे।",
-    "start_ms": 5703,
-    "end_ms": 6080
+    "start_ms": 5909,
+    "end_ms": 6260
   }
 ]

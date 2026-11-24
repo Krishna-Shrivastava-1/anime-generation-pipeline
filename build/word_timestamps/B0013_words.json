@@ -1,87 +1,107 @@
 [
   {
-    "word": "तीन",
-    "start_ms": 120,
-    "end_ms": 414
+    "word": "कमाल",
+    "start_ms": 0,
+    "end_ms": 407
   },
   {
-    "word": "सौ",
-    "start_ms": 414,
-    "end_ms": 621
+    "word": "की",
+    "start_ms": 407,
+    "end_ms": 629
   },
   {
-    "word": "घड़े",
-    "start_ms": 621,
-    "end_ms": 1002
+    "word": "बात—खुद",
+    "start_ms": 629,
+    "end_ms": 1226
   },
   {
-    "word": "सीधे",
-    "start_ms": 1002,
-    "end_ms": 1417
+    "word": "रोमन",
+    "start_ms": 1226,
+    "end_ms": 1633
   },
   {
-    "word": "तीन",
-    "start_ms": 1417,
-    "end_ms": 1711
+    "word": "इतिहासकार",
+    "start_ms": 1633,
+    "end_ms": 2522
   },
   {
-    "word": "सौ",
-    "start_ms": 1711,
-    "end_ms": 1919
+    "word": "ने",
+    "start_ms": 2522,
+    "end_ms": 2744
   },
   {
-    "word": "हेलमेट",
-    "start_ms": 1919,
-    "end_ms": 2507
+    "word": "भी",
+    "start_ms": 2744,
+    "end_ms": 2966
   },
   {
-    "word": "पर",
-    "start_ms": 2507,
-    "end_ms": 2680
+    "word": "लिखा",
+    "start_ms": 2966,
+    "end_ms": 3355
   },
   {
-    "word": "जा",
-    "start_ms": 2680,
-    "end_ms": 2888
+    "word": "कि",
+    "start_ms": 3355,
+    "end_ms": 3521
   },
   {
-    "word": "फूटे—",
-    "start_ms": 2888,
-    "end_ms": 3325
+    "word": "ये",
+    "start_ms": 3521,
+    "end_ms": 3743
   },
   {
-    "word": "और",
-    "start_ms": 3325,
-    "end_ms": 3498
+    "word": "कहानी",
+    "start_ms": 3743,
+    "end_ms": 4280
   },
   {
-    "word": "उनसे",
-    "start_ms": 3498,
-    "end_ms": 3879
+    "word": "सच",
+    "start_ms": 4280,
+    "end_ms": 4465
   },
   {
-    "word": "निकलीं",
-    "start_ms": 3879,
-    "end_ms": 4450
+    "word": "होने",
+    "start_ms": 4465,
+    "end_ms": 4909
   },
   {
-    "word": "तीस",
-    "start_ms": 4450,
-    "end_ms": 4744
+    "word": "के",
+    "start_ms": 4909,
+    "end_ms": 5132
   },
   {
-    "word": "लाख",
-    "start_ms": 4744,
-    "end_ms": 5038
+    "word": "लिए",
+    "start_ms": 5132,
+    "end_ms": 5391
   },
   {
-    "word": "गुस्साई",
-    "start_ms": 5038,
-    "end_ms": 5549
+    "word": "कुछ",
+    "start_ms": 5391,
+    "end_ms": 5650
   },
   {
-    "word": "मधुमक्खियाँ!",
-    "start_ms": 5549,
-    "end_ms": 6409
+    "word": "ज़्यादा",
+    "start_ms": 5650,
+    "end_ms": 6251
+  },
+  {
+    "word": "ही",
+    "start_ms": 6251,
+    "end_ms": 6474
+  },
+  {
+    "word": "फिल्मी",
+    "start_ms": 6474,
+    "end_ms": 6927
+  },
+  {
+    "word": "लगती",
+    "start_ms": 6927,
+    "end_ms": 7334
+  },
+  {
+    "word": "है!",
+    "start_ms": 7334,
+    "end_ms": 7579
   }
 ]

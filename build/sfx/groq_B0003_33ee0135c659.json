@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "Defenders on a stone wall watch as the hero grabs fleeing soldiers' tunics and points at the wooden bridge beams.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "cloth rustle",
+      "fallback_tag": "fabric movement",
+      "sound_type": "transient",
+      "trigger_word": "पकड़ा",
+      "target_ms": 5900,
+      "duration_sec": 0.8,
+      "volume": 0.45
+    },
+    {
+      "freesound_tag": "wood beam creak",
+      "fallback_tag": "wood creak",
+      "sound_type": "transient",
+      "trigger_word": "पुल",
+      "target_ms": 8800,
+      "duration_sec": 1.2,
+      "volume": 0.42
+    }
+  ]
+}

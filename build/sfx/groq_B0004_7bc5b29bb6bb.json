@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "Characters walk across a stone bridge and Roman officers in metal armor rush back, producing footstep and armor clank sounds.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "stone footstep",
+      "fallback_tag": "footstep",
+      "sound_type": "transient",
+      "trigger_word": "पुल",
+      "target_ms": 1000,
+      "duration_sec": 0.8,
+      "volume": 0.4
+    },
+    {
+      "freesound_tag": "metal armor clank",
+      "fallback_tag": "armor impact",
+      "sound_type": "transient",
+      "trigger_word": "अफसर",
+      "target_ms": 6300,
+      "duration_sec": 0.6,
+      "volume": 0.35
+    }
+  ]
+}

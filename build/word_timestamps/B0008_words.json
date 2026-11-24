@@ -1,137 +1,102 @@
 [
   {
-    "word": "उस",
-    "start_ms": 0,
-    "end_ms": 159
+    "word": "बौखलाए",
+    "start_ms": 109,
+    "end_ms": 645
   },
   {
-    "word": "रात",
-    "start_ms": 159,
-    "end_ms": 429
+    "word": "दुश्मनों",
+    "start_ms": 645,
+    "end_ms": 1219
   },
   {
-    "word": "कड़ाके",
-    "start_ms": 429,
-    "end_ms": 970
+    "word": "ने",
+    "start_ms": 1219,
+    "end_ms": 1408
   },
   {
-    "word": "की",
-    "start_ms": 970,
-    "end_ms": 1161
-  },
-  {
-    "word": "ठंड",
-    "start_ms": 1161,
-    "end_ms": 1431
-  },
-  {
-    "word": "पड़ी,",
-    "start_ms": 1431,
-    "end_ms": 1801
-  },
-  {
-    "word": "तो",
-    "start_ms": 1801,
-    "end_ms": 1992
-  },
-  {
-    "word": "वो",
-    "start_ms": 1992,
-    "end_ms": 2182
-  },
-  {
-    "word": "सारे",
-    "start_ms": 2182,
-    "end_ms": 2564
-  },
-  {
-    "word": "घड़े",
-    "start_ms": 2564,
-    "end_ms": 2914
-  },
-  {
-    "word": "खींचकर",
-    "start_ms": 2914,
-    "end_ms": 3455
-  },
-  {
-    "word": "बड़े",
-    "start_ms": 3455,
-    "end_ms": 3805
-  },
-  {
-    "word": "हॉल",
-    "start_ms": 3805,
-    "end_ms": 4043
-  },
-  {
-    "word": "में",
-    "start_ms": 4043,
-    "end_ms": 4345
-  },
-  {
-    "word": "ले",
-    "start_ms": 4345,
-    "end_ms": 4536
-  },
-  {
-    "word": "आया",
-    "start_ms": 4536,
-    "end_ms": 4807
+    "word": "तीर",
+    "start_ms": 1408,
+    "end_ms": 1676
   },
   {
     "word": "और",
-    "start_ms": 4807,
-    "end_ms": 4966
+    "start_ms": 1676,
+    "end_ms": 1833
   },
   {
-    "word": "अंडों",
-    "start_ms": 4966,
-    "end_ms": 5459
-  },
-  {
-    "word": "पर",
-    "start_ms": 5459,
-    "end_ms": 5618
-  },
-  {
-    "word": "बैठी",
-    "start_ms": 5618,
-    "end_ms": 5999
-  },
-  {
-    "word": "मुर्गी",
-    "start_ms": 5999,
-    "end_ms": 6389
+    "word": "भालों",
+    "start_ms": 1833,
+    "end_ms": 2321
   },
   {
     "word": "की",
-    "start_ms": 6389,
-    "end_ms": 6580
+    "start_ms": 2321,
+    "end_ms": 2510
   },
   {
-    "word": "तरह",
-    "start_ms": 6580,
-    "end_ms": 6818
+    "word": "बारिश",
+    "start_ms": 2510,
+    "end_ms": 2919
   },
   {
-    "word": "उनके",
-    "start_ms": 6818,
-    "end_ms": 7168
+    "word": "कर",
+    "start_ms": 2919,
+    "end_ms": 3076
   },
   {
-    "word": "बीच",
-    "start_ms": 7168,
-    "end_ms": 7439
+    "word": "दी,",
+    "start_ms": 3076,
+    "end_ms": 3285
   },
   {
-    "word": "सो",
-    "start_ms": 7439,
-    "end_ms": 7630
+    "word": "लेकिन",
+    "start_ms": 3285,
+    "end_ms": 3694
+  },
+  {
+    "word": "हर",
+    "start_ms": 3694,
+    "end_ms": 3852
+  },
+  {
+    "word": "वार",
+    "start_ms": 3852,
+    "end_ms": 4119
+  },
+  {
+    "word": "आपकी",
+    "start_ms": 4119,
+    "end_ms": 4466
+  },
+  {
+    "word": "ढाल",
+    "start_ms": 4466,
+    "end_ms": 4733
+  },
+  {
+    "word": "में",
+    "start_ms": 4733,
+    "end_ms": 5032
+  },
+  {
+    "word": "ही",
+    "start_ms": 5032,
+    "end_ms": 5221
+  },
+  {
+    "word": "आकर",
+    "start_ms": 5221,
+    "end_ms": 5457
+  },
+  {
+    "word": "अटक",
+    "start_ms": 5457,
+    "end_ms": 5693
   },
   {
     "word": "गया।",
-    "start_ms": 7630,
-    "end_ms": 7980
+    "start_ms": 5693,
+    "end_ms": 6040
   }
 ]

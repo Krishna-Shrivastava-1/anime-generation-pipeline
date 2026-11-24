@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "A narrow wooden bridge over a river with a Roman guard gripping his shield and spear.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "wood plank creak",
+      "fallback_tag": "wood creak",
+      "sound_type": "transient",
+      "trigger_word": "लकड़ी",
+      "target_ms": 7300,
+      "duration_sec": 1.0,
+      "volume": 0.4
+    }
+  ]
+}

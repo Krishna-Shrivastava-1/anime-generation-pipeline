@@ -1,47 +1,102 @@
 [
   {
-    "word": "फिर",
-    "start_ms": 100,
-    "end_ms": 310
+    "word": "रोम",
+    "start_ms": 120,
+    "end_ms": 429
   },
   {
-    "word": "उसने",
-    "start_ms": 310,
-    "end_ms": 640
+    "word": "ने",
+    "start_ms": 429,
+    "end_ms": 648
   },
   {
-    "word": "पहला",
-    "start_ms": 640,
-    "end_ms": 971
+    "word": "आपकी",
+    "start_ms": 648,
+    "end_ms": 1048
   },
   {
-    "word": "घड़ा",
-    "start_ms": 971,
-    "end_ms": 1302
+    "word": "मूर्ति",
+    "start_ms": 1048,
+    "end_ms": 1495
   },
   {
-    "word": "दीवार",
-    "start_ms": 1302,
-    "end_ms": 1737
+    "word": "बनवाई",
+    "start_ms": 1495,
+    "end_ms": 1986
   },
   {
-    "word": "से",
-    "start_ms": 1737,
-    "end_ms": 1918
+    "word": "और",
+    "start_ms": 1986,
+    "end_ms": 2168
   },
   {
-    "word": "नीचे",
-    "start_ms": 1918,
-    "end_ms": 2278
+    "word": "इनाम",
+    "start_ms": 2168,
+    "end_ms": 2569
   },
   {
-    "word": "धकेल",
-    "start_ms": 2278,
-    "end_ms": 2609
+    "word": "में",
+    "start_ms": 2569,
+    "end_ms": 2915
   },
   {
-    "word": "दिया।",
-    "start_ms": 2609,
-    "end_ms": 3000
+    "word": "उतनी",
+    "start_ms": 2915,
+    "end_ms": 3316
+  },
+  {
+    "word": "ज़मीन",
+    "start_ms": 3316,
+    "end_ms": 3808
+  },
+  {
+    "word": "दी,",
+    "start_ms": 3808,
+    "end_ms": 4049
+  },
+  {
+    "word": "जितनी",
+    "start_ms": 4049,
+    "end_ms": 4523
+  },
+  {
+    "word": "आप",
+    "start_ms": 4523,
+    "end_ms": 4705
+  },
+  {
+    "word": "एक",
+    "start_ms": 4705,
+    "end_ms": 4887
+  },
+  {
+    "word": "दिन",
+    "start_ms": 4887,
+    "end_ms": 5142
+  },
+  {
+    "word": "में",
+    "start_ms": 5142,
+    "end_ms": 5488
+  },
+  {
+    "word": "हल",
+    "start_ms": 5488,
+    "end_ms": 5670
+  },
+  {
+    "word": "चलाकर",
+    "start_ms": 5670,
+    "end_ms": 6162
+  },
+  {
+    "word": "नाप",
+    "start_ms": 6162,
+    "end_ms": 6471
+  },
+  {
+    "word": "सकें।",
+    "start_ms": 6471,
+    "end_ms": 6999
   }
 ]

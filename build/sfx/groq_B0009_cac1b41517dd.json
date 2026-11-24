@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "A wooden bridge collapses into a river while soldiers' footsteps run across the broken planks.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "wood break",
+      "fallback_tag": "wood splinter",
+      "sound_type": "transient",
+      "trigger_word": "धड़ाम",
+      "target_ms": 600,
+      "duration_sec": 1.2,
+      "volume": 0.45
+    },
+    {
+      "freesound_tag": "water splash",
+      "fallback_tag": "river splash",
+      "sound_type": "transient",
+      "trigger_word": "गिरा,",
+      "target_ms": 2700,
+      "duration_sec": 1.0,
+      "volume": 0.35
+    }
+  ]
+}

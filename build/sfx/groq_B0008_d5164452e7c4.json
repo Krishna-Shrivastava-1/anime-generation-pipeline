@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "A wooden shield with arrows and spears stuck in it as projectiles hit the wood.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "arrow wood impact",
+      "fallback_tag": "arrow hit wood",
+      "sound_type": "transient",
+      "trigger_word": "तीर",
+      "target_ms": 1408,
+      "duration_sec": 0.8,
+      "volume": 0.45
+    },
+    {
+      "freesound_tag": "spear wood thud",
+      "fallback_tag": "spear hit wood",
+      "sound_type": "transient",
+      "trigger_word": "भालों",
+      "target_ms": 1833,
+      "duration_sec": 0.9,
+      "volume": 0.45
+    }
+  ]
+}

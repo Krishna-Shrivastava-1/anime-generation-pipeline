@@ -1,137 +1,107 @@
 [
   {
-    "word": "एक",
-    "start_ms": 109,
-    "end_ms": 273
+    "word": "जब",
+    "start_ms": 0,
+    "end_ms": 174
   },
   {
-    "word": "सिपाही",
-    "start_ms": 273,
-    "end_ms": 815
+    "word": "पुल",
+    "start_ms": 174,
+    "end_ms": 418
   },
   {
-    "word": "ने",
-    "start_ms": 815,
-    "end_ms": 1011
+    "word": "गिरने",
+    "start_ms": 418,
+    "end_ms": 871
   },
   {
-    "word": "अंदाज़ा",
-    "start_ms": 1011,
-    "end_ms": 1684
+    "word": "वाला",
+    "start_ms": 871,
+    "end_ms": 1290
   },
   {
-    "word": "लगाने",
-    "start_ms": 1684,
-    "end_ms": 2159
+    "word": "था,",
+    "start_ms": 1290,
+    "end_ms": 1521
   },
   {
-    "word": "के",
-    "start_ms": 2159,
-    "end_ms": 2356
+    "word": "आपने",
+    "start_ms": 1521,
+    "end_ms": 1904
   },
   {
-    "word": "लिए",
-    "start_ms": 2356,
-    "end_ms": 2585
+    "word": "उन",
+    "start_ms": 1904,
+    "end_ms": 2079
   },
   {
-    "word": "एक",
-    "start_ms": 2585,
-    "end_ms": 2749
+    "word": "दोनों",
+    "start_ms": 2079,
+    "end_ms": 2619
   },
   {
-    "word": "घड़ा",
-    "start_ms": 2749,
-    "end_ms": 3110
+    "word": "को",
+    "start_ms": 2619,
+    "end_ms": 2829
   },
   {
-    "word": "हिलाना",
-    "start_ms": 3110,
-    "end_ms": 3651
+    "word": "भी",
+    "start_ms": 2829,
+    "end_ms": 3038
   },
   {
-    "word": "चाहा—",
-    "start_ms": 3651,
-    "end_ms": 4065
+    "word": "वापस",
+    "start_ms": 3038,
+    "end_ms": 3421
   },
   {
-    "word": "तो",
-    "start_ms": 4065,
-    "end_ms": 4262
+    "word": "भेज",
+    "start_ms": 3421,
+    "end_ms": 3718
   },
   {
-    "word": "राजा",
-    "start_ms": 4262,
-    "end_ms": 4656
+    "word": "दिया।",
+    "start_ms": 3718,
+    "end_ms": 4171
   },
   {
-    "word": "ने",
-    "start_ms": 4656,
-    "end_ms": 4852
+    "word": "अब",
+    "start_ms": 4171,
+    "end_ms": 4346
   },
   {
-    "word": "उसकी",
-    "start_ms": 4852,
-    "end_ms": 5213
+    "word": "उस",
+    "start_ms": 4346,
+    "end_ms": 4520
   },
   {
-    "word": "कलाई",
-    "start_ms": 5213,
-    "end_ms": 5574
+    "word": "पुल",
+    "start_ms": 4520,
+    "end_ms": 4764
   },
   {
-    "word": "इतनी",
-    "start_ms": 5574,
-    "end_ms": 5934
+    "word": "पर",
+    "start_ms": 4764,
+    "end_ms": 4938
   },
   {
-    "word": "कसकर",
-    "start_ms": 5934,
-    "end_ms": 6262
+    "word": "आप",
+    "start_ms": 4938,
+    "end_ms": 5113
   },
   {
-    "word": "जकड़",
-    "start_ms": 6262,
-    "end_ms": 6590
+    "word": "बिल्कुल",
+    "start_ms": 5113,
+    "end_ms": 5575
   },
   {
-    "word": "ली",
-    "start_ms": 6590,
-    "end_ms": 6787
+    "word": "अकेले",
+    "start_ms": 5575,
+    "end_ms": 6081
   },
   {
-    "word": "कि",
-    "start_ms": 6787,
-    "end_ms": 6935
-  },
-  {
-    "word": "उसके",
-    "start_ms": 6935,
-    "end_ms": 7295
-  },
-  {
-    "word": "सिर",
-    "start_ms": 7295,
-    "end_ms": 7525
-  },
-  {
-    "word": "से",
-    "start_ms": 7525,
-    "end_ms": 7722
-  },
-  {
-    "word": "हेलमेट",
-    "start_ms": 7722,
-    "end_ms": 8279
-  },
-  {
-    "word": "गिर",
-    "start_ms": 8279,
-    "end_ms": 8509
-  },
-  {
-    "word": "गया।",
-    "start_ms": 8509,
-    "end_ms": 8870
+    "word": "थे।",
+    "start_ms": 6081,
+    "end_ms": 6377
   }
 ]

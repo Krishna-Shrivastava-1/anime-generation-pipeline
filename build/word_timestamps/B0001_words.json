@@ -1,132 +1,117 @@
 [
   {
-    "word": "राजा",
+    "word": "कल्पना",
     "start_ms": 0,
-    "end_ms": 426
+    "end_ms": 430
   },
   {
-    "word": "ने",
-    "start_ms": 426,
-    "end_ms": 639
-  },
-  {
-    "word": "पूरे",
-    "start_ms": 639,
-    "end_ms": 1066
-  },
-  {
-    "word": "राज्य",
-    "start_ms": 1066,
-    "end_ms": 1431
-  },
-  {
-    "word": "के",
-    "start_ms": 1431,
-    "end_ms": 1644
-  },
-  {
-    "word": "मिट्टी",
-    "start_ms": 1644,
-    "end_ms": 2079
-  },
-  {
-    "word": "के",
-    "start_ms": 2079,
-    "end_ms": 2293
-  },
-  {
-    "word": "सारे",
-    "start_ms": 2293,
-    "end_ms": 2719
-  },
-  {
-    "word": "घड़े",
-    "start_ms": 2719,
-    "end_ms": 3111
-  },
-  {
-    "word": "खरीद",
-    "start_ms": 3111,
-    "end_ms": 3502
-  },
-  {
-    "word": "लिए—",
-    "start_ms": 3502,
-    "end_ms": 3773
-  },
-  {
-    "word": "पूरे",
-    "start_ms": 3773,
-    "end_ms": 4199
-  },
-  {
-    "word": "300",
-    "start_ms": 4199,
-    "end_ms": 4373
-  },
-  {
-    "word": "घड़े—",
-    "start_ms": 4373,
-    "end_ms": 4786
-  },
-  {
-    "word": "क्योंकि",
-    "start_ms": 4786,
-    "end_ms": 5346
-  },
-  {
-    "word": "10,000",
-    "start_ms": 5346,
-    "end_ms": 5657
-  },
-  {
-    "word": "सैनिकों",
-    "start_ms": 5657,
-    "end_ms": 6368
+    "word": "कीजिए—रोम",
+    "start_ms": 430,
+    "end_ms": 1177
   },
   {
     "word": "की",
-    "start_ms": 6368,
-    "end_ms": 6582
+    "start_ms": 1177,
+    "end_ms": 1379
+  },
+  {
+    "word": "पूरी",
+    "start_ms": 1379,
+    "end_ms": 1784
   },
   {
     "word": "सेना",
-    "start_ms": 6582,
-    "end_ms": 7008
+    "start_ms": 1784,
+    "end_ms": 2189
   },
   {
-    "word": "किले",
-    "start_ms": 7008,
-    "end_ms": 7382
+    "word": "हारकर",
+    "start_ms": 2189,
+    "end_ms": 2645
   },
   {
-    "word": "से",
-    "start_ms": 7382,
-    "end_ms": 7595
+    "word": "भाग",
+    "start_ms": 2645,
+    "end_ms": 2932
   },
   {
-    "word": "बस",
-    "start_ms": 7595,
-    "end_ms": 7773
+    "word": "रही",
+    "start_ms": 2932,
+    "end_ms": 3219
   },
   {
-    "word": "दो",
-    "start_ms": 7773,
-    "end_ms": 7986
+    "word": "है,",
+    "start_ms": 3219,
+    "end_ms": 3442
   },
   {
-    "word": "दिन",
-    "start_ms": 7986,
-    "end_ms": 8235
+    "word": "और",
+    "start_ms": 3442,
+    "end_ms": 3611
   },
   {
-    "word": "दूर",
-    "start_ms": 8235,
-    "end_ms": 8537
+    "word": "पूरे",
+    "start_ms": 3611,
+    "end_ms": 4016
   },
   {
-    "word": "थी।",
-    "start_ms": 8537,
-    "end_ms": 8839
+    "word": "शहर",
+    "start_ms": 4016,
+    "end_ms": 4269
+  },
+  {
+    "word": "को",
+    "start_ms": 4269,
+    "end_ms": 4472
+  },
+  {
+    "word": "बचाने",
+    "start_ms": 4472,
+    "end_ms": 4961
+  },
+  {
+    "word": "के",
+    "start_ms": 4961,
+    "end_ms": 5164
+  },
+  {
+    "word": "लिए",
+    "start_ms": 5164,
+    "end_ms": 5400
+  },
+  {
+    "word": "पुल",
+    "start_ms": 5400,
+    "end_ms": 5636
+  },
+  {
+    "word": "पर",
+    "start_ms": 5636,
+    "end_ms": 5805
+  },
+  {
+    "word": "सिर्फ़",
+    "start_ms": 5805,
+    "end_ms": 6185
+  },
+  {
+    "word": "आप",
+    "start_ms": 6185,
+    "end_ms": 6354
+  },
+  {
+    "word": "अकेले",
+    "start_ms": 6354,
+    "end_ms": 6843
+  },
+  {
+    "word": "खड़े",
+    "start_ms": 6843,
+    "end_ms": 7214
+  },
+  {
+    "word": "हैं।",
+    "start_ms": 7214,
+    "end_ms": 7620
   }
 ]

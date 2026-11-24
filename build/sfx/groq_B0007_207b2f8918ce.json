@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "Hero lifts a metal sword, likely moving his cloak, on a battlefield.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "metal sword unsheath",
+      "fallback_tag": "sword draw",
+      "sound_type": "transient",
+      "trigger_word": "आपने",
+      "target_ms": 0,
+      "duration_sec": 1.2,
+      "volume": 0.4
+    }
+  ]
+}

@@ -1,62 +1,87 @@
 [
   {
-    "word": "अगर",
+    "word": "तभी",
     "start_ms": 100,
-    "end_ms": 331
+    "end_ms": 372
   },
   {
-    "word": "ये",
-    "start_ms": 331,
-    "end_ms": 515
+    "word": "धड़ाम",
+    "start_ms": 372,
+    "end_ms": 804
   },
   {
-    "word": "घड़े",
-    "start_ms": 515,
-    "end_ms": 854
+    "word": "से",
+    "start_ms": 804,
+    "end_ms": 996
   },
   {
-    "word": "ठंडे",
-    "start_ms": 854,
-    "end_ms": 1224
+    "word": "पीछे",
+    "start_ms": 996,
+    "end_ms": 1380
   },
   {
-    "word": "पड़",
-    "start_ms": 1224,
-    "end_ms": 1455
+    "word": "का",
+    "start_ms": 1380,
+    "end_ms": 1571
   },
   {
-    "word": "गए,",
-    "start_ms": 1455,
-    "end_ms": 1629
+    "word": "पुल",
+    "start_ms": 1571,
+    "end_ms": 1795
   },
   {
-    "word": "तो",
-    "start_ms": 1629,
-    "end_ms": 1813
+    "word": "नदी",
+    "start_ms": 1795,
+    "end_ms": 2067
   },
   {
-    "word": "पूरा",
-    "start_ms": 1813,
-    "end_ms": 2183
+    "word": "में",
+    "start_ms": 2067,
+    "end_ms": 2371
   },
   {
-    "word": "प्लान",
-    "start_ms": 2183,
-    "end_ms": 2499
+    "word": "जा",
+    "start_ms": 2371,
+    "end_ms": 2563
   },
   {
-    "word": "फेल",
-    "start_ms": 2499,
-    "end_ms": 2761
+    "word": "गिरा,",
+    "start_ms": 2563,
+    "end_ms": 2919
   },
   {
-    "word": "हो",
-    "start_ms": 2761,
-    "end_ms": 2946
+    "word": "और",
+    "start_ms": 2919,
+    "end_ms": 3079
   },
   {
-    "word": "जाएगा।",
-    "start_ms": 2946,
-    "end_ms": 3470
+    "word": "दुश्मन",
+    "start_ms": 3079,
+    "end_ms": 3439
+  },
+  {
+    "word": "सेना",
+    "start_ms": 3439,
+    "end_ms": 3823
+  },
+  {
+    "word": "आपकी",
+    "start_ms": 3823,
+    "end_ms": 4175
+  },
+  {
+    "word": "तरफ़",
+    "start_ms": 4175,
+    "end_ms": 4496
+  },
+  {
+    "word": "दौड़",
+    "start_ms": 4496,
+    "end_ms": 4848
+  },
+  {
+    "word": "पड़ी।",
+    "start_ms": 4848,
+    "end_ms": 5280
   }
 ]

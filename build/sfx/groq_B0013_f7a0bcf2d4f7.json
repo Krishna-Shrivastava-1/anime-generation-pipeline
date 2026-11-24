@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "Historian in white toga writing with a quill on a parchment scroll, then raising an eyebrow and shrugging playfully.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "quill parchment scratch",
+      "fallback_tag": "pen on paper",
+      "sound_type": "transient",
+      "trigger_word": "लिखा",
+      "target_ms": 3000,
+      "duration_sec": 1.2,
+      "volume": 0.45
+    }
+  ]
+}

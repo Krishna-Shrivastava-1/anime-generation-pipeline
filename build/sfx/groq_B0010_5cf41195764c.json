@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "Hero in heavy metal armor jumps from a broken wooden bridge plank into a river, paddling across water toward a grassy bank.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "water splash",
+      "fallback_tag": "water splash",
+      "sound_type": "transient",
+      "trigger_word": "कूद",
+      "target_ms": 3200,
+      "duration_sec": 1.2,
+      "volume": 0.45
+    }
+  ]
+}

@@ -1,67 +1,117 @@
 [
   {
-    "word": "उस",
-    "start_ms": 120,
-    "end_ms": 274
+    "word": "पुल",
+    "start_ms": 0,
+    "end_ms": 230
   },
   {
-    "word": "ढकी",
-    "start_ms": 274,
-    "end_ms": 538
+    "word": "इतना",
+    "start_ms": 230,
+    "end_ms": 592
   },
   {
-    "word": "हुई",
-    "start_ms": 538,
-    "end_ms": 754
+    "word": "तंग",
+    "start_ms": 592,
+    "end_ms": 872
   },
   {
-    "word": "गाड़ी",
-    "start_ms": 754,
-    "end_ms": 1204
+    "word": "था",
+    "start_ms": 872,
+    "end_ms": 1069
   },
   {
-    "word": "में",
-    "start_ms": 1204,
-    "end_ms": 1498
+    "word": "कि",
+    "start_ms": 1069,
+    "end_ms": 1217
   },
   {
-    "word": "क्या",
-    "start_ms": 1498,
-    "end_ms": 1738
+    "word": "दुश्मन",
+    "start_ms": 1217,
+    "end_ms": 1588
   },
   {
-    "word": "था?",
-    "start_ms": 1738,
-    "end_ms": 1943
+    "word": "बस",
+    "start_ms": 1588,
+    "end_ms": 1752
   },
   {
-    "word": "सेनापति",
-    "start_ms": 1943,
-    "end_ms": 2532
+    "word": "कुछ",
+    "start_ms": 1752,
+    "end_ms": 1983
   },
   {
-    "word": "तक",
-    "start_ms": 2532,
-    "end_ms": 2686
+    "word": "ही",
+    "start_ms": 1983,
+    "end_ms": 2180
   },
   {
-    "word": "को",
-    "start_ms": 2686,
-    "end_ms": 2872
+    "word": "सैनिक",
+    "start_ms": 2180,
+    "end_ms": 2608
   },
   {
-    "word": "भनक",
-    "start_ms": 2872,
-    "end_ms": 3105
+    "word": "भेज",
+    "start_ms": 2608,
+    "end_ms": 2888
   },
   {
-    "word": "नहीं",
-    "start_ms": 3105,
-    "end_ms": 3476
+    "word": "पा",
+    "start_ms": 2888,
+    "end_ms": 3086
   },
   {
-    "word": "थी।",
-    "start_ms": 3476,
-    "end_ms": 3740
+    "word": "रहा",
+    "start_ms": 3086,
+    "end_ms": 3365
+  },
+  {
+    "word": "था,",
+    "start_ms": 3365,
+    "end_ms": 3583
+  },
+  {
+    "word": "और",
+    "start_ms": 3583,
+    "end_ms": 3748
+  },
+  {
+    "word": "पीछे",
+    "start_ms": 3748,
+    "end_ms": 4143
+  },
+  {
+    "word": "कुल्हाड़ियों",
+    "start_ms": 4143,
+    "end_ms": 5089
+  },
+  {
+    "word": "से",
+    "start_ms": 5089,
+    "end_ms": 5287
+  },
+  {
+    "word": "पुल",
+    "start_ms": 5287,
+    "end_ms": 5517
+  },
+  {
+    "word": "काटा",
+    "start_ms": 5517,
+    "end_ms": 5912
+  },
+  {
+    "word": "जा",
+    "start_ms": 5912,
+    "end_ms": 6110
+  },
+  {
+    "word": "रहा",
+    "start_ms": 6110,
+    "end_ms": 6390
+  },
+  {
+    "word": "था।",
+    "start_ms": 6390,
+    "end_ms": 6670
   }
 ]

@@ -2,136 +2,126 @@
   {
     "word": "फिर",
     "start_ms": 0,
-    "end_ms": 222
+    "end_ms": 262
   },
   {
-    "word": "राजा",
-    "start_ms": 222,
-    "end_ms": 603
+    "word": "आप",
+    "start_ms": 262,
+    "end_ms": 449
   },
   {
-    "word": "ने",
-    "start_ms": 603,
-    "end_ms": 794
+    "word": "अकेले",
+    "start_ms": 449,
+    "end_ms": 992
   },
   {
-    "word": "हर",
-    "start_ms": 794,
-    "end_ms": 952
+    "word": "पुल",
+    "start_ms": 992,
+    "end_ms": 1255
   },
   {
-    "word": "ढक्कन",
-    "start_ms": 952,
-    "end_ms": 1246
+    "word": "के",
+    "start_ms": 1255,
+    "end_ms": 1479
   },
   {
-    "word": "में",
-    "start_ms": 1246,
-    "end_ms": 1548
+    "word": "उस",
+    "start_ms": 1479,
+    "end_ms": 1667
   },
   {
-    "word": "नौ",
-    "start_ms": 1548,
-    "end_ms": 1738
+    "word": "पार",
+    "start_ms": 1667,
+    "end_ms": 1985
   },
   {
-    "word": "छोटे-छोटे",
-    "start_ms": 1738,
-    "end_ms": 2521
+    "word": "पहुँच",
+    "start_ms": 1985,
+    "end_ms": 2435
   },
   {
-    "word": "छेद",
-    "start_ms": 2521,
-    "end_ms": 2791
+    "word": "गए—पूरी",
+    "start_ms": 2435,
+    "end_ms": 3095
   },
   {
-    "word": "किए,",
-    "start_ms": 2791,
-    "end_ms": 3033
+    "word": "सेना",
+    "start_ms": 3095,
+    "end_ms": 3545
   },
   {
-    "word": "एक",
-    "start_ms": 3033,
-    "end_ms": 3192
+    "word": "के",
+    "start_ms": 3545,
+    "end_ms": 3769
   },
   {
-    "word": "कपड़े",
-    "start_ms": 3192,
-    "end_ms": 3620
+    "word": "सामने।",
+    "start_ms": 3769,
+    "end_ms": 4406
   },
   {
-    "word": "से",
-    "start_ms": 3620,
-    "end_ms": 3811
+    "word": "आपकी",
+    "start_ms": 4406,
+    "end_ms": 4818
   },
   {
-    "word": "ढकी",
-    "start_ms": 3811,
-    "end_ms": 4081
-  },
-  {
-    "word": "गाड़ी",
-    "start_ms": 4081,
-    "end_ms": 4541
-  },
-  {
-    "word": "से",
-    "start_ms": 4541,
-    "end_ms": 4732
-  },
-  {
-    "word": "हर",
-    "start_ms": 4732,
-    "end_ms": 4891
-  },
-  {
-    "word": "घड़े",
-    "start_ms": 4891,
+    "word": "हिम्मत",
+    "start_ms": 4818,
     "end_ms": 5240
   },
   {
-    "word": "को",
+    "word": "देख",
     "start_ms": 5240,
-    "end_ms": 5431
+    "end_ms": 5558
   },
   {
-    "word": "भरा,",
-    "start_ms": 5431,
-    "end_ms": 5721
+    "word": "शर्म",
+    "start_ms": 5558,
+    "end_ms": 5811
   },
   {
-    "word": "और",
-    "start_ms": 5721,
-    "end_ms": 5879
+    "word": "से",
+    "start_ms": 5811,
+    "end_ms": 6036
   },
   {
-    "word": "मोम",
-    "start_ms": 5879,
-    "end_ms": 6149
+    "word": "दो",
+    "start_ms": 6036,
+    "end_ms": 6261
   },
   {
-    "word": "पिघलाकर",
-    "start_ms": 6149,
-    "end_ms": 6721
+    "word": "अफसर",
+    "start_ms": 6261,
+    "end_ms": 6635
   },
   {
-    "word": "उन्हें",
-    "start_ms": 6721,
-    "end_ms": 7158
+    "word": "लौटकर",
+    "start_ms": 6635,
+    "end_ms": 7141
   },
   {
-    "word": "सील",
-    "start_ms": 7158,
-    "end_ms": 7428
+    "word": "आपके",
+    "start_ms": 7141,
+    "end_ms": 7553
   },
   {
-    "word": "कर",
-    "start_ms": 7428,
-    "end_ms": 7587
+    "word": "साथ",
+    "start_ms": 7553,
+    "end_ms": 7872
   },
   {
-    "word": "दिया।",
-    "start_ms": 7587,
-    "end_ms": 7999
+    "word": "खड़े",
+    "start_ms": 7872,
+    "end_ms": 8284
+  },
+  {
+    "word": "हो",
+    "start_ms": 8284,
+    "end_ms": 8509
+  },
+  {
+    "word": "गए।",
+    "start_ms": 8509,
+    "end_ms": 8790
   }
 ]

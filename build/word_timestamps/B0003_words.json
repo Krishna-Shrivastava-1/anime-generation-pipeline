@@ -1,127 +1,137 @@
 [
   {
-    "word": "सेनापति",
-    "start_ms": 160,
-    "end_ms": 865
+    "word": "अगर",
+    "start_ms": 0,
+    "end_ms": 268
   },
   {
-    "word": "ने",
-    "start_ms": 865,
-    "end_ms": 1088
+    "word": "दुश्मन",
+    "start_ms": 268,
+    "end_ms": 672
   },
   {
-    "word": "तंज",
-    "start_ms": 1088,
-    "end_ms": 1404
+    "word": "पुल",
+    "start_ms": 672,
+    "end_ms": 923
   },
   {
-    "word": "कसा—हम",
-    "start_ms": 1404,
-    "end_ms": 1928
+    "word": "पार",
+    "start_ms": 923,
+    "end_ms": 1228
   },
   {
-    "word": "उनसे",
-    "start_ms": 1928,
-    "end_ms": 2337
+    "word": "कर",
+    "start_ms": 1228,
+    "end_ms": 1407
   },
   {
-    "word": "लड़ने",
-    "start_ms": 2337,
-    "end_ms": 2838
+    "word": "गया,",
+    "start_ms": 1407,
+    "end_ms": 1734
   },
   {
-    "word": "वाले",
-    "start_ms": 2838,
-    "end_ms": 3284
+    "word": "तो",
+    "start_ms": 1734,
+    "end_ms": 1950
   },
   {
-    "word": "हैं",
-    "start_ms": 3284,
-    "end_ms": 3637
+    "word": "पूरा",
+    "start_ms": 1950,
+    "end_ms": 2380
   },
   {
-    "word": "या",
-    "start_ms": 3637,
-    "end_ms": 3860
+    "word": "रोम",
+    "start_ms": 2380,
+    "end_ms": 2685
   },
   {
-    "word": "उनका",
-    "start_ms": 3860,
-    "end_ms": 4268
+    "word": "तबाह",
+    "start_ms": 2685,
+    "end_ms": 3079
   },
   {
-    "word": "अचार",
-    "start_ms": 4268,
-    "end_ms": 4677
+    "word": "हो",
+    "start_ms": 3079,
+    "end_ms": 3294
   },
   {
-    "word": "डालेंगे?",
-    "start_ms": 4677,
-    "end_ms": 5499
+    "word": "जाएगा।",
+    "start_ms": 3294,
+    "end_ms": 3904
   },
   {
-    "word": "लेकिन",
-    "start_ms": 5499,
-    "end_ms": 5982
+    "word": "आपने",
+    "start_ms": 3904,
+    "end_ms": 4299
   },
   {
-    "word": "रसोइया",
-    "start_ms": 5982,
-    "end_ms": 6613
+    "word": "भागते",
+    "start_ms": 4299,
+    "end_ms": 4819
   },
   {
-    "word": "बड़ा",
-    "start_ms": 6613,
-    "end_ms": 7022
+    "word": "सिपाहियों",
+    "start_ms": 4819,
+    "end_ms": 5697
   },
   {
-    "word": "खुश",
-    "start_ms": 7022,
-    "end_ms": 7282
+    "word": "को",
+    "start_ms": 5697,
+    "end_ms": 5912
   },
   {
-    "word": "था—आखिरकार",
-    "start_ms": 7282,
-    "end_ms": 8196
+    "word": "पकड़ा",
+    "start_ms": 5912,
+    "end_ms": 6396
   },
   {
-    "word": "जैम",
-    "start_ms": 8196,
-    "end_ms": 8512
+    "word": "और",
+    "start_ms": 6396,
+    "end_ms": 6576
   },
   {
-    "word": "रखने",
-    "start_ms": 8512,
-    "end_ms": 8921
+    "word": "चिल्लाकर",
+    "start_ms": 6576,
+    "end_ms": 7194
   },
   {
-    "word": "के",
-    "start_ms": 8921,
-    "end_ms": 9143
+    "word": "कहा—मेरे",
+    "start_ms": 7194,
+    "end_ms": 7952
   },
   {
-    "word": "लिए",
-    "start_ms": 9143,
-    "end_ms": 9403
+    "word": "पीछे",
+    "start_ms": 7952,
+    "end_ms": 8382
   },
   {
-    "word": "इतने",
-    "start_ms": 9403,
-    "end_ms": 9812
+    "word": "से",
+    "start_ms": 8382,
+    "end_ms": 8598
   },
   {
-    "word": "घड़े",
-    "start_ms": 9812,
-    "end_ms": 10221
+    "word": "ये",
+    "start_ms": 8598,
+    "end_ms": 8813
   },
   {
-    "word": "मिल",
-    "start_ms": 10221,
-    "end_ms": 10481
+    "word": "पुल",
+    "start_ms": 8813,
+    "end_ms": 9064
   },
   {
-    "word": "गए!",
-    "start_ms": 10481,
-    "end_ms": 10690
+    "word": "काटकर",
+    "start_ms": 9064,
+    "end_ms": 9548
+  },
+  {
+    "word": "गिरा",
+    "start_ms": 9548,
+    "end_ms": 9924
+  },
+  {
+    "word": "दो!",
+    "start_ms": 9924,
+    "end_ms": 10162
   }
 ]

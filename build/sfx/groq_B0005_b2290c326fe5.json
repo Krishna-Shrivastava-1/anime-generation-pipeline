@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "Wooden bridge being struck by axes, producing splintering wood chips and metal shield contacts.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "axe swing wood",
+      "fallback_tag": "axe chop",
+      "sound_type": "transient",
+      "trigger_word": "कुल्हाड़ियों",
+      "target_ms": 4143,
+      "duration_sec": 1.0,
+      "volume": 0.45
+    },
+    {
+      "freesound_tag": "wood chip fall",
+      "fallback_tag": "wood splinter",
+      "sound_type": "transient",
+      "trigger_word": "काटा",
+      "target_ms": 5517,
+      "duration_sec": 0.8,
+      "volume": 0.42
+    }
+  ]
+}

@@ -1,132 +1,97 @@
 [
   {
-    "word": "राजा",
-    "start_ms": 0,
-    "end_ms": 411
+    "word": "चारों",
+    "start_ms": 109,
+    "end_ms": 570
   },
   {
-    "word": "के",
-    "start_ms": 411,
-    "end_ms": 617
+    "word": "तरफ़",
+    "start_ms": 570,
+    "end_ms": 867
   },
   {
-    "word": "दरबारी",
-    "start_ms": 617,
-    "end_ms": 1200
+    "word": "पानी",
+    "start_ms": 867,
+    "end_ms": 1223
   },
   {
-    "word": "डर",
-    "start_ms": 1200,
-    "end_ms": 1372
+    "word": "में",
+    "start_ms": 1223,
+    "end_ms": 1505
   },
   {
-    "word": "से",
-    "start_ms": 1372,
-    "end_ms": 1578
+    "word": "तीर",
+    "start_ms": 1505,
+    "end_ms": 1757
   },
   {
-    "word": "चिल्ला",
-    "start_ms": 1578,
-    "end_ms": 1998
+    "word": "और",
+    "start_ms": 1757,
+    "end_ms": 1906
   },
   {
-    "word": "रहे",
-    "start_ms": 1998,
-    "end_ms": 2290
+    "word": "भाले",
+    "start_ms": 1906,
+    "end_ms": 2262
   },
   {
-    "word": "थे,",
-    "start_ms": 2290,
-    "end_ms": 2517
+    "word": "गिरते",
+    "start_ms": 2262,
+    "end_ms": 2648
   },
   {
-    "word": "लेकिन",
-    "start_ms": 2517,
-    "end_ms": 2963
+    "word": "रहे,",
+    "start_ms": 2648,
+    "end_ms": 2919
   },
   {
-    "word": "राजा",
-    "start_ms": 2963,
-    "end_ms": 3375
+    "word": "फिर",
+    "start_ms": 2919,
+    "end_ms": 3127
   },
   {
-    "word": "शांत",
-    "start_ms": 3375,
-    "end_ms": 3786
+    "word": "भी",
+    "start_ms": 3127,
+    "end_ms": 3305
   },
   {
-    "word": "खड़ा",
-    "start_ms": 3786,
-    "end_ms": 4164
+    "word": "आप",
+    "start_ms": 3305,
+    "end_ms": 3454
   },
   {
-    "word": "रहा,",
-    "start_ms": 4164,
-    "end_ms": 4477
+    "word": "ज़िंदा",
+    "start_ms": 3454,
+    "end_ms": 3943
   },
   {
-    "word": "जब",
-    "start_ms": 4477,
-    "end_ms": 4648
+    "word": "दूसरे",
+    "start_ms": 3943,
+    "end_ms": 4374
   },
   {
-    "word": "तक",
-    "start_ms": 4648,
-    "end_ms": 4820
+    "word": "किनारे",
+    "start_ms": 4374,
+    "end_ms": 4864
   },
   {
-    "word": "दुश्मनों",
-    "start_ms": 4820,
-    "end_ms": 5446
+    "word": "पर",
+    "start_ms": 4864,
+    "end_ms": 5012
   },
   {
-    "word": "के",
-    "start_ms": 5446,
-    "end_ms": 5652
+    "word": "पहुँच",
+    "start_ms": 5012,
+    "end_ms": 5369
   },
   {
-    "word": "हेलमेट",
-    "start_ms": 5652,
-    "end_ms": 6235
-  },
-  {
-    "word": "हाथ",
-    "start_ms": 6235,
-    "end_ms": 6527
-  },
-  {
-    "word": "बढ़ाकर",
-    "start_ms": 6527,
-    "end_ms": 7075
-  },
-  {
-    "word": "छूने",
-    "start_ms": 7075,
-    "end_ms": 7487
-  },
-  {
-    "word": "जितने",
-    "start_ms": 7487,
-    "end_ms": 7933
-  },
-  {
-    "word": "करीब",
-    "start_ms": 7933,
-    "end_ms": 8311
-  },
-  {
-    "word": "ना",
-    "start_ms": 8311,
-    "end_ms": 8516
-  },
-  {
-    "word": "आ",
-    "start_ms": 8516,
-    "end_ms": 8602
+    "word": "ही",
+    "start_ms": 5369,
+    "end_ms": 5547
   },
   {
     "word": "गए।",
-    "start_ms": 8602,
-    "end_ms": 8860
+    "start_ms": 5547,
+    "end_ms": 5770
   }
 ]

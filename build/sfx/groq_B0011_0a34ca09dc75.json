@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "A cartoon hero splashes in water while arrows and spears miss, then is pulled onto a grassy bank.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "water splash",
+      "fallback_tag": "water splash",
+      "sound_type": "transient",
+      "trigger_word": "पानी",
+      "target_ms": 900,
+      "duration_sec": 1.0,
+      "volume": 0.4
+    }
+  ]
+}

@@ -1,97 +1,162 @@
 [
   {
-    "word": "उसके",
-    "start_ms": 109,
-    "end_ms": 518
+    "word": "508",
+    "start_ms": 120,
+    "end_ms": 308
   },
   {
-    "word": "शूरवीर",
-    "start_ms": 518,
-    "end_ms": 1149
-  },
-  {
-    "word": "जंग",
-    "start_ms": 1149,
-    "end_ms": 1465
-  },
-  {
-    "word": "के",
-    "start_ms": 1465,
-    "end_ms": 1687
-  },
-  {
-    "word": "लिए",
-    "start_ms": 1687,
-    "end_ms": 1947
-  },
-  {
-    "word": "अपना",
-    "start_ms": 1947,
-    "end_ms": 2356
-  },
-  {
-    "word": "कवच",
-    "start_ms": 2356,
-    "end_ms": 2634
-  },
-  {
-    "word": "पहन",
-    "start_ms": 2634,
-    "end_ms": 2912
-  },
-  {
-    "word": "रहे",
-    "start_ms": 2912,
-    "end_ms": 3228
-  },
-  {
-    "word": "थे,",
-    "start_ms": 3228,
-    "end_ms": 3474
-  },
-  {
-    "word": "और",
-    "start_ms": 3474,
-    "end_ms": 3660
-  },
-  {
-    "word": "राजा",
-    "start_ms": 3660,
-    "end_ms": 4105
-  },
-  {
-    "word": "आँगन",
-    "start_ms": 4105,
-    "end_ms": 4476
+    "word": "BC",
+    "start_ms": 308,
+    "end_ms": 433
   },
   {
     "word": "में",
-    "start_ms": 4476,
-    "end_ms": 4829
+    "start_ms": 433,
+    "end_ms": 799
   },
   {
-    "word": "बैठकर",
-    "start_ms": 4829,
-    "end_ms": 5330
+    "word": "एट्रस्कन",
+    "start_ms": 799,
+    "end_ms": 1320
   },
   {
-    "word": "घड़े",
-    "start_ms": 5330,
-    "end_ms": 5739
+    "word": "राजा",
+    "start_ms": 1320,
+    "end_ms": 1783
   },
   {
-    "word": "गिन",
-    "start_ms": 5739,
-    "end_ms": 5998
+    "word": "ने",
+    "start_ms": 1783,
+    "end_ms": 2014
   },
   {
-    "word": "रहा",
-    "start_ms": 5998,
-    "end_ms": 6314
+    "word": "रोम",
+    "start_ms": 2014,
+    "end_ms": 2342
   },
   {
-    "word": "था।",
-    "start_ms": 6314,
-    "end_ms": 6629
+    "word": "की",
+    "start_ms": 2342,
+    "end_ms": 2573
+  },
+  {
+    "word": "सेना",
+    "start_ms": 2573,
+    "end_ms": 3036
+  },
+  {
+    "word": "को",
+    "start_ms": 3036,
+    "end_ms": 3267
+  },
+  {
+    "word": "बुरी",
+    "start_ms": 3267,
+    "end_ms": 3672
+  },
+  {
+    "word": "तरह",
+    "start_ms": 3672,
+    "end_ms": 3962
+  },
+  {
+    "word": "हरा",
+    "start_ms": 3962,
+    "end_ms": 4289
+  },
+  {
+    "word": "दिया।",
+    "start_ms": 4289,
+    "end_ms": 4791
+  },
+  {
+    "word": "शहर",
+    "start_ms": 4791,
+    "end_ms": 5080
+  },
+  {
+    "word": "में",
+    "start_ms": 5080,
+    "end_ms": 5446
+  },
+  {
+    "word": "घुसने",
+    "start_ms": 5446,
+    "end_ms": 5948
+  },
+  {
+    "word": "का",
+    "start_ms": 5948,
+    "end_ms": 6179
+  },
+  {
+    "word": "सिर्फ़",
+    "start_ms": 6179,
+    "end_ms": 6613
+  },
+  {
+    "word": "एक",
+    "start_ms": 6613,
+    "end_ms": 6806
+  },
+  {
+    "word": "पतला",
+    "start_ms": 6806,
+    "end_ms": 7230
+  },
+  {
+    "word": "लकड़ी",
+    "start_ms": 7230,
+    "end_ms": 7751
+  },
+  {
+    "word": "का",
+    "start_ms": 7751,
+    "end_ms": 7982
+  },
+  {
+    "word": "पुल",
+    "start_ms": 7982,
+    "end_ms": 8252
+  },
+  {
+    "word": "था,",
+    "start_ms": 8252,
+    "end_ms": 8507
+  },
+  {
+    "word": "और",
+    "start_ms": 8507,
+    "end_ms": 8700
+  },
+  {
+    "word": "उस",
+    "start_ms": 8700,
+    "end_ms": 8893
+  },
+  {
+    "word": "पर",
+    "start_ms": 8893,
+    "end_ms": 9086
+  },
+  {
+    "word": "सिर्फ़",
+    "start_ms": 9086,
+    "end_ms": 9520
+  },
+  {
+    "word": "आप",
+    "start_ms": 9520,
+    "end_ms": 9713
+  },
+  {
+    "word": "तैनात",
+    "start_ms": 9713,
+    "end_ms": 10272
+  },
+  {
+    "word": "थे।",
+    "start_ms": 10272,
+    "end_ms": 10599
   }
 ]

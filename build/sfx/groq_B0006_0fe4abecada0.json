@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "Wooden bridge planks cracking and wobbling as the guard stands alone on the creaking bridge.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "wood creak",
+      "fallback_tag": "wood creak",
+      "sound_type": "sustained",
+      "trigger_word": "गिरने",
+      "target_ms": 418,
+      "duration_sec": 1.2,
+      "volume": 0.42
+    }
+  ]
+}

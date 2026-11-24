@@ -1896,14 +1896,19 @@ def load_env_vars():
 
 def run_cmd(command):
     result = subprocess.run(
-        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
     )
     if result.returncode != 0:
         raise RuntimeError(
             "\nFFmpeg command failed:\n"
             + " ".join(map(str, command))
             + "\n\n"
-            + result.stderr[-4000:]
+            + (result.stderr or "")[-4000:]
         )
     return result
 

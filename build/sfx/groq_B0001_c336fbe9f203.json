@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "A young man reaches for his smartphone on a wooden nightstand while a dim server farm corridor glows with crimson rack lights.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "smartphone tap",
+      "fallback_tag": "phone click",
+      "sound_type": "transient",
+      "trigger_word": "खोलें,",
+      "target_ms": 3489,
+      "duration_sec": 0.3,
+      "volume": 0.45
+    }
+  ]
+}

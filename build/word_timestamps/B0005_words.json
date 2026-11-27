@@ -1,117 +1,177 @@
 [
   {
-    "word": "पुल",
-    "start_ms": 0,
-    "end_ms": 230
+    "word": "बैन",
+    "start_ms": 10,
+    "end_ms": 292
   },
   {
-    "word": "इतना",
-    "start_ms": 230,
-    "end_ms": 592
-  },
-  {
-    "word": "तंग",
-    "start_ms": 592,
-    "end_ms": 872
-  },
-  {
-    "word": "था",
-    "start_ms": 872,
-    "end_ms": 1069
-  },
-  {
-    "word": "कि",
-    "start_ms": 1069,
-    "end_ms": 1217
-  },
-  {
-    "word": "दुश्मन",
-    "start_ms": 1217,
-    "end_ms": 1588
-  },
-  {
-    "word": "बस",
-    "start_ms": 1588,
-    "end_ms": 1752
-  },
-  {
-    "word": "कुछ",
-    "start_ms": 1752,
-    "end_ms": 1983
+    "word": "लगते",
+    "start_ms": 292,
+    "end_ms": 658
   },
   {
     "word": "ही",
-    "start_ms": 1983,
-    "end_ms": 2180
+    "start_ms": 658,
+    "end_ms": 857
   },
   {
-    "word": "सैनिक",
-    "start_ms": 2180,
-    "end_ms": 2608
+    "word": "वीडियो",
+    "start_ms": 857,
+    "end_ms": 1405
   },
   {
-    "word": "भेज",
-    "start_ms": 2608,
-    "end_ms": 2888
+    "word": "बनाने",
+    "start_ms": 1405,
+    "end_ms": 1887
   },
   {
-    "word": "पा",
-    "start_ms": 2888,
-    "end_ms": 3086
+    "word": "का",
+    "start_ms": 1887,
+    "end_ms": 2087
   },
   {
-    "word": "रहा",
-    "start_ms": 3086,
-    "end_ms": 3365
+    "word": "खर्च",
+    "start_ms": 2087,
+    "end_ms": 2311
   },
   {
-    "word": "था,",
-    "start_ms": 3365,
-    "end_ms": 3583
+    "word": "आसमान",
+    "start_ms": 2311,
+    "end_ms": 2760
   },
   {
-    "word": "और",
-    "start_ms": 3583,
-    "end_ms": 3748
+    "word": "छूने",
+    "start_ms": 2760,
+    "end_ms": 3159
   },
   {
-    "word": "पीछे",
-    "start_ms": 3748,
-    "end_ms": 4143
+    "word": "लगेगा।",
+    "start_ms": 3159,
+    "end_ms": 3724
   },
   {
-    "word": "कुल्हाड़ियों",
-    "start_ms": 4143,
-    "end_ms": 5089
+    "word": "चमकदार",
+    "start_ms": 3724,
+    "end_ms": 4256
+  },
+  {
+    "word": "विजुअल्स",
+    "start_ms": 4256,
+    "end_ms": 4779
+  },
+  {
+    "word": "पर",
+    "start_ms": 4779,
+    "end_ms": 4945
+  },
+  {
+    "word": "फिर",
+    "start_ms": 4945,
+    "end_ms": 5178
   },
   {
     "word": "से",
-    "start_ms": 5089,
-    "end_ms": 5287
+    "start_ms": 5178,
+    "end_ms": 5377
   },
   {
-    "word": "पुल",
-    "start_ms": 5287,
-    "end_ms": 5517
+    "word": "बड़े",
+    "start_ms": 5377,
+    "end_ms": 5743
   },
   {
-    "word": "काटा",
-    "start_ms": 5517,
-    "end_ms": 5912
+    "word": "स्टूडियोज",
+    "start_ms": 5743,
+    "end_ms": 6433
   },
   {
-    "word": "जा",
-    "start_ms": 5912,
-    "end_ms": 6110
+    "word": "का",
+    "start_ms": 6433,
+    "end_ms": 6632
   },
   {
-    "word": "रहा",
-    "start_ms": 6110,
-    "end_ms": 6390
+    "word": "कब्जा",
+    "start_ms": 6632,
+    "end_ms": 6973
   },
   {
-    "word": "था।",
-    "start_ms": 6390,
-    "end_ms": 6670
+    "word": "होगा,",
+    "start_ms": 6973,
+    "end_ms": 7392
+  },
+  {
+    "word": "जबकि",
+    "start_ms": 7392,
+    "end_ms": 7708
+  },
+  {
+    "word": "आम",
+    "start_ms": 7708,
+    "end_ms": 7874
+  },
+  {
+    "word": "क्रिएटर्स",
+    "start_ms": 7874,
+    "end_ms": 8389
+  },
+  {
+    "word": "के",
+    "start_ms": 8389,
+    "end_ms": 8589
+  },
+  {
+    "word": "हाथ",
+    "start_ms": 8589,
+    "end_ms": 8871
+  },
+  {
+    "word": "में",
+    "start_ms": 8871,
+    "end_ms": 9187
+  },
+  {
+    "word": "बचेगा",
+    "start_ms": 9187,
+    "end_ms": 9669
+  },
+  {
+    "word": "सिर्फ",
+    "start_ms": 9669,
+    "end_ms": 9960
+  },
+  {
+    "word": "एक",
+    "start_ms": 9960,
+    "end_ms": 10126
+  },
+  {
+    "word": "साधारण",
+    "start_ms": 10126,
+    "end_ms": 10691
+  },
+  {
+    "word": "फोन",
+    "start_ms": 10691,
+    "end_ms": 10974
+  },
+  {
+    "word": "और",
+    "start_ms": 10974,
+    "end_ms": 11140
+  },
+  {
+    "word": "हिलता",
+    "start_ms": 11140,
+    "end_ms": 11572
+  },
+  {
+    "word": "हुआ",
+    "start_ms": 11572,
+    "end_ms": 11804
+  },
+  {
+    "word": "कैमरा।",
+    "start_ms": 11804,
+    "end_ms": 12370
   }
 ]

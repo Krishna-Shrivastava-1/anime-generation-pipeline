@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "A dim bedroom with a wooden nightstand, a smartphone being tapped, and a distant server‑farm corridor with humming racks.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "smartphone tap",
+      "fallback_tag": "glass tap",
+      "sound_type": "transient",
+      "trigger_word": "ऐप",
+      "target_ms": 4200,
+      "duration_sec": 0.6,
+      "volume": 0.4
+    },
+    {
+      "freesound_tag": "server rack hum",
+      "fallback_tag": "data center hum",
+      "sound_type": "ambient",
+      "trigger_word": "प्लेटफॉर्म",
+      "target_ms": 8800,
+      "duration_sec": 2.0,
+      "volume": 0.35
+    }
+  ]
+}

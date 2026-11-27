@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "A projector casts light onto a white screen, smoke drifts, a potter works on clay cups on a wooden table, and a creator sits at a desk surrounded by tangled cables.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "ceramic cup clink",
+      "fallback_tag": "cup impact",
+      "sound_type": "transient",
+      "trigger_word": "छोटे",
+      "target_ms": 6200,
+      "duration_sec": 1.2,
+      "volume": 0.42
+    },
+    {
+      "freesound_tag": "cable rustle",
+      "fallback_tag": "cable movement",
+      "sound_type": "ambient",
+      "trigger_word": "तंग",
+      "target_ms": 8500,
+      "duration_sec": 1.0,
+      "volume": 0.35
+    }
+  ]
+}

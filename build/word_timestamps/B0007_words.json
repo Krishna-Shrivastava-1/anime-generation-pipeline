@@ -1,72 +1,152 @@
 [
   {
-    "word": "आपने",
+    "word": "लेकिन",
     "start_ms": 0,
-    "end_ms": 306
+    "end_ms": 410
   },
   {
-    "word": "दुश्मनों",
-    "start_ms": 306,
-    "end_ms": 814
+    "word": "इसी",
+    "start_ms": 410,
+    "end_ms": 678
   },
   {
-    "word": "को",
-    "start_ms": 814,
-    "end_ms": 981
+    "word": "अफरा",
+    "start_ms": 678,
+    "end_ms": 1026
   },
   {
-    "word": "ललकारा—तुम",
-    "start_ms": 981,
-    "end_ms": 1667
-  },
-  {
-    "word": "राजाओं",
-    "start_ms": 1667,
-    "end_ms": 2169
+    "word": "तफरी",
+    "start_ms": 1026,
+    "end_ms": 1373
   },
   {
     "word": "के",
-    "start_ms": 2169,
-    "end_ms": 2336
+    "start_ms": 1373,
+    "end_ms": 1563
   },
   {
-    "word": "गुलाम",
-    "start_ms": 2336,
-    "end_ms": 2698
+    "word": "बीच",
+    "start_ms": 1563,
+    "end_ms": 1831
   },
   {
-    "word": "हो,",
-    "start_ms": 2698,
-    "end_ms": 2882
-  },
-  {
-    "word": "दूसरों",
-    "start_ms": 2882,
-    "end_ms": 3384
+    "word": "दर्शकों",
+    "start_ms": 1831,
+    "end_ms": 2344
   },
   {
     "word": "की",
-    "start_ms": 3384,
-    "end_ms": 3551
+    "start_ms": 2344,
+    "end_ms": 2534
   },
   {
-    "word": "आज़ादी",
-    "start_ms": 3551,
-    "end_ms": 4024
+    "word": "पसंद",
+    "start_ms": 2534,
+    "end_ms": 2881
   },
   {
-    "word": "छीनने",
-    "start_ms": 4024,
-    "end_ms": 4428
+    "word": "अचानक",
+    "start_ms": 2881,
+    "end_ms": 3308
   },
   {
-    "word": "चले",
-    "start_ms": 4428,
-    "end_ms": 4665
+    "word": "करवट",
+    "start_ms": 3308,
+    "end_ms": 3623
   },
   {
-    "word": "हो!",
-    "start_ms": 4665,
-    "end_ms": 4849
+    "word": "लेगी।",
+    "start_ms": 3623,
+    "end_ms": 4081
+  },
+  {
+    "word": "कमजोर",
+    "start_ms": 4081,
+    "end_ms": 4508
+  },
+  {
+    "word": "लाइटिंग,",
+    "start_ms": 4508,
+    "end_ms": 5127
+  },
+  {
+    "word": "अटकी",
+    "start_ms": 5127,
+    "end_ms": 5475
+  },
+  {
+    "word": "आवाज",
+    "start_ms": 5475,
+    "end_ms": 5822
+  },
+  {
+    "word": "और",
+    "start_ms": 5822,
+    "end_ms": 5980
+  },
+  {
+    "word": "छोटी",
+    "start_ms": 5980,
+    "end_ms": 6359
+  },
+  {
+    "word": "गलतियां—",
+    "start_ms": 6359,
+    "end_ms": 6979
+  },
+  {
+    "word": "यही",
+    "start_ms": 6979,
+    "end_ms": 7247
+  },
+  {
+    "word": "कमियां",
+    "start_ms": 7247,
+    "end_ms": 7768
+  },
+  {
+    "word": "असली",
+    "start_ms": 7768,
+    "end_ms": 8116
+  },
+  {
+    "word": "इंसान",
+    "start_ms": 8116,
+    "end_ms": 8574
+  },
+  {
+    "word": "होने",
+    "start_ms": 8574,
+    "end_ms": 8953
+  },
+  {
+    "word": "का",
+    "start_ms": 8953,
+    "end_ms": 9142
+  },
+  {
+    "word": "सबसे",
+    "start_ms": 9142,
+    "end_ms": 9489
+  },
+  {
+    "word": "बड़ा",
+    "start_ms": 9489,
+    "end_ms": 9837
+  },
+  {
+    "word": "सबूत",
+    "start_ms": 9837,
+    "end_ms": 10184
+  },
+  {
+    "word": "बन",
+    "start_ms": 10184,
+    "end_ms": 10342
+  },
+  {
+    "word": "जाएंगी।",
+    "start_ms": 10342,
+    "end_ms": 10990
   }
 ]

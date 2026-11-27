@@ -1,340 +1,340 @@
 {
-  "title": "जिस दिन हर प्लेटफॉर्म ने AI पर ताला लगा दिया",
-  "topic": "Conversational, gripping Hindi YouTube Short under 90 seconds exploring the realistic chain reaction if every social and video platform banned AI-generated images and videos overnight.",
+  "title": "कांच के कमरे में कत्ल: 3 संदिग्ध और एक जानलेवा झूठ",
+  "topic": "Interactive, suspenseful Hindi murder mystery YouTube Short under 2 minutes with 3 suspects, distinct alibis, a clever red herring, and a subtle logical contradiction for viewers to solve in the comments.",
   "aspect_ratio": "9:16",
-  "target_minutes": 1.4,
+  "target_minutes": 1.6,
   "total_beats": 8,
   "total_clips": 32,
   "global_style": {
-    "art_style": "Vertical 9:16 photorealistic cinematic modern tech-thriller film still, shot on 35mm anamorphic lens, shallow depth of field, moody practical indoor tungsten lighting contrasted with cool twilight blues, subtle atmospheric dust and haze, authentic contemporary Indian and global everyday environments, natural film grain, rich editorial color grading. Zero text, logos, or watermarks.",
-    "negative_prompt": "cartoon, 2D illustration, anime, chibi, exaggerated CGI, sci-fi spaceships, cyberpunk clichés, readable text, letters, numbers, UI overlays, logos, watermarks, blurry, distorted faces, extra fingers"
+    "art_style": "Vertical 9:16 photorealistic cinematic murder-mystery neo-noir film still, shot on 35mm anamorphic lens, shallow depth of field, warm tungsten indoor mansion lighting contrasted with cold stormy monsoon twilight blues, atmospheric mist and rain droplets on glass, authentic modern Indian luxury hill-estate architecture, subtle film grain, rich dramatic color grading. Zero text, logos, or watermarks.",
+    "negative_prompt": "cartoon, 2D illustration, anime, chibi, 3D render, CGI look, gore, overly graphic wounds, readable text, letters, numbers, logos, watermarks, blurry, distorted faces, extra fingers"
   },
   "beats": [
     {
       "beat_id": "B0001",
-      "narration": "कल्पना कीजिए— कल सुबह आपकी आंखें खुलें, आप अपना पसंदीदा ऐप खोलें, और आपकी आधी फीड अचानक गायब मिले— क्योंकि रातोंरात हर प्लेटफॉर्म ने एआई पर ताला लगा दिया।",
-      "word_count": 29,
-      "estimated_duration": 9.6,
+      "narration": "एक बंद ग्लास हाउस, टूटी हुई घड़ी, और करोड़पति राघव सिंघानिया की खून से सनी लाश— लेकिन असली कातिल को पकड़ना आसान नहीं होगा।",
+      "word_count": 24,
+      "estimated_duration": 8.7,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0001",
-          "spoken_text": "कल्पना कीजिए— कल सुबह आपकी आंखें खुलें,",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.3,
-          "scene_context": "Close-up of a young Indian man waking up in a dimly lit bedroom as cool morning light slips through curtains.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, close-up of a sleepy young Indian man opening his eyes on a rumpled pillow at dawn, soft cool blue morning light filtering through bedroom curtains, natural skin texture, shallow depth of field, 35mm film grain, zero text, logos, or watermarks."
+          "spoken_text": "एक बंद ग्लास हाउस,",
+          "spoken_word_count": 4,
+          "estimated_spoken_duration": 1.6,
+          "scene_context": "Eerie exterior shot of an isolated glass conservatory glowing dimly in a dark misty estate garden at night.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic neo-noir film still, exterior shot of a sleek glass-walled garden conservatory glowing faintly with warm amber light inside a dark misty hill-station estate at night, heavy dark clouds overhead, dramatic silhouettes of pine trees, 35mm anamorphic lens, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0002",
-          "spoken_text": "आप अपना पसंदीदा ऐप खोलें,",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 1.8,
-          "scene_context": "Tight shot of his hand reaching for a glowing smartphone on a wooden nightstand.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, close-up of a hand picking up a sleek smartphone from a wooden bedside table in a shadowy room, soft screen light reflecting on fingers, warm desk lamp out of focus in background, 35mm lens, zero text, logos, or watermarks."
+          "spoken_text": "टूटी हुई घड़ी,",
+          "spoken_word_count": 3,
+          "estimated_spoken_duration": 1.4,
+          "scene_context": "Macro close-up of a shattered luxury silver wristwatch lying on dark marble tiles.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic thriller still, extreme macro close-up of a luxury metallic silver wristwatch with cracked shattered glass lying on dark polished stone tiles, soft warm lamp light reflecting off broken glass shards, shallow depth of field, 35mm film grain, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0003",
-          "spoken_text": "और आपकी आधी फीड अचानक गायब मिले—",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.3,
-          "scene_context": "Over-the-shoulder shot of the smartphone screen showing only blank gray placeholder boxes instead of videos.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, over-the-shoulder close-up looking at a glowing smartphone held in dim morning light, screen displaying empty featureless gray rectangular tiles with no images or letters, shocked expression faintly visible in profile, zero text, logos, or watermarks."
+          "spoken_text": "और करोड़पति राघव सिंघानिया की खून से सनी लाश—",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 3.0,
+          "scene_context": "Dramatic low-angle silhouette inside the glass library showing a wealthy man's motionless body beside an overturned leather chair.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic mystery film still, dramatic low-angle shot inside a dark wooden library with tall glass walls, motionless silhouette of an older wealthy man in a tailored suit lying beside an overturned armchair near a dark velvet rug, moody chiaroscuro lighting, tasteful suspenseful framing without graphic gore, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0004",
-          "spoken_text": "क्योंकि रातोंरात हर प्लेटफॉर्म ने एआई पर ताला लगा दिया।",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Symmetrical corridor inside a colossal dark server farm with rows of rack lights turning stark crimson.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic tech-thriller still, dramatic perspective down a vast dark data center hallway, towering glass server racks with blinking amber and crimson indicator lights reflecting on polished steel floors, atmospheric haze, 35mm anamorphic flare, zero text, logos, or watermarks."
+          "spoken_text": "लेकिन असली कातिल को पकड़ना आसान नहीं होगा।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.7,
+          "scene_context": "Tight shadowy shot of three tense figures standing partly obscured behind frosted glass panes.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic thriller still, eerie medium shot looking through rain-streaked glass at three shadowy figures in formal evening wear standing apart in a dimly lit mansion foyer, tense mysterious body language, cold blue and warm amber contrast, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0002",
-      "narration": "देखते ही देखते लाखों फेसलेस चैनल्स और नकली डिजिटल इन्फ्लुएंसर्स गायब हो जाएंगे। कुछ घंटों के लिए इंटरनेट इतना शांत लगेगा, जैसे हम फिर से पुराने दौर में लौट आए हों।",
-      "word_count": 31,
-      "estimated_duration": 10.3,
+      "narration": "रात के ठीक नौ बजे पहाड़ी बंगले में डिनर खत्म हुआ। आसमान घना था, मगर मौसम अभी बिल्कुल सूखा और शांत था। राघव किसी गहरे तनाव में थे, और अकेले बगीचे के ग्लास हाउस में चले गए।",
+      "word_count": 37,
+      "estimated_duration": 11.9,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0005",
-          "spoken_text": "देखते ही देखते लाखों फेसलेस चैनल्स",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.1,
-          "scene_context": "An empty automated content room with dozens of unplugged desktop monitors sitting dark and dusty.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, wide shot of a quiet dimly lit office filled with rows of powered-off black computer monitors and empty swivel chairs, faint sunbeams cutting through dust, eerie stillness, 35mm film grain, zero text, logos, or watermarks."
+          "spoken_text": "रात के ठीक नौ बजे पहाड़ी बंगले में डिनर खत्म हुआ।",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Warm candlelit long dining table inside a grand hillside bungalow just as guests finish dinner.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, opulent hillside mansion dining room at night with flickering candles, half-empty crystal glasses and fine porcelain plates on a dark polished mahogany table, warm golden chandelier glow, calm quiet post-dinner mood, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0006",
-          "spoken_text": "और नकली डिजिटल इन्फ्लुएंसर्स गायब हो जाएंगे।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "A glowing ring light standing in an empty modern apartment studio with an uninhabited chair.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, medium shot of a bright LED ring light on a tripod illuminating an empty stylish apartment corner, vacant upholstered chair in soft pastel light, quiet abandoned atmosphere, shallow depth of field, zero text, logos, or watermarks."
+          "spoken_text": "आसमान घना था, मगर मौसम अभी बिल्कुल सूखा और शांत था।",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 3.5,
+          "scene_context": "Wide shot of the mansion's dry stone courtyard and completely dry garden pathway under dark windless storm clouds.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, wide atmospheric shot of a grand stone patio and manicured garden walkway completely dry and motionless under heavy brooding dark night clouds, warm lantern light along dry cobblestones, zero rain, crisp night air, 35mm film grain, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0007",
-          "spoken_text": "कुछ घंटों के लिए इंटरनेट इतना शांत लगेगा,",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "A calm commuter sitting peacefully by a train window looking relaxed without scrolling frantically.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, candid medium shot of a young woman sitting by a sunlit window holding a resting smartphone in her lap, looking peacefully outside, soft golden morning warmth, calm serene mood, zero text, logos, or watermarks."
+          "spoken_text": "राघव किसी गहरे तनाव में थे,",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.1,
+          "scene_context": "Close-up of Raghav, a dignified 58-year-old Indian businessman, frowning deeply as he walks out of the foyer.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, close-up of a distinguished 58-year-old silver-haired Indian industrialist wearing a dark waistcoat, brow furrowed in deep stress and anger as he steps out of a warm mansion doorway into the night, dramatic side lighting, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0008",
-          "spoken_text": "जैसे हम फिर से पुराने दौर में लौट आए हों।",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Nostalgic warm shot of friends chatting naturally at an outdoor roadside tea stall without looking at phones.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, warm nostalgic shot of two friends smiling and talking over clay cups of chai at a sunlit neighborhood tea stall, soft golden afternoon bokeh, authentic 2010s warm film color grading, zero text, logos, or watermarks."
+          "spoken_text": "और अकेले बगीचे के ग्लास हाउस में चले गए।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 2.9,
+          "scene_context": "Back-view tracking shot of Raghav walking alone along the dry stone path toward the lit glass house.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, over-the-shoulder tracking shot from behind of a lone older man in a dark suit walking calmly along a dry stone garden path toward a warmly lit glass-house study in the distance, deep night shadows, 35mm anamorphic lens, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0003",
-      "narration": "शुरुआत में असली कलाकार जश्न मनाएंगे, उन्हें लगेगा कि इंसान की मेहनत जीत गई। लेकिन दोपहर तक एक अनदेखी मुसीबत सामने आएगी, जिसका अंदाजा शायद किसी ने नहीं लगाया था।",
-      "word_count": 30,
-      "estimated_duration": 9.9,
+      "narration": "नौ बजकर बीस मिनट पर अचानक मूसलाधार बारिश टूट पड़ी। तेज हवाओं के बीच पंद्रह मिनट बाद नौ पैंतीस पर माली की चीख से पूरा बंगला दहल उठा— ग्लास हाउस के फर्श पर राघव की लाश पड़ी थी।",
+      "word_count": 38,
+      "estimated_duration": 12.2,
       "is_scene_bridge": true,
       "clips": [
         {
           "clip_id": "C0009",
-          "spoken_text": "शुरुआत में असली कलाकार जश्न मनाएंगे,",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.1,
-          "scene_context": "A traditional Indian painter smiling with genuine relief inside a sunlit art studio surrounded by canvases.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, close-up of a joyful young artist wearing a paint-stained cotton apron in a sunlit studio surrounded by wooden easels and vibrant oil paintings, genuine smile of relief, warm sunlight, 35mm film grain, zero text, logos, or watermarks."
+          "spoken_text": "नौ बजकर बीस मिनट पर अचानक मूसलाधार बारिश टूट पड़ी।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Sudden violent torrential monsoon rain splashing heavily onto the stone patio illuminated by garden lamps.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, dramatic sudden downpour of heavy rain slamming onto a stone mansion courtyard illuminated by golden lamp posts, water splashing violently off wet cobblestones, sheets of falling rain against dark trees, moody blue-black night sky, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0010",
-          "spoken_text": "उन्हें लगेगा कि इंसान की मेहनत जीत गई।",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Macro close-up of a brush gliding wet paint across textured linen canvas in golden light.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, macro close-up of paint-stained fingers holding a fine bristle brush laying rich textured oil strokes onto raw linen canvas, warm golden rim light illuminating tiny dust motes, shallow depth of field, zero text, logos, or watermarks."
+          "spoken_text": "तेज हवाओं के बीच पंद्रह मिनट बाद नौ पैंतीस पर",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Swaying rain-lashed trees outside the mansion as a distant lightning flash illuminates the dark estate.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic thriller still, ferocious wind bending rain-soaked cypress trees outside an isolated hillside villa, a bright jagged bolt of lightning briefly illuminating dark stormy clouds in the background, dramatic high-contrast atmosphere, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0011",
-          "spoken_text": "लेकिन दोपहर तक एक अनदेखी मुसीबत सामने आएगी,",
+          "spoken_text": "माली की चीख से पूरा बंगला दहल उठा—",
           "spoken_word_count": 8,
           "estimated_spoken_duration": 2.6,
-          "scene_context": "A small-business owner staring tensely at a laptop screen inside a quiet boutique workshop.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, medium shot of a worried young Indian entrepreneur leaning over a cluttered wooden counter staring at a blank glowing laptop screen, cool overcast daylight mixing with warm shop bulbs, tense mood, zero text, logos, or watermarks."
+          "scene_context": "An elderly gardener dropping his flashlight in the rain outside the glass house with a horrified expression.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic thriller still, medium shot of an elderly drenched gardener in a wet raincoat standing outside a glowing glass house in pouring rain, mouth open in pure terror as his dropped flashlight illuminates wet grass below, harsh dramatic lighting, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0012",
-          "spoken_text": "जिसका अंदाजा शायद किसी ने नहीं लगाया था।",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Dramatic close-up of a person's hand halting mid-air above a keyboard as storm clouds darken outside.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, close-up of tense fingers hovering over a dimly lit laptop keyboard beside a rainy window, moody teal shadows contrasting with amber indoor reflection, suspenseful atmosphere, zero text, logos, or watermarks."
+          "spoken_text": "ग्लास हाउस के फर्श पर राघव की लाश पड़ी थी।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Inside view through the rain-streaked glass door showing Raghav collapsed by the mahogany study desk.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic mystery still, looking inward through a rain-drenched glass doorway into a dimly lit wooden library where a fallen man's motionless silhouette lies beside an antique desk under a tilted brass lamp, tense thriller atmosphere, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0004",
-      "narration": "क्योंकि एआई सिर्फ अजीब मीम्स या फेक फिल्म ट्रेलर नहीं बना रहा था। वो चुपचाप छोटे व्यापारियों के विज्ञापन और अकेले काम करने वाले क्रिएटर्स का सहारा बन चुका था।",
-      "word_count": 30,
-      "estimated_duration": 9.9,
+      "narration": "उनके सिर पर किसी भारी स्टैच्यू से वार हुआ था। छीना झपटी में उनकी कलाई घड़ी का कांच टूटकर ठीक नौ पच्चीस पर रुक चुका था। यानी कातिल घर में मौजूद तीन खास लोगों में से ही एक था।",
+      "word_count": 39,
+      "estimated_duration": 12.4,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0013",
-          "spoken_text": "क्योंकि एआई सिर्फ अजीब मीम्स",
-          "spoken_word_count": 5,
-          "estimated_spoken_duration": 1.8,
-          "scene_context": "Surreal glowing reflections of colorful pop visuals shimmering across dark studio glasses.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, tight close-up of eyeglasses resting on a dark desk reflecting vivid surreal neon colors from an out-of-focus monitor, moody night lighting, 35mm anamorphic bokeh, zero text, logos, or watermarks."
+          "spoken_text": "उनके सिर पर किसी भारी स्टैच्यू से वार हुआ था।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Close-up of a heavy white marble bust statue lying overturned on the library carpet.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic thriller still, dramatic close-up of a heavy carved white marble bust statue lying knocked over on a dark Persian rug beside scattered desk papers, low-key warm desk lamp casting long ominous shadows, 35mm film grain, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0014",
-          "spoken_text": "या फेक फिल्म ट्रेलर नहीं बना रहा था।",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "A cinema projector beam cutting through faint smoke toward a stark blank white movie screen.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, low-angle shot inside an empty dark movie theater looking up at a bright projector beam cutting through hazy air onto a blank white screen, dramatic chiaroscuro shadows, 35mm film grain, zero text, logos, or watermarks."
+          "spoken_text": "छीना झपटी में उनकी कलाई घड़ी का कांच टूटकर",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 2.9,
+          "scene_context": "Top-down shot of scattered broken pens, knocked chair, and the shattered watch on the floor.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic mystery still, high-angle shot of an overturned leather study chair, scattered fountain pen, and a smashed wristwatch resting on dark floorboards, dramatic spotlighting, tense crime-scene mood, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0015",
-          "spoken_text": "वो चुपचाप छोटे व्यापारियों के विज्ञापन,",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.1,
-          "scene_context": "A local potter struggling alone to light and photograph handmade clay cups on a cramped wooden table.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, candid medium shot of a tired Indian artisan arranging handmade terracotta cups on a cramped home table using a single cheap desk lamp and white cardboard reflector, authentic cluttered studio, warm tungsten glow, zero text, logos, or watermarks."
+          "spoken_text": "ठीक नौ पच्चीस पर रुक चुका था।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Extreme close-up of the watch hands frozen dead beneath jagged cracked glass.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic still, ultra-tight macro close-up of a shattered analog wristwatch face with fine metallic hands frozen beneath jagged spiderweb cracks in the glass, subtle warm reflection, shallow depth of field, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0016",
-          "spoken_text": "और अकेले काम करने वाले क्रिएटर्स का सहारा बन चुका था।",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "A lone young creator sitting in a tiny bedroom desk setup surrounded by tangled cables looking exhausted.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, side-profile of a young solo creator sitting at a tiny bedroom desk surrounded by tangled cables and an inexpensive microphone, resting forehead on hand in front of a dark computer monitor, cool blue shadows, zero text, logos, or watermarks."
+          "spoken_text": "यानी कातिल घर में मौजूद तीन खास लोगों में से ही एक था।",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 3.9,
+          "scene_context": "Wide tense shot inside the mansion living room showing three well-dressed people standing nervously under warm lights.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic thriller still, tense wide interior shot of a grand living hall where three richly dressed suspects stand apart near a crackling fireplace, suspicious glances exchanged in dim warm light while rain streaks dark windows behind them, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0005",
-      "narration": "बैन लगते ही वीडियो बनाने का खर्च आसमान छूने लगेगा। चमकदार विजुअल्स पर फिर से बड़े स्टूडियोज का कब्जा होगा, जबकि आम क्रिएटर्स के हाथ में बचेगा सिर्फ एक साधारण फोन और हिलता हुआ कैमरा।",
-      "word_count": 35,
-      "estimated_duration": 11.3,
-      "is_scene_bridge": false,
+      "narration": "पहला नाम था भतीजे आरव का, जिसे राघव ने डिनर पर ही कंपनी से निकाल दिया था। चौंकने वाली बात थी कि आरव के जूते ताजे कीचड़ से सने थे— पर उसने कहा, वह नौ पच्चीस पर नेटवर्क ढूंढने मेन गेट तक गया था।",
+      "word_count": 44,
+      "estimated_duration": 13.5,
+      "is_scene_bridge": true,
       "clips": [
         {
           "clip_id": "C0017",
-          "spoken_text": "बैन लगते ही वीडियो बनाने का खर्च आसमान छूने लगेगा।",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Close-up of a high-end cinema camera lens mounted on a massive studio crane under bright spotlights.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, dramatic close-up of an expensive cinema camera rigged onto a towering studio crane inside a dark soundstage, intense overhead spotlights flaring softly in haze, high-budget industrial feel, zero text, logos, or watermarks."
+          "spoken_text": "पहला नाम था भतीजे आरव का,",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.1,
+          "scene_context": "Intense close-up of Aarav, a sharp-featured 28-year-old young man in a rumpled dark jacket looking defensive.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic thriller still, tight portrait of a nervous handsome 28-year-old Indian man in a dark blazer with damp hair, jaw clenched and eyes darting defensively in moody hallway light, 35mm anamorphic depth of field, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0018",
-          "spoken_text": "चमकदार विजुअल्स पर फिर से बड़े स्टूडियोज का कब्जा होगा,",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Wide shot of a massive commercial film set packed with lighting technicians, boom mics, and giant softboxes.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, wide vertical shot inside an enormous luxury commercial film studio filled with crew members, towering light stands, dolly tracks, and glowing giant softboxes over a polished set, crisp cinematic contrast, zero text, logos, or watermarks."
+          "spoken_text": "जिसे राघव ने डिनर पर ही कंपनी से निकाल दिया था।",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Flashback-style dramatic shot of Raghav pointing angrily across the dinner table at a furious Aarav.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic drama still, heated confrontation across a candlelit dining table, older wealthy man pointing sternly while a furious young man grips the edge of the table with clenched fists, intense warm amber lighting, shallow depth of field, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0019",
-          "spoken_text": "जबकि आम क्रिएटर्स के हाथ में बचेगा",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.3,
-          "scene_context": "Close-up of a young creator's hands gripping a cracked smartphone with simple wired earphones.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, tight close-up of young hands gripping an everyday budget smartphone with white wired earphones wrapped around fingers, standing in a dusty sunlit alley, gritty realistic texture, shallow depth of field, zero text, logos, or watermarks."
+          "spoken_text": "चौंकने वाली बात थी कि आरव के जूते ताजे कीचड़ से सने थे—",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 3.9,
+          "scene_context": "Low close-up of Aarav's expensive leather boots caked with fresh wet garden mud on the clean marble floor.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic mystery still, low-angle close-up of polished brown leather dress boots heavily splattered with wet dark garden mud standing on clean cream marble tiles inside the mansion foyer, ominous dramatic lighting, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0020",
-          "spoken_text": "सिर्फ एक साधारण फोन और हिलता हुआ कैमरा।",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.6,
-          "scene_context": "Dynamic handheld-style shot of a street creator walking briskly while filming himself on a smartphone.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, dynamic slightly tilted handheld-style shot of a young Indian creator walking along a windy overcast street holding a smartphone at arm's length to film himself, raw unpolished street light, authentic hustle, zero text, logos, or watermarks."
+          "spoken_text": "पर उसने कहा, वह नौ पच्चीस पर नेटवर्क ढूंढने मेन गेट तक गया था।",
+          "spoken_word_count": 14,
+          "estimated_spoken_duration": 4.1,
+          "scene_context": "Shot of Aarav standing near the tall iron front gate in pouring rain holding up a smartphone for signal.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, medium shot of a young man standing beside an ornate wrought-iron mansion gate in pouring night rain holding a glowing smartphone upward toward the stormy sky searching for signal, headlights and lantern reflections on wet driveway, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0006",
-      "narration": "और सबसे बड़ी दिक्कत— एआई खत्म नहीं होगा, बल्कि नया भेष बदलकर छिपने लगेगा। हर प्लेटफॉर्म एक शक से भरे चेकपोस्ट में बदल जाएगा, जहां कमजोर डिटेक्शन बॉट्स असली फोटोग्राफर्स को भी ब्लॉक कर देंगे।",
-      "word_count": 35,
-      "estimated_duration": 11.4,
+      "narration": "दूसरी संदिग्ध थीं बिजनेस पार्टनर नैना, जिनका करोड़ों का फ्रॉड राघव को पता चल चुका था। नैना बोलीं कि नौ दस से ही वह अपने कमरे में बंद थीं, और नौ बीस पर बारिश की तेज आवाज सुनकर ही उनकी आंख खुली।",
+      "word_count": 42,
+      "estimated_duration": 13.1,
       "is_scene_bridge": true,
       "clips": [
         {
           "clip_id": "C0021",
-          "spoken_text": "और सबसे बड़ी दिक्कत— एआई खत्म नहीं होगा,",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.7,
-          "scene_context": "Shadowy close-up of glowing blue code reflections moving silently across a dark glass wall.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic tech-thriller still, shadowy macro shot of a person in a dark hoodie standing before a tinted glass window reflecting faint cool blue optical light trails, ominous underground mood, 35mm film grain, zero text, logos, or watermarks."
+          "spoken_text": "दूसरी संदिग्ध थीं बिजनेस पार्टनर नैना,",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.1,
+          "scene_context": "Poised yet guarded close-up of Naina, an elegant 40-year-old woman in a dark silk saree.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic thriller still, close-up portrait of an elegant composed 40-year-old Indian woman in a dark emerald silk saree and subtle diamond earrings, cool calculating gaze half-lit by fireplace glow, moody shadows, 35mm film grain, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0022",
-          "spoken_text": "बल्कि नया भेष बदलकर छिपने लगेगा।",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.1,
-          "scene_context": "Someone secretly aiming a physical DSLR camera at a computer monitor to re-shoot digital footage.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, tight moody shot in a dark room of a DSLR camera lens aimed closely at a glowing monitor screen to re-capture an image, reflections of blue light shimmering on the glass lens, secretive atmosphere, zero text, logos, or watermarks."
+          "spoken_text": "जिनका करोड़ों का फ्रॉड राघव को पता चल चुका था।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Close-up of thick leather-bound ledger folders open beside gold fountain pen and shredded financial papers.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic still, close-up of open financial ledger files and torn paper documents scattered on a dark mahogany desk beside a heavy silver paperweight under stark dramatic desk-lamp lighting, suspenseful mood, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0023",
-          "spoken_text": "हर प्लेटफॉर्म एक शक से भरे चेकपोस्ट में बदल जाएगा,",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Harsh crimson laser beams scanning across hanging strips of translucent photographic film in a dark room.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic still, macro perspective of intense crimson red scanner beams sweeping across translucent photographic film negatives suspended in a dark room, dramatic light streaks and dust motes, paranoid checkpoint mood, zero text, logos, or watermarks."
+          "spoken_text": "नैना बोलीं कि नौ दस से ही वह अपने कमरे में बंद थीं,",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 3.9,
+          "scene_context": "Naina resting in a dimly lit luxury guest bedroom pressing fingers gently to her forehead with a headache.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, medium shot of an elegant woman lying back against velvet pillows in a dimly lit luxury bedroom, hand resting lightly on her forehead with eyes closed, soft bedside lamp glow, peaceful quiet shadows, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0024",
-          "spoken_text": "जहां कमजोर डिटेक्शन बॉट्स असली फोटोग्राफर्स को भी ब्लॉक कर देंगे।",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "A real-life outdoor photographer standing on a windy terrace looking in shock at a red glow on his phone.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, medium shot of a stunned Indian street photographer standing on an urban rooftop at dusk with a weathered DSLR hanging around his neck, staring in disbelief at his smartphone casting harsh red light onto his face, zero text, logos, or watermarks."
+          "spoken_text": "और नौ बीस पर बारिश की तेज आवाज सुनकर ही उनकी आंख खुली।",
+          "spoken_word_count": 13,
+          "estimated_spoken_duration": 3.9,
+          "scene_context": "Close-up of Naina opening her eyes suddenly as heavy raindrops start battering her bedroom windowpane.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, close-up of a woman turning her head abruptly toward a tall French bedroom window suddenly lashed by heavy pouring rain and blue lightning reflections, startled expression, shallow depth of field, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0007",
-      "narration": "लेकिन इसी अफरा तफरी के बीच दर्शकों की पसंद अचानक करवट लेगी। कमजोर लाइटिंग, अटकी आवाज और छोटी गलतियां— यही कमियां असली इंसान होने का सबसे बड़ा सबूत बन जाएंगी।",
-      "word_count": 30,
-      "estimated_duration": 9.9,
-      "is_scene_bridge": false,
+      "narration": "तीसरे थे फैमिली डॉक्टर कबीर, जिनका लाइसेंस राघव कल सुबह रद्द करवाने वाले थे। कबीर ने कहा, नौ पांच पर कॉटेज से लौटते वक्त वह बारिश में भीग गए, इसलिए नौ पंद्रह से नौ पैंतीस तक बाथरूम में अपने गीले कपड़े सुखाते रहे।",
+      "word_count": 43,
+      "estimated_duration": 13.2,
+      "is_scene_bridge": true,
       "clips": [
         {
           "clip_id": "C0025",
-          "spoken_text": "लेकिन इसी अफरा तफरी के बीच",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "A warm indoor transition shot of young people stepping out of cold blue street light into a cozy gallery.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, atmospheric shot of young people walking from a chilly blue-lit city street through an open wooden doorway into a warmly lit amber art space, shallow depth of field, rich cinematic contrast, zero text, logos, or watermarks."
+          "spoken_text": "तीसरे थे फैमिली डॉक्टर कबीर,",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 1.8,
+          "scene_context": "Calm, polished close-up of Dr. Kabir, a middle-aged bearded doctor wearing wire-rimmed glasses.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic thriller still, close-up portrait of a calm middle-aged Indian doctor with neatly trimmed salt-and-pepper beard and thin metal-framed glasses wearing a tailored wool vest, subtle unreadable expression in cool blue-amber light, 35mm film grain, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0026",
-          "spoken_text": "दर्शकों की पसंद अचानक करवट लेगी।",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.1,
-          "scene_context": "Friends leaning in with curiosity over slightly grainy analog Polaroid prints spread on a wooden cafe table.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, warm candid shot of young friends gathered around a rustic cafe table looking closely at imperfect grainy instant film photographs spread on wood, soft tungsten bulbs overhead, genuine wonder, zero text, logos, or watermarks."
+          "spoken_text": "जिनका लाइसेंस राघव कल सुबह रद्द करवाने वाले थे।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 2.9,
+          "scene_context": "Close-up of a vintage leather medical bag sitting beside a folded official envelope on a wooden table.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic still, close-up of a worn brown leather doctor's bag resting beside a heavy sealed cream envelope and steel stethoscope on a polished dark wooden table, ominous dramatic shadow across the desk, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0027",
-          "spoken_text": "कमजोर लाइटिंग, अटकी आवाज और छोटी गलतियां—",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Unpolished candid close-up of a real person laughing awkwardly mid-sentence under harsh kitchen tube light.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, raw unpolished close-up of a young person caught mid-laugh in simple home lighting, messy flyaway hair, natural skin blemishes, slight motion blur, endearing imperfect authenticity, 35mm film grain, zero text, logos, or watermarks."
+          "spoken_text": "कबीर ने कहा, नौ पांच पर कॉटेज से लौटते वक्त वह बारिश में भीग गए,",
+          "spoken_word_count": 15,
+          "estimated_spoken_duration": 4.4,
+          "scene_context": "Shot of Dr. Kabir's dark trench coat hanging wet and dripping over a brass coat stand inside the hallway.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic thriller still, medium close-up of a dark wool trench coat visibly damp and dripping droplets onto a wooden parquet floor while hanging on a vintage brass coat rack in a dimly lit hallway, moody shadows, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0028",
-          "spoken_text": "यही कमियां असली इंसान होने का सबसे बड़ा सबूत बन जाएंगी।",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 3.4,
-          "scene_context": "Intimate golden-hour close-up of weathered human hands holding a vintage film camera with warmth.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, intimate close-up of real human hands with tiny knuckles and faint ink stains holding a classic analog camera bathed in rich golden-hour sunlight, warm lens flare, deeply tactile human texture, zero text, logos, or watermarks."
+          "spoken_text": "इसलिए नौ पंद्रह से नौ पैंतीस तक बाथरूम में अपने गीले कपड़े सुखाते रहे।",
+          "spoken_word_count": 14,
+          "estimated_spoken_duration": 4.1,
+          "scene_context": "Dr. Kabir standing calmly before a steamy marble bathroom mirror patting his damp sleeves with a white towel.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, medium shot through an open luxury marble bathroom doorway showing a bearded man in glasses standing by a mirror casually patting his damp shirt sleeve with a crisp white cotton towel, warm tungsten vanity bulbs, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0008",
-      "narration": "एआई को बैन करने से पुराना इंटरनेट वापस नहीं लौटेगा। बल्कि यह एक कड़वा सच साबित कर देगा— कि जब नकली दिखने में बिल्कुल परफेक्ट हो जाए, तो सिर्फ आपकी कमियां ही असली महसूस होती हैं।",
-      "word_count": 36,
-      "estimated_duration": 11.6,
+      "narration": "तीनों के पास कत्ल की बड़ी वजह थी, और तीनों के पास अपनी अपनी कहानी भी। लेकिन एक छोटे से झूठ ने असली कातिल को फंसा दिया— तो दिमाग लगाइए और कमेंट में बताइए— राघव का कातिल कौन है?",
+      "word_count": 39,
+      "estimated_duration": 12.3,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0029",
-          "spoken_text": "एआई को बैन करने से पुराना इंटरनेट वापस नहीं लौटेगा।",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Wide cinematic shot of a lone figure standing on a rain-slicked city street reflecting blurred neon screens.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, evocative wide shot from behind of a lone person standing on a rain-slicked twilight street gazing toward distant blurred glowing city billboards, shimmering reflections in puddles, moody cyan and amber tones, zero text, logos, or watermarks."
+          "spoken_text": "तीनों के पास कत्ल की बड़ी वजह थी,",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Dramatic split-focus composition showing Aarav's muddy boots, Naina's calm eyes, and Kabir's glasses in shadow.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic noir still, moody atmospheric montage composition inside a dark study hallway showing a shadowy silhouette standing before three half-lit wooden doors, dramatic chiaroscuro beams slicing through mist, deep mystery mood, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0030",
-          "spoken_text": "बल्कि यह एक कड़वा सच साबित कर देगा—",
+          "spoken_text": "और तीनों के पास अपनी अपनी कहानी भी।",
           "spoken_word_count": 8,
           "estimated_spoken_duration": 2.6,
-          "scene_context": "Extreme macro shot of a human eye reflecting the soft pale glow of a screen in twilight.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, extreme macro close-up of a human eye in deep shadow, delicate eyelashes and natural iris details catching the soft reflection of a screen, hauntingly contemplative mood, 35mm film grain, zero text, logos, or watermarks."
+          "scene_context": "Close-up of the three suspects standing silently under the grand staircase as thunder rumbles outside.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic thriller still, medium-wide shot beneath a grand curved wooden staircase where a young man, an older woman in silk, and a bearded doctor stand in tense silence facing away from each other, flashes of storm light from high windows, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0031",
-          "spoken_text": "कि जब नकली दिखने में बिल्कुल परफेक्ट हो जाए,",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 2.9,
-          "scene_context": "A flawlessly lit cold plastic mannequin face standing behind glass, eerie and lifeless.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, close-up of a smooth symmetrical porcelain mannequin face illuminated by sterile cold studio light behind store glass, eerily flawless yet completely lifeless, shallow depth of field, zero text, logos, or watermarks."
+          "spoken_text": "लेकिन एक छोटे से झूठ ने असली कातिल को फंसा दिया—",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Tight dramatic close-up of a single raindrop splashing onto the shattered glass watch beside a wet footprint.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic mystery still, dramatic macro shot of a single glistening raindrop striking dark stone beside the broken metallic wristwatch in stark blue-and-amber spotlight, razor-sharp focus, tense climactic atmosphere, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0032",
-          "spoken_text": "तो सिर्फ आपकी कमियां ही असली महसूस होती हैं।",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 2.9,
-          "scene_context": "Warm golden-hour portrait of a real ordinary person smiling softly by an open window with natural breeze.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, soulful portrait of an ordinary Indian person standing beside an open sunlit window looking calmly into the camera, natural skin pores, soft wind lifting stray hair, warm golden-hour rim light fading into gentle shadow, zero text, logos, or watermarks."
+          "spoken_text": "तो दिमाग लगाइए और कमेंट में बताइए— राघव का कातिल कौन है?",
+          "spoken_word_count": 12,
+          "estimated_spoken_duration": 3.7,
+          "scene_context": "Haunting portrait of the three suspects staring straight into the camera from deep shadow as rain falls behind glass.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic thriller still, gripping symmetrical medium portrait of the three suspects—young man in blazer, poised woman in dark silk, and bearded doctor in glasses—standing side by side in atmospheric shadow gazing intensely into the lens while heavy rain streams down a dark glass window behind them, zero text, logos, or watermarks."
         }
       ]
     }

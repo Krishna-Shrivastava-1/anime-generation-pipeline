@@ -1,127 +1,152 @@
 [
   {
-    "word": "फिर",
+    "word": "क्योंकि",
     "start_ms": 0,
-    "end_ms": 262
+    "end_ms": 518
   },
   {
-    "word": "आप",
-    "start_ms": 262,
-    "end_ms": 449
+    "word": "एआई",
+    "start_ms": 518,
+    "end_ms": 764
+  },
+  {
+    "word": "सिर्फ",
+    "start_ms": 764,
+    "end_ms": 1052
+  },
+  {
+    "word": "अजीब",
+    "start_ms": 1052,
+    "end_ms": 1414
+  },
+  {
+    "word": "मीम्स",
+    "start_ms": 1414,
+    "end_ms": 1751
+  },
+  {
+    "word": "या",
+    "start_ms": 1751,
+    "end_ms": 1948
+  },
+  {
+    "word": "फेक",
+    "start_ms": 1948,
+    "end_ms": 2228
+  },
+  {
+    "word": "फिल्म",
+    "start_ms": 2228,
+    "end_ms": 2516
+  },
+  {
+    "word": "ट्रेलर",
+    "start_ms": 2516,
+    "end_ms": 2935
+  },
+  {
+    "word": "नहीं",
+    "start_ms": 2935,
+    "end_ms": 3330
+  },
+  {
+    "word": "बना",
+    "start_ms": 3330,
+    "end_ms": 3610
+  },
+  {
+    "word": "रहा",
+    "start_ms": 3610,
+    "end_ms": 3889
+  },
+  {
+    "word": "था।",
+    "start_ms": 3889,
+    "end_ms": 4169
+  },
+  {
+    "word": "वो",
+    "start_ms": 4169,
+    "end_ms": 4366
+  },
+  {
+    "word": "चुपचाप",
+    "start_ms": 4366,
+    "end_ms": 4876
+  },
+  {
+    "word": "छोटे",
+    "start_ms": 4876,
+    "end_ms": 5271
+  },
+  {
+    "word": "व्यापारियों",
+    "start_ms": 5271,
+    "end_ms": 6184
+  },
+  {
+    "word": "के",
+    "start_ms": 6184,
+    "end_ms": 6381
+  },
+  {
+    "word": "विज्ञापन",
+    "start_ms": 6381,
+    "end_ms": 6948
+  },
+  {
+    "word": "और",
+    "start_ms": 6948,
+    "end_ms": 7113
   },
   {
     "word": "अकेले",
-    "start_ms": 449,
-    "end_ms": 992
+    "start_ms": 7113,
+    "end_ms": 7590
   },
   {
-    "word": "पुल",
-    "start_ms": 992,
-    "end_ms": 1255
+    "word": "काम",
+    "start_ms": 7590,
+    "end_ms": 7869
   },
   {
-    "word": "के",
-    "start_ms": 1255,
-    "end_ms": 1479
+    "word": "करने",
+    "start_ms": 7869,
+    "end_ms": 8231
   },
   {
-    "word": "उस",
-    "start_ms": 1479,
-    "end_ms": 1667
+    "word": "वाले",
+    "start_ms": 8231,
+    "end_ms": 8626
   },
   {
-    "word": "पार",
-    "start_ms": 1667,
-    "end_ms": 1985
+    "word": "क्रिएटर्स",
+    "start_ms": 8626,
+    "end_ms": 9136
   },
   {
-    "word": "पहुँच",
-    "start_ms": 1985,
-    "end_ms": 2435
+    "word": "का",
+    "start_ms": 9136,
+    "end_ms": 9333
   },
   {
-    "word": "गए—पूरी",
-    "start_ms": 2435,
-    "end_ms": 3095
+    "word": "सहारा",
+    "start_ms": 9333,
+    "end_ms": 9810
   },
   {
-    "word": "सेना",
-    "start_ms": 3095,
-    "end_ms": 3545
+    "word": "बन",
+    "start_ms": 9810,
+    "end_ms": 9975
   },
   {
-    "word": "के",
-    "start_ms": 3545,
-    "end_ms": 3769
+    "word": "चुका",
+    "start_ms": 9975,
+    "end_ms": 10320
   },
   {
-    "word": "सामने।",
-    "start_ms": 3769,
-    "end_ms": 4406
-  },
-  {
-    "word": "आपकी",
-    "start_ms": 4406,
-    "end_ms": 4818
-  },
-  {
-    "word": "हिम्मत",
-    "start_ms": 4818,
-    "end_ms": 5240
-  },
-  {
-    "word": "देख",
-    "start_ms": 5240,
-    "end_ms": 5558
-  },
-  {
-    "word": "शर्म",
-    "start_ms": 5558,
-    "end_ms": 5811
-  },
-  {
-    "word": "से",
-    "start_ms": 5811,
-    "end_ms": 6036
-  },
-  {
-    "word": "दो",
-    "start_ms": 6036,
-    "end_ms": 6261
-  },
-  {
-    "word": "अफसर",
-    "start_ms": 6261,
-    "end_ms": 6635
-  },
-  {
-    "word": "लौटकर",
-    "start_ms": 6635,
-    "end_ms": 7141
-  },
-  {
-    "word": "आपके",
-    "start_ms": 7141,
-    "end_ms": 7553
-  },
-  {
-    "word": "साथ",
-    "start_ms": 7553,
-    "end_ms": 7872
-  },
-  {
-    "word": "खड़े",
-    "start_ms": 7872,
-    "end_ms": 8284
-  },
-  {
-    "word": "हो",
-    "start_ms": 8284,
-    "end_ms": 8509
-  },
-  {
-    "word": "गए।",
-    "start_ms": 8509,
-    "end_ms": 8790
+    "word": "था।",
+    "start_ms": 10320,
+    "end_ms": 10600
   }
 ]

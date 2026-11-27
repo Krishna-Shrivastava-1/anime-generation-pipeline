@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "A DSLR camera is being aimed and likely clicks, a monitor screen, laser beams across film, wind on a terrace, and a phone receiving a notification",
+  "sfx_cues": [
+    {
+      "freesound_tag": "camera shutter click",
+      "fallback_tag": "shutter click",
+      "sound_type": "transient",
+      "trigger_word": "एआई",
+      "target_ms": 1568,
+      "duration_sec": 0.3,
+      "volume": 0.4
+    },
+    {
+      "freesound_tag": "phone notification ping",
+      "fallback_tag": "notification beep",
+      "sound_type": "transient",
+      "trigger_word": "ब्लॉक",
+      "target_ms": 14018,
+      "duration_sec": 0.2,
+      "volume": 0.35
+    }
+  ]
+}

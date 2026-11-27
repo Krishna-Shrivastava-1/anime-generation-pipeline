@@ -1,102 +1,182 @@
 [
   {
-    "word": "बौखलाए",
-    "start_ms": 109,
-    "end_ms": 645
+    "word": "एआई",
+    "start_ms": 190,
+    "end_ms": 435
   },
   {
-    "word": "दुश्मनों",
-    "start_ms": 645,
-    "end_ms": 1219
+    "word": "को",
+    "start_ms": 435,
+    "end_ms": 632
   },
   {
-    "word": "ने",
-    "start_ms": 1219,
-    "end_ms": 1408
+    "word": "बैन",
+    "start_ms": 632,
+    "end_ms": 911
   },
   {
-    "word": "तीर",
-    "start_ms": 1408,
-    "end_ms": 1676
+    "word": "करने",
+    "start_ms": 911,
+    "end_ms": 1271
   },
   {
-    "word": "और",
-    "start_ms": 1676,
-    "end_ms": 1833
+    "word": "से",
+    "start_ms": 1271,
+    "end_ms": 1468
   },
   {
-    "word": "भालों",
-    "start_ms": 1833,
-    "end_ms": 2321
+    "word": "पुराना",
+    "start_ms": 1468,
+    "end_ms": 2009
   },
   {
-    "word": "की",
-    "start_ms": 2321,
-    "end_ms": 2510
+    "word": "इंटरनेट",
+    "start_ms": 2009,
+    "end_ms": 2648
   },
   {
-    "word": "बारिश",
-    "start_ms": 2510,
-    "end_ms": 2919
+    "word": "वापस",
+    "start_ms": 2648,
+    "end_ms": 3008
+  },
+  {
+    "word": "नहीं",
+    "start_ms": 3008,
+    "end_ms": 3402
+  },
+  {
+    "word": "लौटेगा।",
+    "start_ms": 3402,
+    "end_ms": 4074
+  },
+  {
+    "word": "बल्कि",
+    "start_ms": 4074,
+    "end_ms": 4361
+  },
+  {
+    "word": "यह",
+    "start_ms": 4361,
+    "end_ms": 4525
+  },
+  {
+    "word": "एक",
+    "start_ms": 4525,
+    "end_ms": 4688
+  },
+  {
+    "word": "कड़वा",
+    "start_ms": 4688,
+    "end_ms": 5131
+  },
+  {
+    "word": "सच",
+    "start_ms": 5131,
+    "end_ms": 5295
+  },
+  {
+    "word": "साबित",
+    "start_ms": 5295,
+    "end_ms": 5721
   },
   {
     "word": "कर",
-    "start_ms": 2919,
-    "end_ms": 3076
+    "start_ms": 5721,
+    "end_ms": 5885
   },
   {
-    "word": "दी,",
-    "start_ms": 3076,
-    "end_ms": 3285
+    "word": "देगा—",
+    "start_ms": 5885,
+    "end_ms": 6299
   },
   {
-    "word": "लेकिन",
-    "start_ms": 3285,
-    "end_ms": 3694
+    "word": "कि",
+    "start_ms": 6299,
+    "end_ms": 6446
   },
   {
-    "word": "हर",
-    "start_ms": 3694,
-    "end_ms": 3852
+    "word": "जब",
+    "start_ms": 6446,
+    "end_ms": 6610
   },
   {
-    "word": "वार",
-    "start_ms": 3852,
-    "end_ms": 4119
+    "word": "नकली",
+    "start_ms": 6610,
+    "end_ms": 6971
   },
   {
-    "word": "आपकी",
-    "start_ms": 4119,
-    "end_ms": 4466
-  },
-  {
-    "word": "ढाल",
-    "start_ms": 4466,
-    "end_ms": 4733
+    "word": "दिखने",
+    "start_ms": 6971,
+    "end_ms": 7397
   },
   {
     "word": "में",
-    "start_ms": 4733,
-    "end_ms": 5032
+    "start_ms": 7397,
+    "end_ms": 7708
+  },
+  {
+    "word": "बिल्कुल",
+    "start_ms": 7708,
+    "end_ms": 8142
+  },
+  {
+    "word": "परफेक्ट",
+    "start_ms": 8142,
+    "end_ms": 8642
+  },
+  {
+    "word": "हो",
+    "start_ms": 8642,
+    "end_ms": 8839
+  },
+  {
+    "word": "जाए,",
+    "start_ms": 8839,
+    "end_ms": 9138
+  },
+  {
+    "word": "तो",
+    "start_ms": 9138,
+    "end_ms": 9335
+  },
+  {
+    "word": "सिर्फ",
+    "start_ms": 9335,
+    "end_ms": 9622
+  },
+  {
+    "word": "आपकी",
+    "start_ms": 9622,
+    "end_ms": 9982
+  },
+  {
+    "word": "कमियां",
+    "start_ms": 9982,
+    "end_ms": 10523
   },
   {
     "word": "ही",
-    "start_ms": 5032,
-    "end_ms": 5221
+    "start_ms": 10523,
+    "end_ms": 10720
   },
   {
-    "word": "आकर",
-    "start_ms": 5221,
-    "end_ms": 5457
+    "word": "असली",
+    "start_ms": 10720,
+    "end_ms": 11080
   },
   {
-    "word": "अटक",
-    "start_ms": 5457,
-    "end_ms": 5693
+    "word": "महसूस",
+    "start_ms": 11080,
+    "end_ms": 11523
   },
   {
-    "word": "गया।",
-    "start_ms": 5693,
-    "end_ms": 6040
+    "word": "होती",
+    "start_ms": 11523,
+    "end_ms": 11916
+  },
+  {
+    "word": "हैं।",
+    "start_ms": 11916,
+    "end_ms": 12309
   }
 ]

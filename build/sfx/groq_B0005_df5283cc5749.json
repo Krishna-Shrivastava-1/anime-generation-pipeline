@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "The shot shows a cinema camera lens on a crane, bright spotlights, a cracked smartphone with earphones in hand, and a creator walking while filming on the phone.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "footsteps pavement",
+      "fallback_tag": "footsteps concrete",
+      "sound_type": "ambient",
+      "trigger_word": "हिलता",
+      "target_ms": 11140,
+      "duration_sec": 1.2,
+      "volume": 0.38
+    },
+    {
+      "freesound_tag": "smartphone button click",
+      "fallback_tag": "phone click",
+      "sound_type": "transient",
+      "trigger_word": "फोन",
+      "target_ms": 10691,
+      "duration_sec": 0.4,
+      "volume": 0.42
+    }
+  ]
+}

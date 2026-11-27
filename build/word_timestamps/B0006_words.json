@@ -1,107 +1,177 @@
 [
   {
-    "word": "जब",
+    "word": "और",
     "start_ms": 0,
-    "end_ms": 174
+    "end_ms": 201
   },
   {
-    "word": "पुल",
-    "start_ms": 174,
-    "end_ms": 418
+    "word": "सबसे",
+    "start_ms": 201,
+    "end_ms": 645
   },
   {
-    "word": "गिरने",
-    "start_ms": 418,
-    "end_ms": 871
+    "word": "बड़ी",
+    "start_ms": 645,
+    "end_ms": 1089
   },
   {
-    "word": "वाला",
-    "start_ms": 871,
-    "end_ms": 1290
+    "word": "दिक्कत—",
+    "start_ms": 1089,
+    "end_ms": 1568
   },
   {
-    "word": "था,",
-    "start_ms": 1290,
-    "end_ms": 1521
+    "word": "एआई",
+    "start_ms": 1568,
+    "end_ms": 1871
   },
   {
-    "word": "आपने",
-    "start_ms": 1521,
-    "end_ms": 1904
+    "word": "खत्म",
+    "start_ms": 1871,
+    "end_ms": 2143
   },
   {
-    "word": "उन",
-    "start_ms": 1904,
-    "end_ms": 2079
+    "word": "नहीं",
+    "start_ms": 2143,
+    "end_ms": 2628
   },
   {
-    "word": "दोनों",
-    "start_ms": 2079,
-    "end_ms": 2619
+    "word": "होगा,",
+    "start_ms": 2628,
+    "end_ms": 3137
+  },
+  {
+    "word": "बल्कि",
+    "start_ms": 3137,
+    "end_ms": 3490
+  },
+  {
+    "word": "नया",
+    "start_ms": 3490,
+    "end_ms": 3833
+  },
+  {
+    "word": "भेष",
+    "start_ms": 3833,
+    "end_ms": 4176
+  },
+  {
+    "word": "बदलकर",
+    "start_ms": 4176,
+    "end_ms": 4681
+  },
+  {
+    "word": "छिपने",
+    "start_ms": 4681,
+    "end_ms": 5205
+  },
+  {
+    "word": "लगेगा।",
+    "start_ms": 5205,
+    "end_ms": 5891
+  },
+  {
+    "word": "हर",
+    "start_ms": 5891,
+    "end_ms": 6093
+  },
+  {
+    "word": "प्लेटफॉर्म",
+    "start_ms": 6093,
+    "end_ms": 6880
+  },
+  {
+    "word": "एक",
+    "start_ms": 6880,
+    "end_ms": 7082
+  },
+  {
+    "word": "शक",
+    "start_ms": 7082,
+    "end_ms": 7284
+  },
+  {
+    "word": "से",
+    "start_ms": 7284,
+    "end_ms": 7526
+  },
+  {
+    "word": "भरे",
+    "start_ms": 7526,
+    "end_ms": 7869
+  },
+  {
+    "word": "चेकपोस्ट",
+    "start_ms": 7869,
+    "end_ms": 8626
+  },
+  {
+    "word": "में",
+    "start_ms": 8626,
+    "end_ms": 9009
+  },
+  {
+    "word": "बदल",
+    "start_ms": 9009,
+    "end_ms": 9312
+  },
+  {
+    "word": "जाएगा,",
+    "start_ms": 9312,
+    "end_ms": 9922
+  },
+  {
+    "word": "जहां",
+    "start_ms": 9922,
+    "end_ms": 10406
+  },
+  {
+    "word": "कमजोर",
+    "start_ms": 10406,
+    "end_ms": 10951
+  },
+  {
+    "word": "डिटेक्शन",
+    "start_ms": 10951,
+    "end_ms": 11647
+  },
+  {
+    "word": "बॉट्स",
+    "start_ms": 11647,
+    "end_ms": 12020
+  },
+  {
+    "word": "असली",
+    "start_ms": 12020,
+    "end_ms": 12464
+  },
+  {
+    "word": "फोटोग्राफर्स",
+    "start_ms": 12464,
+    "end_ms": 13534
   },
   {
     "word": "को",
-    "start_ms": 2619,
-    "end_ms": 2829
+    "start_ms": 13534,
+    "end_ms": 13776
   },
   {
     "word": "भी",
-    "start_ms": 2829,
-    "end_ms": 3038
+    "start_ms": 13776,
+    "end_ms": 14018
   },
   {
-    "word": "वापस",
-    "start_ms": 3038,
-    "end_ms": 3421
+    "word": "ब्लॉक",
+    "start_ms": 14018,
+    "end_ms": 14391
   },
   {
-    "word": "भेज",
-    "start_ms": 3421,
-    "end_ms": 3718
+    "word": "कर",
+    "start_ms": 14391,
+    "end_ms": 14593
   },
   {
-    "word": "दिया।",
-    "start_ms": 3718,
-    "end_ms": 4171
-  },
-  {
-    "word": "अब",
-    "start_ms": 4171,
-    "end_ms": 4346
-  },
-  {
-    "word": "उस",
-    "start_ms": 4346,
-    "end_ms": 4520
-  },
-  {
-    "word": "पुल",
-    "start_ms": 4520,
-    "end_ms": 4764
-  },
-  {
-    "word": "पर",
-    "start_ms": 4764,
-    "end_ms": 4938
-  },
-  {
-    "word": "आप",
-    "start_ms": 4938,
-    "end_ms": 5113
-  },
-  {
-    "word": "बिल्कुल",
-    "start_ms": 5113,
-    "end_ms": 5575
-  },
-  {
-    "word": "अकेले",
-    "start_ms": 5575,
-    "end_ms": 6081
-  },
-  {
-    "word": "थे।",
-    "start_ms": 6081,
-    "end_ms": 6377
+    "word": "देंगे।",
+    "start_ms": 14593,
+    "end_ms": 15320
   }
 ]

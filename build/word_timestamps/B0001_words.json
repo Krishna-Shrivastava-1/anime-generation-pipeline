@@ -2,116 +2,146 @@
   {
     "word": "कल्पना",
     "start_ms": 0,
-    "end_ms": 430
+    "end_ms": 438
   },
   {
-    "word": "कीजिए—रोम",
-    "start_ms": 430,
-    "end_ms": 1177
+    "word": "कीजिए—",
+    "start_ms": 438,
+    "end_ms": 906
   },
   {
-    "word": "की",
-    "start_ms": 1177,
-    "end_ms": 1379
+    "word": "कल",
+    "start_ms": 906,
+    "end_ms": 1078
   },
   {
-    "word": "पूरी",
-    "start_ms": 1379,
-    "end_ms": 1784
+    "word": "सुबह",
+    "start_ms": 1078,
+    "end_ms": 1404
   },
   {
-    "word": "सेना",
-    "start_ms": 1784,
-    "end_ms": 2189
+    "word": "आपकी",
+    "start_ms": 1404,
+    "end_ms": 1782
   },
   {
-    "word": "हारकर",
-    "start_ms": 2189,
-    "end_ms": 2645
+    "word": "आंखें",
+    "start_ms": 1782,
+    "end_ms": 2315
   },
   {
-    "word": "भाग",
-    "start_ms": 2645,
-    "end_ms": 2932
-  },
-  {
-    "word": "रही",
-    "start_ms": 2932,
-    "end_ms": 3219
-  },
-  {
-    "word": "है,",
-    "start_ms": 3219,
-    "end_ms": 3442
-  },
-  {
-    "word": "और",
-    "start_ms": 3442,
-    "end_ms": 3611
-  },
-  {
-    "word": "पूरे",
-    "start_ms": 3611,
-    "end_ms": 4016
-  },
-  {
-    "word": "शहर",
-    "start_ms": 4016,
-    "end_ms": 4269
-  },
-  {
-    "word": "को",
-    "start_ms": 4269,
-    "end_ms": 4472
-  },
-  {
-    "word": "बचाने",
-    "start_ms": 4472,
-    "end_ms": 4961
-  },
-  {
-    "word": "के",
-    "start_ms": 4961,
-    "end_ms": 5164
-  },
-  {
-    "word": "लिए",
-    "start_ms": 5164,
-    "end_ms": 5400
-  },
-  {
-    "word": "पुल",
-    "start_ms": 5400,
-    "end_ms": 5636
-  },
-  {
-    "word": "पर",
-    "start_ms": 5636,
-    "end_ms": 5805
-  },
-  {
-    "word": "सिर्फ़",
-    "start_ms": 5805,
-    "end_ms": 6185
+    "word": "खुलें,",
+    "start_ms": 2315,
+    "end_ms": 2817
   },
   {
     "word": "आप",
-    "start_ms": 6185,
-    "end_ms": 6354
+    "start_ms": 2817,
+    "end_ms": 2989
   },
   {
-    "word": "अकेले",
-    "start_ms": 6354,
-    "end_ms": 6843
+    "word": "अपना",
+    "start_ms": 2989,
+    "end_ms": 3367
   },
   {
-    "word": "खड़े",
-    "start_ms": 6843,
-    "end_ms": 7214
+    "word": "पसंदीदा",
+    "start_ms": 3367,
+    "end_ms": 4071
   },
   {
-    "word": "हैं।",
-    "start_ms": 7214,
-    "end_ms": 7620
+    "word": "ऐप",
+    "start_ms": 4071,
+    "end_ms": 4243
+  },
+  {
+    "word": "खोलें,",
+    "start_ms": 4243,
+    "end_ms": 4797
+  },
+  {
+    "word": "और",
+    "start_ms": 4797,
+    "end_ms": 4969
+  },
+  {
+    "word": "आपकी",
+    "start_ms": 4969,
+    "end_ms": 5347
+  },
+  {
+    "word": "आधी",
+    "start_ms": 5347,
+    "end_ms": 5639
+  },
+  {
+    "word": "फीड",
+    "start_ms": 5639,
+    "end_ms": 5931
+  },
+  {
+    "word": "अचानक",
+    "start_ms": 5931,
+    "end_ms": 6395
+  },
+  {
+    "word": "गायब",
+    "start_ms": 6395,
+    "end_ms": 6773
+  },
+  {
+    "word": "मिले—",
+    "start_ms": 6773,
+    "end_ms": 7155
+  },
+  {
+    "word": "क्योंकि",
+    "start_ms": 7155,
+    "end_ms": 7696
+  },
+  {
+    "word": "रातोंरात",
+    "start_ms": 7696,
+    "end_ms": 8521
+  },
+  {
+    "word": "हर",
+    "start_ms": 8521,
+    "end_ms": 8693
+  },
+  {
+    "word": "प्लेटफॉर्म",
+    "start_ms": 8693,
+    "end_ms": 9363
+  },
+  {
+    "word": "ने",
+    "start_ms": 9363,
+    "end_ms": 9569
+  },
+  {
+    "word": "एआई",
+    "start_ms": 9569,
+    "end_ms": 9827
+  },
+  {
+    "word": "पर",
+    "start_ms": 9827,
+    "end_ms": 9998
+  },
+  {
+    "word": "ताला",
+    "start_ms": 9998,
+    "end_ms": 10411
+  },
+  {
+    "word": "लगा",
+    "start_ms": 10411,
+    "end_ms": 10703
+  },
+  {
+    "word": "दिया।",
+    "start_ms": 10703,
+    "end_ms": 11150
   }
 ]

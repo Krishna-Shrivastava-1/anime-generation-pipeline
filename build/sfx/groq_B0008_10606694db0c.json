@@ -1,0 +1,14 @@
+{
+  "scene_analysis": "Rain slick street, neon glow, glass mannequin, and an open window with a gentle breeze are shown.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "rain street",
+      "fallback_tag": "rain patter",
+      "sound_type": "ambient",
+      "trigger_word": "एआई",
+      "target_ms": 190,
+      "duration_sec": 2.0,
+      "volume": 0.42
+    }
+  ]
+}

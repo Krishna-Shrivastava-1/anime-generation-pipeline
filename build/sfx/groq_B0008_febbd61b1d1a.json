@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "Rain slicks a city street with neon reflections, a glass pane behind a plastic mannequin, and a breezy open window.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "rain on pavement",
+      "fallback_tag": "rain",
+      "sound_type": "ambient",
+      "trigger_word": "एआई",
+      "target_ms": 139,
+      "duration_sec": 2.0,
+      "volume": 0.35
+    },
+    {
+      "freesound_tag": "window breeze",
+      "fallback_tag": "wind",
+      "sound_type": "ambient",
+      "trigger_word": "बिल्कुल",
+      "target_ms": 6560,
+      "duration_sec": 1.5,
+      "volume": 0.3
+    }
+  ]
+}

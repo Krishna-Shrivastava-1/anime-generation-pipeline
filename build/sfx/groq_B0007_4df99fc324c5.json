@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "Friends handle Polaroid photos on a wooden cafe table and hold a vintage film camera while standing in a warm gallery.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "paper rustle",
+      "fallback_tag": "paper shuffle",
+      "sound_type": "transient",
+      "trigger_word": "अफरा",
+      "target_ms": 600,
+      "duration_sec": 0.8,
+      "volume": 0.4
+    },
+    {
+      "freesound_tag": "film camera shutter",
+      "fallback_tag": "camera click",
+      "sound_type": "transient",
+      "trigger_word": "सबसे",
+      "target_ms": 8086,
+      "duration_sec": 0.5,
+      "volume": 0.45
+    }
+  ]
+}

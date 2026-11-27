@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "The visuals show dusty unplugged monitors, a glowing ring light on a chair, a commuter by a train window, and friends chatting at an outdoor tea stall.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "train rumble",
+      "fallback_tag": "train ambient",
+      "sound_type": "ambient",
+      "trigger_word": "इंटरनेट",
+      "target_ms": 7200,
+      "duration_sec": 2.0,
+      "volume": 0.35
+    },
+    {
+      "freesound_tag": "tea cup clink",
+      "fallback_tag": "cup clink",
+      "sound_type": "transient",
+      "trigger_word": "चैटिंग",
+      "target_ms": 15000,
+      "duration_sec": 1.0,
+      "volume": 0.4
+    }
+  ]
+}

@@ -1,162 +1,157 @@
 [
   {
-    "word": "508",
-    "start_ms": 120,
-    "end_ms": 308
+    "word": "देखते",
+    "start_ms": 0,
+    "end_ms": 466
   },
   {
-    "word": "BC",
-    "start_ms": 308,
-    "end_ms": 433
+    "word": "ही",
+    "start_ms": 466,
+    "end_ms": 659
   },
   {
-    "word": "में",
-    "start_ms": 433,
-    "end_ms": 799
+    "word": "देखते",
+    "start_ms": 659,
+    "end_ms": 1126
   },
   {
-    "word": "एट्रस्कन",
-    "start_ms": 799,
-    "end_ms": 1320
+    "word": "लाखों",
+    "start_ms": 1126,
+    "end_ms": 1625
   },
   {
-    "word": "राजा",
-    "start_ms": 1320,
-    "end_ms": 1783
+    "word": "फेसलेस",
+    "start_ms": 1625,
+    "end_ms": 2172
   },
   {
-    "word": "ने",
-    "start_ms": 1783,
-    "end_ms": 2014
-  },
-  {
-    "word": "रोम",
-    "start_ms": 2014,
-    "end_ms": 2342
-  },
-  {
-    "word": "की",
-    "start_ms": 2342,
-    "end_ms": 2573
-  },
-  {
-    "word": "सेना",
-    "start_ms": 2573,
-    "end_ms": 3036
-  },
-  {
-    "word": "को",
-    "start_ms": 3036,
-    "end_ms": 3267
-  },
-  {
-    "word": "बुरी",
-    "start_ms": 3267,
-    "end_ms": 3672
-  },
-  {
-    "word": "तरह",
-    "start_ms": 3672,
-    "end_ms": 3962
-  },
-  {
-    "word": "हरा",
-    "start_ms": 3962,
-    "end_ms": 4289
-  },
-  {
-    "word": "दिया।",
-    "start_ms": 4289,
-    "end_ms": 4791
-  },
-  {
-    "word": "शहर",
-    "start_ms": 4791,
-    "end_ms": 5080
-  },
-  {
-    "word": "में",
-    "start_ms": 5080,
-    "end_ms": 5446
-  },
-  {
-    "word": "घुसने",
-    "start_ms": 5446,
-    "end_ms": 5948
-  },
-  {
-    "word": "का",
-    "start_ms": 5948,
-    "end_ms": 6179
-  },
-  {
-    "word": "सिर्फ़",
-    "start_ms": 6179,
-    "end_ms": 6613
-  },
-  {
-    "word": "एक",
-    "start_ms": 6613,
-    "end_ms": 6806
-  },
-  {
-    "word": "पतला",
-    "start_ms": 6806,
-    "end_ms": 7230
-  },
-  {
-    "word": "लकड़ी",
-    "start_ms": 7230,
-    "end_ms": 7751
-  },
-  {
-    "word": "का",
-    "start_ms": 7751,
-    "end_ms": 7982
-  },
-  {
-    "word": "पुल",
-    "start_ms": 7982,
-    "end_ms": 8252
-  },
-  {
-    "word": "था,",
-    "start_ms": 8252,
-    "end_ms": 8507
+    "word": "चैनल्स",
+    "start_ms": 2172,
+    "end_ms": 2583
   },
   {
     "word": "और",
-    "start_ms": 8507,
-    "end_ms": 8700
+    "start_ms": 2583,
+    "end_ms": 2744
   },
   {
-    "word": "उस",
-    "start_ms": 8700,
-    "end_ms": 8893
+    "word": "नकली",
+    "start_ms": 2744,
+    "end_ms": 3098
   },
   {
-    "word": "पर",
-    "start_ms": 8893,
-    "end_ms": 9086
+    "word": "डिजिटल",
+    "start_ms": 3098,
+    "end_ms": 3549
   },
   {
-    "word": "सिर्फ़",
-    "start_ms": 9086,
-    "end_ms": 9520
+    "word": "इन्फ्लुएंसर्स",
+    "start_ms": 3549,
+    "end_ms": 4297
   },
   {
-    "word": "आप",
-    "start_ms": 9520,
-    "end_ms": 9713
+    "word": "गायब",
+    "start_ms": 4297,
+    "end_ms": 4651
   },
   {
-    "word": "तैनात",
-    "start_ms": 9713,
-    "end_ms": 10272
+    "word": "हो",
+    "start_ms": 4651,
+    "end_ms": 4844
   },
   {
-    "word": "थे।",
-    "start_ms": 10272,
-    "end_ms": 10599
+    "word": "जाएंगे।",
+    "start_ms": 4844,
+    "end_ms": 5504
+  },
+  {
+    "word": "कुछ",
+    "start_ms": 5504,
+    "end_ms": 5730
+  },
+  {
+    "word": "घंटों",
+    "start_ms": 5730,
+    "end_ms": 6229
+  },
+  {
+    "word": "के",
+    "start_ms": 6229,
+    "end_ms": 6422
+  },
+  {
+    "word": "लिए",
+    "start_ms": 6422,
+    "end_ms": 6647
+  },
+  {
+    "word": "इंटरनेट",
+    "start_ms": 6647,
+    "end_ms": 7275
+  },
+  {
+    "word": "इतना",
+    "start_ms": 7275,
+    "end_ms": 7629
+  },
+  {
+    "word": "शांत",
+    "start_ms": 7629,
+    "end_ms": 8015
+  },
+  {
+    "word": "लगेगा,",
+    "start_ms": 8015,
+    "end_ms": 8502
+  },
+  {
+    "word": "जैसे",
+    "start_ms": 8502,
+    "end_ms": 8889
+  },
+  {
+    "word": "हम",
+    "start_ms": 8889,
+    "end_ms": 9049
+  },
+  {
+    "word": "फिर",
+    "start_ms": 9049,
+    "end_ms": 9275
+  },
+  {
+    "word": "से",
+    "start_ms": 9275,
+    "end_ms": 9468
+  },
+  {
+    "word": "पुराने",
+    "start_ms": 9468,
+    "end_ms": 9999
+  },
+  {
+    "word": "दौर",
+    "start_ms": 9999,
+    "end_ms": 10273
+  },
+  {
+    "word": "में",
+    "start_ms": 10273,
+    "end_ms": 10579
+  },
+  {
+    "word": "लौट",
+    "start_ms": 10579,
+    "end_ms": 10852
+  },
+  {
+    "word": "आए",
+    "start_ms": 10852,
+    "end_ms": 11013
+  },
+  {
+    "word": "हों।",
+    "start_ms": 11013,
+    "end_ms": 11399
   }
 ]

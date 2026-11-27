@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "Wooden cafe table with Polaroid prints being handled and a vintage film camera being held, plus ambient indoor footsteps and tube lighting",
+  "sfx_cues": [
+    {
+      "freesound_tag": "wood table creak",
+      "fallback_tag": "wood creak",
+      "sound_type": "ambient",
+      "trigger_word": "पसंद",
+      "target_ms": 2500,
+      "duration_sec": 1.2,
+      "volume": 0.4
+    },
+    {
+      "freesound_tag": "camera shutter click",
+      "fallback_tag": "shutter click",
+      "sound_type": "transient",
+      "trigger_word": "हाथों",
+      "target_ms": 8500,
+      "duration_sec": 0.6,
+      "volume": 0.45
+    }
+  ]
+}

@@ -1,137 +1,152 @@
 [
   {
-    "word": "अगर",
+    "word": "शुरुआत",
     "start_ms": 0,
-    "end_ms": 268
+    "end_ms": 534
   },
   {
-    "word": "दुश्मन",
-    "start_ms": 268,
-    "end_ms": 672
+    "word": "में",
+    "start_ms": 534,
+    "end_ms": 897
   },
   {
-    "word": "पुल",
-    "start_ms": 672,
-    "end_ms": 923
+    "word": "असली",
+    "start_ms": 897,
+    "end_ms": 1318
   },
   {
-    "word": "पार",
-    "start_ms": 923,
-    "end_ms": 1228
+    "word": "कलाकार",
+    "start_ms": 1318,
+    "end_ms": 1967
   },
   {
-    "word": "कर",
-    "start_ms": 1228,
-    "end_ms": 1407
+    "word": "जश्न",
+    "start_ms": 1967,
+    "end_ms": 2225
   },
   {
-    "word": "गया,",
-    "start_ms": 1407,
-    "end_ms": 1734
+    "word": "मनाएंगे,",
+    "start_ms": 2225,
+    "end_ms": 3032
   },
   {
-    "word": "तो",
-    "start_ms": 1734,
-    "end_ms": 1950
+    "word": "उन्हें",
+    "start_ms": 3032,
+    "end_ms": 3557
   },
   {
-    "word": "पूरा",
-    "start_ms": 1950,
-    "end_ms": 2380
+    "word": "लगेगा",
+    "start_ms": 3557,
+    "end_ms": 4111
   },
   {
-    "word": "रोम",
-    "start_ms": 2380,
-    "end_ms": 2685
+    "word": "कि",
+    "start_ms": 4111,
+    "end_ms": 4283
   },
   {
-    "word": "तबाह",
-    "start_ms": 2685,
-    "end_ms": 3079
+    "word": "इंसान",
+    "start_ms": 4283,
+    "end_ms": 4837
   },
   {
-    "word": "हो",
-    "start_ms": 3079,
-    "end_ms": 3294
+    "word": "की",
+    "start_ms": 4837,
+    "end_ms": 5066
   },
   {
-    "word": "जाएगा।",
-    "start_ms": 3294,
-    "end_ms": 3904
+    "word": "मेहनत",
+    "start_ms": 5066,
+    "end_ms": 5582
   },
   {
-    "word": "आपने",
-    "start_ms": 3904,
-    "end_ms": 4299
+    "word": "जीत",
+    "start_ms": 5582,
+    "end_ms": 5907
   },
   {
-    "word": "भागते",
-    "start_ms": 4299,
-    "end_ms": 4819
+    "word": "गई।",
+    "start_ms": 5907,
+    "end_ms": 6193
   },
   {
-    "word": "सिपाहियों",
-    "start_ms": 4819,
-    "end_ms": 5697
+    "word": "लेकिन",
+    "start_ms": 6193,
+    "end_ms": 6690
   },
   {
-    "word": "को",
-    "start_ms": 5697,
-    "end_ms": 5912
+    "word": "दोपहर",
+    "start_ms": 6690,
+    "end_ms": 7206
   },
   {
-    "word": "पकड़ा",
-    "start_ms": 5912,
-    "end_ms": 6396
+    "word": "तक",
+    "start_ms": 7206,
+    "end_ms": 7397
   },
   {
-    "word": "और",
-    "start_ms": 6396,
-    "end_ms": 6576
+    "word": "एक",
+    "start_ms": 7397,
+    "end_ms": 7588
   },
   {
-    "word": "चिल्लाकर",
-    "start_ms": 6576,
-    "end_ms": 7194
+    "word": "अनदेखी",
+    "start_ms": 7588,
+    "end_ms": 8237
   },
   {
-    "word": "कहा—मेरे",
-    "start_ms": 7194,
-    "end_ms": 7952
+    "word": "मुसीबत",
+    "start_ms": 8237,
+    "end_ms": 8829
   },
   {
-    "word": "पीछे",
-    "start_ms": 7952,
-    "end_ms": 8382
+    "word": "सामने",
+    "start_ms": 8829,
+    "end_ms": 9383
   },
   {
-    "word": "से",
-    "start_ms": 8382,
-    "end_ms": 8598
+    "word": "आएगी,",
+    "start_ms": 9383,
+    "end_ms": 9827
   },
   {
-    "word": "ये",
-    "start_ms": 8598,
-    "end_ms": 8813
+    "word": "जिसका",
+    "start_ms": 9827,
+    "end_ms": 10324
   },
   {
-    "word": "पुल",
-    "start_ms": 8813,
-    "end_ms": 9064
+    "word": "अंदाजा",
+    "start_ms": 10324,
+    "end_ms": 11012
   },
   {
-    "word": "काटकर",
-    "start_ms": 9064,
-    "end_ms": 9548
+    "word": "शायद",
+    "start_ms": 11012,
+    "end_ms": 11432
   },
   {
-    "word": "गिरा",
-    "start_ms": 9548,
-    "end_ms": 9924
+    "word": "किसी",
+    "start_ms": 11432,
+    "end_ms": 11833
   },
   {
-    "word": "दो!",
-    "start_ms": 9924,
-    "end_ms": 10162
+    "word": "ने",
+    "start_ms": 11833,
+    "end_ms": 12062
+  },
+  {
+    "word": "नहीं",
+    "start_ms": 12062,
+    "end_ms": 12521
+  },
+  {
+    "word": "लगाया",
+    "start_ms": 12521,
+    "end_ms": 13075
+  },
+  {
+    "word": "था।",
+    "start_ms": 13075,
+    "end_ms": 13400
   }
 ]

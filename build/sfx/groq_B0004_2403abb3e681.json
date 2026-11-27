@@ -1,0 +1,23 @@
+{
+  "scene_analysis": "Studio glass surfaces, a projector with smoke, a wooden table with handmade clay cups, and a desk with tangled cables and a camera.",
+  "sfx_cues": [
+    {
+      "freesound_tag": "projector hum",
+      "fallback_tag": "projector fan",
+      "sound_type": "ambient",
+      "trigger_word": "क्योंकि",
+      "target_ms": 0,
+      "duration_sec": 2.0,
+      "volume": 0.35
+    },
+    {
+      "freesound_tag": "camera shutter click",
+      "fallback_tag": "camera click",
+      "sound_type": "transient",
+      "trigger_word": "विज्ञापन",
+      "target_ms": 5291,
+      "duration_sec": 0.5,
+      "volume": 0.35
+    }
+  ]
+}

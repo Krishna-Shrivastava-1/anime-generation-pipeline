@@ -3014,6 +3014,109 @@ def process_sfx_audio(raw_sfx_path, sound_type, max_duration_sec, output_path, t
     return data, onset_sec
 
 
+# def query_groq_sound_director(groq_client, groq_model, beat_id, visual_context, narration_text, words_timeline):
+#     cache_sig = hashlib.md5(
+#         json.dumps(
+#             {
+#                 "v": "groq_sfx_v1",
+#                 "model": groq_model,
+#                 "visual": visual_context,
+#                 "text": narration_text,
+#                 "words": len(words_timeline),
+#                 "dur_ms": words_timeline[-1]["end_ms"] if words_timeline else 0,
+#             },
+#             ensure_ascii=False,
+#         ).encode("utf-8")
+#     ).hexdigest()
+#     SFX_DIR.mkdir(parents=True, exist_ok=True)
+#     cache_file = SFX_DIR / f"groq_{beat_id}_{cache_sig[:12]}.json"
+#     if cache_file.exists():
+#         try:
+#             cached = json.loads(cache_file.read_text(encoding="utf-8"))
+#             if cached.get("scene_analysis"):
+#                 print(f"   Scene Foley Context (cached): {cached['scene_analysis']}")
+#             return cached.get("sfx_cues", [])
+#         except Exception:
+#             pass
+
+#     system_instruction = (
+#         "You are a realistic Foley & Explainer Sound Editor. Your job is to select subtle, grounded sound effects "
+#         "that accurately match the LITERAL objects, actions, or UI/whiteboard interactions happening in the narration.\n\n"
+#         "STRICT REALISM & MATCHING RULES:\n"
+#         "1. GROUND TO LITERAL OBJECTS/ACTIONS: If the scene mentions a bottle, glass, water, cup, book, door, keyboard, "
+#         "whiteboard drawing, click, notification, or data transfer, choose sounds specifically matching those actions.\n"
+#         "2. ABSOLUTELY NO UNPROMPTED DRAMATIC SFX: NEVER output 'car crash', 'explosion', 'gunshot', or 'cinematic hit' "
+#         "unless a vehicle crash or weapon is explicitly mentioned in the text.\n"
+#         "3. QUERY FORMAT FOR FREESOUND:\n"
+#         "   - Use 2-3 precise natural English words describing the exact material/object and action.\n"
+#         "   - Good story Foley: 'glass bottle clink', 'pouring water', 'footsteps wood', 'paper turn', 'door creak'\n"
+#         "   - Good explainer/tech Foley: 'marker whiteboard draw', 'keyboard typing', 'mouse click', 'subtle UI pop', 'server hum'\n"
+#         "   - Bad: 'smash', 'break', 'dramatic_impact_cinematic_boom'\n"
+#         "4. DENSITY: Output between 0 and 2 tasteful cues. Keep volume subtle (0.25 to 0.55) so voiceover stays crystal clear. "
+#         "If no distinct sound cue fits naturally, return an empty list [].\n\n"
+#         "Return strictly a JSON object with this schema:\n"
+#         "{\n"
+#         '  "scene_analysis": "One sentence explaining physical/visual objects present",\n'
+#         '  "sfx_cues": [\n'
+#         "    {\n"
+#         '      "freesound_tag": "glass bottle clink",\n'
+#         '      "fallback_tag": "glass impact",\n'
+#         '      "sound_type": "transient",\n'
+#         '      "trigger_word": "word from the timeline",\n'
+#         '      "target_ms": 1200,\n'
+#         '      "duration_sec": 1.5,\n'
+#         '      "volume": 0.45\n'
+#         "    }\n"
+#         "  ]\n"
+#         "}"
+#     )
+
+#     user_content = f"""
+# Beat ID: {beat_id}
+# Visual Context: {visual_context if visual_context else 'Explainer / story scene'}
+# Spoken Narration: {narration_text}
+
+# Word-by-word Timestamps (ms):
+# {json.dumps(words_timeline, ensure_ascii=False)}
+
+# Identify literal physical materials, actions, or UI/whiteboard cues and select 0 to 2 matching sound cues.
+# """
+
+#     try:
+#         completion = groq_client.chat.completions.create(
+#             model=groq_model,
+#             messages=[
+#                 {"role": "system", "content": system_instruction},
+#                 {"role": "user", "content": user_content},
+#             ],
+#             response_format={"type": "json_object"},
+#             temperature=0.1,
+#             max_tokens=600,
+#         )
+#         data = json.loads(completion.choices[0].message.content)
+#         analysis = data.get("scene_analysis", "")
+#         if analysis:
+#             print(f"   Scene Foley Context: {analysis}")
+#         cache_file.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+#         return data.get("sfx_cues", [])
+#     except Exception as e:
+#         print(f"   [Warning] Groq Sound Director error on {beat_id}: {e}")
+#         return []
+def _extract_json_object(raw_text):
+    if not raw_text:
+        return None
+    cleaned = re.sub(r"<think>.*?</think>", "", raw_text, flags=re.DOTALL).strip()
+    cleaned = re.sub(r"^```(?:json)?\s*|\s*```$", "", cleaned, flags=re.IGNORECASE | re.MULTILINE).strip()
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        start = cleaned.find("{")
+        end = cleaned.rfind("}")
+        if start != -1 and end > start:
+            return json.loads(cleaned[start:end + 1])
+        raise
+
+
 def query_groq_sound_director(groq_client, groq_model, beat_id, visual_context, narration_text, words_timeline):
     cache_sig = hashlib.md5(
         json.dumps(
@@ -3035,7 +3138,7 @@ def query_groq_sound_director(groq_client, groq_model, beat_id, visual_context, 
             cached = json.loads(cache_file.read_text(encoding="utf-8"))
             if cached.get("scene_analysis"):
                 print(f"   Scene Foley Context (cached): {cached['scene_analysis']}")
-            return cached.get("sfx_cues", [])
+            return cached.get("sfx_cues") or []
         except Exception:
             pass
 
@@ -3054,7 +3157,7 @@ def query_groq_sound_director(groq_client, groq_model, beat_id, visual_context, 
         "   - Bad: 'smash', 'break', 'dramatic_impact_cinematic_boom'\n"
         "4. DENSITY: Output between 0 and 2 tasteful cues. Keep volume subtle (0.25 to 0.55) so voiceover stays crystal clear. "
         "If no distinct sound cue fits naturally, return an empty list [].\n\n"
-        "Return strictly a JSON object with this schema:\n"
+        "Return strictly a valid JSON object (no markdown fences, no extra text) with this schema:\n"
         "{\n"
         '  "scene_analysis": "One sentence explaining physical/visual objects present",\n'
         '  "sfx_cues": [\n'
@@ -3082,27 +3185,53 @@ Word-by-word Timestamps (ms):
 Identify literal physical materials, actions, or UI/whiteboard cues and select 0 to 2 matching sound cues.
 """
 
-    try:
-        completion = groq_client.chat.completions.create(
-            model=groq_model,
-            messages=[
-                {"role": "system", "content": system_instruction},
-                {"role": "user", "content": user_content},
-            ],
-            response_format={"type": "json_object"},
-            temperature=0.1,
-            max_tokens=600,
-        )
-        data = json.loads(completion.choices[0].message.content)
-        analysis = data.get("scene_analysis", "")
-        if analysis:
-            print(f"   Scene Foley Context: {analysis}")
-        cache_file.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-        return data.get("sfx_cues", [])
-    except Exception as e:
-        print(f"   [Warning] Groq Sound Director error on {beat_id}: {e}")
+    messages = [
+        {"role": "system", "content": system_instruction},
+        {"role": "user", "content": user_content},
+    ]
+
+    extra_kwargs = {}
+    if "gpt-oss" in groq_model.lower():
+        extra_kwargs["reasoning_effort"] = "low"
+
+    data = None
+    last_err = None
+
+    # Attempt 1: structured json_object mode with adequate token budget
+    # Attempt 2: plain completion + local JSON extraction if Groq's JSON validator rejects
+    for use_json_mode in (True, False):
+        req_kwargs = {
+            "model": groq_model,
+            "messages": messages,
+            "temperature": 0.1,
+            "max_tokens": 2048,
+            **extra_kwargs,
+        }
+        if use_json_mode:
+            req_kwargs["response_format"] = {"type": "json_object"}
+
+        try:
+            completion = groq_client.chat.completions.create(**req_kwargs)
+            raw_content = completion.choices[0].message.content or ""
+            data = _extract_json_object(raw_content)
+            if isinstance(data, dict):
+                break
+        except Exception as e:
+            last_err = e
+            # If reasoning_effort caused an unsupported-param 400 on a custom model, drop it for retry
+            if "reasoning_effort" in str(e):
+                extra_kwargs.pop("reasoning_effort", None)
+            continue
+
+    if not isinstance(data, dict):
+        print(f"   [Warning] Groq Sound Director error on {beat_id}: {last_err}")
         return []
 
+    analysis = data.get("scene_analysis", "")
+    if analysis:
+        print(f"   Scene Foley Context: {analysis}")
+    cache_file.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    return [c for c in (data.get("sfx_cues") or []) if isinstance(c, dict)]
 
 def validate_sfx_dependencies():
     load_env_vars()
@@ -3127,6 +3256,96 @@ def validate_sfx_dependencies():
     return Groq(api_key=groq_key), freesound_key, os.getenv("GROQ_MODEL", GROQ_MODEL_DEFAULT)
 
 
+# def build_master_sfx_track(beat_audio_plans, total_samples, sample_rate, temp_dir):
+#     groq_client, freesound_key, groq_model = validate_sfx_dependencies()
+#     SFX_DIR.mkdir(parents=True, exist_ok=True)
+#     PROCESSED_SFX_DIR.mkdir(parents=True, exist_ok=True)
+#     TIMESTAMPS_DIR.mkdir(parents=True, exist_ok=True)
+
+#     master_sfx = np.zeros(total_samples, dtype=np.float32)
+#     total_attached = 0
+
+#     print(f"\nDirecting Grounded Foley SFX (Groq: {groq_model} + Freesound API)...")
+#     for plan in beat_audio_plans:
+#         beat = plan["beat"]
+#         beat_id = beat.get("beat_id", f"B{plan['beat_index']:04d}")
+#         visual_context = get_beat_visual_context(beat)
+#         spoken_text = plan["spoken_source"]
+
+#         ts_file = TIMESTAMPS_DIR / f"{beat_id}_words.json"
+#         words_timeline = align_ground_truth_to_samples(
+#             data=plan["speech_samples"],
+#             sr=plan["sample_rate"],
+#             ground_truth_text=spoken_text,
+#             output_json=ts_file,
+#         )
+
+#         sfx_cues = query_groq_sound_director(
+#             groq_client=groq_client,
+#             groq_model=groq_model,
+#             beat_id=beat_id,
+#             visual_context=visual_context,
+#             narration_text=spoken_text,
+#             words_timeline=words_timeline,
+#         )
+#         if not sfx_cues:
+#             continue
+
+#         print(f"   [{beat_id}] Foley cues chosen: {len(sfx_cues)}")
+#         for sfx_idx, cue in enumerate(sfx_cues):
+#             tag = cue.get("freesound_tag", "")
+#             fallback = cue.get("fallback_tag", "")
+#             sound_type = cue.get("sound_type", "transient")
+#             target_ms = float(cue.get("target_ms", 0))
+#             duration_sec = min(SFX_MAX_DUR, max(SFX_MIN_DUR, float(cue.get("duration_sec", 2.0))))
+#             volume = float(np.clip(float(cue.get("volume", 0.45)), 0.05, 0.85))
+
+#             raw_sfx = FreesoundAudioAPI.search_and_download(tag, fallback, api_key=freesound_key)
+#             if not raw_sfx:
+#                 continue
+
+#             processed_sfx_path = PROCESSED_SFX_DIR / f"{beat_id}_sfx_{sfx_idx}.wav"
+#             sfx_samples, onset_sec = process_sfx_audio(
+#                 raw_sfx_path=raw_sfx,
+#                 sound_type=sound_type,
+#                 max_duration_sec=duration_sec,
+#                 output_path=processed_sfx_path,
+#                 target_sr=sample_rate,
+#                 temp_dir=temp_dir,
+#             )
+#             if sfx_samples.size == 0:
+#                 continue
+
+#             target_impact_time = plan["beat_start_s"] + (target_ms / 1000.0)
+#             sfx_start_time = max(0.0, target_impact_time - onset_sec)
+#             start_idx = int(round(sfx_start_time * sample_rate))
+#             if start_idx >= total_samples:
+#                 continue
+
+#             end_idx = min(total_samples, start_idx + sfx_samples.size)
+#             copy_len = end_idx - start_idx
+#             if copy_len > 0:
+#                 master_sfx[start_idx:end_idx] += sfx_samples[:copy_len] * volume
+#                 total_attached += 1
+#                 print(
+#                     f"      Attached '{tag}' @ {sfx_start_time:.2f}s "
+#                     f"(onset: -{onset_sec * 1000:.0f}ms, vol={volume:.2f})"
+#                 )
+
+#     if total_attached == 0:
+#         print("No SFX attached; continuing with voiceover only.")
+#         return None
+
+#     # Soft-limit any overlapping SFX peaks before final FFmpeg mux
+#     peak = float(np.max(np.abs(master_sfx)))
+#     if peak > 0.92:
+#         master_sfx = (np.tanh(master_sfx * 0.95) / np.tanh(0.95) * 0.92).astype(np.float32)
+
+#     master_sfx_path = Path(temp_dir) / "master_sfx.wav"
+#     save_wav(master_sfx_path, master_sfx, sample_rate)
+#     print(f"Mixed {total_attached} SFX cues into {master_sfx_path.name}.")
+#     return master_sfx_path
+
 def build_master_sfx_track(beat_audio_plans, total_samples, sample_rate, temp_dir):
     groq_client, freesound_key, groq_model = validate_sfx_dependencies()
     SFX_DIR.mkdir(parents=True, exist_ok=True)
@@ -3135,6 +3354,14 @@ def build_master_sfx_track(beat_audio_plans, total_samples, sample_rate, temp_di
 
     master_sfx = np.zeros(total_samples, dtype=np.float32)
     total_attached = 0
+
+    def _safe_float(val, default):
+        if val is None or val == "":
+            return default
+        try:
+            return float(val)
+        except (TypeError, ValueError):
+            return default
 
     print(f"\nDirecting Grounded Foley SFX (Groq: {groq_model} + Freesound API)...")
     for plan in beat_audio_plans:
@@ -3163,13 +3390,24 @@ def build_master_sfx_track(beat_audio_plans, total_samples, sample_rate, temp_di
             continue
 
         print(f"   [{beat_id}] Foley cues chosen: {len(sfx_cues)}")
+        max_beat_ms = plan["frame_dur"] * 1000.0
+
         for sfx_idx, cue in enumerate(sfx_cues):
-            tag = cue.get("freesound_tag", "")
-            fallback = cue.get("fallback_tag", "")
-            sound_type = cue.get("sound_type", "transient")
-            target_ms = float(cue.get("target_ms", 0))
-            duration_sec = min(SFX_MAX_DUR, max(SFX_MIN_DUR, float(cue.get("duration_sec", 2.0))))
-            volume = float(np.clip(float(cue.get("volume", 0.45)), 0.05, 0.85))
+            if not isinstance(cue, dict):
+                continue
+
+            tag = str(cue.get("freesound_tag") or "").strip()
+            fallback = str(cue.get("fallback_tag") or "").strip()
+            if not tag and not fallback:
+                continue
+
+            sound_type = str(cue.get("sound_type") or "transient").strip().lower()
+            if sound_type not in ("transient", "ambient", "continuous"):
+                sound_type = "transient"
+
+            target_ms = min(max_beat_ms, max(0.0, _safe_float(cue.get("target_ms"), 0.0)))
+            duration_sec = min(SFX_MAX_DUR, max(SFX_MIN_DUR, _safe_float(cue.get("duration_sec"), 2.0)))
+            volume = float(np.clip(_safe_float(cue.get("volume"), 0.45), 0.05, 0.85))
 
             raw_sfx = FreesoundAudioAPI.search_and_download(tag, fallback, api_key=freesound_key)
             if not raw_sfx:
@@ -3199,7 +3437,7 @@ def build_master_sfx_track(beat_audio_plans, total_samples, sample_rate, temp_di
                 master_sfx[start_idx:end_idx] += sfx_samples[:copy_len] * volume
                 total_attached += 1
                 print(
-                    f"      Attached '{tag}' @ {sfx_start_time:.2f}s "
+                    f"      Attached '{tag or fallback}' @ {sfx_start_time:.2f}s "
                     f"(onset: -{onset_sec * 1000:.0f}ms, vol={volume:.2f})"
                 )
 

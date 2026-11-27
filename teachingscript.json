@@ -1,318 +1,340 @@
 {
-  "title": "20 रुपये का 'सच्चा सौदा': गुरु नानक देव जी की अनमोल कहानी",
-  "topic": "Conversational, inspiring Hindi YouTube Short under 90 seconds telling the life story and core teachings of Guru Nanak Dev Ji, paired with a rich cinematic historical film art style.",
+  "title": "जिस दिन हर प्लेटफॉर्म ने AI पर ताला लगा दिया",
+  "topic": "Conversational, gripping Hindi YouTube Short under 90 seconds exploring the realistic chain reaction if every social and video platform banned AI-generated images and videos overnight.",
   "aspect_ratio": "9:16",
   "target_minutes": 1.4,
-  "total_beats": 10,
-  "total_clips": 27,
+  "total_beats": 8,
+  "total_clips": 32,
   "global_style": {
-    "art_style": "Vertical 9:16 photorealistic cinematic historical film still, shot on 35mm anamorphic lens, shallow depth of field, warm golden-hour sunlight, atmospheric dust motes and soft volumetric light rays, authentic 15th-to-16th century Punjab and South Asian rural and spiritual architecture, natural earthy textures, serene and deeply respectful mood, rich film color grading. Zero text, logos, or watermarks.",
-    "negative_prompt": "cartoon, 2D illustration, anime, chibi, 3D render, CGI look, modern clothing, modern buildings, harsh neon colors, text, letters, logos, watermarks, blurry, distorted faces"
+    "art_style": "Vertical 9:16 photorealistic cinematic modern tech-thriller film still, shot on 35mm anamorphic lens, shallow depth of field, moody practical indoor tungsten lighting contrasted with cool twilight blues, subtle atmospheric dust and haze, authentic contemporary Indian and global everyday environments, natural film grain, rich editorial color grading. Zero text, logos, or watermarks.",
+    "negative_prompt": "cartoon, 2D illustration, anime, chibi, exaggerated CGI, sci-fi spaceships, cyberpunk clichés, readable text, letters, numbers, UI overlays, logos, watermarks, blurry, distorted faces, extra fingers"
   },
   "beats": [
     {
       "beat_id": "B0001",
-      "narration": "एक दिन नन्हे नानक को उनके पिता ने 20 रुपये दिए, कि जाओ, कोई सच्चा व्यापार करके आओ— लेकिन उन्होंने जो किया, उसने इतिहास बदल दिया।",
-      "word_count": 26,
-      "estimated_duration": 8.3,
+      "narration": "कल्पना कीजिए— कल सुबह आपकी आंखें खुलें, आप अपना पसंदीदा ऐप खोलें, और आपकी आधी फीड अचानक गायब मिले— क्योंकि रातोंरात हर प्लेटफॉर्म ने एआई पर ताला लगा दिया।",
+      "word_count": 29,
+      "estimated_duration": 9.6,
       "is_scene_bridge": false,
       "clips": [
         {
           "clip_id": "C0001",
-          "spoken_text": "एक दिन नन्हे नानक को उनके पिता ने 20 रुपये दिए,",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 3.5,
-          "scene_context": "Close cinematic shot of a father in 15th-century Punjabi attire placing old silver coins into young Nanak's gentle hands.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic historical film still, close-up of weathered hands of a 15th-century Punjabi father placing antique silver coins into the open palms of young boy Guru Nanak wearing simple cream cotton clothes, warm courtyard sunlight filtering through wooden eaves, soft golden dust motes, shallow depth of field, 35mm film grain, zero text, logos, or watermarks."
+          "spoken_text": "कल्पना कीजिए— कल सुबह आपकी आंखें खुलें,",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.3,
+          "scene_context": "Close-up of a young Indian man waking up in a dimly lit bedroom as cool morning light slips through curtains.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, close-up of a sleepy young Indian man opening his eyes on a rumpled pillow at dawn, soft cool blue morning light filtering through bedroom curtains, natural skin texture, shallow depth of field, 35mm film grain, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0002",
-          "spoken_text": "कि जाओ, कोई सच्चा व्यापार करके आओ—",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.3,
-          "scene_context": "Young Nanak walking along a sunlit village dirt path bordered by lush mustard fields.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, over-the-shoulder view of young boy Guru Nanak in simple traditional Punjabi tunic walking peacefully along a sunlit dirt village path lined with green fields and mud-brick homes in 15th-century Punjab, golden hour rim lighting, volumetric sunbeams, natural earthy tones, zero text, logos, or watermarks."
+          "spoken_text": "आप अपना पसंदीदा ऐप खोलें,",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 1.8,
+          "scene_context": "Tight shot of his hand reaching for a glowing smartphone on a wooden nightstand.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, close-up of a hand picking up a sleek smartphone from a wooden bedside table in a shadowy room, soft screen light reflecting on fingers, warm desk lamp out of focus in background, 35mm lens, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0003",
-          "spoken_text": "लेकिन उन्होंने जो किया, उसने इतिहास बदल दिया।",
-          "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.5,
-          "scene_context": "Serene side profile of young Nanak looking thoughtfully toward the horizon bathed in warm golden light.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, serene side profile of young boy Guru Nanak with a calm compassionate expression gazing toward a sunlit village grove, soft golden-hour glow illuminating his face, atmospheric haze, shallow depth of field, rich cinematic film grading, zero text, logos, or watermarks."
+          "spoken_text": "और आपकी आधी फीड अचानक गायब मिले—",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.3,
+          "scene_context": "Over-the-shoulder shot of the smartphone screen showing only blank gray placeholder boxes instead of videos.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, over-the-shoulder close-up looking at a glowing smartphone held in dim morning light, screen displaying empty featureless gray rectangular tiles with no images or letters, shocked expression faintly visible in profile, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0004",
+          "spoken_text": "क्योंकि रातोंरात हर प्लेटफॉर्म ने एआई पर ताला लगा दिया।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Symmetrical corridor inside a colossal dark server farm with rows of rack lights turning stark crimson.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic tech-thriller still, dramatic perspective down a vast dark data center hallway, towering glass server racks with blinking amber and crimson indicator lights reflecting on polished steel floors, atmospheric haze, 35mm anamorphic flare, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0002",
-      "narration": "रास्ते में उन्हें कुछ भूखे साधु मिले। नानक जी ने बिना सोचे उन 20 रुपयों से सबको खाना खिला दिया, और इसे ही 'सच्चा सौदा' कहा।",
-      "word_count": 26,
-      "estimated_duration": 8.0,
+      "narration": "देखते ही देखते लाखों फेसलेस चैनल्स और नकली डिजिटल इन्फ्लुएंसर्स गायब हो जाएंगे। कुछ घंटों के लिए इंटरनेट इतना शांत लगेगा, जैसे हम फिर से पुराने दौर में लौट आए हों।",
+      "word_count": 31,
+      "estimated_duration": 10.3,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0004",
-          "spoken_text": "रास्ते में उन्हें कुछ भूखे साधु मिले।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.3,
-          "scene_context": "Wandering ascetics resting tiredly under the shade of a massive ancient banyan tree.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, weary wandering ascetics in tattered ochre robes resting silently under the sprawling roots and dappled shade of an ancient banyan tree in rural 15th-century India, soft natural light shafts piercing the leaves, evocative storytelling frame, zero text, logos, or watermarks."
-        },
-        {
           "clip_id": "C0005",
-          "spoken_text": "नानक जी ने बिना सोचे उन 20 रुपयों से सबको खाना खिला दिया,",
-          "spoken_word_count": 13,
-          "estimated_spoken_duration": 3.7,
-          "scene_context": "Young Nanak humbly serving warm simple food on leaf plates to the grateful ascetics.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic historical film still, young boy Guru Nanak humbly serving fresh warm flatbread and lentils on traditional green leaf plates to seated hungry ascetics under a banyan tree, warm golden light, rising gentle steam from food, deep compassion and gratitude, shallow depth of field, zero text, logos, or watermarks."
+          "spoken_text": "देखते ही देखते लाखों फेसलेस चैनल्स",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.1,
+          "scene_context": "An empty automated content room with dozens of unplugged desktop monitors sitting dark and dusty.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, wide shot of a quiet dimly lit office filled with rows of powered-off black computer monitors and empty swivel chairs, faint sunbeams cutting through dust, eerie stillness, 35mm film grain, zero text, logos, or watermarks."
         },
         {
           "clip_id": "C0006",
-          "spoken_text": "और इसे ही 'सच्चा सौदा' कहा।",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "Wide peaceful shot of everyone eating together harmoniously under the golden canopy.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic wide shot, ascetics eating peacefully together on woven mats beneath a grand banyan tree while young Guru Nanak stands serenely nearby bathed in warm sunset glow, volumetric light rays, timeless spiritual atmosphere, zero text, logos, or watermarks."
+          "spoken_text": "और नकली डिजिटल इन्फ्लुएंसर्स गायब हो जाएंगे।",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "A glowing ring light standing in an empty modern apartment studio with an uninhabited chair.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, medium shot of a bright LED ring light on a tripod illuminating an empty stylish apartment corner, vacant upholstered chair in soft pastel light, quiet abandoned atmosphere, shallow depth of field, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0007",
+          "spoken_text": "कुछ घंटों के लिए इंटरनेट इतना शांत लगेगा,",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "A calm commuter sitting peacefully by a train window looking relaxed without scrolling frantically.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, candid medium shot of a young woman sitting by a sunlit window holding a resting smartphone in her lap, looking peacefully outside, soft golden morning warmth, calm serene mood, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0008",
+          "spoken_text": "जैसे हम फिर से पुराने दौर में लौट आए हों।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Nostalgic warm shot of friends chatting naturally at an outdoor roadside tea stall without looking at phones.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, warm nostalgic shot of two friends smiling and talking over clay cups of chai at a sunlit neighborhood tea stall, soft golden afternoon bokeh, authentic 2010s warm film color grading, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0003",
-      "narration": "1469 में तलवंडी में जन्मे गुरु नानक देव जी बचपन से ही अलग थे। वे अंधविश्वास और ऊंच-नीच को कभी नहीं मानते थे।",
-      "word_count": 23,
-      "estimated_duration": 7.2,
-      "is_scene_bridge": false,
+      "narration": "शुरुआत में असली कलाकार जश्न मनाएंगे, उन्हें लगेगा कि इंसान की मेहनत जीत गई। लेकिन दोपहर तक एक अनदेखी मुसीबत सामने आएगी, जिसका अंदाजा शायद किसी ने नहीं लगाया था।",
+      "word_count": 30,
+      "estimated_duration": 9.9,
+      "is_scene_bridge": true,
       "clips": [
         {
-          "clip_id": "C0007",
-          "spoken_text": "1469 में तलवंडी में जन्मे गुरु नानक देव जी बचपन से ही अलग थे।",
-          "spoken_word_count": 14,
-          "estimated_spoken_duration": 4.3,
-          "scene_context": "Atmospheric wide shot of historic 15th-century Talwandi village at peaceful dawn.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic wide shot of historic 15th-century Talwandi village in Punjab at peaceful dawn, mud-brick houses, wooden doorways, distant palm and neem trees, gentle morning mist rising from fields, golden sunrise glow, authentic period detail, zero text, logos, or watermarks."
+          "clip_id": "C0009",
+          "spoken_text": "शुरुआत में असली कलाकार जश्न मनाएंगे,",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.1,
+          "scene_context": "A traditional Indian painter smiling with genuine relief inside a sunlit art studio surrounded by canvases.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, close-up of a joyful young artist wearing a paint-stained cotton apron in a sunlit studio surrounded by wooden easels and vibrant oil paintings, genuine smile of relief, warm sunlight, 35mm film grain, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0008",
-          "spoken_text": "वे अंधविश्वास और ऊंच-नीच को कभी नहीं मानते थे।",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 2.9,
-          "scene_context": "Young Nanak sitting calmly in nature, reflecting deeply while villagers of all backgrounds pass by in harmony.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, serene young Guru Nanak seated peacefully beside a rustic village well while diverse villagers of different walks of life interact warmly in the soft-focus background, golden hour lighting, 35mm film aesthetic, zero text, logos, or watermarks."
+          "clip_id": "C0010",
+          "spoken_text": "उन्हें लगेगा कि इंसान की मेहनत जीत गई।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Macro close-up of a brush gliding wet paint across textured linen canvas in golden light.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, macro close-up of paint-stained fingers holding a fine bristle brush laying rich textured oil strokes onto raw linen canvas, warm golden rim light illuminating tiny dust motes, shallow depth of field, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0011",
+          "spoken_text": "लेकिन दोपहर तक एक अनदेखी मुसीबत सामने आएगी,",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "A small-business owner staring tensely at a laptop screen inside a quiet boutique workshop.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, medium shot of a worried young Indian entrepreneur leaning over a cluttered wooden counter staring at a blank glowing laptop screen, cool overcast daylight mixing with warm shop bulbs, tense mood, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0012",
+          "spoken_text": "जिसका अंदाजा शायद किसी ने नहीं लगाया था।",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Dramatic close-up of a person's hand halting mid-air above a keyboard as storm clouds darken outside.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, close-up of tense fingers hovering over a dimly lit laptop keyboard beside a rainy window, moody teal shadows contrasting with amber indoor reflection, suspenseful atmosphere, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0004",
-      "narration": "जवानी में जब वे सुल्तानपुर लोधी में काम करते थे, एक सुबह वे वेईं नदी में नहाने उतरे— और पूरे तीन दिन तक गायब रहे।",
-      "word_count": 25,
-      "estimated_duration": 7.9,
+      "narration": "क्योंकि एआई सिर्फ अजीब मीम्स या फेक फिल्म ट्रेलर नहीं बना रहा था। वो चुपचाप छोटे व्यापारियों के विज्ञापन और अकेले काम करने वाले क्रिएटर्स का सहारा बन चुका था।",
+      "word_count": 30,
+      "estimated_duration": 9.9,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0009",
-          "spoken_text": "जवानी में जब वे सुल्तानपुर लोधी में काम करते थे,",
-          "spoken_word_count": 10,
-          "estimated_spoken_duration": 3.2,
-          "scene_context": "Grown-up Guru Nanak Dev Ji working honestly with brass scales at a historic grain storehouse.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic historical film still, serene bearded Guru Nanak Dev Ji in simple white robe and turban carefully weighing grain with antique brass balance scales inside a rustic 15th-century Sultanpur Lodhi storehouse, warm lantern light and sunbeams through wooden lattice, zero text, logos, or watermarks."
+          "clip_id": "C0013",
+          "spoken_text": "क्योंकि एआई सिर्फ अजीब मीम्स",
+          "spoken_word_count": 5,
+          "estimated_spoken_duration": 1.8,
+          "scene_context": "Surreal glowing reflections of colorful pop visuals shimmering across dark studio glasses.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, tight close-up of eyeglasses resting on a dark desk reflecting vivid surreal neon colors from an out-of-focus monitor, moody night lighting, 35mm anamorphic bokeh, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0010",
-          "spoken_text": "एक सुबह वे वेईं नदी में नहाने उतरे—",
+          "clip_id": "C0014",
+          "spoken_text": "या फेक फिल्म ट्रेलर नहीं बना रहा था।",
           "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.5,
-          "scene_context": "Misty early morning riverbanks of Kali Bein with calm reflective water and soft dawn light.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic shot, peaceful misty dawn over the calm flowing waters of Kali Bein river in Punjab, Guru Nanak Dev Ji seen respectfully in distant silhouette stepping toward the tranquil riverbank, ethereal morning fog and golden-blue twilight sky, zero text, logos, or watermarks."
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "A cinema projector beam cutting through faint smoke toward a stark blank white movie screen.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, low-angle shot inside an empty dark movie theater looking up at a bright projector beam cutting through hazy air onto a blank white screen, dramatic chiaroscuro shadows, 35mm film grain, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0011",
-          "spoken_text": "और पूरे तीन दिन तक गायब रहे।",
-          "spoken_word_count": 7,
-          "estimated_spoken_duration": 2.2,
-          "scene_context": "Anxious villagers searching along the quiet misty riverbank holding earthen lamps.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, concerned 15th-century villagers holding glowing earthen oil lamps standing along the misty quiet banks of Kali Bein river at dusk, gentle ripples on dark reflective water, dramatic moody lighting, zero text, logos, or watermarks."
+          "clip_id": "C0015",
+          "spoken_text": "वो चुपचाप छोटे व्यापारियों के विज्ञापन,",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.1,
+          "scene_context": "A local potter struggling alone to light and photograph handmade clay cups on a cramped wooden table.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, candid medium shot of a tired Indian artisan arranging handmade terracotta cups on a cramped home table using a single cheap desk lamp and white cardboard reflector, authentic cluttered studio, warm tungsten glow, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0016",
+          "spoken_text": "और अकेले काम करने वाले क्रिएटर्स का सहारा बन चुका था।",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "A lone young creator sitting in a tiny bedroom desk setup surrounded by tangled cables looking exhausted.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, side-profile of a young solo creator sitting at a tiny bedroom desk surrounded by tangled cables and an inexpensive microphone, resting forehead on hand in front of a dark computer monitor, cool blue shadows, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0005",
-      "narration": "जब वे लौटे, तो उनके चेहरे पर एक अद्भुत तेज था। उन्होंने पहला संदेश दिया: 'न कोई हिंदू, न मुसलमान, हम सब एक ही ईश्वर की संतान हैं।'",
-      "word_count": 28,
-      "estimated_duration": 8.7,
+      "narration": "बैन लगते ही वीडियो बनाने का खर्च आसमान छूने लगेगा। चमकदार विजुअल्स पर फिर से बड़े स्टूडियोज का कब्जा होगा, जबकि आम क्रिएटर्स के हाथ में बचेगा सिर्फ एक साधारण फोन और हिलता हुआ कैमरा।",
+      "word_count": 35,
+      "estimated_duration": 11.3,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0012",
-          "spoken_text": "जब वे लौटे, तो उनके चेहरे पर एक अद्भुत तेज था।",
-          "spoken_word_count": 11,
-          "estimated_spoken_duration": 3.5,
-          "scene_context": "Respectful backlit portrait of Guru Nanak Dev Ji emerging near the river bathed in radiant golden morning light.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic portrait, deeply respectful serene Guru Nanak Dev Ji in simple white robe and turban standing by the sunlit river mist, warm heavenly golden backlight forming a soft natural glow around him, calm radiant expression, shallow depth of field, zero text, logos, or watermarks."
+          "clip_id": "C0017",
+          "spoken_text": "बैन लगते ही वीडियो बनाने का खर्च आसमान छूने लगेगा।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Close-up of a high-end cinema camera lens mounted on a massive studio crane under bright spotlights.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, dramatic close-up of an expensive cinema camera rigged onto a towering studio crane inside a dark soundstage, intense overhead spotlights flaring softly in haze, high-budget industrial feel, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0013",
-          "spoken_text": "उन्होंने पहला संदेश दिया: 'न कोई हिंदू, न मुसलमान,",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 2.8,
-          "scene_context": "A diverse crowd of 15th-century people listening in hushed awe as Guru Nanak speaks.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, over-the-shoulder angle behind Guru Nanak Dev Ji looking out at a captivated crowd of ordinary 15th-century villagers—wearing diverse traditional turbans, caps, and shawls—listening in hushed reverence under warm golden light, zero text, logos, or watermarks."
+          "clip_id": "C0018",
+          "spoken_text": "चमकदार विजुअल्स पर फिर से बड़े स्टूडियोज का कब्जा होगा,",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Wide shot of a massive commercial film set packed with lighting technicians, boom mics, and giant softboxes.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, wide vertical shot inside an enormous luxury commercial film studio filled with crew members, towering light stands, dolly tracks, and glowing giant softboxes over a polished set, crisp cinematic contrast, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0014",
-          "spoken_text": "हम सब एक ही ईश्वर की संतान हैं।'",
+          "clip_id": "C0019",
+          "spoken_text": "जबकि आम क्रिएटर्स के हाथ में बचेगा",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.3,
+          "scene_context": "Close-up of a young creator's hands gripping a cracked smartphone with simple wired earphones.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, tight close-up of young hands gripping an everyday budget smartphone with white wired earphones wrapped around fingers, standing in a dusty sunlit alley, gritty realistic texture, shallow depth of field, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0020",
+          "spoken_text": "सिर्फ एक साधारण फोन और हिलता हुआ कैमरा।",
           "spoken_word_count": 8,
-          "estimated_spoken_duration": 2.4,
-          "scene_context": "Sunbeams breaking dramatically through clouds above a serene river landscape symbolizing unity.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic landscape shot, radiant golden sunbeams breaking through parting morning clouds over tranquil green Punjab plains and calm river waters, symbolizing universal oneness and peace, rich 35mm cinematic color grading, zero text, logos, or watermarks."
+          "estimated_spoken_duration": 2.6,
+          "scene_context": "Dynamic handheld-style shot of a street creator walking briskly while filming himself on a smartphone.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, dynamic slightly tilted handheld-style shot of a young Indian creator walking along a windy overcast street holding a smartphone at arm's length to film himself, raw unpolished street light, authentic hustle, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0006",
-      "narration": "इसके बाद उन्होंने घर छोड़ा और अपने साथी भाई मरदाना के साथ पैदल ही हजारों मील की चार लंबी यात्राएं कीं, जिन्हें 'उदासियां' कहा जाता है।",
-      "word_count": 26,
-      "estimated_duration": 8.2,
-      "is_scene_bridge": false,
+      "narration": "और सबसे बड़ी दिक्कत— एआई खत्म नहीं होगा, बल्कि नया भेष बदलकर छिपने लगेगा। हर प्लेटफॉर्म एक शक से भरे चेकपोस्ट में बदल जाएगा, जहां कमजोर डिटेक्शन बॉट्स असली फोटोग्राफर्स को भी ब्लॉक कर देंगे।",
+      "word_count": 35,
+      "estimated_duration": 11.4,
+      "is_scene_bridge": true,
       "clips": [
         {
-          "clip_id": "C0015",
-          "spoken_text": "इसके बाद उन्होंने घर छोड़ा और अपने साथी भाई मरदाना के साथ",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 3.8,
-          "scene_context": "Guru Nanak Dev Ji walking beside loyal companion Bhai Mardana carrying a wooden rabab string instrument.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, Guru Nanak Dev Ji walking serenely along a dusty winding trail beside his devoted companion Bhai Mardana who gently holds a traditional wooden rabab string instrument, warm afternoon sun, authentic 16th-century traveler robes, zero text, logos, or watermarks."
+          "clip_id": "C0021",
+          "spoken_text": "और सबसे बड़ी दिक्कत— एआई खत्म नहीं होगा,",
+          "spoken_word_count": 8,
+          "estimated_spoken_duration": 2.7,
+          "scene_context": "Shadowy close-up of glowing blue code reflections moving silently across a dark glass wall.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic tech-thriller still, shadowy macro shot of a person in a dark hoodie standing before a tinted glass window reflecting faint cool blue optical light trails, ominous underground mood, 35mm film grain, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0016",
-          "spoken_text": "पैदल ही हजारों मील की चार लंबी यात्राएं कीं, जिन्हें 'उदासियां' कहा जाता है।",
-          "spoken_word_count": 14,
-          "estimated_spoken_duration": 4.4,
-          "scene_context": "Sweeping cinematic shot of two travelers crossing majestic mountain passes and vast desert horizons.",
-          "image_prompt": "Vertical 9:16 photorealistic epic cinematic wide shot, two tiny robed travelers—Guru Nanak Dev Ji and Bhai Mardana—walking on foot across a vast dramatic mountain pass with snow-capped Himalayan peaks glowing in warm sunset light, sweeping scale, atmospheric mist, zero text, logos, or watermarks."
+          "clip_id": "C0022",
+          "spoken_text": "बल्कि नया भेष बदलकर छिपने लगेगा।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.1,
+          "scene_context": "Someone secretly aiming a physical DSLR camera at a computer monitor to re-shoot digital footage.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, tight moody shot in a dark room of a DSLR camera lens aimed closely at a glowing monitor screen to re-capture an image, reflections of blue light shimmering on the glass lens, secretive atmosphere, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0023",
+          "spoken_text": "हर प्लेटफॉर्म एक शक से भरे चेकपोस्ट में बदल जाएगा,",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Harsh crimson laser beams scanning across hanging strips of translucent photographic film in a dark room.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic still, macro perspective of intense crimson red scanner beams sweeping across translucent photographic film negatives suspended in a dark room, dramatic light streaks and dust motes, paranoid checkpoint mood, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0024",
+          "spoken_text": "जहां कमजोर डिटेक्शन बॉट्स असली फोटोग्राफर्स को भी ब्लॉक कर देंगे।",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "A real-life outdoor photographer standing on a windy terrace looking in shock at a red glow on his phone.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, medium shot of a stunned Indian street photographer standing on an urban rooftop at dusk with a weathered DSLR hanging around his neck, staring in disbelief at his smartphone casting harsh red light onto his face, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0007",
-      "narration": "जहां भी वे गए, उन्होंने अमीरी-गरीबी का भेद मिटाया। एक बार उन्होंने घमंडी अमीर की रोटी छोड़कर गरीब भाई लालो की सूखी रोटी चुनी, क्योंकि उसमें ईमानदारी की कमाई थी।",
+      "narration": "लेकिन इसी अफरा तफरी के बीच दर्शकों की पसंद अचानक करवट लेगी। कमजोर लाइटिंग, अटकी आवाज और छोटी गलतियां— यही कमियां असली इंसान होने का सबसे बड़ा सबूत बन जाएंगी।",
       "word_count": 30,
-      "estimated_duration": 9.6,
+      "estimated_duration": 9.9,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0017",
-          "spoken_text": "जहां भी वे गए, उन्होंने अमीरी-गरीबी का भेद मिटाया।",
-          "spoken_word_count": 9,
-          "estimated_spoken_duration": 2.9,
-          "scene_context": "Guru Nanak sitting humbly on the earthen floor inside a simple carpenter's workshop.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, Guru Nanak Dev Ji seated respectfully on a woven mat inside the humble mud-walled home of a poor carpenter, warm oil lamp glow illuminating wood shavings and simple hand tools, intimate human warmth, zero text, logos, or watermarks."
-        },
-        {
-          "clip_id": "C0018",
-          "spoken_text": "एक बार उन्होंने घमंडी अमीर की रोटी छोड़कर गरीब भाई लालो की सूखी रोटी चुनी,",
-          "spoken_word_count": 15,
-          "estimated_spoken_duration": 4.7,
-          "scene_context": "Dramatic cinematic close-up of coarse millet flatbread held gently beside ornate rich food.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic close-up, gentle weathered hands holding a simple coarse millet roti over a rustic clay plate, contrasted softly in blurred background against an ornate brass platter of rich feast food, dramatic warm directional chiaroscuro lighting, 35mm film aesthetic, zero text, logos, or watermarks."
-        },
-        {
-          "clip_id": "C0019",
-          "spoken_text": "क्योंकि उसमें ईमानदारी की कमाई थी।",
+          "clip_id": "C0025",
+          "spoken_text": "लेकिन इसी अफरा तफरी के बीच",
           "spoken_word_count": 6,
           "estimated_spoken_duration": 2.0,
-          "scene_context": "Humble carpenter Bhai Lalo with folded hands and glistening eyes of deep gratitude.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic portrait, humble elderly 16th-century Punjabi carpenter Bhai Lalo with coarse clothes, gentle weathered face, and folded hands filled with quiet dignity and gratitude in soft warm firelight, shallow depth of field, zero text, logos, or watermarks."
+          "scene_context": "A warm indoor transition shot of young people stepping out of cold blue street light into a cozy gallery.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, atmospheric shot of young people walking from a chilly blue-lit city street through an open wooden doorway into a warmly lit amber art space, shallow depth of field, rich cinematic contrast, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0026",
+          "spoken_text": "दर्शकों की पसंद अचानक करवट लेगी।",
+          "spoken_word_count": 6,
+          "estimated_spoken_duration": 2.1,
+          "scene_context": "Friends leaning in with curiosity over slightly grainy analog Polaroid prints spread on a wooden cafe table.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, warm candid shot of young friends gathered around a rustic cafe table looking closely at imperfect grainy instant film photographs spread on wood, soft tungsten bulbs overhead, genuine wonder, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0027",
+          "spoken_text": "कमजोर लाइटिंग, अटकी आवाज और छोटी गलतियां—",
+          "spoken_word_count": 7,
+          "estimated_spoken_duration": 2.4,
+          "scene_context": "Unpolished candid close-up of a real person laughing awkwardly mid-sentence under harsh kitchen tube light.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, raw unpolished close-up of a young person caught mid-laugh in simple home lighting, messy flyaway hair, natural skin blemishes, slight motion blur, endearing imperfect authenticity, 35mm film grain, zero text, logos, or watermarks."
+        },
+        {
+          "clip_id": "C0028",
+          "spoken_text": "यही कमियां असली इंसान होने का सबसे बड़ा सबूत बन जाएंगी।",
+          "spoken_word_count": 11,
+          "estimated_spoken_duration": 3.4,
+          "scene_context": "Intimate golden-hour close-up of weathered human hands holding a vintage film camera with warmth.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, intimate close-up of real human hands with tiny knuckles and faint ink stains holding a classic analog camera bathed in rich golden-hour sunlight, warm lens flare, deeply tactile human texture, zero text, logos, or watermarks."
         }
       ]
     },
     {
       "beat_id": "B0008",
-      "narration": "आखिर में वे करतारपुर में बसे। वहां उन्होंने 'लंगर' और 'पंगत' की शुरुआत की, जहां राजा हो या रंक, सब एक साथ बैठकर खाना खाते थे।",
-      "word_count": 26,
-      "estimated_duration": 8.3,
+      "narration": "एआई को बैन करने से पुराना इंटरनेट वापस नहीं लौटेगा। बल्कि यह एक कड़वा सच साबित कर देगा— कि जब नकली दिखने में बिल्कुल परफेक्ट हो जाए, तो सिर्फ आपकी कमियां ही असली महसूस होती हैं।",
+      "word_count": 36,
+      "estimated_duration": 11.6,
       "is_scene_bridge": false,
       "clips": [
         {
-          "clip_id": "C0020",
-          "spoken_text": "आखिर में वे करतारपुर में बसे।",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "Peaceful golden-hour view of Kartarpur settlement beside the Ravi river with lush green fields.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic wide shot of 16th-century Kartarpur settlement beside the calm Ravi river, green agricultural fields, simple brick and mud courtyard structures bathed in warm golden-hour sunlight, peaceful thriving community atmosphere, zero text, logos, or watermarks."
+          "clip_id": "C0029",
+          "spoken_text": "एआई को बैन करने से पुराना इंटरनेट वापस नहीं लौटेगा।",
+          "spoken_word_count": 10,
+          "estimated_spoken_duration": 3.2,
+          "scene_context": "Wide cinematic shot of a lone figure standing on a rain-slicked city street reflecting blurred neon screens.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, evocative wide shot from behind of a lone person standing on a rain-slicked twilight street gazing toward distant blurred glowing city billboards, shimmering reflections in puddles, moody cyan and amber tones, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0021",
-          "spoken_text": "वहां उन्होंने 'लंगर' और 'पंगत' की शुरुआत की,",
+          "clip_id": "C0030",
+          "spoken_text": "बल्कि यह एक कड़वा सच साबित कर देगा—",
           "spoken_word_count": 8,
           "estimated_spoken_duration": 2.6,
-          "scene_context": "Community kitchen with glowing clay hearths, steaming brass pots, and volunteers baking bread together.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still inside a bustling 16th-century community Langar kitchen, glowing clay hearths, volunteers working harmoniously kneading dough and baking flatbreads, warm steam rising through shafts of afternoon sunlight, rich earthy colors, zero text, logos, or watermarks."
+          "scene_context": "Extreme macro shot of a human eye reflecting the soft pale glow of a screen in twilight.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, extreme macro close-up of a human eye in deep shadow, delicate eyelashes and natural iris details catching the soft reflection of a screen, hauntingly contemplative mood, 35mm film grain, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0022",
-          "spoken_text": "जहां राजा हो या रंक, सब एक साथ बैठकर खाना खाते थे।",
-          "spoken_word_count": 12,
-          "estimated_spoken_duration": 3.7,
-          "scene_context": "Long rows of richly dressed nobles and simple villagers seated side by side sharing a meal.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic high-angle shot of long neat rows of diverse people—wealthy nobles in silk tunics seated shoulder-to-shoulder with humble farmers on woven mats on the ground—sharing warm Langar meals together in harmony, golden courtyard lighting, zero text, logos, or watermarks."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0009",
-      "narration": "उन्होंने दुनिया को जीने के तीन आसान सूत्र दिए: नाम जपो, यानी ईश्वर को याद रखो; किरत करो, यानी ईमानदारी से मेहनत करो; और वंड छको, यानी बांटकर खाओ।",
-      "word_count": 29,
-      "estimated_duration": 9.4,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0023",
-          "spoken_text": "उन्होंने दुनिया को जीने के तीन आसान सूत्र दिए:",
+          "clip_id": "C0031",
+          "spoken_text": "कि जब नकली दिखने में बिल्कुल परफेक्ट हो जाए,",
           "spoken_word_count": 9,
           "estimated_spoken_duration": 2.9,
-          "scene_context": "Guru Nanak Dev Ji meditating serenely at dusk while Bhai Mardana gently plays the rabab nearby.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, Guru Nanak Dev Ji seated peacefully in meditation under a courtyard tree at twilight while Bhai Mardana softly plays the rabab beside him, warm glowing oil lamps in the background, deeply serene spiritual atmosphere, zero text, logos, or watermarks."
+          "scene_context": "A flawlessly lit cold plastic mannequin face standing behind glass, eerie and lifeless.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, close-up of a smooth symmetrical porcelain mannequin face illuminated by sterile cold studio light behind store glass, eerily flawless yet completely lifeless, shallow depth of field, zero text, logos, or watermarks."
         },
         {
-          "clip_id": "C0024",
-          "spoken_text": "नाम जपो, यानी ईश्वर को याद रखो; किरत करो, यानी ईमानदारी से मेहनत करो;",
-          "spoken_word_count": 14,
-          "estimated_spoken_duration": 4.5,
-          "scene_context": "Guru Nanak working peacefully alongside farmers sowing seeds in sunlit golden fields.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, Guru Nanak Dev Ji and humble farmers working honestly together tilling rich soil and sowing golden wheat seeds in morning sunlight, warm dust particles in the air, dignity of labor, 35mm film aesthetic, zero text, logos, or watermarks."
-        },
-        {
-          "clip_id": "C0025",
-          "spoken_text": "और वंड छको, यानी बांटकर खाओ।",
-          "spoken_word_count": 6,
-          "estimated_spoken_duration": 2.0,
-          "scene_context": "Close warm shot of hands sharing fresh bread and water kindly with another person.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic close-up, warm hands breaking fresh flatbread and sharing it gently into another person's outstretched hands in soft golden sunlight, blurred smiling background, heartfelt warmth and brotherhood, zero text, logos, or watermarks."
-        }
-      ]
-    },
-    {
-      "beat_id": "B0010",
-      "narration": "550 साल बाद भी उनकी यह शिक्षा करोड़ों लोगों को रास्ता दिखा रही है। अगर यह कहानी दिल को छू गई, तो कमेंट में 'वाहेगुरु' जरूर लिखें।",
-      "word_count": 27,
-      "estimated_duration": 8.4,
-      "is_scene_bridge": false,
-      "clips": [
-        {
-          "clip_id": "C0026",
-          "spoken_text": "550 साल बाद भी उनकी यह शिक्षा करोड़ों लोगों को रास्ता दिखा रही है।",
-          "spoken_word_count": 14,
-          "estimated_spoken_duration": 4.3,
-          "scene_context": "Majestic modern golden-hour view of a grand serene Gurudwara reflecting in calm sacred water.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic wide shot of a majestic white marble Sikh Gurudwara with golden domes reflecting peacefully in still sacred sarovar water at golden sunset, tiny silhouettes of devotees walking calmly along the marble parikrama, zero text, logos, or watermarks."
-        },
-        {
-          "clip_id": "C0027",
-          "spoken_text": "अगर यह कहानी दिल को छू गई, तो कमेंट में 'वाहेगुरु' जरूर लिखें।",
-          "spoken_word_count": 13,
-          "estimated_spoken_duration": 4.1,
-          "scene_context": "Warm glowing earthen diyas floating peacefully on calm dark water at twilight.",
-          "image_prompt": "Vertical 9:16 photorealistic cinematic close-up, dozens of warm glowing earthen oil diyas gently floating across tranquil reflective water at twilight, soft bokeh golden lights in the background, peaceful meditative closing frame, zero text, logos, or watermarks."
+          "clip_id": "C0032",
+          "spoken_text": "तो सिर्फ आपकी कमियां ही असली महसूस होती हैं।",
+          "spoken_word_count": 9,
+          "estimated_spoken_duration": 2.9,
+          "scene_context": "Warm golden-hour portrait of a real ordinary person smiling softly by an open window with natural breeze.",
+          "image_prompt": "Vertical 9:16 photorealistic cinematic film still, soulful portrait of an ordinary Indian person standing beside an open sunlit window looking calmly into the camera, natural skin pores, soft wind lifting stray hair, warm golden-hour rim light fading into gentle shadow, zero text, logos, or watermarks."
         }
       ]
     }
